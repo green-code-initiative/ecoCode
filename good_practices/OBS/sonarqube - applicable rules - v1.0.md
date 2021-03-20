@@ -17,7 +17,7 @@ Une règle applicable à SonarQube doit suivre les conditions suivantes :
 ## Liste de règles de "Mauvaises pratiques Green"
 
 | Intitulé  | Référence "115" | Catégorie | Priorité | Pondération | Niveau de complexité de réalisation | Exemple / Commentaire |
-|--|--|--|--|
+|--|--|--|--|--|--|--|
 | Utiliser les boutons officiels de partage des réseaux sociaux | 19 | Technique / Conception | 2 | 2 | | |
 | Inclure un fichier CSS contenant des directives non utilisées sur une page | 21 | Templating / CSS | 1 | 3 | | Afin de réduire le nombre de requêtes HTTP |
 | Déclarations CSS similaires non groupées | 25 | Templating / CSS | | 1 | 3 | | Ne pas écrire : `h1 { background-color: gray; color: navy; } h2 { background-color: gray; color: navy; } h3 { background-color: gray; color: navy; }` mais plutôt : `h1, h2, h3 { background-color: gray; color: navy; }`|
