@@ -20,7 +20,7 @@ Une règle applicable à SonarQube doit suivre les conditions suivantes :
 |--|--|--|--|--|--|--|
 | Utiliser les boutons officiels de partage des réseaux sociaux | 19 | Technique / Conception | 2 | 2 | | |
 | Inclure un fichier CSS contenant des directives non utilisées sur une page | 21 | Templating / CSS | 1 | 3 | | Afin de réduire le nombre de requêtes HTTP |
-| Déclarations CSS similaires non groupées | 25 | Templating / CSS | | 1 | 3 | | Ne pas écrire : `h1 { background-color: gray; color: navy; } h2 { background-color: gray; color: navy; } h3 { background-color: gray; color: navy; }` mais plutôt : `h1, h2, h3 { background-color: gray; color: navy; }`|
+| Déclarations CSS similaires non groupées | 25 | Templating / CSS | 1 | 3 | | Ne pas écrire : `h1 { background-color: gray; color: navy; } h2 { background-color: gray; color: navy; } h3 { background-color: gray; color: navy; }` mais plutôt : `h1, h2, h3 { background-color: gray; color: navy; }`|
 | Notations CSS abrégées non utilisées | 26 | Templating / CSS | 1 | 3 | | Ne pas écrire : `margin-top:1em; margin-right:0; margin-bottom:2em; margin-left:0.5em;` mais plutôt : `margin:1em 0 2em 0.5em;` |
 | CSS print non inclus | 27 | Templating / CSS | 1 | 3 | | Réduction du nombre de pages imprimées |
 | Polices utilisées non standards | 29 | templating / Front | 1 | 3 | | |
