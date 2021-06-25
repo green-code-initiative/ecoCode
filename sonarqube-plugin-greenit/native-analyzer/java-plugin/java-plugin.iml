@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.sonarqube:sonar-plugin-api:8.7.1.42226" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.java:java-surefire:6.14.0.25463" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.fasterxml.staxmate:staxmate:2.3.1" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.codehaus.woodstox:stax2-api:3.1.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.java:java-frontend:6.14.0.25463" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.java:jdt:shaded:6.14.0.25463" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.jdt:org.eclipse.jdt.core:3.25.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.resources:3.14.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.runtime:3.20.100" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.osgi:3.16.200" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.equinox.common:3.14.100" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.jobs:3.10.1100" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.equinox.preferences:3.8.200" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.contenttype:3.7.900" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.text:3.11.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.commands:3.9.800" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.sslr:sslr-core:1.24.0.633" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-lang3:3.11" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.java:java-symbolic-execution:6.14.0.25463" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.java:java-checks:6.14.0.25463" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.analyzer-commons:sonar-analyzer-recognizers:1.13.0.662" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.java:external-reports:6.14.0.25463" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.java:java-jsp:6.14.0.25463" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat.embed:tomcat-embed-jasper:9.0.33" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.33" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-annotations-api:9.0.33" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.33" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.analyzer-commons:sonar-xml-parsing:1.13.0.662" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: xerces:xercesImpl:2.12.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: xml-apis:xml-apis:1.4.01" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.fasterxml.woodstox:woodstox-core:5.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.sonarsource.analyzer-commons:sonar-analyzer-commons:1.8.0.295" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.sonarsource.java:java-checks-testkit:6.14.0.25463" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gson:gson:2.8.6" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:jsr305:1.3.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.sonarsource.sonarqube:sonar-plugin-api-impl:8.7.0.41497" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: commons-codec:commons-codec:1.14" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: commons-io:commons-io:2.8.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apache.commons:commons-csv:1.7" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter:5.7.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-api:5.7.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-commons:1.7.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-params:5.7.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.7.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.7.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-migrationsupport:5.7.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.17.2" level="project" />
+  </component>
+</module>

@@ -1,0 +1,14 @@
+<p>Ne pas appeler de fonction dans la déclaration d’une boucle de type for</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+for ($i = 0; $i <= foo(); $i++) { // NOK
+  ......
+}
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+$maxI = foo();
+for ($i = 0; $i <= $maxI; $i++) {
+  .....
+    }
+}</pre>

@@ -1,0 +1,19 @@
+<p>Eviter d'utiliser try-catch-finally</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+try:
+    f = open(path)
+    print(fh.read())
+except:
+    print('No such file '+path
+finally:
+    f.close()
+
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+if os.path.isfile(path):
+  fh = open(path, 'r')
+  print(fh.read())
+  fh.close
+</pre>

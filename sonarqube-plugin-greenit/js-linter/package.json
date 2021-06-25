@@ -1,0 +1,27 @@
+{
+    "name": "eslint-plugin-green-it",
+    "version": "0.0.0",
+    "description": "description to b completed",
+    "keywords": [
+        "eslint",
+        "eslintplugin",
+        "eslint-plugin"
+    ],
+    "author": "cnumr",
+    "main": "lib/index.js",
+    "scripts": {
+        "test": "mocha tests --recursive",
+        "report": "eslint tests/lib/rules/* -f json > stylelint-report.json"
+    },
+    "dependencies": {
+        "requireindex": "~1.1.0"
+    },
+    "devDependencies": {
+        "eslint": "^7.1.0",
+        "mocha": "^7.2.0"
+    },
+    "engines": {
+        "node": ">=0.10.0"
+    },
+    "license": "ISC"
+}

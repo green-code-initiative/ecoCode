@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Change this groupId to your own organization groupId -->
+    <groupId>fr.cnumr</groupId>
+
+    <!-- Change this artifactId to your own organization artifactId -->
+    <artifactId>green-it</artifactId>
+
+    <version>1.0.0-SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.sonarsource.sonarqube</groupId>
+            <artifactId>sonar-plugin-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <packaging>pom</packaging>
+
+    <name>Plugin Sonarqube des bonnes pratiques d'éco conception</name>
+    <description>Les règles s'appuient sur l'édition 3 du livre "Ecoconception Web / Les 115 bonnes pratiques" =>
+        https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html
+    </description>
+
+    <modules>
+        <module>java-plugin</module>
+        <module>php-plugin</module>
+        <module>python-plugin</module>
+    </modules>
+
+
+    <properties>
+        <sonarqube.version>8.7.1.42226</sonarqube.version>
+        <sonarjava.version>6.14.0.25463</sonarjava.version>
+        <!-- Don't forget to update this version -->
+        <jacoco.version>0.8.6</jacoco.version>
+
+        <sonar-analyzer-commons.version>1.8.0.295</sonar-analyzer-commons.version>
+        <sonar.python.version>3.4.0.7980</sonar.python.version>
+        <sonarphp.version>2.13.0.3107</sonarphp.version>
+        <sonar-packaging.version>1.20.0.405</sonar-packaging.version>
+        <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <assertJ.version>3.17.2</assertJ.version>
+        <junit.version>4.12</junit.version>
+        <sonar-plugin-api-impl.version>8.7.0.41497</sonar-plugin-api-impl.version>
+
+        <!-- Use UTF-8 for all resources -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+            <!-- MAIN sources dependencies -->
+            <dependency>
+                <groupId>org.sonarsource.sonarqube</groupId>
+                <artifactId>sonar-plugin-api</artifactId>
+                <version>${sonarqube.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.sonarsource.analyzer-commons</groupId>
+                <artifactId>sonar-analyzer-commons</artifactId>
+                <version>${sonar-analyzer-commons.version}</version>
+            </dependency>
+
+            <!-- JAVA -->
+
+            <dependency>
+                <groupId>org.sonarsource.java</groupId>
+                <artifactId>sonar-java-plugin</artifactId>
+                <type>sonar-plugin</type>
+                <version>${sonarjava.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- PHP -->
+            <dependency>
+                <groupId>org.sonarsource.php</groupId>
+                <artifactId>sonar-php-plugin</artifactId>
+                <type>sonar-plugin</type>
+                <version>${sonarphp.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- PYTHON -->
+            <dependency>
+                <groupId>org.sonarsource.python</groupId>
+                <artifactId>sonar-python-plugin</artifactId>
+                <type>sonar-plugin</type>
+                <version>${sonar.python.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- TEST sources dependencies -->
+            <dependency>
+                <groupId>org.sonarsource.java</groupId>
+                <artifactId>java-checks-testkit</artifactId>
+                <version>${sonarjava.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+
+            <!-- version to be specified manually -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- version to be specified manually -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-migrationsupport</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- version to be specified manually -->
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertJ.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.sonarsource.sonarqube</groupId>
+                <artifactId>sonar-plugin-api-impl</artifactId>
+                <version>${sonar-plugin-api-impl.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.sonarsource.python</groupId>
+                <artifactId>python-checks-testkit</artifactId>
+                <version>${sonar.python.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+</project>

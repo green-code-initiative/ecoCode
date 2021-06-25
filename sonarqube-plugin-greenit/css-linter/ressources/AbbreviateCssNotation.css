@@ -1,0 +1,60 @@
+a {
+    font-style: italic;
+    font-variant: normal;
+    font-weight: bold;
+    font-stretch: normal;
+    font-size: 14px;
+    line-height: 1.2;
+    font-family: serif;
+}
+
+a {
+    padding: 1px 2px 3px 4px;
+}
+
+a {
+    margin-top: 1px;
+    margin-right: 2px;
+    margin-bottom: 3px;
+    margin-left: 4px;
+}
+
+a {
+    font-style: italic;
+    font-variant: normal;
+    font-weight: bold;
+    font-stretch: normal;
+    font-size: 14px;
+    line-height: 1.2;
+    font-family: serif;
+}
+
+a {
+    -webkit-transition-property: top;
+    -webkit-transition-duration: 2s;
+    -webkit-transition-timing-function: ease;
+    -webkit-transition-delay: 0.5s;
+}
+
+a {
+    margin: 1px 2px 3px 4px;
+}
+
+a {
+    font: italic normal bold normal 14px/1.2 serif;
+}
+
+a {
+    -webkit-transition: top 2s ease 0.5s;
+}
+
+a {
+    margin-top: 1px;
+    margin-right: 2px;
+}
+
+a {
+    margin-top: 1px;
+    margin-right: 2px;
+    margin-bottom: 3px;
+}

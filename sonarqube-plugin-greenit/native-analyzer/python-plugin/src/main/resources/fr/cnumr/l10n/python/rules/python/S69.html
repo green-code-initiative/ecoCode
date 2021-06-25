@@ -1,0 +1,13 @@
+<p>raises an issue on a <code>For statement.</code> with a visitor on which you can control the visit.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+for i in my_function():
+    ......
+
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+limit = my_function()
+for i in limit:
+    ......
+</pre>

@@ -1,0 +1,13 @@
+{
+  "title": "Utiliser la simple côte (') au lieu du guillemet (\")",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "eco-conception"
+  ],
+  "defaultSeverity": "Minor"
+}

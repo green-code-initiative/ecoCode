@@ -1,0 +1,27 @@
+<p>Eviter d'utiliser try-catch-finally</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+try // NOK
+{
+  $picture = PDF_open_image_file($PDF, "jpeg", $imgFile, "", 0); // This is the original statement, this works on PHP4
+}
+catch(Exception $ex)
+{
+  $msg = "Error opening $imgFile for Product $row['Identifier']";
+  throw new Exception($msg);
+}
+
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+//try
+if (file_exists($imgFile)) {
+    $picture = PDF_open_image_file($PDF, "jpeg", $imgFile, "", 0);
+}
+
+//catch
+if (!$picture) {
+   $msg = "Error opening $imgFile for Product $row['Identifier']";
+   print $msg;
+}
+</pre>

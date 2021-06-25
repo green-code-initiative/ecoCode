@@ -1,0 +1,13 @@
+{
+  "title": "Ne pas appeler de fonction dans la déclaration d’une boucle de type for",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "eco-conception"
+  ],
+  "defaultSeverity": "Minor"
+}

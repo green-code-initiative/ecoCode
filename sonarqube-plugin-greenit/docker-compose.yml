@@ -1,0 +1,81 @@
+version: "3.9"
+services:
+  sonar:
+    image: sonarqube:latest
+    ports:
+      - "9000:9000"
+    networks:
+      - sonarnet
+    depends_on:
+      - db
+    environment:
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonarqube
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: 'true'
+    volumes:
+      - type: bind
+        source: ./native-analyzer/java-plugin/target/java-plugin-1.0.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/java-plugin-1.0.0-SNAPSHOT.jar
+      - type: bind
+        source: ./native-analyzer/php-plugin/target/php-plugin-1.0.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/php-plugin-1.0.0-SNAPSHOT.jar
+      - type: bind
+        source: ./native-analyzer/python-plugin/target/python-plugin-1.0.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/python-plugin-1.0.0-SNAPSHOT.jar
+      - type: bind
+        source: /home/gael/IdeaProjects/myCustomPlugin/js-linter/eslint-report.json
+        target: /opt/reports/eslint-report.json
+      # - "conf:/opt/sonarqube/conf"
+      - "extensions:/opt/sonarqube/extensions"
+      - "logs:/opt/sonarqube/logs"
+      - "data:/opt/sonarqube/data"
+
+
+  db:
+    image: postgres:12
+    container_name: postgresql
+    networks:
+      - sonarnet
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_DB: sonarqube
+      PGDATA: pg_data:/var/lib/postgresql/data/pgdata
+
+
+  sonarscanner:
+    container_name: sonarscanner
+    image: sonarsource/sonar-scanner-cli
+    depends_on:
+      - sonar
+    restart: on-failure
+    networks:
+      - sonarnet
+    environment:
+      SONAR_HOST_URL: http://sonar:9000
+      SONAR_LOGIN: $TOKEN
+      SONAR_PROJECT_BASE_DIR: /opt/project
+    volumes:
+      - type: bind
+        source: ./sonar-project.properties
+        target: /opt/project/sonar-project.properties
+      - "/home/gael/IdeaProjects/sonar-custom-plugin-example/scripts:/opt/scripts"
+      - type: bind
+        source: /home/gael/IdeaProjects/myCustomPlugin/js-linter/eslint-report.json
+        target: /opt/project/eslint-report.json
+      - type: bind
+        source: /home/gael/IdeaProjects/myCustomPlugin/css-linter/stylelint-report.json
+        target: /opt/project/stylelint-report.json
+
+networks:
+  sonarnet:
+    driver: bridge
+
+volumes:
+  data:
+  logs:
+  extensions:
+  pg_data:
