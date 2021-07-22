@@ -1,24 +1,35 @@
 package fr.cnumr.java.checks;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
-import org.sonar.java.model.declaration.VariableTreeImpl;
-import org.sonar.java.model.statement.ExpressionStatementTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
-import org.sonar.plugins.java.api.tree.*;
-
-import java.util.*;
+import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
+import org.sonar.plugins.java.api.tree.ClassTree;
+import org.sonar.plugins.java.api.tree.CompilationUnitTree;
+import org.sonar.plugins.java.api.tree.ExpressionTree;
+import org.sonar.plugins.java.api.tree.ForStatementTree;
+import org.sonar.plugins.java.api.tree.IdentifierTree;
+import org.sonar.plugins.java.api.tree.MethodInvocationTree;
+import org.sonar.plugins.java.api.tree.PackageDeclarationTree;
+import org.sonar.plugins.java.api.tree.Tree;
 
 @Rule(
         key = "S69",
         name = "Developpement",
-        description = "Remplacer les $i++ par ++$i",
+        description = "Do not call a function in the declaration of a for-type loop",
         priority = Priority.MINOR,
         tags = {"bug"})
 public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisitor {
 
     private static final Map<String, Collection<Integer>> linesWithIssuesByClass = new HashMap<>();
-
+     
     @Override
     public List<Tree.Kind> nodesToVisit() {
         return Collections.singletonList(Tree.Kind.FOR_STATEMENT);
@@ -26,50 +37,17 @@ public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisi
 
     @Override
     public void visitNode(Tree tree) {
-        // METHOD_INVOCATION
         ForStatementTree method = (ForStatementTree) tree;
-
-        checkCondition(method.condition());
+        MethodInvocationInForStatementVisitor invocationMethodVisitor = new MethodInvocationInForStatementVisitor();
+        ExpressionTree condition = method.condition();
+        if (null != condition) {
+            method.condition().accept(invocationMethodVisitor);
+        }
         //update
         // initaliser
-        checkUpdate(method.update());
-        checkInitialiser(method.initializer());
-    }
-
-    public void checkInitialiser(ListTree<StatementTree> listTree) {
-        StatementTree st = listTree.get(0);
-        List<Tree> children = ((VariableTreeImpl) st).children();
-        children.forEach(child -> {
-            isMethodInvocation(child);
-        });
-    }
-
-    public void checkUpdate(ListTree<StatementTree> listTree) {
-        StatementTree st = listTree.get(0);
-        List<Tree> children = ((ExpressionStatementTreeImpl) st).children();
-        children.forEach(child -> {
-            isMethodInvocation(child);
-        });
-    }
-
-    public void checkCondition(ExpressionTree expressionTree) {
-        // expressionTree.
-        BinaryExpressionTree binaryExpressionTree = (BinaryExpressionTree) expressionTree;
-        // if (binaryExpressionTree.rightOperand().is(Tree.Kind.METHOD_INVOCATION) || binaryExpressionTree.leftOperand().is(Tree.Kind.METHOD_INVOCATION)) {
-        isMethodInvocation(binaryExpressionTree.rightOperand());
-        isMethodInvocation(binaryExpressionTree.leftOperand());
-
-    }
-
-    public void isMethodInvocation(Tree tree) {
-        if (lineAlreadyHasThisIssue(tree)) return;
-        if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
-            repport(tree);
-            return;
-
-        }
-    }
-
+        method.update().accept(invocationMethodVisitor);
+        method.initializer().accept(invocationMethodVisitor);
+    }   
 
     private void repport(Tree tree) {
         if (tree.firstToken() != null) {
@@ -83,20 +61,10 @@ public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisi
             linesWithIssuesByClass.get(classname).add(line);
         }
 
-        reportIssue(tree, "New class!");
+        reportIssue(tree, "Do not call a function in the declaration of a for-type loop");
     }
 
-    private boolean lineAlreadyHasThisIssue(Tree tree) {
-        if (tree.firstToken() != null) {
-            final String classname = getFullyQualifiedNameOfClassOf(tree);
-            final int line = tree.firstToken().line();
 
-            return linesWithIssuesByClass.containsKey(classname)
-                    && linesWithIssuesByClass.get(classname).contains(line);
-        }
-
-        return false;
-    }
 
     private String getFullyQualifiedNameOfClassOf(Tree tree) {
         Tree parent = tree.parent();
@@ -135,5 +103,25 @@ public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisi
                 : simpleName.toString();
     }
 
+    private class MethodInvocationInForStatementVisitor extends BaseTreeVisitor {
+
+		@Override
+		public void visitMethodInvocation(MethodInvocationTree tree) {
+			if (!lineAlreadyHasThisIssue(tree)) {
+				repport(tree);
+			}
+		}
+	    private boolean lineAlreadyHasThisIssue(Tree tree) {
+	        if (tree.firstToken() != null) {
+	            final String classname = getFullyQualifiedNameOfClassOf(tree);
+	            final int line = tree.firstToken().line();
+
+	            return linesWithIssuesByClass.containsKey(classname)
+	                    && linesWithIssuesByClass.get(classname).contains(line);
+	        }
+
+	        return false;
+	    }
+    }
 
 }

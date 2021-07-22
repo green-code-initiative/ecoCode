@@ -52,4 +52,5 @@ class NoFunctionCallWhenDeclaringForLoop {
             boolean b = getMyValue() > 6;
         }
     }
+
 }

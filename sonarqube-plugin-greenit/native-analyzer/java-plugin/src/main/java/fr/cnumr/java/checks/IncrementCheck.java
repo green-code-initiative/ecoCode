@@ -13,7 +13,7 @@ import java.util.List;
 @Rule(
         key = "S67",
         name = "Developpement",
-        description = "Remplacer les $i++ par ++$i",
+        description = "Use ++i instead of i++",
         priority = Priority.MINOR,
         tags = {"bug"})
 public class IncrementCheck extends IssuableSubscriptionVisitor {
@@ -26,6 +26,6 @@ public class IncrementCheck extends IssuableSubscriptionVisitor {
     @Override
     public void visitNode(Tree tree) {
         UnaryExpressionTree method = (UnaryExpressionTree) tree;
-        reportIssue(tree, "Never do that!");
+        reportIssue(tree, "Use ++i instead of i++");
     }
 }

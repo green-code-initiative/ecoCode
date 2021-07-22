@@ -12,7 +12,7 @@ import java.util.List;
 @Rule(
         key = "S34",
         name = "Developpement",
-        description = "Eviter d'utiliser try-catch-finally",
+        description = "Avoid the use of try-catch-finally",
         priority = Priority.MINOR,
         tags = {"bug"})
 public class AvoidTryCatchFinallyCheck extends IssuableSubscriptionVisitor {
@@ -24,7 +24,7 @@ public class AvoidTryCatchFinallyCheck extends IssuableSubscriptionVisitor {
     @Override
     public void visitNode(Tree tree) {
         TryStatementTree tryStatementTree = (TryStatementTree) tree;
-            reportIssue(tree, "Eviter d'utiliser try-catch-finally");
+            reportIssue(tree, "Avoid the use of try-catch-finally");
 
     }
 }
