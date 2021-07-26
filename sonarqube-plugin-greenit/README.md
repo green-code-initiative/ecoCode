@@ -110,13 +110,7 @@ Une fois le profil complet réferencé le comme le profil par defaut du langage.
 ![img_4.png](images/img_4.png)
 
 Desormais votre environement sonarqube est configuré !
-## Comment contribuer
 
-## Auteur
-
-Gaël Pellevoizin
-
-## Licence
 
 
 
