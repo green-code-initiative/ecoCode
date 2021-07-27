@@ -1,5 +1,5 @@
 {
-  "title": "Avoid the use of try-catch-finally",
+  "title": "Avoid the use of try-catch-finally when not needed",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {

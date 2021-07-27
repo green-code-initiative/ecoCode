@@ -52,7 +52,7 @@ class MyJavaRulesDefinitionTest {
   private static void assertRuleProperties(Repository repository) {
     Rule rule = repository.rule("S67");
     assertThat(rule).isNotNull();
-    assertThat(rule.name()).isEqualTo("Remplacer les $i++ par ++$i");
+    assertThat(rule.name()).isEqualTo("Use ++i instead of i++");
     assertThat(rule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
     assertThat(rule.type()).isEqualTo(RuleType.CODE_SMELL);
   }

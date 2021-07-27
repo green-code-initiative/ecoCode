@@ -109,8 +109,11 @@ public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisi
 		public void visitMethodInvocation(MethodInvocationTree tree) {
 			if (!lineAlreadyHasThisIssue(tree)) {
 				repport(tree);
+				return;
 			}
+			super.visitMethodInvocation(tree);
 		}
+		
 	    private boolean lineAlreadyHasThisIssue(Tree tree) {
 	        if (tree.firstToken() != null) {
 	            final String classname = getFullyQualifiedNameOfClassOf(tree);
