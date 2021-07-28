@@ -1,5 +1,5 @@
 {
-  "title": "Remplacer les $i++ par ++$i",
+  "title": "Use ++i instead of i++",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {

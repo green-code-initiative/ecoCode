@@ -24,7 +24,7 @@ services:
         source: ./native-analyzer/python-plugin/target/python-plugin-1.0.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/python-plugin-1.0.0-SNAPSHOT.jar
       - type: bind
-        source: /home/gael/IdeaProjects/myCustomPlugin/js-linter/eslint-report.json
+        source: ./native-analyzer/eslint-report.json
         target: /opt/reports/eslint-report.json
       # - "conf:/opt/sonarqube/conf"
       - "extensions:/opt/sonarqube/extensions"
@@ -64,11 +64,14 @@ services:
         target: /opt/project/sonar-project.properties
       - "/home/gael/IdeaProjects/sonar-custom-plugin-example/scripts:/opt/scripts"
       - type: bind
-        source: /home/gael/IdeaProjects/myCustomPlugin/js-linter/eslint-report.json
+        source: ./native-analyzer/eslint-report.json
         target: /opt/project/eslint-report.json
       - type: bind
-        source: /home/gael/IdeaProjects/myCustomPlugin/css-linter/stylelint-report.json
+        source: ./native-analyzer/stylelint-report.json
         target: /opt/project/stylelint-report.json
+      - type: bind
+        source: ./native-analyzer/
+        target: /opt/project/native-analyzer/
 
 networks:
   sonarnet:
