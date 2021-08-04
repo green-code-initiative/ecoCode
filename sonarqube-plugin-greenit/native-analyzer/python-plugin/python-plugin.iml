@@ -13,10 +13,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.sonarqube:sonar-plugin-api:8.7.1.42226" level="project" />
+    <orderEntry type="library" name="Maven: org.sonarsource.analyzer-commons:sonar-analyzer-commons:1.8.0.295" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.python:python-frontend:3.4.0.7980" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.sslr:sslr-core:1.23" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.python:python-checks:3.4.0.7980" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.analyzer-commons:sonar-analyzer-commons:1.8.0.295" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.analyzer-commons:sonar-xml-parsing:1.11.0.541" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.findbugs:jsr305:3.0.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: xerces:xercesImpl:2.12.0" level="project" />

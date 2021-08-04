@@ -47,18 +47,19 @@ class AvoidSQLRequestInLoopCheck {
 
 			// our SQL SELECT query.
 			// if you only need a few columns, specify them by name instead of using "*"
-			String query = "SELECT * FROM users";
+			String baseQuery = "SELECT name FROM users where id = ";
 
 			for (int i = 0; i < 20; i++) {
 
 				// create the java statement
+				String query  = baseQuery.concat("" + i);
 				Statement st = conn.createStatement();
 				ResultSet rs = st.executeQuery(query); // Noncompliant
 
 				// iterate through the java resultset
 				while (rs.next()) {
-					int id = rs.getInt("id");
-					System.out.println(id);
+					String name = rs.getString("name");
+					System.out.println(name);
 				}
 				st.close();
 			}
