@@ -2,8 +2,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-class AvoidTryCatchFinallyCheck {
-	AvoidTryCatchFinallyCheck(AvoidTryCatchFinallyCheck mc) {
+class AvoidSQLRequestInLoopCheck {
+	AvoidSQLRequestInLoopCheck(AvoidSQLRequestInLoopCheck mc) {
 	}
 
 	public void openFileWithFInally() {

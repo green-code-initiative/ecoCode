@@ -18,15 +18,15 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.java:java-frontend:6.14.0.25463" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.java:jdt:shaded:6.14.0.25463" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.jdt:org.eclipse.jdt.core:3.25.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.resources:3.14.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.runtime:3.20.100" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.osgi:3.16.200" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.equinox.common:3.14.100" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.jobs:3.10.1100" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.resources:3.15.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.runtime:3.22.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.osgi:3.16.300" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.equinox.common:3.15.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.jobs:3.11.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.equinox.preferences:3.8.200" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.contenttype:3.7.900" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.text:3.11.0" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.commands:3.9.800" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.contenttype:3.7.1000" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.text:3.12.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.eclipse.platform:org.eclipse.core.commands:3.10.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.sslr:sslr-core:1.24.0.633" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-lang3:3.11" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.sonarsource.java:java-symbolic-execution:6.14.0.25463" level="project" />

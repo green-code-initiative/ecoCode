@@ -12,8 +12,8 @@
       <sourceFolder url="file://$MODULE_DIR$/java-plugin/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/java-plugin/src/test/files" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/java-plugin/src/test/java" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/java-plugin/target" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
