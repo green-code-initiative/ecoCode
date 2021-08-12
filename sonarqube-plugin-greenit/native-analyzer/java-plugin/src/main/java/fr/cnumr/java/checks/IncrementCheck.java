@@ -25,7 +25,6 @@ public class IncrementCheck extends IssuableSubscriptionVisitor {
 
     @Override
     public void visitNode(Tree tree) {
-        UnaryExpressionTree method = (UnaryExpressionTree) tree;
         reportIssue(tree, "Use ++i instead of i++");
     }
 }

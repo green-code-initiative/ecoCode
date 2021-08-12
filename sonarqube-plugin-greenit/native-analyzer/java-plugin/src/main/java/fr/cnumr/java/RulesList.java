@@ -45,7 +45,8 @@ public final class RulesList {
                 NoFunctionCallWhenDeclaringForLoop.class,
                 AvoidTryCatchFinallyCheck.class,
                 AvoidSQLRequestInLoop.class,
-                AvoidFullSQLRequest.class
+                AvoidFullSQLRequest.class,
+                UseCorrectForLoop.class
         ));
     }
 
