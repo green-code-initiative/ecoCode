@@ -44,7 +44,9 @@ public final class RulesList {
                 IncrementCheck.class,
                 NoFunctionCallWhenDeclaringForLoop.class,
                 AvoidTryCatchFinallyCheck.class,
-                AvoidSQLRequestInLoop.class
+                AvoidSQLRequestInLoop.class,
+                AvoidFullSQLRequest.class,
+                UseCorrectForLoop.class
         ));
     }
 
