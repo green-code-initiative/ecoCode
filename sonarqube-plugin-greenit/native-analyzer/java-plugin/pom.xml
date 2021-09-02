@@ -33,6 +33,11 @@
             <artifactId>sonar-analyzer-commons</artifactId>
         </dependency>
 
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.11</version>
+		</dependency>
 
         <!-- TEST sources dependencies -->
         <dependency>

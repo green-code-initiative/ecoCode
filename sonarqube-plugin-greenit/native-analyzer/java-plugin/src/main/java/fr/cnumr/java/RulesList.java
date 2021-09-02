@@ -46,7 +46,8 @@ public final class RulesList {
                 AvoidTryCatchFinallyCheck.class,
                 AvoidSQLRequestInLoop.class,
                 AvoidFullSQLRequest.class,
-                UseCorrectForLoop.class
+                UseCorrectForLoop.class,
+                UnnecessarilyAssignValuesToVariables.class
         ));
     }
 
