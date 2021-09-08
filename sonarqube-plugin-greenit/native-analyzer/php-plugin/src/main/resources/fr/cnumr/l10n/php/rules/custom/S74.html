@@ -1,0 +1,18 @@
+<p>Don't use the query SELECT * FROM</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    public function foo() {
+        ...
+        $baseQuery = "SELECT * FROM users"; // Noncompliant
+
+        ...
+    }
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+    public function foo() {
+        ...
+        $baseQuery = "SELECT id,name, adress FROM users ";
+        ...
+   }
+</pre>
