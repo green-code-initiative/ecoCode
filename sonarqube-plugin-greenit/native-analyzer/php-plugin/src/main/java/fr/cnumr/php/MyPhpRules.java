@@ -23,10 +23,7 @@ package fr.cnumr.php;
 import com.google.common.collect.ImmutableList;
 import java.util.*;
 
-import fr.cnumr.php.checks.AvoidDoubleQuoteCheck;
-import fr.cnumr.php.checks.AvoidFullSQLRequestCheck;
-import fr.cnumr.php.checks.AvoidTryCatchFinallyCheck;
-import fr.cnumr.php.checks.IncrementCheck;
+import fr.cnumr.php.checks.*;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
@@ -57,7 +54,7 @@ public class MyPhpRules implements RulesDefinition, PHPCustomRuleRepository {
   @Override
   public ImmutableList<Class> checkClasses() {
     return ImmutableList.of(IncrementCheck.class, AvoidTryCatchFinallyCheck.class, AvoidDoubleQuoteCheck.class,
-            AvoidFullSQLRequestCheck.class);
+            AvoidFullSQLRequestCheck.class, AvoidSQLRequestInLoopCheck.class, NoFunctionCallWhenDeclaringForLoop.class);
   }
 
   @Override
