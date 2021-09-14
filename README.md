@@ -1,4 +1,10 @@
 
+###### Les 3 dossiers de ce projet :  
+
+- eslint-plugin-greenit : C'est un projet de linter qui permet d'intégrer les règles de GreenIT directement dans sont IDE. Il est possible de contribuer sur ce projet en ajoutant des fonctionnalités, maintenant le code source, améliorer la documentation...
+- good_practices : Ce projet contient un fichier avec les règles de GreenIT que nous implémentons. Pour contribuer, challengez les règles !! Sont-elles encore d'actualitées ? Sont-elles clairement définies ? Est-il possible de les traduire en pseudo code pour faciliter les dev ?
+- sonarqube-plugin-greenit : Nous développons un plugin Sonarqube pour vérifier les règles de GreenIT. La contribution couvre tous les sujets cités ci-dessus : documentation, communication, design, developpement, qualité...
+
 ## Comment contribuer
 
 Le projet vous intéresse mais vous ne savez pas comment y participer ? Voici quelques éléments de réponses pour vous motiver à contribuer !
@@ -28,17 +34,11 @@ Identifiez votre force ou ce qui vous motive puis participez sur un des domaines
 
 Source Approfondie pour l'Opensource : https://opensource.guide/fr/how-to-contribute/
 
-###### Les 3 dossiers de ce projet :  
-
-- eslint-plugin-greenit : C'est un projet de linter qui permet d'intégrer les règles de GreenIT directement dans sont IDE. Il est possible de contribuer sur ce projet en ajoutant des fonctionnalités, maintenant le code source, améliorer la documentation...
-- good_practices : Ce projet contient un fichier avec les règles de GreenIT que nous implémentons. Pour contribuer, challengez les règles !! Sont-elles encore d'actualitées ? Sont-elles clairement définies ? Est-il possible de les traduire en pseudo code pour faciliter les dev ?
-- sonarqube-plugin-greenit : Nous développons un plugin Sonarqube pour vérifier les règles de GreenIT. La contribution couvre tous les sujets cités ci-dessus : documentation, communication, design, developpement, qualité...
-
 ## Auteurs
 
 Gaël Pellevoizin
 Nicolas Daviet
-Goeffrey Lalloué
+Geoffrey Lalloué
 Mathilde Grapin
 Jules Delecour
 
