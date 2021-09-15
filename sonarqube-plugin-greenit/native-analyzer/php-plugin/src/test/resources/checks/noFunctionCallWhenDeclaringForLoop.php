@@ -28,7 +28,7 @@ for (; ; ) {
 
 /* exemple 4 */
 
-for ($i = 1, $j = 0; $i <= 10; $j += $i, print $i, $i++); // NOK
+for ($i = 1, $j = 0; $i <= 10; $j += $i, print $i, $i++); // NOK {{Do not call a function in for-type loop declaration}}
 
 
 function somewhat_calcMax()
@@ -37,7 +37,7 @@ function somewhat_calcMax()
 }
 
 
-for ($i = 0; $i <= somewhat_calcMax(); $i++) { // NOK
+for ($i = 0; $i <= somewhat_calcMax(); $i++) { // NOK {{Do not call a function in for-type loop declaration}}
   somewhat_doSomethingWith($i);
 }
 

@@ -1,10 +1,10 @@
 {
-  "title": "Replace $i++ by ++$i",
+  "title": "Don't use the query SELECT * FROM",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
-    "constantCost": "5min"
+    "constantCost": "20min"
   },
   "tags": [
     "eco-conception"
