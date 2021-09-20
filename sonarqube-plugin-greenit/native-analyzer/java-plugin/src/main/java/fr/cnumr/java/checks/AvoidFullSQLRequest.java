@@ -13,12 +13,13 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 @Rule(
         key = "S74",
         name = "Developpement",
-        description = "Don't use the query SELECT * FROM",
+        description = AvoidFullSQLRequest.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
 public class AvoidFullSQLRequest extends IssuableSubscriptionVisitor {
 
-	private static final String regExpSelectFrom = "(?i).*select.*\\*.*from.*";
+	protected static final String MESSAGERULE = "Don't use the query SELECT * FROM";
+	private static final String REGEXPSELECTFROM = "(?i).*select.*\\*.*from.*";
 	
     @Override
     public List<Kind> nodesToVisit() {
@@ -31,11 +32,11 @@ public class AvoidFullSQLRequest extends IssuableSubscriptionVisitor {
     	
     	if (tree.is(Kind.STRING_LITERAL,Kind.TEXT_BLOCK)) {
     		LiteralTree literal = (LiteralTree) tree;
-    		isSelectFrom = literal.value().matches(regExpSelectFrom);
+    		isSelectFrom = literal.value().matches(REGEXPSELECTFROM);
     	}
     	
     	if (isSelectFrom) {
-    		reportIssue(tree, "Don't use the query SELECT * FROM");
+    		reportIssue(tree, MESSAGERULE);
     	}
     }
 }

@@ -25,7 +25,7 @@ services:
         target: /opt/sonarqube/extensions/plugins/python-plugin-1.0.0-SNAPSHOT.jar
       - type: bind
         source: ./native-analyzer/eslint-report.json
-        target: /opt/reports/eslint-report.json
+        target: /opt/project/eslint-report.json
       # - "conf:/opt/sonarqube/conf"
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"

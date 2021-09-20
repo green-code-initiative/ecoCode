@@ -86,7 +86,18 @@ native-analyzer      # Répertoire du project maven des plugins dit "natif" saon
 
 Vous pouvez plus d'informations sur l'architecture des différents linters et plugins natifs dans leurs README respectifs.
 
+## Règles développées pour le plugin
 
+Ci-dessous un tableau récapitulant les règles développées pour chaque langage : 
+
+| Règle éco-conception | Libèllé  | Java |
+| :---|:---|:---:|
+| S53     | Eviter l'utilisation des boucle For .. in        | X      |
+| S63     | Ne pas assigner inutilement une variable       | X      |
+| S67     | Utiliser l'incrément ++i à la place de i++       | X      |
+| S69     | Ne pas appeler de fonction dans un boucle FOR       | X      |
+| S72     | Eviter les requêtes SQL dans une boucle       | X      |
+| S74   | Ne pas utiliser la requête Select * from      | X    |
 
 
 
