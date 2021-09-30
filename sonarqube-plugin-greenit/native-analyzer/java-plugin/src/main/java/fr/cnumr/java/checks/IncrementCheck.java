@@ -13,11 +13,12 @@ import java.util.List;
 @Rule(
         key = "S67",
         name = "Developpement",
-        description = "Use ++i instead of i++",
+        description = IncrementCheck.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
 public class IncrementCheck extends IssuableSubscriptionVisitor {
 
+	protected static final String  MESSAGERULE = "Use ++i instead of i++";
     @Override
     public List<Kind> nodesToVisit() {
         return Collections.singletonList(Kind.POSTFIX_INCREMENT);
@@ -25,6 +26,6 @@ public class IncrementCheck extends IssuableSubscriptionVisitor {
 
     @Override
     public void visitNode(Tree tree) {
-        reportIssue(tree, "Use ++i instead of i++");
+        reportIssue(tree, MESSAGERULE);
     }
 }

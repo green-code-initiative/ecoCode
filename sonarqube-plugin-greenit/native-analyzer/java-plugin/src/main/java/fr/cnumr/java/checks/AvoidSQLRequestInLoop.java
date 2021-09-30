@@ -5,6 +5,7 @@ import static org.sonar.plugins.java.api.semantic.MethodMatchers.CONSTRUCTOR;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.tomcat.util.descriptor.web.MessageDestinationRef;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
@@ -14,10 +15,11 @@ import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 
-@Rule(key = "S72", name = "Developpement", description = "Avoid SQL request in loop", priority = Priority.MINOR,
+@Rule(key = "S72", name = "Developpement", description = AvoidSQLRequestInLoop.MESSAGERULE, priority = Priority.MINOR,
 	tags = {"bug" })
 public class AvoidSQLRequestInLoop extends IssuableSubscriptionVisitor {
 
+	protected static final String MESSAGERULE = "Avoid SQL request in loop";
 	private final AvoidSQLRequestInLoopVisitor visitorInFile = new AvoidSQLRequestInLoopVisitor();
 
 	@Override
@@ -63,7 +65,7 @@ public class AvoidSQLRequestInLoop extends IssuableSubscriptionVisitor {
 		@Override
 		public void visitMethodInvocation(MethodInvocationTree tree) {
 			if (SQL_METHOD.matches(tree)) {
-				reportIssue(tree, "Avoid SQL request in loop");
+				reportIssue(tree, MESSAGERULE);
 			} else {
 				super.visitMethodInvocation(tree);
 			}

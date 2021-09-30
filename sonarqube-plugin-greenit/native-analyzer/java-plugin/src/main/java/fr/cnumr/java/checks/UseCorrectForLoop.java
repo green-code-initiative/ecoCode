@@ -13,11 +13,12 @@ import java.util.List;
 @Rule(
         key = "S53",
         name = "Developpement",
-        description = "Avoid the use of Foreach with Arrays",
+        description = UseCorrectForLoop.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
 public class UseCorrectForLoop extends IssuableSubscriptionVisitor {
 
+	protected static final String MESSAGERULE = "Avoid the use of Foreach with Arrays";
     @Override
     public List<Kind> nodesToVisit() {
         return Arrays.asList(Tree.Kind.FOR_EACH_STATEMENT);
@@ -28,7 +29,7 @@ public class UseCorrectForLoop extends IssuableSubscriptionVisitor {
     	
     	ForEachStatement forEachTree = (ForEachStatement) tree;
     	if (forEachTree.expression().symbolType().isArray()) {
-            reportIssue(tree, "Avoid the use of Foreach with an Array");
+            reportIssue(tree, MESSAGERULE);
         }
     }
 }
