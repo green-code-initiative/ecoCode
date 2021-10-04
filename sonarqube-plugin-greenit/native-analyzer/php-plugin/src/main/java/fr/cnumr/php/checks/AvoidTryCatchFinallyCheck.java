@@ -16,7 +16,7 @@ import java.util.List;
         tags = {"bug"})
 public class AvoidTryCatchFinallyCheck extends PHPSubscriptionCheck {
 
-    public static final String ErrorMessage = "Avoid using try-catch-finally";
+    public static final String ERROR_MESSAGE = "Avoid using try-catch-finally";
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -25,7 +25,7 @@ public class AvoidTryCatchFinallyCheck extends PHPSubscriptionCheck {
 
     @Override
     public void visitNode(Tree tree) {
-        context().newIssue(this, tree, ErrorMessage);
+        context().newIssue(this, tree, ERROR_MESSAGE);
     }
 
 }

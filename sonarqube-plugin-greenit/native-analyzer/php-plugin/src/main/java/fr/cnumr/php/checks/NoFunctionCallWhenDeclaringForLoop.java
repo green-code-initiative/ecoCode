@@ -21,7 +21,7 @@ import java.util.List;
         tags = {"bug"})
 public class NoFunctionCallWhenDeclaringForLoop extends PHPSubscriptionCheck {
 
-    private static final String ErrorMessage = "Do not call a function in for-type loop declaration";
+    private static final String ERROR_MESSAGE = "Do not call a function in for-type loop declaration";
 
     @Override
     public List<Kind> nodesToVisit() {
@@ -52,6 +52,6 @@ public class NoFunctionCallWhenDeclaringForLoop extends PHPSubscriptionCheck {
 
     public void isFunctionCall(ExpressionTree expressionTree) {
         if (expressionTree.getKind() == Tree.Kind.FUNCTION_CALL)
-            context().newIssue(this, expressionTree, ErrorMessage);
+            context().newIssue(this, expressionTree, ERROR_MESSAGE);
     }
 }

@@ -11,13 +11,13 @@ import java.util.*;
 @Rule(
         key = "S66",
         name = "Developpement",
-        description = "Avoid using double quote (\"), prefer using simple quote (')",
+        description = "Prefer using simple quote when it's only a string without any concatenation with variable",
         priority = Priority.MINOR,
         tags = {"bug"})
 
 public class AvoidDoubleQuoteCheck extends PHPSubscriptionCheck {
 
-    public static final String ErrorMessage = "Avoid using double quote (\"), prefer using simple quote (')";
+    public static final String ERROR_MESSAGE = "Avoid using double quote (\"), prefer using simple quote (')";
     private static final Map<String, Collection<Integer>> linesWithIssuesByFile = new HashMap<>();
 
     @Override
@@ -49,7 +49,7 @@ public class AvoidDoubleQuoteCheck extends PHPSubscriptionCheck {
             }
             linesWithIssuesByFile.get(classname).add(line);
         }
-        context().newIssue(this, literalTree, ErrorMessage);
+        context().newIssue(this, literalTree, ERROR_MESSAGE);
 
     }
 

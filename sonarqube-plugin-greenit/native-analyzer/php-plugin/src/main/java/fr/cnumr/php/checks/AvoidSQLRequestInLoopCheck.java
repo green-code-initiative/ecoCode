@@ -21,8 +21,8 @@ import java.util.regex.Pattern;
 
 public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 
-	private static final String ErrorMessage = "Avoid SQL request in loop";
-	private static final Pattern RegExSQLCall = Pattern.compile("mysql(i::|_)query\\s*\\(.*");
+	private static final String ERROR_MESSAGE = "Avoid SQL request in loop";
+	private static final Pattern RegExSQLCall = Pattern.compile("(mysql(i::|_)query\\s*\\(.*)|(oci_execute\\(.*)");
 
 	@Override
 	public List<Tree.Kind> nodesToVisit() {
@@ -65,7 +65,7 @@ public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 	private void VerifyIfThereIsAError(String expression, ExpressionStatementTree expressionStatementTree)
 	{
 		if (RegExSQLCall.matcher(expression).find())
-			context().newIssue(this, expressionStatementTree, ErrorMessage);
+			context().newIssue(this, expressionStatementTree, ERROR_MESSAGE);
 	}
 
 }
