@@ -31,7 +31,7 @@ import java.util.List;
 @Rule(
         key = "S67",
         name = "Developpement",
-        description = "Replace $i++ by ++$i",
+        description = IncrementCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug"})
 public class IncrementCheck extends PHPSubscriptionCheck {

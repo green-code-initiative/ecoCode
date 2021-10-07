@@ -11,7 +11,7 @@ import java.util.List;
 @Rule(
         key = "S34",
         name = "Developpement",
-        description = "Avoid using try-catch-finally",
+        description = AvoidTryCatchFinallyCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug"})
 public class AvoidTryCatchFinallyCheck extends PHPSubscriptionCheck {

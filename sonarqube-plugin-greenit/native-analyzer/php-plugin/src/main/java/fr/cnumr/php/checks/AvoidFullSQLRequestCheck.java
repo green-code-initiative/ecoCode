@@ -13,15 +13,15 @@ import java.util.List;
 @Rule(
 		key = "S74",
 		name = "Developpement",
-		description = "Don't use the query SELECT * FROM",
+		description = AvoidFullSQLRequestCheck.ERROR_MESSAGE,
 		priority = Priority.MINOR,
 		tags = {"bug"}
 )
 
 public class AvoidFullSQLRequestCheck extends PHPSubscriptionCheck {
 
+	public static final String ERROR_MESSAGE = "Don't use the query SELECT * FROM";
 	private static final String RegExpSelectFrom = "(?i).*select.*\\*.*from.*";
-	private static final String ERROR_MESSAGE = "Don't use the query SELECT * FROM";
 
 	@Override
 	public List<Kind> nodesToVisit() {

@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 
 public class MyPhpRulesTest {
 
-  private int NumberOfRuleInRepository = 7;
+  private int NumberOfRuleInRepository = 6;
 
   @Test
   public void rules() {

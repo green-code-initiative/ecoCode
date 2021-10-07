@@ -16,12 +16,12 @@ import java.util.List;
 @Rule(
         key = "S69",
         name = "Developpement",
-        description = "Do not call a function in the declaration of a for-type loop",
+        description = NoFunctionCallWhenDeclaringForLoop.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug"})
 public class NoFunctionCallWhenDeclaringForLoop extends PHPSubscriptionCheck {
 
-    private static final String ERROR_MESSAGE = "Do not call a function in for-type loop declaration";
+    public static final String ERROR_MESSAGE = "Do not call a function in for-type loop declaration";
 
     @Override
     public List<Kind> nodesToVisit() {

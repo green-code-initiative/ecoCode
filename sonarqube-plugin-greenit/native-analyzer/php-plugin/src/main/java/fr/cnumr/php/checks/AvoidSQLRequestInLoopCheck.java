@@ -14,14 +14,14 @@ import java.util.regex.Pattern;
 @Rule(
 	key = "S72",
 	name = "Developpement",
-	description = "Avoid SQL request in loop",
+	description = AvoidSQLRequestInLoopCheck.ERROR_MESSAGE,
 	priority = Priority.MINOR,
 	tags = {"bug" }
 )
 
 public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 
-	private static final String ERROR_MESSAGE = "Avoid SQL request in loop";
+	public static final String ERROR_MESSAGE = "Avoid SQL request in loop";
 	private static final Pattern RegExSQLCall = Pattern.compile("(mysql(i::|_)query\\s*\\(.*)|(oci_execute\\(.*)");
 
 	@Override

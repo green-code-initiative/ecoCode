@@ -11,7 +11,7 @@ import java.util.*;
 @Rule(
         key = "S66",
         name = "Developpement",
-        description = "Prefer using simple quote when it's only a string without any concatenation with variable",
+        description = AvoidDoubleQuoteCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug"})
 
