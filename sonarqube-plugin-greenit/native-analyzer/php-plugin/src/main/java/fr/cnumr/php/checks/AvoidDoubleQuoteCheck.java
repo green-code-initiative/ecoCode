@@ -3,28 +3,25 @@ package fr.cnumr.php.checks;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
-import org.sonar.plugins.php.api.tree.expression.ArrayAssignmentPatternTree;
 import org.sonar.plugins.php.api.tree.expression.LiteralTree;
-import org.sonar.plugins.php.api.tree.statement.TryStatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
 import java.util.*;
 
 @Rule(
-        key = AvoidDoubleQuoteCheck.RULE_KEY,
+        key = "S66",
         name = "Developpement",
-        description = AvoidDoubleQuoteCheck.DESCRIPTION,
+        description = AvoidDoubleQuoteCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug"})
+
 public class AvoidDoubleQuoteCheck extends PHPSubscriptionCheck {
-    public static final String RULE_KEY = "S66";
-    public static final String DESCRIPTION = "Utiliser la simple côte (') au lieu du guillemet (\")";
+
+    public static final String ERROR_MESSAGE = "Avoid using double quote (\"), prefer using simple quote (')";
     private static final Map<String, Collection<Integer>> linesWithIssuesByFile = new HashMap<>();
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
-        // Tree.Kind.EXPANDABLE_STRING_LITERAL)
-
         return Collections.singletonList(Tree.Kind.REGULAR_STRING_LITERAL);
     }
 
@@ -52,7 +49,7 @@ public class AvoidDoubleQuoteCheck extends PHPSubscriptionCheck {
             }
             linesWithIssuesByFile.get(classname).add(line);
         }
-        context().newIssue(this, literalTree, DESCRIPTION);
+        context().newIssue(this, literalTree, ERROR_MESSAGE);
 
     }
 

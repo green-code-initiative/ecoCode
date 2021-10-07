@@ -23,48 +23,29 @@ import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.Tree.Kind;
-import org.sonar.plugins.php.api.tree.expression.UnaryExpressionTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
-import org.sonar.plugins.php.api.visitors.PHPVisitorCheck;
 
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Example of implementation of a check by extending {@link PHPVisitorCheck}.
- * PHPVisitorCheck provides methods to visit nodes of the Abstract Syntax Tree
- * that represents the source code.
- * <p>
- * Those methods can be overridden to process information
- * related to node and issue can be created via the context that can be
- * accessed through {@link PHPVisitorCheck#context()}.
- */
 @Rule(
-        key = IncrementCheck.KEY,
+        key = "S67",
         name = "Developpement",
-        description = "Remplacer les $i++ par ++$i",
+        description = IncrementCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug"})
 public class IncrementCheck extends PHPSubscriptionCheck {
 
-    public static final String KEY = "S67";
+    public static final String ERROR_MESSAGE = "Remove the usage of $i++. prefer ++$i";
 
     @Override
     public List<Kind> nodesToVisit() {
         return Collections.singletonList(Kind.POSTFIX_INCREMENT);
     }
 
-    // POSTFIX_INCREMENT
     @Override
     public void visitNode(Tree tree) {
-        UnaryExpressionTree method = (UnaryExpressionTree) tree;
-        /*
-                if (returnType.is(firstParameterType.fullyQualifiedName())) {
-            reportIssue(method.simpleName(), "Never do that!");
-        }
-         */
-        context().newIssue(this, method, "Remove the usage of this forbidden function.");
-
+        context().newIssue(this, tree, ERROR_MESSAGE);
     }
 
 }

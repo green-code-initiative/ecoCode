@@ -1,11 +1,12 @@
-<p>Utiliser la simple côte (') au lieu du guillemet (")</p>
+<p>Avoid using double quote ("), prefer using simple quote (')</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
-myFunction("nom", "age", "estEtudiant");
-  $prenom = "Hugo";
+myFunction("name", "age", "IsStudent");
+  $lastName = "Hugo";
 </pre>
 <h2>Compliant Solution</h2>
 <pre>
-myFunction('nom', 'age', 'estEtudiant');
-    $prenom = 'Hugo';
+myFunction('name', 'age', 'IsStudent');
+    $lastName = 'Hugo';
+    $concatenatedString = "$lastName is a student";
 </pre>

@@ -7,7 +7,7 @@ function test() {
     throw new SpecificException('Oopsie');
 }
 
-try // NOK
+try // NOK {{Avoid using try-catch-finally}}
 {
   $picture = PDF_open_image_file($PDF, "jpeg", $imgFile, "", 0); // This is the original statement, this works on PHP4
 }
@@ -17,7 +17,7 @@ catch(Exception $ex)
   throw new Exception($msg);
 }
 
-try {// NOK
+try {// NOK {{Avoid using try-catch-finally}}
     throw new \Exception("Hello");
 } catch(\Exception $e) {
     echo $e->getMessage()." catch in\n";

@@ -1,35 +1,35 @@
 <?php
-  $prenom = 'Hugo';
-  $nom = "Hamon"; // NOK
+  $lastName = 'Hugo';
+  $name = "Hamon"; // NOK {{Avoid using double quote ("), prefer using simple quote (')}}
   $age = 19;
-  $estEtudiant = true;
+  $isStudent = true;
   $cours = array('physique','chimie','informatique','philosophie');
-  $unEtudiant = new Etudiant();
+  $oneStudent = new Student();
 
 
-  $prenom = 'Hugo';
+  $lastName = 'Hugo';
   $age = 19;
 
-  echo $prenom;
+  echo $lastName;
   echo '<br/>';
   echo $age;
 
-  $prenom = 'Hadrien';
+  $lastName = 'Hadrien';
   $age = 18;
 
-  echo $prenom;
-  echo "<br/>";// NOK
+  echo $lastName;
+  echo "<br/>";// NOK {{Avoid using double quote ("), prefer using simple quote (')}}
   echo $age;
 
-  $identite = $prenom .' '. $nom;
+  $identite = $lastName .' '. $name;
   echo $identite;
 
-  myFunction($nom, $age, $estEtudiant);
+  myFunction($name, $age, $isStudent);
 
-  myFunction("nom", "age", "estEtudiant"); // NOK
+  myFunction("name", "age", "isStudent"); // NOK {{Avoid using double quote ("), prefer using simple quote (')}}
 
-  myFunction('nom', 'age', 'estEtudiant');
+  myFunction('name', 'age', 'isStudent');
 
-  myFunction("nom", 'age', "estEtudiant"); // NOK
+  myFunction("name", 'age', "isStudent"); // NOK {{Avoid using double quote ("), prefer using simple quote (')}}
 
 ?>
