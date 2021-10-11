@@ -8,6 +8,8 @@ Installer les dépendances maven depuis la racine du project :
 
 `mvn clean install`
 
+Les fichiers .jar (un par langage) sont déplacés dans le répertoire `target/lib` après compilation.
+
 ## Liens
 - Tuto Java : https://github.com/SonarSource/sonar-java/blob/master/docs/CUSTOM_RULES_101.md
 - Tuto Python : https://github.com/SonarSource/sonar-custom-rules-examples/tree/master/python-custom-rules
