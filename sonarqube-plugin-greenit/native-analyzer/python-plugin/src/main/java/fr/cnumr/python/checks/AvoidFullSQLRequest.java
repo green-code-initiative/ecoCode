@@ -1,5 +1,11 @@
 package fr.cnumr.python.checks;
 
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
@@ -8,25 +14,22 @@ import org.sonar.plugins.python.api.tree.StringElement;
 import org.sonar.plugins.python.api.tree.StringLiteral;
 import org.sonar.plugins.python.api.tree.Tree;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-
 @Rule(
-        key = AvoidDoubleQuoteCheck.RULE_KEY,
+        key = "S74",
         name = "Developpement",
-        description = AvoidDoubleQuoteCheck.DESCRIPTION,
+        description = AvoidFullSQLRequest.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
-public class AvoidDoubleQuoteCheck extends PythonSubscriptionCheck {
+public class AvoidFullSQLRequest extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "S66";
-    public static final String DESCRIPTION = "Use single quote (') instead of double quote (\")";
+	protected static final String MESSAGERULE = "Don't use the query SELECT * FROM";
+	private static final String REGEXPSELECTFROM = "(?i).*select.*\\*.*from.*";
     private static final Map<String, Collection<Integer>> linesWithIssuesByFile = new HashMap<>();
 
-    @Override
-    public void initialize(Context context) {
+ 
+
+	@Override
+	public void initialize(Context context) {
         context.registerSyntaxNodeConsumer(Tree.Kind.STRING_LITERAL, this::visitNodeString);
     }
 
@@ -39,7 +42,7 @@ public class AvoidDoubleQuoteCheck extends PythonSubscriptionCheck {
 
     public void checkIssue(StringElement stringElement, SubscriptionContext ctx) {
         if (lineAlreadyHasThisIssue(stringElement, ctx)) return;
-        if (stringElement.value().indexOf("\"") == 0 && stringElement.value().lastIndexOf("\"") == stringElement.value().length() - 1) {
+        if (stringElement.value().matches(REGEXPSELECTFROM)) {
             repport(stringElement, ctx);
             return;
         }
@@ -54,9 +57,8 @@ public class AvoidDoubleQuoteCheck extends PythonSubscriptionCheck {
             }
             linesWithIssuesByFile.get(classname).add(line);
         }
-        ctx.addIssue(stringElement, DESCRIPTION);
+        ctx.addIssue(stringElement, MESSAGERULE);
     }
-
     private boolean lineAlreadyHasThisIssue(StringElement stringElement, SubscriptionContext ctx) {
         if (stringElement.firstToken() != null) {
             final String filename = ctx.pythonFile().fileName();
@@ -68,6 +70,4 @@ public class AvoidDoubleQuoteCheck extends PythonSubscriptionCheck {
 
         return false;
     }
-
-
 }
