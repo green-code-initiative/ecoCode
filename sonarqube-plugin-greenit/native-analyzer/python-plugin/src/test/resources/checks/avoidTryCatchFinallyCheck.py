@@ -6,7 +6,7 @@ path = 'hello.txt'
 def my_function():
     x=0
 
-    try: # Noncompliant {{Eviter d'utiliser try-catch-finally}}
+    try: # Noncompliant {{Avoid the use of try-catch-finally}}
         print(x)
     except:
         print("Something went wrong")
@@ -14,7 +14,7 @@ def my_function():
         print("The 'try except' is finished")
 
 def foo():
-    try: # Noncompliant {{Eviter d'utiliser try-catch-finally}}
+    try: # Noncompliant {{Avoid the use of try-catch-finally}}
         f = open(path)
         print(f.read())
     except:

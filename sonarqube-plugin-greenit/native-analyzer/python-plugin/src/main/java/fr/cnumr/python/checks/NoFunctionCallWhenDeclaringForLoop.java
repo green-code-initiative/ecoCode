@@ -13,18 +13,19 @@ import java.util.List;
 @Rule(
         key = NoFunctionCallWhenDeclaringForLoop.RULE_KEY,
         priority = Priority.MINOR,
-        name = "Python subscription visitor check",
-        description = "desc")
+        name = NoFunctionCallWhenDeclaringForLoop.DESCRIPTION,
+        description = "")
 public class NoFunctionCallWhenDeclaringForLoop extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "S69";
+    public static final String DESCRIPTION = "Do not call a function in the declaration of a for-type loop";
 
     @Override
     public void initialize(Context context) {
         context.registerSyntaxNodeConsumer(Tree.Kind.CALL_EXPR, ctx -> {
             CallExpression callExpression = (CallExpression) ctx.syntaxNode();
             if (callExpression.parent().getKind() == Tree.Kind.FOR_STMT) {
-                ctx.addIssue(callExpression, "Ne pas appeler de fonction dans la déclaration d’une boucle de type for");
+                ctx.addIssue(callExpression, NoFunctionCallWhenDeclaringForLoop.DESCRIPTION);
             }
         });
     }

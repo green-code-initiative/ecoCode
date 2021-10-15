@@ -18,7 +18,7 @@ import org.sonar.plugins.python.api.tree.TryStatement;
 public class AvoidTryCatchFinallyCheck extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "S34";
-    public static final String DESCRIPTION = "Eviter d'utiliser try-catch-finally";
+    public static final String DESCRIPTION = "Avoid the use of try-catch-finally";
 
     @Override
     public void initialize(Context context) {

@@ -1,0 +1,21 @@
+<p>Don't use the query SELECT * FROM</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    public void foo() {
+        ...
+        String baseQuery = "SELECT * FROM users"; // Noncompliant
+
+        ...
+    }
+
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+
+    public void foo() {
+        ...
+        String query = "SELECT id,name, adress FROM users ";
+        ...
+   }
+
+</pre>
