@@ -3,3 +3,4 @@ yarn.lock
 target/
 node/
 sonar-example-plugin.iml
+.idea
