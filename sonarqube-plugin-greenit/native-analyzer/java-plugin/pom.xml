@@ -79,6 +79,31 @@
                     <!-- <requirePlugins>java:${sonarjava.version}</requirePlugins> -->
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-bundle</id>
+                        <phase>package</phase>
+                        <goals>
+                        <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                        <artifactItems>
+                            <artifactItem>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>${project.artifactId}</artifactId>
+                            <version>${project.version}</version>
+                            <type>jar</type>
+                            <overWrite>true</overWrite>
+                            </artifactItem>
+                        </artifactItems>
+                        <outputDirectory>../lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
