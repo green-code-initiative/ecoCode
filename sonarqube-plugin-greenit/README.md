@@ -17,16 +17,19 @@ Pour vous familiariser avec l’AST de votre langage et mieux comprendre comment
 - Docker-compose 3.9
 
 ## Architecture du projet
-Voici un aperçu de l'architecture du projet :
-```
 
+Voici un aperçu de l'architecture du projet :
+
+```
 sonarQubeGreenIt        # Dossier racine du projet (non versionner) contient l'ensemble du projet en lui même
 |
 +--css-linter           # Repertoire du linter CSS 
 |  |
 +--js-linter            # Repertoire du linter JS
 |  |
-+--native-analyzer      # Répertoire du project maven des plugins dit "natif" saonarqube
++--native-analyzer      # Répertoire du project maven des plugins dit "natif" sonarqube
+|  |
+|  +--android-plugin    # Contiens le module Android
 |  |
 |  +--java-plugin       # Contiens le module JAVA
 |  |
@@ -43,7 +46,8 @@ Vous pouvez plus trouver plus d'informations sur l'architecture des différents 
 ## Installation de l'environnement SonarQube de développmement 
 
 ### Initialisation
-Démarrer sonar `docker-compose up`
+
+Démarrer sonar `docker-compose up --build -d`
 
 Si vous rencontrez l'erreur suivante en démmarant :
 
@@ -68,7 +72,7 @@ My Account -> Security -> Generate Tokens
 
 Relancez vos services en renseignant le token :
 
-`TOKEN=MY_TOKEN docker-compose up`
+`TOKEN=MY_TOKEN docker-compose up --build -d`
 
 
 ### Import des plugins

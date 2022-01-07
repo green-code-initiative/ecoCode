@@ -35,5 +35,11 @@ Nicolas Daviet
 Geoffrey Lalloué
 Mathilde Grapin
 Jules Delecour
+Julien Hertout
+Justin Berque
 
-## Licence
+## License
+
+Copyright 2020-2021 Green-it.
+
+License : [GNU Lesser General Public License, Version 3.0](https://www.gnu.org/licenses/lgpl.txt)

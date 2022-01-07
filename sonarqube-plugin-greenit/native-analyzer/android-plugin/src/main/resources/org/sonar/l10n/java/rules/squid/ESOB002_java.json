@@ -1,0 +1,15 @@
+{
+  "title": "Sobriety: Brightness Override",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "20min"
+  },
+  "tags": [
+    "optimized-api",
+    "environment",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}

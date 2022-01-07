@@ -23,6 +23,9 @@ services:
       - type: bind
         source: ./native-analyzer/python-plugin/target/python-plugin-1.0.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/python-plugin-1.0.0-SNAPSHOT.jar
+      - type: bind
+        source: ./native-analyzer/android-plugin/target/ecoCode-rules-1.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecoCode-rules-1.0-SNAPSHOT.jar
       # - "conf:/opt/sonarqube/conf"
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
@@ -59,13 +62,6 @@ services:
       - type: bind
         source: ./sonar-project.properties
         target: /opt/project/sonar-project.properties
-      - "/home/gael/IdeaProjects/sonar-custom-plugin-example/scripts:/opt/scripts"
-      - type: bind
-        source: ./native-analyzer/eslint-report.json
-        target: /opt/project/eslint-report.json
-      - type: bind
-        source: ./native-analyzer/stylelint-report.json
-        target: /opt/project/stylelint-report.json
       - type: bind
         source: ./native-analyzer/
         target: /opt/project/native-analyzer/

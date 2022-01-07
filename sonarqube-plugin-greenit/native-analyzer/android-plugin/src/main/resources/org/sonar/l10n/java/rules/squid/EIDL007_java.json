@@ -1,0 +1,15 @@
+{
+  "title": "Idleness: Rigid Alarm",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "1d"
+  },
+  "tags": [
+    "environment",
+    "idleness",
+    "ecocode"
+  ],
+  "defaultSeverity": "Major"
+}

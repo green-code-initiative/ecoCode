@@ -2,5 +2,7 @@ node_modules
 yarn.lock
 target/
 node/
-sonar-example-plugin.iml
 .idea
+.DS_Store
+*.iml
+/native-analyzer/lib/*.jar

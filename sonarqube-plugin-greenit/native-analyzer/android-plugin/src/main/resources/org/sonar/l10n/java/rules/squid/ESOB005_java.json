@@ -1,0 +1,15 @@
+{
+  "title": "Sobriety: Thrifty Geolocation (minTime)",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "10min"
+  },
+  "tags": [
+    "sobriety",
+    "environment",
+    "ecocode"
+  ],
+  "defaultSeverity": "Major"
+}

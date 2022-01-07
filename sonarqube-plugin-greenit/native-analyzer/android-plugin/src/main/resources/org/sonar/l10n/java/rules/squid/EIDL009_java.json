@@ -1,0 +1,15 @@
+{
+  "title": "Idleness: Keep Voice Awake",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "10min"
+  },
+  "tags": [
+    "environment",
+    "idleness",
+    "ecocode"
+  ],
+  "defaultSeverity": "Major"
+}

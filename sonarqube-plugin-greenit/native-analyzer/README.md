@@ -16,10 +16,44 @@ Les fichiers .jar (un par langage) sont déplacés dans le répertoire `target/l
 - Tuto Php : https://github.com/SonarSource/sonar-custom-rules-examples/tree/master/php-custom-rules
 
 ## Architecture du projet
+
 Voici un aperçu de l'architecture du projet :
+
 ```
-native-analyzer      # Répertoire du project maven des plugins dit "natif" saonarqube
+native-analyzer      # Répertoire du project maven des plugins dit "natif" sonarqube
 |  |
++--android-plugin       # Contiens le module Android
+|  |
+|  +--src
+|  |  |
+|  |  +--main
+|  |  |  |
+|  |  |  +--java/io/ecocode
+|  |  |  |  |
+|  |  |  |  +--java
+|  |  |  |  |  +--checks
+|  |  |  |  |  +--Java.java
+|  |  |  |  |  +--JavaCheckList.java
+|  |  |  |  |  +--JavaEcoCodeProfile.java
+|  |  |  |  |  +--JavaFileCheckRegistrar.java
+|  |  |  |  |  +--JavaRulesDefinition.java
+|  |  |  |  +--xml
+|  |  |  |  |  +--checks
+|  |  |  |  |  +--Xml.java
+|  |  |  |  |  +--XmlCheckList.java
+|  |  |  |  |  +--XmlEcoCodeProfile.java
+|  |  |  |  |  +--XmlRulesDefinition.java
+|  |  |  |  |  +--XmlSensor.java
+|  |  |  +--ressources
+|  |  |  |  |
+|  |  |  |  +--io/ecocode/xml/rules
+|  |  |  |  +--org/sonar/l10n/java/rules/squid
+|  |  +--test
+|  |  |  |
+|  |  |  +--files
+|  |  |  +--java/io/ecocode/java
+|  |  |  +--java/io/ecocode/xml
+|  |  |  +--resources
 +--java-plugin       # Contiens le module JAVA
 |  |
 |  +--src
