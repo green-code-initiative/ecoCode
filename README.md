@@ -1,45 +1,35 @@
+# ecoCode
 
-## Comment contribuer
+![Logo](docs/logo.png)
 
-Le projet vous intéresse mais vous ne savez pas comment y participer ? Voici quelques éléments de réponses pour vous motiver à contribuer !
+----
+**How green is you app?**
 
-###### Les fausses idées à écarter sur l'Opensource :  
+ecoCode is a set of good and bad practices ("smells") for mobile development. Focused today on Android’s Java and XML, we aim to cover all languages used on every mobile platform.
+We developed a SonarQube plugin which can help you to avoid mistakes in your apps and help to save energy.
 
-L'Opensource n'est pas seulement tourné vers les développeurs aggueris. Tout le monde peut participer à un projet Opensource peu importe sont expertise. Il existe une multitude de tâches autour d'un projet de développement qui sont trop souvent négligées :
-- **La documentation** : Technique, fonctionnelle, procédures, tutoriels de contribution... tout est bon à prendre
-- **La communication** : Interne et externe du projet. Faciliter la communication entre les membres actifs du projet en gérant les canaux de communication (mails, slack...), ou alors en rédigeant des communiqués sur l'avancement du projet.
-- **Le design** : La charte graphique, les images...
-- **La gestion du projet** : Organiser les réunions, faire un suivi régulier, gérer la cohésion et la cohérence du projet...
-- **La rédaction des tâches et fonctionnalités** : Transformer le besoin et découper le produit en sous tâches pour faciliter le développement.
-- **La gestion des issues et des questions sur le projet** : Plus le projet va grandir, plus il y aura des contributions, remarques, issues à traiter.
-- **La qualité de code** : Challenger et améliorer le code source 
+At first based on a [set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised by Olivier Le Goaër, we are totally open to add more if you have data on others smells !
 
-Evidemment, le développement est également nécessaire mais celui-ci n'est valable que si il est accompagné d'une bonne gestion des tâches précedentes. 
+Here is a list of implemented smells. If you’re developer, feel free to add more, there’s another list of smells needing to be implemented !
+
+----
+## To start using ecoCode SonarQube plugin
+
+See our documentation on the [dedicated README](sonarqube-plugin-greenit/README.md) (only in french at this moment. Help up by translating it !) 
+
+## Main contributors
+- Gaël Pellevoizin 
+- Nicolas Daviet
+- Geoffrey Lalloué
+- Mathilde Grapin
+- Jules Delecour
+- Julien Hertout
+- [Justin Berque](https://www.linkedin.com/in/justin-berque-444412140)
+- [Olivier Le Goaër](https://olegoaer.perso.univ-pau.fr)
 
 
-###### La première source de motivation :  
-
-Participer à un projet Opensource, ce n'est pas développer toute la solution tout seul. Nous avons la chance de ne pas avoir de contraintes temporelles, alors avancons petit à petit. La moindre petite contribution fait avancer le projet, alors pas d'hésitations ! Complétez une documentation, stylisez la, communiquez sur l'avancée du projet, refacto de code, code review etc... 
-
-###### Quelle est votre force ?  
-
-Identifiez votre force ou ce qui vous motive puis participez sur un des domaines suivant : Documentation, communication, design/UX/UI, gestion de projet, rédaction de tâches et fonctionnalités, gestion des issues, points de blocages et questions...
-
-
-Source Approfondie pour l'Opensource : https://opensource.guide/fr/how-to-contribute/
-
-## Auteurs
-
-Gaël Pellevoizin
-Nicolas Daviet
-Geoffrey Lalloué
-Mathilde Grapin
-Jules Delecour
-Julien Hertout
-Justin Berque
-
-## License
-
-Copyright 2020-2021 Green-it.
-
-License : [GNU Lesser General Public License, Version 3.0](https://www.gnu.org/licenses/lgpl.txt)
+## Main sponsors
+[![Snapp’](docs/logoSnapp.png)](https://www.snapp.fr)
+[![Université de Pau](docs/logoUnivPau.png)](https://www.univ-pau.fr/)
+[![Région Nouvelle-Aquitaine](docs/logoNA.jpg)](https://www.nouvelle-aquitaine.fr)
+[![Collectif Conception Numérique Responsable](docs/logoCCNR.png)](https://collectif.greenit.fr)
