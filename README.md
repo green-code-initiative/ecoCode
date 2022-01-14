@@ -10,7 +10,7 @@ We developed a SonarQube plugin which can help you to avoid mistakes in your app
 
 At first based on a [set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised by Olivier Le Goaër, we are totally open to add more if you have data on others smells !
 
-Here is a list of implemented smells. If you’re developer, feel free to add more, there’s another list of smells needing to be implemented !
+Here is a list of implemented smells. If you’re developer, feel free to add more, there’s another list needing to be implemented ! (*coming soon*)
 
 ----
 ## To start using ecoCode SonarQube plugin
