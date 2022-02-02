@@ -24,28 +24,33 @@ import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.*;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public abstract class IntegerArgumentValueOnMethodCheck extends IssuableSubscriptionVisitor  {
+public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVisitor {
 
-    private final int constantValueToCheck;
-    private int[] paramPositions;
-    private final MethodMatchers matcher;
+    protected final MethodSpecs[] methodsSpecs;
+    private int[] paramsPositions;
+    private Object constantValueToCheck;
 
     /**
      * Constructor to configure the rule on a given class and method.
      *
-     * @param methodName      name of the method to check
-     * @param methodOwnerType name of the type that own the method
-     * @param constantValueToCheck       the constant value to check
-     * @param paramPositions  the position(s) of the argument on the method to check
+     * @param methodName          name of the method to check
+     * @param methodOwnerType     name of the type that own the method
+     * @param ValueToCheck        the current value to check
+     * @param paramPositions      the position(s) of the argument on the method to check
      */
-    protected IntegerArgumentValueOnMethodCheck(String methodName, String methodOwnerType, int constantValueToCheck, int... paramPositions) {
+    protected ArgumentValueOnMethodCheck(String methodName, String methodOwnerType, Object ValueToCheck, int... paramPositions) {
         super();
-        this.constantValueToCheck = constantValueToCheck;
-        this.paramPositions = paramPositions;
-        this.matcher = MethodMatchers.create().ofTypes(methodOwnerType).names(methodName).withAnyParameters().build();
+        this.methodsSpecs = new MethodSpecs[] {new MethodSpecs(methodName, methodOwnerType, ValueToCheck, paramPositions)};
+    }
+
+    protected ArgumentValueOnMethodCheck(MethodSpecs[] methods) {
+        super();
+        this.methodsSpecs = methods;
     }
 
     /**
@@ -59,10 +64,10 @@ public abstract class IntegerArgumentValueOnMethodCheck extends IssuableSubscrip
      * Way to check the constant
      *
      * @param optionalConstantValue the argument value of the method as an optional value
-     * @param reportTree the tree where the issue will be reported
-     * @param constantValueToCheck the value to use to check the argument
+     * @param reportTree            the tree where the issue will be reported
+     * @param constantValueToCheck  the value to use to check the argument
      */
-    protected abstract void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, int constantValueToCheck);
+    protected abstract void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, Object constantValueToCheck);
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -76,14 +81,27 @@ public abstract class IntegerArgumentValueOnMethodCheck extends IssuableSubscrip
             return;
         }
         MethodInvocationTree mit = (MethodInvocationTree) tree;
-        if (matcher.matches(mit)) {
-            checkFlagCallOnMethod(mit);
+        for (MethodSpecs currentMethodSpecs : methodsSpecs) {
+            MethodMatchers matcher = MethodMatchers.create().ofTypes(currentMethodSpecs.getMethodOwner()).names(currentMethodSpecs.getMethodName()).withAnyParameters().build();
+            if (matcher.matches(mit)) {
+                paramsPositions = currentMethodSpecs.getParamsPositions();
+                constantValueToCheck = currentMethodSpecs.getConstantValueToCheck();
+                checkFlagCallOnMethod(mit);
+            }
+            /*
+            if (!matcher.matches(mit)) {
+                matcher = MethodMatchers.create().ofTypes(currentMethodSpecs.getMethodOwner()).names(currentMethodSpecs.getMethodName()).withAnyParameters().build(); // Could be done in a more optimized way, probably.
+            }
+            else {
+                paramsPositions = currentMethodSpecs.getParamsPositions();
+                constantValueToCheck = currentMethodSpecs.getConstantValueToCheck();
+                checkFlagCallOnMethod(mit);
+            }*/
         }
-
     }
 
     private void checkFlagCallOnMethod(MethodInvocationTree mit) {
-        for (int paramPosition : paramPositions) {
+        for (int paramPosition : paramsPositions) {
             handleArgument(mit.arguments().get(paramPosition));
         }
     }
@@ -91,10 +109,14 @@ public abstract class IntegerArgumentValueOnMethodCheck extends IssuableSubscrip
     private void handleArgument(ExpressionTree argument) {
         if (argument.is(Tree.Kind.IDENTIFIER)) {
             IdentifierTree expressionTree = (IdentifierTree) argument;
-            if (expressionTree.symbolType().isPrimitive()) {
+            if (expressionTree.symbolType().isSubtypeOf("java.lang.String")
+                    || expressionTree.symbolType().isPrimitive()) {
                 checkConstantValue(expressionTree.asConstant(), expressionTree, constantValueToCheck);
             }
-        } else if (argument.is(Tree.Kind.INT_LITERAL)
+        } else if (argument.is(Tree.Kind.ARRAY_TYPE)
+                || argument.is(Tree.Kind.CHAR_LITERAL)
+                || argument.is(Tree.Kind.STRING_LITERAL)
+                || argument.is(Tree.Kind.INT_LITERAL)
                 || argument.is(Tree.Kind.LONG_LITERAL)
                 || argument.is(Tree.Kind.FLOAT_LITERAL)
                 || argument.is(Tree.Kind.DOUBLE_LITERAL)) {

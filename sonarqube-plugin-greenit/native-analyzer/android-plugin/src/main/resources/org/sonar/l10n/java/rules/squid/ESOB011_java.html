@@ -12,6 +12,5 @@ API 26:
 API 31:
 <pre>
   VibratorManager vm = (VibratorManager) getSystemService(Context.VIBRATOR_MANAGER_SERVICE)
-  Vibrator v = (Vibrator) vm.getDefaultVibrator();
-  v.vibrate(400);
+  vm.getDefaultVibrator().vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
 </pre>

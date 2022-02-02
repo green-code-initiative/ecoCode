@@ -20,27 +20,48 @@
 
 package io.ecocode.java.checks.sobriety;
 
-import io.ecocode.java.checks.helpers.constant.StringArgumentValueOnMethodCheck;
+import io.ecocode.java.checks.helpers.constant.ArgumentValueOnMethodCheck;
+import io.ecocode.java.checks.helpers.constant.MethodSpecs;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.tree.Tree;
 
 import java.util.Optional;
 
 @Rule(key = "ESOB011", name = "ecocodeVibrationFree")
-public class VibrationFreeRule extends StringArgumentValueOnMethodCheck {
+public class VibrationFreeRule extends ArgumentValueOnMethodCheck {
+
+    protected String currentValue;
 
     public VibrationFreeRule() {
-        super("getSystemService", "android.content.Context", "vibrator", 0);
+        super(new MethodSpecs[]{
+                new MethodSpecs("getSystemService", "android.content.Context", "vibrator", 0),
+                new MethodSpecs("getSystemService", "android.content.Context", "vibrator_manager", 0),
+                new MethodSpecs("getSystemService", "android.app.Activity", "vibrator", 0),
+                new MethodSpecs("getSystemService", "android.app.Activity", "vibrator_manager", 0)
+        });
     }
 
     @Override
     public String getMessage() {
-        return "Prefer to avoid using getSystemService(Context.VIBRATOR_SERVICE) to use less energy.";
+
+        String methodName;
+        switch (currentValue) {
+            case "vibrator":
+                methodName = "Context.VIBRATOR_SERVICE";
+                break;
+            case "vibrator_manager":
+                methodName = "Context.VIBRATOR_MANAGER_SERVICE";
+                break;
+            default:
+                return "";
+        }
+        return "Prefer to avoid using getSystemService(" + methodName + ") to use less energy.";
     }
 
     @Override
-    protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, String constantValueToCheck) {
-        if (optionalConstantValue.isPresent() && ((String) optionalConstantValue.get()).equals(constantValueToCheck)) {
+    protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, Object constantValueToCheck) {
+        if (optionalConstantValue.isPresent() && ((String) optionalConstantValue.get()).equals((String) constantValueToCheck)) {
+            currentValue = (String) constantValueToCheck;
             reportIssue(reportTree, getMessage());
         }
     }

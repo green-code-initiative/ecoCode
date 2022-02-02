@@ -27,7 +27,7 @@ import java.util.Optional;
  * Checks that a specified tag (constant) is called on a specified method for a specified type. The position of the
  * parameter on the method arguments must be set.
  */
-public abstract class FlagOnMethodCheck extends IntegerArgumentValueOnMethodCheck {
+public abstract class FlagOnMethodCheck extends ArgumentValueOnMethodCheck {
 
     /**
      * Constructor to configure the rule on a given class and method.
@@ -49,8 +49,8 @@ public abstract class FlagOnMethodCheck extends IntegerArgumentValueOnMethodChec
      * @param constantValueToCheck the value to use to check the argument
      */
     @Override
-    protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, int constantValueToCheck) {
-        if (optionalConstantValue.isPresent() && ((Integer) optionalConstantValue.get() & constantValueToCheck) == constantValueToCheck) {
+    protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, Object constantValueToCheck) {
+        if (optionalConstantValue.isPresent() && ((Integer) optionalConstantValue.get() & ((int) constantValueToCheck)) == ((int) constantValueToCheck)) {
             reportIssue(reportTree, getMessage());
         }
     }
