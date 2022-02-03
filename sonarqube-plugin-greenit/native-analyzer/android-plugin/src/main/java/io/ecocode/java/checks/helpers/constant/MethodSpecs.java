@@ -19,6 +19,9 @@
  */
 package io.ecocode.java.checks.helpers.constant;
 
+/**
+ * Class used to create method matchers easily.
+ */
 public class MethodSpecs {
     private final String methodOwner;
     private final String methodName;
@@ -26,7 +29,7 @@ public class MethodSpecs {
     private final int[] parametersPositions;
 
     /**
-     * Class used to create matchers easily.
+     * Class used to create method matchers easily.
      *
      * @param methodName                name of the method to check
      * @param methodOwner               name of the type that own the method
