@@ -60,7 +60,7 @@ public class VibrationFreeRule extends ArgumentValueOnMethodCheck {
 
     @Override
     protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, Object constantValueToCheck) {
-        if (optionalConstantValue.isPresent() && ((String) optionalConstantValue.get()).equals((String) constantValueToCheck)) {
+        if (optionalConstantValue.isPresent() && optionalConstantValue.get().equals(constantValueToCheck)) {
             currentValue = (String) constantValueToCheck;
             reportIssue(reportTree, getMessage());
         }

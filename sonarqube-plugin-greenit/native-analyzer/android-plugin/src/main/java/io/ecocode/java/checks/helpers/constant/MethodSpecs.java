@@ -23,20 +23,21 @@ public class MethodSpecs {
     private final String methodOwner;
     private final String methodName;
     private final Object constantValueToCheck;
-    private final int[] paramPositions;
+    private final int[] parametersPositions;
 
-    public MethodSpecs(String methName, String methOwner, Object constant, int... optionPos) {
-        this.methodOwner = methOwner;
-        this.methodName = methName;
-        this.constantValueToCheck = constant;
-        this.paramPositions = optionPos;
-    }
-
-    public MethodSpecs(String methName, String methOwner, Object constant) {
-        this.methodOwner = methOwner;
-        this.methodName = methName;
-        this.constantValueToCheck = constant;
-        this.paramPositions = new int[]{0};
+    /**
+     * Class used to create matchers easily.
+     *
+     * @param methodName                name of the method to check
+     * @param methodOwner               name of the type that own the method
+     * @param constantValueToCheck      the current value to check
+     * @param parametersPositions       the position(s) of the argument on the method to check
+     */
+    public MethodSpecs(String methodName, String methodOwner, Object constantValueToCheck, int... parametersPositions) {
+        this.methodName = methodName;
+        this.methodOwner = methodOwner;
+        this.constantValueToCheck = constantValueToCheck;
+        this.parametersPositions = parametersPositions;
     }
 
     public String getMethodOwner() {
@@ -52,6 +53,6 @@ public class MethodSpecs {
     }
 
     public int[] getParamsPositions() {
-        return paramPositions;
+        return parametersPositions;
     }
 }

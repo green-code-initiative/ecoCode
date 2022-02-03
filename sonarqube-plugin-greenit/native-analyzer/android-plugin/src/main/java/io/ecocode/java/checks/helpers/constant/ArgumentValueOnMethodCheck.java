@@ -31,7 +31,7 @@ import java.util.Optional;
 
 public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVisitor {
 
-    protected final MethodSpecs[] methodsSpecs;
+    private final MethodSpecs[] methodsSpecs;
     private int[] paramsPositions;
     private Object constantValueToCheck;
 
@@ -40,17 +40,22 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
      *
      * @param methodName          name of the method to check
      * @param methodOwnerType     name of the type that own the method
-     * @param ValueToCheck        the current value to check
+     * @param constantValueToCheck        the current value to check
      * @param paramPositions      the position(s) of the argument on the method to check
      */
-    protected ArgumentValueOnMethodCheck(String methodName, String methodOwnerType, Object ValueToCheck, int... paramPositions) {
+    protected ArgumentValueOnMethodCheck(String methodName, String methodOwnerType, Object constantValueToCheck, int... paramPositions) {
         super();
-        this.methodsSpecs = new MethodSpecs[] {new MethodSpecs(methodName, methodOwnerType, ValueToCheck, paramPositions)};
+        this.methodsSpecs = new MethodSpecs[] {new MethodSpecs(methodName, methodOwnerType, constantValueToCheck, paramPositions)};
     }
 
-    protected ArgumentValueOnMethodCheck(MethodSpecs[] methods) {
+    /**
+     * Constructor to configure the rule on a given class and method.
+     *
+     * @param methodsSpecs        array of methods specs to check.
+     */
+    protected ArgumentValueOnMethodCheck(MethodSpecs[] methodsSpecs) {
         super();
-        this.methodsSpecs = methods;
+        this.methodsSpecs = methodsSpecs;
     }
 
     /**
@@ -88,15 +93,6 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
                 constantValueToCheck = currentMethodSpecs.getConstantValueToCheck();
                 checkFlagCallOnMethod(mit);
             }
-            /*
-            if (!matcher.matches(mit)) {
-                matcher = MethodMatchers.create().ofTypes(currentMethodSpecs.getMethodOwner()).names(currentMethodSpecs.getMethodName()).withAnyParameters().build(); // Could be done in a more optimized way, probably.
-            }
-            else {
-                paramsPositions = currentMethodSpecs.getParamsPositions();
-                constantValueToCheck = currentMethodSpecs.getConstantValueToCheck();
-                checkFlagCallOnMethod(mit);
-            }*/
         }
     }
 
