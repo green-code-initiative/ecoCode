@@ -43,19 +43,7 @@ public class VibrationFreeRule extends ArgumentValueOnMethodCheck {
 
     @Override
     public String getMessage() {
-
-        String methodName;
-        switch (currentValue) {
-            case "vibrator":
-                methodName = "Context.VIBRATOR_SERVICE";
-                break;
-            case "vibrator_manager":
-                methodName = "Context.VIBRATOR_MANAGER_SERVICE";
-                break;
-            default:
-                return "";
-        }
-        return "Prefer to avoid using getSystemService(" + methodName + ") to use less energy.";
+        return "Avoid using the device vibrator to use less energy.";
     }
 
     @Override
