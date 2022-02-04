@@ -83,10 +83,6 @@ public abstract class OpeningClosingMethodCheck extends IssuableSubscriptionVisi
 
     @Override
     public void visitNode(Tree tree) {
-        //check usage
-        if (!hasSemantic()) {
-            return;
-        }
         MethodInvocationTree mit = (MethodInvocationTree) tree;
         if (matcherOpeningMethod.matches(mit)) {
             openingMethodTreeList.add(mit);

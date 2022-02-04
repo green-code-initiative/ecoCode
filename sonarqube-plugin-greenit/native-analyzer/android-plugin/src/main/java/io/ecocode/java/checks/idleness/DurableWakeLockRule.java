@@ -46,10 +46,6 @@ public class DurableWakeLockRule extends IssuableSubscriptionVisitor {
 
     @Override
     public void visitNode(Tree tree) {
-        //check usage
-        if (!hasSemantic()) {
-            return;
-        }
         MethodInvocationTree mit = (MethodInvocationTree) tree;
         if (matcher.matches(mit)) {
             reportIssue(mit, ERROR_MESSAGE);
