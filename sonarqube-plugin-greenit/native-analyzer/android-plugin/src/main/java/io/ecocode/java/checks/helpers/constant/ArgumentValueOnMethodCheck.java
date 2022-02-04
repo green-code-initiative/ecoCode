@@ -81,10 +81,6 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
 
     @Override
     public void visitNode(Tree tree) {
-        //check usage
-        if (!hasSemantic()) {
-            return;
-        }
         MethodInvocationTree mit = (MethodInvocationTree) tree;
         for (MethodSpecs currentMethodSpecs : methodsSpecs) {
             MethodMatchers matcher = MethodMatchers.create().ofTypes(currentMethodSpecs.getMethodOwner()).names(currentMethodSpecs.getMethodName()).withAnyParameters().build();

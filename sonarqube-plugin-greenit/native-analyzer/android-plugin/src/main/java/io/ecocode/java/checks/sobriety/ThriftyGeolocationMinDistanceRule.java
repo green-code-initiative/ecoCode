@@ -54,9 +54,6 @@ public class ThriftyGeolocationMinDistanceRule extends IssuableSubscriptionVisit
 
     @Override
     public void visitNode(Tree tree) {
-        if (!hasSemantic()) {
-            return;
-        }
         if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree mit = (MethodInvocationTree) tree;
             if (methodMatcher.matches(mit)) {
