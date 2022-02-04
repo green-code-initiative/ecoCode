@@ -3,33 +3,20 @@
 ![Logo](docs/logo.png)
 
 ----
-**How green is you app?**
+## How green is you app?
 
-ecoCode is a set of good and bad practices ("smells") for mobile development. Focused today on Android’s Java and XML, we aim to cover all languages used on every mobile platform.
-We developed a SonarQube plugin which can help you to avoid mistakes in your apps and help to save energy.
+These days, more and more people and company want to act to save our planet. We want be more responsible in how we build and use our digital world, we need to !
 
-At first based on a [set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised by Olivier Le Goaër, we are totally open to add more if you have data on others smells !
+[ecoCode](https://github.com/cnumr/ecoCode) is a set of good and bad practices ("smells") for application development. 
 
-Here is a list of implemented smells. If you’re developer, feel free to add more, there’s another list needing to be implemented ! (*coming soon*)
+---
+## Projects
+You can find two differents projects (for now !) on this repo :
 
-----
-## To start using ecoCode SonarQube plugin
+- A [SonarQube plugin](sonarqube-plugin-greenit/) which work on Android’s java and XML set of smells.
+- A [list of smells](good_practices/) which can be integrated in a SonarQube plugin for web applications.
 
-See our documentation on the [dedicated README](sonarqube-plugin-greenit/README.md) (only in french at this moment. Help up by translating it !) 
+---
+## Feel free to get involved in ecoCode !
 
-## Main contributors
-- Gaël Pellevoizin 
-- Nicolas Daviet
-- Geoffrey Lalloué
-- Mathilde Grapin
-- Jules Delecour
-- Julien Hertout
-- [Justin Berque](https://www.linkedin.com/in/justin-berque-444412140)
-- [Olivier Le Goaër](https://olegoaer.perso.univ-pau.fr)
-
-
-## Main sponsors
-[![Snapp’](docs/logoSnapp.png)](https://www.snapp.fr)
-[![Université de Pau](docs/logoUnivPau.png)](https://www.univ-pau.fr/)
-[![Région Nouvelle-Aquitaine](docs/logoNA.jpg)](https://www.nouvelle-aquitaine.fr)
-[![Collectif Conception Numérique Responsable](docs/logoCCNR.png)](https://collectif.greenit.fr)
+We need all kind of profils ! And if you never participate in a Open Source project, contact us, we will be more than happy to help you with.
