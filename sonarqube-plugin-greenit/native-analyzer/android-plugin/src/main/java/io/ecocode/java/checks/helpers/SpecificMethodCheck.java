@@ -55,10 +55,6 @@ public abstract class SpecificMethodCheck extends IssuableSubscriptionVisitor {
 
     @Override
     public void visitNode(Tree tree) {
-        //check usage
-        if (!hasSemantic()) {
-            return;
-        }
         if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree mit = (MethodInvocationTree) tree;
             if (methodMatcher.matches(mit)) {

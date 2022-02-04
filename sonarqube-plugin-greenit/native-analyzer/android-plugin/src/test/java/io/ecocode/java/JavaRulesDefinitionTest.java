@@ -179,6 +179,12 @@ public class JavaRulesDefinitionTest {
     assertThat(thriftyGeolocationMinDistanceRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
     assertThat(thriftyGeolocationMinDistanceRule.type()).isEqualTo(RuleType.CODE_SMELL);
 
+    Rule vibrationFreeRule = repository.rule("ESOB011");
+    assertThat(vibrationFreeRule).isNotNull();
+    assertThat(vibrationFreeRule.name()).isEqualTo("Sobriety: Vibration Free");
+    assertThat(vibrationFreeRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+    assertThat(vibrationFreeRule.type()).isEqualTo(RuleType.CODE_SMELL);
+
     Rule chargeAwarenessRule = repository.rule("EPOW004");
     assertThat(chargeAwarenessRule).isNotNull();
     assertThat(chargeAwarenessRule.name()).isEqualTo("Power: Charge Awareness");

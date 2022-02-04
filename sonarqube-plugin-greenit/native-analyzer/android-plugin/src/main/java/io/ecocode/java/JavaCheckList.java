@@ -74,7 +74,8 @@ public final class JavaCheckList {
                 ThriftyBluetoothLowEnergyRequestConnectionPriorityRule.class,
                 ThriftyGeolocationMinTimeRule.class,
                 ThriftyGeolocationMinDistanceRule.class,
-                ChargeAwarenessRule.class
+                ChargeAwarenessRule.class,
+                VibrationFreeRule.class
         ));
     }
 

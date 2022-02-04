@@ -81,10 +81,6 @@ public abstract class ConstructorBeforeMethodCheck extends IssuableSubscriptionV
 
     @Override
     public void visitNode(Tree tree) {
-        //check usage
-        if (!hasSemantic()) {
-            return;
-        }
         if (tree.is(Tree.Kind.NEW_CLASS)) {
             NewClassTree newClasstree = (NewClassTree) tree;
             if (newClasstree.symbolType().fullyQualifiedName().equals(ownerType)) {

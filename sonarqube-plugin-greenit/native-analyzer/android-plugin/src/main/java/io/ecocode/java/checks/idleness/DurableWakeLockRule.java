@@ -36,7 +36,7 @@ import java.util.List;
 public class DurableWakeLockRule extends IssuableSubscriptionVisitor {
     private String methodOwnerType = "android.os.PowerManager$WakeLock";
     private String methodName = "acquire";
-    private static final String ERROR_MESSAGE = "Prefer setting a timeout when acquiring a wake lock to avoid running down the device’s battery excessively.";
+    private static final String ERROR_MESSAGE = "Prefer setting a timeout when acquiring a wake lock to avoid running down the device's battery excessively.";
     private MethodMatchers matcher = MethodMatchers.create().ofTypes(methodOwnerType).names(methodName).addWithoutParametersMatcher().build();
 
     @Override
@@ -46,10 +46,6 @@ public class DurableWakeLockRule extends IssuableSubscriptionVisitor {
 
     @Override
     public void visitNode(Tree tree) {
-        //check usage
-        if (!hasSemantic()) {
-            return;
-        }
         MethodInvocationTree mit = (MethodInvocationTree) tree;
         if (matcher.matches(mit)) {
             reportIssue(mit, ERROR_MESSAGE);
