@@ -26,7 +26,7 @@ import java.util.Optional;
 /**
  * Checks if an argument of a method is different from a given constant value.
  */
-public abstract class ConstantOnMethodCheck extends IntegerArgumentValueOnMethodCheck {
+public abstract class ConstantOnMethodCheck extends ArgumentValueOnMethodCheck {
 
     /**
      * Constructor to configure the rule on a given class and method.
@@ -48,8 +48,8 @@ public abstract class ConstantOnMethodCheck extends IntegerArgumentValueOnMethod
      * @param constantValueToCheck the value to use to check the argument
      */
     @Override
-    protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, int constantValueToCheck) {
-        if ((optionalConstantValue.isPresent() && (((Number) optionalConstantValue.get()).intValue() != constantValueToCheck))) {
+    protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, Object constantValueToCheck) {
+        if ((optionalConstantValue.isPresent() && (((Number) optionalConstantValue.get()).intValue() != ((int) constantValueToCheck)))) {
             reportIssue(reportTree, getMessage());
         }
     }

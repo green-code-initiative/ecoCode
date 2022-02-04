@@ -5,7 +5,7 @@ public final class PowerManager {
     public void test() {
         PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
         WakeLock manager = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, getPackageName());
-        manager.acquire(); // Noncompliant {{Prefer setting a timeout when acquiring a wake lock to avoid running down the device’s battery excessively.}}
+        manager.acquire(); // Noncompliant {{Prefer setting a timeout when acquiring a wake lock to avoid running down the device's battery excessively.}}
         manager.acquire(100);
     }
 
