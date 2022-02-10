@@ -26,6 +26,10 @@ import org.sonar.plugins.java.api.tree.Tree;
 
 import java.util.Optional;
 
+/**
+ * Check the call of the method "setTorchMode" from "android.hardware.camera2.CameraManager"
+ * with the param 1 set to "true".
+ */
 @Rule(key = "ESOB012", name = "ecocodeTorchFree")
 public class TorchFreeRule extends ArgumentValueOnMethodCheck {
 
