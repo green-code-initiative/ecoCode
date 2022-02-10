@@ -111,7 +111,8 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
                 || argument.is(Tree.Kind.INT_LITERAL)
                 || argument.is(Tree.Kind.LONG_LITERAL)
                 || argument.is(Tree.Kind.FLOAT_LITERAL)
-                || argument.is(Tree.Kind.DOUBLE_LITERAL)) {
+                || argument.is(Tree.Kind.DOUBLE_LITERAL)
+                || argument.is(Tree.Kind.BOOLEAN_LITERAL)) {
             checkConstantValue(argument.asConstant(), argument, constantValueToCheck);
         } else {
             checkArgumentComplexType(argument);
