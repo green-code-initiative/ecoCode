@@ -4,9 +4,9 @@
 - Docker
 - Docker-compose 3.9
 
-## Architecture du projet
+## Project structure
 
-Voici un aperçu de l'architecture du projet :
+Here is a preview of project tree :
 
 ```
 sonarQubeGreenIt      
@@ -29,7 +29,7 @@ You can find more information about plugins’ architecture in there folders
 
 ## Howto install SonarQube dev environment
 
-### Initialisation
+### Init
 
 Run the stack 
 ```sh 

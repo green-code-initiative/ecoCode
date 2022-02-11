@@ -5,7 +5,7 @@
 ----
 ## How green is you app?
 
-These days, more and more people and company want to act to save our planet. We want be more responsible in how we build and use our digital world, we need to !
+These days, more and more people and company want to act to take care of our planet. We want be more responsible in how we build and use our digital world, we need to !
 
 [ecoCode](https://github.com/cnumr/ecoCode) is a set of good and bad practices ("smells") for application development. 
 
