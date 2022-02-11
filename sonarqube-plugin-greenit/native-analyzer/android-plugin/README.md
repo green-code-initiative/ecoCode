@@ -98,8 +98,12 @@ For XML rules:
   <contact@ecocode.io>, prior to submitting any code change.
 - XML rules tests can be found in: [/src/test/java/io/ecocode/xml](/src/test/java/io/ecocode/xml). One file = one rule.
 
-## License
+## Main sponsors
+[![Snapp’](docs/logoSnapp.png)](https://www.snapp.fr)
+[![Université de Pau](docs/logoUnivPau.png)](https://www.univ-pau.fr/)
+[![Région Nouvelle-Aquitaine](docs/logoNA.jpg)](https://www.nouvelle-aquitaine.fr)
+[![Collectif Conception Numérique Responsable](docs/logoCCNR.png)](https://collectif.greenit.fr)
 
-Copyright 2020-2021 Snapp' - Université de Pau et des Pays de l'Adour.
+## License
 
 Licensed under the [GNU Lesser General Public License, Version 3.0](https://www.gnu.org/licenses/lgpl.txt)

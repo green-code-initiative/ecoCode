@@ -1,36 +1,19 @@
-# ecoCode
+## eco-design SonarQube plugin
 
-![Logo](docs/logo.png)
+There is two kind of plugins :
 
-----
-**How green is you app?**
+- One for web (PHP, Python, Java), using smells described in 2nd edition of the repository publish in september 2015
+You can find all rules [here (in french)](https://docs.google.com/spreadsheets/d/1nujR4EnajnR0NSXjvBW3GytOopDyTfvl3eTk2XGLh5Y/edit#gid=1386834576)
+- One for mobile (Android), using [a set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised by Olivier Le Goaër for Android
 
-[ecoCode](https://github.com/cnumr/ecoCode) is a set of good and bad practices ("smells") for application development. 
+## How a SonarQube plugin works
+Code is parsed to be transformed as AST. AST will allow you to access one or more nodes of your code.
+For example, you’ll be able to access all your for loop, to explore content etc.
 
-This SonarQube plugin is focused today on Android’s Java and XML, we aim to cover all languages used on every mobile platform. It can help you to avoid mistakes in your apps and help to save energy.
+To better understand AST structure, y a can use [AST Explorer](https://astexplorer.net/)
 
-At first based on a [set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised by Olivier Le Goaër, we are totally open to add more if you have data on others smells !
+## Install
+Please follow [install documentation](INSTALL.md)
 
-Here is a list of implemented smells. If you’re developer, feel free to add more, there’s another list needing to be implemented ! (*coming soon*)
-
-----
-## To start using ecoCode SonarQube plugin
-
-Find the [Installation guide](INSTALL.md) in the dedicated file (only in french at this moment. Help up by translating it !) 
-
-## Main contributors
-- Gaël Pellevoizin 
-- Nicolas Daviet
-- Geoffrey Lalloué
-- Mathilde Grapin
-- Jules Delecour
-- Julien Hertout
-- [Justin Berque](https://www.linkedin.com/in/justin-berque-444412140)
-- [Olivier Le Goaër](https://olegoaer.perso.univ-pau.fr)
-
-
-## Main sponsors
-[![Snapp’](docs/logoSnapp.png)](https://www.snapp.fr)
-[![Université de Pau](docs/logoUnivPau.png)](https://www.univ-pau.fr/)
-[![Région Nouvelle-Aquitaine](docs/logoNA.jpg)](https://www.nouvelle-aquitaine.fr)
-[![Collectif Conception Numérique Responsable](docs/logoCCNR.png)](https://collectif.greenit.fr)
+## Links
+ - https://docs.sonarqube.org/latest/analysis/overview/
