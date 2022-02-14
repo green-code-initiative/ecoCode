@@ -35,7 +35,7 @@ import java.util.List;
 @Rule(key = "ESOB012", name = "ecocodeThriftyNotification")
 public class ThriftyNotificationRule extends IssuableSubscriptionVisitor {
     private static final String ERROR_MESSAGE = "Avoid using vibration or sound when notifying the users to use less energy.";
-    private MethodMatchers notificationHardwareCallMethodMatchers = MethodMatchers.or(
+    private final MethodMatchers notificationHardwareCallMethodMatchers = MethodMatchers.or(
             MethodMatchers.create().ofTypes("android.app.NotificationChannel").names("setVibrationPattern").withAnyParameters().build(),
             MethodMatchers.create().ofTypes("android.app.NotificationChannel").names("setSound").withAnyParameters().build(),
             MethodMatchers.create().ofTypes("android.app.Notification$Builder").names("setVibrate").withAnyParameters().build(),
@@ -55,13 +55,20 @@ public class ThriftyNotificationRule extends IssuableSubscriptionVisitor {
     public void visitNode(Tree tree) {
         if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree mit = (MethodInvocationTree) tree;
-            Object[] args = mit.arguments().toArray();
             if (notificationHardwareCallMethodMatchers.matches(mit)) {
-                if (((ExpressionTree) args[0]).kind() != Tree.Kind.NULL_LITERAL ||
-                        (args.length == 2 && ((ExpressionTree) args[1]).kind() != Tree.Kind.NULL_LITERAL)) {
+                if(isArgumentNull(mit.arguments().toArray())){
                     reportIssue(mit, ERROR_MESSAGE);
                 }
             }
         }
+    }
+
+    public boolean isArgumentNull(Object[] argument){
+        for (Object arg : argument) {
+            if (((ExpressionTree)arg).kind() != Tree.Kind.NULL_LITERAL){
+                return true;
+            }
+        }
+        return false;
     }
 }
