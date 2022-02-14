@@ -28,10 +28,6 @@ public class InternetInTheLoopRule extends IssuableSubscriptionVisitor {
 
     @Override
     public void visitNode(Tree tree) {
-        //check usage
-        if (!hasSemantic()) {
-            return;
-        }
         MethodInvocationTree mit = (MethodInvocationTree) tree;
         if (METHOD_MATCHER.matches(mit)) {
             reportIssueIfInLoop(mit, mit);
