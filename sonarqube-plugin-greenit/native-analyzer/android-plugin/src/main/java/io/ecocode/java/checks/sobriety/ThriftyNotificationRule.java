@@ -35,12 +35,12 @@ import java.util.List;
 @Rule(key = "ESOB012", name = "ecocodeThriftyNotification")
 public class ThriftyNotificationRule extends IssuableSubscriptionVisitor {
     private static final String ERROR_MESSAGE = "Avoid using vibration or sound when notifying the users to use less energy.";
-    private MethodMatchers[] methodMatchers = new MethodMatchers[]{
+    private MethodMatchers notificationHardwareCallMethodMatchers = MethodMatchers.or(
             MethodMatchers.create().ofTypes("android.app.NotificationChannel").names("setVibrationPattern").withAnyParameters().build(),
             MethodMatchers.create().ofTypes("android.app.NotificationChannel").names("setSound").withAnyParameters().build(),
             MethodMatchers.create().ofTypes("android.app.Notification$Builder").names("setVibrate").withAnyParameters().build(),
             MethodMatchers.create().ofTypes("android.app.Notification$Builder").names("setSound").withAnyParameters().build()
-    };
+    );
 
     public ThriftyNotificationRule() {
         super();
@@ -53,25 +53,13 @@ public class ThriftyNotificationRule extends IssuableSubscriptionVisitor {
 
     @Override
     public void visitNode(Tree tree) {
-        if (!hasSemantic()) {
-            return;
-        }
         if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree mit = (MethodInvocationTree) tree;
             Object[] args = mit.arguments().toArray();
-            if (methodMatchers[0].matches(mit) || methodMatchers[2].matches(mit)) {
-                if (((ExpressionTree) args[0]).kind() != Tree.Kind.NULL_LITERAL) {
+            if (notificationHardwareCallMethodMatchers.matches(mit)) {
+                if (((ExpressionTree) args[0]).kind() != Tree.Kind.NULL_LITERAL ||
+                        (args.length == 2 && ((ExpressionTree) args[1]).kind() != Tree.Kind.NULL_LITERAL)) {
                     reportIssue(mit, ERROR_MESSAGE);
-                }
-            }
-            else if (methodMatchers[1].matches(mit) || methodMatchers[3].matches(mit)) {
-                if (((ExpressionTree)args[0]).kind() != Tree.Kind.NULL_LITERAL) {
-                    reportIssue(mit, ERROR_MESSAGE);
-                }
-                else if (args.length == 2){
-                    if (((ExpressionTree) args[1]).kind() != Tree.Kind.NULL_LITERAL){
-                        reportIssue(mit, ERROR_MESSAGE);
-                    }
                 }
             }
         }
