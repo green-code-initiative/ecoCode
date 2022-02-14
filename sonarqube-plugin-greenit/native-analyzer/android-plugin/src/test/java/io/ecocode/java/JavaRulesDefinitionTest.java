@@ -185,6 +185,12 @@ public class JavaRulesDefinitionTest {
     assertThat(vibrationFreeRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
     assertThat(vibrationFreeRule.type()).isEqualTo(RuleType.CODE_SMELL);
 
+    Rule thriftyNotification = repository.rule("ESOB012");
+    assertThat(thriftyNotification).isNotNull();
+    assertThat(thriftyNotification.name()).isEqualTo("Sobriety: Thrifty Notification");
+    assertThat(thriftyNotification.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+    assertThat(thriftyNotification.type()).isEqualTo(RuleType.CODE_SMELL);
+
     Rule chargeAwarenessRule = repository.rule("EPOW004");
     assertThat(chargeAwarenessRule).isNotNull();
     assertThat(chargeAwarenessRule.name()).isEqualTo("Power: Charge Awareness");
