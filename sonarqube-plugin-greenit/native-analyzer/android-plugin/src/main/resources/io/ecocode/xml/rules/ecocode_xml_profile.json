@@ -1,11 +1,12 @@
 {
   "name": "ecoCode",
   "ruleKeys": [
-    "ESOB004",
+    "EBAT001",
+    "EIDL003",
+    "EIDL005",
     "EPOW002",
     "EPOW003",
     "EPOW005",
-    "EIDL003",
-    "EIDL005"
+    "ESOB004"
   ]
 }
