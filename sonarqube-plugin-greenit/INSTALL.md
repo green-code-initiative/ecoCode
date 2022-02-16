@@ -31,6 +31,13 @@ You can find more information about plugins’ architecture in there folders
 
 ### Init
 
+Build code in native-analyzer
+```sh
+cd native-analyzer
+mvn clean install
+cd ..
+```
+
 Run the stack 
 ```sh 
 docker-compose up --build -d
