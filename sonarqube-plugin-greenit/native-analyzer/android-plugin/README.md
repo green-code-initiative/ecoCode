@@ -9,7 +9,7 @@ https://www.ecocode.io/
 
 ## ecoCode Android SonarQube plugin
 
-ecoCode Android SonarQube plugin is an "eco-responsibility" code analyzer for Android projects. It's aim is to detect code smells to
+ecoCode Android SonarQube plugin is an "eco-responsibility" code analyzer for Android projects. Its aim is to detect code smells to
 indicate where the source code can be improved to reduce their environmental and social impact.
 
 ## Build and deploy the plugin
@@ -84,19 +84,19 @@ When done, just use SonarQube as you normaly do for your classical Android clean
 
 For Java rules:
 
-- Java rules code can be found in: [/src/main/java/io/ecocode/java](/src/main/java/io/ecocode/java)
-- Java rules definition can be found in: [/src/main/resources/org/sonar/l10n/java/rules/squid](/src/main/resources/org/sonar/l10n/java/rules/squid).
-  Please do not add / or modifiy rules here since the code is generated. To update or add a rule, please reach us though our mail
+- Java rules’ code can be found in: [/src/main/java/io/ecocode/java](/src/main/java/io/ecocode/java)
+- Java rules’ definition can be found in: [/src/main/resources/org/sonar/l10n/java/rules/squid](/src/main/resources/org/sonar/l10n/java/rules/squid).
+  Please do not add / or modify rules here since the code is generated. To update or add a rule, please reach us though our mail
   <contact@ecocode.io>, prior to submitting any code change.
-- Java rules tests can be found in: [/src/test/java/io/ecocode/java](/src/test/java/io/ecocode/java). One file = one rule.
+- Java rules’ tests can be found in: [/src/test/java/io/ecocode/java](/src/test/java/io/ecocode/java). One file = one rule.
 
 For XML rules:
 
-- XML rules code can be found in: [/src/main/java/io/ecocode/xml](/src/main/java/io/ecocode/xml)
-- XML rules definition can be found in: [/src/main/resources/io/ecocode/xml/rules](/src/main/resources/io/ecocode/xml/rules).
+- XML rules’ code can be found in: [/src/main/java/io/ecocode/xml](/src/main/java/io/ecocode/xml)
+- XML rules’ definition can be found in: [/src/main/resources/io/ecocode/xml/rules](/src/main/resources/io/ecocode/xml/rules).
   Please do not add / or modifiy rules here since the code is generated. To update or add a rule, please reach us though our mail
   <contact@ecocode.io>, prior to submitting any code change.
-- XML rules tests can be found in: [/src/test/java/io/ecocode/xml](/src/test/java/io/ecocode/xml). One file = one rule.
+- XML rules’ tests can be found in: [/src/test/java/io/ecocode/xml](/src/test/java/io/ecocode/xml). One file = one rule.
 
 ## Main sponsors
 [![Snapp’](docs/logoSnapp.png)](https://www.snapp.fr)

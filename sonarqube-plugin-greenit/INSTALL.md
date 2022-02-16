@@ -24,7 +24,7 @@ sonarQubeGreenIt
 \--docker-compose.yml   # Docker compose file installing available analyzer // TODO
 ```
 
-You can find more information about plugins’ architecture in there folders
+You will find more information about the plugins’ architecture in their folders
 
 
 ## Howto install SonarQube dev environment
@@ -79,6 +79,6 @@ TOKEN=MY_TOKEN docker-compose up --build -d
 
 #### Native analyzer
 
-They will be direcly imported if you did [installation](native-analyzer/INSTALL.md) for each
+They will be direcly imported if you did the [installation](native-analyzer/INSTALL.md) for each
 
 

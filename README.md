@@ -3,9 +3,9 @@
 ![Logo](docs/logo.png)
 
 ----
-## How green is you app?
+## How green is your app?
 
-These days, more and more people and company want to act to take care of our planet. We want be more responsible in how we build and use our digital world, we need to !
+These days, more and more people as well as companies want to act to take care of our planet. We want to be more responsible in the way we build and use our digital world, we need to !
 
 [ecoCode](https://github.com/cnumr/ecoCode) is a set of good and bad practices ("smells") for application development. 
 
@@ -31,7 +31,7 @@ You can download each plugin separatly or you can directly use a [all-in-one doc
 ---
 ## Feel free to get involved in ecoCode !
 
-We need all kind of profils ! And if you never participate in a Open Source project, contact us, we will be more than happy to help you with.
+We need all kinds of profiles ! And if you never participated in an Open-Source project, contact us, we will be more than happy to help you with.
 
 --
 ## Main contributors
