@@ -1,6 +1,14 @@
 package android.hardware.camera2;
 
+import java.lang.Boolean;
+
 public final class CameraManager {
+
+    public static final boolean IS_ENABLED = true;
+    public static final boolean IS_NOT_ENABLED = false;
+
+    public static final Boolean IS_ENABLED_BOOL = new Boolean(true);
+    public static final Boolean IS_NOT_ENABLED_BOOL = new Boolean(false);
 
     public void test() {
         CameraManager camManager = (CameraManager) getSystemService(Context.CAMERA_SERVICE);
@@ -8,6 +16,19 @@ public final class CameraManager {
         try {
             cameraId = camManager.getCameraIdList()[0];
             camManager.setTorchMode(cameraId, true);  // Noncompliant {{Turning on the torch mode programmatically must absolutely be avoided.}}
+            camManager.setTorchMode(cameraId, false);
+
+            boolean innerVariable = true;
+            boolean innerVariableNot = false;
+
+            camManager.setTorchMode(cameraId, IS_ENABLED);// Noncompliant {{Turning on the torch mode programmatically must absolutely be avoided.}}
+            camManager.setTorchMode(cameraId, IS_NOT_ENABLED);
+
+            camManager.setTorchMode(cameraId, innerVariable); // TODO  Noncompliant
+            camManager.setTorchMode(cameraId, innerVariableNot);
+
+            camManager.setTorchMode(cameraId, IS_ENABLED_BOOL); // TODO Noncompliant
+            camManager.setTorchMode(cameraId, IS_NOT_ENABLED_BOOL);
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }

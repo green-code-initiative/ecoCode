@@ -30,7 +30,7 @@ import java.util.Optional;
  * Check the call of the method "setTorchMode" from "android.hardware.camera2.CameraManager"
  * with the param 1 set to "true".
  */
-@Rule(key = "ESOB012", name = "ecocodeTorchFree")
+@Rule(key = "ESOB013", name = "ecocodeTorchFree")
 public class TorchFreeRule extends ArgumentValueOnMethodCheck {
 
     public TorchFreeRule() {
@@ -44,8 +44,11 @@ public class TorchFreeRule extends ArgumentValueOnMethodCheck {
 
     @Override
     protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, Object constantValueToCheck) {
-        if (optionalConstantValue.isPresent() && optionalConstantValue.get().equals(constantValueToCheck)) {
-            reportIssue(reportTree, getMessage());
+        try {
+            if (optionalConstantValue.isPresent() && (optionalConstantValue.get().equals(constantValueToCheck) || ((Boolean) optionalConstantValue.get()))) {
+                reportIssue(reportTree, getMessage());
+            }
+        } catch (Exception ignored) {
         }
     }
 
