@@ -19,6 +19,7 @@
  */
 package io.ecocode.java;
 
+import io.ecocode.java.checks.batch.JobCoalesceRule;
 import io.ecocode.java.checks.batch.SensorCoalesceRule;
 import io.ecocode.java.checks.bottleneck.InternetInTheLoopRule;
 import io.ecocode.java.checks.idleness.*;
@@ -77,8 +78,7 @@ public final class JavaCheckList {
                 ThriftyGeolocationMinDistanceRule.class,
                 ChargeAwarenessRule.class,
                 VibrationFreeRule.class,
-                ThriftyNotificationRule.class,
-                SensorCoalesceRule.class
+                ThriftyNotificationRule.class
         ));
     }
 
@@ -87,4 +87,3 @@ public final class JavaCheckList {
         ));
     }
 }
-
