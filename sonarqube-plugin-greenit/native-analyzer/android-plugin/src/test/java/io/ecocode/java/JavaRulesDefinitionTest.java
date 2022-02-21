@@ -47,6 +47,12 @@ public class JavaRulesDefinitionTest {
   }
 
   private void assertRuleProperties(Repository repository) {
+    Rule jobCoalesceRule = repository.rule("EBAT003");
+    assertThat(jobCoalesceRule).isNotNull();
+    assertThat(jobCoalesceRule.name()).isEqualTo("Batch: Job Coalesce");
+    assertThat(jobCoalesceRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+    assertThat(jobCoalesceRule.type()).isEqualTo(RuleType.CODE_SMELL);
+
     Rule rule = repository.rule("EOPT001");
     assertThat(rule).isNotNull();
     assertThat(rule.name()).isEqualTo("Optimized API: Fused Location");
