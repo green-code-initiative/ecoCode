@@ -1,6 +1,7 @@
 {
   "name": "ecoCode",
   "ruleKeys": [
+    "EBAT002",
     "EBOT001",
     "EBOT002",
     "ELEA002",

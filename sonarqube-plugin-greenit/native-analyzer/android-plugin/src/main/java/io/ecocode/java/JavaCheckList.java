@@ -19,6 +19,7 @@
  */
 package io.ecocode.java;
 
+import io.ecocode.java.checks.batch.SensorCoalesceRule;
 import io.ecocode.java.checks.bottleneck.InternetInTheLoopRule;
 import io.ecocode.java.checks.idleness.*;
 import io.ecocode.java.checks.optimized_api.BluetoothLowEnergyRule;
@@ -76,7 +77,8 @@ public final class JavaCheckList {
                 ThriftyGeolocationMinDistanceRule.class,
                 ChargeAwarenessRule.class,
                 VibrationFreeRule.class,
-                ThriftyNotificationRule.class
+                ThriftyNotificationRule.class,
+                SensorCoalesceRule.class
         ));
     }
 
@@ -85,3 +87,4 @@ public final class JavaCheckList {
         ));
     }
 }
+
