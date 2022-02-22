@@ -80,7 +80,8 @@ public final class JavaCheckList {
                 VibrationFreeRule.class,
                 ThriftyNotificationRule.class,
                 SensorCoalesceRule.class,
-                JobCoalesceRule.class
+                JobCoalesceRule.class,
+                ThriftyGeolocationCriteriaRule.class
         ));
     }
 
