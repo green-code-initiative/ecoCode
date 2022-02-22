@@ -51,8 +51,8 @@ public class SensorCoalesceRule extends IssuableSubscriptionVisitor {
         if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree mit = (MethodInvocationTree) tree;
             if (sensorListenerMethodMatcher.matches(mit)) {
-                if (!isFourthArgumentNumberPositive(mit.arguments())) {
-                    reportIssue(mit, "Avoid using registerListener without a fourth parameter maxReportLatencyUs");
+                if (!isFourthArgumentPositiveNumber(mit.arguments())) {
+                    reportIssue(mit, "Prefer using a reported latency on your SensorManager to reduce the power consumption of the app");
                 }
             }
         }
@@ -62,21 +62,22 @@ public class SensorCoalesceRule extends IssuableSubscriptionVisitor {
      * Method that checks if first, the method contains 4 or more argument, then if the 4th argument is a number (int, float ...)
      * Finally it checks if the 4th argument is strictly positive
      *
-     * @param arguments the arguments of the method
+     * @param arguments the arguments of the method that matched
+     * @return true if the 4th argument is a number
      */
-    private boolean isFourthArgumentNumberPositive(Arguments arguments) {
+    private boolean isFourthArgumentPositiveNumber(Arguments arguments) {
+        //Check method contains 4 or more arguments
         if (arguments.size() > 3) {
-            while (arguments.get(3).is(Tree.Kind.TYPE_CAST)
-                    || arguments.get(3).is(Tree.Kind.MEMBER_SELECT)
-                    || arguments.get(3).is(Tree.Kind.PARENTHESIZED_EXPRESSION)){
-                arguments.set(3, (ExpressionTree) checkArgumentComplexType(arguments.get(3)));
+            ExpressionTree thirdArgument = arguments.get(3);
+            //Check 4th argument is a complex type (that needs to be managed)
+            while (thirdArgument.is(Tree.Kind.TYPE_CAST, Tree.Kind.MEMBER_SELECT, Tree.Kind.PARENTHESIZED_EXPRESSION)){
+                thirdArgument = (ExpressionTree) checkArgumentComplexType(thirdArgument);
             }
-            return arguments.get(3).asConstant().isPresent()
-                    && ((arguments.get(3).is(Tree.Kind.INT_LITERAL)
-                    || arguments.get(3).is(Tree.Kind.LONG_LITERAL)
-                    || arguments.get(3).is(Tree.Kind.FLOAT_LITERAL)
-                    || arguments.get(3).is(Tree.Kind.DOUBLE_LITERAL))
-                    && ((Number)arguments.get(3).asConstant().get()).doubleValue() > 0);
+            return thirdArgument.asConstant().isPresent()
+                    //Check 4th argument is a number
+                    && (thirdArgument.is(Tree.Kind.INT_LITERAL, Tree.Kind.LONG_LITERAL, Tree.Kind.FLOAT_LITERAL, Tree.Kind.DOUBLE_LITERAL)
+                    //Check 4th argument is strictly positive
+                    && ((Number)thirdArgument.asConstant().get()).doubleValue() > 0);
         }
         return false;
     }
@@ -85,6 +86,7 @@ public class SensorCoalesceRule extends IssuableSubscriptionVisitor {
      * Method that gives the argument child value when it's of a complex type
      *
      * @param argument the argument with a complex type
+     * @return the child expression of the argument that matched (for example if the argument is being cast)
      */
     private Object checkArgumentComplexType(ExpressionTree argument) {
         switch (argument.kind()) {
