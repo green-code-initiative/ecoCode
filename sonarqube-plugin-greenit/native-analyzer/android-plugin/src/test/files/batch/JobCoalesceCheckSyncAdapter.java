@@ -4,6 +4,12 @@ public final class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     public void test() {
         SyncAdapter syncAdapter = new SyncAdapter();
+        Account account = null;
+        Bundle extras = null;
+        String authority = "administrator";
+        ContentProviderClient contentProviderClient = null;
+        SyncResult syncResult = null;
+
         syncAdapter.getSyncAdapterBinder(); // Noncompliant {{Avoid using AlarmManager or a SyncAdapter for an alarm. Instead use the JobScheduler.}}
         syncAdapter.onPerformSync(account, extras, authority, contentProviderClient, syncResult); // Noncompliant {{Avoid using AlarmManager or a SyncAdapter for an alarm. Instead use the JobScheduler.}}
     }
