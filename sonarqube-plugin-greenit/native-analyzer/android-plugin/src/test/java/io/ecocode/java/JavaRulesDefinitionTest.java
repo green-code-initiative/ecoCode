@@ -53,7 +53,7 @@ public class JavaRulesDefinitionTest {
         assertThat(sensorCoalesceRule.name()).isEqualTo("Batch: Sensor Coalesce");
         assertThat(sensorCoalesceRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(sensorCoalesceRule.type()).isEqualTo(RuleType.CODE_SMELL);
-      
+
         Rule jobCoalesceRule = repository.rule("EBAT003");
         assertThat(jobCoalesceRule).isNotNull();
         assertThat(jobCoalesceRule.name()).isEqualTo("Batch: Job Coalesce");
@@ -71,6 +71,12 @@ public class JavaRulesDefinitionTest {
         assertThat(wifiMulticastLockRule.name()).isEqualTo("Bottleneck: Wifi Multicast Lock");
         assertThat(wifiMulticastLockRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(wifiMulticastLockRule.type()).isEqualTo(RuleType.CODE_SMELL);
+
+        Rule uncompressedDataTransmissionRule = repository.rule("EBOT003");
+        assertThat(uncompressedDataTransmissionRule).isNotNull();
+        assertThat(uncompressedDataTransmissionRule.name()).isEqualTo("Bottleneck: Uncompressed Data Transmission");
+        assertThat(uncompressedDataTransmissionRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+        assertThat(uncompressedDataTransmissionRule.type()).isEqualTo(RuleType.CODE_SMELL);
 
         Rule keepScreenOnAddFlagsRule = repository.rule("EIDL001");
         assertThat(keepScreenOnAddFlagsRule).isNotNull();
