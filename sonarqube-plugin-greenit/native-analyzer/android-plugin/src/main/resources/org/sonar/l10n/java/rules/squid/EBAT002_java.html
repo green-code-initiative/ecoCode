@@ -1,0 +1,24 @@
+<img src="http://www.neomades.com/extern/partage/ecoCode/2sur5_1x.png">
+<p>With <code>SensorManager#registerListener(SensorEventListener, Sensor, int)</code> the events are delivered as soon as possible.<br>
+    Instead, <code>SensorManager#registerListener(SensorEventListener, Sensor, int, int maxReportLatencyUs)</code><br>
+    allows events to stay temporarily in the hardware FIFO (queue) before being delivered.<br>
+    The events can be stored in the hardware FIFO up to <code>maxReportLatencyUs</code> microseconds.<br>
+    Once one of the events in the FIFO needs to be reported, all of the events in the FIFO are reported sequentially.<br>
+    Setting <code>maxReportLatencyUs</code> to a positive value allows to reduce the number of interrupts the AP (Application Processor) receives,<br>
+    hence reducing power consumption, as the AP can switch to a lower power state while the sensor is capturing the data.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    SensorEventListener sensorEventListener;
+    SensorManager sensorManager;
+    Sensor sensor;
+
+    sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+</pre>
+<h2>Compliant Code Example</h2>
+<pre>
+    SensorEventListener sensorEventListener;
+    SensorManager sensorManager;
+    Sensor sensor;
+
+    sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL, 200000);
+</pre>
