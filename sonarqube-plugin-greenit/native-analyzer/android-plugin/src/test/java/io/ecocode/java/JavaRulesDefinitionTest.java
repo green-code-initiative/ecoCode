@@ -46,7 +46,14 @@ public class JavaRulesDefinitionTest {
     assertAllRuleParametersHaveDescription(repository);
   }
 
-  private void assertRuleProperties(Repository repository) {
+  private void assertRuleProperties(Repository repository) { // TODO: 16/02/2022 Fix rules' names
+
+    Rule sensorCoalesceRule = repository.rule("EBAT002");
+    assertThat(sensorCoalesceRule).isNotNull();
+    assertThat(sensorCoalesceRule.name()).isEqualTo("Batch: Sensor Coalesce");
+    assertThat(sensorCoalesceRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+    assertThat(sensorCoalesceRule.type()).isEqualTo(RuleType.CODE_SMELL);
+
     Rule rule = repository.rule("EOPT001");
     assertThat(rule).isNotNull();
     assertThat(rule.name()).isEqualTo("Optimized API: Fused Location");
@@ -82,7 +89,7 @@ public class JavaRulesDefinitionTest {
     assertThat(internetInTheLoopRule.name()).isEqualTo("Bottleneck: Internet In The Loop");
     assertThat(internetInTheLoopRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
     assertThat(internetInTheLoopRule.type()).isEqualTo(RuleType.CODE_SMELL);
-    
+
     Rule keepCpuOnRule = repository.rule("EIDL004");
     assertThat(keepCpuOnRule).isNotNull();
     assertThat(keepCpuOnRule.name()).isEqualTo("Idleness: Keep Cpu On");
@@ -154,7 +161,7 @@ public class JavaRulesDefinitionTest {
     assertThat(keepVoiceAwakeRule.name()).isEqualTo("Idleness: Keep Voice Awake");
     assertThat(keepVoiceAwakeRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
     assertThat(keepVoiceAwakeRule.type()).isEqualTo(RuleType.CODE_SMELL);
-    
+
     Rule thriftyGeolocationMinTimeRule = repository.rule("ESOB005");
     assertThat(thriftyGeolocationMinTimeRule).isNotNull();
     assertThat(thriftyGeolocationMinTimeRule.name()).isEqualTo("Sobriety: Thrifty Geolocation (minTime)");
@@ -196,6 +203,7 @@ public class JavaRulesDefinitionTest {
     assertThat(chargeAwarenessRule.name()).isEqualTo("Power: Charge Awareness");
     assertThat(chargeAwarenessRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
     assertThat(chargeAwarenessRule.type()).isEqualTo(RuleType.CODE_SMELL);
+
   }
 
   private void assertAllRuleParametersHaveDescription(Repository repository) {
