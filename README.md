@@ -1,6 +1,6 @@
 # ecoCode
 
-![Logo](docs/logo.png)
+![Logo](docs/logo-large.png)
 
 ----
 ## How green is your app?

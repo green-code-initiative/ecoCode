@@ -1,6 +1,6 @@
 # ecoCode
 
-![Creed](images/creed-4-sur-5.png)
+![Logo](docs/logo.png)
 
 Share good development practices, be aware of the eco-responsibility of the software we develop and share the rules and metrics to use
 to create a mobile application eco-label.
@@ -8,6 +8,8 @@ to create a mobile application eco-label.
 https://www.ecocode.io/
 
 ## ecoCode Android SonarQube plugin
+---
+![Logo Ekko](docs/ekko-sonar.png)
 
 ecoCode Android SonarQube plugin is an "eco-responsibility" code analyzer for Android projects. Its aim is to detect code smells to
 indicate where the source code can be improved to reduce their environmental and social impact.
@@ -101,7 +103,7 @@ For XML rules:
 ## Main sponsors
 [![Snapp’](docs/logoSnapp.png)](https://www.snapp.fr)
 [![Université de Pau](docs/logoUnivPau.png)](https://www.univ-pau.fr/)
-[![Région Nouvelle-Aquitaine](docs/logoNA.jpg)](https://www.nouvelle-aquitaine.fr)
+[![Région Nouvelle-Aquitaine](docs/logoNA.png)](https://www.nouvelle-aquitaine.fr)
 [![Collectif Conception Numérique Responsable](docs/logoCCNR.png)](https://collectif.greenit.fr)
 
 ## License

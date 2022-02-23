@@ -1,5 +1,7 @@
 ## eco-design SonarQube plugin
 
+![Ekko logo](images/5ekko.png)
+
 There is two kind of plugins :
 
 - One for web (PHP, Python, Java), using smells described in the 2nd edition of the repository published in september 2015
