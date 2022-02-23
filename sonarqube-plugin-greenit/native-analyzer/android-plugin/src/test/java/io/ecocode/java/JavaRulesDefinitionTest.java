@@ -53,7 +53,7 @@ public class JavaRulesDefinitionTest {
         assertThat(sensorCoalesceRule.name()).isEqualTo("Batch: Sensor Coalesce");
         assertThat(sensorCoalesceRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(sensorCoalesceRule.type()).isEqualTo(RuleType.CODE_SMELL);
-      
+
         Rule jobCoalesceRule = repository.rule("EBAT003");
         assertThat(jobCoalesceRule).isNotNull();
         assertThat(jobCoalesceRule.name()).isEqualTo("Batch: Job Coalesce");
@@ -161,6 +161,12 @@ public class JavaRulesDefinitionTest {
         assertThat(chargeAwarenessRule.name()).isEqualTo("Power: Charge Awareness");
         assertThat(chargeAwarenessRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(chargeAwarenessRule.type()).isEqualTo(RuleType.CODE_SMELL);
+
+        Rule saveModeAwareness = repository.rule("EPOW006");
+        assertThat(saveModeAwareness).isNotNull();
+        assertThat(saveModeAwareness.name()).isEqualTo("Power: Save Mode Awareness");
+        assertThat(saveModeAwareness.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+        assertThat(saveModeAwareness.type()).isEqualTo(RuleType.CODE_SMELL);
 
         Rule thriftyMotionSensorRule = repository.rule("ESOB001");
         assertThat(thriftyMotionSensorRule).isNotNull();

@@ -69,6 +69,10 @@ public class XmlRulesDefinitionTest {
         assertThat(DarkUIThemeXmlRule).isNotNull();
         assertThat(DarkUIThemeXmlRule.name()).isEqualTo("Sobriety: Dark UI (Theme)");
 
+        RulesDefinition.Rule saveModeAwarenessXml = repository.rule("EPOW007");
+        assertThat(saveModeAwarenessXml).isNotNull();
+        assertThat(saveModeAwarenessXml.name()).isEqualTo("Power: Save Mode Awareness");
+
         for (RulesDefinition.Rule rule : repository.rules()) {
             for (RulesDefinition.Param param : rule.params()) {
                 assertThat(param.description()).as("description for " + param.key()).isNotEmpty();
