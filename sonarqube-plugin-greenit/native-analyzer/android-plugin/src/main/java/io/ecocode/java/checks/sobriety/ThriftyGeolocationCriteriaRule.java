@@ -81,27 +81,26 @@ public class ThriftyGeolocationCriteriaRule extends IssuableSubscriptionVisitor 
 
     @Override
     public void leaveFile(JavaFileScannerContext context) {
-        if (!requestTreesToReport.isEmpty()) {
-            if (hasSeenRequestLocation) {
-                if (!hasSeenSetBestProvider) {
-                    for (Tree tree : requestTreesToReport) {
-                        reportIssue(tree, getReportMessageRequestLocation());
-                    }
-                } else {
-                    if (!hasSeenSetPowerRequirement) {
-                        for (Tree tree : bestProviderTreeToReport) {
-                            reportIssue(tree, getReportMessageBestProvider());
-                        }
+        if (!requestTreesToReport.isEmpty()
+                && hasSeenRequestLocation) {
+            if (!hasSeenSetBestProvider) {
+                for (Tree tree : requestTreesToReport) {
+                    reportIssue(tree, getReportMessageRequestLocation());
+                }
+            } else {
+                if (!hasSeenSetPowerRequirement) {
+                    for (Tree tree : bestProviderTreeToReport) {
+                        reportIssue(tree, getReportMessageBestProvider());
                     }
                 }
             }
+
         }
         requestTreesToReport.clear();
         bestProviderTreeToReport.clear();
         hasSeenRequestLocation = false;
         hasSeenSetBestProvider = false;
         hasSeenSetPowerRequirement = false;
-
     }
 
     @Override
