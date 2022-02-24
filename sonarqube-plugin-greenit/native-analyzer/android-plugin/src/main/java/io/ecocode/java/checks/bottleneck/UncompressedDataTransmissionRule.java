@@ -28,7 +28,7 @@ import org.sonar.plugins.java.api.tree.*;
 import java.util.List;
 
 /**
- * Checks the use of GzipOutputStream when using an output stream
+ * Checks the use of GzipOutputStream when using an output stream to check if the data outputted is compressed
  */
 @Rule(key = "EBOT003", name = "ecoCodeUncompressedDataTransmission")
 public class UncompressedDataTransmissionRule extends IssuableSubscriptionVisitor {
@@ -56,7 +56,7 @@ public class UncompressedDataTransmissionRule extends IssuableSubscriptionVisito
     /**
      * Method called after the initialisation of a OutputStream class to check if the data outputted is compressed
      *
-     * @param treeToCheck Parameter corresponding to the current tree that is being checked
+     * @param treeToCheck  Parameter corresponding to the current tree that is being checked
      * @param treeToReport Parameter corresponding to the tree that will be reported (same as the upper parameter but without any change in case of a complex variable)
      */
     private void checkMethodInitilization(Tree treeToCheck, Tree treeToReport) {
