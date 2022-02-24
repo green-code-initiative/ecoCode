@@ -5,7 +5,7 @@
     <application>
         <receiver>
             <intent-filter>
-                <action android:name= "android.intent.action.BOOT_COMPLETED"/><!-- Noncompliant {{Avoid using a receiver to launch a service with BOOT_COMPLETED to drain less battery}} -->
+                <action android:name="android.intent.action.BOOT_COMPLETED"/><!-- Noncompliant {{Avoid using a receiver to launch a service with BOOT_COMPLETED to drain less battery}} -->
             </intent-filter>
         </receiver>
     </application>
