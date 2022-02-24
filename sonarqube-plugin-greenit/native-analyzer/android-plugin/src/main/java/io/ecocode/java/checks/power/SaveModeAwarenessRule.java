@@ -30,7 +30,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import java.util.List;
 
 /**
- *  Checks the use of the BATTERY_CHANGED propriety in intentFilter or the use of the isPowerSaveMode() method
+ * Checks the use of the BATTERY_CHANGED propriety in intentFilter or the use of the isPowerSaveMode() method
  */
 @Rule(key = "EPOW006", name = "ecocodeSaveModeAwareness")
 public class SaveModeAwarenessRule extends IssuableSubscriptionVisitor {
@@ -69,17 +69,13 @@ public class SaveModeAwarenessRule extends IssuableSubscriptionVisitor {
                         && mit.arguments().get(0).symbolType().toString().equals("String")
                         && mit.arguments().get(0).asConstant().get().equals(ACTION_BATTERY_CHANGED)) {
                     reportIssue(mit.arguments().get(0), ERROR_MESSAGE);
-                }
-
-                else if (createIntentFilterMatcher.matches(mit)
+                } else if (createIntentFilterMatcher.matches(mit)
                         && !mit.arguments().isEmpty()
                         && mit.arguments().get(0).asConstant().isPresent()
                         && mit.arguments().get(0).symbolType().toString().equals("String")
                         && mit.arguments().get(0).asConstant().get().equals(ACTION_BATTERY_CHANGED)) {
                     reportIssue(mit.arguments().get(0), ERROR_MESSAGE);
-                }
-
-                else if (isPowerSaveModeMatcher.matches(mit)) {
+                } else if (isPowerSaveModeMatcher.matches(mit)) {
                     reportIssue(mit, ERROR_MESSAGE);
                 }
             }

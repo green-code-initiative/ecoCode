@@ -8,12 +8,12 @@ public class IntentFilter {
     public void test() {
         IntentFilter filter3 = new IntentFilter(ACTION_BATTERY_CHANGED); // Noncompliant {{Taking into account when the device is entering or exiting the power save mode is a good practice.}}
 
-        IntentFilter.create(ACTION_BATTERY_CHANGED,"");// Noncompliant {{Taking into account when the device is entering or exiting the power save mode is a good practice.}}
+        IntentFilter.create(ACTION_BATTERY_CHANGED, "");// Noncompliant {{Taking into account when the device is entering or exiting the power save mode is a good practice.}}
 
         filter2.addAction(ACTION_BATTERY_CHANGED); // Test not passing in plugin test file, but works in android app
     }
 
-    public IntentFilter(String str){
+    public IntentFilter(String str) {
         mAction = str;
     }
 

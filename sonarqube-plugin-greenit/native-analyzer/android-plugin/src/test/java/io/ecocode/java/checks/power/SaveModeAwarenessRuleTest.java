@@ -11,5 +11,4 @@ public class SaveModeAwarenessRuleTest {
                 .withCheck(new SaveModeAwarenessRule())
                 .verifyIssues();
     }
-
 }
