@@ -46,6 +46,10 @@ public class XmlRulesDefinitionTest {
         assertThat(chargeAwarenessXml).isNotNull();
         assertThat(chargeAwarenessXml.name()).isEqualTo("Power: Charge Awareness");
 
+        RulesDefinition.Rule serviceBootTimeXml = repository.rule("EBAT001");
+        assertThat(serviceBootTimeXml).isNotNull();
+        assertThat(serviceBootTimeXml.name()).isEqualTo("Batch: Service Boot Time");
+
         for (RulesDefinition.Rule rule : repository.rules()) {
             for (RulesDefinition.Param param : rule.params()) {
                 assertThat(param.description()).as("description for " + param.key()).isNotEmpty();
