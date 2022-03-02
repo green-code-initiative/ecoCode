@@ -45,7 +45,9 @@ public class JobCoalesceRule extends IssuableSubscriptionVisitor {
             MethodMatchers.create().ofTypes("android.app.AlarmManager").names("setInexactRepeating").withAnyParameters().build(),
             MethodMatchers.create().ofTypes("android.app.AlarmManager").names("setRepeating").withAnyParameters().build(),
             MethodMatchers.create().ofTypes("android.app.AlarmManager").names("setWindow").withAnyParameters().build(),
+            //ofAnyType is used because the method is forced to be overridden in a new class expending the abstract class AbstractThreadedSyncAdapter
             MethodMatchers.create().ofAnyType().names("onPerformSync").withAnyParameters().build(),
+            //ofSubTypes is used because the method is from an abstract class
             MethodMatchers.create().ofSubTypes("android.content.AbstractThreadedSyncAdapter").names("getSyncAdapterBinder").withAnyParameters().build()
     );
 
@@ -63,7 +65,9 @@ public class JobCoalesceRule extends IssuableSubscriptionVisitor {
             if (alarmSchedulerMethodMatcher.matches(mit)) {
                 reportIssue(mit, "Avoid using AlarmManager or a SyncAdapter for an alarm. Instead use the JobScheduler.");
             }
-            // TODO: 21/02/2022 to upgrade this part, another method matcher could be used to search the fact the AbstractThreadedSyncAdapter class is implemented
+            /* TODO: 21/02/2022 to upgrade this part, another method matcher could be used to search the fact the AbstractThreadedSyncAdapter class is implemented
+            to avoid using an ofAnyType() methodMatcher (line 49) reducing the risk of a reported issue where there should not be one
+             */
         }
     }
 }
