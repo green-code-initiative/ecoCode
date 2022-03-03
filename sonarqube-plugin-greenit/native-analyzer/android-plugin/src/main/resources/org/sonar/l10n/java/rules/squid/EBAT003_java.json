@@ -1,0 +1,15 @@
+{
+  "title": "Batch: Job Coalesce",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "3h"
+  },
+  "tags": [
+    "batch",
+    "environment",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}
