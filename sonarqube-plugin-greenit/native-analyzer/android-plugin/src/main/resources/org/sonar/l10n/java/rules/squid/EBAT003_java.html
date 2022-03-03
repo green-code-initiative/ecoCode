@@ -1,8 +1,7 @@
 <img src="http://www.neomades.com/extern/partage/ecoCode/2sur5_1x.png">
 <p>The Android 5.0 Lollipop (API 21) release introduces a job scheduler API via the Job Scheduler class.<br>
     Compared to a custom Sync Adapter or the alarm manager, the Job Scheduler supports batch scheduling of jobs.<br>
-    The Android system can combine jobs so that battery consumption is reduced.<br>
-    It means that it exist at least one job scheduled through a call to the method <code>JobScheduler#shedule(JobInfo job)</code>.</p>
+    The Android system can combine jobs so that battery consumption is reduced.</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
     void setAlarm(Context context)
@@ -22,7 +21,7 @@
                 .setRequiresCharging(true)
                 .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
                 .setPersisted(true)
-                .setPeriodic(15 * 60 * 1000)
+                .setPeriodic(10 * 60 * 1000)
                 .build();
     JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
     scheduler.schedule(info);

@@ -51,7 +51,9 @@ public class JobCoalesceRule extends IssuableSubscriptionVisitor {
             MethodMatchers.create().ofSubTypes("android.content.AbstractThreadedSyncAdapter").names("getSyncAdapterBinder").withAnyParameters().build()
     );
 
-    public JobCoalesceRule() { super (); }
+    public JobCoalesceRule() {
+        super();
+    }
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -63,7 +65,7 @@ public class JobCoalesceRule extends IssuableSubscriptionVisitor {
         if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree mit = (MethodInvocationTree) tree;
             if (alarmSchedulerMethodMatcher.matches(mit)) {
-                reportIssue(mit, "Avoid using AlarmManager or a SyncAdapter for an alarm. Instead use the JobScheduler.");
+                reportIssue(mit, "Avoid using AlarmManager or a SyncAdapter for an alarm. Instead use the JobScheduler because the alarm triggers are mutualized.");
             }
             /* TODO: 21/02/2022 to upgrade this part, another method matcher could be used to search the fact the AbstractThreadedSyncAdapter class is implemented
             to avoid using an ofAnyType() methodMatcher (line 49) reducing the risk of a reported issue where there should not be one
