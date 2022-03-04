@@ -53,6 +53,12 @@ public class JavaRulesDefinitionTest {
         assertThat(sensorCoalesceRule.name()).isEqualTo("Batch: Sensor Coalesce");
         assertThat(sensorCoalesceRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(sensorCoalesceRule.type()).isEqualTo(RuleType.CODE_SMELL);
+      
+        Rule jobCoalesceRule = repository.rule("EBAT003");
+        assertThat(jobCoalesceRule).isNotNull();
+        assertThat(jobCoalesceRule.name()).isEqualTo("Batch: Job Coalesce");
+        assertThat(jobCoalesceRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+        assertThat(jobCoalesceRule.type()).isEqualTo(RuleType.CODE_SMELL);
 
         Rule internetInTheLoopRule = repository.rule("EBOT001");
         assertThat(internetInTheLoopRule).isNotNull();
