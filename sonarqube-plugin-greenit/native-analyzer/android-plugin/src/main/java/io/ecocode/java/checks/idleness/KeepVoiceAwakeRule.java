@@ -20,6 +20,7 @@
 package io.ecocode.java.checks.idleness;
 
 import com.google.common.collect.ImmutableList;
+import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Rule;
@@ -125,27 +126,10 @@ public class KeepVoiceAwakeRule extends IssuableSubscriptionVisitor {
         } else if (argument.is(Tree.Kind.BOOLEAN_LITERAL)) {
             checkArgumentIsTrue(argument,argument.asConstant());
         } else {
-            checkArgumentComplexType(argument);
+            ExpressionTree returnedArgument = (ExpressionTree) CheckArgumentComplexType.getChildExpression(argument);
+            if(returnedArgument != argument) {
+                handleArgument(returnedArgument);
+            }
         }
-    }
-
-    private void checkArgumentComplexType(ExpressionTree argument) {
-        switch (argument.kind()) {
-            case MEMBER_SELECT:
-                MemberSelectExpressionTree mset = (MemberSelectExpressionTree) argument;
-                handleArgument(mset.identifier());
-                break;
-            case TYPE_CAST:
-                TypeCastTree tctree = (TypeCastTree) argument;
-                handleArgument(tctree.expression());
-                break;
-            case PARENTHESIZED_EXPRESSION:
-                ParenthesizedTree partzt = (ParenthesizedTree) argument;
-                handleArgument(partzt.expression());
-                break;
-            default:
-                break;
-        }
-
     }
 }

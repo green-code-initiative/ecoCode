@@ -20,6 +20,7 @@
 package io.ecocode.java.checks.helpers.constant;
 
 import com.google.common.collect.ImmutableList;
+import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.*;
@@ -114,27 +115,10 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
                 || argument.is(Tree.Kind.DOUBLE_LITERAL)) {
             checkConstantValue(argument.asConstant(), argument, constantValueToCheck);
         } else {
-            checkArgumentComplexType(argument);
+            ExpressionTree returnedArgument = (ExpressionTree) CheckArgumentComplexType.getChildExpression(argument);
+            if(returnedArgument != argument) {
+                handleArgument(returnedArgument);
+            }
         }
-    }
-
-    private void checkArgumentComplexType(ExpressionTree argument) {
-        switch (argument.kind()) {
-            case MEMBER_SELECT:
-                MemberSelectExpressionTree mset = (MemberSelectExpressionTree) argument;
-                handleArgument(mset.identifier());
-                break;
-            case TYPE_CAST:
-                TypeCastTree tctree = (TypeCastTree) argument;
-                handleArgument(tctree.expression());
-                break;
-            case PARENTHESIZED_EXPRESSION:
-                ParenthesizedTree partzt = (ParenthesizedTree) argument;
-                handleArgument(partzt.expression());
-                break;
-            default:
-                break;
-        }
-
     }
 }
