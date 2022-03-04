@@ -28,7 +28,6 @@ import org.sonar.check.Rule;
 @Rule(key = "ESOB001", name = "ecocodeThriftyMotionSensor")
 public class ThriftyMotionSensorRule extends FlagOnMethodCheck {
 
-
     public ThriftyMotionSensorRule() {
         super("getDefaultSensor", "android.hardware.SensorManager", 11, 0);
     }

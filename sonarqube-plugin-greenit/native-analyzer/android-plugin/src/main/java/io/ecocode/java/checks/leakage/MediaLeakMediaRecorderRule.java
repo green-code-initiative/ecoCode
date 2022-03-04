@@ -21,6 +21,7 @@ package io.ecocode.java.checks.leakage;
 
 import io.ecocode.java.checks.helpers.ConstructorBeforeMethodCheck;
 import org.sonar.check.Rule;
+
 /**
  * Check if MediaRecorder's constructor is called, the release method is called afterwards.
  *

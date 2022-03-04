@@ -30,7 +30,7 @@ import org.sonar.check.Rule;
 public class ContinuousRenderingRule extends FlagOnMethodCheck {
 
     public ContinuousRenderingRule() {
-        super("setRenderMode", "android.opengl.GLSurfaceView",1,0);
+        super("setRenderMode", "android.opengl.GLSurfaceView", 1, 0);
     }
 
     public String getMessage() {

@@ -31,7 +31,7 @@ import org.sonar.check.Rule;
 public class CameraLeakRule extends OpeningClosingMethodCheck {
 
     public CameraLeakRule() {
-        super("open","release", "android.hardware.Camera");
+        super("open", "release", "android.hardware.Camera");
     }
 
     @Override

@@ -23,10 +23,7 @@ import com.google.common.collect.ImmutableList;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.Arguments;
-import org.sonar.plugins.java.api.tree.MethodInvocationTree;
-import org.sonar.plugins.java.api.tree.NewClassTree;
-import org.sonar.plugins.java.api.tree.Tree;
+import org.sonar.plugins.java.api.tree.*;
 
 import java.util.List;
 
@@ -51,7 +48,7 @@ public class ChargeAwarenessRule extends IssuableSubscriptionVisitor {
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
-        return ImmutableList.of(Tree.Kind.NEW_CLASS,Tree.Kind.METHOD_INVOCATION);
+        return ImmutableList.of(Tree.Kind.NEW_CLASS, Tree.Kind.METHOD_INVOCATION);
     }
 
     @Override
@@ -64,7 +61,7 @@ public class ChargeAwarenessRule extends IssuableSubscriptionVisitor {
                     checkParameter(nct.arguments());
                 }
             }
-            if (tree.is(Tree.Kind.METHOD_INVOCATION)){
+            if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
                 MethodInvocationTree mit = (MethodInvocationTree) tree;
                 if (addActionOrIntentFilterMatcher.matches(mit)) {
                     checkParameter(mit.arguments());

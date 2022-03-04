@@ -22,12 +22,13 @@ package io.ecocode.java.checks.helpers;
 import com.google.common.collect.ImmutableList;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.*;
+import org.sonar.plugins.java.api.tree.MethodInvocationTree;
+import org.sonar.plugins.java.api.tree.Tree;
 
 import java.util.List;
 
 public abstract class SpecificMethodCheck extends IssuableSubscriptionVisitor {
-    
+
     private final MethodMatchers methodMatcher;
 
     /**

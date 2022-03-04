@@ -17,7 +17,6 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-
 package io.ecocode.java.checks.batch;
 
 import com.google.common.collect.ImmutableList;
@@ -25,7 +24,10 @@ import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.*;
+import org.sonar.plugins.java.api.tree.Arguments;
+import org.sonar.plugins.java.api.tree.ExpressionTree;
+import org.sonar.plugins.java.api.tree.MethodInvocationTree;
+import org.sonar.plugins.java.api.tree.Tree;
 
 import java.util.List;
 
@@ -71,14 +73,14 @@ public class SensorCoalesceRule extends IssuableSubscriptionVisitor {
         if (arguments.size() > 3) {
             ExpressionTree thirdArgument = arguments.get(3);
             //Check 4th argument is a complex type (that needs to be managed)
-            while (thirdArgument.is(Tree.Kind.TYPE_CAST, Tree.Kind.MEMBER_SELECT, Tree.Kind.PARENTHESIZED_EXPRESSION)){
+            while (thirdArgument.is(Tree.Kind.TYPE_CAST, Tree.Kind.MEMBER_SELECT, Tree.Kind.PARENTHESIZED_EXPRESSION)) {
                 thirdArgument = (ExpressionTree) CheckArgumentComplexType.getChildExpression(thirdArgument);
             }
             return thirdArgument.asConstant().isPresent()
                     //Check 4th argument is a number
                     && (thirdArgument.is(Tree.Kind.INT_LITERAL, Tree.Kind.LONG_LITERAL, Tree.Kind.FLOAT_LITERAL, Tree.Kind.DOUBLE_LITERAL)
                     //Check 4th argument is strictly positive
-                    && ((Number)thirdArgument.asConstant().get()).doubleValue() > 0);
+                    && ((Number) thirdArgument.asConstant().get()).doubleValue() > 0);
         }
         return false;
     }

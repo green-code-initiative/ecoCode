@@ -121,13 +121,13 @@ public class KeepVoiceAwakeRule extends IssuableSubscriptionVisitor {
         if (argument.is(Tree.Kind.IDENTIFIER)) {
             IdentifierTree expressionTree = (IdentifierTree) argument;
             if (expressionTree.symbolType().fullyQualifiedName().equals("boolean")) {
-                checkArgumentIsTrue(argument,expressionTree.asConstant());
+                checkArgumentIsTrue(argument, expressionTree.asConstant());
             }
         } else if (argument.is(Tree.Kind.BOOLEAN_LITERAL)) {
-            checkArgumentIsTrue(argument,argument.asConstant());
+            checkArgumentIsTrue(argument, argument.asConstant());
         } else {
             ExpressionTree returnedArgument = (ExpressionTree) CheckArgumentComplexType.getChildExpression(argument);
-            if(returnedArgument != argument) {
+            if (returnedArgument != argument) {
                 handleArgument(returnedArgument);
             }
         }

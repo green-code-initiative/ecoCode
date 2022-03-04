@@ -31,6 +31,7 @@ public class TreeHelper {
 
     /**
      * Return the full qualified name of an expression. "com.package.name" for a package for example.
+     *
      * @param tree the tree from which the name must be built.
      * @return the full qualified name of the tree
      */
@@ -47,8 +48,8 @@ public class TreeHelper {
     /**
      * Check if the value of the given expression is equal to a given value.
      *
-     * @param argument the argument to check
-     * @param treesToReport the tree to report the issue
+     * @param argument       the argument to check
+     * @param treesToReport  the tree to report the issue
      * @param valueToControl the value for which we report an issue if the argument is equal to the value
      */
     public static void literalValueControl(ExpressionTree argument, ArrayList<Tree> treesToReport, int valueToControl) {

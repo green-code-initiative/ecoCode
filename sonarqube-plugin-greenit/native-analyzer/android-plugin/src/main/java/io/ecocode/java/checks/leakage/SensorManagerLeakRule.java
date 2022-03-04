@@ -31,7 +31,7 @@ import org.sonar.check.Rule;
 public class SensorManagerLeakRule extends OpeningClosingMethodCheck {
 
     public SensorManagerLeakRule() {
-        super("registerListener","unregisterListener", "android.hardware.SensorManager");
+        super("registerListener", "unregisterListener", "android.hardware.SensorManager");
     }
 
     @Override

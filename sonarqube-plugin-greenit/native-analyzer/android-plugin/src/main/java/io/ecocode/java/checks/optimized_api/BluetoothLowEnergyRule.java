@@ -120,11 +120,11 @@ public class BluetoothLowEnergyRule extends BaseTreeVisitor implements JavaFileS
         }
 
         public boolean hasBluetoothImports() {
-            return  hasBluetoothClassicImports() || hasBluetoothLEImports();
+            return hasBluetoothClassicImports() || hasBluetoothLEImports();
         }
 
         public boolean hasBothBluetoothTypeImports() {
-            return  hasBluetoothClassicImports() && hasBluetoothLEImports();
+            return hasBluetoothClassicImports() && hasBluetoothLEImports();
         }
 
         public void collectBluetoothImport(ImportTree importTree) {
@@ -145,7 +145,5 @@ public class BluetoothLowEnergyRule extends BaseTreeVisitor implements JavaFileS
                 bleListTree.add(importTree);
             }
         }
-
     }
 }
-

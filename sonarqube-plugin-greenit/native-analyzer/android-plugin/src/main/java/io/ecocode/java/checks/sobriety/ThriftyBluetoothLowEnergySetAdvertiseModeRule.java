@@ -39,5 +39,4 @@ public class ThriftyBluetoothLowEnergySetAdvertiseModeRule extends ConstantOnMet
     public String getMessage() {
         return "You should call AdvertiseSettings.Builder.setAdvertiseMode(ADVERTISE_MODE_LOW_POWER) to optimize battery usage.";
     }
-
 }
