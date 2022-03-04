@@ -4,16 +4,15 @@
     Most often, the slave is a GATT server and the master is a GATT client. GATT capable
     devices can be discovered using BLE scan process.</p>
 <p>Invoking <code>BluetoothGatt#requestConnectionPriority(int connectionPriority)</code>
-    with the value <code>CONNECTION_PRIORITY_LOW_POWER</code>, is recommend to reduce
-    power consumption.
-</p>
+    with the value <code>CONNECTION_PRIORITY_LOW_POWER</code>, is recommended to reduce
+    power consumption.</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
-BluetoothGatt gatt = new BluetoothGatt();
-gatt.requestConnectionPriority(CONNECTION_PRIORITY_HIGH);
+    BluetoothGatt gatt = new BluetoothGatt();
+    gatt.requestConnectionPriority(CONNECTION_PRIORITY_HIGH);
 </pre>
 <h2>Compliant Code Example</h2>
 <pre>
-BluetoothGatt gatt = new BluetoothGatt();
-gatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER);
+    BluetoothGatt gatt = new BluetoothGatt();
+    gatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER);
 </pre>

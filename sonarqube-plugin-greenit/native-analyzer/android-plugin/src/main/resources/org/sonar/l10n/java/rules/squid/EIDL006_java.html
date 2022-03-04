@@ -3,14 +3,14 @@
     The general principle is to obtain a wake lock, acquire it and finally release it.</p>
 <p>Hence, the challenge here is to release the lock as soon as possible to avoid running down the device's
     battery excessively. Missing call to <code>PowerManager#release()</code> is a built-in check of Android
-    lint (<i>Wakelock</i> check) but that does not prevent abuse of the lock over too long a period of time.</br>
+    lint (<i>Wakelock</i> check) but that does not prevent abuse of the lock over too long a period of time.<br>
     This can be avoided by a call to <code>PowerManager#acquire(long timeout)</code> instead of
     <code>PowerManager#acquire()</code>, because the lock will be released for sure after the given timeout expires.</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
-<code>PowerManager.acquire()</code>
+    PowerManager.acquire()
 </pre>
 <h2>Compliant Code Example</h2>
 <pre>
-<code>PowerManager.acquire(long timeout)</code>
+    PowerManager.acquire(long timeout)
 </pre>

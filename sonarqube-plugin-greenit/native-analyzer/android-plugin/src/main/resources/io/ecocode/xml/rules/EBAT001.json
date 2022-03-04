@@ -7,8 +7,8 @@
     "constantCost": "10min"
   },
   "tags": [
-    "environment",
     "batch",
+    "environment",
     "ecocode"
   ],
   "defaultSeverity": "Major"
