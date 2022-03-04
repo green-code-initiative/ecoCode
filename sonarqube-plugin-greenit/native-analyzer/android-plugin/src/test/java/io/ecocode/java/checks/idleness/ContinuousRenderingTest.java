@@ -5,7 +5,6 @@ import org.sonar.java.checks.verifier.JavaCheckVerifier;
 
 public class ContinuousRenderingTest {
 
-
     @Test
     public void checkContinuousRendering() {
         JavaCheckVerifier.newVerifier().onFile("src/test/files/idleness/ContinuousRenderingCheck.java")

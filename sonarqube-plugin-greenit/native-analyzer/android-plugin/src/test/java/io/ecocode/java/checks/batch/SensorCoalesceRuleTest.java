@@ -7,7 +7,6 @@ public class SensorCoalesceRuleTest {
 
     @Test
     public void verify() {
-
         JavaCheckVerifier.newVerifier().onFile("src/test/files/batch/SensorCoalesceCheck.java")
                 .withCheck(new SensorCoalesceRule())
                 .verifyIssues();

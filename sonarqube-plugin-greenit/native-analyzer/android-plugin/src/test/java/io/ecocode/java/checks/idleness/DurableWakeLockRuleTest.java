@@ -7,8 +7,7 @@ public class DurableWakeLockRuleTest {
 
     @Test
     public void attributePresentTrue() {
-        JavaCheckVerifier.newVerifier()
-                .onFile("src/test/files/idleness/DurableWakeLockCheck.java")
+        JavaCheckVerifier.newVerifier().onFile("src/test/files/idleness/DurableWakeLockCheck.java")
                 .withCheck(new DurableWakeLockRule())
                 .verifyIssues();
     }

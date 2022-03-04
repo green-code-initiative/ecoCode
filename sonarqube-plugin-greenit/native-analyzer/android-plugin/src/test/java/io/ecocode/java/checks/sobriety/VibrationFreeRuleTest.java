@@ -1,6 +1,5 @@
 package io.ecocode.java.checks.sobriety;
 
-import io.ecocode.java.checks.sobriety.VibrationFreeRule;
 import org.junit.Test;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 
@@ -13,5 +12,4 @@ public class VibrationFreeRuleTest {
                 .withChecks(new VibrationFreeRule(), new VibrationFreeRule())
                 .verifyIssues();
     }
-
 }

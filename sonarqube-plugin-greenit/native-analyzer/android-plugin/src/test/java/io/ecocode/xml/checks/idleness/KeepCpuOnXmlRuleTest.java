@@ -14,5 +14,4 @@ public class KeepCpuOnXmlRuleTest {
     public void attributePresentFalse() {
         SonarXmlCheckVerifier.verifyNoIssue("KeepCpuOnXmlCheckNoReport.xml", new KeepCpuOnXmlRule());
     }
-
 }

@@ -7,8 +7,7 @@ public class ThriftyBluetoothLowEnergyRequestConnectionPriorityRuleTest {
 
     @Test
     public void verify() {
-        JavaCheckVerifier.newVerifier()
-                .onFile("src/test/files/sobriety/ThriftyBluetoothLowEnergyRequestConnectionPriorityCheck.java")
+        JavaCheckVerifier.newVerifier().onFile("src/test/files/sobriety/ThriftyBluetoothLowEnergyRequestConnectionPriorityCheck.java")
                 .withCheck(new ThriftyBluetoothLowEnergyRequestConnectionPriorityRule())
                 .verifyIssues();
     }

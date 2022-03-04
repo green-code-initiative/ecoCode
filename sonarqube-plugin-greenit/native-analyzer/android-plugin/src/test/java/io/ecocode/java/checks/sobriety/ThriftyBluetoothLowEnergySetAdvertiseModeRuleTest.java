@@ -7,8 +7,7 @@ public class ThriftyBluetoothLowEnergySetAdvertiseModeRuleTest {
 
     @Test
     public void verify() {
-        JavaCheckVerifier.newVerifier()
-                .onFile("src/test/files/sobriety/ThriftyBluetoothLowEnergySetAdvertiseModeCheck.java")
+        JavaCheckVerifier.newVerifier().onFile("src/test/files/sobriety/ThriftyBluetoothLowEnergySetAdvertiseModeCheck.java")
                 .withCheck(new ThriftyBluetoothLowEnergySetAdvertiseModeRule())
                 .verifyIssues();
     }

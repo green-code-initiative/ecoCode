@@ -10,15 +10,17 @@ public class BluetoothLowEnergyRuleTest {
         JavaCheckVerifier.newVerifier().onFile("src/test/files/optimized_api/BluetoothLowEnergyCheckBothBleBc.java")
                 .withCheck(new BluetoothLowEnergyRule())
                 .verifyIssues();
+
         JavaCheckVerifier.newVerifier().onFile("src/test/files/optimized_api/BluetoothLowEnergyCheckOnlyBc.java")
                 .withCheck(new BluetoothLowEnergyRule())
                 .verifyIssues();
+
         JavaCheckVerifier.newVerifier().onFile("src/test/files/optimized_api/BluetoothLowEnergyCheckOnlyBle.java")
                 .withCheck(new BluetoothLowEnergyRule())
                 .verifyIssues();
+
         JavaCheckVerifier.newVerifier().onFile("src/test/files/optimized_api/BluetoothLowEnergyCheckWildcard.java")
                 .withCheck(new BluetoothLowEnergyRule())
                 .verifyIssues();
     }
-
 }
