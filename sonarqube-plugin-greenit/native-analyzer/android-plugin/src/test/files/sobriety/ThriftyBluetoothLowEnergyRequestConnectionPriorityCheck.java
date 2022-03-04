@@ -13,13 +13,14 @@ public final class BluetoothGatt {
         gatt.requestConnectionPriority(CONNECTION_PRIORITY_HIGH); // Noncompliant {{Invoking BluetoothGatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER) is recommend to reduce power consumption.}}
         gatt.requestConnectionPriority(CONNECTION_PRIORITY_BALANCED); // Noncompliant {{Invoking BluetoothGatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER) is recommend to reduce power consumption.}}
         gatt.requestConnectionPriority(BluetoothGatt.CONNECTION_PRIORITY_BALANCED); // Noncompliant {{Invoking BluetoothGatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER) is recommend to reduce power consumption.}}
-        gatt.requestConnectionPriority((int)CONNECTION_PRIORITY_BALANCED_LONG); // Noncompliant {{Invoking BluetoothGatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER) is recommend to reduce power consumption.}}
+        gatt.requestConnectionPriority((int) CONNECTION_PRIORITY_BALANCED_LONG); // Noncompliant {{Invoking BluetoothGatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER) is recommend to reduce power consumption.}}
         gatt.requestConnectionPriority(0); // Noncompliant {{Invoking BluetoothGatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER) is recommend to reduce power consumption.}}
         gatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER);
         gatt.requestConnectionPriority(2);
         gatt.requestConnectionPriority(BluetoothGatt.CONNECTION_PRIORITY_LOW_POWER);
-        gatt.requestConnectionPriority((int)2L);
+        gatt.requestConnectionPriority((int) 2L);
     }
+
     public boolean requestConnectionPriority(int connectionPriority) {
         return true;
     }

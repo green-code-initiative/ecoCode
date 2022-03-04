@@ -13,7 +13,6 @@ public class WifiManager {
     }
 
     public class MulticastLock {
-
         public void acquire() {
             string str = "acquire Called";
         }

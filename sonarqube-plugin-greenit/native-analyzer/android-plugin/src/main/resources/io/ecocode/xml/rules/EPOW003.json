@@ -7,8 +7,8 @@
     "constantCost": "1h"
   },
   "tags": [
-    "environment",
     "power",
+    "environment",
     "ecocode"
   ],
   "defaultSeverity": "Major"

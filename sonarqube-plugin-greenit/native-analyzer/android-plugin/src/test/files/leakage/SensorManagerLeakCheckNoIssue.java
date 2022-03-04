@@ -1,6 +1,5 @@
 package android.hardware;
 
-
 public class SensorManager {
 
     public void test() {
@@ -13,6 +12,5 @@ public class SensorManager {
     }
 
     public void unregisterListener() {
-
     }
 }

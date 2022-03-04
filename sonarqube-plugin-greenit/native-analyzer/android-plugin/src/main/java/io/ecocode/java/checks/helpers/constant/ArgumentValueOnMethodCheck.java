@@ -20,12 +20,14 @@
 package io.ecocode.java.checks.helpers.constant;
 
 import com.google.common.collect.ImmutableList;
+import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.*;
+import org.sonar.plugins.java.api.tree.ExpressionTree;
+import org.sonar.plugins.java.api.tree.IdentifierTree;
+import org.sonar.plugins.java.api.tree.MethodInvocationTree;
+import org.sonar.plugins.java.api.tree.Tree;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,20 +40,20 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
     /**
      * Constructor to configure the rule on a given class and method.
      *
-     * @param methodName          name of the method to check
-     * @param methodOwnerType     name of the type that own the method
-     * @param constantValueToCheck        the current value to check
-     * @param paramPositions      the position(s) of the argument on the method to check
+     * @param methodName           name of the method to check
+     * @param methodOwnerType      name of the type that own the method
+     * @param constantValueToCheck the current value to check
+     * @param paramPositions       the position(s) of the argument on the method to check
      */
     protected ArgumentValueOnMethodCheck(String methodName, String methodOwnerType, Object constantValueToCheck, int... paramPositions) {
         super();
-        this.methodsSpecs = new MethodSpecs[] {new MethodSpecs(methodName, methodOwnerType, constantValueToCheck, paramPositions)};
+        this.methodsSpecs = new MethodSpecs[]{new MethodSpecs(methodName, methodOwnerType, constantValueToCheck, paramPositions)};
     }
 
     /**
      * Constructor to configure the rule on a given class and method.
      *
-     * @param methodsSpecs        array of methods specs to check.
+     * @param methodsSpecs array of methods specs to check.
      */
     protected ArgumentValueOnMethodCheck(MethodSpecs[] methodsSpecs) {
         super();
@@ -114,27 +116,10 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
                 || argument.is(Tree.Kind.DOUBLE_LITERAL)) {
             checkConstantValue(argument.asConstant(), argument, constantValueToCheck);
         } else {
-            checkArgumentComplexType(argument);
+            ExpressionTree returnedArgument = (ExpressionTree) CheckArgumentComplexType.getChildExpression(argument);
+            if (returnedArgument != argument) {
+                handleArgument(returnedArgument);
+            }
         }
-    }
-
-    private void checkArgumentComplexType(ExpressionTree argument) {
-        switch (argument.kind()) {
-            case MEMBER_SELECT:
-                MemberSelectExpressionTree mset = (MemberSelectExpressionTree) argument;
-                handleArgument(mset.identifier());
-                break;
-            case TYPE_CAST:
-                TypeCastTree tctree = (TypeCastTree) argument;
-                handleArgument(tctree.expression());
-                break;
-            case PARENTHESIZED_EXPRESSION:
-                ParenthesizedTree partzt = (ParenthesizedTree) argument;
-                handleArgument(partzt.expression());
-                break;
-            default:
-                break;
-        }
-
     }
 }

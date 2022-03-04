@@ -5,7 +5,5 @@
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" /><!-- Noncompliant {{Battery optimization should not be ignored.}} -->
 
     <application>
-
     </application>
-
 </manifest>

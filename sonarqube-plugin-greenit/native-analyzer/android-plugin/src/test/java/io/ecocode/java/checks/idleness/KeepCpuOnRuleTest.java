@@ -7,8 +7,7 @@ public class KeepCpuOnRuleTest {
 
     @Test
     public void attributePresentTrue() {
-        JavaCheckVerifier.newVerifier()
-                .onFile("src/test/files/idleness/KeepCpuOnCheck.java")
+        JavaCheckVerifier.newVerifier().onFile("src/test/files/idleness/KeepCpuOnCheck.java")
                 .withCheck(new KeepCpuOnRule())
                 .verifyIssues();
     }

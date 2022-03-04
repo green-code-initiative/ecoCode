@@ -14,5 +14,4 @@ public class DarkUIBrightColorsXmlRuleTest {
     public void colorResourceCheck() {
         SonarXmlCheckVerifier.verifyIssues("DarkUIBrightColorsXmlCheckResources.xml", new DarkUIBrightColorsXmlRule());
     }
-
 }

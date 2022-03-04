@@ -14,5 +14,4 @@ public class KeepScreenOnXmlRuleTest {
     public void attributePresentFalse() {
         SonarXmlCheckVerifier.verifyNoIssue("KeepScreenOnXmlCheckFalse.xml", new KeepScreenOnXmlRule());
     }
-
 }

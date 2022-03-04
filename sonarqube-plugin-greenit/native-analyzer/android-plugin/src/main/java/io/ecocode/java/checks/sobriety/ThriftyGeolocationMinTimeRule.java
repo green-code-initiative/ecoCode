@@ -43,9 +43,9 @@ public class ThriftyGeolocationMinTimeRule extends IssuableSubscriptionVisitor {
 
     private static final String ERROR_MESSAGE = "Location updates should be done with a time greater than 0.";
     private static final Logger LOG = Loggers.get(ThriftyGeolocationMinTimeRule.class);
-    private MethodMatchers methodMatcher = MethodMatchers.create().ofTypes("android.location.LocationManager").names("requestLocationUpdates").withAnyParameters().addParametersMatcher().build();
+    private final MethodMatchers methodMatcher = MethodMatchers.create().ofTypes("android.location.LocationManager").names("requestLocationUpdates").withAnyParameters().addParametersMatcher().build();
     private final ArrayList<Tree> treesToReport = new ArrayList<>();
-    private int ARGUMENT_VALUE_TO_CONTROL = 0;
+    private static final int ARGUMENT_VALUE_TO_CONTROL = 0;
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -59,7 +59,7 @@ public class ThriftyGeolocationMinTimeRule extends IssuableSubscriptionVisitor {
             if (methodMatcher.matches(mit)) {
                 if (!mit.arguments().isEmpty()) {
                     ExpressionTree firstArgument = mit.arguments().get(0);
-                    /**
+                    /*
                      * Here we want to know if the first parameter is a String,
                      * if it is, the minDistance Parameter will be at position 1
                      * else, the minTime will be at position 0

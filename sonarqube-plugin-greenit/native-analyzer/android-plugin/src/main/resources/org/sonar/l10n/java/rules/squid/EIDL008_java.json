@@ -7,8 +7,8 @@
     "constantCost": "10min"
   },
   "tags": [
-    "environment",
     "idleness",
+    "environment",
     "ecocode"
   ],
   "defaultSeverity": "Minor"

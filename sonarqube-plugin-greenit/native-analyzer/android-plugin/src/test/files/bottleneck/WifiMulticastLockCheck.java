@@ -8,7 +8,6 @@ public class WifiManager {
     }
 
     public class MulticastLock {
-
         public void acquire() {
             String str = "acquire Called";
         }

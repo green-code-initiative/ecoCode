@@ -3,11 +3,6 @@ package java.net;
 public final class URL {
     String con;
 
-    public String openConnection() throws java.io.IOException {
-        String test = "openConnection";
-        return test;
-    }
-
     public void testFor() {
         for (int i = 0; i < 10; i++) {
             con = openConnection(); // Noncompliant {{Internet connection should not be opened in loops to preserve the battery.}}
@@ -95,15 +90,20 @@ public final class URL {
         internal.myMethod();
     }
 
-    public class InternalClass {
-        public void myMethod() {
-            openConnection();
-        }
-    }
-
     public void testInternalMethod() {
         for (int t = 0; t < 10; t++) {
             internalMethod(); // TODO: non compliant
+        }
+    }
+
+    public String openConnection() throws java.io.IOException {
+        String test = "openConnection";
+        return test;
+    }
+
+    public class InternalClass {
+        public void myMethod() {
+            openConnection();
         }
     }
 

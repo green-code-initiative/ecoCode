@@ -17,7 +17,6 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-
 package io.ecocode.java.checks.sobriety;
 
 import io.ecocode.java.checks.helpers.constant.ArgumentValueOnMethodCheck;
@@ -29,8 +28,6 @@ import java.util.Optional;
 
 @Rule(key = "ESOB011", name = "ecocodeVibrationFree")
 public class VibrationFreeRule extends ArgumentValueOnMethodCheck {
-
-    protected String currentValue;
 
     public VibrationFreeRule() {
         super(new MethodSpecs[]{
@@ -49,7 +46,6 @@ public class VibrationFreeRule extends ArgumentValueOnMethodCheck {
     @Override
     protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, Object constantValueToCheck) {
         if (optionalConstantValue.isPresent() && optionalConstantValue.get().equals(constantValueToCheck)) {
-            currentValue = (String) constantValueToCheck;
             reportIssue(reportTree, getMessage());
         }
     }

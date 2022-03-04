@@ -10,10 +10,8 @@ public class DarkUIThemeXmlRuleTest {
         SonarXmlCheckVerifier.verifyIssues("DarkUIThemeXmlCheckStyle.xml", new DarkUIThemeXmlRule());
     }
 
-
     @Test
     public void manifestCheck() {
         SonarXmlCheckVerifier.verifyIssues("DarkUIThemeXmlCheckManifest.xml", new DarkUIThemeXmlRule());
     }
-
 }

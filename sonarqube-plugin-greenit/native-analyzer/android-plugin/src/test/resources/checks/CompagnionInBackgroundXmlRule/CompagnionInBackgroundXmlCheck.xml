@@ -5,7 +5,5 @@
     <uses-permission android:name="android.permission.REQUEST_COMPANION_RUN_IN_BACKGROUND" /><!-- Noncompliant {{Using the permission REQUEST_COMPANION_RUN_IN_BACKGROUND will have a negative effect on the device's battery life.}} -->
 
     <application>
-
     </application>
-
 </manifest>

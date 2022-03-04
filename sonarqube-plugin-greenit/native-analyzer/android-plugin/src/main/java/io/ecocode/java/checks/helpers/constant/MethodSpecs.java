@@ -31,10 +31,10 @@ public class MethodSpecs {
     /**
      * Class used to create method matchers easily.
      *
-     * @param methodName                name of the method to check
-     * @param methodOwner               name of the type that own the method
-     * @param constantValueToCheck      the current value to check
-     * @param parametersPositions       the position(s) of the argument on the method to check
+     * @param methodName           name of the method to check
+     * @param methodOwner          name of the type that own the method
+     * @param constantValueToCheck the current value to check
+     * @param parametersPositions  the position(s) of the argument on the method to check
      */
     public MethodSpecs(String methodName, String methodOwner, Object constantValueToCheck, int... parametersPositions) {
         this.methodName = methodName;
