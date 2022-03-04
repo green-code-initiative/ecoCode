@@ -16,20 +16,20 @@ public class IntentFilter {
         IntentFilter filter4 = new IntentFilter(ACTION_OTHER);
         IntentFilter filter5 = new IntentFilter();
 
-        IntentFilter.create(ACTION_BATTERY_LOW,""); // Noncompliant {{Monitoring power changes and customizing behavior depending on battery level is a good practice.}}
+        IntentFilter.create(ACTION_BATTERY_LOW, ""); // Noncompliant {{Monitoring power changes and customizing behavior depending on battery level is a good practice.}}
 
         filter2.addAction(ACTION_BATTERY_LOW); // Noncompliant {{Monitoring power changes and customizing behavior depending on battery level is a good practice.}}
         filter2.addAction(ACTION_OTHER);
     }
 
-    public IntentFilter(String str){
+    public IntentFilter(String str) {
         mAction = str;
     }
 
-    public IntentFilter(String str , String dataType){
+    public IntentFilter(String str, String dataType) {
     }
 
-    public IntentFilter(){
+    public IntentFilter() {
     }
 
     public final void addAction(String action) {
