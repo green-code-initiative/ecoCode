@@ -30,8 +30,6 @@ import java.util.Optional;
 @Rule(key = "ESOB011", name = "ecocodeVibrationFree")
 public class VibrationFreeRule extends ArgumentValueOnMethodCheck {
 
-    protected String currentValue;
-
     public VibrationFreeRule() {
         super(new MethodSpecs[]{
                 new MethodSpecs("getSystemService", "android.content.Context", "vibrator", 0),
@@ -49,7 +47,6 @@ public class VibrationFreeRule extends ArgumentValueOnMethodCheck {
     @Override
     protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, Object constantValueToCheck) {
         if (optionalConstantValue.isPresent() && optionalConstantValue.get().equals(constantValueToCheck)) {
-            currentValue = (String) constantValueToCheck;
             reportIssue(reportTree, getMessage());
         }
     }

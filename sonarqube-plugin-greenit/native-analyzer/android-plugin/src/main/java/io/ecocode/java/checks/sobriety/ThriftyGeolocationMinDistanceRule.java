@@ -43,7 +43,7 @@ public class ThriftyGeolocationMinDistanceRule extends IssuableSubscriptionVisit
     private static final String ERROR_MESSAGE = "Location updates should be done with a distance interval greater than 0.";
     private static final Logger LOG = Loggers.get(ThriftyGeolocationMinDistanceRule.class);
 
-    private MethodMatchers methodMatcher = MethodMatchers.create().ofTypes("android.location.LocationManager").names("requestLocationUpdates").withAnyParameters().addParametersMatcher().build();
+    private final MethodMatchers methodMatcher = MethodMatchers.create().ofTypes("android.location.LocationManager").names("requestLocationUpdates").withAnyParameters().addParametersMatcher().build();
     private final ArrayList<Tree> treesToReport = new ArrayList<>();
     private static final int ARGUMENT_VALUE_TO_CONTROL = 0;
 
@@ -59,7 +59,7 @@ public class ThriftyGeolocationMinDistanceRule extends IssuableSubscriptionVisit
             if (methodMatcher.matches(mit)) {
                 if (!mit.arguments().isEmpty()) {
                     ExpressionTree firstArgument = mit.arguments().get(0);
-                    /**
+                    /*
                      * Here we want to know if the first parameter is a String,
                      * if it is, the minDistance Parameter will be at position 2
                      * else, the minDistance will be at position 1

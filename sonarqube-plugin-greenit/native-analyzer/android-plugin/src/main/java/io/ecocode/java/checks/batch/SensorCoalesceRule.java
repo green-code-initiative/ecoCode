@@ -30,8 +30,8 @@ import org.sonar.plugins.java.api.tree.*;
 import java.util.List;
 
 /**
- * Check the call of the method "registerListener" of "android.hardware.SensorManager" with 4 parameters (the 4th one being maxReportLatencyUs).
- * If argument value isn't present, report issue.
+ * Check the call of the method "registerListener" of "android.hardware.SensorManager" with 4 parameters (the 4th one being the latency).
+ * If it isn't present, report issue.
  */
 @Rule(key = "EBAT002", name = "ecoCodeSensorCoalesce")
 public class SensorCoalesceRule extends IssuableSubscriptionVisitor {
