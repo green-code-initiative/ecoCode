@@ -1,7 +1,7 @@
 ![Logo](docs/logo-large.png)
 ---
 
-ecoCode is a collective project aiming the reduction the environmental footprint of IT at the software level. The goal of the project is to provide a curated list of lint-like tools to remove quality flaws in your codebase that should have an ecological impact: energy consumption, fatware, lifespan of terminals, etc.
+ecoCode is a collective project aiming the reduction the environmental footprint of IT at the software level. The goal of the project is to provide a curated list of static code analyzers to remove quality flaws in your codebase that may have an ecological impact: energy consumption, fatware, lifespan of terminals, etc.
 
 ecoCode relies on evolving catalogs of [good practices](good_practices/), for various technologies. SonarQube plugins then implement these catalogs as rules.
 
