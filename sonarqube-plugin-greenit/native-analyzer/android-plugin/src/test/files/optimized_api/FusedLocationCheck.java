@@ -6,5 +6,4 @@ import com.location.GnssStatus;
 import android.GnssStatus;
 
 public class Dijon {
-
 }

@@ -10,26 +10,26 @@
     lint (ShortAlarm built-in check).</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
-AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-alarmManager.setRepeating(alarmType, triggerAtMillis, intervalMillis, operation);
+    AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+    alarmManager.setRepeating(alarmType, triggerAtMillis, intervalMillis, operation);
 </pre>
 or
 <pre>
-AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-alarmManager.setExact(type,triggerAtMillis,operation);
+    AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+    alarmManager.setExact(type,triggerAtMillis,operation);
 </pre>
 or
 <pre>
-AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-alarmManager.setExact(type,triggerAtMillis,tag,listener,targetHandler);
+    AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+    alarmManager.setExact(type,triggerAtMillis,tag,listener,targetHandler);
 </pre>
 or
 <pre>
-AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-alarmManager.setExactAndAllowWhileIdle(type,triggerAtMilllis,operation);
+    AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+    alarmManager.setExactAndAllowWhileIdle(type,triggerAtMilllis,operation);
 </pre>
 <h2>Compliant Code Example</h2>
 <pre>
-AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-alarmManager.setInexactRepeating(alarmType, triggerAtMillis, intervalMillis, operation);
+    AlarmManager alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+    alarmManager.setInexactRepeating(alarmType, triggerAtMillis, intervalMillis, operation);
 </pre>

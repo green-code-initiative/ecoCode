@@ -1,13 +1,6 @@
 package android.hardware;
 
 public final class SensorManager {
-
-    private int SENSOR_DELAY_NORMAL = 210000;
-    private SensorManager registerListener(SensorEventListener sensorEventListener, Sensor gyroscope, int delay) {return null;}
-    private SensorManager registerListener(SensorEventListener sensorEventListener, Sensor gyroscope, int delay, Handler handler) {return null;}
-    private SensorManager registerListener(SensorEventListener sensorEventListener, Sensor gyroscope, int delay, int latency) {return null;}
-    private SensorManager registerListener(SensorEventListener sensorEventListener, Sensor gyroscope, int delay, int latency, Handler handler) {return null;}
-
     public void test() {
 
         final int positiveNumber = 200000;
@@ -26,17 +19,17 @@ public final class SensorManager {
         sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, handler); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
 
         sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, 0); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
-        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int)0L); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
+        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int) 0L); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
         sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, -1); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
-        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int)-1L); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
+        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int) -1L); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
         sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, 200000);
-        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int)200000L);
+        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int) 200000L);
         sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, 0, handler); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
-        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int)0L, handler); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
+        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int) 0L, handler); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
         sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, -1, handler); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
-        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int)-1L, handler); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
+        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int) -1L, handler); // Noncompliant {{Prefer using a reported latency on your SensorManager to reduce the power consumption of the app}}
         sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, 200000, handler);
-        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int)200000L, handler);
+        sensorManager.registerListener(sensorEventListener, gyroscope, SensorManager.SENSOR_DELAY_NORMAL, (int) 200000L, handler);
 
         // TODO: 22/02/2022 Variables need a symbolic expression search (need to update the sonarjava plugin) 
 //        sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL, zeroNumber); // TODO Noncompliant
@@ -64,5 +57,23 @@ public final class SensorManager {
 //        sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL, (int)negativeNumberLG, handler); // TODO Noncompliant
 //        sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL, positiveNumberG, handler);
 //        sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL, (int)positiveNumberLG, handler);
+    }
+
+    private int SENSOR_DELAY_NORMAL = 210000;
+
+    private SensorManager registerListener(SensorEventListener sensorEventListener, Sensor gyroscope, int delay) {
+        return null;
+    }
+
+    private SensorManager registerListener(SensorEventListener sensorEventListener, Sensor gyroscope, int delay, Handler handler) {
+        return null;
+    }
+
+    private SensorManager registerListener(SensorEventListener sensorEventListener, Sensor gyroscope, int delay, int latency) {
+        return null;
+    }
+
+    private SensorManager registerListener(SensorEventListener sensorEventListener, Sensor gyroscope, int delay, int latency, Handler handler) {
+        return null;
     }
 }

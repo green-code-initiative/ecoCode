@@ -1,9 +1,8 @@
 package android.location;
 
-
 public class LocationManager {
 
-    public void test(){
+    public void test() {
         requestLocationUpdates();
         removeUpdates();
     }
@@ -13,6 +12,5 @@ public class LocationManager {
     }
 
     public void removeUpdates() {
-
     }
 }

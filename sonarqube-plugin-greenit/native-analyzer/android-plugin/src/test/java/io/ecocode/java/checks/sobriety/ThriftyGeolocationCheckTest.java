@@ -7,10 +7,8 @@ public class ThriftyGeolocationCheckTest {
 
     @Test
     public void verify() {
-        JavaCheckVerifier.newVerifier()
-                .onFile("src/test/files/sobriety/ThriftyGeolocationCheck.java")
+        JavaCheckVerifier.newVerifier().onFile("src/test/files/sobriety/ThriftyGeolocationCheck.java")
                 .withChecks(new ThriftyGeolocationMinTimeRule(), new ThriftyGeolocationMinDistanceRule())
                 .verifyIssues();
     }
-
 }

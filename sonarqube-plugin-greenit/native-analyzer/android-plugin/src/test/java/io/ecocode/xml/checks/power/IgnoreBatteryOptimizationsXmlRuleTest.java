@@ -14,5 +14,4 @@ public class IgnoreBatteryOptimizationsXmlRuleTest {
     public void attributePresentFalse() {
         SonarXmlCheckVerifier.verifyNoIssue("IgnoreBatteryOptimizationsXmlCheckNoReport.xml", new IgnoreBatteryOptimizationsXmlRule());
     }
-
 }

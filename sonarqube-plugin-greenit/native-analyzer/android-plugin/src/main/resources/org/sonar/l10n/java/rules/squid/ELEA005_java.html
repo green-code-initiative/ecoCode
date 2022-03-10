@@ -6,10 +6,10 @@
     continuous battery consumption for mobile devices.</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
-MediaRecorder mr = new MediaRecorder();
+    MediaRecorder mr = new MediaRecorder();
 </pre>
 <h2>Compliant Solution</h2>
 <pre>
-MediaRecorder mr = new MediaRecorder();
-mr.release();
+    MediaRecorder mr = new MediaRecorder();
+    mr.release();
 </pre>

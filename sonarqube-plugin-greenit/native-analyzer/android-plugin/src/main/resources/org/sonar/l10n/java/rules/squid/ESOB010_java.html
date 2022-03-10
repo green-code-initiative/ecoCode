@@ -3,8 +3,8 @@
     <code>LocationManager#requestLocationUpdates(String provider, long minTime, float minDistance, LocationListener listener)</code>,
     the location provider will only send your application an update when the location has changed by at
     least minDistance meters AND at least minTime milliseconds have passed. So <code>minTime</code> should
-    be the primary tool to conserve battery life, and, to a lesser extent, <code>minDistance</code>.
-    </br>These two must imperatively be greater than 0.</p>
+    be the primary tool to conserve battery life, and, to a lesser extent, <code>minDistance</code>.<br>
+    These two must imperatively be greater than 0.</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,

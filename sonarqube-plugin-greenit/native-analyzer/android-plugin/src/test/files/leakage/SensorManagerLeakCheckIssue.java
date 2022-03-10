@@ -1,13 +1,12 @@
 package android.hardware;
 
-
 public class SensorManager {
 
-    public SensorManager(){
+    public SensorManager() {
         unregisterListener();
     }
 
-    public void test(){
+    public void test() {
         registerListener();
     }
 
@@ -16,12 +15,11 @@ public class SensorManager {
     }
 
     public static void unregisterListener() {
-
     }
 }
 
 public class SensorManager2 {
-    public void test(){
+    public void test() {
         unregisterListener();
     }
 }

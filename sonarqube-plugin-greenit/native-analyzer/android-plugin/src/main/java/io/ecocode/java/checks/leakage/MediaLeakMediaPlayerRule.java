@@ -23,7 +23,7 @@ import io.ecocode.java.checks.helpers.ConstructorBeforeMethodCheck;
 import org.sonar.check.Rule;
 
 /**
- * Check that if MediaPlayer constructor is called, the release method is called afterwards.
+ * Check if MediaPlayer's constructor is called, the release method is called afterwards.
  *
  * @see ConstructorBeforeMethodCheck
  */

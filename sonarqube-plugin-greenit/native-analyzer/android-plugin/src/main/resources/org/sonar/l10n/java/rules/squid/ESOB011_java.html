@@ -6,11 +6,11 @@
 <h2>Noncompliant Code Example</h2>
 API 26:
 <pre>
-  Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-  v.vibrate(400);
+    Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+    v.vibrate(400);
 </pre>
 API 31:
 <pre>
-  VibratorManager vm = (VibratorManager) getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
-  vm.getDefaultVibrator().vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+    VibratorManager vm = (VibratorManager) getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
+    vm.getDefaultVibrator().vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
 </pre>

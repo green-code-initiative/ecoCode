@@ -12,18 +12,17 @@ public final class AdvertiseSettings {
         builder.setAdvertiseMode(ADVERTISE_MODE_LOW_LATENCY); // Noncompliant {{You should call AdvertiseSettings.Builder.setAdvertiseMode(ADVERTISE_MODE_LOW_POWER) to optimize battery usage.}}
         builder.setAdvertiseMode(ADVERTISE_MODE_BALANCED); // Noncompliant {{You should call AdvertiseSettings.Builder.setAdvertiseMode(ADVERTISE_MODE_LOW_POWER) to optimize battery usage.}}
         builder.setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_BALANCED); // Noncompliant {{You should call AdvertiseSettings.Builder.setAdvertiseMode(ADVERTISE_MODE_LOW_POWER) to optimize battery usage.}}
-        builder.setAdvertiseMode((int)ADVERTISE_MODE_LOW_LATENCY_LONG); // Noncompliant {{You should call AdvertiseSettings.Builder.setAdvertiseMode(ADVERTISE_MODE_LOW_POWER) to optimize battery usage.}}
+        builder.setAdvertiseMode((int) ADVERTISE_MODE_LOW_LATENCY_LONG); // Noncompliant {{You should call AdvertiseSettings.Builder.setAdvertiseMode(ADVERTISE_MODE_LOW_POWER) to optimize battery usage.}}
         builder.setAdvertiseMode(1); // Noncompliant {{You should call AdvertiseSettings.Builder.setAdvertiseMode(ADVERTISE_MODE_LOW_POWER) to optimize battery usage.}}
         builder.setAdvertiseMode(ADVERTISE_MODE_LOW_POWER);
         builder.setAdvertiseMode(0);
-        builder.setAdvertiseMode((int)0L);
+        builder.setAdvertiseMode((int) 0L);
     }
 
-
     public static final class Builder {
-        public Builder(){
-
+        public Builder() {
         }
+
         public Builder setAdvertiseMode(int advertiseMode) {
             return new Builder();
         }

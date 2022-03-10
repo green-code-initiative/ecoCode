@@ -55,17 +55,22 @@ public class ThriftyNotificationRule extends IssuableSubscriptionVisitor {
     public void visitNode(Tree tree) {
         if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree mit = (MethodInvocationTree) tree;
-            if (notificationHardwareCallMethodMatchers.matches(mit)) {
-                if(isOneArgumentNull(mit.arguments().toArray())){
-                    reportIssue(mit, ERROR_MESSAGE);
-                }
+            if (notificationHardwareCallMethodMatchers.matches(mit)
+                    && isOneArgumentNull(mit.arguments().toArray())) {
+                reportIssue(mit, ERROR_MESSAGE);
             }
         }
     }
 
-    private boolean isOneArgumentNull(Object[] arguments){
+    /**
+     * Method that checks if one of the arguments of the function currently matching is null
+     *
+     * @param arguments arguments of the function currently matching
+     * @return true if no arguments are null
+     */
+    private boolean isOneArgumentNull(Object[] arguments) {
         for (Object argument : arguments) {
-            if (((ExpressionTree)argument).kind() != Tree.Kind.NULL_LITERAL){
+            if (((ExpressionTree) argument).kind() != Tree.Kind.NULL_LITERAL) {
                 return true;
             }
         }

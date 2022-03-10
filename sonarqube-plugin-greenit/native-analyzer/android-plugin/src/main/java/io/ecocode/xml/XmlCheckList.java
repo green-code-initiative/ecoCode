@@ -19,6 +19,7 @@
  */
 package io.ecocode.xml;
 
+import io.ecocode.xml.checks.batch.ServiceBootTimeXmlRule;
 import io.ecocode.xml.checks.power.ChargeAwarenessXmlRule;
 import io.ecocode.xml.checks.sobriety.DarkUIBrightColorsXmlRule;
 import io.ecocode.xml.checks.idleness.KeepCpuOnXmlRule;
@@ -43,7 +44,8 @@ public class XmlCheckList {
                 IgnoreBatteryOptimizationsXmlRule.class,
                 KeepCpuOnXmlRule.class,
                 CompagnionInBackgroundXmlRule.class,
-                ChargeAwarenessXmlRule.class
+                ChargeAwarenessXmlRule.class,
+                ServiceBootTimeXmlRule.class
         );
     }
 

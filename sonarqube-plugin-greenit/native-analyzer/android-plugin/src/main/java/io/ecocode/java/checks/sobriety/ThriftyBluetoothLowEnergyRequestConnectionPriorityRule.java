@@ -19,15 +19,8 @@
  */
 package io.ecocode.java.checks.sobriety;
 
-import com.google.common.collect.ImmutableList;
 import io.ecocode.java.checks.helpers.constant.ConstantOnMethodCheck;
 import org.sonar.check.Rule;
-import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
-import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.*;
-
-import java.util.List;
-import java.util.Optional;
 
 /**
  * On the method `android.bluetooth.BluetoothGatt#requestConnectionPriority(int)`, reports an issue if
@@ -46,5 +39,4 @@ public class ThriftyBluetoothLowEnergyRequestConnectionPriorityRule extends Cons
     public String getMessage() {
         return "Invoking BluetoothGatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER) is recommend to reduce power consumption.";
     }
-
 }

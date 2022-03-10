@@ -17,20 +17,23 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-
 package io.ecocode.java.checks.batch;
 
 import com.google.common.collect.ImmutableList;
+import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.*;
+import org.sonar.plugins.java.api.tree.Arguments;
+import org.sonar.plugins.java.api.tree.ExpressionTree;
+import org.sonar.plugins.java.api.tree.MethodInvocationTree;
+import org.sonar.plugins.java.api.tree.Tree;
 
 import java.util.List;
 
 /**
- * Check the call of the method "registerListener" of "android.hardware.SensorManager" with 4 parameters (the 4th one being maxReportLatencyUs).
- * If argument value isn't present, report issue.
+ * Check the call of the method "registerListener" of "android.hardware.SensorManager" with 4 parameters (the 4th one being the latency).
+ * If it isn't present, report issue.
  */
 @Rule(key = "EBAT002", name = "ecoCodeSensorCoalesce")
 public class SensorCoalesceRule extends IssuableSubscriptionVisitor {
@@ -70,37 +73,15 @@ public class SensorCoalesceRule extends IssuableSubscriptionVisitor {
         if (arguments.size() > 3) {
             ExpressionTree thirdArgument = arguments.get(3);
             //Check 4th argument is a complex type (that needs to be managed)
-            while (thirdArgument.is(Tree.Kind.TYPE_CAST, Tree.Kind.MEMBER_SELECT, Tree.Kind.PARENTHESIZED_EXPRESSION)){
-                thirdArgument = (ExpressionTree) checkArgumentComplexType(thirdArgument);
+            while (thirdArgument.is(Tree.Kind.TYPE_CAST, Tree.Kind.MEMBER_SELECT, Tree.Kind.PARENTHESIZED_EXPRESSION)) {
+                thirdArgument = (ExpressionTree) CheckArgumentComplexType.getChildExpression(thirdArgument);
             }
             return thirdArgument.asConstant().isPresent()
                     //Check 4th argument is a number
                     && (thirdArgument.is(Tree.Kind.INT_LITERAL, Tree.Kind.LONG_LITERAL, Tree.Kind.FLOAT_LITERAL, Tree.Kind.DOUBLE_LITERAL)
                     //Check 4th argument is strictly positive
-                    && ((Number)thirdArgument.asConstant().get()).doubleValue() > 0);
+                    && ((Number) thirdArgument.asConstant().get()).doubleValue() > 0);
         }
         return false;
-    }
-
-    /**
-     * Method that gives the argument child value when it's of a complex type
-     *
-     * @param argument the argument with a complex type
-     * @return the child expression of the argument that matched (for example if the argument is being cast)
-     */
-    private Object checkArgumentComplexType(ExpressionTree argument) {
-        switch (argument.kind()) {
-            case MEMBER_SELECT:
-                MemberSelectExpressionTree memberSelectExpressionTree = (MemberSelectExpressionTree) argument;
-                return (memberSelectExpressionTree.identifier());
-            case TYPE_CAST:
-                TypeCastTree typeCastTree = (TypeCastTree) argument;
-                return (typeCastTree.expression());
-            case PARENTHESIZED_EXPRESSION:
-                ParenthesizedTree parenthesizedTree = (ParenthesizedTree) argument;
-                return (parenthesizedTree.expression());
-            default:
-                return argument;
-        }
     }
 }

@@ -29,7 +29,7 @@ import org.sonar.check.Rule;
 public class RigidAlarmRule extends SpecificMethodCheck {
 
     public RigidAlarmRule() {
-        super("android.app.AlarmManager", "setExact", "setExactAndAllowWhileIdle","setRepeating");
+        super("android.app.AlarmManager", "setExact", "setExactAndAllowWhileIdle", "setRepeating");
     }
 
     public String getMessage() {

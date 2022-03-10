@@ -44,8 +44,8 @@ public abstract class ConstantOnMethodCheck extends ArgumentValueOnMethodCheck {
      * In this case, we report an issue if the argument value is different from a given value.
      *
      * @param optionalConstantValue the argument value of the method as an optional value
-     * @param reportTree the tree where the issue will be reported
-     * @param constantValueToCheck the value to use to check the argument
+     * @param reportTree            the tree where the issue will be reported
+     * @param constantValueToCheck  the value to use to check the argument
      */
     @Override
     protected void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, Object constantValueToCheck) {

@@ -31,7 +31,7 @@ import org.sonar.check.Rule;
 public class LocationLeakRule extends OpeningClosingMethodCheck {
 
     public LocationLeakRule() {
-        super("requestLocationUpdates","removeUpdates", "android.location.LocationManager");
+        super("requestLocationUpdates", "removeUpdates", "android.location.LocationManager");
     }
 
     @Override
