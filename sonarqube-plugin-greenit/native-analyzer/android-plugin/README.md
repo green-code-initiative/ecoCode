@@ -90,7 +90,7 @@ For XML rules:
   <contact@ecocode.io>, prior to submitting any code change.
 - XML rules’ tests can be found in: [/src/test/java/io/ecocode/xml](/src/test/java/io/ecocode/xml). One file = one rule.
 
-## Main sponsors
+## Partners
 [![Snapp’](docs/logoSnapp.png)](https://www.snapp.fr)
 [![Université de Pau](docs/logoUnivPau.png)](https://www.univ-pau.fr/)
 [![Région Nouvelle-Aquitaine](docs/logoNA.png)](https://www.nouvelle-aquitaine.fr)
