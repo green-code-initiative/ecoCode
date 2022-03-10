@@ -1,39 +1,31 @@
-# ecoCode
-
 ![Logo](docs/logo-large.png)
-
-----
-## How green is your app?
-
-These days, more and more people as well as companies want to act to take care of our planet. We want to be more responsible in the way we build and use our digital world, we need to !
-
-[ecoCode](https://github.com/cnumr/ecoCode) is a set of good and bad practices ("smells") for application development. 
-
 ---
-## Projects
 
-We created (for now !) [4 different SonarQube plugins](sonarqube-plugin-greenit/) :
+ecoCode is a collective project aiming the reduction the environmental footprint of IT at the software level. The goal of the project is to provide a curated list of static code analyzers to remove quality flaws in your codebase that may have an ecological impact: energy consumption, fatware, lifespan of terminals, etc.
+
+ecoCode relies on evolving catalogs of [good practices](good_practices/), for various technologies. SonarQube plugins then implement these catalogs as rules.
+
+**Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please refer to the contribution section.
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+## 🎒 Plugins Collection
+
+[4 different SonarQube plugins](sonarqube-plugin-greenit/) are available right now:
 - [Java](sonarqube-plugin-greenit/native-analyzer/java-plugin/)
 - [PHP](sonarqube-plugin-greenit/native-analyzer/php-plugin/)
 - [Python](sonarqube-plugin-greenit/native-analyzer/python-plugin/)
 - [Android](sonarqube-plugin-greenit/native-analyzer/android-plugin/)
 
-All of these use smells described here :
 
-- [good_practices](good_practices/) for web : Java, PHP and Python.
-- [A set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised by Olivier Le Goaër for Android
-
---
-## Install
+## 🚀 Getting Started
 
 You can download each plugin separatly or you can directly use a [all-in-one docker-compose](sonarqube-plugin-greenit/INSTALL.md)
 
----
-## Feel free to get involved in ecoCode !
+## 🤝 Contribution
 
 We need all kinds of profiles ! And if you never participated in an Open-Source project, contact us, we will be more than happy to help you with.
 
---
 ## Main contributors
 - Gaël Pellevoizin 
 - Nicolas Daviet

@@ -1,18 +1,8 @@
-# ecoCode
-
-![Logo](docs/logo.png)
-
-Share good development practices, be aware of the eco-responsibility of the software we develop and share the rules and metrics to use
-to create a mobile application eco-label.
-
-https://www.ecocode.io/
-
-## ecoCode Android SonarQube plugin
----
+# ecoCode Android SonarQube plugin
 ![Logo Ekko](docs/ekko-sonar.png)
 
-ecoCode Android SonarQube plugin is an "eco-responsibility" code analyzer for Android projects. Its aim is to detect code smells to
-indicate where the source code can be improved to reduce their environmental and social impact.
+ecoCode Android SonarQube plugin is an "eco-responsibility" static code analyzer for any Android project. Its aim is to detect code smells to
+indicate weither the source code can be improved to reduce their environmental and social impact.
 
 ## Build and deploy the plugin
 
@@ -100,7 +90,7 @@ For XML rules:
   <contact@ecocode.io>, prior to submitting any code change.
 - XML rules’ tests can be found in: [/src/test/java/io/ecocode/xml](/src/test/java/io/ecocode/xml). One file = one rule.
 
-## Main sponsors
+## Partners
 [![Snapp’](docs/logoSnapp.png)](https://www.snapp.fr)
 [![Université de Pau](docs/logoUnivPau.png)](https://www.univ-pau.fr/)
 [![Région Nouvelle-Aquitaine](docs/logoNA.png)](https://www.nouvelle-aquitaine.fr)

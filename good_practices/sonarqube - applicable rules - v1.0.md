@@ -4,8 +4,10 @@ Listing des règles applicables à SonarQube et facilement scannable sur un code
 
 Référence discussion Google Group : [Soutiens de l'entreprise Davidson Consulting (google.com)](https://groups.google.com/g/ecoconceptionweb/c/O5OwuLuIbXc/m/TP6Y8ns2AgAJ)
 
-Les règles s'appuient sur l'édition 3 du livre "Ecoconception Web / Les 115 bonnes pratiques" :
+Les règles orientées Web s'appuient sur l'édition 3 du livre "Ecoconception Web / Les 115 bonnes pratiques" :
 [Eco-conception Web : Les 115 bonnes pratiques (greenit.fr)](https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html)
+
+Les règles dédiées à Android s'appuient sur le travail d'Olivier Le Goaër : [Energy Smells for Android](https://olegoaer.perso.univ-pau.fr/android-energy-smells/)
 
 ## Conditions des règles applicables
 
