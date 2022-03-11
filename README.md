@@ -10,7 +10,7 @@ ecoCode is based on evolving catalogs of [good practices](good_practices/), for 
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-## 🎒 Plugins Collection
+## 🌿 SonarQube Plugin
 
 4 technologies are supported by the plugin right now:
 - [Java](sonarqube-plugin-greenit/native-analyzer/java-plugin/)
