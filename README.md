@@ -1,45 +1,37 @@
+![Logo](docs/logo-large.png)
+---
 
-## Comment contribuer
+ecoCode is a collective project aiming the reduction the environmental footprint of IT at the software level. The goal of the project is to provide a curated list of static code analyzers to remove quality flaws in your codebase that may have an ecological impact: energy consumption, fatware, lifespan of terminals, etc.
 
-Le projet vous intéresse mais vous ne savez pas comment y participer ? Voici quelques éléments de réponses pour vous motiver à contribuer !
+ecoCode relies on evolving catalogs of [good practices](good_practices/), for various technologies. SonarQube plugins then implement these catalogs as rules.
 
-###### Les fausses idées à écarter sur l'Opensource :  
+**Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please refer to the contribution section.
 
-L'Opensource n'est pas seulement tourné vers les développeurs aggueris. Tout le monde peut participer à un projet Opensource peu importe sont expertise. Il existe une multitude de tâches autour d'un projet de développement qui sont trop souvent négligées :
-- **La documentation** : Technique, fonctionnelle, procédures, tutoriels de contribution... tout est bon à prendre
-- **La communication** : Interne et externe du projet. Faciliter la communication entre les membres actifs du projet en gérant les canaux de communication (mails, slack...), ou alors en rédigeant des communiqués sur l'avancement du projet.
-- **Le design** : La charte graphique, les images...
-- **La gestion du projet** : Organiser les réunions, faire un suivi régulier, gérer la cohésion et la cohérence du projet...
-- **La rédaction des tâches et fonctionnalités** : Transformer le besoin et découper le produit en sous tâches pour faciliter le développement.
-- **La gestion des issues et des questions sur le projet** : Plus le projet va grandir, plus il y aura des contributions, remarques, issues à traiter.
-- **La qualité de code** : Challenger et améliorer le code source 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-Evidemment, le développement est également nécessaire mais celui-ci n'est valable que si il est accompagné d'une bonne gestion des tâches précedentes. 
+## 🎒 Plugins Collection
 
-
-###### La première source de motivation :  
-
-Participer à un projet Opensource, ce n'est pas développer toute la solution tout seul. Nous avons la chance de ne pas avoir de contraintes temporelles, alors avancons petit à petit. La moindre petite contribution fait avancer le projet, alors pas d'hésitations ! Complétez une documentation, stylisez la, communiquez sur l'avancée du projet, refacto de code, code review etc... 
-
-###### Quelle est votre force ?  
-
-Identifiez votre force ou ce qui vous motive puis participez sur un des domaines suivant : Documentation, communication, design/UX/UI, gestion de projet, rédaction de tâches et fonctionnalités, gestion des issues, points de blocages et questions...
+[4 different SonarQube plugins](sonarqube-plugin-greenit/) are available right now:
+- [Java](sonarqube-plugin-greenit/native-analyzer/java-plugin/)
+- [PHP](sonarqube-plugin-greenit/native-analyzer/php-plugin/)
+- [Python](sonarqube-plugin-greenit/native-analyzer/python-plugin/)
+- [Android](sonarqube-plugin-greenit/native-analyzer/android-plugin/)
 
 
-Source Approfondie pour l'Opensource : https://opensource.guide/fr/how-to-contribute/
+## 🚀 Getting Started
 
-## Auteurs
+You can download each plugin separatly or you can directly use a [all-in-one docker-compose](sonarqube-plugin-greenit/INSTALL.md)
 
-Gaël Pellevoizin
-Nicolas Daviet
-Geoffrey Lalloué
-Mathilde Grapin
-Jules Delecour
-Julien Hertout
-Justin Berque
+## 🤝 Contribution
 
-## License
+We need all kinds of profiles ! And if you never participated in an Open-Source project, contact us, we will be more than happy to help you with.
 
-Copyright 2020-2021 Green-it.
-
-License : [GNU Lesser General Public License, Version 3.0](https://www.gnu.org/licenses/lgpl.txt)
+## Main contributors
+- Gaël Pellevoizin 
+- Nicolas Daviet
+- Geoffrey Lalloué
+- Mathilde Grapin
+- Jules Delecour
+- Julien Hertout
+- [Justin Berque](https://www.linkedin.com/in/justin-berque-444412140)
+- [Olivier Le Goaër](https://olegoaer.perso.univ-pau.fr)
