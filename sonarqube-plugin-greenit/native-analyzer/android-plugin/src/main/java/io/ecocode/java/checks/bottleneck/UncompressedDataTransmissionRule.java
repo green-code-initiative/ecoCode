@@ -20,10 +20,15 @@
 package io.ecocode.java.checks.bottleneck;
 
 import com.google.common.collect.ImmutableList;
+import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
 import org.sonar.check.Rule;
+import org.sonar.java.model.expression.NewClassTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.*;
+import org.sonar.plugins.java.api.tree.ExpressionTree;
+import org.sonar.plugins.java.api.tree.MethodInvocationTree;
+import org.sonar.plugins.java.api.tree.Tree;
+import org.sonar.plugins.java.api.tree.VariableTree;
 
 import java.util.List;
 
@@ -34,6 +39,8 @@ import java.util.List;
 public class UncompressedDataTransmissionRule extends IssuableSubscriptionVisitor {
     private static final String ERROR_MESSAGE = "Prefer using GzipOutputStream instead of OutputStream to improve energy efficiency.";
     private static final MethodMatchers matcherUrlConnection = MethodMatchers.create().ofSubTypes("java.net.URLConnection").names("getOutputStream").addWithoutParametersMatcher().build();
+    // TODO: 22/03/2022 Change methodMatcher for anything but a "new GZIPOutputStream()", the new being the problem here.
+    //  I managed to compare it with another NEW_CLASS but it ain't gonna work for the other cases
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -45,10 +52,9 @@ public class UncompressedDataTransmissionRule extends IssuableSubscriptionVisito
         super.visitNode(tree);
         if (tree.is(Tree.Kind.VARIABLE)) {
             VariableTree variableTree = (VariableTree) tree;
-            if (variableTree.type().symbolType().fullyQualifiedName().equals("java.io.OutputStream")) {
-                if (variableTree.initializer() != null) {
-                    checkMethodInitilization(variableTree.initializer(), variableTree.initializer());
-                }
+            if (variableTree.type().symbolType().fullyQualifiedName().equals("java.io.OutputStream")
+                    && variableTree.initializer() != null) {
+                checkMethodInitilization(variableTree.initializer(), variableTree.initializer());
             }
         }
     }
@@ -61,20 +67,18 @@ public class UncompressedDataTransmissionRule extends IssuableSubscriptionVisito
      */
     private void checkMethodInitilization(Tree treeToCheck, Tree treeToReport) {
         try {
-            if (treeToCheck.is(Tree.Kind.METHOD_INVOCATION)) {
-                if (matcherUrlConnection.matches((MethodInvocationTree) treeToCheck)) {
-                    reportIssue(treeToReport, ERROR_MESSAGE);
-                }
+            if (treeToCheck.is(Tree.Kind.METHOD_INVOCATION)
+                    && matcherUrlConnection.matches((MethodInvocationTree) treeToCheck)) {
+                reportIssue(treeToReport, ERROR_MESSAGE);
+            } else if (treeToCheck.is(Tree.Kind.NEW_CLASS)
+                    && !(((NewClassTreeImpl) treeToCheck).getConstructorIdentifier().name().equals("GZIPOutputStream"))) {
+                reportIssue(treeToReport, ERROR_MESSAGE);
             } else {
-                if (treeToCheck.is(Tree.Kind.PARENTHESIZED_EXPRESSION)) {
-                    ParenthesizedTree parenthesizedTree = (ParenthesizedTree) treeToCheck;
-                    checkMethodInitilization(parenthesizedTree.expression(), treeToReport);
-                } else if (treeToCheck.is(Tree.Kind.TYPE_CAST)) {
-                    TypeCastTree typeCastTree = (TypeCastTree) treeToCheck;
-                    checkMethodInitilization(typeCastTree.expression(), treeToReport);
+                Tree returnedArgument = (Tree) CheckArgumentComplexType.getChildExpression((ExpressionTree) treeToCheck);
+                if (returnedArgument != treeToCheck) {
+                    checkMethodInitilization(returnedArgument, treeToReport);
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
