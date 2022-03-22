@@ -30,11 +30,11 @@ import org.sonar.check.Rule;
 public class SaveModeAwarenessXmlRule extends XPathSimpleCheck {
 
     private static final String ACTION_POWER_CHANGED_XPATH = "//manifest/application/receiver/intent-filter/action/@name[.=\"android.intent.action.BATTERY_CHANGED\"]";
-    private static final String ERROR_MESSAGE = "Taking into account when the device is entering or exiting the power save mode is a good practice.";
+    private static final String ADVICE_MESSAGE = "Taking into account when the device is entering or exiting the power save mode is a good practice.";
 
     @Override
     protected String getMessage() {
-        return ERROR_MESSAGE;
+        return ADVICE_MESSAGE;
     }
 
     @Override

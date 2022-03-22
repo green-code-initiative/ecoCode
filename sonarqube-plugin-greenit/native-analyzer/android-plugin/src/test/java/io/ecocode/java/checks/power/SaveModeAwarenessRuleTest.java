@@ -7,7 +7,11 @@ public class SaveModeAwarenessRuleTest {
 
     @Test
     public void verify() {
-        JavaCheckVerifier.newVerifier().onFile("src/test/files/power/SaveModeAwarenessCheckTest.java")
+        JavaCheckVerifier.newVerifier().onFile("src/test/files/power/SaveModeAwarenessCheckContent.java")
+                .withCheck(new SaveModeAwarenessRule())
+                .verifyIssues();
+
+        JavaCheckVerifier.newVerifier().onFile("src/test/files/power/SaveModeAwarenessCheckOS.java")
                 .withCheck(new SaveModeAwarenessRule())
                 .verifyIssues();
     }
