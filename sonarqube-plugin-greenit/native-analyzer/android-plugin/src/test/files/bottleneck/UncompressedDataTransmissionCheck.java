@@ -18,8 +18,10 @@ public abstract class OutputStream {
         java.io.OutputStream stream = (java.io.DataOutputStream) con.getOutputStream();// Noncompliant {{Prefer using GzipOutputStream instead of OutputStream to improve energy efficiency.}}
         java.io.OutputStream stream = (java.io.DataOutputStream) httpCon.getOutputStream();// Noncompliant {{Prefer using GzipOutputStream instead of OutputStream to improve energy efficiency.}}
         java.io.OutputStream stream = ((java.io.DataOutputStream) httpCon.getOutputStream());// Noncompliant {{Prefer using GzipOutputStream instead of OutputStream to improve energy efficiency.}}
-        java.io.OutputStream stream = new java.io.FileOutputStream("myfile.zip");// Noncompliant {{Prefer using GzipOutputStream instead of OutputStream to improve energy efficiency.}}
-        java.io.OutputStream stream = new java.io.BufferedOutputStream(new java.io.FileOutputStream("myfile.zip"));// Noncompliant {{Prefer using GzipOutputStream instead of OutputStream to improve energy efficiency.}}
+
+        java.io.OutputStream stream = new java.io.FileOutputStream("myfile.zip");
+        java.io.OutputStream stream = new java.io.BufferedOutputStream(new java.io.FileOutputStream("myfile.zip"));
+        java.io.OutputStream stream = new java.io.BufferedOutputStream(con.getOutputStream());// Noncompliant {{Prefer using GzipOutputStream instead of OutputStream to improve energy efficiency.}}
 
         java.util.zip.GZIPOutputStream stream = new java.io.GZIPOutputStream(con.getOutputStream());
         java.io.OutputStream stream = new java.io.GZIPOutputStream(con.getOutputStream());

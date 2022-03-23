@@ -22,6 +22,7 @@ package io.ecocode.java.checks.bottleneck;
 import com.google.common.collect.ImmutableList;
 import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
 import org.sonar.check.Rule;
+import org.sonar.java.model.expression.MethodInvocationTreeImpl;
 import org.sonar.java.model.expression.NewClassTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
@@ -71,6 +72,8 @@ public class UncompressedDataTransmissionRule extends IssuableSubscriptionVisito
                     && matcherUrlConnection.matches((MethodInvocationTree) treeToCheck)) {
                 reportIssue(treeToReport, ERROR_MESSAGE);
             } else if (treeToCheck.is(Tree.Kind.NEW_CLASS)
+                    && ((NewClassTreeImpl) treeToCheck).arguments().get(0).is(Tree.Kind.METHOD_INVOCATION)
+                    && ((MethodInvocationTreeImpl)((NewClassTreeImpl) treeToCheck).arguments().get(0)).methodBinding.toString().contains("getOutputStream")
                     && !(((NewClassTreeImpl) treeToCheck).getConstructorIdentifier().name().equals("GZIPOutputStream"))) {
                 reportIssue(treeToReport, ERROR_MESSAGE);
             } else {
