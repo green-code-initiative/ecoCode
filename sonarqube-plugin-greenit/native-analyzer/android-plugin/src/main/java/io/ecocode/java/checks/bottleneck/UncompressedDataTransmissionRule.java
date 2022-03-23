@@ -22,14 +22,9 @@ package io.ecocode.java.checks.bottleneck;
 import com.google.common.collect.ImmutableList;
 import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
 import org.sonar.check.Rule;
-import org.sonar.java.model.expression.MethodInvocationTreeImpl;
-import org.sonar.java.model.expression.NewClassTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.ExpressionTree;
-import org.sonar.plugins.java.api.tree.MethodInvocationTree;
-import org.sonar.plugins.java.api.tree.Tree;
-import org.sonar.plugins.java.api.tree.VariableTree;
+import org.sonar.plugins.java.api.tree.*;
 
 import java.util.List;
 
@@ -71,17 +66,23 @@ public class UncompressedDataTransmissionRule extends IssuableSubscriptionVisito
             if (treeToCheck.is(Tree.Kind.METHOD_INVOCATION)
                     && matcherUrlConnection.matches((MethodInvocationTree) treeToCheck)) {
                 reportIssue(treeToReport, ERROR_MESSAGE);
-            } else if (treeToCheck.is(Tree.Kind.NEW_CLASS)
-                    && ((NewClassTreeImpl) treeToCheck).arguments().get(0).is(Tree.Kind.METHOD_INVOCATION)
-                    && ((MethodInvocationTreeImpl)((NewClassTreeImpl) treeToCheck).arguments().get(0)).methodBinding.toString().contains("getOutputStream")
-                    && !(((NewClassTreeImpl) treeToCheck).getConstructorIdentifier().name().equals("GZIPOutputStream"))) {
-                reportIssue(treeToReport, ERROR_MESSAGE);
+            } else if (treeToCheck.is(Tree.Kind.NEW_CLASS)) {
+                Arguments argumentsTreeToCheck = ((NewClassTree) treeToCheck).arguments();
+                List<IdentifierTree> identifierTreeToCheck = ((NewClassTree) treeToCheck).constructorSymbol().usages();
+                if (argumentsTreeToCheck.size() != 0
+                        && identifierTreeToCheck.size() != 0
+                        && argumentsTreeToCheck.get(0).is(Tree.Kind.METHOD_INVOCATION)
+                        && ((MethodInvocationTree) argumentsTreeToCheck.get(0)).symbol().name().contains("getOutputStream")
+                        && !(identifierTreeToCheck.get(0).name().equals("GZIPOutputStream"))) {
+                    reportIssue(treeToReport, ERROR_MESSAGE);
+                }
             } else {
                 Tree returnedArgument = (Tree) CheckArgumentComplexType.getChildExpression((ExpressionTree) treeToCheck);
                 if (returnedArgument != treeToCheck) {
                     checkMethodInitilization(returnedArgument, treeToReport);
                 }
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
