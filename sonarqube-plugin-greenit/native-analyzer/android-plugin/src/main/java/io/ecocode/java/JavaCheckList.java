@@ -23,17 +23,13 @@ import io.ecocode.java.checks.batch.JobCoalesceRule;
 import io.ecocode.java.checks.batch.SensorCoalesceRule;
 import io.ecocode.java.checks.bottleneck.InternetInTheLoopRule;
 import io.ecocode.java.checks.bottleneck.UncompressedDataTransmissionRule;
+import io.ecocode.java.checks.bottleneck.WifiMulticastLockRule;
 import io.ecocode.java.checks.idleness.*;
+import io.ecocode.java.checks.leakage.*;
 import io.ecocode.java.checks.optimized_api.BluetoothLowEnergyRule;
 import io.ecocode.java.checks.optimized_api.FusedLocationRule;
-import io.ecocode.java.checks.sobriety.*;
 import io.ecocode.java.checks.power.ChargeAwarenessRule;
-import io.ecocode.java.checks.sobriety.BrightnessOverrideRule;
-import io.ecocode.java.checks.leakage.*;
-import io.ecocode.java.checks.sobriety.ThriftyGeolocationMinDistanceRule;
-import io.ecocode.java.checks.sobriety.ThriftyGeolocationMinTimeRule;
-import io.ecocode.java.checks.sobriety.ThriftyMotionSensorRule;
-import io.ecocode.java.checks.bottleneck.WifiMulticastLockRule;
+import io.ecocode.java.checks.sobriety.*;
 import org.sonar.plugins.java.api.JavaCheck;
 
 import java.util.ArrayList;
@@ -82,7 +78,8 @@ public final class JavaCheckList {
                 ThriftyNotificationRule.class,
                 UncompressedDataTransmissionRule.class,
                 SensorCoalesceRule.class,
-                JobCoalesceRule.class
+                JobCoalesceRule.class,
+                ThriftyGeolocationCriteriaRule.class
         ));
     }
 
