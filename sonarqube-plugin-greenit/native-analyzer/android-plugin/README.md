@@ -5,8 +5,11 @@ ecoCode Android SonarQube plugin is an "eco-responsibility" static code analyzer
 
 ## Screenshot
 
-We are currently working on a custom UI for the plugin. You can see the dashboard below.
+We are currently working on a custom UI for the plugin. You can see the new user-friendly dashboard below.
+
  **Warning**: This UI is not released on open source.
+ 
+ 
 ![dashboard](docs/screenshot_1.png)
 
 ## Build and deploy the plugin
