@@ -53,7 +53,7 @@ public class JavaRulesDefinitionTest {
         assertThat(sensorCoalesceRule.name()).isEqualTo("Batch: Sensor Coalesce");
         assertThat(sensorCoalesceRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(sensorCoalesceRule.type()).isEqualTo(RuleType.CODE_SMELL);
-      
+
         Rule jobCoalesceRule = repository.rule("EBAT003");
         assertThat(jobCoalesceRule).isNotNull();
         assertThat(jobCoalesceRule.name()).isEqualTo("Batch: Job Coalesce");
@@ -179,6 +179,12 @@ public class JavaRulesDefinitionTest {
         assertThat(thriftyGeolocationMinTimeRule.name()).isEqualTo("Sobriety: Thrifty Geolocation (minTime)");
         assertThat(thriftyGeolocationMinTimeRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(thriftyGeolocationMinTimeRule.type()).isEqualTo(RuleType.CODE_SMELL);
+
+        Rule thriftyGeolocationCriteriaRule = repository.rule("ESOB006");
+        assertThat(thriftyGeolocationCriteriaRule).isNotNull();
+        assertThat(thriftyGeolocationCriteriaRule.name()).isEqualTo("Sobriety: Thrifty Geolocation Criteria");
+        assertThat(thriftyGeolocationCriteriaRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+        assertThat(thriftyGeolocationCriteriaRule.type()).isEqualTo(RuleType.CODE_SMELL);
 
         Rule thriftyBluetoothLowEnergySetAdvertiseMode = repository.rule("ESOB007");
         assertThat(thriftyBluetoothLowEnergySetAdvertiseMode).isNotNull();
