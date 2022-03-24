@@ -162,6 +162,12 @@ public class JavaRulesDefinitionTest {
         assertThat(chargeAwarenessRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(chargeAwarenessRule.type()).isEqualTo(RuleType.CODE_SMELL);
 
+        Rule saveModeAwareness = repository.rule("EPOW006");
+        assertThat(saveModeAwareness).isNotNull();
+        assertThat(saveModeAwareness.name()).isEqualTo("Power: Save Mode Awareness");
+        assertThat(saveModeAwareness.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+        assertThat(saveModeAwareness.type()).isEqualTo(RuleType.CODE_SMELL);
+
         Rule thriftyMotionSensorRule = repository.rule("ESOB001");
         assertThat(thriftyMotionSensorRule).isNotNull();
         assertThat(thriftyMotionSensorRule.name()).isEqualTo("Sobriety: Thrifty Motion Sensor");

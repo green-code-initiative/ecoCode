@@ -27,6 +27,7 @@ import io.ecocode.java.checks.idleness.*;
 import io.ecocode.java.checks.leakage.*;
 import io.ecocode.java.checks.optimized_api.BluetoothLowEnergyRule;
 import io.ecocode.java.checks.optimized_api.FusedLocationRule;
+import io.ecocode.java.checks.power.SaveModeAwarenessRule;
 import io.ecocode.java.checks.power.ChargeAwarenessRule;
 import io.ecocode.java.checks.sobriety.*;
 import org.sonar.plugins.java.api.JavaCheck;
@@ -77,6 +78,7 @@ public final class JavaCheckList {
                 ThriftyNotificationRule.class,
                 SensorCoalesceRule.class,
                 JobCoalesceRule.class,
+                SaveModeAwarenessRule.class,
                 ThriftyGeolocationCriteriaRule.class
         ));
     }
