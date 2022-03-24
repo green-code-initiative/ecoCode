@@ -22,6 +22,7 @@ package io.ecocode.java;
 import io.ecocode.java.checks.batch.JobCoalesceRule;
 import io.ecocode.java.checks.batch.SensorCoalesceRule;
 import io.ecocode.java.checks.bottleneck.InternetInTheLoopRule;
+import io.ecocode.java.checks.bottleneck.UncompressedDataTransmissionRule;
 import io.ecocode.java.checks.bottleneck.WifiMulticastLockRule;
 import io.ecocode.java.checks.idleness.*;
 import io.ecocode.java.checks.leakage.*;
@@ -76,6 +77,7 @@ public final class JavaCheckList {
                 ChargeAwarenessRule.class,
                 VibrationFreeRule.class,
                 ThriftyNotificationRule.class,
+                UncompressedDataTransmissionRule.class,
                 SensorCoalesceRule.class,
                 JobCoalesceRule.class,
                 SaveModeAwarenessRule.class,
