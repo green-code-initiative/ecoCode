@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<!-- Change this groupId to your own organization groupId -->
@@ -23,14 +23,15 @@
 
 	<name>Plugin Sonarqube des bonnes pratiques d'éco conception</name>
 	<description>Les règles s'appuient sur l'édition 3 du livre "Ecoconception Web / Les 115 bonnes pratiques" =>
-        https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html
-    </description>
+		https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html
+	</description>
 
 	<modules>
 		<module>java-plugin</module>
 		<module>php-plugin</module>
 		<module>python-plugin</module>
 		<module>android-plugin</module>
+		<module>codenarc-converter</module>
 	</modules>
 
 
@@ -51,6 +52,8 @@
 
 		<!-- Use UTF-8 for all resources -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<dependencyManagement>
@@ -153,5 +156,5 @@
 
 		</dependencies>
 	</dependencyManagement>
-	
+
 </project>

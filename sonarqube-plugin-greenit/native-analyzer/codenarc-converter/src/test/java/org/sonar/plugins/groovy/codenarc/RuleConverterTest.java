@@ -58,7 +58,7 @@ public class RuleConverterTest {
   private static final Logger log = LoggerFactory.getLogger(RuleConverterTest.class);
 
   private static final String PLUGIN_RULES_FILE_LOCATION =
-      "../sonar-groovy-plugin/src/main/resources/org/sonar/plugins/groovy/rules.xml";
+      "../android-plugin/src/main/resources/org/sonar/plugins/groovy/rules.xml";
 
   @org.junit.Rule public TemporaryFolder tmpDir = new TemporaryFolder();
 

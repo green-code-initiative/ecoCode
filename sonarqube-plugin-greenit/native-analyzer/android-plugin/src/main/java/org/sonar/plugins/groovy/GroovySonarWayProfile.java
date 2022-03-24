@@ -33,7 +33,7 @@ public class GroovySonarWayProfile implements BuiltInQualityProfilesDefinition {
   @Override
   public void define(Context context) {
     NewBuiltInQualityProfile sonarWay =
-        context.createBuiltInQualityProfile("Sonar way", Groovy.KEY);
+        context.createBuiltInQualityProfile(Groovy.PROFILE_NAME, Groovy.KEY);
 
     addRulesFromText(CodeNarcRulesDefinition.REPOSITORY_KEY, sonarWay);
     sonarWay.done();

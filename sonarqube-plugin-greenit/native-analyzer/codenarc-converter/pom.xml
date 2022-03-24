@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>org.sonarsource.groovy</groupId>
-    <artifactId>groovy</artifactId>
-    <version>1.9-SNAPSHOT</version>
+    <groupId>fr.cnumr</groupId>
+    <artifactId>green-it</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
   </parent>
 
   <artifactId>sonar-codenarc-converter</artifactId>
@@ -13,7 +13,7 @@
   <name>Sonar CodeNarc Converter</name>
 
   <properties>
-    <auto.version>1.9</auto.version>
+    <auto.version>1.8.2</auto.version>
     <maven.deploy.skip>true</maven.deploy.skip>
   </properties>
 
@@ -26,7 +26,7 @@
     <dependency>
       <groupId>org.commonmark</groupId>
       <artifactId>commonmark-ext-yaml-front-matter</artifactId>
-      <version>0.18.1</version>
+      <version>0.18.0</version>
     </dependency>
     <dependency>
       <groupId>org.commonmark</groupId>
@@ -37,6 +37,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-simple</artifactId>
+      <version>1.7.33</version>
     </dependency>
     <dependency>
       <groupId>com.googlecode.java-diff-utils</groupId>
@@ -47,10 +48,20 @@
     <dependency>
       <groupId>org.sonarsource.sonarqube</groupId>
       <artifactId>sonar-plugin-api</artifactId>
+      <!--      <version>8.9.0.43852</version>-->
+      <!--      TODO  was 8.9-->
+      <version>8.0</version>
     </dependency>
     <dependency>
       <groupId>org.codenarc</groupId>
       <artifactId>CodeNarc</artifactId>
+      <version>2.2.1</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.codehaus.groovy</groupId>
+          <artifactId>groovy-ant</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
       <groupId>com.google.guava</groupId>
@@ -60,14 +71,17 @@
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
+      <version>2.11.0</version>
     </dependency>
     <dependency>
       <groupId>commons-lang</groupId>
       <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+      <version>4.13.2</version>
     </dependency>
 
     <dependency>
@@ -81,6 +95,18 @@
       <version>${auto.version}</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+      <groupId>org.gmetrics</groupId>
+      <artifactId>GMetrics</artifactId>
+      <version>1.1</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.codehaus.groovy</groupId>
+          <artifactId>groovy-ant</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
   </dependencies>
 
   <profiles>
@@ -109,6 +135,27 @@
                   <arguments>
                     <argument>${project.basedir}</argument>
                   </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-install-plugin</artifactId>
+            <version>2.5.2</version>
+            <executions>
+              <execution>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>install-file</goal>
+                </goals>
+                <configuration>
+                  <file>${project.basedir}/CodeNarc/build/libs/CodeNarc-2.2.1.jar</file>
+                  <groupId>org.codenarc</groupId>
+                  <artifactId>CodeNarc</artifactId>
+                  <version>2.2.1</version>
+                  <packaging>jar</packaging>
                 </configuration>
               </execution>
             </executions>
