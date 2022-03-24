@@ -205,6 +205,9 @@ public class Rule {
             case "concurrency":
                 results.add("multi-threading");
                 break;
+            case "ecocode":
+                results.add("code-smell");
+                break;
             case "exceptions":
                 results.add("error-handling");
                 break;

@@ -86,6 +86,11 @@ public class RuleConverter {
 
     private static void printResultsByCategory(RuleParserResult result) {
         log.info("Rules by category:");
-        result.getRuleCountByCategory().forEach((category, count) -> log.info("  - {} : {}", category, count));
+        result.getRuleCountByCategory().forEach((category, count) -> {
+            if ("code-smell".equals(category)) {
+                category = "ecocode";
+            }
+            log.info("  - {} : {}", category, count);
+        });
     }
 }

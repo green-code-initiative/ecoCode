@@ -22,29 +22,31 @@ package org.sonar.plugins.groovy.codenarc;
 import org.codenarc.rule.AbstractRule;
 
 public enum RuleSet {
-  BASIC("basic"),
-  BRACES("braces"),
-  COMMENTS("comments"), // new in 1.3
-  CONCURRENCY("concurrency"),
-  CONVENTION("convention"), // new in 0.16
-  DESIGN("design"),
-  DRY("dry"),
-  ENHANCED("enhanced"), // new in 1.1
-  EXCEPTIONS("exceptions"),
-  FORMATTING("formatting"), // new in 0.15
-  GENERIC("generic"),
-  GRAILS("grails"),
-  GROOVYISM("groovyism"), // new in 0.16
-  IMPORTS("imports"),
-  JDBC("jdbc"), // new in 0.14
-  JUNIT("junit"),
-  LOGGING("logging"),
-  NAMING("naming"),
-  SECURITY("security"), // new in 0.14
-  SERIALIZATION("serialization"), // new in 0.14
-  SIZE("size"),
-  UNNECESSARY("unnecessary"),
-  UNUSED("unused");
+  ECOCODE("ecocode");
+//  BASIC("basic"),
+//  BRACES("braces"),
+//  COMMENTS("comments"), // new in 1.3
+//  CONCURRENCY("concurrency"),
+//  CONVENTION("convention"), // new in 0.16
+//  DESIGN("design"),
+//  DRY("dry"),
+//  ENHANCED("enhanced"), // new in 1.1
+//  EXCEPTIONS("exceptions"),
+//  FORMATTING("formatting"), // new in 0.15
+//  GENERIC("generic"),
+//  GRAILS("grails"),
+//  GROOVYISM("groovyism"), // new in 0.16
+//  IMPORTS("imports"),
+//  JDBC("jdbc"), // new in 0.14
+//  JUNIT("junit"),
+//  LOGGING("logging"),
+//  NAMING("naming"),
+//  SECURITY("security"), // new in 0.14
+//  SERIALIZATION("serialization"), // new in 0.14
+//  SIZE("size"),
+//  UNNECESSARY("unnecessary"),
+//  UNUSED("unused");
+
 
   private final String label;
 

@@ -19,33 +19,34 @@ package org.codenarc.ruleset
  * Holds list of all RuleSet files.
  *
  * @author Chris Mair
-  */
+ */
 class RuleSets {
 
     static final List ALL_RULESET_FILES = [
-        'rulesets/basic.xml',
-        'rulesets/braces.xml',
-        'rulesets/comments.xml',
-        'rulesets/concurrency.xml',
-        'rulesets/convention.xml',
-        'rulesets/design.xml',
-        'rulesets/dry.xml',
-        'rulesets/enhanced.xml',
-        'rulesets/exceptions.xml',
-        'rulesets/formatting.xml',
-        'rulesets/generic.xml',
-        'rulesets/grails.xml',
-        'rulesets/groovyism.xml',
-        'rulesets/imports.xml',
-        'rulesets/jdbc.xml',
-        'rulesets/junit.xml',
-        'rulesets/logging.xml',
-        'rulesets/naming.xml',
-        'rulesets/security.xml',
-        'rulesets/serialization.xml',
-        'rulesets/size.xml',
-        'rulesets/unnecessary.xml',
-        'rulesets/unused.xml'
+            'rulesets/basic.xml',
+            'rulesets/braces.xml',
+            'rulesets/comments.xml',
+            'rulesets/concurrency.xml',
+            'rulesets/convention.xml',
+            'rulesets/design.xml',
+            'rulesets/dry.xml',
+            'rulesets/ecocode.xml',
+            'rulesets/enhanced.xml',
+            'rulesets/exceptions.xml',
+            'rulesets/formatting.xml',
+            'rulesets/generic.xml',
+            'rulesets/grails.xml',
+            'rulesets/groovyism.xml',
+            'rulesets/imports.xml',
+            'rulesets/jdbc.xml',
+            'rulesets/junit.xml',
+            'rulesets/logging.xml',
+            'rulesets/naming.xml',
+            'rulesets/security.xml',
+            'rulesets/serialization.xml',
+            'rulesets/size.xml',
+            'rulesets/unnecessary.xml',
+            'rulesets/unused.xml'
     ]
 
 }
