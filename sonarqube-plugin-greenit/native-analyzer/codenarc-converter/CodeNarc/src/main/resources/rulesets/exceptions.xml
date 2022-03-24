@@ -1,0 +1,31 @@
+<ruleset xmlns="http://codenarc.org/ruleset/1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://codenarc.org/ruleset/1.0 http://codenarc.org/ruleset-schema.xsd"
+        xsi:noNamespaceSchemaLocation="http://codenarc.org/ruleset-schema.xsd">
+
+    <description>
+        Exceptions rule set.
+        These rules implement standards and best practices related to catching and throwing of exceptions.
+    </description>
+
+    <rule class='org.codenarc.rule.exceptions.CatchArrayIndexOutOfBoundsExceptionRule'/>
+    <rule class='org.codenarc.rule.exceptions.CatchErrorRule'/>
+    <rule class='org.codenarc.rule.exceptions.CatchExceptionRule'/>
+    <rule class='org.codenarc.rule.exceptions.CatchIllegalMonitorStateExceptionRule'/>
+    <rule class='org.codenarc.rule.exceptions.CatchIndexOutOfBoundsExceptionRule'/>
+    <rule class='org.codenarc.rule.exceptions.CatchNullPointerExceptionRule'/>
+    <rule class='org.codenarc.rule.exceptions.CatchRuntimeExceptionRule'/>
+    <rule class='org.codenarc.rule.exceptions.CatchThrowableRule'/>
+    <rule class='org.codenarc.rule.exceptions.ConfusingClassNamedExceptionRule'/>
+    <rule class='org.codenarc.rule.exceptions.ExceptionExtendsErrorRule'/>
+    <rule class='org.codenarc.rule.exceptions.ExceptionExtendsThrowableRule'/>
+    <rule class='org.codenarc.rule.exceptions.ExceptionNotThrownRule'/>
+    <rule class='org.codenarc.rule.exceptions.MissingNewInThrowStatementRule'/>
+    <rule class='org.codenarc.rule.exceptions.ReturnNullFromCatchBlockRule'/>
+    <rule class='org.codenarc.rule.exceptions.SwallowThreadDeathRule'/>
+    <rule class='org.codenarc.rule.exceptions.ThrowErrorRule'/>
+    <rule class='org.codenarc.rule.exceptions.ThrowExceptionRule'/>
+    <rule class='org.codenarc.rule.exceptions.ThrowNullPointerExceptionRule'/>
+    <rule class='org.codenarc.rule.exceptions.ThrowRuntimeExceptionRule'/>
+    <rule class='org.codenarc.rule.exceptions.ThrowThrowableRule'/>
+</ruleset>

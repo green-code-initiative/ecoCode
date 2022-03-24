@@ -1,0 +1,20 @@
+<ruleset xmlns="http://codenarc.org/ruleset/1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://codenarc.org/ruleset/1.0 http://codenarc.org/ruleset-schema.xsd"
+        xsi:noNamespaceSchemaLocation="http://codenarc.org/ruleset-schema.xsd">
+
+    <description>
+        Security rule set.
+        These rules find security problems within the source code.
+    </description>
+
+    <rule class='org.codenarc.rule.security.NonFinalSubclassOfSensitiveInterfaceRule'/>
+    <rule class='org.codenarc.rule.security.InsecureRandomRule'/>
+    <rule class='org.codenarc.rule.security.FileCreateTempFileRule'/>
+    <rule class='org.codenarc.rule.security.SystemExitRule'/>
+    <rule class='org.codenarc.rule.security.ObjectFinalizeRule'/>
+    <rule class='org.codenarc.rule.security.JavaIoPackageAccessRule'/>
+    <rule class='org.codenarc.rule.security.UnsafeArrayDeclarationRule'/>
+    <rule class='org.codenarc.rule.security.PublicFinalizeMethodRule'/>
+    <rule class='org.codenarc.rule.security.NonFinalPublicFieldRule'/>
+</ruleset>
