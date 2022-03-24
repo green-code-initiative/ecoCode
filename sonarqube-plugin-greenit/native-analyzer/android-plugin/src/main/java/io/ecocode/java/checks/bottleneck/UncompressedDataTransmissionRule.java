@@ -29,7 +29,9 @@ import org.sonar.plugins.java.api.tree.*;
 import java.util.List;
 
 /**
- * Checks the creation of a OutputStream class and calls checkMethodInitilization once a class is found
+ * If an OutputStream class is created:
+ * - if the method getOutputStream from the URLConnection class is called, reports the issue.
+ * - if a constructor is called with for parameter getOutputStream, reports the issue if the constructor isn't a GZIPOutputStream.
  */
 @Rule(key = "EBOT003", name = "ecoCodeUncompressedDataTransmission")
 public class UncompressedDataTransmissionRule extends IssuableSubscriptionVisitor {
