@@ -186,6 +186,12 @@ public class JavaRulesDefinitionTest {
         assertThat(thriftyGeolocationMinTimeRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(thriftyGeolocationMinTimeRule.type()).isEqualTo(RuleType.CODE_SMELL);
 
+        Rule thriftyGeolocationCriteriaRule = repository.rule("ESOB006");
+        assertThat(thriftyGeolocationCriteriaRule).isNotNull();
+        assertThat(thriftyGeolocationCriteriaRule.name()).isEqualTo("Sobriety: Thrifty Geolocation Criteria");
+        assertThat(thriftyGeolocationCriteriaRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+        assertThat(thriftyGeolocationCriteriaRule.type()).isEqualTo(RuleType.CODE_SMELL);
+
         Rule thriftyBluetoothLowEnergySetAdvertiseMode = repository.rule("ESOB007");
         assertThat(thriftyBluetoothLowEnergySetAdvertiseMode).isNotNull();
         assertThat(thriftyBluetoothLowEnergySetAdvertiseMode.name()).isEqualTo("Sobriety: Thrifty Bluetooth Low Energy (setAdvertiseMode)");
