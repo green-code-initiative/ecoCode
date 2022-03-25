@@ -163,8 +163,11 @@ ruleset {
     DuplicateListLiteral 
     DuplicateMapLiteral 
     DuplicateNumberLiteral 
-    DuplicateStringLiteral 
-    
+    DuplicateStringLiteral
+
+    // rulesets/ecocode.xml
+    FatApp
+
     // rulesets/enhanced.xml
     CloneWithoutCloneable 
     JUnitAssertEqualsConstantActualValue 

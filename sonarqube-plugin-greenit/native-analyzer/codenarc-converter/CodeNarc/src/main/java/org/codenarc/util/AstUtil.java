@@ -108,9 +108,9 @@ public class AstUtil {
      */
     public static boolean isConstantOrConstantLiteral(Expression expression) {
         return expression instanceof ConstantExpression ||
-            isPredefinedConstant(expression) ||
-            isMapLiteralWithOnlyConstantValues(expression) ||
-            isListLiteralWithOnlyConstantValues(expression);
+                isPredefinedConstant(expression) ||
+                isMapLiteralWithOnlyConstantValues(expression) ||
+                isListLiteralWithOnlyConstantValues(expression);
     }
 
     /**
@@ -122,7 +122,7 @@ public class AstUtil {
             List<MapEntryExpression> entries = ((MapExpression) expression).getMapEntryExpressions();
             for (MapEntryExpression entry : entries) {
                 if (!isConstantOrConstantLiteral(entry.getKeyExpression()) ||
-                    !isConstantOrConstantLiteral(entry.getValueExpression())) {
+                        !isConstantOrConstantLiteral(entry.getValueExpression())) {
                     return false;
                 }
             }
@@ -555,7 +555,7 @@ public class AstUtil {
             String sourceLine = sourceCode.getLines().get(sourceLineNumber-1);
 
             String modifiers = (startOfDeclaration >= 0 && startOfVariableName >= 0 && sourceLine.length() >= startOfVariableName) ?
-                sourceLine.substring(startOfDeclaration - 1, startOfVariableName - 1) : "";
+                    sourceLine.substring(startOfDeclaration - 1, startOfVariableName - 1) : "";
             return modifiers.contains("final");
         }
         return false;
@@ -1327,5 +1327,22 @@ public class AstUtil {
         return sourceCode.getLines().get(AstUtil.findFirstNonAnnotationLine(node, sourceCode) - 1);
     }
 
+    public static List<Object> getArgumentsValue(Expression expression) {
+        if (expression instanceof ArgumentListExpression) {
+            ArrayList<Object> values = new ArrayList<>();
+            for (Expression expr : ((ArgumentListExpression) expression).getExpressions()) {
+                values.add(getArgumentValue(expr));
+            }
+            return values;
+        } else return null;
+    }
+
+    private static Object getArgumentValue(Expression expression) {
+        if (expression instanceof VariableExpression) {
+            return expression.getText();
+        } else if (expression instanceof ConstantExpression) {
+            return ((ConstantExpression) expression).getValue();
+        } else return null;
+    }
 
 }

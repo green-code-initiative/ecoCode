@@ -1,3 +1,7 @@
+
+#TODO: Sort the following line into the file
+- FatApp rule (ecocode) - Using "multiDexEnabled true" goes against the overall reduction of the weight of the apps and hence must be avoided.
+
 <!-- markdownlint-disable MD003 MD004 MD007 MD032 -->
 # CodeNarc Change Log
 

@@ -31,10 +31,10 @@ public class GroovyTest {
     Groovy language = new Groovy(settings.asConfig());
     assertThat(language.getKey()).isEqualTo("grvy");
     assertThat(language.getName()).isEqualTo("Groovy");
-    assertThat(language.getFileSuffixes()).isEqualTo(new String[] {".groovy"});
+    assertThat(language.getFileSuffixes()).isEqualTo(new String[] {".groovy",".gradle"});
 
     settings.setProperty(Groovy.FILE_SUFFIXES_KEY, "");
-    assertThat(language.getFileSuffixes()).containsOnly(".groovy");
+    assertThat(language.getFileSuffixes()).containsOnly(".groovy",".gradle");
 
     settings.setProperty(Groovy.FILE_SUFFIXES_KEY, ".groovy, .grvy");
     assertThat(language.getFileSuffixes()).containsOnly(".groovy", ".grvy");
