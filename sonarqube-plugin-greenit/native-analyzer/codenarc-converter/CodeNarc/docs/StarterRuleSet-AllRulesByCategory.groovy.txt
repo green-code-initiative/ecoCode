@@ -167,6 +167,7 @@ ruleset {
 
     // rulesets/ecocode.xml
     FatApp
+    SupportedVersionRange
 
     // rulesets/enhanced.xml
     CloneWithoutCloneable 

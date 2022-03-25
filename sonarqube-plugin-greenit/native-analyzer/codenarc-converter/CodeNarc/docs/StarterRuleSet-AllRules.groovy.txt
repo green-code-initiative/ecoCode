@@ -302,7 +302,8 @@ ruleset {
     StaticFieldsBeforeInstanceFields 
     StaticMatcherField 
     StaticMethodsBeforeInstanceMethods 
-    StaticSimpleDateFormatField 
+    StaticSimpleDateFormatField
+    SupportedVersionRange
     SwallowThreadDeath 
     SynchronizedMethod 
     SynchronizedOnBoxedPrimitive 

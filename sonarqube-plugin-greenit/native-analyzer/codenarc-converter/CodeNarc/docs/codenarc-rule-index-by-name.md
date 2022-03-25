@@ -305,6 +305,7 @@ title: CodeNarc - Rule Index by Name
 * [StaticMatcherField](./codenarc-rules-concurrency.html#staticmatcherfield-rule)
 * [StaticMethodsBeforeInstanceMethods](./codenarc-rules-convention.html#staticmethodsbeforeinstancemethods-rule)
 * [StaticSimpleDateFormatField](./codenarc-rules-concurrency.html#staticsimpledateformatfield-rule)
+* [SupportedVersionRange](./codenarc-rules-ecocode.html#supportedversionrange-rule)
 * [SwallowThreadDeath](./codenarc-rules-exceptions.html#swallowthreaddeath-rule)
 * [SynchronizedMethod](./codenarc-rules-concurrency.html#synchronizedmethod-rule)
 * [SynchronizedOnBoxedPrimitive](./codenarc-rules-concurrency.html#synchronizedonboxedprimitive-rule)
