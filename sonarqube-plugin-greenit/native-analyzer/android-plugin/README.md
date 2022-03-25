@@ -3,15 +3,6 @@
 
 ecoCode Android SonarQube plugin is an "eco-responsibility" static code analyzer for native Android projects written in Java (Kotlin unsupported yet). Its aim is to detect code smells to indicate weither the source code can be improved to reduce their environmental and social impact.
 
-## Screenshot
-
-We are currently working on a custom UI for the plugin. You can see the new user-friendly dashboard below.
-
- **Warning**: This UI is not released on open source.
- 
- 
-![dashboard](docs/screenshot_1.png)
-
 ## Build and deploy the plugin
 
 ### Prerequisites
