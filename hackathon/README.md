@@ -4,13 +4,3 @@
 <h1 align="center">
   Challenge
 </h1>
-
-# Bonnes Pratiques Génériques
-
-TODO
-
-# Bonnes Pratiques spécifique Mobile
-
-
-
-
