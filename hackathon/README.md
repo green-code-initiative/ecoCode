@@ -1,6 +1,16 @@
-![Logo](../docs/logo-large.png)
----
+<p align="center">
+  <img src="../docs/logo-large.png">
+</p>
+<h1 align="center">
+  Challenge
+</h1>
 
-# Bienvenue pour ce 1er hackathon
+# Bonnes Pratiques Génériques
+
+TODO
+
+# Bonnes Pratiques spécifique Mobile
+
+
 
 
