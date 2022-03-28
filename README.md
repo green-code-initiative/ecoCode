@@ -18,7 +18,7 @@ ecoCode is based on evolving catalogs of [good practices](good_practices/), for 
 - [Python](sonarqube-plugin-greenit/python-plugin/)
 - [Android](sonarqube-plugin-greenit/android-plugin/)
 
-![Screenshot](docs/screenshot.png)
+![Screenshot](docs/screenshot.PNG)
 
 
 ## 🚀 Getting Started
