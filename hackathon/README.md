@@ -2,5 +2,5 @@
   <img src="../docs/logo-large.png">
 </p>
 <h1 align="center">
-  Challenge
+  🎈 Challenge 🎈
 </h1>
