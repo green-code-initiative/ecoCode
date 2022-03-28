@@ -13,10 +13,12 @@ ecoCode is based on evolving catalogs of [good practices](good_practices/), for 
 ## 🌿 SonarQube Plugin
 
 4 technologies are supported by the plugin right now:
-- [Java](sonarqube-plugin-greenit/native-analyzer/java-plugin/)
-- [PHP](sonarqube-plugin-greenit/native-analyzer/php-plugin/)
-- [Python](sonarqube-plugin-greenit/native-analyzer/python-plugin/)
-- [Android](sonarqube-plugin-greenit/native-analyzer/android-plugin/)
+- [Java](sonarqube-plugin-greenit/java-plugin/)
+- [PHP](sonarqube-plugin-greenit/php-plugin/)
+- [Python](sonarqube-plugin-greenit/python-plugin/)
+- [Android](sonarqube-plugin-greenit/android-plugin/)
+
+![Screenshot](docs/screenshot.png)
 
 
 ## 🚀 Getting Started
