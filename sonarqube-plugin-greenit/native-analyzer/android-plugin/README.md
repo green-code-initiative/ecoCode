@@ -49,7 +49,21 @@ Tests are located under:
 
 ### Plugin build
 
-Once the tests pass, the plugin jar can be created using:
+Once the tests pass, the plugin jar can be created following this steps:
+
+- In sonarqube-plugin-greenit/native-analyzer/codenarc-converter/CodeNarc (gradle 6.5.1, java 14)
+
+```sh
+gradle build -x test 
+```
+
+- In sonarqube-plugin-greenit/native-analyzer/codenarc-converter
+
+```sh
+mvn clean package
+```
+
+- Finally in sonarqube-plugin-greenit/native-analyzer/android-plugin
 
 ```sh
 mvn clean package
