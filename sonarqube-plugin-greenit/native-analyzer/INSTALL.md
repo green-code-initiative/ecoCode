@@ -21,6 +21,7 @@ gradle build -x test
 - In sonarqube-plugin-greenit/native-analyzer/codenarc-converter
 
 ```sh
+mvn initialize
 mvn clean package
 ```
 
