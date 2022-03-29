@@ -40,9 +40,30 @@ Tests are located under:
 
 ### Plugin build
 
-Once the tests pass, the plugin jar can be created using:
+Build CodeNarc (gradle 6.5.1, Java 14):
 
 ```sh
+./gradlew build -x test 
+```
+
+Add custom CodeNarc to Maven dependencies:
+
+```sh
+cd /codenarc-converter
+mvn initialize
+```
+
+Build codenarc-converter:
+
+```sh
+cd /codenarc-converter
+mvn clean package
+```
+
+Build android-plugin:
+
+```sh
+cd /android-plugin
 mvn clean package
 ```
 
@@ -67,7 +88,7 @@ SonarQube (*ecoCode* profiles).
 Do not forget to set them as "DEFAULT" or to configure your Android project on SonarQube to use these profiles before performing an
 analysis.
 
-When done, just use SonarQube as you normaly do for your classical Android clean code analysis.
+When done, just use SonarQube as you normally do for your classical Android clean code analysis.
 
 ## Plugin development
 
