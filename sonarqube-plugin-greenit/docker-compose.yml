@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3.3"
 services:
   sonar:
     image: sonarqube:latest
@@ -15,22 +15,21 @@ services:
       SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: 'true'
     volumes:
       - type: bind
-        source: ./native-analyzer/java-plugin/target/java-plugin-1.0.0-SNAPSHOT.jar
+        source: ./java-plugin/target/java-plugin-1.0.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/java-plugin-1.0.0-SNAPSHOT.jar
       - type: bind
-        source: ./native-analyzer/php-plugin/target/php-plugin-1.0.0-SNAPSHOT.jar
+        source: ./php-plugin/target/php-plugin-1.0.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/php-plugin-1.0.0-SNAPSHOT.jar
       - type: bind
-        source: ./native-analyzer/python-plugin/target/python-plugin-1.0.0-SNAPSHOT.jar
+        source: ./python-plugin/target/python-plugin-1.0.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/python-plugin-1.0.0-SNAPSHOT.jar
       - type: bind
-        source: ./native-analyzer/android-plugin/target/ecoCode-rules-1.0-SNAPSHOT.jar
+        source: ./android-plugin/target/ecoCode-rules-1.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/ecoCode-rules-1.0-SNAPSHOT.jar
       # - "conf:/opt/sonarqube/conf"
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"
-
 
   db:
     image: postgres:12
@@ -44,27 +43,6 @@ services:
       POSTGRES_PASSWORD: sonar
       POSTGRES_DB: sonarqube
       PGDATA: pg_data:/var/lib/postgresql/data/pgdata
-
-
-  sonarscanner:
-    container_name: sonarscanner
-    image: sonarsource/sonar-scanner-cli
-    depends_on:
-      - sonar
-    restart: on-failure
-    networks:
-      - sonarnet
-    environment:
-      SONAR_HOST_URL: http://sonar:9000
-      SONAR_LOGIN: $TOKEN
-      SONAR_PROJECT_BASE_DIR: /opt/project
-    volumes:
-      - type: bind
-        source: ./sonar-project.properties
-        target: /opt/project/sonar-project.properties
-      - type: bind
-        source: ./native-analyzer/
-        target: /opt/project/native-analyzer/
 
 networks:
   sonarnet:
