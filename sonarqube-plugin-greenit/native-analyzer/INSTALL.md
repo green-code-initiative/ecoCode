@@ -5,12 +5,14 @@
 
 ## Installation
 
-For now, [CodeNarc](/codenarc-converter/CodeNarc/README.md) implementation requires you to build it separately.
+The Android plugin uses CodeNarc to scan the gradle files of Android projects. To have more information about CodeNarc: [CodeNarc](/codenarc-converter/CodeNarc/README.md).
+
+CodeNarc must be built separately. Please see the following steps:
 
 Build CodeNarc (gradle 6.5.1, Java 14):
 
 ```sh
-gradle build -x test 
+./gradlew build -x test 
 ```
 
 Add custom CodeNarc to Maven dependencies:
@@ -27,23 +29,12 @@ cd /codenarc-converter
 mvn clean package
 ```
 
-Build android-plugin:
-
-```sh
-cd /android-plugin
-mvn clean package
-```
-
-Install dependencies from the root directory
-
+Install dependencies and build plugins from the root directory
 ```sh
 mvn clean install
 ```
 
-
 .jar files (one per plugin) will be moved in `target/lib` repository after build.
-
-For more details see CodeNarc-converter [README](/codenarc-converter/README.md).
 
 ## Links
 - Java how-to : https://github.com/SonarSource/sonar-java/blob/master/docs/CUSTOM_RULES_101.md

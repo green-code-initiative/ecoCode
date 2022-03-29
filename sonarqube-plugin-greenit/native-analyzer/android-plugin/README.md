@@ -52,7 +52,7 @@ Tests are located under:
 Build CodeNarc (gradle 6.5.1, Java 14):
 
 ```sh
-gradle build -x test 
+./gradlew build -x test 
 ```
 
 Add custom CodeNarc to Maven dependencies:
