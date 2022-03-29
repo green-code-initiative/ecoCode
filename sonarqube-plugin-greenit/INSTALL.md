@@ -75,6 +75,34 @@ TOKEN=MY_TOKEN docker-compose up --build -d
 
 ## Howto install Plugin Ecocode
 
+The Android plugin uses CodeNarc to scan the gradle files of Android projects. To have more information about CodeNarc: [CodeNarc](/codenarc-converter/CodeNarc/README.md).
+
+CodeNarc must be built separately. Please see the following steps:
+
+Build CodeNarc (gradle 6.5.1, Java 14):
+
+```sh
+./gradlew build -x test 
+```
+
+Add custom CodeNarc to Maven dependencies:
+
+```sh
+cd /codenarc-converter
+mvn initialize
+```
+
+Build codenarc-converter:
+
+```sh
+cd /codenarc-converter
+mvn clean package
+```
+
+Install dependencies and build plugins from the root directory
+```sh
+mvn clean install
+```
 
 ## Prerequisites
 
