@@ -142,9 +142,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<!--			TODO 4.11-->
 			<version>4.13.2</version>
-			<!--			<scope>test</scope>-->
 		</dependency>
 		<dependency>
 			<groupId>org.assertj</groupId>
@@ -159,12 +157,7 @@
 			<scope>test</scope>
 		</dependency>
 
-
-
-
-
-
-
+		<!-- Required for CodeNarc -->
 		<dependency>
 			<groupId>com.github.spotbugs</groupId>
 			<artifactId>spotbugs-annotations</artifactId>

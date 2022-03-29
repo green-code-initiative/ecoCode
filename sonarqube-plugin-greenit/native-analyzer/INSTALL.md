@@ -4,26 +4,46 @@
 - Mvn 3
 
 ## Installation
-Install dependencies from the root directory
 
-`mvn clean install`
+For now, [CodeNarc](/codenarc-converter/CodeNarc/README.md) implementation requires you to build it separately.
 
-.jar files (one per plugin) will be moved in `target/lib` repository after build.
-
-Codenarc has to be build separately using :
-
-- In sonarqube-plugin-greenit/native-analyzer/codenarc-converter/CodeNarc (gradle 6.5.1, java 14)
+Build CodeNarc (gradle 6.5.1, Java 14):
 
 ```sh
 gradle build -x test 
 ```
 
-- In sonarqube-plugin-greenit/native-analyzer/codenarc-converter
+Add custom CodeNarc to Maven dependencies:
 
 ```sh
+cd /codenarc-converter
 mvn initialize
+```
+
+Build codenarc-converter:
+
+```sh
+cd /codenarc-converter
 mvn clean package
 ```
+
+Build android-plugin:
+
+```sh
+cd /android-plugin
+mvn clean package
+```
+
+Install dependencies from the root directory
+
+```sh
+mvn clean install
+```
+
+
+.jar files (one per plugin) will be moved in `target/lib` repository after build.
+
+For more details see CodeNarc-converter [README](/codenarc-converter/README.md).
 
 ## Links
 - Java how-to : https://github.com/SonarSource/sonar-java/blob/master/docs/CUSTOM_RULES_101.md

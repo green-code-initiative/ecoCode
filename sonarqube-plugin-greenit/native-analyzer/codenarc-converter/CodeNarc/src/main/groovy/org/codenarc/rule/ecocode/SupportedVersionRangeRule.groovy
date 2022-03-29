@@ -32,7 +32,7 @@ class SupportedVersionRangeRule extends AbstractAstVisitorRule {
     int priority = 2
     int minSdkVersion = 0
     int targetSdkVersion = 0
-    int threshold = 4 // TODO change to the right value
+    int threshold = 4 // Value used to compare minSdkVersion and targetSdkVersion
     Class astVisitorClass = SupportedVersionRangeAstVisitor
 }
 
