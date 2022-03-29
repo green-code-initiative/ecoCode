@@ -50,7 +50,7 @@
     <severity>MINOR</severity>
     <name><![CDATA[Supported Version Range]]></name>
     <internalKey><![CDATA[SupportedVersionRange]]></internalKey>
-    <description><![CDATA[<p>When looking at the minSdkVersion and targetSdkVersion attributes for the <uses-sdk> in the AndroidManifest.xml file, the amplitude of supported platform versions should not be too wide, at the risk of making the app too heavy to handle all cases. It is worth notice that this smell may contradicts with the Aging devices social smell.</p>
+    <description><![CDATA[<p>When looking at the minSdkVersion and targetSdkVersion attributes for the <uses-sdk> in the AndroidManifest.xml file, the amplitude of supported platform versions should not be too wide, at the risk of making the app too heavy to handle all cases.</p>
 <p>Example of violations:</p>
 <pre><code>android {
     compileSdk 32

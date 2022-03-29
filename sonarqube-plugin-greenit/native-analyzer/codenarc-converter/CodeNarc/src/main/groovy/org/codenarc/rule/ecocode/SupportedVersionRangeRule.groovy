@@ -22,7 +22,7 @@ import org.codenarc.rule.AbstractAstVisitorRule
 import org.codenarc.util.AstUtil
 
 /**
- * When looking at the minSdkVersion and targetSdkVersion attributes for the <uses-sdk> in the AndroidManifest.xml file, the amplitude of supported platform versions should not be too wide, at the risk of making the app too heavy to handle all cases. It is worth notice that this smell may contradicts with the Aging devices social smell.
+ * When looking at the minSdkVersion and targetSdkVersion attributes for the <uses-sdk> in the AndroidManifest.xml file, the amplitude of supported platform versions should not be too wide, at the risk of making the app too heavy to handle all cases.
  *
  * @author Leboulanger Mickael
  */
