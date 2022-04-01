@@ -39,7 +39,16 @@ The set or rules comes from the detailed [Energy Smells catalog](https://olegoae
 
 <h3>Social</h3>
 
-The set or rules comes from the detailed [Social Smells catalog](https://olegoaer.perso.univ-pau.fr/android-social-smells/index.html) (work in progress). 0 rules have been implemented so far in the plugin.
+The set or rules comes from the detailed [Social Smells catalog](https://olegoaer.perso.univ-pau.fr/android-social-smells/index.html) (work in progress). 0 rules have been implemented so far in the plugin. Table of unimplemented rules below:
+
+| **Rule Name**      |     **Scope**     |
+|----------------|:-------------:|
+| Crashlytics automatic opt-in       | Java |
+| Hidden Tracker Risk      | Gradle |
+| Tracking Id      | Java |
+| Explain Permission     | Java |
+| Google consent | Java |
+| Aging devices   | Gradle  |
 
 <h3>Contest</h3>
 
