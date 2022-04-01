@@ -17,18 +17,18 @@ Before submitting an Android-specific SonarQube rule , please take a look at our
 
 <h3>Energy</h3>
 
-This set or rules comes from the [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 have already been implemented in the plugin. Here is the progress status.
+This set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 have already been implemented in the plugin. Here is the progress status.
 
 <h3>Social</h3>
 
-This set or rules comes from the [Social Smells catalog](https://olegoaer.perso.univ-pau.fr/android-social-smells/index.html). 0 rules have been implemented so far in the plugin.
+This set or rules comes from the detailed [Social Smells catalog](https://olegoaer.perso.univ-pau.fr/android-social-smells/index.html) (work in progress). 0 rules have been implemented so far in the plugin.
 
 <h3>Contest</h3>
 
 Some practices are extremely hard to detect statically, yet well-proven to have an impact on the device's battery. To illustrate, let's try with the 3 rules below:
 - Infinite Scroll: detect if the display contains an infinite scrolling strategy (with lazy loading)
-- Caching network calls: detect if the data from a network call are stored in a data structure for a later reuse
-- Memoization of functions: refer to the results of this [research paper](https://greenlab.di.uminho.pt/wp-content/uploads/2016/06/CIbSE19_memoization.pdf))
+- Caching network calls: detect if the result of a network call are stored in a data structure, for its later reuse
+- Memoization: refer to the results of this [research paper](https://greenlab.di.uminho.pt/wp-content/uploads/2016/06/CIbSE19_memoization.pdf))
 
 <h2>WP#3 - New Practices / Rules Assessment 💬</h2>
 
