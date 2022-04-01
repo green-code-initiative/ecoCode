@@ -11,13 +11,30 @@ Help us improve ecoCode (powered by SonarQube) by contributing to various work p
 
 <h2>WP#2 - Android-Specific Rules 📱</h2>
 
-If you are a mobile developer, you can contribute to our [Android plugin](../sonarqube-plugin-greenit/android-plugin/). Android-specific rules relies on a multi-scope scanning: Java source file, Xml file and now Gradle file.
+If you are a mobile developer, you can contribute to our [Android plugin](../sonarqube-plugin-greenit/android-plugin/). Android-specific rules relies on a multi-scope scanning, including Java source files, Xml files and Gradle files.
 
 Before submitting an Android-specific SonarQube rule , please take a look at our [naming conventions](https://doc.rules.ecocode.io/#how-to-specify-rules). Idealy, take also a look at the [helpers fonctions](https://github.com/cnumr/ecoCode/tree/main/sonarqube-plugin-greenit/android-plugin/src/main/java/io/ecocode/java/checks/helpers) we wrote to avoid doing things the hard way.
 
-<h3>Energy</h3>
+<h3>Environment</h3>
 
-This set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 have already been implemented in the plugin. Here is the progress status.
+This set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 have already been implemented in the plugin. Table of unimplemented rules below:
+
+| **Rule Name**      |     **Scope**     |
+|----------------|:-------------:|
+| Everlasting Service        | Java |
+| Uncached Data Reception       | Java |
+| Dark UI      | Java, Xml |
+| Day Night Mode     | /res, Xml |
+| High Frame Rate | Java |
+| Service@Boot-time    | Java, Xml  |
+| Supported Version Range    |  Xml, Gradle |
+| Same dependencies    | Gradle |
+| Duplicate dependencies    | Gradle |
+| Fat app    | Gradle |
+| Clear cache    | Java |
+| Shrink Resources    | Gradle |
+| Disable Obfuscation    | Proguard |
+
 
 <h3>Social</h3>
 
