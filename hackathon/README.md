@@ -46,7 +46,7 @@ The set or rules comes from the detailed [Social Smells catalog](https://olegoae
 Some practices are extremely hard to detect statically, yet well-proven to have an impact on the device's battery. To illustrate, let's try with the 3 rules below:
 - Infinite Scroll: detect if the display contains an infinite scrolling strategy (with lazy loading)
 - Caching network calls: detect if the result of a network call are stored in a data structure, for its later reuse
-- Memoization: refer to the results of this [research paper](https://greenlab.di.uminho.pt/wp-content/uploads/2016/06/CIbSE19_memoization.pdf))
+- Memoization: refer to the results of this [research paper](https://greenlab.di.uminho.pt/wp-content/uploads/2016/06/CIbSE19_memoization.pdf)
 
 <h2>WP#3 - New Practices / Rules Assessment 💬</h2>
 
