@@ -26,7 +26,7 @@ This set or rules comes from the [Social Smells catalog](https://olegoaer.perso.
 Some practices are extremely hard to detect statically, yet well-proven to have an impact on the device's battery. To illustrate, let's try with the 3 rules below:
 - Infinite Scroll
 - Caching network calls
-- Memoization of functions (see https://greenlab.di.uminho.pt/wp-content/uploads/2016/06/CIbSE19_memoization.pdf)
+- Memoization of functions (see this [research paper](https://greenlab.di.uminho.pt/wp-content/uploads/2016/06/CIbSE19_memoization.pdf))
 
 <h2>WP#3 - New Practices / Rules Assessment</h2>
 
