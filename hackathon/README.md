@@ -13,18 +13,18 @@ Help us improve ecoCode (powered by SonarQube) by contributing to various work p
 
 If you are a mobile developer, you can contribute to our [Android plugin](../sonarqube-plugin-greenit/android-plugin/). Android-specific rules relies on a multi-scope scanning, including Java source files, Xml files and Gradle files.
 
-Before submitting an Android-specific SonarQube rule , please take a look at our [naming conventions](https://doc.rules.ecocode.io/#how-to-specify-rules). Idealy, take also a look at the [helpers fonctions](https://github.com/cnumr/ecoCode/tree/main/sonarqube-plugin-greenit/android-plugin/src/main/java/io/ecocode/java/checks/helpers) we wrote to avoid doing things the hard way.
+Before submitting an Android-specific SonarQube custom rule , please take a look at our [naming conventions](https://doc.rules.ecocode.io/#how-to-specify-rules). Idealy, take also a look at the [helpers fonctions](https://github.com/cnumr/ecoCode/tree/main/sonarqube-plugin-greenit/android-plugin/src/main/java/io/ecocode/java/checks/helpers) we wrote to avoid doing things the hard way.
 
 <h3>Environment</h3>
 
-This set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 have already been implemented in the plugin. Table of unimplemented rules below:
+The set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 have already been implemented in the plugin. Table of unimplemented rules below:
 
 | **Rule Name**      |     **Scope**     |
 |----------------|:-------------:|
 | Everlasting Service        | Java |
 | Uncached Data Reception       | Java |
 | Dark UI      | Java, Xml |
-| Day Night Mode     | /res, Xml |
+| Day Night Mode     | File System, Xml |
 | High Frame Rate | Java |
 | Service@Boot-time    | Java, Xml  |
 | Supported Version Range    |  Xml, Gradle |
@@ -32,13 +32,14 @@ This set or rules comes from the detailed [Energy Smells catalog](https://olegoa
 | Duplicate dependencies    | Gradle |
 | Fat app    | Gradle |
 | Clear cache    | Java |
+| WebP image | File System |
 | Shrink Resources    | Gradle |
 | Disable Obfuscation    | Proguard |
 
 
 <h3>Social</h3>
 
-This set or rules comes from the detailed [Social Smells catalog](https://olegoaer.perso.univ-pau.fr/android-social-smells/index.html) (work in progress). 0 rules have been implemented so far in the plugin.
+The set or rules comes from the detailed [Social Smells catalog](https://olegoaer.perso.univ-pau.fr/android-social-smells/index.html) (work in progress). 0 rules have been implemented so far in the plugin.
 
 <h3>Contest</h3>
 
