@@ -28,6 +28,6 @@ Some practices are extremely hard to detect statically, yet well-proven to have 
 - Caching network calls
 - Memoization of functions (see https://greenlab.di.uminho.pt/wp-content/uploads/2016/06/CIbSE19_memoization.pdf)
 
-<h2>WP#3 - New Rules / Rules Assessment</h2>
+<h2>WP#3 - New Practices / Rules Assessment</h2>
 
-If you are not interested by implementing existing rules, you may contribute to the identification of new ones. Also, you can try to evaluate  the impact of rules on real projects to help us to set the severity of each (minor, major, blocking).
+If you are not interested by implementing SonarQube rules, you may contribute to the identification of new good practices, even in an informal way. Also, you can try to evaluate the impact of implemented rules on real projects to help us to set the severity of each (minor, major, blocking).
