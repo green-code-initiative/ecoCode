@@ -13,7 +13,7 @@ Help us improve ecoCode (powered by SonarQube) by contributing to various work p
 
 If you are a mobile developer, you can contribute to our [Android plugin](../sonarqube-plugin-greenit/android-plugin/). Android-specific rules relies on a multi-scope scanning: Java source file, Xml file and now Gradle file.
 
-Before submitting an Android-specific SonarQube rule , please take a look at our [naming convention document](https://doc.rules.ecocode.io/#how-to-specify-rules). Idealy, take also a look at the [helpers fonctions](https://github.com/cnumr/ecoCode/tree/main/sonarqube-plugin-greenit/android-plugin/src/main/java/io/ecocode/java/checks/helpers) we wrote to avoid doing things the hard way.
+Before submitting an Android-specific SonarQube rule , please take a look at our [naming conventions](https://doc.rules.ecocode.io/#how-to-specify-rules). Idealy, take also a look at the [helpers fonctions](https://github.com/cnumr/ecoCode/tree/main/sonarqube-plugin-greenit/android-plugin/src/main/java/io/ecocode/java/checks/helpers) we wrote to avoid doing things the hard way.
 
 <h3>⚡ Energy</h3>
 
