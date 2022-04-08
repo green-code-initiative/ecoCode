@@ -43,7 +43,7 @@ The set or rules comes from the detailed [Social Smells catalog](https://olegoae
 
 | **Rule Name**      |     **Scope**     |
 |----------------|:-------------:|
-| Crashlytics automatic opt-in       | Java |
+| Crashlytics automatic opt-in       | Java, Xml |
 | Hidden Tracker Risk      | Gradle |
 | Tracking Id      | Java |
 | Explain Permission     | Java |
