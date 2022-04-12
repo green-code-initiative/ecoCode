@@ -59,4 +59,6 @@ Some practices are extremely hard to detect statically, yet well-proven to have 
 
 <h2>WP#3 - New Practices / Rules Assessment 💬</h2>
 
-If you are not interested by implementing SonarQube rules, you may contribute to the identification of new good practices, even in an informal way. Also, you can try to evaluate the impact of implemented rules on real projects to help us to set their severity (minor, major, blocking) and estimated remediation costs.
+If you are not interested by implementing SonarQube rules, you may contribute to the identification of new good practices, even in an informal way. Take inspiration from [Best practices for energy efficient software](https://wiki.cs.vu.nl/green_software/Best_practices_for_energy_efficient_software) and try to target a platform or a language.
+
+Also, you can try to evaluate the impact of implemented rules on real projects to help us to set their severity (minor, major, critical, blocker) and their estimated remediation costs.
