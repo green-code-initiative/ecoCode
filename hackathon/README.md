@@ -7,6 +7,8 @@
 
 Help us improve ecoCode (powered by SonarQube) by contributing to various work packages (WPs).
 
+<h2>Prerequisites ⚒️</h2>
+
 <h2>WP#1 - Cross-Platform Rules 💻</h2>
 
 <h2>WP#2 - Android-Specific Rules 📱</h2>
