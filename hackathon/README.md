@@ -23,36 +23,36 @@ Before submitting an Android-specific SonarQube custom rule , please take a look
 
 The set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 have already been implemented in the plugin. Table of unimplemented rules below:
 
-| **Rule Name**      |     **Scope**     |
-|----------------|:-------------:|
-| Everlasting Service        | Java |
-| Uncached Data Reception       | Java |
-| Dark UI      | Java, Xml |
-| Day Night Mode     | File System, Xml |
-| High Frame Rate | Java |
-| Service@Boot-time    | Java, Xml  |
-| Supported Version Range    |  Xml, Gradle |
-| Same dependencies    | Gradle |
-| Duplicate dependencies    | Gradle |
-| Fat app    | Gradle |
-| Clear cache    | Java |
-| WebP image | File System |
-| Shrink Resources    | Gradle |
-| Disable Obfuscation    | Proguard |
+| # | **Rule Name**      |     **Scope**     |
+|---|:----------------|:-------------:|
+| ELEA001 | Everlasting Service        | Java |
+| EBOT004 | Uncached Data Reception       | Java |
+| ESOB003 | Dark UI      | Java, Xml |
+| ESOB009 | Day Night Mode     | File System, Xml |
+| ESOB014 | High Frame Rate | Java |
+| EBAT001 | Service@Boot-time    | Java, Xml  |
+| EREL003 | Supported Version Range    |  Xml, Gradle |
+| EREL004 | Same dependencies    | Gradle |
+| EREL005 | Duplicate dependencies    | Gradle |
+| EREL006 | Fat app    | Gradle |
+| EREL007 | Clear cache    | Java |
+| EREL008 | WebP image | File System |
+| EREL009 | Shrink Resources    | Gradle |
+| EREL010 | Disable Obfuscation    | Gradle |
 
 
 <h3>Social</h3>
 
 The set or rules comes from the detailed [Social Smells catalog](https://olegoaer.perso.univ-pau.fr/android-social-smells/index.html) (work in progress). 0 rules have been implemented so far in the plugin. Table of unimplemented rules below:
 
-| **Rule Name**      |     **Scope**     |
-|----------------|:-------------:|
-| Crashlytics automatic opt-in       | Java, Xml |
-| Hidden Tracker Risk      | Gradle |
-| Tracking Id      | Java |
-| Explain Permission     | Java |
-| Google consent | Java |
-| Aging devices   | Gradle  |
+| # | **Rule Name**      |     **Scope**     |
+| ---|:----------------|:-------------:|
+| SPRI001 | Crashlytics automatic opt-in       | Java, Xml |
+| SPRI002 | Hidden Tracker Risk      | Gradle |
+| SPRI003 | Tracking Id      | Java |
+| SPRI004 | Explain Permission     | Java |
+| SGDP001 | Google consent | Java |
+| SINC001 | Aging devices   | Gradle  |
 
 <h3>Contest</h3>
 
