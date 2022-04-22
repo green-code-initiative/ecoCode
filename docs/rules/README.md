@@ -13,7 +13,7 @@ An applicable rule must follow these conditions:
 
 ### Web oriented
 
-Web-oriented rules are based on edition 3 of the "Ecoconception Web / Les 115 bonnes pratiques" book:
+Web-oriented rules are based on the 3rd edition of the "Ecoconception Web / Les 115 bonnes pratiques" book:
 [Eco-conception Web : Les 115 bonnes pratiques (greenit.fr)](https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html)
 
 [List of applicable web rules](web-rules.md)
