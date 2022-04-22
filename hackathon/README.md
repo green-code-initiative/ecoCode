@@ -21,7 +21,7 @@ Before submitting an Android-specific SonarQube custom rule , please take a look
 
 <h3>Environment</h3>
 
-The set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 have already been implemented in the plugin. Table of unimplemented rules below:
+The set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 of them have been already implemented in the plugin. Table of unimplemented rules below:
 
 | # | **Rule Name**      |     **Scope**     |
 |---|:----------------|:-------------:|
