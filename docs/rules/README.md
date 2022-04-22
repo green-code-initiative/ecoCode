@@ -24,4 +24,4 @@ Web-oriented rules are based on edition 3 of the "Ecoconception Web / Les 115 bo
 
 ### Android
 
-The rules dedicated to Android are based on the work of Olivier Le Goaër : [Energy Smells for Android](https://olegoaer.perso.univ-pau.fr/android-energy-smells/)
+The rules dedicated to Android are based on the work of Olivier Le Goaër : [Energy Smells for Android](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) and [Social Smells for Android](https://olegoaer.perso.univ-pau.fr/android-social-smells/)
