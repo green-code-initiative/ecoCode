@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../docs/logo-large.png">
+  <img src="../docs/resources/logo-large.png">
 </p>
 <h1 align="center">
   🎈 Challenge 🎈

@@ -1,10 +1,10 @@
-![Logo](docs/logo-large.png)
+![Logo](docs/resources/logo-large.png)
 
 ---
 
 *ecoCode* is a collective project aiming at the reduction the environmental footprint of software at the code level. The goal of the project is to provide a list of static code analyzers to remove quality flaws in your codebase that may have an ecological impact: energy and resources consumption, "fatware", lifespan of terminals, etc.
 
-*ecoCode* is based on evolving catalogs of [good practices](good_practices/), for various technologies. A SonarQube plugin then implement these catalogs as rules for scanning your projects.
+ecoCode is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin then implement these catalogs as rules for scanning your projects.
 
 **Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please refer to the contribution section.
 
@@ -18,7 +18,7 @@
 - [Python](sonarqube-plugin-greenit/python-plugin/)
 - [Android](sonarqube-plugin-greenit/android-plugin/)
 
-![Screenshot](docs/screenshot.PNG)
+![Screenshot](docs/resources/screenshot.PNG)
 
 
 ## 🚀 Getting Started
@@ -38,14 +38,23 @@ We are listening to you to make the project progress collectively, and maybe wit
 WE NEED YOU !
 
 ## 🤓 Main contributors
-- Gaël Pellevoizin 
-- Nicolas Daviet
-- Geoffrey Lalloué
-- Mathilde Grapin
+
+Any question ? We are here for you !
+
 - Jules Delecour
+- [Geoffrey Lalloué](https://github.com/glalloue)
 - Julien Hertout
 - [Justin Berque](https://www.linkedin.com/in/justin-berque-444412140)
 - [Olivier Le Goaër](https://olegoaer.perso.univ-pau.fr)
+
+---
+## 🧐 Core Team Emeriti
+
+Here we honor some no-longer-active core team members who have made valuable contributions in the past.
+
+- Gaël Pellevoizin 
+- [Nicolas Daviet](https://github.com/NicolasDaviet)
+- [Mathilde Grapin](https://github.com/fkotd)
 
 ---
 They have contributed to the success of ecoCode :
