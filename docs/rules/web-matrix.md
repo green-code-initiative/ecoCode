@@ -25,7 +25,7 @@ Here is the list of rules already available in ecoCode project code.
 | Using try...catch...finally calls |  |  |  |  | | |
 | The use of methods for basic operations |  |  |  |  | | |
 | Call a DOM element multiple times without caching | 🚫 | 🚫 |  | 🚫 | | |
-| Use global variables | 50 | Client code / Javascript |  |  |  |  | | |
+| Use global variables |  |  |  |  |  |  | | |
 | Using strings as arguments to SetTimeout() and setInterval() |  |  |  |  | | |
 | Using for...in loops | ✅  |  |  |  | | |
 | Rewrite native getter/setters |  |  |  |  | | |
