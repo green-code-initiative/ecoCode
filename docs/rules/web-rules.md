@@ -1,6 +1,6 @@
 ## List of "Bad Green Practices" Web-oriented Rules
 
-| Title  | Reference in "115" book | Category | Priority | Weighting | Level of complexity of realization | | Example / Comment |
+| Title  | Reference in "115" book | Category | Priority | Weighting | Level of complexity of realization | Example / Comment |
 |--|--|--|--|--|--|--|
 | Use official social media sharing buttons | 19 | Technical / Design | 2 | 2 | | |
 | Include a CSS file containing directives not used on a page | 21 | Templating / CSS | 1 | 3 | | To reduce the number of HTTP requests |
