@@ -21,7 +21,7 @@ Before submitting an Android-specific SonarQube custom rule , please take a look
 
 <h3>Environment</h3>
 
-The set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 have already been implemented in the plugin. Table of unimplemented rules below:
+The set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 of them have been already implemented in the plugin. Table of unimplemented rules below:
 
 | # | **Rule Name**      |     **Scope**     |
 |---|:----------------|:-------------:|
@@ -66,3 +66,5 @@ Some practices are extremely hard to detect statically, yet well-proven to have 
 If you are not interested by implementing SonarQube rules, you may contribute to the identification of new good practices, even in an informal way. Take inspiration from [Best practices for energy efficient software](https://wiki.cs.vu.nl/green_software/Best_practices_for_energy_efficient_software) and try to target a platform or a language.
 
 Also, you can try to evaluate the impact of implemented rules on real projects to help us to set their severity (minor, major, critical, blocker) and their estimated remediation costs.
+
+**READY ? [Click here to launch a new discussion](https://github.com/cnumr/ecoCode/discussions/new?category=hackathon)**
