@@ -6,7 +6,7 @@ Listing of rules applicable to SonarQube tool and easily scannable on a source c
 
 An applicable rule must follow these conditions:
 
-  - It can be parsed within a static code
+  - It must be statically detectable
   - It must be easily scriptable and return a single response (boolean: TRUE/FALSE)
 
 ## Rules
