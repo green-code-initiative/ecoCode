@@ -10,6 +10,7 @@
 | Non-standard fonts used | 29 | Templating / Front | 1 | 3 | | |
 | Non-outsourced CSS and Javascript | 32 | Templating / HTML | 1 | 3 | | CSS and JavaScript codes must not be embedded in the HTML code of the page |
 | Image tags containing an empty SRC attribute | 33 | Templating / Images | 1 | 3 | | |
+| Resize images outside the browser | 34 | Templating / Images | 1 | 3 | | |
 | Use unoptimized vector images | 36 | Templating / Images | 1 | 3 | | Delete layer information, comments, etc. |
 | Using too many CSS/javascript animations | 39 | Client code / CSS/Javascript| 1 | 3 | | **/!\ Need to define a threshold for the number of animations that is too high**|
 | Modify the DOM when traversing it | 41 | Client code / DOM | 1 | 3 | | |
@@ -23,6 +24,7 @@
 | Using for...in loops | 53 | Client code / Javascript | 2 | 2 | | |
 | Rewrite native getter/setters | 62 | Server code / Application server | 2 | 2 | | |
 | Unnecessarily assigning values to variables | 63 | Server code / Application server | 3 | 1 | | |
+| Use single quote (') instead of quotation mark (") | 66 | Server code / Application server | 3 | 2 | | |
 | Use the $i++ variable during an iteration | 67 | Server code / Application server | 3 | 1 | | | Prioritize ++$i |
 | Calling a function in the declaration of a for loop | 69 | Server code / Application server | 1 | 3 | | |
 | Perform an SQL query inside a loop | 72 | Server code / Database | 1 | 3 | | |
