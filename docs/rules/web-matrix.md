@@ -7,7 +7,7 @@ Here is the list of rules already available in ecoCode project code.
 - ✅ Rule included in current version of ecoCode
 - 🚫 Non applicable rule
 
-| Title  | Java | Php | Javascript | Python | ... | ... |
+| Title  | Java | Php | Javascript | Python | Rust | ... |
 |--|--|--|--|--|--|--|
 | Use official social media sharing buttons | 🚫 | 🚫 |  | 🚫 | | |
 | Include a CSS file containing directives not used on a page | 🚫 | 🚫 | 🚫 | 🚫 | | |
