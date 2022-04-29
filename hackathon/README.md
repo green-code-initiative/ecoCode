@@ -17,7 +17,7 @@ https://docs.sonarqube.org/latest/extend/developing-plugin/
 
 If you are a mobile developer, you can contribute to our [Android plugin](../sonarqube-plugin-greenit/android-plugin/). Android-specific rules relies on a multi-scope scanning, including Java source files, Xml files and Gradle files.
 
-Before submitting an Android-specific SonarQube custom rule , please take a look at our [naming conventions](https://doc.rules.ecocode.io/#how-to-specify-rules). Idealy, take also a look at the [helpers fonctions](https://github.com/cnumr/ecoCode/tree/main/sonarqube-plugin-greenit/android-plugin/src/main/java/io/ecocode/java/checks/helpers) we wrote to avoid doing things the hard way.
+Before submitting an Android-specific SonarQube custom rule, please take a look at our [naming conventions](https://doc.rules.ecocode.io/#how-to-specify-rules). Idealy, take also a look at the [helpers fonctions](https://github.com/cnumr/ecoCode/tree/main/sonarqube-plugin-greenit/android-plugin/src/main/java/io/ecocode/java/checks/helpers) we wrote to avoid doing things the hard way.
 
 <h3>Environment</h3>
 
@@ -61,10 +61,13 @@ Some practices are extremely hard to detect statically, yet well-proven to have 
 - Caching network calls: detect if the result of a network call are stored in a data structure, for its later reuse
 - Memoization: refer to the results of this [research paper](https://greenlab.di.uminho.pt/wp-content/uploads/2016/06/CIbSE19_memoization.pdf)
 
+<h3>Evaluation</h3>
+
+You can try to evaluate the impact of implemented rules on real Android projects to help us to set their severity (minor, major, critical, blocker) and their estimated remediation costs. For that purpose, you can use our PowDroid tool : https://gitlab.com/powdroid/powdroid-cli
+
 <h2>WP#3 - New Practices / Rules Assessment 💬</h2>
 
 If you are not interested by implementing SonarQube rules, you may contribute to the identification of new good practices, even in an informal way. Take inspiration from [Best practices for energy efficient software](https://wiki.cs.vu.nl/green_software/Best_practices_for_energy_efficient_software) and try to target a platform or a language.
 
-Also, you can try to evaluate the impact of implemented rules on real projects to help us to set their severity (minor, major, critical, blocker) and their estimated remediation costs.
 
 **READY ? [Click here to launch a new discussion](https://github.com/cnumr/ecoCode/discussions/new?category=hackathon)**
