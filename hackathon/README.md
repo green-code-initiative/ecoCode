@@ -85,9 +85,10 @@ The set of rules comes from the detailed [Social Smells catalog](https://olegoae
 | # | **Rule Name**      |     **Scope**     |
 | ---|:----------------|:-------------:|
 | SPRI001 | Crashlytics automatic opt-in       | Java, Xml |
-| SPRI002 | Hidden Tracker Risk      | Gradle |
-| SPRI003 | Tracking Id      | Java |
-| SPRI004 | Explain Permission     | Java |
+| SPRI002 | Google Tracker | Java |
+| SPRI003 | Hidden Tracker Risk      | Gradle |
+| SPRI004 | Tracking Id      | Java |
+| SPRI005 | Explain Permission     | Java |
 | SGDP001 | Google consent | Java |
 | SINC001 | Aging devices   | Gradle  |
 
