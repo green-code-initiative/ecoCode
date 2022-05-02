@@ -18,7 +18,7 @@ Here is the list of rules already available in ecoCode project code.
 | Non-outsourced CSS and Javascript | 🚫 | 🚫 |  | 🚫 | 🚫 | |
 | Image tags containing an empty SRC attribute | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | |
 | Resize images outside the browser | | ✅  | | ✅  | | |
-| Use unoptimized vector images | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | |
+| Use unoptimized vector images |  |  |  |  |  | |
 | Using too many CSS/javascript animations | 🚫 | 🚫 |  | 🚫 | 🚫 | |
 | Modify the DOM when traversing it | 🚫 | 🚫 |  | 🚫 | 🚫 | |
 | Edit DOM elements to make it invisible | 🚫 | 🚫 |  | 🚫 | 🚫 | |
