@@ -13,7 +13,7 @@ https://docs.sonarqube.org/latest/extend/developing-plugin/
 
 <h2>WP#1 - Cross-Platform Rules 💻</h2>
 
-Each rule need to be develop for each technology to be available in SonarQube plugin.
+Each rule must be implemented for each target language to be available in SonarQube plugin.
 
 Here is the list of rules already available in ecoCode project code.
 
@@ -58,7 +58,7 @@ Before submitting an Android-specific SonarQube custom rule, please take a look 
 
 <h3>Environment</h3>
 
-The set or rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 of them have been already implemented in the plugin. Table of unimplemented rules below:
+The set of rules comes from the detailed [Energy Smells catalog](https://olegoaer.perso.univ-pau.fr/android-energy-smells/). 3/4 of them have been already implemented in the plugin. Table of unimplemented rules below:
 
 | # | **Rule Name**      |     **Scope**     |
 |---|:----------------|:-------------:|
@@ -80,14 +80,15 @@ The set or rules comes from the detailed [Energy Smells catalog](https://olegoae
 
 <h3>Social</h3>
 
-The set or rules comes from the detailed [Social Smells catalog](https://olegoaer.perso.univ-pau.fr/android-social-smells/index.html) (work in progress). 0 rules have been implemented so far in the plugin. Table of unimplemented rules below:
+The set of rules comes from the detailed [Social Smells catalog](https://olegoaer.perso.univ-pau.fr/android-social-smells/index.html) (work in progress). 0 rules have been implemented so far in the plugin. Table of unimplemented rules below:
 
 | # | **Rule Name**      |     **Scope**     |
 | ---|:----------------|:-------------:|
 | SPRI001 | Crashlytics automatic opt-in       | Java, Xml |
-| SPRI002 | Hidden Tracker Risk      | Gradle |
-| SPRI003 | Tracking Id      | Java |
-| SPRI004 | Explain Permission     | Java |
+| SPRI002 | Google Tracker | Java |
+| SPRI003 | Hidden Tracker Risk      | Gradle |
+| SPRI004 | Tracking Id      | Java |
+| SPRI005 | Explain Permission     | Java |
 | SGDP001 | Google consent | Java |
 | SINC001 | Aging devices   | Gradle  |
 
