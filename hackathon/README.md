@@ -103,7 +103,7 @@ Some practices are extremely hard to detect statically, yet well-proven to have 
 
 You can try to measure the impact of implemented rules on real Android projects to help us to set their severity (minor, major, critical, blocker) and their estimated remediation costs. For that purpose, you can use the *PowDroid* tool : https://gitlab.com/powdroid/powdroid-cli
 
-<h2>WP#3 - New Practices 💬</h2>
+<h2>WP#3 - New Practices 🧠</h2>
 
 If you are not interested by implementing SonarQube rules, you may contribute to the identification of new good practices for the reduction of the carbon footprint, even in an informal way. You can start from [Best practices for energy efficient software](https://wiki.cs.vu.nl/green_software/Best_practices_for_energy_efficient_software) or leverage from your skills on specific technologies not supported yet.
 
