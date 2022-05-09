@@ -1,4 +1,4 @@
-### **💻 #GreenCodeWeb Work-package:**
+### **💻 #GreenCode Work-package:**
 
 The objective of this work-package is to develop rules that analyze the ecological impact of the source code and thus of the resulting **web application**.
 Each rule must be implemented for each target language to be available in SonarQube plugin.
@@ -45,7 +45,7 @@ Here is the list of rules already available in ecoCode project code.
 | Perform an SQL query inside a loop | ✅  | ✅  |  |  | | |
 | Write SELECT * FROM | ✅  | ✅  |  | ✅  | | |
 
-### **📱 #GreenCodeMobile Work-package :**
+### **📱 #GreenAndroid Work-package :**
 
 The objective of this work-package is to develop rules that analyze the ecological impact of the source code of an **Android** mobile application.
 
