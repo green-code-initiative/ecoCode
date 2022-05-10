@@ -1,9 +1,7 @@
 <p align="center">
-  <img src="../docs/resources/logo-large.png">
+  <img src="../docs/resources/challenge-logo.png">
 </p>
-<h1 align="center">
-  🎈 Challenge 🎈
-</h1>
+
 
 Help us improve ecoCode (powered by SonarQube) by contributing to various [work-packages](https://github.com/hiba99git/ecoCode/blob/main/hackathon/work-packages.md).
 
