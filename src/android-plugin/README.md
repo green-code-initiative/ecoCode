@@ -35,8 +35,8 @@ where `FusedLocationCheckTest` is the test to run.
 
 Tests are located under:
 
-- [/src/test/java/io/ecocode/java](/src/test/java/io/ecocode/java)
-- [/src/test/java/io/ecocode/xml](/src/test/java/io/ecocode/xml)
+- [/src/test/java/io/ecocode/java](./src/test/java/io/ecocode/java)
+- [/src/test/java/io/ecocode/xml](./src/test/java/io/ecocode/xml)
 
 ### Plugin build
 
