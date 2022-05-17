@@ -16,6 +16,12 @@ https://medium.com/android-news/gitflow-with-github-c675aa4f606a
 
 https://github.com/cnumr/ecoCode/tree/main
 
+# 115 rules details : 
+
+https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html
+
+If you don't understand what the rules means, take a look at the details on the link above. Mouse over in order to have more details
+
 
 ### ** Local development **
 
@@ -52,6 +58,36 @@ To validate that the rule has been implemented, you need to execute a scan on th
 
 ## ** Publish your work ***
 
+# Commit your code 
+
+Create a new branch following this pattern : <rule_id>-<language>
+Example : 
+```
+git checkout -b 47-JS
+```
+
+Commit your code : 
+```
+git add .
+git commit -m "your comments"
+```
+
+Push your branch :
+```
+git push origin <rule_id>-<language>
+```
+
+You may have to log with your account : https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
+
 # Open pull request
+
+Once your code is pushed and tested, open a PR between your branch and "main" : https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
+
 # Review others development
+
+Ask to people to review your PR. Once two people, at least, have review, you can validate your PR
+If you want to be reviewed, review others... It's a win/win situation
+
 # Validation of a PR
+
+Validate your PR or ask to someone who have the permissions to validate your PR
