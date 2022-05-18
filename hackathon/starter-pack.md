@@ -1,22 +1,22 @@
-# Theory
+# Basics
 
 In order to develop a Sonarqube Plugin in Open source for ecocode, two basics must have been mastered: 
 * How to develop a Sonarqube plugin 
 * Understand and work withe the Gitflow
 
-### Plugin basics : 
+### Sonarqube Plugin
 
 https://docs.sonarqube.org/latest/extend/developing-plugin/
 
-### Gitflow :
+### Gitflow
 
 https://medium.com/android-news/gitflow-with-github-c675aa4f606a
 
-### Github CNUMR Ecocode :
+### Github CNUMR Ecocode
 
 https://github.com/cnumr/ecoCode/tree/main
 
-### 115 green rules details : 
+### 115 green rules details
 
 https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html
 
@@ -45,7 +45,7 @@ Clone the project with :
 git clone https://github.com/cnumr/ecoCode.git
 ```
 
-### Start local environment :
+### Start local environment
 
 You will find all the steps to start a Sonarqube dev Environment here : https://github.com/cnumr/ecoCode/blob/main/src/INSTALL.md
 
