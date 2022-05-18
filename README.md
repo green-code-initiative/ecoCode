@@ -37,6 +37,8 @@ We are listening to you to make the project progress collectively, and maybe wit
 
 WE NEED YOU !
 
+Here the starter-pack : https://github.com/cnumr/ecoCode/blob/start-pack/hackathon/starter-pack.md
+
 ## 🤓 Main contributors
 
 Any question ? We are here for you !
