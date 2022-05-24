@@ -49,7 +49,7 @@ git clone https://github.com/cnumr/ecoCode.git
 
 You will find all the steps to start a Sonarqube dev Environment here : https://github.com/cnumr/ecoCode/blob/main/src/INSTALL.md
 
-### Chose your rule
+### Choose your rule
 
 Chose a rule in a specific language in the "To do" column : https://github.com/cnumr/ecoCode/projects/1 and move it to the "In progress" 
 
@@ -95,3 +95,7 @@ If you want to be reviewed, review others... It's a win/win situation
 ### Validation of a PR
 
 Validate your PR or ask to someone who have the permissions to validate your PR
+  
+### Close your rule
+  
+Once your PR is validated, your rule integrates ecoCode. In https://github.com/cnumr/ecoCode/projects/1, move it from the "In Progress" column to the "Done" column. Well done.
