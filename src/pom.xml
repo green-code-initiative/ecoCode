@@ -8,7 +8,7 @@
 	<groupId>fr.cnumr</groupId>
 
 	<!-- Change this artifactId to your own organization artifactId -->
-	<artifactId>green-it</artifactId>
+	<artifactId>ecocode</artifactId>
 
 	<version>1.0.0-SNAPSHOT</version>
 	<dependencies>
@@ -21,7 +21,7 @@
 
 	<packaging>pom</packaging>
 
-	<name>Plugin Sonarqube des bonnes pratiques d'éco conception</name>
+	<name>ecoCode Sonar Plugins Project</name>
 	<description>Les règles s'appuient sur l'édition 3 du livre "Ecoconception Web / Les 115 bonnes pratiques" =>
 		https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html
 	</description>
@@ -30,10 +30,32 @@
 		<module>java-plugin</module>
 		<module>php-plugin</module>
 		<module>python-plugin</module>
+	<!--	<module>codenarc-converter</module>
 		<module>android-plugin</module>
-		<module>codenarc-converter</module>
+-->
 	</modules>
 
+    <organization>
+        <name>CNumR</name>
+        <url>https://collectif.greenit.fr</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>GNU LGPL 3</name>
+            <url>http://www.gnu.org/licenses/lgpl.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <issueManagement>
+      <system>GitHub</system>
+      <url>https://github.com/cnumr/ecoCode/issues</url>
+    </issueManagement>
+    <scm>
+      <connection>scm:git:https://github.com/cnumr/ecoCode</connection>
+      <developerConnection>scm:git:https://github.com/cnumr/ecoCode</developerConnection>
+      <url>https://github.com/cnumr/ecoCode</url>
+      <tag>HEAD</tag>
+    </scm>
 
 	<properties>
 		<sonarqube.version>8.7.1.42226</sonarqube.version>
@@ -57,7 +79,6 @@
 	</properties>
 
 	<dependencyManagement>
-
 		<dependencies>
 			<!-- MAIN sources dependencies -->
 			<dependency>
