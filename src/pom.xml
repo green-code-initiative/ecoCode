@@ -41,8 +41,8 @@
     </organization>
     <licenses>
         <license>
-            <name>GNU LGPL 3</name>
-            <url>http://www.gnu.org/licenses/lgpl.txt</url>
+            <name>GPL v3</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
