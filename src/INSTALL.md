@@ -29,6 +29,16 @@ You will find more information about the plugins’ architecture in their folder
 
 ## Howto install SonarQube dev environment
 
+### Pre-requisites
+
+Build codenarc-converter version 2.2.1 using:
+
+```sh
+cd codenarc-converter
+mvn clean package 
+cd ..
+```
+
 ### Init
 
 Build Code
@@ -42,6 +52,17 @@ Run the stack
 docker-compose up --build -d
 ```
 
+Check if the container are up
+```sh 
+docker ps
+```
+Your should see two lines (one for sonarQube:latest and one for postgres). If there is only postgres, check the logs
+
+```sh 
+docker ps -a
+docker logs src-sonar-1
+```
+
 If you have this error on run
 
 `web_1  | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]`
@@ -51,6 +72,13 @@ You can allow more virtual memory :
 ```sh
 sudo sysctl -w vm.max_map_count=262144
 ```
+
+For windows
+```cmd
+wsl -d docker-desktop
+sysctl -w vm.max_map_count=262144
+```
+
 
 Go to http://localhost:9000 and use these credentials :
 ```
