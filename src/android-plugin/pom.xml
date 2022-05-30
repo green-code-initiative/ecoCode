@@ -8,7 +8,7 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>sonar-plugin</packaging>
 
-	<name>ecoCode Sonarqube plugin</name>
+	<name>ecoCode Android plugin</name>
 	<description>Help the earth, adopt this green plugin for your applications</description>
 	<inceptionYear>2020</inceptionYear>
 

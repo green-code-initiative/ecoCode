@@ -4,15 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>fr.cnumr</groupId>
-        <artifactId>green-it</artifactId>
+        <artifactId>ecocode</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>php-plugin</artifactId>
+    <artifactId>ecocode-php-plugin</artifactId>
     <packaging>sonar-plugin</packaging>
-
-
-    <name>Version PHP du plugin</name>
+    <name>ecoCode PHP Sonar Plugin</name>
     <description></description>
 
 
@@ -42,8 +40,8 @@
                 <version>${sonar-packaging.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <pluginKey>php-custom</pluginKey>
-                    <pluginName>PHP Custom Rules</pluginName>
+                    <pluginKey>${project.artifactId}</pluginKey>
+                    <pluginName>${project.name}</pluginName>
                     <pluginClass>fr.cnumr.php.PHPCustomRulesPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>6.7</sonarQubeMinVersion>
