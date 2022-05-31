@@ -59,6 +59,7 @@ jobs:
             -Dsonar.projectKey="ecocode"
             -Dsonar.organization="cnumr"
             -Dsonar.projectVersion=$GITHUB_SHA
+            -Dsonar.branch.name=$GITHUB_REF_NAME
             #  -Dsonar.sources="src/" 
             # optional, default is project base directory
             # When you need the analysis to take place in a directory other than the one from which it was launched
