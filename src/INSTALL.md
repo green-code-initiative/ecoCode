@@ -31,12 +31,14 @@ You will find more information about the plugins’ architecture in their folder
 
 ### Pre-requisites
 
-Build codenarc-converter version 2.2.2 using:
+The project relies on a version of [CodeNarc](https://codenarc.org/) enriched with specific rules.
+To build this version and make it available to Maven, use the following steps:
 
 ```sh
-cd codenarc-converter
-mvn clean package 
-cd ..
+cd codenarc-converter/CodeNarc
+./gradlew build -x test
+mvn install:install-file -Dfile=build/libs/CodeNarc-2.2.2.jar -DgroupId=org.codenarc -DartifactId=CodeNarc -Dversion=2.2.2 -Dpackaging=jar 
+cd ../..
 ```
 
 ### Init
