@@ -57,7 +57,6 @@ jobs:
             # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
             # mandatory
             -Dsonar.projectKey="cnumr"
-            -Dsonar.organization="Collectif Conception Numérique Responsable"
             -Dsonar.sources="src/" 
             -Dsonar.projectVersion=$GITHUB_SHA
             # optional, default is project base directory
