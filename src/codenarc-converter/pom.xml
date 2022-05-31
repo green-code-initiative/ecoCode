@@ -55,7 +55,7 @@
     <dependency>
       <groupId>org.codenarc</groupId>
       <artifactId>CodeNarc</artifactId>
-      <version>2.2.1</version>
+      <version>2.2.2</version>
       <exclusions>
         <exclusion>
           <groupId>org.codehaus.groovy</groupId>
@@ -151,10 +151,10 @@
                   <goal>install-file</goal>
                 </goals>
                 <configuration>
-                  <file>${project.basedir}/CodeNarc/build/libs/CodeNarc-2.2.1.jar</file>
+                  <file>${project.basedir}/CodeNarc/build/libs/CodeNarc-2.2.2.jar</file>
                   <groupId>org.codenarc</groupId>
                   <artifactId>CodeNarc</artifactId>
-                  <version>2.2.1</version>
+                  <version>2.2.2</version>
                   <packaging>jar</packaging>
                 </configuration>
               </execution>

@@ -5,6 +5,18 @@
 <!-- markdownlint-disable MD003 MD004 MD007 MD032 -->
 # CodeNarc Change Log
 
+Version 2.2.2    (May 2022)
+--------------------------------------
+Build and Infrastructure
+- Upgrade Gradle to wrapper 6.9.2 (avoid Log4Shell vulnerability)
+
+
+Version 2.2.1    (Mar 2022)
+--------------------------------------
+Updated/Enhanced Rules and Bug Fixes
+- Add ecoCode rules
+
+
 Version 2.2.0    (Aug 2021)
 --------------------------------------
 Updated/Enhanced Rules and Bug Fixes

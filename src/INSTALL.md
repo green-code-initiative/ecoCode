@@ -31,7 +31,7 @@ You will find more information about the plugins’ architecture in their folder
 
 ### Pre-requisites
 
-Build codenarc-converter version 2.2.1 using:
+Build codenarc-converter version 2.2.2 using:
 
 ```sh
 cd codenarc-converter
