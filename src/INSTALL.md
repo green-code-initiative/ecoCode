@@ -107,7 +107,7 @@ The Android plugin uses CodeNarc to scan the gradle files of Android projects. T
 
 CodeNarc must be built separately. Please see the following steps:
 
-Build CodeNarc (gradle 6.5.1, Java 14):
+Build CodeNarc (gradle 6.9.2, Java 11):
 
 ```sh
 ./gradlew build -x test 

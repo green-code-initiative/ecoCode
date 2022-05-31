@@ -2,7 +2,7 @@ FROM openjdk:8-jre-slim AS gradle
 
 ARG CODENARC_VERSION=2.0.0
 ARG GROOVY_VERSION=2.5.12
-ARG GRADLE_VERSION=6.5.1
+ARG GRADLE_VERSION=6.9.2
 
 RUN apt-get update && apt-get install -y unzip curl
 WORKDIR /gradle
