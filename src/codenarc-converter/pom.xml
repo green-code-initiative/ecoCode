@@ -13,6 +13,7 @@
   <name>Sonar CodeNarc Converter</name>
 
   <properties>
+    <codenarc.version>2.2.2</codenarc.version>
     <auto.version>1.8.2</auto.version>
     <maven.deploy.skip>true</maven.deploy.skip>
   </properties>
@@ -55,7 +56,7 @@
     <dependency>
       <groupId>org.codenarc</groupId>
       <artifactId>CodeNarc</artifactId>
-      <version>2.2.2</version>
+      <version>${codenarc.version}</version>
       <exclusions>
         <exclusion>
           <groupId>org.codehaus.groovy</groupId>
@@ -135,6 +136,27 @@
                   <arguments>
                     <argument>${project.basedir}</argument>
                   </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-install-plugin</artifactId>
+            <version>2.5.2</version>
+            <executions>
+              <execution>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>install-file</goal>
+                </goals>
+                <configuration>
+                  <file>${project.basedir}/CodeNarc/build/libs/CodeNarc-${codenarc.version}.jar</file>
+                  <groupId>org.codenarc</groupId>
+                  <artifactId>CodeNarc</artifactId>
+                  <version>${codenarc.version}</version>
+                  <packaging>jar</packaging>
                 </configuration>
               </execution>
             </executions>
