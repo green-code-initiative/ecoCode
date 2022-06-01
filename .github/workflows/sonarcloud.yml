@@ -56,7 +56,7 @@ jobs:
           args:             
             # Unique keys of your project and organization. You can find them in SonarCloud > Information (bottom-left menu)
             # mandatory
-            -Dsonar.projectKey="ecocode"
+            -Dsonar.projectKey="ecoCode"
             -Dsonar.organization="cnumr"
             -Dsonar.projectVersion=$GITHUB_SHA
             #  -Dsonar.sources="src/" 
