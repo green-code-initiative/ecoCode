@@ -21,11 +21,11 @@ services:
         source: ./php-plugin/target/ecocode-php-plugin-1.0.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/ecocode-php-plugin-1.0.0-SNAPSHOT.jar
       - type: bind
-        source: ./python-plugin/target/python-plugin-1.0.0-SNAPSHOT.jar
+        source: ./python-plugin/target/ecocode-python-plugin-1.0.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/ecocode-python-plugin-1.0.0-SNAPSHOT.jar
       - type: bind
-        source: ./android-plugin/target/ecoCode-rules-1.0-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecoCode-rules-1.0-SNAPSHOT.jar
+        source: ./android-plugin/target/ecocode-rules-1.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-rules-1.0-SNAPSHOT.jar
       # - "conf:/opt/sonarqube/conf"
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
