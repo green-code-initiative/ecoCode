@@ -71,7 +71,7 @@ At this point you just have to implement your rule and its test in their files:
 
 ### Step 4: building and checking implementation
 
-Build Codenarc (gradle 6.5.1, Java 14):
+Build Codenarc (gradle 6.9.2, Java 11):
 
 ```sh
 cd [...]/codenarc-converter/CodeNarc

@@ -40,7 +40,7 @@ Tests are located under:
 
 ### Plugin build
 
-Build CodeNarc (gradle 6.5.1, Java 14):
+Build CodeNarc (gradle 6.9.2, Java 11):
 
 ```sh
 ./gradlew build -x test 
