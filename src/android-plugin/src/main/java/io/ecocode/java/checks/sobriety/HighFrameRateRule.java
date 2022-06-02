@@ -1,17 +1,17 @@
-package org.sonar.samples.java.checks;
+package io.ecocode.java.checks.sobriety;
 
+import io.ecocode.java.checks.helpers.SpecificMethodCheck;
 import org.sonar.check.Rule;
-import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
-import org.sonar.plugins.java.api.tree.Tree.Kind;
-import java.util.Collections;
-import java.util.List;
 
-@Rule(key = "HighFrameRateRule")
-class HighFrameRateCheck {
+@Rule(key = "ESOB014", name= "ecoCodeHighFrameRate")
+public class HighFrameRateRule extends SpecificMethodCheck {
 
-    @Override
-    public List<Kind> nodesToVisit() {
-        return Collections.emptyList();
+    public HighFrameRateRule() {
+        super("android.view.Surface","setFrameRate");
     }
 
+    @Override
+    public String getMessage() {
+        return "";
+    }
 }

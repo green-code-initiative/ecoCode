@@ -1,6 +1,8 @@
 package org.sonar.samples.java.checks;
 
-import org.junit.jupiter.api.Test;
+import io.ecocode.java.checks.sobriety.HighFrameRateRule;
+import org.junit.Test;
+import org.sonar.java.checks.verifier.JavaCheckVerifier;
 
 class HighFrameRateCheckTest {
 
