@@ -227,12 +227,6 @@ public class JavaRulesDefinitionTest {
         assertThat(thriftyNotification.name()).isEqualTo("Sobriety: Thrifty Notification");
         assertThat(thriftyNotification.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(thriftyNotification.type()).isEqualTo(RuleType.CODE_SMELL);
-
-        Rule uncachedDataReception = repository.rule("EBOT004");
-        assertThat(uncachedDataReception).isNotNull();
-        assertThat(uncachedDataReception.name()).isEqualTo("Bottleneck: Uncached Data Reception");
-        assertThat(uncachedDataReception.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
-        assertThat(uncachedDataReception.type()).isEqualTo(RuleType.CODE_SMELL);
     }
 
     private void assertAllRuleParametersHaveDescription(Repository repository) {
