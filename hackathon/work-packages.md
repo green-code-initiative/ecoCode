@@ -68,10 +68,8 @@ The set of rules comes from the detailed [Energy Smells catalog](https://olegoae
 | ESOB009 | Day Night Mode     | File System, Xml |
 | ESOB014 | High Frame Rate | Java |
 | EBAT001 | Service@Boot-time    | Java, Xml  |
-| EREL003 | Supported Version Range    |  Xml, Gradle |
 | EREL004 | Same dependencies    | Gradle |
 | EREL005 | Duplicate dependencies    | Gradle |
-| EREL006 | Fat app    | Gradle |
 | EREL007 | Clear cache    | Java |
 | EREL008 | Concert to WebP | File System |
 | EREL009 | Shrink Resources    | Gradle |
