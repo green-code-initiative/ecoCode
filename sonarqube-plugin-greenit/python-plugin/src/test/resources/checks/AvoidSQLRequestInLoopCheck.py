@@ -1,5 +1,4 @@
 import mysql.connector
-from mysql.connector.cursor import MySQLCursor
 
 
 class AvoidSQLRequestInLoopCheck:
@@ -49,3 +48,17 @@ class AvoidSQLRequestInLoopCheck:
           except :
               print("Got an exception")
               db.close()
+
+    def testWithExecuteMany():
+        try:
+            db =db = mysql.connector.connect(option_files='my.conf', use_pure=True)
+            query = "SELECT * FROM users where id = %d"
+            cursor=db.cursor()
+            data = [1,2,3,4,5,6]
+            cursor.executemany(query,data)
+            with row in cursor:
+                print(row.name)
+            cursor.close()
+        except:
+            print("Got an exception")
+            db.close()

@@ -12,8 +12,20 @@
                 print(row)
         ...
         cursor.close()
+-----------------------------------------------------------
+    def foo():
+        ...
+        baseQuery= "SELECT name FROM users where id = "
+        data = [ i for i in range(0,20) ]
+        cursor.executemany(baseQuery,data)
+        for row in cursor:
+            print(row)
+        ...
+        cursor.close()
 
 </pre>
+
+
 <h2>Compliant Solution</h2>
 <pre>
 
