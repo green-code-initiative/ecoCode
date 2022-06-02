@@ -54,7 +54,7 @@ class AvoidSQLRequestInLoopCheck:
             db =db = mysql.connector.connect(option_files='my.conf', use_pure=True)
             query = "SELECT * FROM users where id = %d"
             cursor=db.cursor()
-            data = [1,2,3,4,5,6]
+            data = [i for i in range(20)]
             cursor.executemany(query,data)
             with row in cursor:
                 print(row.name)
