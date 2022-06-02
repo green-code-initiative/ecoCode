@@ -125,6 +125,24 @@
             <artifactId>exec-maven-plugin</artifactId>
             <version>3.0.0</version>
             <executions>
+              <!-- Trigger Gradle build of CodeNarc -->
+              <execution>
+                <id>generate-codenarc</id>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <configuration>
+                  <executable>CodeNarc/gradlew</executable>
+                  <arguments>
+                    <argument>-p</argument>
+                    <argument>CodeNarc</argument>
+                    <argument>build</argument>
+                    <argument>-x</argument>
+                    <argument>test</argument>
+                  </arguments>
+                </configuration>
+              </execution>
               <execution>
                 <id>run-codenarc-converter</id>
                 <phase>generate-test-sources</phase>
@@ -147,6 +165,7 @@
             <version>2.5.2</version>
             <executions>
               <execution>
+                <id>deploy-codenarc-to-local-repo</id>
                 <phase>initialize</phase>
                 <goals>
                   <goal>install-file</goal>
