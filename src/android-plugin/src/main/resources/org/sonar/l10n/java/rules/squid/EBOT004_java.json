@@ -1,0 +1,15 @@
+{
+  "title": "Bottleneck: Uncached Data Reception",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "30min"
+  },
+  "tags": [
+    "bottleneck",
+    "environment",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}

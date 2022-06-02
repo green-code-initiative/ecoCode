@@ -28,7 +28,7 @@
 
 	<modules>
 		<module>java-plugin</module>
-		<module>php-plugin</module>
+		<!--<module>php-plugin</module>-->
 		<module>python-plugin</module>
 		<module>codenarc-converter</module>
 		<module>android-plugin</module>

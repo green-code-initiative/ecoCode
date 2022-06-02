@@ -1,0 +1,14 @@
+<img src="http://www.neomades.com/extern/partage/ecoCode/2sur5_1x.png">
+<p>Caching all of the application's HTTP responses to the filesystem (application-specific cache directory) so they may
+    be reused, allow to save energy. To that purpose the class <code>HttpResponseCache</code>supports <code>HttpURLConnection</code>
+    and <code>HttpsURLConnection</code>; there is no platform-provided cache for further clients. Installing the cache
+    at application startup is done with the static method <code> HttpResponseCache.install(File directory, long
+        maxSize)</code>.
+</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    <code>
+        HttpResponseCache.install(file,1L);
+    </code>
+</pre>
+
