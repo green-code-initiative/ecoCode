@@ -1,8 +1,0 @@
-node_modules
-yarn.lock
-target/
-node/
-.idea
-.DS_Store
-*.iml
-/native-analyzer/lib/*.jar

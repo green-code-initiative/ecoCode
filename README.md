@@ -1,45 +1,71 @@
+![Logo](docs/resources/logo-large.png)
 
-## Comment contribuer
+---
 
-Le projet vous intéresse mais vous ne savez pas comment y participer ? Voici quelques éléments de réponses pour vous motiver à contribuer !
+*ecoCode* is a collective project aiming at the reduction the environmental footprint of software at the code level. The goal of the project is to provide a list of static code analyzers to highlight code structures that may have a negative ecological impact: energy and resources over-consumption, "fatware", shortening terminals' lifespan, etc.
 
-###### Les fausses idées à écarter sur l'Opensource :  
+ecoCode is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin then implement these catalogs as rules for scanning your projects.
 
-L'Opensource n'est pas seulement tourné vers les développeurs aggueris. Tout le monde peut participer à un projet Opensource peu importe sont expertise. Il existe une multitude de tâches autour d'un projet de développement qui sont trop souvent négligées :
-- **La documentation** : Technique, fonctionnelle, procédures, tutoriels de contribution... tout est bon à prendre
-- **La communication** : Interne et externe du projet. Faciliter la communication entre les membres actifs du projet en gérant les canaux de communication (mails, slack...), ou alors en rédigeant des communiqués sur l'avancement du projet.
-- **Le design** : La charte graphique, les images...
-- **La gestion du projet** : Organiser les réunions, faire un suivi régulier, gérer la cohésion et la cohérence du projet...
-- **La rédaction des tâches et fonctionnalités** : Transformer le besoin et découper le produit en sous tâches pour faciliter le développement.
-- **La gestion des issues et des questions sur le projet** : Plus le projet va grandir, plus il y aura des contributions, remarques, issues à traiter.
-- **La qualité de code** : Challenger et améliorer le code source 
+**Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please refer to the contribution section.
 
-Evidemment, le développement est également nécessaire mais celui-ci n'est valable que si il est accompagné d'une bonne gestion des tâches précedentes. 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
+## 🌿 SonarQube Plugin
 
-###### La première source de motivation :  
+4 technologies are supported by the plugin right now:
+- [Java](src/java-plugin/)
+- [PHP](src/php-plugin/)
+- [Python](src/python-plugin/)
+- [Android](src/android-plugin/)
 
-Participer à un projet Opensource, ce n'est pas développer toute la solution tout seul. Nous avons la chance de ne pas avoir de contraintes temporelles, alors avancons petit à petit. La moindre petite contribution fait avancer le projet, alors pas d'hésitations ! Complétez une documentation, stylisez la, communiquez sur l'avancée du projet, refacto de code, code review etc... 
-
-###### Quelle est votre force ?  
-
-Identifiez votre force ou ce qui vous motive puis participez sur un des domaines suivant : Documentation, communication, design/UX/UI, gestion de projet, rédaction de tâches et fonctionnalités, gestion des issues, points de blocages et questions...
+![Screenshot](docs/resources/screenshot.PNG)
 
 
-Source Approfondie pour l'Opensource : https://opensource.guide/fr/how-to-contribute/
+## 🚀 Getting Started
 
-## Auteurs
+You can download each plugin separatly or you can directly use a [all-in-one docker-compose](src/INSTALL.md)
 
-Gaël Pellevoizin
-Nicolas Daviet
-Geoffrey Lalloué
-Mathilde Grapin
-Jules Delecour
-Julien Hertout
-Justin Berque
+## 🤝 Contribution
 
-## License
+You are a technical expert, a designer, a project manager, a CSR expert, an ecodesign expert...
 
-Copyright 2020-2021 Green-it.
+You want to offer the help of your company, help us to organize, communicate on the project?
 
-License : [GNU Lesser General Public License, Version 3.0](https://www.gnu.org/licenses/lgpl.txt)
+You have ideas to submit to us?
+
+We are listening to you to make the project progress collectively, and maybe with you!
+
+WE NEED YOU !
+
+Here the starter-pack : https://github.com/cnumr/ecoCode/blob/start-pack/hackathon/starter-pack.md
+
+## 🤓 Main contributors
+
+Any question ? We are here for you !
+
+- Jules Delecour
+- [Geoffrey Lalloué](https://github.com/glalloue)
+- Julien Hertout
+- [Justin Berque](https://www.linkedin.com/in/justin-berque-444412140)
+- [Olivier Le Goaër](https://olegoaer.perso.univ-pau.fr)
+
+---
+## 🧐 Core Team Emeriti
+
+Here we honor some no-longer-active core team members who have made valuable contributions in the past.
+
+- Gaël Pellevoizin 
+- [Nicolas Daviet](https://github.com/NicolasDaviet)
+- [Mathilde Grapin](https://github.com/fkotd)
+
+---
+They have contributed to the success of ecoCode :
+
+- [Davidson Consulting](https://www.davidson.fr/)
+- [Orange Business Services](https://www.orange-business.com/)
+- [Snapp'](https://www.snapp.fr/)
+- [Université de Pau et des Pays de l'Adour (UPPA)](https://www.univ-pau.fr/)
+
+They supported the project :
+
+- [Région Nouvelle-Aquitaine](https://www.nouvelle-aquitaine.fr/)
