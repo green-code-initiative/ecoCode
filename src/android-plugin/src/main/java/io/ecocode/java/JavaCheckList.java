@@ -22,7 +22,6 @@ package io.ecocode.java;
 import io.ecocode.java.checks.batch.JobCoalesceRule;
 import io.ecocode.java.checks.batch.SensorCoalesceRule;
 import io.ecocode.java.checks.bottleneck.InternetInTheLoopRule;
-import io.ecocode.java.checks.bottleneck.UncachedDataReceptionRule;
 import io.ecocode.java.checks.bottleneck.UncompressedDataTransmissionRule;
 import io.ecocode.java.checks.bottleneck.WifiMulticastLockRule;
 import io.ecocode.java.checks.idleness.*;
@@ -82,8 +81,7 @@ public final class JavaCheckList {
                 SensorCoalesceRule.class,
                 JobCoalesceRule.class,
                 SaveModeAwarenessRule.class,
-                ThriftyGeolocationCriteriaRule.class,
-                UncachedDataReceptionRule.class
+                ThriftyGeolocationCriteriaRule.class
         ));
     }
 
