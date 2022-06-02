@@ -12,6 +12,6 @@ public class HighFrameRateRule extends SpecificMethodCheck {
 
     @Override
     public String getMessage() {
-        return "";
+        return "Not overriding setFrameRate default behavior is recommanded to avoid higher battery usage.";
     }
 }
