@@ -1,0 +1,24 @@
+<p>Utiliser System.arraycopy pour copier des arrays</p>
+<p>
+Les programmes passent la plupart du temps dans des boucles. Celles-ci peuvent être consommatrices en ressource, plus particulièrement quand elles intègrent des traitements lourds (accès IO…). De plus, la taille des données et des traitements à l’intérieur des boucles ne va pas permettre d’utiliser pleinement les mécanismes matériels tels le cache ou les mécanismes d’optimisation des compilateurs.<br />
+La copie d’array est par exemple potentiellement une source de non-performance si elle est mal conçue. En effet, l’utilisation d’une simple boucle de recopie peut être deux fois plus consommatrice que des méthodes dédiées.<br />
+Les boucles doivent être optimisées pour diminuer le temps de traitement et utiliser pleinement les mécanismes et optimisations matériels et processeurs.<br />
+Dans le cas de la recopie de tableau (array), on utilisera la méthode native System.arraycopy.<br />
+On pourra aussi utiliser copyOf ou clone qui sont légèrement moins performantes.<br />
+On proscrira la méthode de recopie par boucle.
+</p>
+<h2>Méthode à proscrire :</h2> 
+<pre>
+	int len = array.length;
+	boolean[] copy = new boolean[array.length];
+	for (int i = 0; i < len; i++) {
+  		copy[i] = array[i];
+	}
+	return copy;
+</pre>
+<h2>Méthode à privilégier :</h2>
+<pre>
+	int[] copy = new int[array.length];
+	System.arraycopy(array, 0, copy, 0, array.length);
+	return copy;
+</pre>
