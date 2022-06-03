@@ -1,0 +1,11 @@
+<p>Empty enums should be avoided. Use a never_type instead.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+enum Foo {}
+</pre>
+<h2>Compliant Code Example</h2>
+<pre>
+#![feature(never_type)]
+
+struct Foo(!);
+</pre>

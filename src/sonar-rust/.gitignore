@@ -1,0 +1,19 @@
+node_modules
+.DS_Store
+yarn.lock
+target/
+node/
+.gradle
+.idea/
+sonar-example-plugin.iml
+# ---- Eclipse
+.classpath
+.project
+.settings
+# -----VSCode
+.vscode
+publish
+/.scannerwork/
+private-notes.txt
+*.iml
+issues-list.txt

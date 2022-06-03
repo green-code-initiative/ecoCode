@@ -1,0 +1,17 @@
+<p>Functions with excessive parameters are difficult to use, as one needs to figure out what each parameter is.</p>
+<p>In many cases, the procedure can either be split into several smaller ones, or a better data structure can be
+    found.</p>
+<p>This rule verifies that each function has at most the given number of parameters.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+fn nine_params_sum(p1 : i32, p2 : i32,p3 : i32,p4 : i32,p5 : i32,p6 : i32,p7 : i32,p8 : i32,p9 : i32) -> i32 {/* Non-Compliant - too many parameters */
+    return p1 + p2 + p3 + p4 +p5 + p6 + p7 +  p8  +p9;
+}
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+fn single_params_sum(a : &[i32] )-> i32{
+    a.iter().sum()
+}
+</pre>
+

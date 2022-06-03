@@ -1,0 +1,15 @@
+{
+  "title": "Enum should not be left empty",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "suspicious"
+  ],
+  "defaultSeverity": "Major",
+  "sqKey": "EmptyEnum",
+  "scope": "All"
+}

@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <groupId>org.elegoff</groupId>
+    <artifactId>community-rust</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <name>Community Rust SonarQube plugin</name>
+    <inceptionYear>2021</inceptionYear>
+    <organization>
+        <name>Eric Le Goff</name>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>elegoff</id>
+            <name>Eric Le Goff</name>
+            <email>community-rust@pm.me</email>
+        </developer>
+        <developer>
+            <id>p-fruck</id>
+            <name>Philipp Fruck</name>
+            <email>dev@p-fruck.de</email>
+        </developer>
+        <developer>
+            <id>thibaultfalque</id>
+            <name>Thibault Falque</name>
+            <email>thibault.falque@exakis-nelite.com</email>
+        </developer>
+    </developers>
+
+    <modules>
+        <module>community-rust-frontend</module>
+        <module>community-rust-checks</module>
+        <module>community-rust-plugin</module>
+    </modules>
+
+    <scm>
+        <connection>scm:git:https://github.com/elegoff/sonar-rust.git</connection>
+        <developerConnection>scm:git:ssh://github.com/elegoff/sonar-rust.git</developerConnection>
+        <url>https://github.com/elegoff/sonar-rust.git</url>
+        <tag>HEAD</tag>
+    </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/elegoff/sonar-rust/issues</url>
+    </issueManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <sonar.version>8.9.0.43852</sonar.version>
+        <java.version>11</java.version>
+        <sslr.version>1.24.0.633</sslr.version>
+        <sslr-squid-bridge.version>2.7.1.392</sslr-squid-bridge.version>
+        <mockito.version>3.9.0</mockito.version>
+        <assertj-core.version>3.19.0</assertj-core.version>
+        <jacoco.version>0.8.6</jacoco.version>
+        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
+        <sonar.projectKey>elegoff_sonar-rust</sonar.projectKey>
+        <sonar.organization>elegoff-1</sonar.organization>
+        <sonar.moduleKey>${project.artifactId}</sonar.moduleKey>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.projectVersion>${project.version}</sonar.projectVersion>
+        <commons.io.version>2.8.0</commons.io.version>
+        <commons.lang.version>2.6</commons.lang.version>
+        <junit.version>4.13.2</junit.version>
+        <sonar-analyzer-commons.version>1.21.0.829</sonar-analyzer-commons.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- compile dependencies -->
+            <dependency>
+                <groupId>org.sonarsource.sslr</groupId>
+                <artifactId>sslr-core</artifactId>
+                <version>${sslr.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.sonarsource.sslr-squid-bridge</groupId>
+                <artifactId>sslr-squid-bridge</artifactId>
+                <version>${sslr-squid-bridge.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.codehaus.sonar.sslr</groupId>
+                        <artifactId>sslr-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.codehaus.sonar.sslr</groupId>
+                        <artifactId>sslr-xpath</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.codehaus.sonar</groupId>
+                        <artifactId>sonar-plugin-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.picocontainer</groupId>
+                        <artifactId>picocontainer</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jcl-over-slf4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.sonarsource.analyzer-commons</groupId>
+                <artifactId>sonar-analyzer-commons</artifactId>
+                <version>${sonar-analyzer-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.sonarsource.analyzer-commons</groupId>
+                <artifactId>sonar-xml-parsing</artifactId>
+                <version>${sonar-analyzer-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.sonarsource.analyzer-commons</groupId>
+                <artifactId>sonar-analyzer-test-commons</artifactId>
+                <version>${sonar-analyzer-commons.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.staxmate</groupId>
+                <artifactId>staxmate</artifactId>
+                <version>2.0.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.sonarsource.orchestrator</groupId>
+                <artifactId>sonar-orchestrator</artifactId>
+                <version>${sonar.orchestrator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${commons.lang.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.woodstox</groupId>
+                <artifactId>woodstox-core-lgpl</artifactId>
+                <version>${woodstox.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.ant</groupId>
+                <artifactId>ant</artifactId>
+                <version>1.10.12</version>
+            </dependency>
+
+            <!-- test dependencies -->
+            <dependency>
+                <groupId>org.jacoco</groupId>
+                <artifactId>org.jacoco.agent</artifactId>
+                <version>${jacoco.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib-nodep</artifactId>
+                <version>3.3.0</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.sonarsource.sonarqube</groupId>
+                <artifactId>sonar-testing-harness</artifactId>
+                <version>${sonar.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.sonarsource.sslr</groupId>
+                <artifactId>sslr-testing-harness</artifactId>
+                <version>${sslr.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj-core.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.sonarsource.sonarlint.core</groupId>
+                <artifactId>sonarlint-core</artifactId>
+                <version>${sonarlint-core.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>31.0.1-jre</version>
+            </dependency>
+
+
+            <!-- provided dependencies -->
+            <dependency>
+                <groupId>org.sonarsource.sonarqube</groupId>
+                <artifactId>sonar-plugin-api</artifactId>
+                <version>${sonar.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.sonarsource.sonarqube</groupId>
+                <artifactId>sonar-plugin-api-impl</artifactId>
+                <version>${sonar.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>com.mycila</groupId>
+                    <artifactId>license-maven-plugin</artifactId>
+                    <version>3.0</version>
+                    <configuration>
+                        <header>NOTICE</header>
+                        <quiet>false</quiet>
+                        <failIfMissing>true</failIfMissing>
+                        <aggregate>false</aggregate>
+                        <includes>
+                            <include>src/**/*.java</include>
+                        </includes>
+                        <useDefaultExcludes>true</useDefaultExcludes>
+                        <useDefaultMapping>true</useDefaultMapping>
+                        <strictCheck>true</strictCheck>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>format</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.8.0.2131</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.jacoco</groupId>
+                    <artifactId>jacoco-maven-plugin</artifactId>
+                    <version>${jacoco.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>default-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
+
+</project>

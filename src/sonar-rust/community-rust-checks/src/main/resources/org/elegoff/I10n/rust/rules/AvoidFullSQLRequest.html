@@ -1,0 +1,18 @@
+<p>Don't use the query SELECT * FROM</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    fn main() {
+        let value2 = "select * FROM users";
+
+    }
+
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+
+   fn main() {
+           let value2 = "SELECT id,name, adress FROM users";
+
+       }
+
+</pre>

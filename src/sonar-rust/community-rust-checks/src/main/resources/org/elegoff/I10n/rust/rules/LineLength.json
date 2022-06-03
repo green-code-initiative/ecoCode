@@ -1,0 +1,15 @@
+{
+  "title": "Lines should not be too long",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "1min"
+  },
+  "tags": [
+    "convention"
+  ],
+  "defaultSeverity": "Major",
+  "sqKey": "LineLength",
+  "scope": "All"
+}

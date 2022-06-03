@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<coverage lines-covered="531" lines-valid="1750" line-rate="0.2976275896924354" branches-covered="0" branches-valid="0"
+		  branch-rate="0" complexity="0" version="1.9" timestamp="1622749392">
+	<sources>
+		<source>src/test/resources/org/elegoff/plugins/rust/cobertura</source>
+	</sources>
+	<packages>
+		<package name="src/process" line-rate="0" branch-rate="0" complexity="0">
+			<classes>
+				<class name="child" filename="src/process/child.rs" line-rate="0" branch-rate="0" complexity="0">
+					<methods/>
+					<lines>
+						<line number="21" hits="0"/>
+						<line number="22" hits="0"/>
+						<line number="23" hits="0"/>
+						<line number="24" hits="0"/>
+						<line number="25" hits="0"/>
+						<line number="29" hits="0"/>
+						<line number="30" hits="0"/>
+						<line number="31" hits="0"/>
+						<line number="32" hits="0"/>
+						<line number="33" hits="0"/>
+						<line number="34" hits="0"/>
+						<line number="35" hits="0"/>
+						<line number="36" hits="0"/>
+						<line number="39" hits="0"/>
+						<line number="40" hits="0"/>
+						<line number="42" hits="0"/>
+						<line number="44" hits="0"/>
+						<line number="45" hits="0"/>
+						<line number="46" hits="0"/>
+						<line number="47" hits="0"/>
+						<line number="50" hits="0"/>
+						<line number="51" hits="0"/>
+						<line number="52" hits="0"/>
+						<line number="53" hits="0"/>
+						<line number="56" hits="0"/>
+						<line number="57" hits="0"/>
+						<line number="58" hits="0"/>
+						<line number="61" hits="0"/>
+						<line number="62" hits="0"/>
+						<line number="66" hits="0"/>
+						<line number="67" hits="0"/>
+						<line number="68" hits="0"/>
+						<line number="69" hits="0"/>
+						<line number="70" hits="0"/>
+						<line number="71" hits="0"/>
+						<line number="72" hits="0"/>
+						<line number="73" hits="0"/>
+						<line number="74" hits="0"/>
+						<line number="80" hits="0"/>
+					</lines>
+				</class>
+				<class name="fork" filename="src/process/fork.rs" line-rate="0" branch-rate="0" complexity="0">
+					<methods/>
+					<lines>
+						<line number="21" hits="0"/>
+						<line number="28" hits="0"/>
+						<line number="30" hits="0"/>
+						<line number="31" hits="0"/>
+						<line number="34" hits="0"/>
+						<line number="35" hits="0"/>
+						<line number="38" hits="0"/>
+						<line number="39" hits="0"/>
+						<line number="40" hits="0"/>
+						<line number="41" hits="0"/>
+						<line number="45" hits="0"/>
+						<line number="46" hits="0"/>
+						<line number="49" hits="0"/>
+						<line number="51" hits="0"/>
+						<line number="53" hits="0"/>
+						<line number="54" hits="0"/>
+						<line number="56" hits="0"/>
+						<line number="58" hits="0"/>
+						<line number="59" hits="0"/>
+						<line number="60" hits="0"/>
+						<line number="64" hits="0"/>
+						<line number="65" hits="0"/>
+						<line number="67" hits="0"/>
+						<line number="73" hits="0"/>
+						<line number="74" hits="0"/>
+						<line number="76" hits="0"/>
+						<line number="77" hits="0"/>
+						<line number="78" hits="0"/>
+						<line number="79" hits="0"/>
+						<line number="80" hits="0"/>
+						<line number="82" hits="0"/>
+						<line number="83" hits="0"/>
+						<line number="85" hits="0"/>
+						<line number="86" hits="0"/>
+						<line number="88" hits="0"/>
+						<line number="89" hits="0"/>
+						<line number="92" hits="0"/>
+					</lines>
+				</class>
+				<class name="init" filename="src/process/init.rs" line-rate="0" branch-rate="0" complexity="0">
+					<methods/>
+					<lines>
+						<line number="12" hits="0"/>
+						<line number="16" hits="0"/>
+						<line number="17" hits="0"/>
+						<line number="19" hits="0"/>
+						<line number="21" hits="0"/>
+						<line number="22" hits="0"/>
+						<line number="25" hits="0"/>
+						<line number="26" hits="0"/>
+						<line number="27" hits="0"/>
+						<line number="28" hits="0"/>
+					</lines>
+				</class>
+				<class name="message" filename="src/process/message.rs" line-rate="0" branch-rate="0" complexity="0">
+					<methods/>
+					<lines>
+						<line number="8" hits="0"/>
+						<line number="9" hits="0"/>
+						<line number="10" hits="0"/>
+						<line number="11" hits="0"/>
+						<line number="12" hits="0"/>
+					</lines>
+				</class>
+				<class name="parent" filename="src/process/parent.rs" line-rate="0" branch-rate="0" complexity="0">
+					<methods/>
+					<lines>
+						<line number="17" hits="0"/>
+						<line number="18" hits="0"/>
+						<line number="19" hits="0"/>
+						<line number="20" hits="0"/>
+						<line number="21" hits="0"/>
+						<line number="22" hits="0"/>
+						<line number="25" hits="0"/>
+						<line number="26" hits="0"/>
+						<line number="27" hits="0"/>
+						<line number="28" hits="0"/>
+						<line number="29" hits="0"/>
+						<line number="30" hits="0"/>
+						<line number="31" hits="0"/>
+						<line number="32" hits="0"/>
+						<line number="33" hits="0"/>
+						<line number="34" hits="0"/>
+						<line number="35" hits="0"/>
+						<line number="36" hits="0"/>
+						<line number="38" hits="0"/>
+						<line number="44" hits="0"/>
+					</lines>
+				</class>
+			</classes>
+		</package>
+	</packages>
+</coverage>
