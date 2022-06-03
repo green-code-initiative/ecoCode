@@ -5,8 +5,8 @@ codenarcVersion="2.2.2"
 
 # Build CodeNarc
 cd codenarc-converter/CodeNarc
-./gradlew
+./gradlew build -x test
 
 # Deploy to local repository
-mvn install:install-file -Dfile=build/libs/CodeNarc-${codenarcVersion}.jar -DgroupId=org.codenarc -DartifactId=CodeNarc -Dversion=${codenarcVersion} -Dpackaging=jar
+mvn -B install:install-file -Dfile=build/libs/CodeNarc-${codenarcVersion}.jar -DgroupId=org.codenarc -DartifactId=CodeNarc -Dversion=${codenarcVersion} -Dpackaging=jar
 
