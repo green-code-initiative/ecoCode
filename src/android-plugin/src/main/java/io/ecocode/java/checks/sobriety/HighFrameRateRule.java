@@ -12,6 +12,8 @@ import java.util.List;
 @Rule(key = "ESOB014", name = "ecoCodeHighFrameRate")
 public class HighFrameRateRule extends IssuableSubscriptionVisitor {
 
+    private static final float FRAME_RATE_60 = 60.0f;
+
     private final MethodMatchers surfaceListenerMethodMatcher = MethodMatchers.create().
             ofTypes("android.view.Surface").names("setFrameRate").withAnyParameters().build();
 
@@ -29,7 +31,7 @@ public class HighFrameRateRule extends IssuableSubscriptionVisitor {
         if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree methodInvocationTree = (MethodInvocationTree) tree;
             if (surfaceListenerMethodMatcher.matches(methodInvocationTree) &&
-                    !isRefreshSixtyOrLower(methodInvocationTree.arguments())) {
+                    isRefreshSixtyOrHigher(methodInvocationTree.arguments())) {
                 reportIssue(methodInvocationTree, "A regular app displays 60 frames per second (60Hz). In order to optimize content refreshes and hence saving energy, this frequency should not be raised to 90Hz or 120Hz.");
             }
         }
@@ -40,13 +42,20 @@ public class HighFrameRateRule extends IssuableSubscriptionVisitor {
      * @param arguments Arguments of the method called
      * @return true if argument is a float under or equal 60
      */
-    private boolean isRefreshSixtyOrLower(Arguments arguments) {
+    private boolean isRefreshSixtyOrHigher(Arguments arguments) {
         ExpressionTree firstArg = arguments.get(0);
-        while (firstArg.is(Tree.Kind.TYPE_CAST, Tree.Kind.MEMBER_SELECT, Tree.Kind.PARENTHESIZED_EXPRESSION)) {
+        if (firstArg.is(Tree.Kind.IDENTIFIER)) {
+            IdentifierTree expressionTree = (IdentifierTree) firstArg;
+            Object argValue = expressionTree.asConstant().get();
+            if (argValue instanceof Float) {
+                return ((Float) argValue).floatValue() > FRAME_RATE_60;
+            }
+        } else if (firstArg.is(Tree.Kind.FLOAT_LITERAL)) {
             firstArg = (ExpressionTree) CheckArgumentComplexType.getChildExpression(firstArg);
+            LiteralTree lit = (LiteralTree) firstArg;
+            return Float.valueOf(lit.value()) > FRAME_RATE_60;
         }
-        LiteralTree lit = (LiteralTree) firstArg;
-        return firstArg.is(Tree.Kind.FLOAT_LITERAL)
-                && Float.valueOf(lit.value()) <= 60.0f;
+        // not compliant case
+        return false;
     }
 }
