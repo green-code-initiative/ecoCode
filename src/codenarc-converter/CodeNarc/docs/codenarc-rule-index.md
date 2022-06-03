@@ -169,6 +169,7 @@ title: CodeNarc - Rule Index
 ## [Ecocode](./codenarc-rules-ecocode.html)
 * [FatApp](./codenarc-rules-ecocode.html#fatapp-rule)
 * [SupportedVersionRange](./codenarc-rules-ecocode.html#supportedversionrange-rule)
+* [DisableObfuscation](./codenarc-rules-ecocode.html#disableobfuscation-rule)
 
 ## [Enhanced](./codenarc-rules-enhanced.html)
 * [CloneWithoutCloneable](./codenarc-rules-enhanced.html#clonewithoutcloneable-rule)

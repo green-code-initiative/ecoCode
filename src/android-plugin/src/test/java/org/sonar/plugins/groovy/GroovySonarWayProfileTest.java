@@ -45,7 +45,7 @@ public class GroovySonarWayProfileTest {
         profileContext.profile(Groovy.KEY, Groovy.PROFILE_NAME);
     assertThat(profile.language()).isEqualTo(Groovy.KEY);
     List<BuiltInActiveRule> activeRules = profile.rules();
-    assertThat(activeRules).as("Expected number of rules in profile").hasSize(2);
+    assertThat(activeRules).as("Expected number of rules in profile").hasSize(3);
     assertThat(profile.name()).isEqualTo(Groovy.PROFILE_NAME);
 
     // Check that we use severity from the read rule and not default one.
