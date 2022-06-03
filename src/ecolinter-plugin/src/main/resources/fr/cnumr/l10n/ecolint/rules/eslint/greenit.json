@@ -54,5 +54,13 @@
     "tags": [
       "eco-conception"
     ]
+  },
+  {
+    "key": "greenit/no-full-sql-request",
+    "name": "There should be no full sql request in literal",
+    "url": "https://github.com/cnumr/ecoLinter/blob/wallaby-dev/docs/rules/js/no-full-sql-request.md",
+    "tags": [
+      "eco-conception"
+    ]
   }
 ]
