@@ -1,10 +1,15 @@
 package fr.cnumr.python.checks;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
+import org.sonar.plugins.python.api.tree.AnyParameter;
+import org.sonar.plugins.python.api.tree.AssignmentStatement;
 import org.sonar.plugins.python.api.tree.FunctionDef;
+import org.sonar.plugins.python.api.tree.ParameterList;
 import org.sonar.plugins.python.api.tree.QualifiedExpression;
 import org.sonar.plugins.python.api.tree.ReturnStatement;
 import org.sonar.plugins.python.api.tree.Statement;
@@ -28,20 +33,41 @@ public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
             FunctionDef functionDef = (FunctionDef) ctx.syntaxNode();
             StatementList statementList = functionDef.body();
             List<Statement> statements = statementList.statements();
-            if (functionDef.parent().parent().getKind() == Tree.Kind.CLASSDEF) {
+            if (functionDef.parent().parent().is(Tree.Kind.CLASSDEF)) {
+                // We first check all the getters
                 Statement lastStatement = statements.get(statements.size() - 1);
                 if (lastStatement.is(Tree.Kind.RETURN_STMT)) {
                     List<Tree> returnStatementChildren = ((ReturnStatement) lastStatement).children();
-                    if (returnStatementChildren.get(1).getKind() == Tree.Kind.QUALIFIED_EXPR){
-                        List<Tree> qualifedExpressionChildren = ((QualifiedExpression) returnStatementChildren.get(1)).children();
-                        if (qualifedExpressionChildren.size() == 3 &&
-                            qualifedExpressionChildren.get(0).firstToken().value().equalsIgnoreCase("self") &&
-                            qualifedExpressionChildren.get(1).firstToken().value().equalsIgnoreCase(".")){
-                                ctx.addIssue(functionDef.defKeyword(), AvoidGettersAndSetters.DESCRIPTION);
+                    if (returnStatementChildren.get(1).is(Tree.Kind.QUALIFIED_EXPR)){
+                    if (checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot((QualifiedExpression) returnStatementChildren.get(1))){
+                        ctx.addIssue(functionDef.defKeyword(), AvoidGettersAndSetters.DESCRIPTION);
+                    }
+                }
+                }
+                // We now check all the setters
+                if(statements.size() == 1 && statements.get(0).is(Tree.Kind.ASSIGNMENT_STMT)){
+                    AssignmentStatement assignmentStatement = (AssignmentStatement) statements.get(0);
+                    if(checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot((QualifiedExpression) assignmentStatement.children().get(0).children().get(0))){
+                        // Check if assignedValue is a parameter of the function
+                        ParameterList parameters = functionDef.parameters();
+                        if(!parameters.all().stream().filter(p -> checkAssignementFromParameter(assignmentStatement, p)).collect(Collectors.toList()).isEmpty()){
+                            ctx.addIssue(functionDef.defKeyword(), AvoidGettersAndSetters.DESCRIPTION);
                         }
                     }
                 }
             }
         });
+    }
+
+    public boolean checkAssignementFromParameter(AssignmentStatement assignmentStatement, AnyParameter parameter){
+        String parameterToString = parameter.firstToken().value();
+        return assignmentStatement.assignedValue().firstToken().value().equalsIgnoreCase(parameterToString);
+    }
+
+    public boolean checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot(QualifiedExpression qualifiedExpression){
+        List<Tree> qualifedExpressionChildren = qualifiedExpression.children();
+        return qualifedExpressionChildren.size() == 3 &&
+            qualifedExpressionChildren.get(0).firstToken().value().equalsIgnoreCase("self") &&
+            qualifedExpressionChildren.get(1).firstToken().value().equalsIgnoreCase(".");
     }
 }
