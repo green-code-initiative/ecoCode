@@ -1,5 +1,5 @@
 {
-  "title": "Sobriety: Thrifty Notification",
+  "title": "Sobriety: Torch Free",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -11,5 +11,5 @@
     "environment",
     "ecocode"
   ],
-  "defaultSeverity": "Minor"
+  "defaultSeverity": "Major"
 }
