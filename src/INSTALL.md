@@ -42,11 +42,7 @@ CodeNarc must be built separately. Please see the following steps:
 Build CodeNarc (Gradle 6.9.2, Java 11), then add this custom-built CodeNarc to Maven dependencies: 
 
 ```sh
-cd codenarc-converter/CodeNarc
-./gradlew build -x test
-cd ..
 mvn initialize
-cd ..
 ```
 
 
