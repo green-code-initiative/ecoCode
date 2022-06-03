@@ -22,6 +22,7 @@ package fr.cnumr.python;
 
 import fr.cnumr.python.checks.AvoidDoubleQuoteCheck;
 import fr.cnumr.python.checks.AvoidFullSQLRequest;
+import fr.cnumr.python.checks.AvoidGettersAndSetters;
 import fr.cnumr.python.checks.AvoidTryCatchFinallyCheck;
 import fr.cnumr.python.checks.NoFunctionCallWhenDeclaringForLoop;
 import org.sonar.api.server.rule.RulesDefinition;
@@ -58,7 +59,7 @@ public class CustomPythonRuleRepository implements RulesDefinition, PythonCustom
     @Override
     public List<Class> checkClasses() {
         return Arrays.asList(NoFunctionCallWhenDeclaringForLoop.class, AvoidTryCatchFinallyCheck.class, 
-        		AvoidDoubleQuoteCheck.class,AvoidFullSQLRequest.class);
+        		AvoidDoubleQuoteCheck.class,AvoidFullSQLRequest.class, AvoidGettersAndSetters.class);
     }
 
     private static void setTemplates(NewRepository repository) {
