@@ -1,0 +1,11 @@
+<p>Prefer using foreach</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    for ($x = 0; $x <= 10; $x++) // NOK
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+    foreach (iterable_expression as $value){
+        //commandes
+    }
+</pre>

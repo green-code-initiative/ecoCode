@@ -54,7 +54,8 @@ public class MyPhpRules implements RulesDefinition, PHPCustomRuleRepository {
   @Override
   public ImmutableList<Class> checkClasses() {
     return ImmutableList.of(IncrementCheck.class, AvoidTryCatchFinallyCheck.class, AvoidDoubleQuoteCheck.class,
-            AvoidFullSQLRequestCheck.class, AvoidSQLRequestInLoopCheck.class, NoFunctionCallWhenDeclaringForLoop.class, AvoidRelativePathCheck.class);
+            AvoidFullSQLRequestCheck.class, AvoidSQLRequestInLoopCheck.class, NoFunctionCallWhenDeclaringForLoop.class,
+            AvoidRelativePathCheck.class, PreferUsingForeachCheck.class);
   }
 
   @Override
