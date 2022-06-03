@@ -8,6 +8,7 @@ import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Rule(key = "ESOB014", name = "ecoCodeHighFrameRate")
 public class HighFrameRateRule extends IssuableSubscriptionVisitor {
@@ -44,8 +45,9 @@ public class HighFrameRateRule extends IssuableSubscriptionVisitor {
      */
     private boolean isRefreshSixtyOrHigher(Arguments arguments) {
         ExpressionTree firstArg = arguments.get(0);
-        if (firstArg.asConstant().isPresent() && firstArg.is(Tree.Kind.IDENTIFIER)) {
-            Object argValue = firstArg.asConstant().get();
+        Optional<Object> argOptional = firstArg.asConstant();
+        if (argOptional.isPresent() && firstArg.is(Tree.Kind.IDENTIFIER)) {
+            Object argValue = argOptional.get();
             if (argValue instanceof Float) {
                 return ((Float) argValue).floatValue() > FRAME_RATE_60;
             }
