@@ -13,9 +13,11 @@ class Surface {
 
     public void test() {
         Surface surface = new Surface();
-        surface.setFrameRate(0.0f, FRAME_RATE_COMPATIBILITY_DEFAULT);
-        surface.setFrameRate(90.0f, FRAME_RATE_COMPATIBILITY_FIXED_SOURCE); // Noncompliant {{A regular app displays 60 frames per second (60Hz). In order to optimize content refreshes and hence saving energy, this frequency should not be raised to 90Hz or 120Hz.}}
-        surface.setFrameRate(FRAME_RATE_120, FRAME_RATE_COMPATIBILITY_DEFAULT); // Noncompliant {{A regular app displays 60 frames per second (60Hz). In order to optimize content refreshes and hence saving energy, this frequency should not be raised to 90Hz or 120Hz.}}
+        surface.setFrameRate(FRAME_RATE_0, FRAME_RATE_COMPATIBILITY_DEFAULT);
+        surface.setFrameRate(FRAME_RATE_60, FRAME_RATE_COMPATIBILITY_DEFAULT);
+        surface.setFrameRate(FRAME_RATE_90, FRAME_RATE_COMPATIBILITY_DEFAULT); // Noncompliant {{A regular app displays 60 frames per second (60Hz). In order to optimize content refreshes and hence saving energy, this frequency should not be raised to 90Hz or 120Hz.}}surface.setFrameRate(FRAME_RATE_120, FRAME_RATE_COMPATIBILITY_DEFAULT); // Noncompliant {{A regular app displays 60 frames per second (60Hz). In order to optimize content refreshes and hence saving energy, this frequency should not be raised to 90Hz or 120Hz.}}
+        surface.setFrameRate(FRAME_RATE_120, FRAME_RATE_COMPATIBILITY_DEFAULT); // Noncompliant {{A regular app displays 60 frames per second (60Hz). In order to optimize content refreshes and hence saving energy, this frequency should not be raised to 90Hz or 120Hz.}}surface.setFrameRate(FRAME_RATE_120, FRAME_RATE_COMPATIBILITY_DEFAULT); // Noncompliant {{A regular app displays 60 frames per second (60Hz). In order to optimize content refreshes and hence saving energy, this frequency should not be raised to 90Hz or 120Hz.}}
+
         // Test with compatibility fixed source
         surface.setFrameRate(0.0f, FRAME_RATE_COMPATIBILITY_FIXED_SOURCE);
         surface.setFrameRate(60.0f, FRAME_RATE_COMPATIBILITY_FIXED_SOURCE);
