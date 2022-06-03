@@ -29,6 +29,11 @@ class TestClass {
 			dest[i] = true;
 		}
 		
+		// Edit same array
+		for (int i = 0; i < len-1; i++) {
+			dest[i] = dest[i+1];
+		}
+		
 		// Objects assignations
 		String a = null;
 		String b = "Sample Value";
