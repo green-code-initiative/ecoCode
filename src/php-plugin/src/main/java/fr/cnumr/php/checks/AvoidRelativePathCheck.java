@@ -36,7 +36,7 @@ public class AvoidRelativePathCheck extends PHPSubscriptionCheck {
     }
 
     public void checkIssue(FunctionCallTree functionCallTree) {
-        if(functionCallTree.callee().toString().equals("include")){
+        if(functionCallTree.callee().toString().equals("include") || functionCallTree.callee().toString().equals("require")){
             ParenthesisedExpressionTree expressionTree = (ParenthesisedExpressionTree) functionCallTree.arguments().get(0);
             if(!expressionTree.expression().toString().startsWith("\"/")){
                 repport(functionCallTree);
