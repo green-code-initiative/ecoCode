@@ -129,6 +129,201 @@ class TestClass {
 		}
 	}
 	
+	public void copyWithForEachLoop() {
+		final int len = 5;
+		final boolean[] src = new boolean[len];
+		boolean[] dest = new boolean[len];
+		
+		// Simple copy by foreach
+		int i = -1;
+		for (boolean b : src) { // Noncompliant
+			dest[++i] = b;
+		}
+		
+		// Copy with nested conditions by foreach
+		i = -1;
+		for (boolean b : src) { // Noncompliant
+			if(b) {
+				dest[++i] = b;
+			}
+		}
+		
+		// Copy with nested ELSE conditions by foreach
+		i = -1;
+		for (boolean b : src) { // Noncompliant
+			if(i + 2 >= len) {
+				i++;
+			} else {
+				dest[++i] = b;
+			}
+		}
+		
+		// Copy with more nested conditions
+		i = -1;
+		for (boolean b : src) { // Noncompliant
+			if(i + 2 < len) {
+				if(dest != null) {
+					if(src != null) {
+						if(i > 1 && i + 2 < src.length) {
+							dest[++i] = b;
+						}
+					}
+				}
+			}
+		}
+		
+		// Copy nested by try/catch
+		i = -1;
+		for (boolean b : src) { // Noncompliant
+			try {
+				dest[++i] = b;
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// Copy nested by try/catch and if
+		i = -1;
+		for (boolean b : src) { // Noncompliant
+			try {
+				if(dest != null) {
+					dest[++i] = b;
+				}
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// Copy nested by try/catch in catch
+		i = -1;
+		for (boolean b : src) { // Noncompliant
+			try {
+				dest.toString();
+			} catch (RuntimeException e) {
+				if(dest != null) {
+					dest[++i] = b;
+				}
+			}
+		}
+		
+		// Copy nested by try/catch in finally
+		i = -1;
+		for (boolean b : src) { // Noncompliant
+			try {
+				dest.toString();
+			} catch (RuntimeException e) {
+			 	e.printStackTrace();
+			} finally {
+				dest[++i] = b;
+			}
+		}
+
+		// Array transformation
+		i = -1;
+		for (boolean b : src) {
+			dest[++i] = transform(b);
+		}
+		
+		// Simple copy
+		int i = 0;
+		for (boolean b : src) { // Noncompliant
+			dest[i] = src[i];
+			i++;
+		}
+		
+		// Copy with nested conditions
+		i = 0;
+		for (boolean b : src) { // Noncompliant
+			if(b) {
+				dest[i] = src[i];
+			}
+			i++;
+		}
+		
+		// Copy with nested ELSE conditions
+		i = 0;
+		for (boolean b : src) { // Noncompliant
+			if(i + 2 >= len) {
+				i++;
+			} else {
+				dest[i] = src[i + 2];
+			}
+			i++;
+		}
+		
+		// Copy with more nested conditions
+		i = 0;
+		for (boolean b : src) { // Noncompliant
+			if(i + 2 < len) {
+				if(dest != null) {
+					if(src != null) {
+						if(i > 1 && i + 2 < src.length) {
+							dest[i] = src[i + 2];
+						}
+					}
+				}
+			}
+			i++;
+		}
+		
+		// Copy nested by try/catch
+		i = 0;
+		for (boolean b : src) { // Noncompliant
+			try {
+				dest[i] = src[i];
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			}
+			i++;
+		}
+		
+		// Copy nested by try/catch and if
+		i = 0;
+		for (boolean b : src) { // Noncompliant
+			try {
+				if(dest != null) {
+					dest[i] = src[i];
+				}
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			}
+			i++;
+		}
+		
+		// Copy nested by try/catch in catch
+		i = 0;
+		for (boolean b : src) { // Noncompliant
+			try {
+				dest.toString();
+			} catch (RuntimeException e) {
+				if(dest != null) {
+					dest[i] = src[i];
+				}
+			}
+			i++;
+		}
+		
+		// Copy nested by try/catch in finally
+		i = 0;
+		for (boolean b : src) { // Noncompliant
+			try {
+				dest.toString();
+			} catch (RuntimeException e) {
+			 	e.printStackTrace();
+			} finally {
+				dest[i] = src[i];
+			}
+			i++;
+		}
+
+		// Array transformation
+		i = 0;
+		for (boolean b : src) {
+			dest[i] = transform(src[i]);
+			i++;
+		}
+	}
+	
 	public void copyWithWhileLoop() {
 		final int len = 5;
 		final boolean[] src = new boolean[len];

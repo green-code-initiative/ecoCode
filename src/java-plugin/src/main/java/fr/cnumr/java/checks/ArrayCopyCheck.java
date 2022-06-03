@@ -16,6 +16,7 @@ import org.sonar.plugins.java.api.tree.CatchTree;
 import org.sonar.plugins.java.api.tree.DoWhileStatementTree;
 import org.sonar.plugins.java.api.tree.ExpressionStatementTree;
 import org.sonar.plugins.java.api.tree.ExpressionTree;
+import org.sonar.plugins.java.api.tree.ForEachStatement;
 import org.sonar.plugins.java.api.tree.ForStatementTree;
 import org.sonar.plugins.java.api.tree.IdentifierTree;
 import org.sonar.plugins.java.api.tree.IfStatementTree;
@@ -23,17 +24,27 @@ import org.sonar.plugins.java.api.tree.StatementTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonar.plugins.java.api.tree.TryStatementTree;
+import org.sonar.plugins.java.api.tree.VariableTree;
 import org.sonar.plugins.java.api.tree.WhileStatementTree;
 
-@Rule(key = "GRPS0027", name = "Developpement", description = ArrayCopyCheck.MESSAGERULE, priority = Priority.MINOR, tags = {
-		"CODE_SMELL" })
+/**
+ * Array Copy Check
+ * @formatter:off
+ * @author Aubay
+ */
+@Rule(key = "GRPS0027",
+	name = "Developpement",
+	description = ArrayCopyCheck.MESSAGERULE,
+	priority = Priority.MINOR,
+	tags = { "bug" })
 public class ArrayCopyCheck extends IssuableSubscriptionVisitor {
 
+	//@formatter:on
 	protected static final String MESSAGERULE = "Utiliser System.arraycopy pour copier des arrays";
 
 	@Override
 	public List<Kind> nodesToVisit() {
-		return Arrays.asList(Kind.FOR_STATEMENT, Kind.WHILE_STATEMENT, Kind.DO_STATEMENT);
+		return Arrays.asList(Kind.FOR_STATEMENT, Kind.WHILE_STATEMENT, Kind.DO_STATEMENT, Kind.FOR_EACH_STATEMENT);
 	}
 
 	/**
@@ -41,14 +52,52 @@ public class ArrayCopyCheck extends IssuableSubscriptionVisitor {
 	 */
 	@Override
 	public void visitNode(final Tree tree) {
-		final List<AssignmentExpressionTree> assignments = extractAssignments(tree);
-		for (final AssignmentExpressionTree assignment : assignments) {
+		// Determine blocks to be analyzed
+		final List<Bloc> blocs = getBlocsOfCode(tree);
+
+		// Analyze blocks
+		for (final Bloc bloc : blocs) {
+			if (bloc.isForeach()) {
+				handleForEachAssignments(tree, bloc);
+			}
+			handleAssignments(tree, bloc);
+		}
+	}
+
+	/**
+	 * Handle for-each assignments controls.
+	 *
+	 * @param tree
+	 * @param bloc
+	 */
+	private void handleForEachAssignments(final Tree tree, final Bloc bloc) {
+		for (final AssignmentExpressionTree assignment : extractAssignments(tree, bloc)) {
+			final ExpressionTree destination = assignment.variable();
+			final ExpressionTree source = assignment.expression();
+			if (isArray(destination) && isVariable(source)) {
+				final String destinationIdentifier = getArrayIdentifier(destination);
+				final String sourceIdentifier = ((IdentifierTree) source).name();
+				if (bloc.getValue().equals(sourceIdentifier) && !bloc.getIterable().equals(destinationIdentifier)) {
+					reportIssue(tree, MESSAGERULE);
+				}
+			}
+		}
+	}
+
+	/**
+	 * Handle assignments controls.
+	 *
+	 * @param tree
+	 * @param bloc
+	 */
+	private void handleAssignments(final Tree tree, final Bloc bloc) {
+		for (final AssignmentExpressionTree assignment : extractAssignments(tree, bloc)) {
 			final ExpressionTree destVariable = assignment.variable();
 			final ExpressionTree srcEspression = assignment.expression();
 			if (isArray(destVariable) && isArray(srcEspression)) {
 				final String destArray = getArrayIdentifier(destVariable);
 				final String srcArray = getArrayIdentifier(srcEspression);
-				if (!destArray.equals(srcArray)) {
+				if (destArray != null && !destArray.equals(srcArray)) {
 					reportIssue(tree, MESSAGERULE);
 				}
 			}
@@ -82,22 +131,13 @@ public class ArrayCopyCheck extends IssuableSubscriptionVisitor {
 	}
 
 	/**
-	 * Extract all assignments
+	 * Verify if expression is an variable
 	 *
-	 * @param tree
+	 * @param source
 	 * @return
 	 */
-	private List<AssignmentExpressionTree> extractAssignments(final Tree tree) {
-
-		// Determine blocks to be analyzed
-		final List<BlockTree> blocks = getBlocksOfCode(tree);
-
-		// Analyze blocks
-		final List<AssignmentExpressionTree> result = new ArrayList<>();
-		for (final BlockTree block : blocks) {
-			result.addAll(extractAssignments(block));
-		}
-		return result;
+	private boolean isVariable(final ExpressionTree source) {
+		return source instanceof IdentifierTree;
 	}
 
 	/**
@@ -106,33 +146,40 @@ public class ArrayCopyCheck extends IssuableSubscriptionVisitor {
 	 * @param tree
 	 * @return
 	 */
-	private List<BlockTree> getBlocksOfCode(final Tree tree) {
-		final List<BlockTree> blocks = new ArrayList<>();
+	private List<Bloc> getBlocsOfCode(final Tree tree) {
+		final List<Bloc> blocs = new ArrayList<>();
 		if (tree instanceof ForStatementTree) {
-			addBlock(blocks, ((ForStatementTree) tree).statement());
+			addBloc(blocs, ((ForStatementTree) tree).statement());
+		} else if (tree instanceof ForEachStatement) {
+			addForEachBloc(blocs, ((ForEachStatement) tree).statement(), ((ForEachStatement) tree).variable(),
+					((ForEachStatement) tree).expression());
 		} else if (tree instanceof WhileStatementTree) {
-			addBlock(blocks, ((WhileStatementTree) tree).statement());
+			addBloc(blocs, ((WhileStatementTree) tree).statement());
 		} else if (tree instanceof DoWhileStatementTree) {
-			addBlock(blocks, ((DoWhileStatementTree) tree).statement());
+			addBloc(blocs, ((DoWhileStatementTree) tree).statement());
 		} else if (tree instanceof IfStatementTree) {
-			addBlock(blocks, ((IfStatementTree) tree).thenStatement());
-			addBlock(blocks, ((IfStatementTree) tree).elseStatement());
+			addBloc(blocs, ((IfStatementTree) tree).thenStatement());
+			addBloc(blocs, ((IfStatementTree) tree).elseStatement());
 		} else if (tree instanceof TryStatementTree) {
 			final TryStatementTree tryTree = (TryStatementTree) tree;
-			addBlock(blocks, tryTree.block());
-			addBlock(blocks, extractCatchBlocks(tryTree));
-			addBlock(blocks, tryTree.finallyBlock());
+			addBloc(blocs, tryTree.block());
+			addBloc(blocs, extractCatchBlocks(tryTree));
+			addBloc(blocs, tryTree.finallyBlock());
 		}
-		return blocks;
+		return blocs;
 	}
 
 	/**
 	 * Assignments extraction from block of code.
 	 *
+	 * @param tree
+	 *
 	 * @param block
 	 * @return
 	 */
-	private List<AssignmentExpressionTree> extractAssignments(final BlockTree block) {
+	private List<AssignmentExpressionTree> extractAssignments(final Tree tree, final Bloc bloc) {
+		final BlockTree block = bloc.getBlockTree();
+
 		// Prepare useful predicates
 		final Predicate<StatementTree> blocksPredicate = statement -> statement.is(Kind.IF_STATEMENT)
 				|| statement.is(Kind.TRY_STATEMENT);
@@ -148,7 +195,10 @@ public class ArrayCopyCheck extends IssuableSubscriptionVisitor {
 		final List<StatementTree> ifStatements = block.body().stream().filter(blocksPredicate)
 				.collect(Collectors.toList());
 		for (final StatementTree ifstatement : ifStatements) {
-			result.addAll(extractAssignments(ifstatement));
+			final List<Bloc> blocs = getBlocsOfCode(ifstatement);
+			for (final Bloc b : blocs) {
+				result.addAll(extractAssignments(tree, b));
+			}
 		}
 		return result;
 	}
@@ -165,16 +215,65 @@ public class ArrayCopyCheck extends IssuableSubscriptionVisitor {
 	}
 
 	/**
-	 * Add a BlockTree in list after type checking
+	 * Add a Bloc in list after type checking
 	 *
-	 * @param blocks
+	 * @param blocs
 	 * @param statements
 	 */
-	private void addBlock(final List<BlockTree> blocks, final StatementTree... statements) {
+	private void addBloc(final List<Bloc> blocs, final StatementTree... statements) {
 		for (final StatementTree statement : statements) {
 			if (statement instanceof BlockTree) {
-				blocks.add((BlockTree) statement);
+				blocs.add(new Bloc((BlockTree) statement));
 			}
 		}
+	}
+
+	/**
+	 * Add a Bloc in list after type checking
+	 *
+	 * @param blocs
+	 * @param statement
+	 * @param variable
+	 * @param expression
+	 */
+	private void addForEachBloc(final List<Bloc> blocs, final StatementTree statement, final VariableTree variable,
+			final ExpressionTree expression) {
+		if (statement instanceof BlockTree && expression instanceof IdentifierTree) {
+			blocs.add(new Bloc((BlockTree) statement, ((IdentifierTree) expression).identifierToken().text(),
+					variable.simpleName().identifierToken().text()));
+		}
+	}
+
+	private static class Bloc {
+		private final BlockTree blockTree;
+		private String iterable;
+		private String value;
+
+		public Bloc(final BlockTree blockTree, final String iterable, final String value) {
+			this.blockTree = blockTree;
+			this.iterable = iterable;
+			this.value = value;
+		}
+
+		public boolean isForeach() {
+			return iterable != null && value != null;
+		}
+
+		public Bloc(final BlockTree blockTree) {
+			this.blockTree = blockTree;
+		}
+
+		public BlockTree getBlockTree() {
+			return blockTree;
+		}
+
+		public String getIterable() {
+			return iterable;
+		}
+
+		public String getValue() {
+			return value;
+		}
+
 	}
 }
