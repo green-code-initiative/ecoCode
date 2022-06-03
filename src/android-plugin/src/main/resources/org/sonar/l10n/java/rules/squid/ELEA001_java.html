@@ -1,0 +1,14 @@
+<img src="http://www.neomades.com/extern/partage/ecoCode/1sur5_1x.png">
+<p>If someone calls <code>Context#startService()</code> then the system will retrieve the service (creating it and calling its onCreate() method if needed) and then call its <code>onStartCommand(Intent, int, int)</code> method with the arguments supplied by the client.</p>
+<p>The service will at this point continue running until <code>Context#stopService()</code> or <code>Service#stopSelf()</code> is called. Failing to call any of these methods can lead to uncontrolled energy leakage.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    context.startService();
+</pre>
+<h2>Compliant Code Example</h2>
+<pre>
+    context.startService();
+    ...
+    context.stopService();
+</pre>
+

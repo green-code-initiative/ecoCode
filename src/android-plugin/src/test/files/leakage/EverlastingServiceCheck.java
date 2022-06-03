@@ -3,7 +3,7 @@ package android.content;
 public class Context {
 
     public void test() {
-        //TODO
+        Context context = new Context();
     }
 
     public void startService(Intent service) {

@@ -120,6 +120,12 @@ public class JavaRulesDefinitionTest {
         assertThat(keepVoiceAwakeRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(keepVoiceAwakeRule.type()).isEqualTo(RuleType.CODE_SMELL);
 
+        Rule everlastingServiceLeakRule = repository.rule("ELEA001");
+        assertThat(everlastingServiceLeakRule).isNotNull();
+        assertThat(everlastingServiceLeakRule.name()).isEqualTo("Leakage: Everlasting Service");
+        assertThat(everlastingServiceLeakRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+        assertThat(everlastingServiceLeakRule.type()).isEqualTo(RuleType.CODE_SMELL);
+
         Rule cameraLeakRule = repository.rule("ELEA002");
         assertThat(cameraLeakRule).isNotNull();
         assertThat(cameraLeakRule.name()).isEqualTo("Leakage: Camera Leak");
