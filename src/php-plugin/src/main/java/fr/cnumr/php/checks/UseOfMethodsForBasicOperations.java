@@ -52,11 +52,11 @@ public class UseOfMethodsForBasicOperations extends PHPSubscriptionCheck  {
                         final List<ClassMemberTree> methodDeclarations = ((ClassDeclarationTree) statement).members()
                                 .stream()
                                 .filter(member -> member.is(Tree.Kind.METHOD_DECLARATION))
-                                .map(member -> (MethodDeclarationTree) member)
+                                .map(MethodDeclarationTree.class::cast)
                                 .filter(declarationTree -> this.isFunctionDeclared(declarationTree, functionName))
                                         .collect(Collectors.toList());
 
-                        if(methodDeclarations != null && methodDeclarations.size() > 0) {
+                        if(methodDeclarations != null && !methodDeclarations.isEmpty()) {
                             contains.set(true);
                         }
                     }
