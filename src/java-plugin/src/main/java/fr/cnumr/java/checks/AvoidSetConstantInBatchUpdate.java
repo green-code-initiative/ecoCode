@@ -27,7 +27,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 
 public class AvoidSetConstantInBatchUpdate extends IssuableSubscriptionVisitor {
 
-	protected static final String MESSAGERULE = "Avoid setting constants in batch insert";
+	protected static final String MESSAGERULE = "Avoid setting constants in batch update";
 	private final AvoidSetConstantInBatchUpdateVisitor visitorInFile = new AvoidSetConstantInBatchUpdateVisitor();
 
 	@Override
