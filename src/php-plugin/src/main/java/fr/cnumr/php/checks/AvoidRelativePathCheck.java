@@ -48,29 +48,7 @@ public class AvoidRelativePathCheck extends PHPSubscriptionCheck {
     }
 
     private void repport(FunctionCallTree functionCallTree) {
-//        if (literalTree.token() != null) {
-//
-//            final String classname = context().getPhpFile().toString();
-//            final int line = literalTree.token().line();
-//            if (!linesWithIssuesByFile.containsKey(classname)) {
-//                linesWithIssuesByFile.put(classname, new ArrayList<>());
-//            }
-//            linesWithIssuesByFile.get(classname).add(line);
-//        }
         context().newIssue(this, functionCallTree, ERROR_MESSAGE);
-
     }
-
-//    private boolean lineAlreadyHasThisIssue(LiteralTree literalTree) {
-//        if (literalTree.token() != null) {
-//            final String filename = context().getPhpFile().toString();
-//            final int line = literalTree.token().line();
-//
-//            return linesWithIssuesByFile.containsKey(filename)
-//                    && linesWithIssuesByFile.get(filename).contains(line);
-//        }
-//
-//        return false;
-//    }
 
 }
