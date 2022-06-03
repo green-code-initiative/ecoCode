@@ -44,9 +44,8 @@ public class HighFrameRateRule extends IssuableSubscriptionVisitor {
      */
     private boolean isRefreshSixtyOrHigher(Arguments arguments) {
         ExpressionTree firstArg = arguments.get(0);
-        if (firstArg.is(Tree.Kind.IDENTIFIER)) {
-            IdentifierTree expressionTree = (IdentifierTree) firstArg;
-            Object argValue = expressionTree.asConstant().get();
+        if (firstArg.is(Tree.Kind.IDENTIFIER) && firstArg.asConstant().isPresent()) {
+            Object argValue = firstArg.asConstant().get();
             if (argValue instanceof Float) {
                 return ((Float) argValue).floatValue() > FRAME_RATE_60;
             }
