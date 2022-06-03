@@ -38,7 +38,7 @@ import java.util.List;
  * If the "opening" method is called in a file without the call to the "closing" method, we raise an issue on
  * all the "opening" method call of the file.
  * If the "closing" method is called, we do not raise issues, even if several "opening" method are called.
- *
+ * <p>
  * This approach is far from perfect but cover a lot of the use cases.
  */
 public abstract class OpeningClosingMethodCheck extends IssuableSubscriptionVisitor {
