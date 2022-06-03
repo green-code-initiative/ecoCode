@@ -38,10 +38,9 @@ public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
                 Statement lastStatement = statements.get(statements.size() - 1);
                 if (lastStatement.is(Tree.Kind.RETURN_STMT)) {
                     List<Tree> returnStatementChildren = ((ReturnStatement) lastStatement).children();
-                    if (returnStatementChildren.get(1).is(Tree.Kind.QUALIFIED_EXPR)){
-                    if (checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot((QualifiedExpression) returnStatementChildren.get(1))){
+                    if (returnStatementChildren.get(1).is(Tree.Kind.QUALIFIED_EXPR) &&
+                    checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot((QualifiedExpression) returnStatementChildren.get(1))){
                         ctx.addIssue(functionDef.defKeyword(), AvoidGettersAndSetters.DESCRIPTION);
-                    }
                 }
                 }
                 // We now check all the setters
