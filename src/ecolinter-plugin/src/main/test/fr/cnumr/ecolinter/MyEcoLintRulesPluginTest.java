@@ -17,6 +17,6 @@ public class MyEcoLintRulesPluginTest {
         assertThat(eslintRepo.isExternal()).isTrue();
         assertThat(eslintRepo.name()).isEqualTo("ESLint");
         assertThat(eslintRepo.language()).isEqualTo("js");
-        assertThat(eslintRepo.rules()).hasSize(6);
+        assertThat(eslintRepo.rules()).hasSize(8);
     }
 }
