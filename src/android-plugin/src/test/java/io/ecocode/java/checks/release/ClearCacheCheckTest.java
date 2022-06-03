@@ -8,6 +8,6 @@ public class ClearCacheCheckTest {
     public void verify() {
         JavaCheckVerifier.newVerifier().onFile("src/test/files/release/ClearCacheCheck.java")
                 .withChecks(new ClearCacheRule())
-                .verifyIssues();
+                .verifyNoIssues();
     }
 }
