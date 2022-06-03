@@ -233,6 +233,12 @@ public class JavaRulesDefinitionTest {
         assertThat(uncachedDataReception.name()).isEqualTo("Bottleneck: Uncached Data Reception");
         assertThat(uncachedDataReception.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(uncachedDataReception.type()).isEqualTo(RuleType.CODE_SMELL);
+
+        Rule googleTrackerRule = repository.rule("SPRI002");
+        assertThat(googleTrackerRule).isNotNull();
+        assertThat(googleTrackerRule.name()).isEqualTo("Privacy: Google Tracker");
+        assertThat(googleTrackerRule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+        assertThat(googleTrackerRule.type()).isEqualTo(RuleType.CODE_SMELL);
     }
 
     private void assertAllRuleParametersHaveDescription(Repository repository) {

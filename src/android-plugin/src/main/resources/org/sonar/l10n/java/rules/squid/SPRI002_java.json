@@ -1,0 +1,15 @@
+{
+  "title": "Privacy: Google Tracker",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "20min"
+  },
+  "tags": [
+    "privacy",
+    "social",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}

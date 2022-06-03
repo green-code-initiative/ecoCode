@@ -32,6 +32,7 @@ import io.ecocode.java.checks.optimized_api.FusedLocationRule;
 import io.ecocode.java.checks.power.SaveModeAwarenessRule;
 import io.ecocode.java.checks.power.ChargeAwarenessRule;
 import io.ecocode.java.checks.sobriety.*;
+import io.ecocode.java.checks.social.privacy.*;
 import org.sonar.plugins.java.api.JavaCheck;
 
 import java.util.ArrayList;
@@ -83,7 +84,8 @@ public final class JavaCheckList {
                 JobCoalesceRule.class,
                 SaveModeAwarenessRule.class,
                 ThriftyGeolocationCriteriaRule.class,
-                UncachedDataReceptionRule.class
+                UncachedDataReceptionRule.class,
+                GoogleTrackerRule.class
         ));
     }
 
