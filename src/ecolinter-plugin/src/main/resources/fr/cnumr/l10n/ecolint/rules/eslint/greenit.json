@@ -1,8 +1,48 @@
 [
   {
-    "key": "greenit/s67",
+    "key": "greenit/externalize-js-css",
+    "name": "Externalize .js and .css files",
+    "url": "https://github.com/cnumr/ecoLinter/blob/wallaby-dev/docs/rules/js/externalize-js-css.md",
+    "tags": [
+      "eco-conception"
+    ]
+  },
+  {
+    "key": "greenit/no-call-dom-object-multiple-times.js",
+    "name": "DOM objects called multiple times should be assign to a variable",
+    "url": "https://github.com/cnumr/ecoLinter/blob/wallaby-dev/docs/rules/js/no-call-dom-object-multiple-times.md",
+    "tags": [
+      "eco-conception"
+    ]
+  },
+  {
+    "key": "greenit/no-function-call-in-loop",
+    "name": "There should be no function call in loop declaration",
+    "url": "https://github.com/cnumr/ecoLinter/blob/wallaby-dev/docs/rules/js/no-function-call-in-loop.md",
+    "tags": [
+      "eco-conception"
+    ]
+  },
+  {
+    "key": "greenit/no-override-get-set",
+    "name": "Getters and setters should not be overridden",
+    "url": "https://github.com/cnumr/ecoLinter/blob/wallaby-dev/docs/rules/js/no-override-get-set.md",
+    "tags": [
+      "eco-conception"
+    ]
+  },
+  {
+    "key": "greenit/no-post-increment-var",
     "name": "Use i++ instead of ++i.",
-    "url": "https://github.com/cnumr/ecoLinter/blob/main/docs/rules/s67.md",
+    "url": "https://github.com/cnumr/ecoLinter/blob/wallaby-dev/docs/rules/js/no-post-increment-var.md",
+    "tags": [
+      "eco-conception"
+    ]
+  },
+  {
+    "key": "greenit/no-try-catch-finally",
+    "name": "Avoid the use of try-catch-finally",
+    "url": "https://github.com/cnumr/ecoLinter/blob/wallaby-dev/docs/rules/js/no-try-catch-finally.md",
     "tags": [
       "eco-conception"
     ]

@@ -36,7 +36,7 @@
                 <configuration>
                     <pluginKey>${project.artifactId}</pluginKey>
                     <pluginName>${project.name}</pluginName>
-                    <pluginClass>fr.cnumr.ecolinter.MyEsLintRulesPlugin</pluginClass>
+                    <pluginClass>fr.cnumr.ecolinter.MyEcoLintRulesPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                 </configuration>

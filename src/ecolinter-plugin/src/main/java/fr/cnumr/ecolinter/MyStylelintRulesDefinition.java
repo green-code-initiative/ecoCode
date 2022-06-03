@@ -19,17 +19,34 @@
  */
 package fr.cnumr.ecolinter;
 
-import org.sonar.api.Plugin;
+import org.sonar.api.server.rule.RulesDefinition;
+import org.sonarsource.analyzer.commons.ExternalRuleLoader;
 
 /**
- * Entry point of your plugin containing your custom rules
+ * Declare rule metadata in server repository of rules.
+ * That allows to list the rules in the page "Rules".
  */
-public class MyEsLintRulesPlugin implements Plugin {
+public class MyStylelintRulesDefinition implements RulesDefinition {
+
+    // don't change that because the path is hard coded in CheckVerifier
+    private static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/ecolint/rules/stylelint/";
+
+    public static final String LINTER_NAME = "STYLELINT";
+
+    private static final String ESLINT_PLUGIN = "greenit";
+
+
+    // Add the rule keys of the rules which need to be considered as template-rules
+    public static final String REPOSITORY_KEY = "stylelint";
 
     @Override
     public void define(Context context) {
-        // server extensions -> objects are instantiated during server startup
-        context.addExtension(MyEslintRulesDefinition.class);
+        new ExternalRuleLoader(
+                REPOSITORY_KEY,
+                LINTER_NAME,
+                RESOURCE_BASE_PATH + ESLINT_PLUGIN + ".json",
+                "css"
+        ).createExternalRuleRepository(context);
     }
 
 }
