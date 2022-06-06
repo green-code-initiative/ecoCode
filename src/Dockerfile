@@ -6,10 +6,6 @@ COPY . /usr/src/ecocode
 WORKDIR /usr/src/ecocode/
 RUN ./prepare-codenarc
 
-#WORKDIR /usr/src/ecocode/codenarc-converter
-#RUN mvn initialize
-#RUN mvn clean package
-
 WORKDIR /usr/src/ecocode
 RUN mvn clean install
 
