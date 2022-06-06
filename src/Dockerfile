@@ -3,13 +3,12 @@ FROM maven:3-openjdk-11-slim AS maven
 LABEL org.opencontainers.image.source https://github.com/cnumr/ecoCode
 
 COPY . /usr/src/ecocode
-WORKDIR /usr/src/ecocode/codenarc-converter/CodeNarc
-RUN chmod 755 gradlew
-RUN ./gradlew build -x test
+WORKDIR /usr/src/ecocode/
+RUN ./prepare-codenarc
 
-WORKDIR /usr/src/ecocode/codenarc-converter
-RUN mvn initialize
-RUN mvn clean package
+#WORKDIR /usr/src/ecocode/codenarc-converter
+#RUN mvn initialize
+#RUN mvn clean package
 
 WORKDIR /usr/src/ecocode
 RUN mvn clean install
