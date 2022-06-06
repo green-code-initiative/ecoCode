@@ -106,7 +106,7 @@ Each plugin is generated in its own `src/<plugin>/target` directory, but they ar
 Run the SonarQube + PostgreSQL stack:
 
 ```sh
-docker-compose up --build -d
+docker-compose -f docker-compose.dev.yml up --build -d
 ```
 
 Check if the containers are up:
@@ -158,7 +158,7 @@ When you are connected, generate a new token:
 Start again your services using the token:
 
 ```sh
-TOKEN=MY_TOKEN docker-compose up --build -d
+TOKEN=MY_TOKEN docker-compose -f docker-compose.dev.yml up --build -d
 ```
 
 ## Howto install Plugin Ecocode
