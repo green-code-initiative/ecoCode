@@ -3,10 +3,9 @@ FROM maven:3-openjdk-11-slim AS maven
 LABEL org.opencontainers.image.source https://github.com/cnumr/ecoCode
 
 COPY . /usr/src/ecocode
-WORKDIR /usr/src/ecocode/
-RUN ./prepare-codenarc
 
 WORKDIR /usr/src/ecocode
+RUN ./prepare-codenarc
 RUN mvn clean install
 
 FROM sonarqube:9.3-community
