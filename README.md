@@ -23,7 +23,21 @@ ecoCode is based on evolving catalogs of [good practices](docs/rules), for vario
 
 ## 🚀 Getting Started
 
-You can download each plugin separatly or you can directly use a [all-in-one docker-compose](src/INSTALL.md)
+To test it, just run :
+
+```sh
+docker run -d --pull always \
+       -v sq_ecocode_extensions:/opt/sonarqube/extensions \
+       -v sq_ecocode_logs:/opt/sonarqube/logs \
+       -v sq_ecocode_data:/opt/sonarqube/data \
+       -p 9000:9000 \
+       --name sonarqube-ecocode \
+       ghcr.io/obeone/sonarqube-ecocode:latest
+```
+
+And go to [http://localhost:9000](http://localhost:9000). Default username and password are both `admin`.
+
+For a more production ready installation, have a look on the [all-in-one docker-compose](src/INSTALL.md)
 
 ## 🤝 Contribution
 
@@ -54,7 +68,7 @@ Any question ? We are here for you !
 
 Here we honor some no-longer-active core team members who have made valuable contributions in the past.
 
-- Gaël Pellevoizin 
+- Gaël Pellevoizin
 - [Nicolas Daviet](https://github.com/NicolasDaviet)
 - [Mathilde Grapin](https://github.com/fkotd)
 
