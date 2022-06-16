@@ -1,0 +1,21 @@
+<p>Avoid Spring repository call in loop</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+		private final List<Integer> ids = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+		List<Employee> employees = new ArrayList<>();
+		
+		for (Integer id: ids) {
+            Optional<Employee> employee = employeeRepository.findById(id); // Noncompliant {{Avoid Spring repository call in loop}}
+            if (employee.isPresent()) {
+                employees.add(employee.get());
+            }
+        }
+
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+		private final List<Integer> ids = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		
+		List<Employee> employees = employeeRepository.findAllById(ids);
+</pre>
