@@ -1,0 +1,20 @@
+<p>Eviter d'utiliser des variables globales directement</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+global_var = 'foo'
+def print_global_var_details():
+    print(len(global_var)) # Noncompliant
+    print('Global var : ', global_var) # Noncompliant {{Use local variable
+    print('Global var : ' + global_var) # Noncompliant {{Use local variable
+print_global_var_details()
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+global_var = 'foo';
+def print_var_details(local_var) {
+  print(len(local_var));
+  print('Var : ', local_var)
+  print('Var : ' + local_var)
+}
+print_length(global_var);
+</pre>

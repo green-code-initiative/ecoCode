@@ -20,10 +20,7 @@
 package fr.cnumr.python;
 
 
-import fr.cnumr.python.checks.AvoidDoubleQuoteCheck;
-import fr.cnumr.python.checks.AvoidFullSQLRequest;
-import fr.cnumr.python.checks.AvoidTryCatchFinallyCheck;
-import fr.cnumr.python.checks.NoFunctionCallWhenDeclaringForLoop;
+import fr.cnumr.python.checks.*;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.plugins.python.api.PythonCustomRuleRepository;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
@@ -57,8 +54,8 @@ public class CustomPythonRuleRepository implements RulesDefinition, PythonCustom
 
     @Override
     public List<Class> checkClasses() {
-        return Arrays.asList(NoFunctionCallWhenDeclaringForLoop.class, AvoidTryCatchFinallyCheck.class, 
-        		AvoidDoubleQuoteCheck.class,AvoidFullSQLRequest.class);
+        return Arrays.asList(NoFunctionCallWhenDeclaringForLoop.class, AvoidTryCatchFinallyCheck.class,
+                AvoidDoubleQuoteCheck.class, AvoidFullSQLRequest.class, AvoidGlobalVariableInFunctionCheck.class);
     }
 
     private static void setTemplates(NewRepository repository) {
