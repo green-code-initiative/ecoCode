@@ -40,6 +40,12 @@
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api-impl</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.sonarsource.java</groupId>
+            <artifactId>java-frontend</artifactId>
+            <version>6.3.0.21585</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
