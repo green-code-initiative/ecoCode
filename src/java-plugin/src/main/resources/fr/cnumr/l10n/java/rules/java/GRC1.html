@@ -1,12 +1,12 @@
-<p>Avoid Spring repository call in loop</p>
+<p>Using Spring repository in loop induced unnecessary calculation by the cpu so unless energy consumption</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
-		private final List<Integer> ids = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		private final List&lt;Integer&gt; ids = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
-		List<Employee> employees = new ArrayList<>();
+		List&lt;Employee&gt; employees = new ArrayList&lt;&gt;();
 		
 		for (Integer id: ids) {
-            Optional<Employee> employee = employeeRepository.findById(id); // Noncompliant {{Avoid Spring repository call in loop}}
+            Optional&lt;Employee&gt; employee = employeeRepository.findById(id); // Noncompliant
             if (employee.isPresent()) {
                 employees.add(employee.get());
             }
@@ -15,7 +15,6 @@
 </pre>
 <h2>Compliant Solution</h2>
 <pre>
-		private final List<Integer> ids = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-		
-		List<Employee> employees = employeeRepository.findAllById(ids);
+		private final List&lt;Integer&gt; ids = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		List&lt;Employee&gt; employees = employeeRepository.findAllById(ids);
 </pre>
