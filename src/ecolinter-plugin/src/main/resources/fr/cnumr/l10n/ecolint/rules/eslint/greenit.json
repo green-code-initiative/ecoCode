@@ -50,7 +50,7 @@
   {
     "key": "greenit/no-string-argument-settimeout-setinterval",
     "name": "setTimeout should not be called with string as first argument",
-    "url": "https://github.com/cnumr/ecoLinter/blob/wallaby-dev/docs/rules/js/no-try-catch-finally.md",
+    "url": "https://github.com/cnumr/ecoLinter/blob/wallaby-dev/docs/rules/js/no-string-argument-settimeout-setinterval.md",
     "tags": [
       "eco-conception"
     ]
@@ -59,6 +59,14 @@
     "key": "greenit/multiple-css-changes",
     "name": "More than two style assignation cause repaint/reflow, the advice is to add or remove css class",
     "url": "https://github.com/cnumr/ecoLinter/blob/s39-cssBatchChanges/docs/rules/multiple-css-changes.md",
+    "tags": [
+      "eco-conception"
+    ]
+  },
+  {
+    "key": "greenit/no-full-sql-request",
+    "name": "There should be no full sql request in literal",
+    "url": "https://github.com/cnumr/ecoLinter/blob/wallaby-dev/docs/rules/js/no-full-sql-request.md",
     "tags": [
       "eco-conception"
     ]
