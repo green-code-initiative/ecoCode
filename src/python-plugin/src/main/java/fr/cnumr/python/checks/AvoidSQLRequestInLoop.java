@@ -6,7 +6,7 @@ import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.tree.*;
 
 import java.util.*;
-
+import java.lang.*;
 
 @Rule(
         key = "S64",
@@ -31,14 +31,13 @@ public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
                     for (Expression i : expression.expressions()) {
                         CallExpression call = (CallExpression) i;
                         for (Tree ele : call.callee().children()) {
-
                             if (ele.getKind().equals(Tree.Kind.NAME)) {
                                 Name name = (Name) ele;
                                 if (name.name().equals("execute")) {
                                     for (Argument argument : call.arguments()) {
                                         StringLiteral string = (StringLiteral) argument.children().get(0);
                                         if (string.stringElements().get(0).value().toUpperCase().contains("SELECT")) {
-                                            ctx.addIssue(call, MESSAGERULE);
+                                                ctx.addIssue(call, MESSAGERULE);
                                         }
                                     }
                                 }
@@ -47,12 +46,10 @@ public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
                     }
                 }
             }
-
-
         });
         context.registerSyntaxNodeConsumer(Tree.Kind.WHILE_STMT, ctx -> {
-            WhileStatement forStatement = (WhileStatement) ctx.syntaxNode();
-            StatementList list = (StatementList) forStatement.body();
+            WhileStatement whileStatement = (WhileStatement) ctx.syntaxNode();
+            StatementList list = (StatementList) whileStatement.body();
             for (Statement a : list.statements()) {
                 if (a.getKind().equals(Tree.Kind.EXPRESSION_STMT)) {
                     ExpressionStatement expression = (ExpressionStatement) a;
@@ -61,13 +58,17 @@ public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
                         for (Tree ele : call.callee().children()) {
                             if (ele.getKind().equals(Tree.Kind.NAME)) {
                                 Name name = (Name) ele;
-                                if (name.name().equals("execute")) {
-                                    for (Argument argument : call.arguments()) {
-                                        StringLiteral string = (StringLiteral) argument.children().get(0);
-                                        if (string.stringElements().get(0).value().toUpperCase().contains("SELECT")) {
-                                            ctx.addIssue(call, MESSAGERULE);
-
-                                        }
+                                if (name.name().equals("execute")) {    
+                                    for (Argument argument : call.arguments()) {    
+                                            if (argument instanceof BinaryExpression){
+                                                BinaryExpression binOp = (BinaryExpression) ele;
+                                                System.out.println(binOp.leftOperand());
+                                                ctx.addIssue(call, MESSAGERULE);
+                                            }else {
+                                                if (argument.children().get(0).toString().toUpperCase().contains("SELECT")) {
+                                                    ctx.addIssue(call, MESSAGERULE);
+                                                }       
+                                            }
                                     }
                                 }
                             }
@@ -79,5 +80,4 @@ public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
 
         });
     }
-
 }

@@ -11,7 +11,6 @@ class AvoidSQLRequestInLoopCheck:
             with row in cursor:
                 print(row.id)
             cursor.close()
-            db.close()
         except :
             print("Got an exception")
             db.close()
@@ -23,7 +22,6 @@ class AvoidSQLRequestInLoopCheck:
             for i in range(0,20):
                 query+=str(i)
                 cursor.execute("SELECT * from users") #Noncompliant
-
             with row in cursor:
                 print(row.name)
             cursor.close()
@@ -34,19 +32,19 @@ class AvoidSQLRequestInLoopCheck:
     def testWithWhileLoop():
           try:
               db = mysql.connector.connect(option_files='my.conf', use_pure=True)
-              query = "SELECT * "
               i = 0
               while i<20:
                   cursor=db.cursor()
-                  cursor.execute("SELECT * FROM users where id = "+str(i)) #Noncompliant
+                  cursor.execute("SELECT * FROM users where id = " + str(i)) #Noncompliant
                   i+=1
               with row in cursor:
-                        print(row.name)
+                  print(row.name)
               cursor.close()
           except :
               print("Got an exception")
               db.close()
-    def testWithWhileLoop():
+
+    def testWithWhileLoopUpdate():
         try:
             db = mysql.connector.connect(option_files='my.conf', use_pure=True)
             i = 0
