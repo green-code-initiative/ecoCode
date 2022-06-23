@@ -66,7 +66,8 @@ public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
                 if (((StringLiteral) tc).trimmedQuotesValue().toUpperCase().contains("SELECT"))
                     return true;
             }
-            return checkLitteralInTree(tc);
+            if (checkLitteralInTree(tc))
+                    return true;
         }
         return false;
     }
