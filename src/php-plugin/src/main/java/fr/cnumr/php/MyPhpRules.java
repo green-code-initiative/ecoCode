@@ -34,7 +34,7 @@ import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 public class MyPhpRules implements RulesDefinition, PHPCustomRuleRepository {
 
   public static final String LANGUAGE = "php";
-  public static final String NAME = "MyCompany Custom Repository";
+  public static final String NAME = "Collectif Conception Numérique Responsable";
   public static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/php/rules/custom";
   public static final String REPOSITORY_KEY = "cnumr-php";
   private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();

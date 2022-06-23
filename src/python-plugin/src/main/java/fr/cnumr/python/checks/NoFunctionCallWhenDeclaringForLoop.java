@@ -18,7 +18,7 @@ import java.util.List;
 public class NoFunctionCallWhenDeclaringForLoop extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "S69";
-    public static final String DESCRIPTION = "Do not call a function in the declaration of a for-type loop";
+    public static final String DESCRIPTION = "Do not call a function when declaring a for-type loop";
 
     @Override
     public void initialize(Context context) {

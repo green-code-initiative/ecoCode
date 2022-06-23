@@ -33,7 +33,7 @@ import fr.cnumr.xml.checks.CheckList;
 public class MyXmlRules implements RulesDefinition {
 
 	public static final String LANGUAGE = "xml";
-	public static final String NAME = "MyCompany Custom Repository";
+	public static final String NAME = "Collectif Conception Numérique Responsable";
 	public static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/xml/rules/custom";
 	public static final String REPOSITORY_KEY = "cnumr-xml";
 	private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();

@@ -28,7 +28,7 @@ import org.sonar.plugins.java.api.tree.Tree;
         tags = {"bug"})
 public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisitor {
 
-	protected static final String  MESSAGERULE =  "Do not call a function in the declaration of a for-type loop";
+	protected static final String  MESSAGERULE =  "Do not call a function when declaring a for-type loop";
 
     private static final Map<String, Collection<Integer>> linesWithIssuesByClass = new HashMap<>();
      

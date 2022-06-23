@@ -1,5 +1,5 @@
 {
-  "title": "Ne pas appeler de fonction dans la déclaration d’une boucle de type for",
+  "title": "Avoid using try-catch-finally statement",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
