@@ -6,8 +6,6 @@ import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;
 import org.sonar.plugins.python.api.tree.*;
 
-import java.util.*;
-
 @Rule(
     key = "S64",
     name = "Developpement",
@@ -23,10 +21,12 @@ public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
     @Override
     public void initialize(Context context) {
         context.registerSyntaxNodeConsumer(Tree.Kind.FOR_STMT, ctx -> {
-            visitLoopNode(((ForStatement) ctx.syntaxNode()).body(), ctx);
+            ForStatement fs = (ForStatement) ctx.syntaxNode();
+            visitLoopNode(fs.body(), ctx);
         });
         context.registerSyntaxNodeConsumer(Tree.Kind.WHILE_STMT, ctx -> {
-            visitLoopNode(((WhileStatement) ctx.syntaxNode()).body(), ctx);
+            WhileStatement ws = (WhileStatement) ctx.syntaxNode();
+            visitLoopNode(ws.body(), ctx);
         });
     }
 
