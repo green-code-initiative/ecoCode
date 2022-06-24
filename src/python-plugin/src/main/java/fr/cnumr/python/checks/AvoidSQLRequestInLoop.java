@@ -7,7 +7,6 @@ import org.sonar.plugins.python.api.SubscriptionContext;
 import org.sonar.plugins.python.api.tree.*;
 
 import java.util.*;
-import java.lang.*;
 
 @Rule(
     key = "S64",
@@ -20,16 +19,13 @@ import java.lang.*;
 public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
 
     public static final String MESSAGERULE = "Avoid perform an SQL query inside a loop";
-    private static final Map<String, Collection<Integer>> linesWithIssuesByFile = new HashMap<>();
 
     @Override
     public void initialize(Context context) {
         context.registerSyntaxNodeConsumer(Tree.Kind.FOR_STMT, ctx -> {
-            System.out.println("FOR_STMT");
             visitLoopNode(((ForStatement) ctx.syntaxNode()).body(), ctx);
         });
         context.registerSyntaxNodeConsumer(Tree.Kind.WHILE_STMT, ctx -> {
-            System.out.println("WHILE_STMT");
             visitLoopNode(((WhileStatement) ctx.syntaxNode()).body(), ctx);
         });
     }
@@ -52,7 +48,7 @@ public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
                 Name name = (Name) ele;
                 if (name.name().equals("execute")) {    
                     for (Argument a: ce.arguments()) {
-                        if (checkLitteralInTree((Tree) a))
+                        if (checkLitteralInTree(a))
                             ctx.addIssue(ce, MESSAGERULE);
                     }
                 }
@@ -66,7 +62,7 @@ public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
                 if (((StringLiteral) tc).trimmedQuotesValue().toUpperCase().contains("SELECT"))
                     return true;
             }
-            if (checkLitteralInTree(tc))
+            else if (checkLitteralInTree(tc))
                     return true;
         }
         return false;
