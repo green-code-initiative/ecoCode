@@ -47,5 +47,6 @@ public class AvoidSpringRepositoryCallInLoopCheck extends IssuableSubscriptionVi
                 super.visitMethodInvocation(tree);
             }
         }
+
     }
 }
