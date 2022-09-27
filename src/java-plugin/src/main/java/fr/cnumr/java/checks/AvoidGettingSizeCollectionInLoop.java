@@ -1,6 +1,7 @@
 package fr.cnumr.java.checks;
 
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import org.sonar.check.Priority;
@@ -10,6 +11,8 @@ import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.*;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 
+import static org.sonar.plugins.java.api.semantic.MethodMatchers.CONSTRUCTOR;
+
 @Rule(key = "GSCIL",
         name = "Developpement",
         description = AvoidGettingSizeCollectionInLoop.MESSAGERULE,
@@ -17,10 +20,14 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
         tags = {"bug" })
 public class AvoidGettingSizeCollectionInLoop extends IssuableSubscriptionVisitor {
     protected static final String MESSAGERULE = "Avoid getting the size of the collection in the loop";
-
-
+    private static final MethodMatchers SIZE_METHOD = MethodMatchers.or(
+            MethodMatchers.create()
+                    .ofAnyType()
+                    .names("size", "length")
+                    .withAnyParameters()
+                    .build()
+    );
     private final AvoidGettingSizeCollectionInLoop.AvoidGettingSizeCollectionInLoopVisitor visitorInFile = new AvoidGettingSizeCollectionInLoop.AvoidGettingSizeCollectionInLoopVisitor();
-
 
     @Override
     public List<Kind> nodesToVisit() {
@@ -29,23 +36,19 @@ public class AvoidGettingSizeCollectionInLoop extends IssuableSubscriptionVisito
 
     @Override
     public void visitNode(Tree tree) {
-        if (tree instanceof ForStatementTree) {
             ForStatementTree forStatementTree = (ForStatementTree) tree;
-            ExpressionTree expressionTree = forStatementTree.condition();
-            System.out.println("OK");
-        }
-        tree.accept(visitorInFile);
+            BinaryExpressionTree expressionTree = (BinaryExpressionTree) forStatementTree.condition();
+            expressionTree.accept(visitorInFile);
     }
 
     private class AvoidGettingSizeCollectionInLoopVisitor extends BaseTreeVisitor {
         @Override
-        public void visitForStatement(ForStatementTree tree) {
-            ExpressionTree expression = tree.condition();
-
-
-            super.visitForStatement(tree);
+        public void visitMethodInvocation(MethodInvocationTree tree) {
+            if (SIZE_METHOD.matches(tree.symbol())) {
+                reportIssue(tree, MESSAGERULE);
+            } else {
+                super.visitMethodInvocation(tree);
+            }
         }
-
-
     }
 }

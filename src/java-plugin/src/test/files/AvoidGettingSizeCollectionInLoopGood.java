@@ -1,5 +1,8 @@
 package fr.cnumr.java.checks;
 
+import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 class AvoidGettingSizeCollectionInLoopGood {
     AvoidGettingSizeCollectionInLoopGood(AvoidGettingSizeCollectionInLoopGood obj) {
 
@@ -7,11 +10,13 @@ class AvoidGettingSizeCollectionInLoopGood {
 
     public void goodLoop()
     {
-        List<int> numberList = [10, 20, 30, 40, 50];
+        List<Integer> numberList = new ArrayList<Integer>();
+        numberList.add(10);
+        numberList.add(20);
 
         int size = numberList.size();
-        for (int i = 0; i < size; i++) {
-            System.out.println(numberList[i]);
+        for (int i = 0; i < size; i++) { // Compliant
+            System.out.println("numberList.size()");
         }
     }
 }

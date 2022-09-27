@@ -10,5 +10,9 @@ public class AvoidGettingSizeCollectionInLoopTest {
                 .onFile("src/test/files/AvoidGettingSizeCollectionInLoopBad.java")
                 .withCheck(new AvoidGettingSizeCollectionInLoop())
                 .verifyIssues();
+        JavaCheckVerifier.newVerifier()
+                .onFile("src/test/files/AvoidGettingSizeCollectionInLoopGood.java")
+                .withCheck(new AvoidGettingSizeCollectionInLoop())
+                .verifyNoIssues();
     }
 }
