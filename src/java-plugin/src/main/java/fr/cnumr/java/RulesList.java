@@ -42,6 +42,7 @@ public final class RulesList {
     public static List<Class<? extends JavaCheck>> getJavaChecks() {
         return Collections.unmodifiableList(Arrays.asList(
                 IncrementCheck.class,
+                AvoidGettingSizeCollectionInLoop.class,
                 NoFunctionCallWhenDeclaringForLoop.class,
                 AvoidSpringRepositoryCallInLoopCheck.class,
                 AvoidSQLRequestInLoop.class,
