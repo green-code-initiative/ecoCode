@@ -2,8 +2,7 @@ name: Build
 on:
   push:
     branches:
-      - master
-      - sonarcloud
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -30,8 +29,15 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Prepare CodeNarc dependency
+        working-directory: ./src
+        run: |
+          ./prepare-codenarc
       - name: Build and analyze
+        working-directory: ./src
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -f ./src/pom.xml -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cnumr_ecoCode -Dsonar.sources=./src
+        run: mvn -e -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cnumr_ecoCode -Dsonar.exclusions=**/src/codenarc-converter/**,**/*.groovy,**/src/android-plugin/src/test/**,**/*.dummy
