@@ -119,3 +119,16 @@ For XML rules:
 ## License
 
 Licensed under the [GNU Lesser General Public License, Version 3.0](https://www.gnu.org/licenses/lgpl.txt)
+
+## How to cite this work?
+
+If you use ecoCode in an academic work we would be really glad if you cite our seminal paper using the following bibtex (to appear):
+```
+@inproceedings{DBLP:conf/ase/LeGoaer2022,
+  author    = {Olivier Le Goaer and Julien Hertout},
+  title     = {ecoCode: a SonarQube Plugin to Remove Energy Smells from Android Projects},
+  booktitle = {{ACM/IEEE} International Conference on Automated Software Engineering,
+               {ASE} '22, Michigan, USA - October 10 - 14, 2022},
+  year      = {2022}
+}
+```

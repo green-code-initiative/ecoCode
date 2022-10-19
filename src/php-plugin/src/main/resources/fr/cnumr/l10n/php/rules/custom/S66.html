@@ -1,4 +1,4 @@
-<p>Avoid using double quote ("), prefer using simple quote (')</p>
+<p>PHP allows declaring a string with simple or double quotes. Using double quotes allows developers to insert variables which will be substituted during execution. When the string has no variables, using simple quotes avoid PHP to search inexisting variables. It will save CPU cycles consumption.</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
 myFunction("name", "age", "IsStudent");
@@ -10,3 +10,4 @@ myFunction('name', 'age', 'IsStudent');
     $lastName = 'Hugo';
     $concatenatedString = "$lastName is a student";
 </pre>
+
