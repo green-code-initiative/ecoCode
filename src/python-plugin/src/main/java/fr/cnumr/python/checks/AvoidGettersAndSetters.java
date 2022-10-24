@@ -43,13 +43,12 @@ public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
     public void checkAllSetters(List<Statement> statements,FunctionDef functionDef,SubscriptionContext ctx){
         if(statements.size() == 1 && statements.get(0).is(Tree.Kind.ASSIGNMENT_STMT)){
             AssignmentStatement assignmentStatement = (AssignmentStatement) statements.get(0);
-            if(checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot((QualifiedExpression) assignmentStatement.children().get(0).children().get(0))){
+            if(checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot((QualifiedExpression) assignmentStatement.children().get(0).children().get(0))
+                    && functionDef.parameters() != null ){
                 // Check if assignedValue is a parameter of the function
-                if(functionDef.parameters() != null){
                     ParameterList parameters =  functionDef.parameters();
                     if(!parameters.all().stream().filter(p -> checkAssignementFromParameter(assignmentStatement, p)).collect(Collectors.toList()).isEmpty()){
                         ctx.addIssue(functionDef.defKeyword(), AvoidGettersAndSetters.DESCRIPTION);
-                    }
                 }
             }
         }
