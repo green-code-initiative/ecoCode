@@ -47,7 +47,7 @@ public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
                     && functionDef.parameters() != null ){
                 // Check if assignedValue is a parameter of the function
                     ParameterList parameters =  functionDef.parameters();
-                    if(!parameters.all().stream().filter(p -> checkAssignementFromParameter(assignmentStatement, p)).collect(Collectors.toList()).isEmpty()){
+                    if(parameters.all()!= null && !parameters.all().stream().filter(p -> checkAssignementFromParameter(assignmentStatement, p)).collect(Collectors.toList()).isEmpty()){
                         ctx.addIssue(functionDef.defKeyword(), AvoidGettersAndSetters.DESCRIPTION);
                 }
             }
