@@ -15,6 +15,7 @@ import org.sonar.plugins.python.api.tree.ReturnStatement;
 import org.sonar.plugins.python.api.tree.Statement;
 import org.sonar.plugins.python.api.tree.StatementList;
 import org.sonar.plugins.python.api.tree.Tree;
+import org.sonar.plugins.python.api.SubscriptionContext;
 
 @Rule(
         key = AvoidGettersAndSetters.RULE_KEY,
@@ -34,30 +35,33 @@ public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
             StatementList statementList = functionDef.body();
             List<Statement> statements = statementList.statements();
             if (functionDef.parent().parent().is(Tree.Kind.CLASSDEF)) {
-                // We first check all the getters
-                Statement lastStatement = statements.get(statements.size() - 1);
-                if (lastStatement.is(Tree.Kind.RETURN_STMT)) {
-                    List<Tree> returnStatementChildren = ((ReturnStatement) lastStatement).children();
-                    if (returnStatementChildren.get(1).is(Tree.Kind.QUALIFIED_EXPR) &&
-                    checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot((QualifiedExpression) returnStatementChildren.get(1))){
-                        ctx.addIssue(functionDef.defKeyword(), AvoidGettersAndSetters.DESCRIPTION);
-                }
-                }
-                // We now check all the setters
-                if(statements.size() == 1 && statements.get(0).is(Tree.Kind.ASSIGNMENT_STMT)){
-                    AssignmentStatement assignmentStatement = (AssignmentStatement) statements.get(0);
-                    if(checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot((QualifiedExpression) assignmentStatement.children().get(0).children().get(0))){
-                        // Check if assignedValue is a parameter of the function
-                        ParameterList parameters = functionDef.parameters();
-                        if(!parameters.all().stream().filter(p -> checkAssignementFromParameter(assignmentStatement, p)).collect(Collectors.toList()).isEmpty()){
-                            ctx.addIssue(functionDef.defKeyword(), AvoidGettersAndSetters.DESCRIPTION);
-                        }
-                    }
-                }
+                checkAllGetters(statements,functionDef,ctx);
+                checkAllSetters(statements,functionDef,ctx);
             }
         });
     }
-
+    public void checkAllSetters(List<Statement> statements,FunctionDef functionDef,SubscriptionContext ctx){
+        if(statements.size() == 1 && statements.get(0).is(Tree.Kind.ASSIGNMENT_STMT)){
+            AssignmentStatement assignmentStatement = (AssignmentStatement) statements.get(0);
+            if(checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot((QualifiedExpression) assignmentStatement.children().get(0).children().get(0))){
+                // Check if assignedValue is a parameter of the function
+                ParameterList parameters = functionDef.parameters();
+                if(!parameters.all().stream().filter(p -> checkAssignementFromParameter(assignmentStatement, p)).collect(Collectors.toList()).isEmpty()){
+                    ctx.addIssue(functionDef.defKeyword(), AvoidGettersAndSetters.DESCRIPTION);
+                }
+            }
+        }
+    }
+    public void checkAllGetters(List<Statement> statements,FunctionDef functionDef,SubscriptionContext ctx){
+        Statement lastStatement = statements.get(statements.size() - 1);
+        if (lastStatement.is(Tree.Kind.RETURN_STMT)) {
+            List<Tree> returnStatementChildren = ((ReturnStatement) lastStatement).children();
+            if (returnStatementChildren.get(1).is(Tree.Kind.QUALIFIED_EXPR) &&
+                    checkIfStatementIsQualifiedExpressionAndStartsWithSelfDot((QualifiedExpression) returnStatementChildren.get(1))){
+                ctx.addIssue(functionDef.defKeyword(), AvoidGettersAndSetters.DESCRIPTION);
+            }
+        }
+    }
     public boolean checkAssignementFromParameter(AssignmentStatement assignmentStatement, AnyParameter parameter){
         String parameterToString = parameter.firstToken().value();
         return assignmentStatement.assignedValue().firstToken().value().equalsIgnoreCase(parameterToString);
