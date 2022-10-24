@@ -43,10 +43,12 @@ public final class RulesList {
         return Collections.unmodifiableList(Arrays.asList(
                 IncrementCheck.class,
                 NoFunctionCallWhenDeclaringForLoop.class,
+                AvoidSpringRepositoryCallInLoopCheck.class,
                 AvoidSQLRequestInLoop.class,
                 AvoidFullSQLRequest.class,
                 UseCorrectForLoop.class,
-                UnnecessarilyAssignValuesToVariables.class
+                UnnecessarilyAssignValuesToVariables.class,
+                AvoidSetConstantInBatchUpdate.class
         ));
     }
 

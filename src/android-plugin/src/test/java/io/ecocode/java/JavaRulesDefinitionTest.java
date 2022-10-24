@@ -227,6 +227,12 @@ public class JavaRulesDefinitionTest {
         assertThat(thriftyNotification.name()).isEqualTo("Sobriety: Thrifty Notification");
         assertThat(thriftyNotification.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
         assertThat(thriftyNotification.type()).isEqualTo(RuleType.CODE_SMELL);
+
+        Rule torchFree = repository.rule("ESOB013");
+        assertThat(torchFree).isNotNull();
+        assertThat(torchFree.name()).isEqualTo("Sobriety: Torch Free");
+        assertThat(torchFree.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);
+        assertThat(torchFree.type()).isEqualTo(RuleType.CODE_SMELL);
     }
 
     private void assertAllRuleParametersHaveDescription(Repository repository) {
