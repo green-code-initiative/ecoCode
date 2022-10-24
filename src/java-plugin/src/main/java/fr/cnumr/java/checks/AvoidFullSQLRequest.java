@@ -1,7 +1,11 @@
 package fr.cnumr.java.checks;
 
-import java.util.Arrays;
+import static java.util.Collections.singletonList;
+import static java.util.regex.Pattern.CASE_INSENSITIVE;
+import static java.util.regex.Pattern.compile;
+
 import java.util.List;
+import java.util.function.Predicate;
 
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
@@ -19,23 +23,18 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 public class AvoidFullSQLRequest extends IssuableSubscriptionVisitor {
 
 	protected static final String MESSAGERULE = "Don't use the query SELECT * FROM";
-	private static final String REGEXPSELECTFROM = "(?i).*select.*\\*.*from.*";
+	private static final Predicate<String> SELECT_FROM_REGEXP = 
+			compile("select\\s*\\*\\s*from", CASE_INSENSITIVE).asPredicate(); //simple regexp, more precision
 	
     @Override
     public List<Kind> nodesToVisit() {
-        return  Arrays.asList(Tree.Kind.STRING_LITERAL);
+        return singletonList(Tree.Kind.STRING_LITERAL);
     }
 
     @Override
     public void visitNode(Tree tree) {
-    	boolean isSelectFrom = false;
-    	
-    	if (tree.is(Kind.STRING_LITERAL,Kind.TEXT_BLOCK)) {
-    		LiteralTree literal = (LiteralTree) tree;
-    		isSelectFrom = literal.value().matches(REGEXPSELECTFROM);
-    	}
-    	
-    	if (isSelectFrom) {
+    	String value = ((LiteralTree) tree).value();
+    	if (SELECT_FROM_REGEXP.test(value)) {
     		reportIssue(tree, MESSAGERULE);
     	}
     }

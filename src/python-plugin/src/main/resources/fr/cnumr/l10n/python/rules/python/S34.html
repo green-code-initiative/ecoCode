@@ -1,4 +1,6 @@
-<p>Eviter d'utiliser try-catch-finally</p>
+<p>Inside complex code parts (for exemple multiple loops, complex data constructions...), avoid using try...catch...finally.
+<p>When an exception is thrown, a variable (the exception itself) is created in a catch block and it's destruction consumes unnecessary CPU cycles and RAM. Prefer using logical tests in this cases.</p>
+</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
 try:

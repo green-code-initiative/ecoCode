@@ -21,12 +21,15 @@ package fr.cnumr.php;
 
 
 import com.google.common.collect.ImmutableList;
-import java.util.*;
-
 import fr.cnumr.php.checks.*;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.Set;
 
 /**
  * Extension point to define a PHP rule repository.
@@ -34,7 +37,7 @@ import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 public class MyPhpRules implements RulesDefinition, PHPCustomRuleRepository {
 
   public static final String LANGUAGE = "php";
-  public static final String NAME = "MyCompany Custom Repository";
+  public static final String NAME = "Collectif Conception Numérique Responsable";
   public static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/php/rules/custom";
   public static final String REPOSITORY_KEY = "cnumr-php";
   private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
@@ -53,8 +56,8 @@ public class MyPhpRules implements RulesDefinition, PHPCustomRuleRepository {
    */
   @Override
   public ImmutableList<Class> checkClasses() {
-    return ImmutableList.of(IncrementCheck.class, AvoidTryCatchFinallyCheck.class, AvoidDoubleQuoteCheck.class,
-            AvoidFullSQLRequestCheck.class, AvoidSQLRequestInLoopCheck.class, NoFunctionCallWhenDeclaringForLoop.class);
+    return ImmutableList.of(AvoidUsingGlobalVariablesCheck.class, IncrementCheck.class, AvoidTryCatchFinallyCheck.class, AvoidDoubleQuoteCheck.class,
+            AvoidFullSQLRequestCheck.class, AvoidSQLRequestInLoopCheck.class, NoFunctionCallWhenDeclaringForLoop.class, UseOfMethodsForBasicOperations.class);
   }
 
   @Override
