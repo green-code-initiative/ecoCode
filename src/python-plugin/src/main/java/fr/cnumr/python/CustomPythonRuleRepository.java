@@ -35,6 +35,13 @@ public class CustomPythonRuleRepository implements RulesDefinition, PythonCustom
     public static final String REPOSITORY_KEY = "cnumr-python";
     private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
 
+    private static void setTemplates(NewRepository repository) {
+        RULE_TEMPLATES_KEY.stream()
+                .map(repository::rule)
+                .filter(Objects::nonNull)
+                .forEach(rule -> rule.setTemplate(true));
+    }
+
     @Override
     public void define(Context context) {
         NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
@@ -55,15 +62,13 @@ public class CustomPythonRuleRepository implements RulesDefinition, PythonCustom
 
     @Override
     public List<Class> checkClasses() {
-        return Arrays.asList(NoFunctionCallWhenDeclaringForLoop.class, AvoidTryCatchFinallyCheck.class, 
-        AvoidFullSQLRequest.class, AvoidGlobalVariableInFunctionCheck.class, AvoidGettersAndSetters.class);
+        return Arrays.asList(
+                AvoidGlobalVariableInFunctionCheck.class,
+                AvoidFullSQLRequest.class,
+                AvoidSQLRequestInLoop.class,
+                AvoidTryCatchFinallyCheck.class,
+                NoFunctionCallWhenDeclaringForLoop.class,
+                AvoidGettersAndSetters.class
+        );
     }
-
-    private static void setTemplates(NewRepository repository) {
-        RULE_TEMPLATES_KEY.stream()
-                .map(repository::rule)
-                .filter(Objects::nonNull)
-                .forEach(rule -> rule.setTemplate(true));
-    }
-
 }
