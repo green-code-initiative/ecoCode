@@ -1,0 +1,13 @@
+{
+    "title": "Eviter de créer des méthodes getter et setter dans les classes.",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "5min"
+    },
+    "tags": [
+      "eco-conception"
+    ],
+    "defaultSeverity": "Minor"
+  }
