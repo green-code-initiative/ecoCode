@@ -1,7 +1,7 @@
 /*
- * SonarQube Java
- * Copyright (C) 2012-2021 SonarSource SA
- * mailto:info AT sonarsource DOT com
+ * SonarQube PHP Custom Rules Example
+ * Copyright (C) 2016-2016 SonarSource SA
+ * mailto:contact AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,25 +17,22 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package fr.cnumr.java;
+package fr.cnumr.php.checks;
 
-import org.junit.jupiter.api.Test;
-import org.sonar.plugins.java.api.CheckRegistrar;
+import org.junit.Test;
+import org.sonar.plugins.php.api.tests.PHPCheckTest;
+import org.sonar.plugins.php.api.tests.PhpTestFile;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import java.io.File;
 
-class MyJavaFileCheckRegistrarTest {
+/**
+ * Test class to test the check implementation.
+ */
+public class AvoidUsingGlobalVariablesCheckTest {
 
   @Test
-  void checkNumberRules() {
-    CheckRegistrar.RegistrarContext context = new CheckRegistrar.RegistrarContext();
-
-    MyJavaFileCheckRegistrar registrar = new MyJavaFileCheckRegistrar();
-    registrar.register(context);
-
-    assertThat(context.checkClasses()).hasSize(13);
-
-    assertThat(context.testCheckClasses()).isEmpty();
+  public void test() throws Exception {
+    PHPCheckTest.check(new AvoidUsingGlobalVariablesCheck(), new PhpTestFile(new File("src/test/resources/checks/AvoidUsingGlobalVariablesCheck.php")));
   }
 
 }

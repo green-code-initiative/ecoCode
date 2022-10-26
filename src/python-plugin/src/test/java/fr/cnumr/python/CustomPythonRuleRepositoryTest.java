@@ -33,7 +33,7 @@ public class CustomPythonRuleRepositoryTest {
     customPythonRuleRepository.define(context);
     assertThat(customPythonRuleRepository.repositoryKey()).isEqualTo(CustomPythonRuleRepository.REPOSITORY_KEY);
     assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(customPythonRuleRepository.repositoryKey());
-    assertThat(context.repositories().get(0).rules()).hasSize(4);
-    assertThat(customPythonRuleRepository.checkClasses()).hasSize(4);
+    assertThat(context.repositories().get(0).rules()).hasSize(6);
+    assertThat(customPythonRuleRepository.checkClasses()).hasSize(6);
   }
 }
