@@ -9,7 +9,7 @@ class OptimizeReadFileExceptionCheckTest {
     void test() {
         JavaCheckVerifier.newVerifier()
                 .onFile("src/test/files/OptimizeReadFileExceptionCheck.java")
-                .withCheck(new OptimizeReadFileException())
+                .withCheck(new OptimizeReadFileExceptions())
                 .verifyIssues();
     }
 
