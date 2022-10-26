@@ -3,7 +3,6 @@ package fr.cnumr.java.checks;
 
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
-import org.sonar.java.model.statement.CatchTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.CatchTree;
 import org.sonar.plugins.java.api.tree.NewClassTree;
@@ -20,7 +19,7 @@ import java.util.List;
         description = OptimizeReadFileException.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
-public class OptimizeReadFileException extends IssuableSubscriptionVisitor {
+public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
 
 	protected static final String MESSAGERULE = "Optimize Read File Exception";
     private boolean isFileNotFoundException = false;
