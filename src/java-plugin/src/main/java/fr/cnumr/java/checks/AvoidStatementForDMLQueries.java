@@ -36,7 +36,7 @@ public class AvoidStatementForDMLQueries extends IssuableSubscriptionVisitor {
         {
             LiteralTree literalTree = (LiteralTree) first;
             String str = literalTree.value();
-            String regex = "(SELECT|INSERT INTO|UPDATE|DELETE FROM)\\s(.+,?)+\\s(FROM|VALUES|SET|WHERE)\\s?.*";
+            String regex = "(SELECT|INSERT INTO|UPDATE|DELETE FROM)\\s?.*";
             Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(str);
             if (matcher.find())
