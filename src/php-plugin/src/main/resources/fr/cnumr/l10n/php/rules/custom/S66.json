@@ -1,5 +1,5 @@
 {
-  "title": "Avoid using double quote",
+  "title": "Avoid using double quote (\"), prefer using simple quote (')",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {

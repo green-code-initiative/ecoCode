@@ -140,27 +140,6 @@
               </execution>
             </executions>
           </plugin>
-
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-install-plugin</artifactId>
-            <version>2.5.2</version>
-            <executions>
-              <execution>
-                <phase>initialize</phase>
-                <goals>
-                  <goal>install-file</goal>
-                </goals>
-                <configuration>
-                  <file>${project.basedir}/CodeNarc/build/libs/CodeNarc-${codenarc.version}.jar</file>
-                  <groupId>org.codenarc</groupId>
-                  <artifactId>CodeNarc</artifactId>
-                  <version>${codenarc.version}</version>
-                  <packaging>jar</packaging>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
         </plugins>
       </build>
     </profile>
