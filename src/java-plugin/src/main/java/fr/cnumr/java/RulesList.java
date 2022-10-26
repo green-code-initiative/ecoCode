@@ -43,6 +43,7 @@ public final class RulesList {
         return Collections.unmodifiableList(Arrays.asList(
                 IncrementCheck.class,
                 NoFunctionCallWhenDeclaringForLoop.class,
+                AvoidStatementForDMLQueries.class,
                 AvoidSpringRepositoryCallInLoopCheck.class,
                 AvoidSQLRequestInLoop.class,
                 AvoidFullSQLRequest.class,
