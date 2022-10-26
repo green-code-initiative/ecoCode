@@ -1,7 +1,6 @@
 package fr.cnumr.java.checks;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 import org.sonar.check.Priority;
@@ -10,8 +9,6 @@ import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.*;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
-
-import static org.sonar.plugins.java.api.semantic.MethodMatchers.CONSTRUCTOR;
 
 @Rule(key = "GSCIL",
         name = "Developpement",
