@@ -33,7 +33,7 @@ You will find more information about the plugins’ architecture in their folder
 - Mvn 3
 
 
-### Preliminary steps
+### Preliminary steps (only Android)
 
 The Android plugin uses [CodeNarc](https://codenarc.org/) to scan the gradle files of Android projects. To have more information about CodeNarc: [CodeNarc](/codenarc-converter/CodeNarc/README.md).
 
@@ -52,10 +52,12 @@ You can build the project code by running the following command in the `src` dir
 Maven will download the required dependencies.
 
 ```sh
-mvn clean install
+./build.sh
+
+# execute `mvn clean install`
 ```
 
-Each plugin is generated in its own `src/<plugin>/target` directory, but they are also copied to the `src/lib` directory.
+Each plugin is generated in its own `<plugin>/target` directory, but they are also copied to the `lib` directory.
 
 
 
@@ -71,7 +73,9 @@ You must have built the plugins (see the steps above).
 Run the SonarQube + PostgreSQL stack:
 
 ```sh 
-docker-compose up --build -d
+./init_reinit.sh
+
+# execute `docker-compose up --build -d`
 ```
 
 Check if the containers are up:
@@ -134,7 +138,20 @@ Install dependencies from the root directory:
 mvn clean install
 ```
 
-.jar files (one per plugin) will be moved in `src/lib` repository after build.
+.jar files (one per plugin) will be moved in `lib` repository after build.
+
+## Howto start or stop service (already installed)
+
+Once you did the installation a first time (and then you did custom configuration like quality gates, quality profiles, ...),
+if you only want to start (or stop properly) existing services :
+
+```sh
+./start.sh
+# execute `docker-compose start`
+
+./stop.sh
+# execute `docker-compose stop`
+```
 
 ## Links
 
