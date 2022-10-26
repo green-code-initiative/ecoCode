@@ -3,7 +3,7 @@ package fr.cnumr.java.checks;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.verifier.JavaCheckVerifier;
 
-public class AvoidGettingSizeCollectionInLoopTest {
+class AvoidGettingSizeCollectionInLoopTest {
     @Test
     void test() {
         JavaCheckVerifier.newVerifier()
