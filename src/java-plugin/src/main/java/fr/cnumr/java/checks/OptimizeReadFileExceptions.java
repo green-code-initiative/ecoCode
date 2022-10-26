@@ -16,12 +16,12 @@ import java.util.List;
 @Rule(
         key = "GRSP0028",
         name = "Developpement",
-        description = OptimizeReadFileException.MESSAGERULE,
+        description = OptimizeReadFileExceptions.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
 public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
 
-	protected static final String MESSAGERULE = "Optimize Read File Exception";
+	protected static final String MESSAGERULE = "Optimize Read File Exceptions";
     private boolean isFileNotFoundException = false;
 	
     @Override
