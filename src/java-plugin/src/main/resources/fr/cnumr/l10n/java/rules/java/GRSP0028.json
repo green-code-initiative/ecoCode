@@ -1,5 +1,5 @@
 {
-  "title": "Optimize read file exception",
+  "title": "Optimize read file exceptions",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
