@@ -49,7 +49,7 @@ public final class RulesList {
                 AvoidFullSQLRequest.class,
                 UseCorrectForLoop.class,
                 UnnecessarilyAssignValuesToVariables.class,
-                InitializeBufferWithAppropriateSize.class
+                InitializeBufferWithAppropriateSize.class,
                 AvoidUsingGlobalVariablesCheck.class,
                 AvoidSetConstantInBatchUpdate.class
         ));
