@@ -21,6 +21,7 @@ package fr.cnumr.java;
 
 import org.junit.jupiter.api.Test;
 import org.sonar.plugins.java.api.CheckRegistrar;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MyJavaFileCheckRegistrarTest {
@@ -32,7 +33,8 @@ class MyJavaFileCheckRegistrarTest {
     MyJavaFileCheckRegistrar registrar = new MyJavaFileCheckRegistrar();
     registrar.register(context);
 
-    assertThat(context.checkClasses()).hasSize(6);
+    assertThat(context.checkClasses()).hasSize(13);
+
     assertThat(context.testCheckClasses()).isEmpty();
   }
 

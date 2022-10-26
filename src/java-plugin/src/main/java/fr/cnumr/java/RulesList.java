@@ -19,13 +19,13 @@
  */
 package fr.cnumr.java;
 
+import fr.cnumr.java.checks.*;
+import org.sonar.plugins.java.api.JavaCheck;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import fr.cnumr.java.checks.*;
-import org.sonar.plugins.java.api.JavaCheck;
 
 public final class RulesList {
 
@@ -42,11 +42,18 @@ public final class RulesList {
     public static List<Class<? extends JavaCheck>> getJavaChecks() {
         return Collections.unmodifiableList(Arrays.asList(
                 IncrementCheck.class,
+                AvoidGettingSizeCollectionInLoop.class,
+                AvoidRegexPatternNotStatic.class,
                 NoFunctionCallWhenDeclaringForLoop.class,
+                AvoidStatementForDMLQueries.class,
+                AvoidSpringRepositoryCallInLoopCheck.class,
                 AvoidSQLRequestInLoop.class,
                 AvoidFullSQLRequest.class,
                 UseCorrectForLoop.class,
-                UnnecessarilyAssignValuesToVariables.class
+                UnnecessarilyAssignValuesToVariables.class,
+                InitializeBufferWithAppropriateSize.class,
+                AvoidUsingGlobalVariablesCheck.class,
+                AvoidSetConstantInBatchUpdate.class
         ));
     }
 

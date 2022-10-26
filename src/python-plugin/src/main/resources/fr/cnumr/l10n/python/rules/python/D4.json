@@ -1,5 +1,5 @@
 {
-  "title": "Utiliser la simple côte (') au lieu du guillemet (\")",
+  "title": "Do not call global variables directly inside functions",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
