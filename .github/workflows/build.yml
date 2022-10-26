@@ -40,4 +40,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -e -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cnumr_ecoCode -Dsonar.organization=cnumr_1 -Dsonar.exclusions=**/src/codenarc-converter/**,**/*.groovy,**/src/android-plugin/src/test/**,**/*.dummy
+        run: mvn -e -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cnumr_ecoCode -Dsonar.exclusions=**/src/codenarc-converter/**,**/*.groovy,**/src/android-plugin/src/test/**,**/*.dummy
