@@ -1,0 +1,1 @@
+https://github.com/SonarSource/sonar-custom-rules-examples/tree/master/xml-custom-rules

@@ -11,10 +11,10 @@ import java.util.List;
 @Rule(
         key = "S34",
         name = "Developpement",
-        description = AvoidTryCatchFinallyCheck.ERROR_MESSAGE,
+        description = AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug"})
-public class AvoidTryCatchFinallyCheck extends PHPSubscriptionCheck {
+public class AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements extends PHPSubscriptionCheck {
 
     public static final String ERROR_MESSAGE = "Avoid using try-catch-finally";
 

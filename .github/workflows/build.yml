@@ -2,7 +2,7 @@ name: Build
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -31,16 +31,10 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
-      - name: Execute Gradle build CodeNarc
-        working-directory: ./src/codenarc-converter/CodeNarc
+      - name: Prepare CodeNarc dependency
+        working-directory: ./src
         run: |
-          chmod +x gradlew
-          ./gradlew build -x test
-      - name: Execute Maven build CodeNarc
-        working-directory: ./src/codenarc-converter
-        run: |
-          mvn initialize
-          mvn clean package
+          ./prepare-codenarc
       - name: Build and analyze
         working-directory: ./src
         env:
