@@ -51,7 +51,7 @@ public final class RulesList {
                 AvoidFullSQLRequest.class,
                 UseCorrectForLoop.class,
                 UnnecessarilyAssignValuesToVariables.class,
-                OptimizeReadFileException.class,
+                OptimizeReadFileExceptions.class,
                 InitializeBufferWithAppropriateSize.class,
                 AvoidUsingGlobalVariablesCheck.class,
                 AvoidSetConstantInBatchUpdate.class
