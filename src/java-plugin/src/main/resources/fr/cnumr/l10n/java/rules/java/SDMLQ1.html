@@ -1,4 +1,5 @@
-<p>Use PreparedStatement instead of Statement</p>
+<p>Use PreparedStatement instead of Statement, that's because SQL will validate the query only once, whereas if you just use a statement it will validate the query each time.
+    This induced unnecessary calculation by the cpu so unless energy consumption.</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
     public void select() {
