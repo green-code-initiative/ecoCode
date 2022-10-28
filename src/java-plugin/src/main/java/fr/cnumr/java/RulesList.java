@@ -55,7 +55,8 @@ public final class RulesList {
                 OptimizeReadFileExceptions.class,
                 InitializeBufferWithAppropriateSize.class,
                 AvoidUsingGlobalVariablesCheck.class,
-                AvoidSetConstantInBatchUpdate.class
+                AvoidSetConstantInBatchUpdate.class,
+                FreeResourcesOfAutoCloseableInterface.class
         ));
     }
 

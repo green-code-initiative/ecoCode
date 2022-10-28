@@ -33,8 +33,7 @@ class MyJavaFileCheckRegistrarTest {
     MyJavaFileCheckRegistrar registrar = new MyJavaFileCheckRegistrar();
     registrar.register(context);
 
-
-    assertThat(context.checkClasses()).hasSize(15);
+    assertThat(context.checkClasses()).hasSize(16);
     assertThat(context.testCheckClasses()).isEmpty();
   }
 
