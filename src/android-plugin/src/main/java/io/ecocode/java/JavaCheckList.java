@@ -82,7 +82,8 @@ public final class JavaCheckList {
                 SensorCoalesceRule.class,
                 JobCoalesceRule.class,
                 SaveModeAwarenessRule.class,
-                ThriftyGeolocationCriteriaRule.class
+                ThriftyGeolocationCriteriaRule.class,
+                HighFrameRateRule.class
         ));
     }
 
