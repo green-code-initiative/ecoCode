@@ -84,6 +84,7 @@
     <tag>code-smell</tag>
   </rule>
 
+  <!-- since 2.2.2 -->
   <rule>
     <key>org.codenarc.rule.ecocode.DisableObfuscationRule</key>
     <severity>MINOR</severity>

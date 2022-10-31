@@ -85,7 +85,7 @@ android {
 
 ## DisableObfuscation Rule
 
-*Since CodeNarc 2.2.1*
+*Since CodeNarc 2.2.2*
 
 Using minifyEnabled true will obfuscate code and will have a sligthly negative impact on power consumption at runtime.
 
