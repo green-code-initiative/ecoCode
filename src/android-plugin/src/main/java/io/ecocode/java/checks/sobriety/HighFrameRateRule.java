@@ -33,7 +33,7 @@ public class HighFrameRateRule extends IssuableSubscriptionVisitor {
             MethodInvocationTree methodInvocationTree = (MethodInvocationTree) tree;
             if (surfaceListenerMethodMatcher.matches(methodInvocationTree) &&
                     isRefreshSixtyOrHigher(methodInvocationTree.arguments())) {
-                reportIssue(methodInvocationTree, "A regular app displays 60 frames per second (60Hz). In order to optimize content refreshes and hence saving energy, this frequency should not be raised to 90Hz or 120Hz.");
+                reportIssue(methodInvocationTree, "To optimize content refresh and save energy, frame rate should be set at maximum 60Hz.");
             }
         }
     }
