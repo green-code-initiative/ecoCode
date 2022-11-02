@@ -14,7 +14,7 @@ shadowJar {
 
 group = 'org.codenarc'
 archivesBaseName = 'CodeNarc'
-version = '2.2.2'
+version = '2.2.3'
 
 sourceCompatibility = '1.7'
 targetCompatibility = '1.7'
