@@ -1,8 +1,8 @@
+!.gitignore
+.*
 node_modules
 yarn.lock
 target/
 node/
-.idea
-.DS_Store
 *.iml
 /lib/*.jar

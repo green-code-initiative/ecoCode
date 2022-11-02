@@ -82,3 +82,41 @@ android {
     }
 }
 ```
+
+## DisableObfuscation Rule
+
+*Since CodeNarc 2.2.3*
+
+Using minifyEnabled true will obfuscate code and will have a sligthly negative impact on power consumption at runtime.
+
+Example of violations:
+
+```
+    android {
+        compileSdk 32
+
+        defaultConfig {
+            applicationId "com.example.sampleForSonar"
+            minSdkVersion 28
+            targetSdkVersion 32
+            versionCode 1
+            versionName "1.0"
+            testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        }
+
+        buildTypes {
+            release {
+                minifyEnabled true
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+        }
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+        buildFeatures {
+            viewBinding true
+        }
+    }
+```
+

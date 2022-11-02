@@ -5,7 +5,6 @@ import static org.sonar.plugins.java.api.semantic.MethodMatchers.CONSTRUCTOR;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.tomcat.util.descriptor.web.MessageDestinationRef;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
@@ -24,7 +23,9 @@ public class AvoidSQLRequestInLoop extends IssuableSubscriptionVisitor {
 
 	@Override
 	public List<Kind> nodesToVisit() {
-		return Arrays.asList(Tree.Kind.FOR_EACH_STATEMENT, Tree.Kind.FOR_STATEMENT, Tree.Kind.WHILE_STATEMENT);
+		return Arrays.asList(
+				Tree.Kind.FOR_EACH_STATEMENT, Tree.Kind.FOR_STATEMENT, 
+				Tree.Kind.WHILE_STATEMENT, Tree.Kind.DO_STATEMENT);
 	}
 
 	@Override
@@ -42,7 +43,7 @@ public class AvoidSQLRequestInLoop extends IssuableSubscriptionVisitor {
 				MethodMatchers.create().ofSubTypes("org.hibernate.Session").names("createQuery", "createSQLQuery")
 						.withAnyParameters().build(),
 				MethodMatchers.create().ofSubTypes(JAVA_SQL_STATEMENT)
-						.names("executeQuery", "execute", "executeUpdate", "executeLargeUpdate", "addBatch")
+						.names("executeQuery", "execute", "executeUpdate", "executeLargeUpdate") // addBatch is recommended
 						.withAnyParameters().build(),
 				MethodMatchers.create().ofSubTypes(JAVA_SQL_CONNECTION)
 						.names("prepareStatement", "prepareCall", "nativeSQL")
