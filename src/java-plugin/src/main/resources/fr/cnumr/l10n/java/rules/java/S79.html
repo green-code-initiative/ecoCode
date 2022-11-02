@@ -1,4 +1,4 @@
-<p>try-with-resources Statement needs to be implemented for any object that implements the AutoCloseable interface.</p>
+<p>try-with-resources Statement needs to be implemented for any object that implements the AutoCloseable interface, it save computer resources.</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
     private static void printFileJava7() throws IOException {
@@ -10,7 +10,7 @@
         }
     }
 </pre>
-<h2>Noncompliant Code Example</h2>
+<h2>Compliant Solution</h2>
 <pre>
     private static void printFileJava7() throws IOException {
         try(FileInputStream input = new FileInputStream("file.txt")) {
