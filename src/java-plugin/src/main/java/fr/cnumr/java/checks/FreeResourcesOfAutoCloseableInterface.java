@@ -47,13 +47,9 @@ public class FreeResourcesOfAutoCloseableInterface extends IssuableSubscriptionV
                 toReport.push(new ArrayList<>());
             }
         }
-        if (tree.is(Tree.Kind.NEW_CLASS)) {
-            if (((NewClassTree) tree).symbolType().isSubtypeOf(JAVA_LANG_AUTOCLOSEABLE)) {
-                if (withinStandardTryWithFinally()) {
-                    assert toReport.peek() != null;
-                    toReport.peek().add(tree);
-                }
-            }
+        if (tree.is(Tree.Kind.NEW_CLASS) && ((NewClassTree) tree).symbolType().isSubtypeOf(JAVA_LANG_AUTOCLOSEABLE) && withinStandardTryWithFinally() ) {
+            assert toReport.peek() != null;
+            toReport.peek().add(tree);
         }
     }
 
