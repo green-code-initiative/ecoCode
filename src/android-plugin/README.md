@@ -43,6 +43,7 @@ Tests are located under:
 Build CodeNarc (gradle 6.9.2, Java 11):
 
 ```sh
+cd /codenarc-converter/CodeNarc
 ./gradlew build -x test 
 ```
 
