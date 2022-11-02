@@ -79,6 +79,7 @@ title: CodeNarc - Rule Index by Name
 * [CyclomaticComplexity](./codenarc-rules-size.html#cyclomaticcomplexity-rule)    (Requires the GMetrics jar)
 * [DeadCode](./codenarc-rules-basic.html#deadcode-rule)
 * [DirectConnectionManagement](./codenarc-rules-jdbc.html#directconnectionmanagement-rule)
+* [DisableObfuscation](./codenarc-rules-ecocode.html#disableobfuscation-rule)
 * [DoubleCheckedLocking](./codenarc-rules-concurrency.html#doublecheckedlocking-rule)
 * [DoubleNegative](./codenarc-rules-basic.html#doublenegative-rule)
 * [DuplicateCaseStatement](./codenarc-rules-basic.html#duplicatecasestatement-rule)
