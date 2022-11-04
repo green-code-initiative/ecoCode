@@ -2,7 +2,6 @@ package fr.cnumr.java.checks;
 
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
-import org.sonar.java.JavaVersionAwareVisitor;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
 import org.sonar.plugins.java.api.JavaVersion;
@@ -20,7 +19,7 @@ import java.util.*;
         description = FreeResourcesOfAutoCloseableInterface.MESSAGE_RULE,
         priority = Priority.MINOR,
         tags = {"bug"})
-public class FreeResourcesOfAutoCloseableInterface extends IssuableSubscriptionVisitor implements JavaVersionAwareVisitor {
+public class FreeResourcesOfAutoCloseableInterface extends IssuableSubscriptionVisitor {
     private final Deque<TryStatementTree> withinTry = new LinkedList<>();
     private final Deque<List<Tree>> toReport = new LinkedList<>();
 
@@ -69,7 +68,6 @@ public class FreeResourcesOfAutoCloseableInterface extends IssuableSubscriptionV
         return withinTry.peek().finallyBlock() != null;
     }
 
-    @Override
     public boolean isCompatibleWithJavaVersion(JavaVersion version) {
         return version.isJava7Compatible();
     }
