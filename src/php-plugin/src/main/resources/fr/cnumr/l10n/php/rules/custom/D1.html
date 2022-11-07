@@ -1,2 +1,28 @@
-<p>Avoid using try-catch-finally statement</p>
-<p>When an exception is thrown, a variable (the exception itself) is created in the catch block and destroyed at the end of the block. Creating this variable and destroying it consumes CPU cycles and RAM unnecessarily. It is better to prefer a logical test as much as possible.</p>
+<p>Inside complex code parts (for exemple multiple loops, complex data constructions...), avoid using try...catch...finally.</p>
+<p>When an exception is thrown, a variable (the exception itself) is created in a catch block and it's destruction consumes unnecessary CPU cycles and RAM. Prefer using logical tests in this cases.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+try
+{
+  $picture = PDF_open_image_file($PDF, "jpeg", $imgFile, "", 0); // This is the original statement, this works on PHP4
+}
+catch(Exception $ex)
+{
+  $msg = "Error opening $imgFile for Product $row['Identifier']";
+  throw new Exception($msg);
+}
+
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+//try
+if (file_exists($imgFile)) {
+    $picture = PDF_open_image_file($PDF, "jpeg", $imgFile, "", 0);
+}
+
+//catch
+if (!$picture) {
+   $msg = "Error opening $imgFile for Product $row['Identifier']";
+   print $msg;
+}
+</pre>

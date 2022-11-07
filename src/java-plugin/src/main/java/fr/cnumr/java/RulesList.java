@@ -43,6 +43,8 @@ public final class RulesList {
         return Collections.unmodifiableList(Arrays.asList(
         		ArrayCopyCheck.class,
                 IncrementCheck.class,
+                AvoidConcatenateStringsInLoop.class,
+                AvoidUsageOfStaticCollections.class,
                 AvoidGettingSizeCollectionInLoop.class,
                 AvoidRegexPatternNotStatic.class,
                 NoFunctionCallWhenDeclaringForLoop.class,
@@ -52,9 +54,11 @@ public final class RulesList {
                 AvoidFullSQLRequest.class,
                 UseCorrectForLoop.class,
                 UnnecessarilyAssignValuesToVariables.class,
+                OptimizeReadFileExceptions.class,
                 InitializeBufferWithAppropriateSize.class,
                 AvoidUsingGlobalVariablesCheck.class,
-                AvoidSetConstantInBatchUpdate.class
+                AvoidSetConstantInBatchUpdate.class,
+                FreeResourcesOfAutoCloseableInterface.class
         ));
     }
 

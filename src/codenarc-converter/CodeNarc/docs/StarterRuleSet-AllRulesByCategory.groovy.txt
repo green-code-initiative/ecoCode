@@ -168,6 +168,7 @@ ruleset {
     // rulesets/ecocode.xml
     FatApp
     SupportedVersionRange
+    DisableObfuscation
 
     // rulesets/enhanced.xml
     CloneWithoutCloneable 

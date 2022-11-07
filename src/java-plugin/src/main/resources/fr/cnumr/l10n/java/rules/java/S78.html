@@ -1,4 +1,4 @@
-<p>Don't set const parameter in batch update => Put its in query</p>
+<p>Don't set const parameter in batch update => Put its in query. Creating this parameter and destroying it consumes CPU cycles and RAM unnecessarily.</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
     public void foo() {
