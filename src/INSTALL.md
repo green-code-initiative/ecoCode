@@ -29,7 +29,7 @@ You will find more information about the plugins’ architecture in their folder
 
 ### Prerequisites
 
-- Java >= 8
+- Java >= 11
 - Mvn 3
 
 
