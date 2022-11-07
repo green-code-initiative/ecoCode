@@ -149,17 +149,22 @@ public class ArrayCopyCheck extends IssuableSubscriptionVisitor {
 	private List<Bloc> getBlocsOfCode(final Tree tree) {
 		final List<Bloc> blocs = new ArrayList<>();
 		if (tree instanceof ForStatementTree) {
-			addBloc(blocs, ((ForStatementTree) tree).statement());
+			ForStatementTree castedForTree = (ForStatementTree) tree;
+			addBloc(blocs, castedForTree.statement());
 		} else if (tree instanceof ForEachStatement) {
-			addForEachBloc(blocs, ((ForEachStatement) tree).statement(), ((ForEachStatement) tree).variable(),
-					((ForEachStatement) tree).expression());
+			ForEachStatement castedForEachTree = (ForEachStatement) tree;
+			addForEachBloc(blocs, castedForEachTree.statement(), castedForEachTree.variable(),
+					castedForEachTree.expression());
 		} else if (tree instanceof WhileStatementTree) {
-			addBloc(blocs, ((WhileStatementTree) tree).statement());
+			WhileStatementTree castedWhileTree = (WhileStatementTree) tree;
+			addBloc(blocs, castedWhileTree.statement());
 		} else if (tree instanceof DoWhileStatementTree) {
-			addBloc(blocs, ((DoWhileStatementTree) tree).statement());
+			DoWhileStatementTree castedDoWhileTree = (DoWhileStatementTree) tree;
+			addBloc(blocs, castedDoWhileTree.statement());
 		} else if (tree instanceof IfStatementTree) {
-			addBloc(blocs, ((IfStatementTree) tree).thenStatement());
-			addBloc(blocs, ((IfStatementTree) tree).elseStatement());
+			IfStatementTree castedIfTree = (IfStatementTree) tree;
+			addBloc(blocs, castedIfTree.thenStatement());
+			addBloc(blocs, castedIfTree.elseStatement());
 		} else if (tree instanceof TryStatementTree) {
 			final TryStatementTree tryTree = (TryStatementTree) tree;
 			addBloc(blocs, tryTree.block());
