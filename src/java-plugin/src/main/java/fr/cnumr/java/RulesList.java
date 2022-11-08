@@ -58,7 +58,8 @@ public final class RulesList {
                 InitializeBufferWithAppropriateSize.class,
                 AvoidUsingGlobalVariablesCheck.class,
                 AvoidSetConstantInBatchUpdate.class,
-                FreeResourcesOfAutoCloseableInterface.class
+                FreeResourcesOfAutoCloseableInterface.class,
+                AvoidMultipleIfElseStatement.class
         ));
     }
 
