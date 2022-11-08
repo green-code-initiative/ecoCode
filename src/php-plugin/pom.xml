@@ -55,7 +55,7 @@
                         <id>copy-bundle</id>
                         <phase>package</phase>
                         <goals>
-                        <goal>copy</goal>
+                            <goal>copy</goal>
                         </goals>
                         <configuration>
                         <artifactItems>
