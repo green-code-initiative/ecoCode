@@ -12,7 +12,6 @@
 	<name>ecoCode XML Sonar Plugin</name>
 	<description></description>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>org.sonarsource.sonarqube</groupId>
@@ -85,16 +84,6 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.0</version>
-				<configuration>
-					<source>11</source>
-					<target>11</target>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
