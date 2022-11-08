@@ -105,8 +105,10 @@ public class BrightnessOverrideRule extends IssuableSubscriptionVisitor {
     }
 
     private void checkBrightnessAssignmentExpressionValue(Tree tree, String qualifiedType, Number value) {
-        if (qualifiedType.equals("float") && (Float) value == BRIGHTNESS_FULL_VALUE
-                || qualifiedType.equals("int") && (Integer) value == BRIGHTNESS_FULL_VALUE) {
+        int intValue = value.intValue();
+        float floatValue = value.floatValue();
+        if (qualifiedType.equals("float") && floatValue == BRIGHTNESS_FULL_VALUE
+                || qualifiedType.equals("int") && intValue == BRIGHTNESS_FULL_VALUE) {
             reportIssue(tree, ERROR_MESSAGE);
         }
     }
