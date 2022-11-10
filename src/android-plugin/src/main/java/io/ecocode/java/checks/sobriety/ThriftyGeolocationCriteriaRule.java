@@ -19,7 +19,10 @@
  */
 package io.ecocode.java.checks.sobriety;
 
-import com.google.common.collect.ImmutableList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -28,8 +31,7 @@ import org.sonar.plugins.java.api.tree.ExpressionTree;
 import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 /**
  * - Visit the method invocation nodes.
@@ -50,6 +52,13 @@ import java.util.List;
 @Rule(key = "ESOB006", name = "ecocodeThriftyGeolocationCriteriaRule")
 public class ThriftyGeolocationCriteriaRule extends IssuableSubscriptionVisitor {
 
+    // CASE 1
+    private static final String REPORT_MESSAGE_REQUEST_LOCATION = "You should configure a location provider (LocationManager.getBestProvider(...)) to optimize battery usage.";
+    // CASE 2
+    private static final String REPORT_MESSAGE_BEST_PROVIDER = "You should call Criteria.setPowerRequirement(POWER_LOW) to optimize battery usage.";
+    // CASE 3
+    private static final String REPORT_MESSAGE_SET_POWER_REQUIREMENT = "You should set the power requirement to POWER_LOW to optimize battery usage.";
+    
     private final MethodMatchers matcherCriteria = MethodMatchers.create().ofTypes("android.location.Criteria").names("setPowerRequirement").withAnyParameters().build();
     private final MethodMatchers matcherBestProvider = MethodMatchers.create().ofTypes("android.location.LocationManager").names("getBestProvider").withAnyParameters().build();
     private final MethodMatchers matcherRequestLocation = MethodMatchers.create().ofTypes("android.location.LocationManager").names("requestLocationUpdates").withAnyParameters().build();
@@ -58,21 +67,6 @@ public class ThriftyGeolocationCriteriaRule extends IssuableSubscriptionVisitor 
     private boolean hasSeenRequestLocation = false;
     private boolean hasSeenSetBestProvider = false;
     private boolean hasSeenSetPowerRequirement = false;
-
-    // CASE 1
-    public String getReportMessageRequestLocation() {
-        return "You should configure a location provider (LocationManager.getBestProvider(...)) to optimize battery usage.";
-    }
-
-    // CASE 2
-    public String getReportMessageBestProvider() {
-        return "You should call Criteria.setPowerRequirement(POWER_LOW) to optimize battery usage.";
-    }
-
-    // CASE 3
-    public String getReportMessageSetPowerRequirement() {
-        return "You should set the power requirement to POWER_LOW to optimize battery usage.";
-    }
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -85,12 +79,12 @@ public class ThriftyGeolocationCriteriaRule extends IssuableSubscriptionVisitor 
                 && hasSeenRequestLocation) {
             if (!hasSeenSetBestProvider) {
                 for (Tree tree : requestTreesToReport) {
-                    reportIssue(tree, getReportMessageRequestLocation());
+                    reportIssue(tree, REPORT_MESSAGE_REQUEST_LOCATION);
                 }
             } else {
                 if (!hasSeenSetPowerRequirement) {
                     for (Tree tree : bestProviderTreeToReport) {
-                        reportIssue(tree, getReportMessageBestProvider());
+                        reportIssue(tree, REPORT_MESSAGE_BEST_PROVIDER);
                     }
                 }
             }
@@ -119,17 +113,18 @@ public class ThriftyGeolocationCriteriaRule extends IssuableSubscriptionVisitor 
             hasSeenSetPowerRequirement = true;
             if (!mit.arguments().isEmpty()) {
                 ExpressionTree arg = mit.arguments().get(0);
+                Optional<Object> optionalArg = arg.asConstant();
                 try {
-                    if (arg.asConstant().isPresent() && ((Integer) arg.asConstant().get()) == 1) {
+                    if (optionalArg.isPresent() && ((Integer) optionalArg.get()) == 1) {
                         hasSeenSetPowerRequirement = true;
                     } else {
-                        reportIssue(mit, getReportMessageSetPowerRequirement());
+                        reportIssue(mit, REPORT_MESSAGE_SET_POWER_REQUIREMENT);
                     }
                 } catch (Exception e) {
-                    reportIssue(mit, getReportMessageSetPowerRequirement());
+                    reportIssue(mit, REPORT_MESSAGE_SET_POWER_REQUIREMENT);
                 }
             } else {
-                reportIssue(mit, getReportMessageSetPowerRequirement());
+                reportIssue(mit, REPORT_MESSAGE_SET_POWER_REQUIREMENT);
             }
         }
     }

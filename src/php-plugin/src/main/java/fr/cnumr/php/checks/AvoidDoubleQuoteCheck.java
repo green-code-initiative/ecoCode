@@ -35,7 +35,6 @@ public class AvoidDoubleQuoteCheck extends PHPSubscriptionCheck {
         if (lineAlreadyHasThisIssue(literalTree)) return;
         if (literalTree.value().indexOf("\"") == 0 && literalTree.value().lastIndexOf("\"") == literalTree.value().length() - 1) {
             repport(literalTree);
-            return;
         }
     }
 
@@ -44,9 +43,7 @@ public class AvoidDoubleQuoteCheck extends PHPSubscriptionCheck {
 
             final String classname = context().getPhpFile().toString();
             final int line = literalTree.token().line();
-            if (!linesWithIssuesByFile.containsKey(classname)) {
-                linesWithIssuesByFile.put(classname, new ArrayList<>());
-            }
+            linesWithIssuesByFile.computeIfAbsent(classname, k -> new ArrayList<>());
             linesWithIssuesByFile.get(classname).add(line);
         }
         context().newIssue(this, literalTree, ERROR_MESSAGE);

@@ -22,7 +22,7 @@ public class XmlEcoCodeProfileTest {
         assertThat(profile.language()).isEqualTo(Xml.KEY);
         assertThat(profile.name()).isEqualTo(Xml.PROFILE_NAME);
         // "-1" because we do not want the rule "DarkUIBrightColors" in the profile
-        assertThat(profile.rules().size()).isEqualTo(XmlCheckList.getXmlChecks().size() - 1);
+        assertThat(profile.rules()).hasSize(XmlCheckList.getXmlChecks().size() - 1);
         assertThat(validation.hasErrors()).isFalse();
     }
 }

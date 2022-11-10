@@ -31,7 +31,7 @@ public abstract class CheckPermissionsRule extends XPathCheck {
     private final String xpathManifestExpression;
     private final String errorMessage;
 
-    public CheckPermissionsRule(String permissionName, String errorMessage) {
+    protected CheckPermissionsRule(String permissionName, String errorMessage) {
         this.xpathManifestExpression = "//manifest/uses-permission/@name[. = \"" + permissionName + "\"]";
         this.errorMessage = errorMessage;
     }

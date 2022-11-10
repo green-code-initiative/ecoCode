@@ -51,7 +51,7 @@ public abstract class ConstructorBeforeMethodCheck extends IssuableSubscriptionV
      */
     public abstract String getMessage();
 
-    public ConstructorBeforeMethodCheck(String ownerType, String methodName) {
+    protected ConstructorBeforeMethodCheck(String ownerType, String methodName) {
         this.ownerType = ownerType;
         hasSeenMethod = false;
         this.releaseMatcher = MethodMatchers.create().ofTypes(ownerType).names(methodName).withAnyParameters().build();
