@@ -1,19 +1,65 @@
 package fr.cnumr.python.checks;
 
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;
 import org.sonar.plugins.python.api.symbols.Symbol;
-import org.sonar.plugins.python.api.tree.*;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import org.sonar.plugins.python.api.tree.AnnotatedAssignment;
+import org.sonar.plugins.python.api.tree.ArgList;
+import org.sonar.plugins.python.api.tree.AssertStatement;
+import org.sonar.plugins.python.api.tree.AssignmentExpression;
+import org.sonar.plugins.python.api.tree.AssignmentStatement;
+import org.sonar.plugins.python.api.tree.AwaitExpression;
+import org.sonar.plugins.python.api.tree.BinaryExpression;
+import org.sonar.plugins.python.api.tree.CallExpression;
+import org.sonar.plugins.python.api.tree.CompoundAssignmentStatement;
+import org.sonar.plugins.python.api.tree.ComprehensionExpression;
+import org.sonar.plugins.python.api.tree.ComprehensionFor;
+import org.sonar.plugins.python.api.tree.ComprehensionIf;
+import org.sonar.plugins.python.api.tree.ConditionalExpression;
+import org.sonar.plugins.python.api.tree.DictCompExpression;
+import org.sonar.plugins.python.api.tree.DictionaryLiteral;
+import org.sonar.plugins.python.api.tree.ElseClause;
+import org.sonar.plugins.python.api.tree.ExceptClause;
+import org.sonar.plugins.python.api.tree.ExecStatement;
+import org.sonar.plugins.python.api.tree.ExpressionList;
+import org.sonar.plugins.python.api.tree.ExpressionStatement;
+import org.sonar.plugins.python.api.tree.FileInput;
+import org.sonar.plugins.python.api.tree.FinallyClause;
+import org.sonar.plugins.python.api.tree.ForStatement;
+import org.sonar.plugins.python.api.tree.FunctionDef;
+import org.sonar.plugins.python.api.tree.IfStatement;
+import org.sonar.plugins.python.api.tree.KeyValuePair;
+import org.sonar.plugins.python.api.tree.LambdaExpression;
+import org.sonar.plugins.python.api.tree.ListLiteral;
+import org.sonar.plugins.python.api.tree.Name;
+import org.sonar.plugins.python.api.tree.Parameter;
+import org.sonar.plugins.python.api.tree.ParameterList;
+import org.sonar.plugins.python.api.tree.ParenthesizedExpression;
+import org.sonar.plugins.python.api.tree.PrintStatement;
+import org.sonar.plugins.python.api.tree.RaiseStatement;
+import org.sonar.plugins.python.api.tree.RegularArgument;
+import org.sonar.plugins.python.api.tree.ReprExpression;
+import org.sonar.plugins.python.api.tree.ReturnStatement;
+import org.sonar.plugins.python.api.tree.SetLiteral;
+import org.sonar.plugins.python.api.tree.StatementList;
+import org.sonar.plugins.python.api.tree.SubscriptionExpression;
+import org.sonar.plugins.python.api.tree.Tree;
+import org.sonar.plugins.python.api.tree.TryStatement;
+import org.sonar.plugins.python.api.tree.Tuple;
+import org.sonar.plugins.python.api.tree.TupleParameter;
+import org.sonar.plugins.python.api.tree.UnaryExpression;
+import org.sonar.plugins.python.api.tree.UnpackingExpression;
+import org.sonar.plugins.python.api.tree.WhileStatement;
+import org.sonar.plugins.python.api.tree.YieldExpression;
+import org.sonar.plugins.python.api.tree.YieldStatement;
 
 @Rule(
         key = AvoidGlobalVariableInFunctionCheck.RULE_KEY,
@@ -22,7 +68,6 @@ import java.util.Map;
         priority = Priority.MINOR,
         tags = {"bug"})
 public class AvoidGlobalVariableInFunctionCheck extends PythonSubscriptionCheck {
-    private static final Logger LOGGER = Loggers.get(AvoidGlobalVariableInFunctionCheck.class);
 
     public static final String RULE_KEY = "D4";
     public static final String DESCRIPTION = "Use local variable (function/class scope) instead of global variable (application scope)";

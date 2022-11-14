@@ -39,8 +39,8 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
 
 	private JavaFileScannerContext context;
 	private String lastTypeForMessage;
-	private Map<String, VariableTree> variableList = new HashMap<String, VariableTree>();
-	private static final Map<String, Collection<Integer>> linesWithIssuesByVariable = new HashMap<String, Collection<Integer>>();
+	private Map<String, VariableTree> variableList = new HashMap<>();
+	private static final Map<String, Collection<Integer>> linesWithIssuesByVariable = new HashMap<>();
 
 	@Override
 	public void scanFile(JavaFileScannerContext context) {
@@ -57,7 +57,7 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
 		tree.accept(getVariableVisitor);
 		tree.accept(checkVariable);
 
-		variableList.forEach((name, varTree) -> reportIfUnknow(name, varTree));
+		variableList.forEach(this::reportIfUnknow);
 		variableList.clear();
 
 	}

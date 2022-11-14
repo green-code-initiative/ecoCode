@@ -56,24 +56,22 @@ public class ThriftyGeolocationMinTimeRule extends IssuableSubscriptionVisitor {
     public void visitNode(Tree tree) {
         if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree mit = (MethodInvocationTree) tree;
-            if (methodMatcher.matches(mit)) {
-                if (!mit.arguments().isEmpty()) {
-                    ExpressionTree firstArgument = mit.arguments().get(0);
-                    /*
-                     * Here we want to know if the first parameter is a String,
-                     * if it is, the minDistance Parameter will be at position 1
-                     * else, the minTime will be at position 0
-                     */
-                    try {
-                        if (firstArgument.symbolType().toString().equals("String") || firstArgument.is(Tree.Kind.NULL_LITERAL)) {
-                            TreeHelper.literalValueControl(mit.arguments().get(1), treesToReport, ARGUMENT_VALUE_TO_CONTROL);
-                        } else {
-                            TreeHelper.literalValueControl(mit.arguments().get(0), treesToReport, ARGUMENT_VALUE_TO_CONTROL);
-                        }
-                    } catch (Exception e) {
-                        LOG.debug(String.format("[%s] Cannot evaluate requestLocationUpdates(...) argument value.", getClass().getName()));
-                        LOG.debug("Exception:", e);
+            if (methodMatcher.matches(mit) && !mit.arguments().isEmpty()) {
+                ExpressionTree firstArgument = mit.arguments().get(0);
+                /*
+                 * Here we want to know if the first parameter is a String,
+                 * if it is, the minDistance Parameter will be at position 1
+                 * else, the minTime will be at position 0
+                 */
+                try {
+                    if (firstArgument.symbolType().toString().equals("String") || firstArgument.is(Tree.Kind.NULL_LITERAL)) {
+                        TreeHelper.literalValueControl(mit.arguments().get(1), treesToReport, ARGUMENT_VALUE_TO_CONTROL);
+                    } else {
+                        TreeHelper.literalValueControl(mit.arguments().get(0), treesToReport, ARGUMENT_VALUE_TO_CONTROL);
                     }
+                } catch (Exception e) {
+                    LOG.debug(String.format("{} Cannot evaluate requestLocationUpdates(...) argument value.", getClass().getName()));
+                    LOG.debug("Exception: {}", e.getMessage(), e);
                 }
             }
         }

@@ -33,11 +33,10 @@ public class ChargeAwarenessXmlRule extends XPathSimpleCheck {
     private String xPathActionPowerDisconnected = "//manifest/application/receiver/intent-filter/action/@name[.=\"android.intent.action.ACTION_POWER_DISCONNECTED\"]";
     private String xPathActionBatteryOkay = "//manifest/application/receiver/intent-filter/action/@name[.=\"android.intent.action.BATTERY_OKAY\"]";
     private String xPathActionBatteryLow = "//manifest/application/receiver/intent-filter/action/@name[.=\"android.intent.action.BATTERY_LOW\"]";
-    private String INFO_MESSAGE = "Monitoring power changes and customizing behavior depending on battery level is a good practice.";
 
     @Override
     protected String getMessage() {
-        return INFO_MESSAGE;
+        return "Monitoring power changes and customizing behavior depending on battery level is a good practice.";
     }
 
     @Override

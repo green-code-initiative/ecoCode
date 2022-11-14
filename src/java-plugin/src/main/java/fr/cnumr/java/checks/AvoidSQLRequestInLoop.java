@@ -18,7 +18,35 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 	tags = {"bug" })
 public class AvoidSQLRequestInLoop extends IssuableSubscriptionVisitor {
 
-	protected static final String MESSAGERULE = "Avoid SQL request in loop";
+    protected static final String MESSAGERULE = "Avoid SQL request in loop";
+    private static final String JAVA_SQL_STATEMENT = "java.sql.Statement";
+    private static final String JAVA_SQL_CONNECTION = "java.sql.Connection";
+    private static final String SPRING_JDBC_OPERATIONS = "org.springframework.jdbc.core.JdbcOperations";
+
+    private final MethodMatchers SQL_METHOD = MethodMatchers.or(
+            MethodMatchers.create().ofSubTypes("org.hibernate.Session").names("createQuery", "createSQLQuery")
+                    .withAnyParameters().build(),
+            MethodMatchers.create().ofSubTypes(JAVA_SQL_STATEMENT)
+                    .names("executeQuery", "execute", "executeUpdate", "executeLargeUpdate") // addBatch is recommended
+                    .withAnyParameters().build(),
+            MethodMatchers.create().ofSubTypes(JAVA_SQL_CONNECTION)
+                    .names("prepareStatement", "prepareCall", "nativeSQL")
+                    .withAnyParameters().build(),
+            MethodMatchers.create().ofTypes("javax.persistence.EntityManager")
+                    .names("createNativeQuery", "createQuery")
+                    .withAnyParameters().build(),
+            MethodMatchers.create().ofSubTypes(SPRING_JDBC_OPERATIONS)
+                    .names("batchUpdate", "execute", "query", "queryForList", "queryForMap", "queryForObject",
+                            "queryForRowSet", "queryForInt", "queryForLong", "update")
+                    .withAnyParameters().build(),
+            MethodMatchers.create().ofTypes("org.springframework.jdbc.core.PreparedStatementCreatorFactory")
+                    .names(CONSTRUCTOR, "newPreparedStatementCreator")
+                    .withAnyParameters().build(),
+            MethodMatchers.create().ofSubTypes("javax.jdo.PersistenceManager").names("newQuery")
+                    .withAnyParameters().build(),
+            MethodMatchers.create().ofSubTypes("javax.jdo.Query").names("setFilter", "setGrouping")
+                    .withAnyParameters().build());
+	
 	private final AvoidSQLRequestInLoopVisitor visitorInFile = new AvoidSQLRequestInLoopVisitor();
 
 	@Override
@@ -34,34 +62,6 @@ public class AvoidSQLRequestInLoop extends IssuableSubscriptionVisitor {
 	}
 
 	private class AvoidSQLRequestInLoopVisitor extends BaseTreeVisitor {
-
-		private static final String JAVA_SQL_STATEMENT = "java.sql.Statement";
-		private static final String JAVA_SQL_CONNECTION = "java.sql.Connection";
-		private static final String SPRING_JDBC_OPERATIONS = "org.springframework.jdbc.core.JdbcOperations";
-
-		private final MethodMatchers SQL_METHOD = MethodMatchers.or(
-				MethodMatchers.create().ofSubTypes("org.hibernate.Session").names("createQuery", "createSQLQuery")
-						.withAnyParameters().build(),
-				MethodMatchers.create().ofSubTypes(JAVA_SQL_STATEMENT)
-						.names("executeQuery", "execute", "executeUpdate", "executeLargeUpdate") // addBatch is recommended
-						.withAnyParameters().build(),
-				MethodMatchers.create().ofSubTypes(JAVA_SQL_CONNECTION)
-						.names("prepareStatement", "prepareCall", "nativeSQL")
-						.withAnyParameters().build(),
-				MethodMatchers.create().ofTypes("javax.persistence.EntityManager")
-						.names("createNativeQuery", "createQuery")
-						.withAnyParameters().build(),
-				MethodMatchers.create().ofSubTypes(SPRING_JDBC_OPERATIONS)
-						.names("batchUpdate", "execute", "query", "queryForList", "queryForMap", "queryForObject",
-								"queryForRowSet", "queryForInt", "queryForLong", "update")
-						.withAnyParameters().build(),
-				MethodMatchers.create().ofTypes("org.springframework.jdbc.core.PreparedStatementCreatorFactory")
-						.names(CONSTRUCTOR, "newPreparedStatementCreator")
-						.withAnyParameters().build(),
-				MethodMatchers.create().ofSubTypes("javax.jdo.PersistenceManager").names("newQuery")
-						.withAnyParameters().build(),
-				MethodMatchers.create().ofSubTypes("javax.jdo.Query").names("setFilter", "setGrouping")
-						.withAnyParameters().build());
 
 		@Override
 		public void visitMethodInvocation(MethodInvocationTree tree) {

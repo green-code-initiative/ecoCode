@@ -20,7 +20,7 @@
 package io.ecocode.java.checks.helpers.constant;
 
 import com.google.common.collect.ImmutableList;
-import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
+import io.ecocode.java.checks.helpers.CheckArgumentComplexTypeUtils;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.ExpressionTree;
@@ -118,7 +118,7 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
                 || argument.is(Tree.Kind.BOOLEAN_LITERAL)) {
             checkConstantValue(argument.asConstant(), argument, constantValueToCheck);
         } else {
-            ExpressionTree returnedArgument = (ExpressionTree) CheckArgumentComplexType.getChildExpression(argument);
+            ExpressionTree returnedArgument = (ExpressionTree) CheckArgumentComplexTypeUtils.getChildExpression(argument);
             if (returnedArgument != argument) {
                 handleArgument(returnedArgument);
             }

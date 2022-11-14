@@ -71,7 +71,7 @@ The set of rules comes from the detailed [Energy Smells catalog](https://olegoae
 | EREL004 | Same dependencies    | Gradle |
 | EREL005 | Duplicate dependencies    | Gradle |
 | EREL007 | Clear cache    | Java |
-| EREL008 | Concert to WebP | File System |
+| EREL008 | Convert to WebP | File System |
 | EREL009 | Shrink Resources    | Gradle |
 | EREL010 | Disable Obfuscation    | Gradle |
 
