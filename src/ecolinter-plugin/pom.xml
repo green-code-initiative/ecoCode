@@ -26,6 +26,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.sonarsource.java</groupId>
+            <artifactId>java-checks-testkit</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
