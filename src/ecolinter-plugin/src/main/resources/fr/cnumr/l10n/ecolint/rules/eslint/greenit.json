@@ -55,6 +55,14 @@
       "eco-conception"
     ]
   },
+  { 
+    "key": "greenit/multiple-css-changes",
+    "name": "More than two style assignation cause repaint/reflow, the advice is to add or remove css class",
+    "url": "https://github.com/cnumr/ecoLinter/blob/s39-cssBatchChanges/docs/rules/multiple-css-changes.md",
+    "tags": [
+      "eco-conception"
+    ]
+  },
   {
     "key": "greenit/no-full-sql-request",
     "name": "There should be no full sql request in literal",
@@ -63,4 +71,4 @@
       "eco-conception"
     ]
   }
-]
+] 
