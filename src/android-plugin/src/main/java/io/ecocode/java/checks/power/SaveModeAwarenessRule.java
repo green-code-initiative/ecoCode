@@ -57,7 +57,7 @@ public class SaveModeAwarenessRule extends IssuableSubscriptionVisitor {
         super.visitNode(tree);
         try {
             if (tree.is(Tree.Kind.NEW_CLASS)) {
-                Optionl<NewClassTree> nct = (NewClassTree) tree;
+                Optional<NewClassTree> nct = (NewClassTree) tree;
                 if (nct.symbolType().fullyQualifiedName().equals(INTENT_FILTER)
                         && nct.arguments().isPresent()) {
                     Optional<Object> optionalNct = nct.arguments().get(0).asConstant();
@@ -69,7 +69,7 @@ public class SaveModeAwarenessRule extends IssuableSubscriptionVisitor {
                 }
             }
             if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
-                Optionl<MethodInvocationTree> mit = (MethodInvocationTree) tree;
+                Optional<MethodInvocationTree> mit = (MethodInvocationTree) tree;
                 if ((addActionMatcher.matches(mit) || createIntentFilterMatcher.matches(mit))
                         && mit.arguments().isPresent()
                         && mit.arguments().get(0).asConstant().isPresent()
