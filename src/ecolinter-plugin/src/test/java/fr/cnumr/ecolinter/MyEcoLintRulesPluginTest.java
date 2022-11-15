@@ -1,22 +1,25 @@
 package fr.cnumr.ecolinter;
 
 import org.junit.jupiter.api.Test;
-import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.api.Plugin;
+import org.sonar.api.SonarEdition;
+import org.sonar.api.SonarQubeSide;
+import org.sonar.api.SonarRuntime;
+import org.sonar.api.internal.PluginContextImpl;
+import org.sonar.api.internal.SonarRuntimeImpl;
+import org.sonar.api.utils.Version;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MyEcoLintRulesPluginTest {
     @Test
-    void should_create_external_repo() {
-        MyEslintRulesDefinition eslintRulesDefinition = new MyEslintRulesDefinition();
-        RulesDefinition.Context context = new RulesDefinition.Context();
-        eslintRulesDefinition.define(context);
-        assertThat(context.repositories()).hasSize(1);
+    void test_plugin_extensions() {
+        SonarRuntime runtime = SonarRuntimeImpl.forSonarQube(Version.create(8, 6), SonarQubeSide.SCANNER, SonarEdition.SONARCLOUD);
+        Plugin.Context context = new PluginContextImpl.Builder().setSonarRuntime(runtime).build();
 
-        RulesDefinition.Repository eslintRepo = context.repository("external_eslint_repo");
-        assertThat(eslintRepo.isExternal()).isTrue();
-        assertThat(eslintRepo.name()).isEqualTo("ESLint");
-        assertThat(eslintRepo.language()).isEqualTo("js");
-        assertThat(eslintRepo.rules()).hasSize(9);
+        MyEcoLintRulesPlugin underTest = new MyEcoLintRulesPlugin();
+        underTest.define(context);
+
+        assertThat(context.getExtensions()).hasSize(2);
     }
 }
