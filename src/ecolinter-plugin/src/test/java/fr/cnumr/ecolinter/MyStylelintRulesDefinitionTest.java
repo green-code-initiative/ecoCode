@@ -5,7 +5,7 @@ import org.sonar.api.server.rule.RulesDefinition;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MyStylelintRulesDefinitionTest {
+class MyStylelintRulesDefinitionTest {
     @Test
     void should_create_external_repo() {
         MyStylelintRulesDefinition stylelintRulesDefinition = new MyStylelintRulesDefinition();

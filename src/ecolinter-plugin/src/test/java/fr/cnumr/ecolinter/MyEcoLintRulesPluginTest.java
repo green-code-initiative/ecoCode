@@ -5,7 +5,7 @@ import org.sonar.api.server.rule.RulesDefinition;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MyEcoLintRulesPluginTest {
+class MyEcoLintRulesPluginTest {
     @Test
     void should_create_external_repo() {
         MyEslintRulesDefinition eslintRulesDefinition = new MyEslintRulesDefinition();
@@ -17,6 +17,6 @@ public class MyEcoLintRulesPluginTest {
         assertThat(eslintRepo.isExternal()).isTrue();
         assertThat(eslintRepo.name()).isEqualTo("ESLint");
         assertThat(eslintRepo.language()).isEqualTo("js");
-        assertThat(eslintRepo.rules()).hasSize(8);
+        assertThat(eslintRepo.rules()).hasSize(9);
     }
 }
