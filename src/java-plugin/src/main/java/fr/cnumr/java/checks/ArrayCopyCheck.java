@@ -40,7 +40,7 @@ import org.sonar.plugins.java.api.tree.WhileStatementTree;
 public class ArrayCopyCheck extends IssuableSubscriptionVisitor {
 
 	//@formatter:on
-	protected static final String MESSAGERULE = "Utiliser System.arraycopy pour copier des arrays";
+	protected static final String MESSAGERULE = "Use System.arraycopy to copy arrays";
 
 	@Override
 	public List<Kind> nodesToVisit() {

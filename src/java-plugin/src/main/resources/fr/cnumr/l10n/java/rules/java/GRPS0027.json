@@ -1,5 +1,5 @@
 {
-  "title": "Utiliser System.arraycopy pour copier des arrays",
+  "title": "Use System.arraycopy to copy arrays",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
