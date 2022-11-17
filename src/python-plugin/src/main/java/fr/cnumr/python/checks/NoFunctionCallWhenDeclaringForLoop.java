@@ -4,11 +4,7 @@ import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.tree.CallExpression;
-import org.sonar.plugins.python.api.tree.ForStatement;
 import org.sonar.plugins.python.api.tree.Tree;
-import org.sonar.python.tree.ForStatementImpl;
-
-import java.util.List;
 
 @Rule(
         key = NoFunctionCallWhenDeclaringForLoop.RULE_KEY,

@@ -20,7 +20,7 @@
 package io.ecocode.java.checks.idleness;
 
 import com.google.common.collect.ImmutableList;
-import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
+import io.ecocode.java.checks.helpers.CheckArgumentComplexTypeUtils;
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Rule;
@@ -46,10 +46,10 @@ public class KeepVoiceAwakeRule extends IssuableSubscriptionVisitor {
 
     private static final Logger LOG = Loggers.get(KeepVoiceAwakeRule.class);
 
-    private final String ownerType = "android.service.voice.VoiceInteractionSession";
-    private final String methodName = "setKeepAwake";
+    private static final String OWNER_TYPE = "android.service.voice.VoiceInteractionSession";
+    private static final String METHOD_NAME = "setKeepAwake";
     private static final String ERROR_MESSAGE = "VoiceInteractionSession.setKeepAwake(false) should be called to limit battery drain.";
-    private final MethodMatchers methodMatcher = MethodMatchers.create().ofTypes(ownerType).names(methodName).addParametersMatcher("boolean").build();
+    private final MethodMatchers methodMatcher = MethodMatchers.create().ofTypes(OWNER_TYPE).names(METHOD_NAME).addParametersMatcher("boolean").build();
     private boolean hasSeenMethod;
     private boolean hasSeenMethodTrue = false;
     private final List<Tree> constructorTreeList = new ArrayList<>();
@@ -87,16 +87,14 @@ public class KeepVoiceAwakeRule extends IssuableSubscriptionVisitor {
     public void visitNode(Tree tree) {
         if (tree.is(Tree.Kind.NEW_CLASS)) {
             NewClassTree newClasstree = (NewClassTree) tree;
-            if (newClasstree.symbolType().fullyQualifiedName().equals(ownerType)) {
+            if (newClasstree.symbolType().fullyQualifiedName().equals(OWNER_TYPE)) {
                 constructorTreeList.add(tree);
             }
         } else if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree mit = (MethodInvocationTree) tree;
-            if (!mit.arguments().isEmpty()) {
-                if (methodMatcher.matches(mit)) {
-                    // Get first argument of VoiceInteractionSession.setKeepAwake(Boolean)
-                    handleArgument(mit.arguments().get(0));
-                }
+            if (!mit.arguments().isEmpty() && methodMatcher.matches(mit)) {
+                // Get first argument of VoiceInteractionSession.setKeepAwake(Boolean)
+                handleArgument(mit.arguments().get(0));
             }
         }
     }
@@ -126,7 +124,7 @@ public class KeepVoiceAwakeRule extends IssuableSubscriptionVisitor {
         } else if (argument.is(Tree.Kind.BOOLEAN_LITERAL)) {
             checkArgumentIsTrue(argument, argument.asConstant());
         } else {
-            ExpressionTree returnedArgument = (ExpressionTree) CheckArgumentComplexType.getChildExpression(argument);
+            ExpressionTree returnedArgument = (ExpressionTree) CheckArgumentComplexTypeUtils.getChildExpression(argument);
             if (returnedArgument != argument) {
                 handleArgument(returnedArgument);
             }

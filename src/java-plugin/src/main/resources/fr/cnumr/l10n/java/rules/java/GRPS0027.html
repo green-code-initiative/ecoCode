@@ -1,13 +1,13 @@
-<p>Utiliser System.arraycopy pour copier des arrays</p>
+<p>Using System.arraycopy to copy arrays</p>
 <p>
-Les programmes passent la plupart du temps dans des boucles. Celles-ci peuvent être consommatrices en ressource, plus particulièrement quand elles intègrent des traitements lourds (accès IO…). De plus, la taille des données et des traitements à l’intérieur des boucles ne va pas permettre d’utiliser pleinement les mécanismes matériels tels le cache ou les mécanismes d’optimisation des compilateurs.<br />
-La copie d’array est par exemple potentiellement une source de non-performance si elle est mal conçue. En effet, l’utilisation d’une simple boucle de recopie peut être deux fois plus consommatrice que des méthodes dédiées.<br />
-Les boucles doivent être optimisées pour diminuer le temps de traitement et utiliser pleinement les mécanismes et optimisations matériels et processeurs.<br />
-Dans le cas de la recopie de tableau (array), on utilisera la méthode native System.arraycopy.<br />
-On pourra aussi utiliser copyOf ou clone qui sont légèrement moins performantes.<br />
-On proscrira la méthode de recopie par boucle.
+	Programs spend most of the time in loops. These can be resource consuming, especially when they integrate heavy processing (IO access). Moreover, the size of the data and processing inside the loops will not allow full use of hardware mechanisms such as the cache or compiler optimization mechanisms.<br />
+	For example, an array copy is potentially a non-performance source if it is poorly designed. Indeed, the use of a single copy loop can be twice as consuming as dedicated methods.<br />
+	Loops must be optimized to reduce processing time and make full use of hardware and processor mechanisms and optimizations.<br />
+	In the case of table copying (table), the native System.arraycopy.<br />
+	We can also use copyOf or clone that are slightly less efficient.<br />
+	The looping method will be outlawed.
 </p>
-<h2>Méthode à proscrire :</h2> 
+<h2>Noncompliant Code Example</h2>
 <pre>
 	int len = array.length;
 	boolean[] copy = new boolean[array.length];
@@ -16,7 +16,7 @@ On proscrira la méthode de recopie par boucle.
 	}
 	return copy;
 </pre>
-<h2>Méthode à privilégier :</h2>
+<h2>Compliant Solution</h2>
 <pre>
 	int[] copy = new int[array.length];
 	System.arraycopy(array, 0, copy, 0, array.length);

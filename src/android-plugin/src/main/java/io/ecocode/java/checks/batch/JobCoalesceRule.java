@@ -35,16 +35,18 @@ import java.util.List;
  */
 @Rule(key = "EBAT003", name = "ecocodeJobCoalesce")
 public class JobCoalesceRule extends IssuableSubscriptionVisitor {
+	
+	private static final String ALARM_MANAGER_CLASS = "android.app.AlarmManager";
 
     private final MethodMatchers alarmSchedulerMethodMatcher = MethodMatchers.or(
-            MethodMatchers.create().ofTypes("android.app.AlarmManager").names("set").withAnyParameters().build(),
-            MethodMatchers.create().ofTypes("android.app.AlarmManager").names("setAlarmClock").withAnyParameters().build(),
-            MethodMatchers.create().ofTypes("android.app.AlarmManager").names("setAndAllowWhileIdle").withAnyParameters().build(),
-            MethodMatchers.create().ofTypes("android.app.AlarmManager").names("setExact").withAnyParameters().build(),
-            MethodMatchers.create().ofTypes("android.app.AlarmManager").names("setExactAndAllowWhileIdle").withAnyParameters().build(),
-            MethodMatchers.create().ofTypes("android.app.AlarmManager").names("setInexactRepeating").withAnyParameters().build(),
-            MethodMatchers.create().ofTypes("android.app.AlarmManager").names("setRepeating").withAnyParameters().build(),
-            MethodMatchers.create().ofTypes("android.app.AlarmManager").names("setWindow").withAnyParameters().build(),
+            MethodMatchers.create().ofTypes(ALARM_MANAGER_CLASS).names("set").withAnyParameters().build(),
+            MethodMatchers.create().ofTypes(ALARM_MANAGER_CLASS).names("setAlarmClock").withAnyParameters().build(),
+            MethodMatchers.create().ofTypes(ALARM_MANAGER_CLASS).names("setAndAllowWhileIdle").withAnyParameters().build(),
+            MethodMatchers.create().ofTypes(ALARM_MANAGER_CLASS).names("setExact").withAnyParameters().build(),
+            MethodMatchers.create().ofTypes(ALARM_MANAGER_CLASS).names("setExactAndAllowWhileIdle").withAnyParameters().build(),
+            MethodMatchers.create().ofTypes(ALARM_MANAGER_CLASS).names("setInexactRepeating").withAnyParameters().build(),
+            MethodMatchers.create().ofTypes(ALARM_MANAGER_CLASS).names("setRepeating").withAnyParameters().build(),
+            MethodMatchers.create().ofTypes(ALARM_MANAGER_CLASS).names("setWindow").withAnyParameters().build(),
             //ofAnyType is used because the method is forced to be overridden in a new class expending the abstract class AbstractThreadedSyncAdapter
             MethodMatchers.create().ofAnyType().names("onPerformSync").withAnyParameters().build(),
             //ofSubTypes is used because the method is from an abstract class

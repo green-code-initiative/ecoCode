@@ -20,7 +20,7 @@
 package io.ecocode.java.checks.batch;
 
 import com.google.common.collect.ImmutableList;
-import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
+import io.ecocode.java.checks.helpers.CheckArgumentComplexTypeUtils;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
@@ -30,6 +30,7 @@ import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Check the call of the method "registerListener" of "android.hardware.SensorManager" with 4 parameters (the 4th one being the latency).
@@ -53,10 +54,9 @@ public class SensorCoalesceRule extends IssuableSubscriptionVisitor {
     public void visitNode(Tree tree) {
         if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
             MethodInvocationTree mit = (MethodInvocationTree) tree;
-            if (sensorListenerMethodMatcher.matches(mit)) {
-                if (!isFourthArgumentPositiveNumber(mit.arguments())) {
-                    reportIssue(mit, "Prefer using a reported latency on your SensorManager to reduce the power consumption of the app");
-                }
+            if (sensorListenerMethodMatcher.matches(mit)
+        	    && !isFourthArgumentPositiveNumber(mit.arguments())) {
+                reportIssue(mit, "Prefer using a reported latency on your SensorManager to reduce the power consumption of the app");
             }
         }
     }
@@ -74,13 +74,14 @@ public class SensorCoalesceRule extends IssuableSubscriptionVisitor {
             ExpressionTree thirdArgument = arguments.get(3);
             //Check 4th argument is a complex type (that needs to be managed)
             while (thirdArgument.is(Tree.Kind.TYPE_CAST, Tree.Kind.MEMBER_SELECT, Tree.Kind.PARENTHESIZED_EXPRESSION)) {
-                thirdArgument = (ExpressionTree) CheckArgumentComplexType.getChildExpression(thirdArgument);
+                thirdArgument = (ExpressionTree) CheckArgumentComplexTypeUtils.getChildExpression(thirdArgument);
             }
-            return thirdArgument.asConstant().isPresent()
+            Optional<Object> optionalThirdArgument = thirdArgument.asConstant();
+            return optionalThirdArgument.isPresent()
                     //Check 4th argument is a number
                     && (thirdArgument.is(Tree.Kind.INT_LITERAL, Tree.Kind.LONG_LITERAL, Tree.Kind.FLOAT_LITERAL, Tree.Kind.DOUBLE_LITERAL)
                     //Check 4th argument is strictly positive
-                    && ((Number) thirdArgument.asConstant().get()).doubleValue() > 0);
+                    && ((Number) optionalThirdArgument.get()).doubleValue() > 0);
         }
         return false;
     }

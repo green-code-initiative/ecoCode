@@ -26,4 +26,4 @@ buildNumber.properties
 .settings/
 
 # IntelliJ IDEA settings
-.idea/
+.idea

@@ -1,7 +1,7 @@
 package io.ecocode.java.checks.sobriety;
 
 import com.google.common.collect.ImmutableList;
-import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
+import io.ecocode.java.checks.helpers.CheckArgumentComplexTypeUtils;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
@@ -52,7 +52,7 @@ public class HighFrameRateRule extends IssuableSubscriptionVisitor {
                 return ((Float) argValue).floatValue() > FRAME_RATE_60;
             }
         } else if (firstArg.is(Tree.Kind.FLOAT_LITERAL)) {
-            firstArg = (ExpressionTree) CheckArgumentComplexType.getChildExpression(firstArg);
+            firstArg = (ExpressionTree) CheckArgumentComplexTypeUtils.getChildExpression(firstArg);
             LiteralTree lit = (LiteralTree) firstArg;
             return Float.valueOf(lit.value()) > FRAME_RATE_60;
         }

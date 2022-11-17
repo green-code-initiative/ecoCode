@@ -24,7 +24,10 @@ import org.sonar.plugins.java.api.tree.MemberSelectExpressionTree;
 import org.sonar.plugins.java.api.tree.ParenthesizedTree;
 import org.sonar.plugins.java.api.tree.TypeCastTree;
 
-public class CheckArgumentComplexType {
+public class CheckArgumentComplexTypeUtils {
+
+    private CheckArgumentComplexTypeUtils() {
+    }
 
     /**
      * Method that gives the argument's child value when it's of a complex type
