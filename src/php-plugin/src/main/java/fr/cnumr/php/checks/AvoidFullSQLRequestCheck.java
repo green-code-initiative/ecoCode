@@ -21,7 +21,7 @@ import java.util.List;
 public class AvoidFullSQLRequestCheck extends PHPSubscriptionCheck {
 
 	public static final String ERROR_MESSAGE = "Don't use the query SELECT * FROM";
-	private static final String RegExpSelectFrom = "(?i).*select.*\\*.*from.*";
+	private static final String REGEXPSELECTFROM = "(?i).*select.*\\*.*from.*";
 
 	@Override
 	public List<Kind> nodesToVisit() {
@@ -32,7 +32,7 @@ public class AvoidFullSQLRequestCheck extends PHPSubscriptionCheck {
 	public void visitNode(Tree tree) {
 
 		LiteralTree literal = (LiteralTree) tree;
-		if(literal.value().matches(RegExpSelectFrom))
+		if(literal.value().matches(REGEXPSELECTFROM))
 			context().newIssue(this, tree, ERROR_MESSAGE);
 
 	}

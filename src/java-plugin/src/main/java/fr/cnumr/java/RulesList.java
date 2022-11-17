@@ -41,6 +41,7 @@ public final class RulesList {
 
     public static List<Class<? extends JavaCheck>> getJavaChecks() {
         return Collections.unmodifiableList(Arrays.asList(
+        		ArrayCopyCheck.class,
                 IncrementCheck.class,
                 AvoidConcatenateStringsInLoop.class,
                 AvoidUsageOfStaticCollections.class,
@@ -56,7 +57,9 @@ public final class RulesList {
                 OptimizeReadFileExceptions.class,
                 InitializeBufferWithAppropriateSize.class,
                 AvoidUsingGlobalVariablesCheck.class,
-                AvoidSetConstantInBatchUpdate.class
+                AvoidSetConstantInBatchUpdate.class,
+                FreeResourcesOfAutoCloseableInterface.class,
+                AvoidMultipleIfElseStatement.class
         ));
     }
 

@@ -28,13 +28,15 @@ import java.util.Optional;
 
 @Rule(key = "ESOB011", name = "ecocodeVibrationFree")
 public class VibrationFreeRule extends ArgumentValueOnMethodCheck {
+    
+    private static final String SYSTEM_SERVICE_METHOD = "getSystemService";
 
     public VibrationFreeRule() {
         super(new MethodSpecs[]{
-                new MethodSpecs("getSystemService", "android.content.Context", "vibrator", 0),
-                new MethodSpecs("getSystemService", "android.content.Context", "vibrator_manager", 0),
-                new MethodSpecs("getSystemService", "android.app.Activity", "vibrator", 0),
-                new MethodSpecs("getSystemService", "android.app.Activity", "vibrator_manager", 0)
+                new MethodSpecs(SYSTEM_SERVICE_METHOD, "android.content.Context", "vibrator", 0),
+                new MethodSpecs(SYSTEM_SERVICE_METHOD, "android.content.Context", "vibrator_manager", 0),
+                new MethodSpecs(SYSTEM_SERVICE_METHOD, "android.app.Activity", "vibrator", 0),
+                new MethodSpecs(SYSTEM_SERVICE_METHOD, "android.app.Activity", "vibrator_manager", 0)
         });
     }
 

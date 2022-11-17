@@ -5,7 +5,7 @@ import org.sonar.java.checks.verifier.CheckVerifier;
 
 import fr.cnumr.java.utils.FilesUtils;
 
-public class AvoidSpringRepositoryCallInLoopCheckTest {
+class AvoidSpringRepositoryCallInLoopCheckTest {
 
     @Test
     void test() {

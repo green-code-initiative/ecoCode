@@ -1,5 +1,5 @@
 {
-    "title": "Eviter de créer des méthodes getter et setter dans les classes.",
+    "title": "Avoid creating getter and setter methods in classes.",
     "type": "CODE_SMELL",
     "status": "ready",
     "remediation": {

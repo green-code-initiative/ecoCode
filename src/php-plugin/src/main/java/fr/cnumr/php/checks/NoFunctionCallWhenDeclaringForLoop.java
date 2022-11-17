@@ -36,9 +36,7 @@ public class NoFunctionCallWhenDeclaringForLoop extends PHPSubscriptionCheck {
     }
 
     public void checkExpressionsTree(SeparatedList<ExpressionTree> treeSeparatedList) {
-        treeSeparatedList.forEach(expressionTree -> {
-            checkBothSideExpression(expressionTree);
-        });
+        treeSeparatedList.forEach(this::checkBothSideExpression);
     }
 
     public void checkBothSideExpression(ExpressionTree expressionTree) {
