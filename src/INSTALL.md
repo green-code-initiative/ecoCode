@@ -11,7 +11,7 @@ docker run -d \
        -v sq_ecocode_data:/opt/sonarqube/data \
        -p 9000:9000 \
        --name sonarqube-ecocode \
-       ghcr.io/obeone/sonarqube-ecocode:latest
+       ghcr.io/cnumr/ecocode:latest
 ```
 
 And go to [http://localhost:9000](http://localhost:9000). Default username and password are both `admin`.

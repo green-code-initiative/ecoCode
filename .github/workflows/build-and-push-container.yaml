@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - main
-      - build-workflow
+      
     # don't rebuild image if someone only edited unrelated files
     paths-ignore:
       - 'INSTALL.md'

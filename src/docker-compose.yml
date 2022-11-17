@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   sonar:
-    image: ghcr.io/obeone/sonarqube-ecocode:9.3-community
+    image: ghcr.io/cnumr/ecocode:latest
     ports:
       - "9000:9000"
     networks:
