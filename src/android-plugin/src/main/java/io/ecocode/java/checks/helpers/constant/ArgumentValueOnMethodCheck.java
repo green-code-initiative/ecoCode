@@ -20,7 +20,7 @@
 package io.ecocode.java.checks.helpers.constant;
 
 import com.google.common.collect.ImmutableList;
-import io.ecocode.java.checks.helpers.CheckArgumentComplexType;
+import io.ecocode.java.checks.helpers.CheckArgumentComplexTypeUtils;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.ExpressionTree;
@@ -70,9 +70,9 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
     /**
      * Way to check the constant
      *
-     * @param optionalConstantValue the argument value of the method as an optional value
-     * @param reportTree            the tree where the issue will be reported
-     * @param constantValueToCheck  the value to use to check the argument
+     * @param optionalConstantValue  the argument value of the method as an optional value
+     * @param reportTree             the tree where the issue will be reported
+     * @param constantValueToCheckss the value to use to check the argument
      */
     protected abstract void checkConstantValue(Optional<Object> optionalConstantValue, Tree reportTree, Object constantValueToCheck);
 
@@ -104,6 +104,7 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
         if (argument.is(Tree.Kind.IDENTIFIER)) {
             IdentifierTree expressionTree = (IdentifierTree) argument;
             if (expressionTree.symbolType().isSubtypeOf("java.lang.String")
+                    || expressionTree.symbolType().isSubtypeOf("java.lang.Boolean")
                     || expressionTree.symbolType().isPrimitive()) {
                 checkConstantValue(expressionTree.asConstant(), expressionTree, constantValueToCheck);
             }
@@ -113,10 +114,11 @@ public abstract class ArgumentValueOnMethodCheck extends IssuableSubscriptionVis
                 || argument.is(Tree.Kind.INT_LITERAL)
                 || argument.is(Tree.Kind.LONG_LITERAL)
                 || argument.is(Tree.Kind.FLOAT_LITERAL)
-                || argument.is(Tree.Kind.DOUBLE_LITERAL)) {
+                || argument.is(Tree.Kind.DOUBLE_LITERAL)
+                || argument.is(Tree.Kind.BOOLEAN_LITERAL)) {
             checkConstantValue(argument.asConstant(), argument, constantValueToCheck);
         } else {
-            ExpressionTree returnedArgument = (ExpressionTree) CheckArgumentComplexType.getChildExpression(argument);
+            ExpressionTree returnedArgument = (ExpressionTree) CheckArgumentComplexTypeUtils.getChildExpression(argument);
             if (returnedArgument != argument) {
                 handleArgument(returnedArgument);
             }

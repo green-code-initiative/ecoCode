@@ -13,7 +13,6 @@
     <name>ecoCode PHP Sonar Plugin</name>
     <description></description>
 
-
     <dependencies>
         <dependency>
             <groupId>org.sonarsource.sonarqube</groupId>
@@ -56,7 +55,7 @@
                         <id>copy-bundle</id>
                         <phase>package</phase>
                         <goals>
-                        <goal>copy</goal>
+                            <goal>copy</goal>
                         </goals>
                         <configuration>
                         <artifactItems>
@@ -73,15 +72,29 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.0</version>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <output>file</output>
+                    <append>false</append>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

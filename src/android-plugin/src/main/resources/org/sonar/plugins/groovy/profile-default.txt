@@ -1,2 +1,3 @@
 org.codenarc.rule.ecocode.FatAppRule
 org.codenarc.rule.ecocode.SupportedVersionRangeRule
+org.codenarc.rule.ecocode.DisableObfuscationRule
