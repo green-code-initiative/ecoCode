@@ -31,8 +31,11 @@ https://olegoaer.perso.univ-pau.fr/android-energy-smells/
 ### Prerequesites
 
 You will need to install Docker : https://docs.docker.com/get-docker/
+
 Docker-compose 3.9 : https://docs.docker.com/compose/install/
-Java >=8 for Sonarqube plugin Development : https://www.java.com/fr/download/manual.jsp
+
+Java >=11 for Sonarqube plugin Development : https://www.java.com/fr/download/manual.jsp
+
 Maven 3 for Sonarqube plugin Development : https://maven.apache.org/download.cgi
 
 Additionnaly, install Git : https://git-scm.com/book/en/v2/Getting-Started-Installing-Git

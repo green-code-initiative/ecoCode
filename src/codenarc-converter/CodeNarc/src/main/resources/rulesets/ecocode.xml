@@ -9,4 +9,5 @@
 
     <rule class='org.codenarc.rule.ecocode.FatAppRule'/>
     <rule class='org.codenarc.rule.ecocode.SupportedVersionRangeRule'/>
+    <rule class='org.codenarc.rule.ecocode.DisableObfuscationRule'/>
 </ruleset>

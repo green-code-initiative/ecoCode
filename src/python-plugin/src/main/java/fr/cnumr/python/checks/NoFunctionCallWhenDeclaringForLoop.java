@@ -4,11 +4,7 @@ import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.tree.CallExpression;
-import org.sonar.plugins.python.api.tree.ForStatement;
 import org.sonar.plugins.python.api.tree.Tree;
-import org.sonar.python.tree.ForStatementImpl;
-
-import java.util.List;
 
 @Rule(
         key = NoFunctionCallWhenDeclaringForLoop.RULE_KEY,
@@ -18,7 +14,7 @@ import java.util.List;
 public class NoFunctionCallWhenDeclaringForLoop extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "S69";
-    public static final String DESCRIPTION = "Do not call a function in the declaration of a for-type loop";
+    public static final String DESCRIPTION = "Do not call a function when declaring a for-type loop";
 
     @Override
     public void initialize(Context context) {

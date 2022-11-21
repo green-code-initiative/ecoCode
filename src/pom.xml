@@ -57,6 +57,11 @@
     </scm>
 
 	<properties>
+
+		<java.version>11</java.version>
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+
 		<sonarqube.version>8.7.1.42226</sonarqube.version>
 		<sonarjava.version>6.14.0.25463</sonarjava.version>
 		<!-- Don't forget to update this version -->
@@ -73,10 +78,8 @@
 
 		<!-- Use UTF-8 for all resources -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-  		<sonar.organization>cnumr</sonar.organization>
-  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.organization>cnumr-1</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
 		<!-- resources-plugin injection -->
 		<sonar_version_server>9.3-community</sonar_version_server>
@@ -158,7 +161,6 @@
 				<scope>test</scope>
 			</dependency>
 
-
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
@@ -182,7 +184,7 @@
 		</dependencies>
 	</dependencyManagement>
 	<build>
-		<plugins>
+	  <plugins>
     	    <plugin>
     	        <artifactId>maven-resources-plugin</artifactId>
     	        <version>3.2.0</version>
@@ -198,7 +200,7 @@
     	                    <outputDirectory>${basedir}/target/extra-resources</outputDirectory>
     	                    <resources>
     	                        <resource>
-								    <filtering>true</filtering>
+				    <filtering>true</filtering>
     	                            <directory>${basedir}/src/main/scripts/</directory>
     	                            <includes>
     	                                <include>*</include>
@@ -209,6 +211,15 @@
     	            </execution>
     	       </executions>
     	    </plugin>
-		</plugins>
+	</plugins>
+	  <pluginManagement>
+	    <plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-dependency-plugin</artifactId>
+			<version>3.3.0</version>
+		</plugin>
+  	    </plugins>
+	  </pluginManagement>
 	</build>
 </project>

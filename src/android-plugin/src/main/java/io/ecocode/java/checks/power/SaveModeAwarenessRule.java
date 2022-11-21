@@ -19,27 +19,32 @@
  */
 package io.ecocode.java.checks.power;
 
-import com.google.common.collect.ImmutableList;
+import java.util.List;
+import java.util.Optional;
+
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.ExpressionTree;
 import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.NewClassTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
-import java.util.List;
+import com.google.common.collect.ImmutableList;
 
 /**
  * Checks the use of the BATTERY_CHANGED propriety in intentFilter or the use of the isPowerSaveMode() method
  */
 @Rule(key = "EPOW006", name = "ecocodeSaveModeAwareness")
 public class SaveModeAwarenessRule extends IssuableSubscriptionVisitor {
-
+    private static final Logger LOG = Loggers.get(SaveModeAwarenessRule.class);
+    
     private static final String ACTION_BATTERY_CHANGED = "android.intent.action.BATTERY_CHANGED";
+    private static final String INTENT_FILTER = "android.content.IntentFilter";
     private static final String ADVICE_MESSAGE = "Taking into account when the device is entering or exiting the power save mode is a good practice.";
-    private final MethodMatchers addActionMatcher = MethodMatchers.create().ofTypes("android.content.IntentFilter").names("addAction").withAnyParameters().build();
-    private final MethodMatchers createIntentFilterMatcher = MethodMatchers.create().ofTypes("android.content.IntentFilter").names("create").withAnyParameters().build();
+    private final MethodMatchers addActionMatcher = MethodMatchers.create().ofTypes(INTENT_FILTER).names("addAction").withAnyParameters().build();
+    private final MethodMatchers createIntentFilterMatcher = MethodMatchers.create().ofTypes(INTENT_FILTER).names("create").withAnyParameters().build();
     private final MethodMatchers isPowerSaveModeMatcher = MethodMatchers.create().ofTypes("android.os.PowerManager").names("isPowerSaveMode").withAnyParameters().build();
 
     @Override
@@ -53,12 +58,14 @@ public class SaveModeAwarenessRule extends IssuableSubscriptionVisitor {
         try {
             if (tree.is(Tree.Kind.NEW_CLASS)) {
                 NewClassTree nct = (NewClassTree) tree;
-                if (nct.symbolType().fullyQualifiedName().equals("android.content.IntentFilter")
-                        && !nct.arguments().isEmpty()
-                        && nct.arguments().get(0).asConstant().isPresent()
-                        && nct.arguments().get(0).symbolType().toString().equals("String")
-                        && nct.arguments().get(0).asConstant().get().equals(ACTION_BATTERY_CHANGED)) {
-                    reportIssue(nct.arguments().get(0), ADVICE_MESSAGE);
+                if (nct.symbolType().fullyQualifiedName().equals(INTENT_FILTER)
+                        && !nct.arguments().isEmpty()) {
+                    Optional<Object> optionalNct = nct.arguments().get(0).asConstant();
+                    if (optionalNct.isPresent()
+                            && nct.arguments().get(0).symbolType().toString().equals("String")
+                            && optionalNct.get().equals(ACTION_BATTERY_CHANGED)) {
+                        reportIssue(nct.arguments().get(0), ADVICE_MESSAGE);
+                    }
                 }
             }
             if (tree.is(Tree.Kind.METHOD_INVOCATION)) {
@@ -73,9 +80,8 @@ public class SaveModeAwarenessRule extends IssuableSubscriptionVisitor {
                     reportIssue(mit, ADVICE_MESSAGE);
                 }
             }
-        } catch (
-                Exception e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            LOG.error("Error in visitNode : {}", e.getMessage(), e);
         }
     }
 }
