@@ -1,21 +1,22 @@
 
-#TODO: Sort the following line into the file
-- FatApp rule (ecocode) - Using "multiDexEnabled true" goes against the overall reduction of the weight of the apps and hence must be avoided.
-
 <!-- markdownlint-disable MD003 MD004 MD007 MD032 -->
 # CodeNarc Change Log
+
+Version 2.2.3    (November 2022)
+--------------------------------------
+Added rule
+- ecoCode: Disable Obfuscation
 
 Version 2.2.2    (May 2022)
 --------------------------------------
 Build and Infrastructure
 - Upgrade Gradle to wrapper 6.9.2 (avoid Log4Shell vulnerability)
 
-
 Version 2.2.1    (Mar 2022)
 --------------------------------------
-Updated/Enhanced Rules and Bug Fixes
-- Add ecoCode rules
-
+Added rules
+- ecoCode: Fat App
+- ecoCode: Supported Version Range
 
 Version 2.2.0    (Aug 2021)
 --------------------------------------

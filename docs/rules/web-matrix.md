@@ -36,3 +36,4 @@ Here is the list of rules already available in ecoCode project code.
 | Calling a function in the declaration of a for loop | ✅  | ✅  |  | ✅  | | |
 | Perform an SQL query inside a loop | ✅  | ✅  |  |  | | |
 | Write SELECT * FROM | ✅  | ✅  |  | ✅  | | |
+| Calling a Spring repository inside a loop | ✅ | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 |

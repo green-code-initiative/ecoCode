@@ -76,7 +76,8 @@ ruleset {
     CrapMetric   // Requires the GMetrics jar and a Cobertura coverage file
     CyclomaticComplexity   // Requires the GMetrics jar
     DeadCode 
-    DirectConnectionManagement 
+    DirectConnectionManagement
+    DisableObfuscation
     DoubleCheckedLocking 
     DoubleNegative 
     DuplicateCaseStatement 

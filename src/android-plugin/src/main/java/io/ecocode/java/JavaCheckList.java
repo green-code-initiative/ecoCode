@@ -76,12 +76,14 @@ public final class JavaCheckList {
                 ThriftyGeolocationMinDistanceRule.class,
                 ChargeAwarenessRule.class,
                 VibrationFreeRule.class,
+                TorchFreeRule.class,
                 ThriftyNotificationRule.class,
                 UncompressedDataTransmissionRule.class,
                 SensorCoalesceRule.class,
                 JobCoalesceRule.class,
                 SaveModeAwarenessRule.class,
-                ThriftyGeolocationCriteriaRule.class
+                ThriftyGeolocationCriteriaRule.class,
+                HighFrameRateRule.class
         ));
     }
 

@@ -19,21 +19,22 @@
  */
 package fr.cnumr.java;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.sonar.plugins.java.api.CheckRegistrar;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MyJavaFileCheckRegistrarTest {
 
-  @Test
-  void checkNumberRules() {
-    CheckRegistrar.RegistrarContext context = new CheckRegistrar.RegistrarContext();
+	@Test
+	void checkNumberRules() {
+		final CheckRegistrar.RegistrarContext context = new CheckRegistrar.RegistrarContext();
 
-    MyJavaFileCheckRegistrar registrar = new MyJavaFileCheckRegistrar();
-    registrar.register(context);
+		final MyJavaFileCheckRegistrar registrar = new MyJavaFileCheckRegistrar();
+		registrar.register(context);
 
-    assertThat(context.checkClasses()).hasSize(6);
+    assertThat(context.checkClasses()).hasSize(19);
     assertThat(context.testCheckClasses()).isEmpty();
   }
-
 }

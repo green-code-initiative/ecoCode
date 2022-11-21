@@ -20,10 +20,8 @@
 package fr.cnumr.python;
 
 
-import fr.cnumr.python.checks.AvoidDoubleQuoteCheck;
-import fr.cnumr.python.checks.AvoidFullSQLRequest;
-import fr.cnumr.python.checks.AvoidTryCatchFinallyCheck;
-import fr.cnumr.python.checks.NoFunctionCallWhenDeclaringForLoop;
+
+import fr.cnumr.python.checks.*;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.plugins.python.api.PythonCustomRuleRepository;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
@@ -32,10 +30,17 @@ import java.util.*;
 
 public class CustomPythonRuleRepository implements RulesDefinition, PythonCustomRuleRepository {
     public static final String LANGUAGE = "py";
-    public static final String NAME = "MyCompany Custom Repository";
+    public static final String NAME = "Collectif Conception Numérique Responsable";
     public static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/python/rules/python";
     public static final String REPOSITORY_KEY = "cnumr-python";
     private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
+
+    private static void setTemplates(NewRepository repository) {
+        RULE_TEMPLATES_KEY.stream()
+                .map(repository::rule)
+                .filter(Objects::nonNull)
+                .forEach(rule -> rule.setTemplate(true));
+    }
 
     @Override
     public void define(Context context) {
@@ -57,15 +62,13 @@ public class CustomPythonRuleRepository implements RulesDefinition, PythonCustom
 
     @Override
     public List<Class> checkClasses() {
-        return Arrays.asList(NoFunctionCallWhenDeclaringForLoop.class, AvoidTryCatchFinallyCheck.class, 
-        		AvoidDoubleQuoteCheck.class,AvoidFullSQLRequest.class);
+        return Arrays.asList(
+                AvoidGlobalVariableInFunctionCheck.class,
+                AvoidFullSQLRequest.class,
+                AvoidSQLRequestInLoop.class,
+                AvoidTryCatchFinallyCheck.class,
+                NoFunctionCallWhenDeclaringForLoop.class,
+                AvoidGettersAndSetters.class
+        );
     }
-
-    private static void setTemplates(NewRepository repository) {
-        RULE_TEMPLATES_KEY.stream()
-                .map(repository::rule)
-                .filter(Objects::nonNull)
-                .forEach(rule -> rule.setTemplate(true));
-    }
-
 }

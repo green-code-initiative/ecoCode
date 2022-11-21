@@ -35,16 +35,13 @@ public class AvoidFullSQLRequest extends PythonSubscriptionCheck {
 
     public void visitNodeString(SubscriptionContext ctx) {
         StringLiteral stringLiteral = (StringLiteral) ctx.syntaxNode();
-        stringLiteral.stringElements().forEach(stringElement -> {
-            checkIssue(stringElement, ctx);
-        });
+        stringLiteral.stringElements().forEach(stringElement -> checkIssue(stringElement, ctx));
     }
 
     public void checkIssue(StringElement stringElement, SubscriptionContext ctx) {
         if (lineAlreadyHasThisIssue(stringElement, ctx)) return;
         if (stringElement.value().matches(REGEXPSELECTFROM)) {
             repport(stringElement, ctx);
-            return;
         }
     }
 
@@ -52,9 +49,7 @@ public class AvoidFullSQLRequest extends PythonSubscriptionCheck {
         if (stringElement.firstToken() != null) {
             final String classname = ctx.pythonFile().fileName();
             final int line = stringElement.firstToken().line();
-            if (!linesWithIssuesByFile.containsKey(classname)) {
-                linesWithIssuesByFile.put(classname, new ArrayList<>());
-            }
+            linesWithIssuesByFile.computeIfAbsent(classname, k -> new ArrayList<>());
             linesWithIssuesByFile.get(classname).add(line);
         }
         ctx.addIssue(stringElement, MESSAGERULE);
