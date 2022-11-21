@@ -32,6 +32,7 @@
 		<module>python-plugin</module>
 		<module>codenarc-converter</module>
 		<module>android-plugin</module>
+		<module>ecolinter-plugin</module>
 	</modules>
 
     <organization>

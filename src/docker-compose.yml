@@ -26,6 +26,9 @@ services:
       - type: bind
         source: ./android-plugin/target/ecocode-rules-1.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/ecocode-rules-1.0-SNAPSHOT.jar
+      - type: bind
+        source: ./ecolinter-plugin/target/ecocode-ecolinter-plugin-1.0.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-ecolinter-plugin-1.0.0-SNAPSHOT.jar
       # - "conf:/opt/sonarqube/conf"
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"

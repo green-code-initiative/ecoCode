@@ -12,11 +12,12 @@ ecoCode is based on evolving catalogs of [good practices](docs/rules), for vario
 
 ## 🌿 SonarQube Plugin
 
-4 technologies are supported by the plugin right now:
+5 technologies are supported by the plugin right now:
 - [Java](src/java-plugin/)
 - [PHP](src/php-plugin/)
 - [Python](src/python-plugin/)
 - [Android](src/android-plugin/)
+- [Eslint](src/ecolinter-plugin)
 
 ![Screenshot](docs/resources/screenshot.PNG)
 
