@@ -31,7 +31,7 @@ Here is the list of rules already available in ecoCode project code.
 | Using for...in loops | ✅  | ✅ |  | ✅ | | |
 | Rewrite native getter/setters |  |  |  | ✅ | | |
 | Unnecessarily assigning values to variables | ✅  |  |  |  | | |
-| Use single quote (') instead of quotation mark (") | | ✅  | | ✅  | | |
+| Use single quote (') instead of quotation mark (") | | ✅  | | | | |
 | Use the $i++ variable during an iteration | ✅  | ✅  |  |  | | |
 | Calling a function in the declaration of a for loop | ✅  | ✅  |  | ✅  | | |
 | Perform an SQL query inside a loop | ✅  | ✅  |  | ✅ | | |
