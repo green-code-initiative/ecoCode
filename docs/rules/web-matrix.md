@@ -23,15 +23,15 @@ Here is the list of rules already available in ecoCode project code.
 | Modify the DOM when traversing it | 🚫 | 🚫 | ✅ | 🚫 | 🚫 | |
 | Edit DOM elements to make it invisible | 🚫 | 🚫 |  | 🚫 | 🚫 | |
 | Modify a CSS property directly | 🚫 | 🚫 |  | 🚫 | 🚫 | |
-| Using try...catch...finally calls |  | ✅ |  | ✅ | | |
+| Using try...catch...finally calls | ✅ | ✅ |  | ✅ | | |
 | The use of methods for basic operations |  |  |  |  | | |
 | Call a DOM element multiple times without caching | 🚫 | 🚫 | ✅ | 🚫 | 🚫 | |
-| Use global variables | ✅ |  |  |  |  |  | | |
+| Use global variables | ✅ | ✅ |  |  |  |  | | |
 | Using strings as arguments to SetTimeout() and setInterval() | 🚫 | 🚫 | ✅ | 🚫 | 🚫 | |
-| Using for...in loops | ✅  | ✅ |  | ✅ | | |
+| Using for...in loops | ✅ | ✅ |  | ✅ | | |
 | Rewrite native getter/setters |  |  |  | ✅ | | |
 | Unnecessarily assigning values to variables | ✅  |  |  |  | | |
-| Use single quote (') instead of quotation mark (") | | ✅  | | | | |
+| Use single quote (') instead of quotation mark (") | ✅ | ✅  | | | | |
 | Use the $i++ variable during an iteration | ✅  | ✅  |  |  | | |
 | Calling a function in the declaration of a for loop | ✅  | ✅  |  | ✅  | | |
 | Perform an SQL query inside a loop | ✅  | ✅  |  | ✅ | | |
