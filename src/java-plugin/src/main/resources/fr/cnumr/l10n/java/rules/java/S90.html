@@ -1,0 +1,19 @@
+<p>
+    Avoid use of static in interface. Prefer the use of Enum.
+</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    public interface Color {
+        public static final int RED = 0xff0000;// Noncompliant
+        public static final int BLACK = 0x000000;// Noncompliant
+        public static final int WHITE = 0xffffff;// Noncompliant
+    }
+</pre>
+<h2>Compliant Code Example</h2>
+<pre>
+    public enum Color {
+        RED(0xff0000),// Compliant
+        BLACK(0x000000),// Compliant
+        WHITE(0xffffff);// Compliant
+    }
+</pre>
