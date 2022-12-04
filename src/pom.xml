@@ -74,7 +74,7 @@
 		<sonar-packaging.version>1.20.0.405</sonar-packaging.version>
 		<junit.jupiter.version>5.7.0</junit.jupiter.version>
 		<assertJ.version>3.17.2</assertJ.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<sonar-plugin-api-impl.version>8.7.0.41497</sonar-plugin-api-impl.version>
 
 		<!-- Use UTF-8 for all resources -->
