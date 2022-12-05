@@ -119,8 +119,8 @@ When you are connected, generate a new token:
 
 `My Account -> Security -> Generate Tokens`
 
-![img.png](images/img.png)
-![img_1.png](images/img_1.png)
+![img.png](docs/resources/img.png)
+![img_1.png](docs/resources/img_1.png)
 
 
 

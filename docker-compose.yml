@@ -27,6 +27,9 @@ services:
       - type: bind
         source: ./ecolinter-plugin/target/ecocode-ecolinter-plugin-0.1.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/ecocode-ecolinter-plugin-0.1.0-SNAPSHOT.jar
+      - type: bind
+        source: ./xml-plugin/target/ecocode-xml-plugin-0.1.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-xml-plugin-0.1.0-SNAPSHOT.jar
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"

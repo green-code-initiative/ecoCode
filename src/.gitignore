@@ -1,9 +1,0 @@
-!.gitignore
-!.github/workflows
-
-.*
-
-target
-*.iml
-lib/*.jar
-bin

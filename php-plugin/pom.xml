@@ -5,40 +5,29 @@
     
     <parent>
         <groupId>io.ecocode</groupId>
-        <artifactId>ecocode-standard-parent</artifactId>
+        <artifactId>ecocode-parent</artifactId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ecocode-python-plugin</artifactId>
+    <artifactId>ecocode-php-plugin</artifactId>
     <packaging>sonar-plugin</packaging>
-
-    <name>ecoCode Python Sonar Plugin</name>
-
+    <name>ecoCode PHP Sonar Plugin</name>
+    
     <dependencies>
         <dependency>
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.sonarsource.analyzer-commons</groupId>
-            <artifactId>sonar-analyzer-commons</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.sonarsource.python</groupId>
-            <artifactId>sonar-python-plugin</artifactId>
+            <groupId>org.sonarsource.php</groupId>
+            <artifactId>sonar-php-plugin</artifactId>
             <type>sonar-plugin</type>
         </dependency>
-        <dependency>
-            <groupId>org.sonarsource.python</groupId>
-            <artifactId>python-checks-testkit</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
-            <artifactId>sonar-plugin-api-impl</artifactId>
         </dependency>
     </dependencies>
 
@@ -50,10 +39,12 @@
                 <version>${sonar-packaging.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <pluginClass>fr.cnumr.python.CustomPythonRulesPlugin</pluginClass>
-                    <requirePlugins>python:${sonar.python.version}</requirePlugins>
                     <pluginKey>${project.artifactId}</pluginKey>
                     <pluginName>${project.name}</pluginName>
+                    <pluginClass>fr.cnumr.php.PHPCustomRulesPlugin</pluginClass>
+                    <sonarLintSupported>true</sonarLintSupported>
+                    <sonarQubeMinVersion>6.7</sonarQubeMinVersion>
+                    <basePlugin>php</basePlugin>
                 </configuration>
             </plugin>
             <plugin>
@@ -64,7 +55,7 @@
                         <id>copy-bundle</id>
                         <phase>package</phase>
                         <goals>
-                        <goal>copy</goal>
+                            <goal>copy</goal>
                         </goals>
                         <configuration>
                         <artifactItems>
@@ -78,6 +69,30 @@
                         </artifactItems>
                         <outputDirectory>../lib</outputDirectory>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
+                <configuration>
+                    <output>file</output>
+                    <append>false</append>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

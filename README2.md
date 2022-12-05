@@ -1,6 +1,6 @@
 ## eco-design SonarQube plugin
 
-![Ekko logo](images/5ekko.png)
+![Ekko logo](docs/resources/5ekko.png)
 
 There is two kind of plugins :
 
