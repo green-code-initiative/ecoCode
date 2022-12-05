@@ -1,9 +1,9 @@
 !.gitignore
+!.github/workflows
+
 .*
-node_modules
-yarn.lock
-target/
-node/
+
+target
 *.iml
-/lib/*.jar
+lib/*.jar
 bin

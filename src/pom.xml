@@ -4,21 +4,9 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- Change this groupId to your own organization groupId -->
-	<groupId>fr.cnumr</groupId>
-
-	<!-- Change this artifactId to your own organization artifactId -->
-	<artifactId>ecocode</artifactId>
-
-	<version>1.0.0-SNAPSHOT</version>
-	<dependencies>
-		<dependency>
-			<groupId>org.sonarsource.sonarqube</groupId>
-			<artifactId>sonar-plugin-api</artifactId>
-			<scope>compile</scope>
-		</dependency>
-	</dependencies>
-
+	<groupId>io.ecocode</groupId>
+	<artifactId>ecocode-standard-parent</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>ecoCode Sonar Plugins Project</name>
@@ -26,34 +14,27 @@
 		https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html
 	</description>
 
-	<modules>
-		<module>java-plugin</module>
-		<module>php-plugin</module>
-		<module>python-plugin</module>
-		<module>ecolinter-plugin</module>
-	</modules>
-
-    <organization>
-        <name>CNumR</name>
-        <url>https://collectif.greenit.fr</url>
-    </organization>
-    <licenses>
-        <license>
-            <name>GPL v3</name>
-            <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-    <issueManagement>
-      <system>GitHub</system>
-      <url>https://github.com/cnumr/ecoCode/issues</url>
-    </issueManagement>
-    <scm>
-      <connection>scm:git:https://github.com/cnumr/ecoCode</connection>
-      <developerConnection>scm:git:https://github.com/cnumr/ecoCode</developerConnection>
-      <url>https://github.com/cnumr/ecoCode</url>
-      <tag>HEAD</tag>
-    </scm>
+	<organization>
+		<name>CNumR</name>
+		<url>https://collectif.greenit.fr</url>
+	</organization>
+	<licenses>
+		<license>
+			<name>GPL v3</name>
+			<url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/cnumr/ecoCode/issues</url>
+	</issueManagement>
+	<scm>
+		<connection>scm:git:https://github.com/cnumr/ecoCode</connection>
+		<developerConnection>scm:git:https://github.com/cnumr/ecoCode</developerConnection>
+		<url>https://github.com/cnumr/ecoCode</url>
+		<tag>HEAD</tag>
+	</scm>
 
 	<properties>
 
@@ -61,8 +42,16 @@
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 
+		<encoding>UTF-8</encoding>
+		<project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+
 		<sonarqube.version>8.7.1.42226</sonarqube.version>
 		<sonarjava.version>6.14.0.25463</sonarjava.version>
+
+		<sonar.organization>cnumr-1</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
 		<!-- Don't forget to update this version -->
 		<jacoco.version>0.8.6</jacoco.version>
 
@@ -74,11 +63,7 @@
 		<assertJ.version>3.17.2</assertJ.version>
 		<junit.version>4.12</junit.version>
 		<sonar-plugin-api-impl.version>8.7.0.41497</sonar-plugin-api-impl.version>
-
-		<!-- Use UTF-8 for all resources -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<sonar.organization>cnumr-1</sonar.organization>
-		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		
 	</properties>
 
 	<dependencyManagement>
@@ -97,7 +82,6 @@
 			</dependency>
 
 			<!-- JAVA -->
-
 			<dependency>
 				<groupId>org.sonarsource.java</groupId>
 				<artifactId>sonar-java-plugin</artifactId>
@@ -131,7 +115,6 @@
 				<version>${sonarjava.version}</version>
 				<scope>test</scope>
 			</dependency>
-
 
 			<!-- version to be specified manually -->
 			<dependency>
@@ -180,9 +163,22 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<dependencies>
+		<dependency>
+			<groupId>org.sonarsource.sonarqube</groupId>
+			<artifactId>sonar-plugin-api</artifactId>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.10.1</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
@@ -191,5 +187,12 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<modules>
+		<module>java-plugin</module>
+		<module>php-plugin</module>
+		<module>python-plugin</module>
+		<module>ecolinter-plugin</module>
+	</modules>
 	
 </project>

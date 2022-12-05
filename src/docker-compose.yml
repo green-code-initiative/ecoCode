@@ -2,6 +2,7 @@ version: "3.3"
 services:
   sonar:
     image: sonarqube:9.3-community
+    container_name: sonar_standard
     ports:
       - "9000:9000"
     networks:
@@ -15,24 +16,24 @@ services:
       SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: 'true'
     volumes:
       - type: bind
-        source: ./java-plugin/target/ecocode-java-plugin-1.0.0-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-java-plugin-1.0.0-SNAPSHOT.jar
+        source: ./java-plugin/target/ecocode-java-plugin-0.1.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-java-plugin-0.1.0-SNAPSHOT.jar
       - type: bind
-        source: ./php-plugin/target/ecocode-php-plugin-1.0.0-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-php-plugin-1.0.0-SNAPSHOT.jar
+        source: ./php-plugin/target/ecocode-php-plugin-0.1.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-php-plugin-0.1.0-SNAPSHOT.jar
       - type: bind
-        source: ./python-plugin/target/ecocode-python-plugin-1.0.0-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-python-plugin-1.0.0-SNAPSHOT.jar
+        source: ./python-plugin/target/ecocode-python-plugin-0.1.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-python-plugin-0.1.0-SNAPSHOT.jar
       - type: bind
-        source: ./ecolinter-plugin/target/ecocode-ecolinter-plugin-1.0.0-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-ecolinter-plugin-1.0.0-SNAPSHOT.jar
+        source: ./ecolinter-plugin/target/ecocode-ecolinter-plugin-0.1.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-ecolinter-plugin-0.1.0-SNAPSHOT.jar
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"
 
   db:
     image: postgres:12
-    container_name: postgresql
+    container_name: postgresql_standard
     networks:
       - sonarnet
     volumes:
