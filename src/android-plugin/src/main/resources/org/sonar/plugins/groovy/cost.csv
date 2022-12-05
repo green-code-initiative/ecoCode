@@ -1,4 +1,0 @@
-ruleKey;remediationFunction;remediationFactor
-org.codenarc.rule.ecocode.FatAppRule;linear;1h
-org.codenarc.rule.ecocode.SupportedVersionRangeRule;linear;10min
-org.codenarc.rule.ecocode.DisableObfuscationRule;linear;10min
