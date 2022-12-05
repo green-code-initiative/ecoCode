@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+
+  sonar:
+    image: sonarqube:${sonar_version_server}
+    container_name: ecoCode-sonar
+    restart: unless-stopped
+    volumes:
+      - ${basedir}/target/ecocode-rules-${project.version}.jar:/opt/sonarqube/extensions/plugins/ecocode-rules-${project.version}.jar
+    ports:
+      - 9000:9000
+      - 9092:9092

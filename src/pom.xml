@@ -81,6 +81,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<sonar.organization>cnumr-1</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
+		<!-- resources-plugin injection -->
+		<sonar_version_server>9.3-community</sonar_version_server>
 	</properties>
 
 	<dependencyManagement>
@@ -181,17 +184,43 @@
 
 		</dependencies>
 	</dependencyManagement>
-
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-dependency-plugin</artifactId>
-					<version>3.3.0</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+	  <plugins>
+    	    <plugin>
+    	        <artifactId>maven-resources-plugin</artifactId>
+    	        <version>3.2.0</version>
+    	        <executions>
+    	            <execution>
+    	                <id>copy-resource-one</id>
+    	                <phase>install</phase>
+    	                <goals>
+    	                    <goal>copy-resources</goal>
+    	                </goals>
 	
+    	                <configuration>
+    	                    <outputDirectory>${basedir}/target/extra-resources</outputDirectory>
+    	                    <resources>
+    	                        <resource>
+				    <filtering>true</filtering>
+    	                            <directory>${basedir}/src/main/scripts/</directory>
+    	                            <includes>
+    	                                <include>*</include>
+    	                            </includes>
+    	                        </resource>
+    	                    </resources>
+    	                </configuration>
+    	            </execution>
+    	       </executions>
+    	    </plugin>
+	</plugins>
+	  <pluginManagement>
+	    <plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-dependency-plugin</artifactId>
+			<version>3.3.0</version>
+		</plugin>
+  	    </plugins>
+	  </pluginManagement>
+	</build>
 </project>
