@@ -7,14 +7,13 @@ import static org.junit.Assert.assertEquals;
 
 public class MyPhpRulesTest {
 
-  private int NumberOfRuleInRepository = 7;
-
   @Test
   public void rules() {
     MyPhpRules rulesDefinition = new MyPhpRules();
     RulesDefinition.Context context = new RulesDefinition.Context();
     rulesDefinition.define(context);
     RulesDefinition.Repository repository = context.repository(MyPhpRules.REPOSITORY_KEY);
-    assertEquals(NumberOfRuleInRepository, repository.rules().size());
+    int numberOfRuleInRepository = 6;
+    assertEquals(numberOfRuleInRepository, repository.rules().size());
   }
 }
