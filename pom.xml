@@ -193,7 +193,7 @@
 		<module>java-plugin</module>
 		<module>php-plugin</module>
 		<module>python-plugin</module>
-		<module>xml-plugin</module>
+		<!-- <module>xml-plugin</module> -->
 	</modules>
 	
 </project>
