@@ -13,10 +13,10 @@ ecoCode is based on evolving catalogs of [good practices](docs/rules), for vario
 ## 🌿 SonarQube Plugin
 
 5 technologies are supported by the plugin right now:
-- [Java](src/java-plugin/)
-- [PHP](src/php-plugin/)
-- [Python](src/python-plugin/)
-- [Android](src/android-plugin/)
+- [Java](java-plugin/)
+- [PHP](php-plugin/)
+- [Python](python-plugin/)
+- [XML](xml-plugin/)
 - [Eslint](src/ecolinter-plugin)
 
 ![Screenshot](docs/resources/screenshot.PNG)
@@ -24,7 +24,7 @@ ecoCode is based on evolving catalogs of [good practices](docs/rules), for vario
 
 ## 🚀 Getting Started
 
-You can download each plugin separatly or you can directly use a [all-in-one docker-compose](src/INSTALL.md)
+You can download each plugin separatly or you can directly use a [all-in-one docker-compose](INSTALL.md)
 
 ## 🤝 Contribution
 
@@ -38,7 +38,7 @@ We are listening to you to make the project progress collectively, and maybe wit
 
 WE NEED YOU !
 
-Here the [starter-pack](./hackathon/starter-pack.md)
+Here the [starter-pack](https://github.com/green-code-initiative/ecocode-challenge/starter-pack.md)
 
 ## 🤓 Main contributors
 

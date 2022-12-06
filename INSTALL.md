@@ -11,8 +11,6 @@ Here is a preview of project tree :
 ```
 Ecocode              # Root directory of "native" linter
 |
-+--android-plugin    # Android
-|
 +--java-plugin       # JAVA
 |
 +--php-plugin        # PHP
@@ -32,27 +30,13 @@ You will find more information about the plugins’ architecture in their folder
 - Java >= 11
 - Mvn 3
 
-
-### Preliminary steps (only Android)
-
-The Android plugin uses [CodeNarc](https://codenarc.org/) to scan the gradle files of Android projects. To have more information about CodeNarc: [CodeNarc](/codenarc-converter/CodeNarc/README.md).
-
-CodeNarc must be built separately. Please see the following steps:
-
-Build CodeNarc (Gradle 6.9.2, Java 11), then add this custom-built CodeNarc to Maven dependencies: 
-
-```sh
-./prepare-codenarc
-```
-
-
 ### Build the code
 
 You can build the project code by running the following command in the `src` directory.
 Maven will download the required dependencies.
 
 ```sh
-./build.sh
+./tool_build.sh
 
 # execute `mvn clean install`
 ```
@@ -73,7 +57,7 @@ You must have built the plugins (see the steps above).
 Run the SonarQube + PostgreSQL stack:
 
 ```sh 
-./init_reinit.sh
+./tool_init-reinit.sh
 
 # execute `docker-compose up --build -d`
 ```
@@ -146,10 +130,10 @@ Once you did the installation a first time (and then you did custom configuratio
 if you only want to start (or stop properly) existing services :
 
 ```sh
-./start.sh
+./tool_start.sh
 # execute `docker-compose start`
 
-./stop.sh
+./tool_stop.sh
 # execute `docker-compose stop`
 ```
 

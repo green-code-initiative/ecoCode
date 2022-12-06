@@ -27,12 +27,12 @@
 	</licenses>
 	<issueManagement>
 		<system>GitHub</system>
-		<url>https://github.com/cnumr/ecoCode/issues</url>
+		<url>https://github.com/green-code-initiative/ecocode/issues</url>
 	</issueManagement>
 	<scm>
-		<connection>scm:git:https://github.com/cnumr/ecoCode</connection>
-		<developerConnection>scm:git:https://github.com/cnumr/ecoCode</developerConnection>
-		<url>https://github.com/cnumr/ecoCode</url>
+		<connection>scm:git:https://github.com/green-code-initiative/ecocode</connection>
+		<developerConnection>scm:git:https://github.com/green-code-initiative/ecocode</developerConnection>
+		<url>https://github.com/green-code-initiative/ecocode</url>
 		<tag>HEAD</tag>
 	</scm>
 

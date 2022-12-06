@@ -32,8 +32,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
       - name: Build and analyze
-        working-directory: ./src
+        working-directory: .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -e -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cnumr_ecoCode -Dsonar.exclusions=**/*.groovy,**/*.dummy
+        run: mvn -e -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ecocode -Dsonar.exclusions=**/*.groovy,**/*.dummy
