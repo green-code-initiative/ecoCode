@@ -10,9 +10,7 @@
 	<packaging>pom</packaging>
 
 	<name>ecoCode Sonar Plugins Project</name>
-	<description>Les règles s'appuient sur l'édition 3 du livre "Ecoconception Web / Les 115 bonnes pratiques" =>
-		https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html
-	</description>
+	<description>Les règles s'appuient sur l'édition 3 du livre "Ecoconception Web / Les 115 bonnes pratiques" => https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html</description>
 
 	<organization>
 		<name>CNumR</name>

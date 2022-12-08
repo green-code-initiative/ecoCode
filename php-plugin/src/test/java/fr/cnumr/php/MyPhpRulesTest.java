@@ -8,6 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class MyPhpRulesTest {
 
   private int NumberOfRuleInRepository = 6;
+
   @Test
   public void rules() {
     MyPhpRules rulesDefinition = new MyPhpRules();
