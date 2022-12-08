@@ -57,7 +57,7 @@ You must have built the plugins (see the steps above).
 Run the SonarQube + PostgreSQL stack:
 
 ```sh 
-./tool_init-reinit.sh
+./tool_docker-reinit.sh
 
 # execute `docker-compose up --build -d`
 ```
@@ -72,8 +72,7 @@ You should see two lines (one for sonarqube and one for postgres).
 If there is only postgres, check the logs:
 
 ```sh 
-docker ps -a
-docker logs src_sonar_1
+./tool_docker-logs.sh
 ```
 
 If you have this error on run: 
