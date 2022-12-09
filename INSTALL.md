@@ -90,7 +90,7 @@ sysctl -w vm.max_map_count=262144
 
 Go to http://localhost:9000 and use these credentials:
 
-```sh
+```txt
 login: admin
 password: admin
 ```
@@ -109,6 +109,7 @@ TOKEN=MY_TOKEN docker-compose up --build -d
 ```
 
 ### Reinstall SonarQube (if needed)
+
 ```sh
 # first clean all containers and resources used
 ./tool_docker-clean.sh
@@ -125,6 +126,7 @@ Install dependencies from the root directory:
 ```sh
 ./tool_build.sh
 ```
+
 Result : JAR files (one per plugin) will be copied in `lib` repository after build.
 
 Howto start or stop service (already installed)
