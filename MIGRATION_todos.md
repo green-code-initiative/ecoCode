@@ -12,7 +12,7 @@
 - migrate https://github.com/cnumr/ecoLinter to a new repo (`ecoCode-linter`)
   - split JS from CSS
   - compare actual ecollinter-plugin in ecocode standard and ecocodelinter of external repo
-- disable `ecoLinter` from ecocode standard
+- [DONE] disable `ecoLinter` from ecocode standard
 
 ### IDEAS 
 .. to tranform into issues ?
