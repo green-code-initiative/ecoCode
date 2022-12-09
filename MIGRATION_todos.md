@@ -1,9 +1,9 @@
 ### TODOs
 
-- mark as readonly the actual CNUMR repository and make communication about it
+- [IN PROGRESS] mark as readonly the actual CNUMR repository and make communication about it
 - check if `_TODO_CHECK_sonarqube-plugin-greenit` is used
 - delete `_TO_DELETE_images` if images not used
-- check if `xml-plugin` is useful because
+- [IN PROGRESS] check if `xml-plugin` is useful because
   - module is not declared as module in `pom.xml`
   - there is already XML rules in android-plugin 
 - check documentation

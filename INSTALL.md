@@ -57,9 +57,7 @@ You must have built the plugins (see the steps above).
 Run the SonarQube + PostgreSQL stack:
 
 ```sh 
-./tool_docker-reinit.sh
-
-# execute `docker-compose up --build -d`
+./tool_docker-init.sh
 ```
 
 Check if the containers are up:
@@ -118,10 +116,10 @@ TOKEN=MY_TOKEN docker-compose up --build -d
 Install dependencies from the root directory:
 
 ```sh
-mvn clean install
+./tool_build.sh
 ```
 
-.jar files (one per plugin) will be moved in `lib` repository after build.
+.jar files (one per plugin) will be copied in `lib` repository after build.
 
 ## Howto start or stop service (already installed)
 
