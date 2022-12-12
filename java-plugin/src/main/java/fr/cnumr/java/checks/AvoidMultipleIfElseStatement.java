@@ -1,9 +1,9 @@
 package fr.cnumr.java.checks;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
-import org.sonar.java.model.statement.BlockTreeImpl;
-import org.sonar.java.model.statement.IfStatementTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
+import org.sonar.plugins.java.api.tree.BlockTree;
+import org.sonar.plugins.java.api.tree.IfStatementTree;
 import org.sonar.plugins.java.api.tree.StatementTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
@@ -25,12 +25,12 @@ public class AvoidMultipleIfElseStatement extends IssuableSubscriptionVisitor {
 
         Tree parentNode = tree.parent();
 
-        if (!(parentNode instanceof BlockTreeImpl))
+        if (!(parentNode instanceof BlockTree))
             return;
-        BlockTreeImpl node = (BlockTreeImpl) parentNode;
+        BlockTree node = (BlockTree) parentNode;
         sizeBody = node.body().toArray().length;
         while(idx < sizeBody) {
-            if (node.body().get(idx) instanceof IfStatementTreeImpl)
+            if (node.body().get(idx) instanceof IfStatementTree)
                 ++countIfStatement;
             ++idx;
         }
@@ -39,7 +39,7 @@ public class AvoidMultipleIfElseStatement extends IssuableSubscriptionVisitor {
     }
 
     private void checkElseIfStatement(Tree tree) {
-        IfStatementTreeImpl node = (IfStatementTreeImpl) tree;
+    	IfStatementTree node = (IfStatementTree) tree;
         int count = 0;
         StatementTree statementTree;
 
@@ -47,10 +47,10 @@ public class AvoidMultipleIfElseStatement extends IssuableSubscriptionVisitor {
             if (count >= 2)
                 reportIssue(tree, "using a switch statement instead of multiple if-else if possible");
             statementTree = node.elseStatement();
-            if (statementTree instanceof IfStatementTreeImpl) {
+            if (statementTree instanceof IfStatementTree) {
                 ++count;
-                node = (IfStatementTreeImpl) statementTree;
-            } else if (statementTree instanceof BlockTreeImpl) {
+                node = (IfStatementTree) statementTree;
+            } else /*if (statementTree instanceof BlockTree)*/ {
                 break;
             }
         }
