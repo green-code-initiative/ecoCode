@@ -53,3 +53,10 @@ Scripts
 - check_tags.sh : read tags for all listed rules
 - clean_tag.sh : delete specified tag from all listed rules
 - install_tag.sh : add specified tag to all listed rules
+
+How it works ?
+==============
+- change configuration in `_config.sh` file : check requirements above
+- launch `check_tags.sh` to control your rules and tags
+- launch `install_tags.sh` to add custom tag to your rules
+- launch `check_tags.sh` again to control your rules and tags

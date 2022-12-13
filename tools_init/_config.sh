@@ -7,8 +7,8 @@
 DEBUG=1
 
 # if tool simulate the add tag process if new tag has to be added
-SIMULATION=0
-# SIMULATION=1
+# SIMULATION=0
+SIMULATION=1
 
 # your sonar token (previously created in SONAR to secure communication with it)
 SONAR_TOKEN=f8be019004bce93e4f111251f8b1e6a8b665a252
