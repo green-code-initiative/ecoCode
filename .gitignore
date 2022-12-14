@@ -1,5 +1,5 @@
 !.gitignore
-!.github/workflows
+!.github/**/*.*
 
 .*
 
