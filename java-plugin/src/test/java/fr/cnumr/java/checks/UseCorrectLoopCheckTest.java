@@ -1,13 +1,13 @@
 package fr.cnumr.java.checks;
 
 import org.junit.jupiter.api.Test;
-import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.checks.verifier.CheckVerifier;
 
 class UseCorrectLoopCheckTest {
 
     @Test
     void test() {
-        JavaCheckVerifier.newVerifier()
+        CheckVerifier.newVerifier()
                 .onFile("src/test/files/UseCorrectForLoopCheck.java")
                 .withCheck(new UseCorrectForLoop())
                 .verifyIssues();

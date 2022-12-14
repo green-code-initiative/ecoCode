@@ -22,14 +22,15 @@ package fr.cnumr.php;
 
 import com.google.common.collect.ImmutableList;
 import fr.cnumr.php.checks.*;
+import org.sonar.api.SonarEdition;
+import org.sonar.api.SonarQubeSide;
+import org.sonar.api.SonarRuntime;
+import org.sonar.api.internal.SonarRuntimeImpl;
 import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.api.utils.Version;
 import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Extension point to define a PHP rule repository.
@@ -39,6 +40,7 @@ public class MyPhpRules implements RulesDefinition, PHPCustomRuleRepository {
   public static final String LANGUAGE = "php";
   public static final String NAME = "Collectif Conception Numérique Responsable";
   public static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/php/rules/custom";
+  public static final String DEFAULT_PROFILE_PATH = "fr/cnumr/l10n/php/rules/custom/DefaultProfilePath.json";
   public static final String REPOSITORY_KEY = "cnumr-php";
   private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
 
@@ -56,7 +58,7 @@ public class MyPhpRules implements RulesDefinition, PHPCustomRuleRepository {
    */
   @Override
   public ImmutableList<Class> checkClasses() {
-    
+
     return ImmutableList.of(IncrementCheck.class, AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements.class, AvoidDoubleQuoteCheck.class,
             AvoidFullSQLRequestCheck.class, AvoidSQLRequestInLoopCheck.class, NoFunctionCallWhenDeclaringForLoop.class);
 
@@ -64,9 +66,11 @@ public class MyPhpRules implements RulesDefinition, PHPCustomRuleRepository {
 
   @Override
   public void define(Context context) {
-    NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
+    NewRepository repository = context.createRepository(repositoryKey(), LANGUAGE).setName(NAME);
 
-    RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH);
+    SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(9, 7), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
+
+    RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH,DEFAULT_PROFILE_PATH,sonarRuntime);
 
     ruleMetadataLoader.addRulesByAnnotatedClass(repository, new ArrayList<>(checkClasses()));
 
