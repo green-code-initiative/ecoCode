@@ -33,6 +33,7 @@ Howto build the SonarQube ecoCode plugins
 
 - Java >= 11
 - Mvn 3
+- SonarQube 9.4 or higher
 
 ### Build the code
 
