@@ -65,8 +65,8 @@ public class MyJavaRulesDefinition implements RulesDefinition {
 
   private static void setTemplates(NewRepository repository) {
     RULE_TEMPLATES_KEY.stream()
-            .map(repository::rule)
-            .filter(Objects::nonNull)
-            .forEach(rule -> rule.setTemplate(true));
+      .map(repository::rule)
+      .filter(Objects::nonNull)
+      .forEach(rule -> rule.setTemplate(true));
   }
 }
