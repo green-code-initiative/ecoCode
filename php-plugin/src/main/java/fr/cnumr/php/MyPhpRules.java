@@ -30,8 +30,10 @@ import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.utils.Version;
 import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Objects;
+import java.util.Set;
 /**
  * Extension point to define a PHP rule repository.
  */
