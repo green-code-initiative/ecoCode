@@ -33,12 +33,12 @@ public final class RulesList {
 
     public static List<Class<?>> getChecks() {
         List<Class<?>> checks = new ArrayList<>();
-        checks.addAll(getPythonChecks());
-        checks.addAll(getPythonTestChecks());
+        checks.addAll(getPhpChecks());
+        checks.addAll(getPhpTestChecks());
         return Collections.unmodifiableList(checks);
     }
 
-    public static List<Class<?>> getPythonChecks() {
+    public static List<Class<?>> getPhpChecks() {
         return Collections.unmodifiableList(Arrays.asList(
             IncrementCheck.class,
             AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements.class,
@@ -49,7 +49,7 @@ public final class RulesList {
         ));
     }
 
-    public static List<Class<?>> getPythonTestChecks() {
+    public static List<Class<?>> getPhpTestChecks() {
         return Collections.emptyList();
     }
 }
