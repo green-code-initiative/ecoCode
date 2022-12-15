@@ -33,9 +33,21 @@ public class AvoidGettingSizeCollectionInLoop extends IssuableSubscriptionVisito
 
     @Override
     public void visitNode(Tree tree) {
+    	if (tree.is(Kind.FOR_STATEMENT)) {
             ForStatementTree forStatementTree = (ForStatementTree) tree;
             BinaryExpressionTree expressionTree = (BinaryExpressionTree) forStatementTree.condition();
             expressionTree.accept(visitorInFile);
+    	}
+    	else if (tree.is(Kind.WHILE_STATEMENT)) {
+    		WhileStatementTree whileStatementTree = (WhileStatementTree) tree;
+    		ExpressionTree expressionTree = whileStatementTree.condition();
+    		expressionTree.accept(visitorInFile);
+    	}
+    	else {
+    		ForEachStatement foreachStatement = (ForEachStatement) tree;
+    		ExpressionTree expressionTree = foreachStatement.expression();
+    		expressionTree.accept(visitorInFile);
+    	}
     }
 
     private class AvoidGettingSizeCollectionInLoopVisitor extends BaseTreeVisitor {
