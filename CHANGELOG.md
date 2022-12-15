@@ -7,7 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- PR #14  [ISSUE 161] adding tool to update tags of native rules with our custom tags
+
+### Changed
+
+- documentation upgrade (internal)
+
 ## [0.1.0] - 2022-12-14
+
+### Added
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
