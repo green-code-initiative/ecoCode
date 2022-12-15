@@ -14,10 +14,6 @@
     <name>ecoCode PHP Sonar Plugin</name>
     
     <dependencies>
-        <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
-            <artifactId>sonar-plugin-api</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.sonarsource.php</groupId>
@@ -26,9 +22,16 @@
         </dependency>
 
         <dependency>
+            <groupId>org.sonarsource.sonarqube</groupId>
+            <artifactId>sonar-plugin-api</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -36,14 +39,13 @@
             <plugin>
                 <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
                 <artifactId>sonar-packaging-maven-plugin</artifactId>
-                <version>${sonar-packaging.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <pluginKey>${project.artifactId}</pluginKey>
                     <pluginName>${project.name}</pluginName>
                     <pluginClass>fr.cnumr.php.PHPCustomRulesPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
-                    <sonarQubeMinVersion>6.7</sonarQubeMinVersion>
+                    <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                     <basePlugin>php</basePlugin>
                 </configuration>
             </plugin>
@@ -75,7 +77,6 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.7</version>
                 <configuration>
                     <output>file</output>
                     <append>false</append>
