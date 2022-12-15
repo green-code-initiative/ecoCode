@@ -1,8 +1,11 @@
-name: Build
+name: Build and Tests
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '*.md'
+      - '.github/**/*.yml'
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -10,7 +13,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 11
@@ -39,4 +43,4 @@ jobs:
 #          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #        run: mvn -e -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ecocode -Dsonar.exclusions=**/*.groovy,**/*.dummy
       # waiting for sonarqube secrets
-        run: mvn -e -B verify
+        run: mvn -e -B clean compile verify
