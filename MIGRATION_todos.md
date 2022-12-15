@@ -19,7 +19,9 @@
 
 .. to tranform into issues ?
 
-- [IN PROGRESS] release system (with versionning) to share released plugins
-- check `pom.xml` dependencies (usefulness, scope, versions)
+- [IN PROGRESS] check `pom.xml` dependencies (usefulness, scope, versions)
+  - [DONE] first clean, check scopes, factorization
+  - check usefulness
+  - upgrade versions
 - [IN PROGRESS] upgrade sonar version in docker-compose file (in standard and mobile plugin)
 - enable github `dependabot` to create automatically PR with version upgrades of dependencides (when all dependencies will be ok)
