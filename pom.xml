@@ -51,7 +51,7 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
 		<!-- Don't forget to update this version -->
-		<jacoco.version>0.8.6</jacoco.version>
+		<jacoco.version>0.8.7</jacoco.version>
 
 		<sonar-analyzer-commons.version>1.8.0.295</sonar-analyzer-commons.version>
 		<sonar.python.version>3.4.0.7980</sonar.python.version>

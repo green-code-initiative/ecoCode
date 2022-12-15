@@ -80,9 +80,7 @@
                     <pluginClass>fr.cnumr.java.MyJavaRulesPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
-                    <!-- FIXME after release of SQ 8.8 -->
-                    <requirePlugins>java:6.12.0.24852</requirePlugins>
-                    <!-- <requirePlugins>java:${sonarjava.version}</requirePlugins> -->
+                    <requirePlugins>java:${sonarjava.version}</requirePlugins>
                 </configuration>
             </plugin>
             <plugin>
