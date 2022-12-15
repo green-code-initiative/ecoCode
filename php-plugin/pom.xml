@@ -43,7 +43,7 @@
                     <pluginName>${project.name}</pluginName>
                     <pluginClass>fr.cnumr.php.PHPCustomRulesPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
-                    <sonarQubeMinVersion>6.7</sonarQubeMinVersion>
+                    <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                     <basePlugin>php</basePlugin>
                 </configuration>
             </plugin>

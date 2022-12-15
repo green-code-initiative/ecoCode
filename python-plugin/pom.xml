@@ -50,10 +50,12 @@
                 <version>${sonar-packaging.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <pluginClass>fr.cnumr.python.CustomPythonRulesPlugin</pluginClass>
-                    <requirePlugins>python:${sonar.python.version}</requirePlugins>
                     <pluginKey>${project.artifactId}</pluginKey>
                     <pluginName>${project.name}</pluginName>
+                    <pluginClass>fr.cnumr.python.CustomPythonRulesPlugin</pluginClass>
+                    <sonarLintSupported>true</sonarLintSupported>
+                    <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
+                    <requirePlugins>python:${sonar.python.version}</requirePlugins>
                 </configuration>
             </plugin>
             <plugin>
