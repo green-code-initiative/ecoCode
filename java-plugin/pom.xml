@@ -15,16 +15,16 @@
     <name>ecoCode Java Sonar Plugin</name>
 
     <dependencies>
-        <!-- MAIN sources dependencies -->
-        <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
-            <artifactId>sonar-plugin-api</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>sonar-java-plugin</artifactId>
             <type>sonar-plugin</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.sonarsource.sonarqube</groupId>
+            <artifactId>sonar-plugin-api</artifactId>
         </dependency>
 
         <dependency>
@@ -38,31 +38,35 @@
 		    <version>3.11</version>
 		</dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>31.0.1-jre</version>
+        </dependency>
+
         <!-- TEST sources dependencies -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>java-checks-testkit</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-migrationsupport</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>31.0.1-jre</version>
+            <scope>test</scope>
         </dependency>
         
     </dependencies>
@@ -72,7 +76,6 @@
             <plugin>
                 <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
                 <artifactId>sonar-packaging-maven-plugin</artifactId>
-                <version>${sonar-packaging.version}</version>
                 <extensions>true</extensions>
                 <configuration>
                     <pluginKey>${project.artifactId}</pluginKey>
@@ -86,7 +89,6 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
