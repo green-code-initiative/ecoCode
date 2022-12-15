@@ -14,5 +14,13 @@ class AvoidGettingSizeCollectionInLoopTest {
                 .onFile("src/test/files/AvoidGettingSizeCollectionInLoopGood.java")
                 .withCheck(new AvoidGettingSizeCollectionInLoop())
                 .verifyNoIssues();
+        JavaCheckVerifier.newVerifier()
+        		.onFile("src/test/files/AvoidGettingSizeCollectionInLoopWhileBad.java")
+        		.withCheck(new AvoidGettingSizeCollectionInLoop())
+        		.verifyIssues();
+        JavaCheckVerifier.newVerifier()
+        		.onFile("src/test/files/AvoidGettingSizeCollectionInLoopWhileGood.java")
+        		.withCheck(new AvoidGettingSizeCollectionInLoop())
+        		.verifyNoIssues();
     }
 }
