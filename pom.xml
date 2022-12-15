@@ -52,20 +52,22 @@
 
 		<!-- Don't forget to update this version -->
 		<jacoco.version>0.8.8</jacoco.version>
-
+    
+		<sonar-plugin-api-impl.version>9.7.1.62043</sonar-plugin-api-impl.version>
 		<sonar-analyzer-commons.version>2.1.0.1111</sonar-analyzer-commons.version>
 		<sonar.python.version>3.9.0.9230</sonar.python.version>
 		<sonarphp.version>3.3.0.5166</sonarphp.version>
 		<sonar-packaging.version>1.20.0.405</sonar-packaging.version>
+    
+    <junit.version>4.13.2</junit.version>
 		<junit.jupiter.version>5.9.1</junit.jupiter.version>
 		<assertJ.version>3.23.1</assertJ.version>
-		<junit.version>4.13.2</junit.version>
-		<sonar-plugin-api-impl.version>9.7.1.62043</sonar-plugin-api-impl.version>
 
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+
 			<!-- MAIN sources dependencies -->
 			<dependency>
 				<groupId>org.sonarsource.sonarqube</groupId>
@@ -73,10 +75,17 @@
 				<version>${sonarqube.version}</version>
 				<scope>provided</scope>
 			</dependency>
+
 			<dependency>
 				<groupId>org.sonarsource.analyzer-commons</groupId>
 				<artifactId>sonar-analyzer-commons</artifactId>
 				<version>${sonar-analyzer-commons.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.sonarsource.sonarqube</groupId>
+				<artifactId>sonar-plugin-api-impl</artifactId>
+				<version>${sonar-plugin-api-impl.version}</version>
 			</dependency>
 
 			<!-- JAVA -->
@@ -114,7 +123,6 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- version to be specified manually -->
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter</artifactId>
@@ -122,7 +130,6 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- version to be specified manually -->
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-migrationsupport</artifactId>
@@ -130,7 +137,6 @@
 				<scope>test</scope>
 			</dependency>
 
-			<!-- version to be specified manually -->
 			<dependency>
 				<groupId>org.assertj</groupId>
 				<artifactId>assertj-core</artifactId>
@@ -142,12 +148,6 @@
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>${junit.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>org.sonarsource.sonarqube</groupId>
-				<artifactId>sonar-plugin-api-impl</artifactId>
-				<version>${sonar-plugin-api-impl.version}</version>
 				<scope>test</scope>
 			</dependency>
 
@@ -161,19 +161,6 @@
 		</dependencies>
 	</dependencyManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.sonarsource.sonarqube</groupId>
-			<artifactId>sonar-plugin-api</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.sonarsource.sonarqube</groupId>
-			<artifactId>sonar-plugin-api-impl</artifactId>
-			<scope>compile</scope>
-		</dependency>
-	</dependencies>
-
 	<build>
 		<pluginManagement>
 			<plugins>
@@ -186,6 +173,16 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-dependency-plugin</artifactId>
 					<version>3.3.0</version>
+				</plugin>
+				<plugin>
+					<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+					<artifactId>sonar-packaging-maven-plugin</artifactId>
+					<version>${sonar-packaging.version}</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${jacoco.version}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>

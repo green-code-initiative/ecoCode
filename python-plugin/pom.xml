@@ -15,32 +15,41 @@
     <name>ecoCode Python Sonar Plugin</name>
 
     <dependencies>
-        <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
-            <artifactId>sonar-plugin-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.sonarsource.analyzer-commons</groupId>
-            <artifactId>sonar-analyzer-commons</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.sonarsource.python</groupId>
             <artifactId>sonar-python-plugin</artifactId>
             <type>sonar-plugin</type>
         </dependency>
+
         <dependency>
-            <groupId>org.sonarsource.python</groupId>
-            <artifactId>python-checks-testkit</artifactId>
+            <groupId>org.sonarsource.sonarqube</groupId>
+            <artifactId>sonar-plugin-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
+
         <dependency>
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api-impl</artifactId>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.sonarsource.analyzer-commons</groupId>
+            <artifactId>sonar-analyzer-commons</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.sonarsource.python</groupId>
+            <artifactId>python-checks-testkit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -48,13 +57,14 @@
             <plugin>
                 <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
                 <artifactId>sonar-packaging-maven-plugin</artifactId>
-                <version>${sonar-packaging.version}</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <pluginClass>fr.cnumr.python.CustomPythonRulesPlugin</pluginClass>
-                    <requirePlugins>python:${sonar.python.version}</requirePlugins>
                     <pluginKey>${project.artifactId}</pluginKey>
                     <pluginName>${project.name}</pluginName>
+                    <pluginClass>fr.cnumr.python.CustomPythonRulesPlugin</pluginClass>
+                    <sonarLintSupported>true</sonarLintSupported>
+                    <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
+                    <requirePlugins>python:${sonar.python.version}</requirePlugins>
                 </configuration>
             </plugin>
             <plugin>
