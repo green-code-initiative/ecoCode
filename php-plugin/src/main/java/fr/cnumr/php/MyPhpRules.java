@@ -20,15 +20,12 @@
 package fr.cnumr.php;
 
 
-import com.google.common.collect.ImmutableList;
-import fr.cnumr.php.checks.*;
 import org.sonar.api.SonarEdition;
 import org.sonar.api.SonarQubeSide;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.internal.SonarRuntimeImpl;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.utils.Version;
-import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 import java.util.ArrayList;
 import java.util.Collections;
