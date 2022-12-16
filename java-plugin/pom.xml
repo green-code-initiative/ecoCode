@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <groupId>io.ecocode</groupId>
         <artifactId>ecocode-parent</artifactId>
@@ -37,11 +37,11 @@
             <artifactId>sonar-analyzer-commons</artifactId>
         </dependency>
 
-		<dependency>
-		    <groupId>org.apache.commons</groupId>
-		    <artifactId>commons-lang3</artifactId>
-		    <version>3.11</version>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.11</version>
+        </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -88,7 +88,8 @@
                     <pluginClass>fr.cnumr.java.MyJavaRulesPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
-                    <requirePlugins>java:${sonarjava.version}</requirePlugins>
+                    <!--                    <requirePlugins>java:${sonarjava.version}</requirePlugins>-->
+                    <basePlugin>java</basePlugin>
                 </configuration>
             </plugin>
             <plugin>
@@ -121,16 +122,16 @@
                             <goal>copy</goal>
                         </goals>
                         <configuration>
-                        <artifactItems>
-                            <artifactItem>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>${project.artifactId}</artifactId>
-                            <version>${project.version}</version>
-                            <type>jar</type>
-                            <overWrite>true</overWrite>
-                            </artifactItem>
-                        </artifactItems>
-                        <outputDirectory>../lib</outputDirectory>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>../lib</outputDirectory>
                         </configuration>
                     </execution>
                     <!-- only required to run UT - these are UT dependencies -->
@@ -138,7 +139,7 @@
                         <id>copy</id>
                         <phase>test-compile</phase>
                         <goals>
-                           <goal>copy</goal>
+                            <goal>copy</goal>
                         </goals>
                         <configuration>
                             <artifactItems>
@@ -178,18 +179,18 @@
                                     <version>5.2.3.RELEASE</version>
                                     <type>jar</type>
                                 </artifactItem>
-	                            <artifactItem>
-		                            <groupId>org.springframework.data</groupId>
-		                            <artifactId>spring-data-jpa</artifactId>
-		                            <version>2.2.4.RELEASE</version>
-		                            <type>jar</type>
-	                            </artifactItem>
-	                            <artifactItem>
-		                            <groupId>org.springframework.data</groupId>
-		                            <artifactId>spring-data-commons</artifactId>
-		                            <version>2.2.4.RELEASE</version>
-		                            <type>jar</type>
-	                            </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.springframework.data</groupId>
+                                    <artifactId>spring-data-jpa</artifactId>
+                                    <version>2.2.4.RELEASE</version>
+                                    <type>jar</type>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.springframework.data</groupId>
+                                    <artifactId>spring-data-commons</artifactId>
+                                    <version>2.2.4.RELEASE</version>
+                                    <type>jar</type>
+                                </artifactItem>
                             </artifactItems>
                             <outputDirectory>${project.build.directory}/test-jars</outputDirectory>
                         </configuration>
