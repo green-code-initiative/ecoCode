@@ -35,7 +35,7 @@ public class AvoidGettingSizeCollectionInLoop extends IssuableSubscriptionVisito
     public void visitNode(Tree tree) {
     	if (tree.is(Kind.FOR_STATEMENT)) {
             ForStatementTree forStatementTree = (ForStatementTree) tree;
-            BinaryExpressionTree expressionTree = (BinaryExpressionTree) forStatementTree.condition();
+            ExpressionTree expressionTree = (ExpressionTree) forStatementTree.condition();
             expressionTree.accept(visitorInFile);
     	}
     	else if (tree.is(Kind.WHILE_STATEMENT)) {
