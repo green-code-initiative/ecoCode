@@ -55,9 +55,17 @@
     
 		<sonar-plugin-api-impl.version>9.7.1.62043</sonar-plugin-api-impl.version>
 		<sonar-analyzer-commons.version>2.1.0.1111</sonar-analyzer-commons.version>
-		<sonar.python.version>3.9.0.9230</sonar.python.version>
-		<sonarphp.version>3.3.0.5166</sonarphp.version>
+		<sonar.python.version>3.21.0.10628</sonar.python.version>
+		<sonarphp.version>3.25.0.9077</sonarphp.version>
 		<sonar-packaging.version>1.20.0.405</sonar-packaging.version>
+		<!-- TODO : LAST version of plugin not possible for the moment because we should change plugin options
+		error message : "A SonarLint compatible plugin should not package dependencies. Please set property 'skipDependenciesPackaging' to 'true' and use the maven-shade-plugin to shade instead."
+		causes :
+		- https://sonarsource.atlassian.net/browse/SONAR-14342
+		- https://sonarsource.atlassian.net/browse/PACKMP-13
+		- commit : https://github.com/SonarSource/sonar-packaging-maven-plugin/commit/ef512488305dc6cf9d553ace73d94c49ea9b12f4
+		-->
+		<!-- <sonar-packaging.version>1.21.0.505</sonar-packaging.version> -->
 
 		<junit.version>4.13.2</junit.version>
 		<junit.jupiter.version>5.9.1</junit.jupiter.version>
@@ -80,14 +88,12 @@
 				<groupId>org.sonarsource.analyzer-commons</groupId>
 				<artifactId>sonar-analyzer-commons</artifactId>
 				<version>${sonar-analyzer-commons.version}</version>
-				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>org.sonarsource.sonarqube</groupId>
 				<artifactId>sonar-plugin-api-impl</artifactId>
 				<version>${sonar-plugin-api-impl.version}</version>
-				<scope>compile</scope>
 			</dependency>
 
 			<!-- JAVA -->
