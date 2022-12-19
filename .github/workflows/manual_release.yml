@@ -6,14 +6,7 @@ on:
         description: 'Confirm manual release creation (by typing "true") ?  -----  WARNING : check version and release notes before confirm'
         default: false
 jobs:
-  build0:
-    name: Build And Release 0
-    if: github.event.inputs.confirmeRelease != 'true'
-    runs-on: ubuntu-latest
-    steps:
-      - name: DEBUG echo 0
-        run: echo "confirmation NON OK"
-  build1:
+  build:
     name: Build And Release 1
     if: github.event.inputs.confirmeRelease == 'true'
     runs-on: ubuntu-latest
