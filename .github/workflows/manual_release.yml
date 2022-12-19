@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       confirmeRelease:
-        description: 'Confirm manual release creation (by typing "true") ?\rWARNING : check version and release notes before confirm'
+        description: 'Confirm manual release creation (by typing "true") ? | WARNING : check version and release notes before confirm'
         options: 
         - false
         - true
