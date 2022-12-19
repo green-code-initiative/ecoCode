@@ -39,7 +39,6 @@ public class MyPhpRules implements RulesDefinition {
   public static final String LANGUAGE = "php";
   public static final String NAME = "Collectif Conception Numérique Responsable";
   public static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/php/rules/custom";
-  public static final String DEFAULT_PROFILE_PATH = "fr/cnumr/l10n/php/rules/custom/DefaultProfilePath.json";
   public static final String REPOSITORY_KEY = "cnumr-php";
   private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
 
@@ -49,7 +48,7 @@ public class MyPhpRules implements RulesDefinition {
 
     SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(9, 7), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
 
-    RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH,DEFAULT_PROFILE_PATH,sonarRuntime);
+    RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH,sonarRuntime);
 
     ruleMetadataLoader.addRulesByAnnotatedClass(repository, new ArrayList<>(RulesList.getChecks()));
 
