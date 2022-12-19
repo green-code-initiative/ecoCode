@@ -10,21 +10,21 @@ on:
         default: false
 jobs:
   build0:
-    name: Build And Release
-    if: github.event.inputs.confirmeRelease == false
+    name: Build And Release 0
+    if: github.event.inputs.confirmeRelease == 'false'
     runs-on: ubuntu-latest
     steps:
       - name: DEBUG echo 0
         run: echo "confirmation NON OK"
   build1:
-    name: Build And Release
-    if: github.event.inputs.confirmeRelease == true
+    name: Build And Release 1
+    if: github.event.inputs.confirmeRelease == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: DEBUG echo
         run: echo "confirmation OK"
   updload-java:
-    name: Upload Java Plugin
+    name: Upload Java Plugin 1
     runs-on: ubuntu-latest
     needs: build1
     steps: 
