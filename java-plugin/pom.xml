@@ -91,7 +91,8 @@
                     <!-- TODO : commented because plugin not loaded in SONAR if required version of java plugin is not installed -->
                     <!-- TODO : check how to resolve it (how to force this version in SonarQube installation) -->
                     <!-- <requirePlugins>java:${sonarjava.version}</requirePlugins> -->
-                    <basePlugin>java</basePlugin>                </configuration>
+                    <basePlugin>java</basePlugin>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -136,15 +137,15 @@
                             <goal>copy</goal>
                         </goals>
                         <configuration>
-                        <artifactItems>
-                            <artifactItem>
-                            <groupId>${project.groupId}</groupId>
-                            <artifactId>${project.artifactId}</artifactId>
-                            <version>${project.version}</version>
-                            <type>jar</type>
-                            <overWrite>true</overWrite>
-                            </artifactItem>
-                        </artifactItems>
+                            <artifactItems>
+                                <artifactItem>
+                                <groupId>${project.groupId}</groupId>
+                                <artifactId>${project.artifactId}</artifactId>
+                                <version>${project.version}</version>
+                                <type>jar</type>
+                                <overWrite>true</overWrite>
+                                </artifactItem>
+                            </artifactItems>
                         <outputDirectory>../lib</outputDirectory>
                         </configuration>
                     </execution>
@@ -153,7 +154,7 @@
                         <id>copy</id>
                         <phase>test-compile</phase>
                         <goals>
-                           <goal>copy</goal>
+                            <goal>copy</goal>
                         </goals>
                         <configuration>
                             <artifactItems>
