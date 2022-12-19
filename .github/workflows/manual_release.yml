@@ -1,0 +1,32 @@
+name: Manual Release
+on:
+  workflow_dispatch:
+    inputs:
+      confirmeRelease:
+        description: 'Confirm manual release creation ? (check version and release notes before confirm)'
+        options: 
+        - false
+        - true
+        default: false
+jobs:
+  build0:
+    name: Build And Release
+    if: github.event.inputs.confirmeRelease == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: DEBUG echo 0
+        run: echo "confirmation NON OK"
+  build1:
+    name: Build And Release
+    if: github.event.inputs.confirmeRelease == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: DEBUG echo
+        run: echo "confirmation OK"
+  updload-java:
+    name: Upload Java Plugin
+    runs-on: ubuntu-latest
+    needs: build1
+    steps: 
+      - name: DEBUG job2
+        run: echo "JOB 2 OK"
