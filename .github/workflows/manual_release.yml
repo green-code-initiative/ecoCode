@@ -11,7 +11,7 @@ on:
 jobs:
   build0:
     name: Build And Release 0
-    if: github.event.inputs.confirmeRelease == 'false'
+    if: github.event.inputs.confirmeRelease != 'true'
     runs-on: ubuntu-latest
     steps:
       - name: DEBUG echo 0
