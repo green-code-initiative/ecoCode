@@ -4,9 +4,12 @@ on:
     inputs:
       confirmeRelease:
         description: 'Confirm manual release creation (by typing "true") ?  -----  WARNING : check version and release notes before confirm'
+        options: 
+        - false
+        - true
         default: false
 jobs:
-  build:
+  build1:
     name: Build And Release 1
     if: github.event.inputs.confirmeRelease == 'true'
     runs-on: ubuntu-latest
