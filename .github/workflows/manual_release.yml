@@ -4,10 +4,7 @@ on:
     inputs:
       confirmeRelease:
         description: 'Confirm manual release creation (by typing "true") ?  -----  WARNING : check version and release notes before confirm'
-        options: 
-        - false
-        - true
-        default: false
+        default: 'false'
 jobs:
   build1:
     name: Build And Release 1
