@@ -19,6 +19,7 @@ jobs:
     name: Build And Release
     needs: checks
     runs-on: ubuntu-latest
+    permissions: read-all|write-all
     outputs:
       last_tag: ${{ steps.export_last_tag.outputs.last_tag }}
       upload_url: ${{ steps.export_upload_url.outputs.upload_url }}
