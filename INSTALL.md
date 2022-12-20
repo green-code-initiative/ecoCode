@@ -146,11 +146,8 @@ Howto create a release
 1. add release notes in `CHANGELOG.md` file
    1. create a new section under `Unreleased` section with the new version title
    2. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
-2. Launch workflow `Manual release` (an error occur if you haven't sufficient permissions)
+2. add tag and push it (an error occur if you haven't sufficient permissions)
 3. a new automatic workflow started to create a new release
-   1. a new git tag is created
-   2. `pom.xml` files are updated to next incremental version
-   3. create a new release
 
 Links
 -----
