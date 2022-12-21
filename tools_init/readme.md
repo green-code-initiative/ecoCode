@@ -3,12 +3,12 @@ Rules Tagging system and Creating Quality Profile
 
 Purpose
 -------
-1. Rules Tagging system
+1. **Rules Tagging system**
 
 Add one new tag to a list of rules (using SonarQube API).
 Why ? because maybe some original SonarQube rules are already ready for being part of this plugin
 
-2. EcoCode Quality Profile
+2. **EcoCode Quality Profile**
 
 Add one new Profile by language forked from SonarWay (using SonarQube API).
 Why ? To use new rules eco-conception from ecocode plugins you will have to create a custom Profile.
@@ -40,9 +40,15 @@ Concepts
 
 Call Sonar API rest to
 ----------------------
-
+1. **Tags**
 - ... get rule data (included systags array and tags array)
 - ... update rule data i.e tags array
+
+2. **Quality Profile**
+- ... create custom quality profile
+- ... change parent profile
+- ... get profile key
+- ... add new rules to profile
 
 Tags modifications
 ------------------
@@ -55,13 +61,13 @@ tags array seems to be the editable part. It's editable from :
 
 Algorithm
 ---------
-1. Tags
+1. **Tags**
 
 - get rules data (rules list from config file)
 - check if new tag to add (from config file) already exists on systags array or tags array
 - add new tag to all existing tags if necessary
 
-2. Profile
+2. **Profile**
 
 - create a custom profile for each language
 - change parent profiles with "Sonar Way"

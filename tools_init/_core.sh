@@ -26,7 +26,7 @@ debug() {
 declare -a RULES_ARRAY
 function build_rules_array {
   # declare ARRAY_RESPONSE=$1
-  orig_IFS="$IFS"### build array with all rules
+  orig_IFS="$IFS"
   IFS=','
   read -ra RULES_ARRAY <<< "$RULES_KEYS"
   IFS="${orig_IFS}"
