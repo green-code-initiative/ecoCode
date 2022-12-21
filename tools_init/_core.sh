@@ -26,9 +26,19 @@ debug() {
 declare -a RULES_ARRAY
 function build_rules_array {
   # declare ARRAY_RESPONSE=$1
-  orig_IFS="$IFS"
+  orig_IFS="$IFS"### build array with all rules
   IFS=','
   read -ra RULES_ARRAY <<< "$RULES_KEYS"
+  IFS="${orig_IFS}"
+}
+
+### $1 : the variable to set into the computed response (using it by reference)
+declare -a PROFILES_LANGUAGE_ARRAY
+function build_profiles_language_array {
+  # declare ARRAY_RESPONSE=$1
+  orig_IFS="$IFS"
+  IFS=','
+  read -ra PROFILES_LANGUAGE_ARRAY <<< "$PROFILES_LANGUAGE_KEYS"
   IFS="${orig_IFS}"
 }
 
@@ -64,6 +74,35 @@ function update_rule_sonarapi() {
   fi
 }
 
+### find profile using SonarQube API
+### $1 :  language
+### $2 :  qualityProfile (name)
+function find_profile_sonarapi() {
+    echo $(curl -u $SONAR_TOKEN: --request GET "$SONAR_URL/api/qualityprofiles/search?language=$1&qualityProfile=$2" 2>/dev/null)
+}
+
+### find profile using SonarQube API
+### $1 :  language
+### $2 :  name (qualityProfile)
+function create_profile_sonarapi() {
+    echo $(curl -u $SONAR_TOKEN: --request POST "$SONAR_URL/api/qualityprofiles/create?language=$1&name=$2" 2>/dev/null)
+}
+
+### change parent profile with Sonar Way using SonarQube API
+### $1 :  language
+### $2 :  qualityProfile (name)
+function change_parent_profile_sonarapi(){
+    echo $(curl -u $SONAR_TOKEN: --request POST "$SONAR_URL/api/qualityprofiles/change_parent?language=$1&qualityProfile=$2&parentQualityProfile=Sonar+way" 2>/dev/null)
+}
+
+### add new rules with label eco-conception from plugins using SonarQube API
+### $1 :  language
+### $2 :  key quality Profile
+### $3 :  tags (eco-conception tag)
+function activate_rules_ecocode_profile_sonarapi(){
+    echo $(curl -u $SONAR_TOKEN: --request POST "$SONAR_URL/api/qualityprofiles/activate_rules?languages=$1&targetKey=$2&tags=$3" 2>/dev/null)
+}
+
 ### validate configuration parameters
 function validate_parameters() {
   if [ -z "$TAG_ECOCONCEPTION" ]; then
@@ -91,6 +130,9 @@ function validate_parameters() {
 
 ### transform string list of rules keys (separated by a ,) to an array
 build_rules_array
+
+### transform string list of profiles language keys (separated by a ,) to an array
+build_profiles_language_array
 
 ### validate config parameters
 validate_parameters
