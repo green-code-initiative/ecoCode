@@ -9,7 +9,7 @@ ecoCode is based on evolving catalogs of [good practices](docs/rules), for vario
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-🌿 SonarQube Plugin
+🌿 SonarQube Plugins
 -------------------
 
 5 technologies are supported by the plugin right now:
@@ -42,7 +42,20 @@ To better understand AST structure, y a can use [AST Explorer](https://astexplor
 🚀 Getting Started
 ------------------
 
-You can download each plugin separatly or you can directly use a [all-in-one docker-compose](INSTALL.md)
+You can download each plugin separatly and copy the plugin (jar file) to `$SONAR_INSTALL_DIR/extensions/plugins` and restart SonarQube.
+Or you can directly use a [all-in-one docker-compose](INSTALL.md)
+
+🛒 Distribution
+------------------
+Ready to use binaries are available [from GitHub](https://github.com/green-code-initiative/ecoCode/releases).
+
+🧩 Plugins version compatibility
+------------------
+
+| Plugins Version	| SonarQube version  |
+|-----------------|-------------------- |
+| 0.1.+	          | SonarQube 8.9.+ LTS to 9.3 |
+
 
 🤝 Contribution
 ---------------
