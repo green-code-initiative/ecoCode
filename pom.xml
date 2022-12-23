@@ -81,14 +81,12 @@
 				<groupId>org.sonarsource.analyzer-commons</groupId>
 				<artifactId>sonar-analyzer-commons</artifactId>
 				<version>${sonar-analyzer-commons.version}</version>
-				<scope>compile</scope>
 			</dependency>
 
 			<dependency>
 				<groupId>org.sonarsource.sonarqube</groupId>
 				<artifactId>sonar-plugin-api-impl</artifactId>
 				<version>${sonar-plugin-api-impl.version}</version>
-				<scope>compile</scope>
 			</dependency>
 
 			<!-- JAVA -->
@@ -181,6 +179,11 @@
 					<groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
 					<artifactId>sonar-packaging-maven-plugin</artifactId>
 					<version>${sonar-packaging.version}</version>
+				</plugin>
+				<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>${maven-shade-plugin.version}</version>
 				</plugin>
 				<plugin>
 					<groupId>org.jacoco</groupId>
