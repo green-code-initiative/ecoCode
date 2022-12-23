@@ -1,8 +1,8 @@
-name: _OBSOLETE_ Tag Release
+name: Tag Release
 on:
   push:
     tags:
-      - '_OBSOLETE_[0-9]+.[0-9]+.[0-9]+_OBSOLETE'
+      - '[0-9]+.[0-9]+.[0-9]+'
 jobs:
   build:
     name: Build And Release
@@ -15,8 +15,6 @@ jobs:
       - name: Extract release notes
         id: extract-release-notes
         uses: ffurrer2/extract-release-notes@v1
-        with:
-          prerelease: true
       - name: Build project
         run: mvn -e -B clean package -DskipTests
       - name: Create release

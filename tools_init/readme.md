@@ -1,10 +1,14 @@
+Rules Tagging system
+====================
+
 Purpose
-=======
+-------
+
 Add one new tag to a list of rules (using SonarQube API).
 Why ? because maybe some original SonarQube rules are already ready for being part of this plugin
 
 Requirements
-============
+------------
 
 - Sonar installed
   - add new token in personal account settings to communicate with Sonar API
@@ -17,27 +21,26 @@ Requirements
   - rules keys list (string format separated with one comma) (`RULES_KEYS` variable) : specify here the list of all keys of rules that you want to add th new tag
   
 Development Environment
-=======================
+-----------------------
 
 bash 3.2 on MacOS
 
 Concepts
-========
+--------
 
-call Sonar API rest to ...
---------------------------
+Call Sonar API rest to
+----------------------
 
-- get rule data (included systags array and tags array)
-- update rule data i.e tags array
+- ... get rule data (included systags array and tags array)
+- ... update rule data i.e tags array
 
-tags modifications
+Tags modifications
 ------------------
 
-systags are not editable from api call
-(This array seems to be fullfilled with tags inside implemented rules)
-tags array seems to be the tags part editable from :
+systags are not editable from api call (it seems to be nativally fullfilled with SonarQube installation)
+tags array seems to be the editable part. It's editable from :
 
-- Sonar UI
+- Sonar UI usage
 - Sonar API calls
 
 Algorythm
@@ -54,8 +57,9 @@ Scripts
 - clean_tag.sh : delete specified tag from all listed rules
 - install_tag.sh : add specified tag to all listed rules
 
-How it works ?
-==============
+How does it work ?
+------------------
+
 - change configuration in `_config.sh` file : check requirements above
 - launch `check_tags.sh` to control your rules and tags
 - launch `install_tags.sh` to add custom tag to your rules
