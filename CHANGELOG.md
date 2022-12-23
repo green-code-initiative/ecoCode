@@ -9,7 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [ISSUE 161] [PR 14] adding tool to update tags of native rules with our custom tags
+- #17 improve releasing system
+
+### Changed
+
+- documentation upgrade (internal)
+
+## [0.1.1] - 2022-12-20
+
+### Added
+
+- [161](https://github.com/cnumr/ecoCode/issues/161) adding tool to update tags of native rules with our custom tags
 
 ### Changed
 
