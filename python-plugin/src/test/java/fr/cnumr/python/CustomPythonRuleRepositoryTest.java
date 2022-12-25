@@ -22,6 +22,7 @@ package fr.cnumr.python;
 import org.junit.Test;
 import org.sonar.api.server.rule.RulesDefinition;
 
+import static fr.cnumr.python.CustomPythonRuleRepository.REPOSITORY_KEY;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CustomPythonRuleRepositoryTest {
@@ -31,9 +32,8 @@ public class CustomPythonRuleRepositoryTest {
     CustomPythonRuleRepository customPythonRuleRepository = new CustomPythonRuleRepository();
     RulesDefinition.Context context = new RulesDefinition.Context();
     customPythonRuleRepository.define(context);
-    assertThat(customPythonRuleRepository.repositoryKey()).isEqualTo(CustomPythonRuleRepository.REPOSITORY_KEY);
-    assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(customPythonRuleRepository.repositoryKey());
+    assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(REPOSITORY_KEY);
     assertThat(context.repositories().get(0).rules()).hasSize(6);
-    assertThat(customPythonRuleRepository.checkClasses()).hasSize(6);
+    assertThat(RulesList.getChecks()).hasSize(6);
   }
 }

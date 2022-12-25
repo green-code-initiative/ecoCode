@@ -1,13 +1,13 @@
 package fr.cnumr.java.checks;
 
 import org.junit.jupiter.api.Test;
-import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.checks.verifier.CheckVerifier;
 
 class FreeResourcesOfAutoCloseableInterfaceTest {
 
     @Test
     void test() {
-        JavaCheckVerifier.newVerifier()
+        CheckVerifier.newVerifier()
                 .onFile("src/test/files/FreeResourcesOfAutoCloseableInterface.java")
                 .withCheck(new FreeResourcesOfAutoCloseableInterface())
                 .withJavaVersion(7)
@@ -16,7 +16,7 @@ class FreeResourcesOfAutoCloseableInterfaceTest {
 
     @Test
     void test_no_java_version() {
-        JavaCheckVerifier.newVerifier()
+        CheckVerifier.newVerifier()
                 .onFile("src/test/files/FreeResourcesOfAutoCloseableInterface.java")
                 .withCheck(new FreeResourcesOfAutoCloseableInterface())
                 .verifyIssues();
