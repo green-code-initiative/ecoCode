@@ -4,6 +4,7 @@ package fr.cnumr.java.checks;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
+import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 import org.sonar.plugins.java.api.tree.CatchTree;
 import org.sonar.plugins.java.api.tree.NewClassTree;
 import org.sonar.plugins.java.api.tree.Tree;
@@ -22,26 +23,34 @@ import java.util.List;
 public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
 
 	protected static final String MESSAGERULE = "Optimize Read File Exceptions";
-    private boolean isFileNotFoundException = false;
 	
     @Override
     public List<Kind> nodesToVisit() {
-        return  Arrays.asList(Kind.TRY_STATEMENT, Kind.NEW_CLASS);
+        return  Arrays.asList(Kind.TRY_STATEMENT);
     }
 
     @Override
     public void visitNode(Tree tree) {
+	    TryStatementTree tryStatementTree = (TryStatementTree) tree;
+	    List<CatchTree> catchTreeList = tryStatementTree.catches();
+	    if(catchTreeList.stream().anyMatch(catchTree -> catchTree.parameter().type().symbolType().toString().equals("FileNotFoundException"))) {
+	    	CheckNoFileInputStreamVisitor checkNoFileInputStreamVisitor = new CheckNoFileInputStreamVisitor();
+	    	tryStatementTree.block().accept(checkNoFileInputStreamVisitor);
+	    }
+	    	
+        return;
+    }
+    
+    private class CheckNoFileInputStreamVisitor extends BaseTreeVisitor {
 
-        if(tree.kind().getAssociatedInterface().equals(NewClassTree.class) && this.isFileNotFoundException){
+		@Override
+		public void visitNewClass(NewClassTree tree) {
             NewClassTree newClassTree = (NewClassTree) tree;
             if(newClassTree.identifier().symbolType().toString().equals("FileInputStream")){
                 reportIssue(tree, MESSAGERULE);
             }
-        }else{
-            TryStatementTree tryStatementTree = (TryStatementTree) tree;
-            List<CatchTree> catchTreeList = tryStatementTree.catches();
-            this.isFileNotFoundException = catchTreeList.stream().anyMatch(catchTree -> catchTree.parameter().type().symbolType().toString().equals("FileNotFoundException"));
-        }
-        return;
+			super.visitNewClass(tree);
+		}
+    	
     }
 }
