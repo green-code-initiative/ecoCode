@@ -1,13 +1,13 @@
 package fr.cnumr.java.checks;
 
 import org.junit.jupiter.api.Test;
-import org.sonar.java.checks.verifier.JavaCheckVerifier;
+import org.sonar.java.checks.verifier.CheckVerifier;
 
 public class AvoidRegexPatternNotStaticTest {
 
     @Test
     public void testHasIssues() {
-        JavaCheckVerifier.newVerifier()
+        CheckVerifier.newVerifier()
                 .onFile("src/test/files/AvoidRegexPatternNotStatic.java")
                 .withCheck(new AvoidRegexPatternNotStatic())
                 .verifyIssues();
@@ -15,7 +15,7 @@ public class AvoidRegexPatternNotStaticTest {
 
     @Test
     public void testHasNoIssues() {
-        JavaCheckVerifier.newVerifier()
+        CheckVerifier.newVerifier()
                 .onFiles(
                         "src/test/files/ValidRegexPattern.java",
                         "src/test/files/ValidRegexPattern2.java",

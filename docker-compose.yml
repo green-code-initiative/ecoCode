@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   sonar:
-    image: sonarqube:9.3-community
+    image: sonarqube:9.8-community
     container_name: sonar_standard
     ports:
       - "9000:9000"
@@ -24,15 +24,6 @@ services:
       - type: bind
         source: ./python-plugin/target/ecocode-python-plugin-0.1.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/ecocode-python-plugin-0.1.0-SNAPSHOT.jar
-#      - type: bind
-#        source: ./ecolinter-plugin/target/ecocode-ecolinter-plugin-0.1.0-SNAPSHOT.jar
-#        target: /opt/sonarqube/extensions/plugins/ecocode-ecolinter-plugin-0.1.0-SNAPSHOT.jar
-#      - type: bind
-#        source: ./xml-plugin/target/ecocode-xml-plugin-0.1.0-SNAPSHOT.jar
-#        target: /opt/sonarqube/extensions/plugins/ecocode-xml-plugin-0.1.0-SNAPSHOT.jar
-      - type: bind
-        source: common
-        target: /opt/sonarqube/common
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"
