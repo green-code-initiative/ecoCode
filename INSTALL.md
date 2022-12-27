@@ -145,10 +145,15 @@ Howto create a release
 ----------------------
 
 1. add release notes in `CHANGELOG.md` file
-   1. create a new section under `Unreleased` section with the new version title
-   2. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
-2. add tag and push it (an error occur if you haven't sufficient permissions)
-3. a new automatic workflow started to create a new release
+    1. create a new section under `Unreleased` section with the new version title
+    2. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
+2. execute `tool_release_1_prepare.sh` to prepare the next release and next SNAPSHOT
+3. if all is ok, execute `tool_release_1_branch.sh` to create a new branch with that release and SNAPSHOT
+4. if all is ok, on github, create a PR and merge it
+5. if all is ok, create a new tag locally on commit starting like `[maven-release-plugin] prepare release ...`
+    6. with name present in commit message with format `X.Y.Z` (ex : 1.2.3)
+6. push new tag with `git push --tags`
+7. an automatic workflow started on github and create the new release of plugin
 
 Links
 -----
