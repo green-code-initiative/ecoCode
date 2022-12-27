@@ -9,7 +9,7 @@
   - module is not declared as module in `pom.xml`
   - there is already XML rules in android-plugin 
 - check documentation
-  - rewrite and merge `README.md` and `README2.md`
+  - [DONE] rewrite and merge `README.md` and `README2.md`
   - in `docs` directory
 - migrate https://github.com/cnumr/ecoLinter to a new repo (`ecoCode-linter`)
   - split JS from CSS
