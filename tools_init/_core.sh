@@ -32,10 +32,9 @@ function build_rules_array {
   IFS="${orig_IFS}"
 }
 
-### $1 : the variable to set into the computed response (using it by reference)
+### build array with each quality profile language to init/update
 declare -a PROFILES_LANGUAGE_ARRAY
 function build_profiles_language_array {
-  # declare ARRAY_RESPONSE=$1
   orig_IFS="$IFS"
   IFS=','
   read -ra PROFILES_LANGUAGE_ARRAY <<< "$PROFILES_LANGUAGE_KEYS"
@@ -74,14 +73,14 @@ function update_rule_sonarapi() {
   fi
 }
 
-### find profile using SonarQube API
+### search profile using SonarQube API
 ### $1 :  language
 ### $2 :  qualityProfile (name)
-function find_profile_sonarapi() {
+function search_profile_sonarapi() {
     echo $(curl -u $SONAR_TOKEN: --request GET "$SONAR_URL/api/qualityprofiles/search?language=$1&qualityProfile=$2" 2>/dev/null)
 }
 
-### find profile using SonarQube API
+### create profile using SonarQube API
 ### $1 :  language
 ### $2 :  name (qualityProfile)
 function create_profile_sonarapi() {
@@ -98,7 +97,7 @@ function change_parent_profile_sonarapi(){
 ### add new rules with label eco-conception from plugins using SonarQube API
 ### $1 :  language
 ### $2 :  key quality Profile
-### $3 :  tags (eco-conception tag)
+### $3 :  tags list in string format separated by comma
 function activate_rules_ecocode_profile_sonarapi(){
     echo $(curl -u $SONAR_TOKEN: --request POST "$SONAR_URL/api/qualityprofiles/activate_rules?languages=$1&targetKey=$2&tags=$3" 2>/dev/null)
 }

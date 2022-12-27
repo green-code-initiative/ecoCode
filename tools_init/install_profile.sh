@@ -24,7 +24,7 @@ do
 
 
   # get profile data from Sonar API
-  res_json=$(find_profile_sonarapi $language $PROFILE_ECOCONCEPTION)
+  res_json=$(search_profile_sonarapi $language $PROFILE_ECOCONCEPTION)
   key_profile=$(echo "$res_json" | jq -r '.profiles[].key')
 
   activate_rules_ecocode_profile_sonarapi "$language" "$key_profile" "$TAG_ECOCONCEPTION"
