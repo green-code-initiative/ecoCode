@@ -7,3 +7,4 @@ target
 *.iml
 lib/*.jar
 bin
+dependency-reduced-pom.xml
