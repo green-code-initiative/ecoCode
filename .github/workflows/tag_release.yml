@@ -4,9 +4,18 @@ on:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
 jobs:
+  checks:
+    name: Requirements
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check user permissions
+        uses: 74th/workflow-permission-action@1.0.0
+        with:
+          users: dedece35,glalloue,jhertout,jules-delecour-dav,olegoaer,zippy1978
   build:
     name: Build And Release
     runs-on: ubuntu-latest
+    needs: checks
     outputs:
       #  last_tag: ${{ steps.export_last_tag.outputs.last_tag }}
       upload_url: ${{ steps.create_release.outputs.upload_url }}

@@ -154,7 +154,7 @@ Howto create a release
 2. if all is ok, execute `tool_release_1_prepare.sh` to prepare locally the next release and next SNAPSHOT (creation of 2 new commits and a tag)
 3. if all is ok, execute `tool_release_1_branch.sh` to create and push a new branch with that release and SNAPSHOT
 4. if all is ok, on github, create a PR based on this new branch to `main` branch
-5. check modifications and merge it
+5. check modifications and merge it (with option checked to delete the branch)
 6. if all is ok, create a new tag locally on commit starting like `[maven-release-plugin] prepare release ...`. The tag name is the version present in that commit message. The format is `X.Y.Z` (ex : 1.2.3)
 7. push new tag with `git push --tags`
 8. an automatic workflow started on github and create the new release of plugin
