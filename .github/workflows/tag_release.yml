@@ -4,24 +4,28 @@ on:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
 jobs:
+  checks:
+    name: Requirements
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check user permissions
+        uses: 74th/workflow-permission-action@1.0.0
+        with:
+          users: dedece35,glalloue,jhertout,jules-delecour-dav,olegoaer,zippy1978
   build:
     name: Build And Release
     runs-on: ubuntu-latest
+    needs: checks
     outputs:
-      last_tag: ${{ steps.export_last_tag.outputs.last_tag }}
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
-      - name: Checkout
+      - name: Checkout tag "${{ github.ref_name }}"
         uses: actions/checkout@v3
-      - name: Get last TAG
-        run: echo "LAST_TAG=$(git tag --sort=-version:refname | head -n 1)" >> $GITHUB_ENV
+        with:
+          ref: ${{  github.ref_name }}
       - name: Extract release notes
         id: extract-release-notes
         uses: ffurrer2/extract-release-notes@v1
-      - name: Checkout tag "${{ env.LAST_TAG }}"
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ env.LAST_TAG }}
       - name: Build project
         run: mvn -e -B clean package -DskipTests
       - name: Create release
@@ -30,8 +34,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ env.LAST_TAG }}
-          release_name: Release ${{ env.LAST_TAG }}
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
           body: ${{ steps.extract-release-notes.outputs.release_notes }}
@@ -41,9 +45,6 @@ jobs:
         with:
           name: ecocode-plugins
           path: lib
-      - name: Export LAST_TAG
-        id: export_last_tag
-        run: echo "last_tag=${{ env.LAST_TAG }}" >> $GITHUB_OUTPUT
       - name: Export UPLOAD_URL
         id: export_upload_url
         run: echo "upload_url=${{ steps.create_release.outputs.upload_url }}" >> $GITHUB_OUTPUT
@@ -65,8 +66,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{needs.build.outputs.upload_url}}
-          asset_path: lib/ecocode-java-plugin-${{ needs.build.outputs.last_tag }}.jar
-          asset_name: ecocode-java-plugin-${{ needs.build.outputs.last_tag }}.jar
+          asset_path: lib/ecocode-java-plugin-${{ github.ref_name }}.jar
+          asset_name: ecocode-java-plugin-${{ github.ref_name }}.jar
           asset_content_type: application/zip
   updload-php:
     name: Upload PHP Plugin
@@ -86,8 +87,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{needs.build.outputs.upload_url}}
-          asset_path: lib/ecocode-php-plugin-${{ needs.build.outputs.last_tag }}.jar
-          asset_name: ecocode-php-plugin-${{ needs.build.outputs.last_tag }}.jar
+          asset_path: lib/ecocode-php-plugin-${{ github.ref_name }}.jar
+          asset_name: ecocode-php-plugin-${{ github.ref_name }}.jar
           asset_content_type: application/zip
   updload-python:
     name: Upload Python Plugin
@@ -107,6 +108,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{needs.build.outputs.upload_url}}
-          asset_path: lib/ecocode-python-plugin-${{ needs.build.outputs.last_tag }}.jar
-          asset_name: ecocode-python-plugin-${{ needs.build.outputs.last_tag }}.jar
+          asset_path: lib/ecocode-python-plugin-${{ github.ref_name }}.jar
+          asset_name: ecocode-python-plugin-${{ github.ref_name }}.jar
           asset_content_type: application/zip
