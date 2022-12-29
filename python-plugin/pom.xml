@@ -114,6 +114,7 @@
                                     <artifactId>${project.artifactId}</artifactId>
                                     <version>${project.version}</version>
                                     <type>jar</type>
+                                    <overWrite>true</overWrite>
                                 </artifactItem>
                             </artifactItems>
                             <outputDirectory>../lib</outputDirectory>
