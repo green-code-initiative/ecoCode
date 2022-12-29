@@ -9,7 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- #17 improve releasing system
+### Changed
+
+## [0.2.0] - 2022-12-28
+
+### Added
+
+- [#17](https://github.com/green-code-initiative/ecoCode/issues/17) improve releasing system
+- [#25](https://github.com/green-code-initiative/ecoCode/issues/25) Release management vs maven packaging (not the same
+  version)
 
 ### Changed
 
@@ -32,6 +40,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v0.1.1...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v0.2.0...HEAD
+
+[0.2.0]: https://github.com/green-code-initiative/ecoCode/compare/v0.1.1...v0.2.0
+
 [0.1.1]: https://github.com/green-code-initiative/ecoCode/compare/v0.1.0...v0.1.1
+
 [0.1.0]: https://github.com/green-code-initiative/ecoCode/releases/tag/v0.1.0
