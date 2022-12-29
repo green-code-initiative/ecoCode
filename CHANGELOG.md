@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [#15](https://github.com/green-code-initiative/ecoCode/pull/15) Upgrade some versions + sonar version from 9.3 to 9.8
 - [#17](https://github.com/green-code-initiative/ecoCode/issues/17) improve releasing system
 - [#25](https://github.com/green-code-initiative/ecoCode/issues/25) Release management vs maven packaging (not the same
   version)
