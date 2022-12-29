@@ -40,7 +40,7 @@ class OptimizeReadFileExceptionCheckTest {
     @Test
     void test5() {
         CheckVerifier.newVerifier()
-                .onFile("src/test/files/OptimizeReadFileExceptionCheck4.java")
+                .onFile("src/test/files/OptimizeReadFileExceptionCheck5.java")
                 .withCheck(new OptimizeReadFileExceptions())
                 .verifyIssues();
     }
