@@ -167,6 +167,15 @@ Howto create a release
 8. push new tag with `git push --tags`
 9. an automatic workflow started on github and create the new release of plugin
 
+Howto debug a rule (with logs)
+------------------------------
+
+1. Add logs like in `java-plugin/src/main/java/fr/cnumr/java/checks/OptimizeReadFileExceptions` class file
+2. Build plugin JARs with `tool_build.sh`
+3. Launch local Sonar with `tool_docker_init.sh`
+4. Launch a sonar scanner on an exemple project with `mvn verify` command (only the first time), followed by `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=***** -Dsonar.password=***** -X`
+5. logs will appear in console (debug logs will appear if `-X` option is given like above)
+
 Links
 -----
 

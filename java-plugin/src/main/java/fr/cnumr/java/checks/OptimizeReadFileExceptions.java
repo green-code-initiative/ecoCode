@@ -25,7 +25,7 @@ public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Optimize Read File Exceptions";
     private static final Logger LOGGER = Loggers.get(OptimizeReadFileExceptions.class);
-    private boolean isFileNotFoundException = false;
+    private boolean isExceptionFound = false;
 
     @Override
     public List<Kind> nodesToVisit() {
@@ -34,40 +34,39 @@ public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
 
     @Override
     public void visitNode(Tree tree) {
-
         LOGGER.debug("***** OptimizeReadFileExceptions.visitNode METHOD - BEGIN");
-        LOGGER.debug("associated interface : {}", tree.kind().getAssociatedInterface());
         if (tree.kind().getAssociatedInterface().equals(NewClassTree.class)) {
             LOGGER.debug("interface NewClassTree found");
             NewClassTree newClassTree = (NewClassTree) tree;
-            LOGGER.debug("identifier : " + newClassTree.identifier().symbolType());
             if (newClassTree.identifier().symbolType().toString().equals("FileInputStream")) {
                 LOGGER.debug("identifier 'FileInputStream' found");
-                if (this.isFileNotFoundException) {
-                    LOGGER.debug("FileNotFoundException OR IOException found => launching 'reportIssue'");
+                if (this.isExceptionFound) {
+                    LOGGER.debug("exception found => launching 'reportIssue'");
                     reportIssue(tree, MESSAGERULE);
                 } else {
-                    LOGGER.debug("FileNotFoundException OR IOException NOT found");
+                    LOGGER.debug("exception NOT found");
                 }
             } else {
-                LOGGER.debug("identifier 'FileInputStream' NOT found => No issue");
+                LOGGER.debug("identifier 'FileInputStream' NOT found (real identifier : {}) => No issue launched", newClassTree.identifier().symbolType());
             }
         } else {
-            LOGGER.debug("interface NewClassTree NOT found => cast to TryStatementTree");
+            LOGGER.debug("interface NewClassTree NOT found (real interface : {}) => casting to TryStatementTree", tree.kind().getAssociatedInterface());
             TryStatementTree tryStatementTree = (TryStatementTree) tree;
             List<CatchTree> catchTreeList = tryStatementTree.catches();
+            /*
             LOGGER.debug("display CatchTree List");
             for (CatchTree catchTree : catchTreeList) {
                 LOGGER.debug("catchTree : " + catchTree.parameter().type().symbolType());
             }
-            LOGGER.debug("compute isFileNotFoundException");
-            this.isFileNotFoundException = isManagedException(catchTreeList);
-            LOGGER.debug("isFileNotFoundException : " + isFileNotFoundException);
+            */
+            LOGGER.debug("compute 'isExceptionFound'");
+            this.isExceptionFound = computeIsExceptionFound(catchTreeList);
+            LOGGER.debug("isExceptionFound : " + isExceptionFound);
         }
         LOGGER.debug("***** OptimizeReadFileExceptions.visitNode METHOD - END");
     }
 
-    private boolean isManagedException(List<CatchTree> catchTreeList) {
+    private boolean computeIsExceptionFound(List<CatchTree> catchTreeList) {
         return catchTreeList.stream().anyMatch(catchTree ->
                 catchTree.parameter().type().symbolType().toString().equals("FileNotFoundException")
                         || catchTree.parameter().type().symbolType().toString().equals("IOException")
