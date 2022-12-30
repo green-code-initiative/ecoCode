@@ -35,7 +35,7 @@ public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
     @Override
     public void visitNode(Tree tree) {
 
-        LOGGER.debug("***** visitNode METHOD - BEGIN");
+        LOGGER.debug("***** OptimizeReadFileExceptions.visitNode METHOD - BEGIN");
         LOGGER.debug("associated interface : {}", tree.kind().getAssociatedInterface());
         if (tree.kind().getAssociatedInterface().equals(NewClassTree.class)) {
             LOGGER.debug("interface NewClassTree found");
@@ -64,7 +64,7 @@ public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
             this.isFileNotFoundException = isManagedException(catchTreeList);
             LOGGER.debug("isFileNotFoundException : " + isFileNotFoundException);
         }
-        LOGGER.debug("***** visitNode METHOD - END");
+        LOGGER.debug("***** OptimizeReadFileExceptions.visitNode METHOD - END");
     }
 
     private boolean isManagedException(List<CatchTree> catchTreeList) {
