@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#22](https://github.com/green-code-initiative/ecoCode/issues/22) Error when running sonar scan with ecocode
+
 ## [0.2.0] - 2022-12-28
 
 ### Added
