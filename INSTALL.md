@@ -75,7 +75,7 @@ If there is only postgres, check the logs:
 ```
 
 If you have this error on run:
-`web_1  | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]`
+`web_1 | [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]`
 you can allocate more virtual memory:
 
 ```sh
@@ -133,7 +133,8 @@ Result : JAR files (one per plugin) will be copied in `lib` repository after bui
 Howto start or stop service (already installed)
 -----------------------------------------------
 
-Once you did the installation a first time (and then you did custom configuration like quality gates, quality profiles, ...),
+Once you did the installation a first time (and then you did custom configuration like quality gates, quality
+profiles, ...),
 if you only want to start (or stop properly) existing services :
 
 ```sh
@@ -144,11 +145,37 @@ if you only want to start (or stop properly) existing services :
 Howto create a release
 ----------------------
 
-1. add release notes in `CHANGELOG.md` file
-   1. create a new section under `Unreleased` section with the new version title
-   2. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
-2. add tag and push it (an error occur if you haven't sufficient permissions)
-3. a new automatic workflow started to create a new release
+1. add release notes in `CHANGELOG.md` file for next release
+    1. create a new section with title like `Release X.Y.Z`
+        1. ... where `X.Y.Z`is the new release
+        2. respect [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format
+    2. give empty `Unreleased` section
+        1. in majority cases, old content of `Unreleased` section is now the content of the new `Release X.Y.Z` section
+    3. add a new section at the bottom of file with new version
+    4. update docker-compose.yml with new SNAPSHOT version
+    5. commit these modifications
+2. if all is ok, execute `tool_release_1_prepare.sh` to prepare locally the next release and next SNAPSHOT (creation of
+   2 new commits and a tag)
+3. if all is ok, execute `tool_release_2_branch.sh` to create and push a new branch with that release and SNAPSHOT
+4. if all is ok, on github, create a PR based on this new branch to `main` branch
+5. wait that automatic check on the new branch are OK, then check modifications and finally merge it
+6. if PR merge is OK, then delete the branch as mentionned when PR merged
+7. wait that automatic check on the `main` branch are OK, and then if all is ok, upgrade your local source code from
+   remote, and go to `main` branch and finally check locally if the
+   new tag is already present on commit starting like `[maven-release-plugin] prepare release ...`. The tag
+   name is the version present in that commit message. The format is `X.Y.Z` (ex : 1.2.3)
+    1. create the new tag locally if not present on that commit
+8. push new tag with `git push --tags`
+9. an automatic workflow started on github and create the new release of plugin
+
+Howto debug a rule (with logs)
+------------------------------
+
+1. Add logs like in `java-plugin/src/main/java/fr/cnumr/java/checks/OptimizeReadFileExceptions` class file
+2. Build plugin JARs with `tool_build.sh`
+3. Launch local Sonar with `tool_docker_init.sh`
+4. Launch a sonar scanner on an exemple project with `mvn verify` command (only the first time), followed by `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=***** -Dsonar.password=***** -X`
+5. logs will appear in console (debug logs will appear if `-X` option is given like above)
 
 Links
 -----
