@@ -152,7 +152,8 @@ Howto create a release
     2. give empty `Unreleased` section
         1. in majority cases, old content of `Unreleased` section is now the content of the new `Release X.Y.Z` section
     3. add a new section at the bottom of file with new version
-    4. commit these modifications
+    4. update docker-compose.yml with new SNAPSHOT version
+    5. commit these modifications
 2. if all is ok, execute `tool_release_1_prepare.sh` to prepare locally the next release and next SNAPSHOT (creation of
    2 new commits and a tag)
 3. if all is ok, execute `tool_release_2_branch.sh` to create and push a new branch with that release and SNAPSHOT
@@ -166,6 +167,15 @@ Howto create a release
     1. create the new tag locally if not present on that commit
 8. push new tag with `git push --tags`
 9. an automatic workflow started on github and create the new release of plugin
+
+Howto debug a rule (with logs)
+------------------------------
+
+1. Add logs like in `java-plugin/src/main/java/fr/cnumr/java/checks/OptimizeReadFileExceptions` class file
+2. Build plugin JARs with `tool_build.sh`
+3. Launch local Sonar with `tool_docker_init.sh`
+4. Launch a sonar scanner on an exemple project with `mvn verify` command (only the first time), followed by `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=***** -Dsonar.password=***** -X`
+5. logs will appear in console (debug logs will appear if `-X` option is given like above)
 
 Links
 -----
