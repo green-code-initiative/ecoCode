@@ -42,24 +42,6 @@ public class MyPhpRules implements RulesDefinition {
   public static final String REPOSITORY_KEY = "cnumr-php";
   private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
 
-  /**
-   * Provide the repository key
-   */
-  @Override
-  public String repositoryKey() {
-    return REPOSITORY_KEY;
-  }
-
-  /**
-   * Provide the list of checks class that implements rules
-   * to be part of the rule repository
-   */
-  @Override
-  public ImmutableList<Class> checkClasses() {
-    return ImmutableList.of(IncrementCheck.class, AvoidTryCatchFinallyCheck.class, AvoidDoubleQuoteCheck.class,
-            AvoidFullSQLRequestCheck.class, AvoidSQLRequestInLoopCheck.class, NoFunctionCallWhenDeclaringForLoop.class);
-  }
-
   @Override
   public void define(Context context) {
     NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
