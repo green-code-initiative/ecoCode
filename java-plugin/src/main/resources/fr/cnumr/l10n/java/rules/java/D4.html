@@ -1,0 +1,26 @@
+<p>
+    Prefer local variables as parameters
+</p>
+<p>When calling a global variable, the interpretation engine must check that it exists in all the scopes, that it has a value, etc. Passing global variables as arguments gives them the statut of local variables inside the function, thus saving computing time (CPU cycles).
+</p>
+<p>
+CASE 1 (Avoid as possible):<br>
+You are back on the service code. You see that the func1() uses globalVariabl1. Okay, but whats its value by now ? How does it change ? Who mutates the globalVariabl1 before it comes to this function ? What have been the sequence of all these mutations ? You would have no idea. It will be quite difficult to figure all this out.
+<br>
+CASE 2 (Recommended):<br>
+You are back to you code, and see that the func0() fetches something and then passes it to func1(param1) as a parameter. You clearly know what the data is, how does it gets here.
+</p><br>
+<p>example:<br>
+    var aGlobal = new String('Hello');<br>
+    function globalLength(){<br>
+    length = aGlobal.length;<br>
+    console.log(length);<br>
+    }<br>
+    globalLength();<br>
+    <br>
+    var aGlobal = new String('Hello');<br>
+    function someVarLength(str){<br>
+    length = str.length;<br>
+    console.log(length);<br>
+    }<br>
+    somVarLength(aGlobal);</p>
