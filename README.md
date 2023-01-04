@@ -16,7 +16,7 @@ refer to the contribution section.
 🌿 SonarQube Plugins
 -------------------
 
-5 technologies are supported by the plugin right now:
+3 technologies are supported by the plugin right now:
 
 - [Java](java-plugin/)
 - [PHP](php-plugin/)
