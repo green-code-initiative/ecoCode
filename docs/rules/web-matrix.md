@@ -17,7 +17,7 @@ Here is the list of rules already available in ecoCode project code.
 | Non-standard fonts used | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | |
 | Non-outsourced CSS and Javascript | 🚫 | 🚫 |  | 🚫 | 🚫 | |
 | Image tags containing an empty SRC attribute | 🚫 | 🚫 | 🚫 | 🚫 | 🚫 | |
-| Resize images outside the browser | | | ✅ | | | |
+| Resize images outside the browser | 🚫 | 🚫 | ✅ | 🚫 | 🚫 | 🚫 |
 | Use unoptimized vector images |  |  |  |  |  | |
 | Using too many CSS/javascript animations | 🚫 | 🚫 | ✅ | 🚫 | 🚫 | |
 | Modify the DOM when traversing it | 🚫 | 🚫 | ✅ | 🚫 | 🚫 | |
