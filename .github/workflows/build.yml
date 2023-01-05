@@ -1,8 +1,11 @@
-name: Build
+name: Build and Tests
 on:
   push:
     branches:
       - main
+    paths-ignore:
+      - '*.md'
+      - '.github/**/*.yml'
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -10,7 +13,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: Set up JDK 11
@@ -31,19 +35,12 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
-      - name: Execute Gradle build CodeNarc
-        working-directory: ./src/codenarc-converter/CodeNarc
-        run: |
-          chmod +x gradlew
-          ./gradlew build -x test
-      - name: Execute Maven build CodeNarc
-        working-directory: ./src/codenarc-converter
-        run: |
-          mvn initialize
-          mvn clean package
       - name: Build and analyze
-        working-directory: ./src
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -e -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=cnumr_ecoCode -Dsonar.exclusions=**/src/codenarc-converter/**,**/*.groovy,**/src/android-plugin/src/test/**,**/*.dummy
+        working-directory: .
+# en commentaire en attendant le retour de Jules sur l'amélioration de la partie metrics vers SonarQube
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+#          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#        run: mvn -e -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=ecocode -Dsonar.exclusions=**/*.groovy,**/*.dummy
+      # waiting for sonarqube secrets
+        run: mvn -e -B clean compile verify
