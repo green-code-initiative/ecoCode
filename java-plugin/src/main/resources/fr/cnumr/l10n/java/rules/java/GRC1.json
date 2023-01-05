@@ -1,0 +1,13 @@
+{
+  "title": "Avoid Spring repository call in loop",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "50min"
+  },
+  "tags": [
+    "eco-conception"
+  ],
+  "defaultSeverity": "Minor"
+}
