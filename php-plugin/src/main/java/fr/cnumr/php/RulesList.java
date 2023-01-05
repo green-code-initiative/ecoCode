@@ -45,7 +45,8 @@ public final class RulesList {
             AvoidDoubleQuoteCheck.class,
             AvoidFullSQLRequestCheck.class,
             AvoidSQLRequestInLoopCheck.class,
-            NoFunctionCallWhenDeclaringForLoop.class
+            NoFunctionCallWhenDeclaringForLoop.class,
+            PreferUsingForeachCheck.class
         ));
     }
 
