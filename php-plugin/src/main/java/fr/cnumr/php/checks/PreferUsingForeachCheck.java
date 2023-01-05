@@ -3,8 +3,6 @@ package fr.cnumr.php.checks;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
-import org.sonar.plugins.php.api.tree.expression.FunctionCallTree;
-import org.sonar.plugins.php.api.tree.expression.ParenthesisedExpressionTree;
 import org.sonar.plugins.php.api.tree.statement.ForStatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
@@ -34,12 +32,11 @@ public class PreferUsingForeachCheck extends PHPSubscriptionCheck {
 
     public void checkIssue(ForStatementTree forStatementTree) {
         if(forStatementTree.forToken() != null){
-            repport(forStatementTree);
-            return;
+            report(forStatementTree);
         }
     }
 
-    private void repport(ForStatementTree forStatementTree) {
+    private void report(ForStatementTree forStatementTree) {
         context().newIssue(this, forStatementTree, ERROR_MESSAGE);
     }
 
