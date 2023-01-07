@@ -21,25 +21,25 @@ do
   res_json=$(find_rule_sonarapi $rule_key)
   echo -e "Existing sysTags : $(echo "$res_json" | jq -r '.rules[].sysTags')"
   echo -e "Existing tags : $(echo "$res_json" | jq -r '.rules[].tags')"
-  
+
   # loop on tags array to check if tag is present
   # secondly, creating all tags list to delete the newone inside if new tag is found
   declare tags_string=""
   is_tag_found=0
-  while read -r tag ; do 
+  while read -r tag ; do
     debug "  Processing tag $tag"
 
     if [ "$tag" == "$TAG_ECOCONCEPTION" ]; then
       is_tag_found=1
-    else 
+    else
       # only keep tags aren't the newone
       if [ -n "$tags_string" ]; then
         tags_string+=","
-      fi 
+      fi
       tags_string+="$tag"
     fi
   done < <(echo "$res_json" | jq -r '.rules[].tags[]')
-  
+
   # check if tag was found on tags array
   # if found, use built tag list (without tag) and call Sonar API to update tags of the current rule
   if [ $is_tag_found == 1 ]; then
