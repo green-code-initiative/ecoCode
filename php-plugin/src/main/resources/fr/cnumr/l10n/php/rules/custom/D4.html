@@ -1,0 +1,19 @@
+<p>
+  Prefer local variables as parameters
+</p>
+<p>A l'appel d'une variable globale, le moteur d'interprétation doit  vérifier son existence dans tous les scopes, qu'elle dispose d'une valeur, etc. Passer les variables globales en argument de routines les rend locales dans la fonction, permettant ainsi d'économiser du temps de calcul (cycles CPU).
+</p>
+<p>exemple:<br>
+  var aGlobal = new String('Hello');<br>
+  function globalLength(){<br>
+  length = aGlobal.length;<br>
+  console.log(length);<br>
+  }<br>
+  globalLength();<br>
+  <br>
+  var aGlobal = new String('Hello');<br>
+  function someVarLength(str){<br>
+  length = str.length;<br>
+  console.log(length);<br>
+  }<br>
+  somVarLength(aGlobal);</p>

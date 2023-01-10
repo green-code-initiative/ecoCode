@@ -1,0 +1,13 @@
+{
+  "title": "Avoid using Pattern.compile() in a non-static context.",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "20min"
+  },
+  "tags": [
+    "eco-conception"
+  ],
+  "defaultSeverity": "Minor"
+}

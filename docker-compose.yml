@@ -1,0 +1,52 @@
+version: "3.3"
+services:
+  sonar:
+    image: sonarqube:9.8-community
+    container_name: sonar_standard
+    ports:
+      - "9000:9000"
+    networks:
+      - sonarnet
+    depends_on:
+      - db
+    environment:
+      SONAR_JDBC_USERNAME: sonar
+      SONAR_JDBC_PASSWORD: sonar
+      SONAR_JDBC_URL: jdbc:postgresql://db:5432/sonarqube
+      SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: 'true'
+    volumes:
+      - type: bind
+        source: ./java-plugin/target/ecocode-java-plugin-0.2.2-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-java-plugin-0.2.2-SNAPSHOT.jar
+      - type: bind
+        source: ./php-plugin/target/ecocode-php-plugin-0.2.2-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-php-plugin-0.2.2-SNAPSHOT.jar
+      - type: bind
+        source: ./python-plugin/target/ecocode-python-plugin-0.2.2-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-python-plugin-0.2.2-SNAPSHOT.jar
+      - "extensions:/opt/sonarqube/extensions"
+      - "logs:/opt/sonarqube/logs"
+      - "data:/opt/sonarqube/data"
+
+  db:
+    image: postgres:12
+    container_name: postgresql_standard
+    networks:
+      - sonarnet
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: sonar
+      POSTGRES_PASSWORD: sonar
+      POSTGRES_DB: sonarqube
+      PGDATA: pg_data:/var/lib/postgresql/data/pgdata
+
+networks:
+  sonarnet:
+    driver: bridge
+
+volumes:
+  data:
+  logs:
+  extensions:
+  pg_data:
