@@ -64,6 +64,7 @@
                     <!-- TODO : check how to resolve it (how to force this version in SonarQube installation) -->
                     <!-- <requirePlugins>python:${sonar.python.version}</requirePlugins> -->
                     <basePlugin>python</basePlugin>
+                    <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
             </plugin>
             <plugin>
