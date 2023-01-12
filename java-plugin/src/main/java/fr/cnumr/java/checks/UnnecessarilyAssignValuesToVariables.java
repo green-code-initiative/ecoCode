@@ -63,7 +63,7 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
     }
 
     private void reportIfUnknow(String name, Tree tree) {
-        Integer issueLine = tree.firstToken().line();
+        Integer issueLine = tree.firstToken().range().start().line();
 
         if (!(linesWithIssuesByVariable.containsKey(name) && linesWithIssuesByVariable.get(name).contains(issueLine))) {
             if (!linesWithIssuesByVariable.containsKey(name)) {
