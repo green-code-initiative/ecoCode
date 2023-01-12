@@ -3,12 +3,13 @@
 <pre>
 myFunction("name", "age", "IsStudent");
   $lastName = "Hugo";
+  $concatenatedString = "$lastName is a student";
 </pre>
 <h2>Compliant Solution</h2>
 <pre>
 myFunction('name', 'age', 'IsStudent');
     $lastName = 'Hugo';
-    $concatenatedString = "$lastName is a student";
+    $concatenatedString = $lastName . 'is a student';
 </pre>
 <h2>The three sources of impacts of a code identified are: </h2>
 - Energy (measured in joules)
