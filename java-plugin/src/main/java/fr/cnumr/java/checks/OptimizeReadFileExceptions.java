@@ -34,7 +34,7 @@ public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
 
     @Override
     public void visitNode(Tree tree) {
-        LOGGER.debug("***** OptimizeReadFileExceptions.visitNode METHOD - BEGIN");
+        LOGGER.debug("--------------------_____-----_____----- OptimizeReadFileExceptions.visitNode METHOD - BEGIN");
         if (tree.kind().getAssociatedInterface().equals(NewClassTree.class)) {
             LOGGER.debug("interface NewClassTree found");
             NewClassTree newClassTree = (NewClassTree) tree;
@@ -63,7 +63,7 @@ public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
             this.isExceptionFound = computeIsExceptionFound(catchTreeList);
             LOGGER.debug("isExceptionFound : " + isExceptionFound);
         }
-        LOGGER.debug("***** OptimizeReadFileExceptions.visitNode METHOD - END");
+        LOGGER.debug("--------------------_____-----_____----- OptimizeReadFileExceptions.visitNode METHOD - END");
     }
 
     private boolean computeIsExceptionFound(List<CatchTree> catchTreeList) {

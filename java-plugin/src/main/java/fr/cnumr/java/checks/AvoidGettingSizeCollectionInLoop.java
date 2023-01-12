@@ -3,18 +3,25 @@ package fr.cnumr.java.checks;
 import java.util.Arrays;
 import java.util.List;
 
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.*;
+import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
+import org.sonar.plugins.java.api.tree.BinaryExpressionTree;
+import org.sonar.plugins.java.api.tree.ForStatementTree;
+import org.sonar.plugins.java.api.tree.MethodInvocationTree;
+import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
+import org.sonar.plugins.java.api.tree.WhileStatementTree;
 
 @Rule(key = "GSCIL",
         name = "Developpement",
         description = AvoidGettingSizeCollectionInLoop.MESSAGERULE,
         priority = Priority.MINOR,
-        tags = {"bug" })
+        tags = {"bug"})
 public class AvoidGettingSizeCollectionInLoop extends IssuableSubscriptionVisitor {
     protected static final String MESSAGERULE = "Avoid getting the size of the collection in the loop";
     private static final MethodMatchers SIZE_METHOD = MethodMatchers.or(
@@ -26,24 +33,44 @@ public class AvoidGettingSizeCollectionInLoop extends IssuableSubscriptionVisito
     );
     private final AvoidGettingSizeCollectionInLoop.AvoidGettingSizeCollectionInLoopVisitor visitorInFile = new AvoidGettingSizeCollectionInLoop.AvoidGettingSizeCollectionInLoopVisitor();
 
+    private static final Logger LOGGER = Loggers.get(AvoidGettingSizeCollectionInLoop.class);
+
     @Override
     public List<Kind> nodesToVisit() {
-        return  Arrays.asList(Tree.Kind.FOR_EACH_STATEMENT, Tree.Kind.FOR_STATEMENT, Tree.Kind.WHILE_STATEMENT);
+        return Arrays.asList(Kind.FOR_STATEMENT, Kind.WHILE_STATEMENT);
     }
 
     @Override
     public void visitNode(Tree tree) {
+        LOGGER.debug("--------------------_____-----_____----- AvoidGettingSizeCollectionInLoop.visitNode METHOD - BEGIN");
+        if (tree.is(Kind.FOR_STATEMENT)) {
+            LOGGER.debug("ForStatement found");
             ForStatementTree forStatementTree = (ForStatementTree) tree;
+            LOGGER.debug("Casting condition to BinaryExpressionTree");
             BinaryExpressionTree expressionTree = (BinaryExpressionTree) forStatementTree.condition();
+            LOGGER.debug("Checking BinaryExpressionTree content");
             expressionTree.accept(visitorInFile);
+        } else if (tree.is(Kind.WHILE_STATEMENT)) {
+            LOGGER.debug("WhileStatement found");
+            WhileStatementTree whileStatementTree = (WhileStatementTree) tree;
+            LOGGER.debug("Casting condition to BinaryExpressionTree");
+            BinaryExpressionTree expressionTree = (BinaryExpressionTree) whileStatementTree.condition();
+            LOGGER.debug("Checking BinaryExpressionTree content");
+            expressionTree.accept(visitorInFile);
+        } else {
+            throw new UnsupportedOperationException("Kind of statement NOT supported - real kind : " + tree.kind().getAssociatedInterface());
+        }
+        LOGGER.debug("--------------------_____-----_____----- AvoidGettingSizeCollectionInLoop.visitNode METHOD - END");
     }
 
     private class AvoidGettingSizeCollectionInLoopVisitor extends BaseTreeVisitor {
         @Override
         public void visitMethodInvocation(MethodInvocationTree tree) {
             if (SIZE_METHOD.matches(tree.symbol())) {
+                LOGGER.debug("sizeMethod found => launching ISSUE !!!");
                 reportIssue(tree, MESSAGERULE);
             } else {
+                LOGGER.debug("sizeMethod NOT found : bypass and go next");
                 super.visitMethodInvocation(tree);
             }
         }
