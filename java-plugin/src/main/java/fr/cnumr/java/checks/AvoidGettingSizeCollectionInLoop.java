@@ -46,17 +46,33 @@ public class AvoidGettingSizeCollectionInLoop extends IssuableSubscriptionVisito
         if (tree.is(Kind.FOR_STATEMENT)) {
             LOGGER.debug("ForStatement found");
             ForStatementTree forStatementTree = (ForStatementTree) tree;
-            LOGGER.debug("Casting condition to BinaryExpressionTree");
-            BinaryExpressionTree expressionTree = (BinaryExpressionTree) forStatementTree.condition();
-            LOGGER.debug("Checking BinaryExpressionTree content");
-            expressionTree.accept(visitorInFile);
+
+            LOGGER.debug("Check if condition is a BinaryExpressionTree");
+            if (forStatementTree.condition() instanceof BinaryExpressionTree) {
+
+                LOGGER.debug("Casting condition to BinaryExpressionTree");
+                BinaryExpressionTree expressionTree = (BinaryExpressionTree) forStatementTree.condition();
+                LOGGER.debug("Checking BinaryExpressionTree content");
+                expressionTree.accept(visitorInFile);
+
+            } else {
+                LOGGER.debug("Condition isn't a BinaryExpressionTree (real type : {}) => no issue launched", forStatementTree.condition().getClass());
+            }
         } else if (tree.is(Kind.WHILE_STATEMENT)) {
             LOGGER.debug("WhileStatement found");
             WhileStatementTree whileStatementTree = (WhileStatementTree) tree;
-            LOGGER.debug("Casting condition to BinaryExpressionTree");
-            BinaryExpressionTree expressionTree = (BinaryExpressionTree) whileStatementTree.condition();
-            LOGGER.debug("Checking BinaryExpressionTree content");
-            expressionTree.accept(visitorInFile);
+
+            LOGGER.debug("Check if condition is a BinaryExpressionTree");
+            if (whileStatementTree.condition() instanceof BinaryExpressionTree) {
+
+                LOGGER.debug("Casting condition to BinaryExpressionTree");
+                BinaryExpressionTree expressionTree = (BinaryExpressionTree) whileStatementTree.condition();
+                LOGGER.debug("Checking BinaryExpressionTree content");
+                expressionTree.accept(visitorInFile);
+
+            } else {
+                LOGGER.debug("Condition isn't a BinaryExpressionTree (real type : {}) => no issue launched");
+            }
         } else {
             throw new UnsupportedOperationException("Kind of statement NOT supported - real kind : " + tree.kind().getAssociatedInterface());
         }

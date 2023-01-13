@@ -13,6 +13,14 @@ class AvoidGettingSizeCollectionInLoopTest {
     }
 
     @Test
+    void testIgnoredForLoop() {
+        CheckVerifier.newVerifier()
+                .onFile("src/test/files/AvoidGettingSizeCollectionInForLoopIgnored.java")
+                .withCheck(new AvoidGettingSizeCollectionInLoop())
+                .verifyNoIssues();
+    }
+
+    @Test
     void testGoodForLoop() {
         CheckVerifier.newVerifier()
                 .onFile("src/test/files/AvoidGettingSizeCollectionInForLoopGood.java")
@@ -26,6 +34,14 @@ class AvoidGettingSizeCollectionInLoopTest {
                 .onFile("src/test/files/AvoidGettingSizeCollectionInWhileLoopBad.java")
                 .withCheck(new AvoidGettingSizeCollectionInLoop())
                 .verifyIssues();
+    }
+
+    @Test
+    void testIgnoredWhileFoop() {
+        CheckVerifier.newVerifier()
+                .onFile("src/test/files/AvoidGettingSizeCollectionInWhileLoopIgnored.java")
+                .withCheck(new AvoidGettingSizeCollectionInLoop())
+                .verifyNoIssues();
     }
 
     @Test
