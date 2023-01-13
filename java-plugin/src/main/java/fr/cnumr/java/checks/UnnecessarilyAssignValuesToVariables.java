@@ -59,7 +59,6 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
 
         variableList.forEach(this::reportIfUnknow);
         variableList.clear();
-
     }
 
     private void reportIfUnknow(String name, Tree tree) {
@@ -149,7 +148,9 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
 
         @Override
         public void visitReturnStatement(ReturnStatementTree tree) {
-            variableList.remove(tree.expression().toString());
+            if (tree != null && tree.expression() != null) {
+                variableList.remove(tree.expression().toString());
+            }
             super.visitReturnStatement(tree);
         }
 
