@@ -56,7 +56,7 @@ public class AvoidGettingSizeCollectionInLoop extends IssuableSubscriptionVisito
                 expressionTree.accept(visitorInFile);
 
             } else {
-                LOGGER.debug("Condition isn't a BinaryExpressionTree (real type : {}) => no issue launched", forStatementTree.condition().getClass());
+                LOGGER.debug("Condition isn't a BinaryExpressionTree (real type : {}) => no issue launched", forStatementTree.condition());
             }
         } else if (tree.is(Kind.WHILE_STATEMENT)) {
             LOGGER.debug("WhileStatement found");
