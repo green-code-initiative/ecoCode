@@ -13,4 +13,12 @@ class UnnecessarilyAssignValuesToVariablesTest {
                 .verifyIssues();
     }
 
+    @Test
+    void testIgnoredEmptyReturn() {
+        CheckVerifier.newVerifier()
+                .onFile("src/test/files/UnnecessarilyAssignValuesToVariablesTestCheckWithEmptyReturn.java")
+                .withCheck(new UnnecessarilyAssignValuesToVariables())
+                .verifyNoIssues();
+    }
+
 }
