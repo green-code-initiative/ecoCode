@@ -11,9 +11,9 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 > - Refer this project in your project's readme
 > - Mention the project at local meetups and tell your friends/colleagues
 
-<!-- omit in toc -->
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Code of Conduct](#code-of-conduct)
 - [I Have a Question](#i-have-a-question)
 - [I Want To Contribute](#i-want-to-contribute)
@@ -79,12 +79,7 @@ We use GitHub issues to track bugs and errors. If you run into an issue with the
 - Please provide as much context as possible and describe the *reproduction steps* that someone else can follow to recreate the issue on their own. This usually includes your code. For good bug reports you should isolate the problem and create a reduced test case.
 - Provide the information you collected in the previous section.
 
-Once it's filed:
-
-- The project team will label the issue accordingly.
-- A team member will try to reproduce the issue with your provided steps. If there are no reproduction steps or no obvious way to reproduce the issue, the team will ask you for those steps and mark the issue as `needs-repro`. Bugs with the `needs-repro` tag will not be addressed until they are reproduced.
-- If the team is able to reproduce the issue, it will be marked `needs-fix`, as well as possibly other tags (such as `critical`), and the issue will be left to be [implemented by someone](#your-first-code-contribution).
-
+Once it's filed, the project team will label the issue accordingly.
 When you create an issue, a template is given to you.
 
 ### Suggesting Enhancements
@@ -120,7 +115,10 @@ Please make a Pull Request with modifications.
 
 ## Styleguides
 
-Please check [starter-pack](https://github.com/green-code-initiative/ecoCode-challenge/blob/main/starter-pack.md)
+Please check :
+- [starter-pack](https://github.com/green-code-initiative/ecoCode-challenge/blob/main/starter-pack.md)
+- [Code Style Guide](https://github.com/green-code-initiative/ecoCode-challenge/blob/main/CODE_STYLE.md) __in progress__
+
 
 ## Join The Project Team
 
