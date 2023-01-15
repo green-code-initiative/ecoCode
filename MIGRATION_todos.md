@@ -11,7 +11,7 @@
 - check documentation
   - [DONE] rewrite and merge `README.md` and `README2.md`
   - in `docs` directory
-- migrate https://github.com/cnumr/ecoLinter to a new repo (`ecoCode-linter`)
+- [IN PROGRESS] migrate https://github.com/cnumr/ecoLinter to a new repo (`ecoCode-linter`)
   - split JS from CSS
   - compare actual ecollinter-plugin in ecocode standard and ecocodelinter of external repo
 
