@@ -1,4 +1,3 @@
-<!-- omit in toc -->
 # Contributing to Ecocode
 
 First off, thanks for taking the time to contribute! ❤️
@@ -13,17 +12,19 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 ## Table of Contents
 
-- [Table of Contents](#table-of-contents)
-- [Code of Conduct](#code-of-conduct)
-- [I Have a Question](#i-have-a-question)
-- [I Want To Contribute](#i-want-to-contribute)
-  - [Reporting Bugs](#reporting-bugs)
-  - [Suggesting Enhancements](#suggesting-enhancements)
-  - [Your First Code Contribution](#your-first-code-contribution)
-  - [Improving The Documentation](#improving-the-documentation)
-- [Styleguides](#styleguides)
-- [Join The Project Team](#join-the-project-team)
-- [Attribution](#attribution)
+- [Contributing to Ecocode](#contributing-to-ecocode)
+  - [Table of Contents](#table-of-contents)
+  - [Code of Conduct](#code-of-conduct)
+  - [I Have a Question](#i-have-a-question)
+  - [I Want To Contribute](#i-want-to-contribute)
+    - [Legal Notice](#legal-notice)
+    - [Reporting Bugs](#reporting-bugs)
+    - [Suggesting Enhancements](#suggesting-enhancements)
+    - [Your First Code Contribution](#your-first-code-contribution)
+    - [Improving The Documentation](#improving-the-documentation)
+  - [Styleguides](#styleguides)
+  - [Join The Project Team](#join-the-project-team)
+  - [Attribution](#attribution)
 
 ## Code of Conduct
 
@@ -48,7 +49,8 @@ We will then take care of the issue as soon as possible.
 
 ## I Want To Contribute
 
-> ### Legal Notice
+### Legal Notice
+
 > When contributing to this project, you must agree that you have authored 100% of the content, that you have the necessary rights to the content and that the content you contribute may be provided under the project license.
 
 ### Reporting Bugs
@@ -118,7 +120,6 @@ Please make a Pull Request with modifications.
 Please check :
 - [starter-pack](https://github.com/green-code-initiative/ecoCode-challenge/blob/main/starter-pack.md)
 - [Code Style Guide](https://github.com/green-code-initiative/ecoCode-challenge/blob/main/CODE_STYLE.md) __in progress__
-
 
 ## Join The Project Team
 
