@@ -18,16 +18,11 @@ Source files must be encoded using `UTF-8`.
 
 A source file consists of the following, in this exact order:
 
-* License
 * Package statement
 * Import statements
 * Exactly one top-level class
 
 Exactly one blank line separates each of the above sections.
-
-### License
-
-> In Progress
 
 ### Import statements
 
@@ -135,7 +130,7 @@ more substantial in which case the 2 extra lines could still help with readabili
 
 ## Class declaration
 
-Try as much as possible to put the `implements`, `extends` section of a class declaration on the same line as the class itself. 
+Try as much as possible to put the `implements`, `extends` section of a class declaration on the same line as the class itself.
 
 Order the classes so that the most important comes first.
 
@@ -143,7 +138,7 @@ Order the classes so that the most important comes first.
 
 ### Constant names
 
-Constant names use `CONSTANT_CASE`: all uppercase letters, with words separated by underscores. 
+Constant names use `CONSTANT_CASE`: all uppercase letters, with words separated by underscores.
 
 Every constant is a `static final` field, but not all `static final` fields are constants. Constant case should therefore be chosen only if the field **is really** a constant.
 
@@ -161,7 +156,7 @@ private static final Set<String> internalAnnotationAttributes = new HashSet<Stri
 
 ### Variable names
 
-Avoid using single characters as variable names. For instance prefer `Method method` to `Method m`. 
+Avoid using single characters as variable names. For instance prefer `Method method` to `Method m`.
 
 ## Programming Practices
 
@@ -305,5 +300,9 @@ Use the BDD Mockito support.
 
 From experience with issue [#42](https://github.com/green-code-initiative/ecoCode/issues/42), when an exception occurs during Sonar analysis with maven command, the consequence is a crash. If this phase is launched in a CI/CD pipeline, this crash will block the pipeline. Thus, our plugins will be deleted until next corrections.
 
-Make a maximum of controls in the code to avoid ClassCast exceptions.
-Why
+Please, make a maximum of controls in the code to avoid ClassCast exceptions and thus, avoid uninstalling our plugin from SonarQube.
+
+### Unit tests
+
+Unit test are mandatory. If you can, use Test Driven Development method to write your tests.
+Check coverage of your tests with SoanrQube integration of our code.
