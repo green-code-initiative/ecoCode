@@ -110,6 +110,7 @@ They have contributed to the success of ecoCode :
 - [Orange Business Services](https://www.orange-business.com/)
 - [Snapp'](https://www.snapp.fr/)
 - [Université de Pau et des Pays de l'Adour (UPPA)](https://www.univ-pau.fr/)
+- [Solocal](https://www.solocal.com/) / [PagesJaunes.fr](https://www.pagesjaunes.fr/)
 
 They supported the project :
 
