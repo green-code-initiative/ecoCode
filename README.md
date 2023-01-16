@@ -1,18 +1,22 @@
 ![Logo](docs/resources/logo-large.png)
 ======================================
 
-*ecoCode* is a collective project aiming to reduce environmental footprint of software at the code level. The goal of the project is to provide a list of static code analyzers to highlight code structures that may have a negative ecological impact: energy and resources over-consumption, "fatware", shortening terminals' lifespan, etc.
+*ecoCode* is a collective project aiming to reduce environmental footprint of software at the code level. The goal of
+the project is to provide a list of static code analyzers to highlight code structures that may have a negative
+ecological impact: energy and resources over-consumption, "fatware", shortening terminals' lifespan, etc.
 
-ecoCode is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin then implement these catalogs as rules for scanning your projects.
+ecoCode is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin then
+implement these catalogs as rules for scanning your projects.
 
-**Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please refer to the contribution section.
+**Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please
+refer to the contribution section.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 🌿 SonarQube Plugins
 -------------------
 
-5 technologies are supported by the plugin right now:
+3 technologies are supported by the plugin right now:
 
 - [Java](java-plugin/)
 - [PHP](php-plugin/)
@@ -26,11 +30,14 @@ ecoCode is based on evolving catalogs of [good practices](docs/rules), for vario
 
 There is two kind of plugins :
 
-- One for web / backoffice (PHP, Python, Java), using smells described in the 2nd edition of the repository published in september 2015
-You can find all the rules [here (in french)](https://docs.google.com/spreadsheets/d/1nujR4EnajnR0NSXjvBW3GytOopDyTfvl3eTk2XGLh5Y/edit#gid=1386834576)
-The current repository is for web / backOffice
-- One for mobile (Android), using [a set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised by Olivier Le Goaër for Android.
-You can find this plugin in the repository [here](https://github.com/green-code-initiative/ecocode-mobile)
+- One for web / backoffice (PHP, Python, Java), using smells described in the 2nd edition of the repository published in
+  september 2015
+  You can find all the
+  rules [here (in french)](https://docs.google.com/spreadsheets/d/1nujR4EnajnR0NSXjvBW3GytOopDyTfvl3eTk2XGLh5Y/edit#gid=1386834576)
+  The current repository is for web / backOffice
+- One for mobile (Android), using [a set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised
+  by Olivier Le Goaër for Android.
+  You can find this plugin in the repository [here](https://github.com/green-code-initiative/ecocode-mobile)
 
 ### How a SonarQube plugin works
 
@@ -42,7 +49,8 @@ To better understand AST structure, y a can use [AST Explorer](https://astexplor
 🚀 Getting Started
 ------------------
 
-You can download each plugin separatly and copy the plugin (jar file) to `$SONAR_INSTALL_DIR/extensions/plugins` and restart SonarQube.
+You can download each plugin separatly and copy the plugin (jar file) to `$SONAR_INSTALL_DIR/extensions/plugins` and
+restart SonarQube.
 Or you can directly use a [all-in-one docker-compose](INSTALL.md)
 
 🛒 Distribution
@@ -52,10 +60,10 @@ Ready to use binaries are available [from GitHub](https://github.com/green-code-
 🧩 Plugins version compatibility
 ------------------
 
-| Plugins Version	| SonarQube version  |
-|-----------------|-------------------- |
-| 0.1.+	          | SonarQube 8.9.+ LTS to 9.3 |
-
+| Plugins Version	 | SonarQube version          |
+|------------------|----------------------------|
+| 0.1.+	           | SonarQube 8.9.+ LTS to 9.3 |
+| 0.2.+	           | SonarQube 9.4.+ LTS to 9.8 |
 
 🤝 Contribution
 ---------------
@@ -102,6 +110,7 @@ They have contributed to the success of ecoCode :
 - [Orange Business Services](https://www.orange-business.com/)
 - [Snapp'](https://www.snapp.fr/)
 - [Université de Pau et des Pays de l'Adour (UPPA)](https://www.univ-pau.fr/)
+- [Solocal](https://www.solocal.com/) / [PagesJaunes.fr](https://www.pagesjaunes.fr/)
 
 They supported the project :
 
