@@ -5,7 +5,7 @@ import org.sonar.java.checks.verifier.CheckVerifier;
 
 class AvoidGettingSizeCollectionInLoopTest {
     @Test
-    void testBadForLoop() {
+    public void testBadForLoop() {
         CheckVerifier.newVerifier()
                 .onFile("src/test/files/AvoidGettingSizeCollectionInForLoopBad.java")
                 .withCheck(new AvoidGettingSizeCollectionInLoop())
