@@ -12,6 +12,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read # allows SonarCloud to decorate PRs with analysis results
     steps:
       - name: Checkout
         uses: actions/checkout@v3
