@@ -6,7 +6,7 @@ import org.sonar.java.checks.verifier.CheckVerifier;
 public class AvoidRegexPatternNotStaticTest {
 
     @Test
-    public void testHasIssues() {
+    void testHasIssues() {
         CheckVerifier.newVerifier()
                 .onFile("src/test/files/AvoidRegexPatternNotStatic.java")
                 .withCheck(new AvoidRegexPatternNotStatic())
@@ -14,7 +14,7 @@ public class AvoidRegexPatternNotStaticTest {
     }
 
     @Test
-    public void testHasNoIssues() {
+    void testHasNoIssues() {
         CheckVerifier.newVerifier()
                 .onFiles(
                         "src/test/files/ValidRegexPattern.java",
