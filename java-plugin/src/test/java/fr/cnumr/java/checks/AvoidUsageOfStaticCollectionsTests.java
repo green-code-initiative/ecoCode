@@ -14,7 +14,7 @@ public class AvoidUsageOfStaticCollectionsTests {
     }
 
     @Test
-    public void testNoIssues() {
+    void testNoIssues() {
         CheckVerifier.newVerifier()
                 .onFile("src/test/files/GoodUsageOfStaticCollections.java")
                 .withCheck(new AvoidUsageOfStaticCollections())
