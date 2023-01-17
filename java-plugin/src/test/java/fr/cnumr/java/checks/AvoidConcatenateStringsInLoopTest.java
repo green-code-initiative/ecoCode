@@ -6,7 +6,7 @@ import org.sonar.java.checks.verifier.CheckVerifier;
 public class AvoidConcatenateStringsInLoopTest {
 
     @Test
-    public void checkNonCompliantTests() {
+    void checkNonCompliantTests() {
         CheckVerifier.newVerifier()
                 .onFile("src/test/files/AvoidConcatenateStringsInLoop.java")
                 .withCheck(new AvoidConcatenateStringsInLoop())
@@ -14,7 +14,7 @@ public class AvoidConcatenateStringsInLoopTest {
     }
 
     @Test
-    public void checkCompliantTests() {
+    void checkCompliantTests() {
         CheckVerifier.newVerifier()
                 .onFile("src/test/files/GoodWayConcatenateStringsLoop.java")
                 .withCheck(new AvoidConcatenateStringsInLoop())
