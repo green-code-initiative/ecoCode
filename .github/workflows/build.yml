@@ -35,11 +35,21 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-      - name: Build and analyze
-        working-directory: .
+      # - name: Setup Gradle
+      #   uses: gradle/gradle-build-action@v2
+      # - name: Build and analyze
+      #   working-directory: .
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      #   run: mvn -e -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=green-code-initiative_ecoCode -Dsonar.exclusions=**/*.groovy,**/*.dummy
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -e -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=green-code-initiative_ecoCode -Dsonar.exclusions=**/*.groovy,**/*.dummy
+        args: >
+          -Dsonar.organization=green-code-initiative
+          -Dsonar.projectKey=green-code-initiative_ecoCode
+          -Dsonar.exclusions=**/*.groovy,**/*.dummy
+          -Dsonar.verbose=true
