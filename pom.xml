@@ -45,7 +45,9 @@
 		<sonarqube.version>9.4.0.54424</sonarqube.version>
 		<sonarjava.version>7.15.0.30507</sonarjava.version>
 
+		<!-- <sonar.organization>green-code-initiative</sonar.organization> -->
 		<sonar.organization>green-code-initiative</sonar.organization>
+    <sonar.projectKey>green-code-initiative_ecoCode</sonar.projectKey>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
 		<!-- Don't forget to update this version -->
