@@ -9,7 +9,7 @@ import java.io.File;
 public class AvoidSQLRequestInLoopCheckTest {
 
 	@Test
-	void test() throws Exception {
+	public void test() throws Exception {
 		PHPCheckTest.check(new AvoidSQLRequestInLoopCheck(), new PhpTestFile(new File("src/test/resources/checks/AvoidSQLRequestInLoop.php")));
 	}
 }

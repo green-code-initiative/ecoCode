@@ -9,7 +9,7 @@ import java.io.File;
 public class AvoidFullSQLRequestCheckTest {
 
 	@Test
-	void test() {
+	public void test() {
 		PHPCheckTest.check(new AvoidFullSQLRequestCheck(), new PhpTestFile(new File("src/test/resources/checks/AvoidFullSQLRequest.php")));
 	}
 }
