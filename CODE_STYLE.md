@@ -1,3 +1,37 @@
+- [Introduction](#introduction)
+- [Source File Basics](#source-file-basics)
+	- [File encoding: UTF-8](#file-encoding-utf-8)
+	- [Indentation](#indentation)
+- [Source file structure](#source-file-structure)
+	- [Import statements](#import-statements)
+	- [Java source file organization](#java-source-file-organization)
+- [Formatting](#formatting)
+	- [Braces](#braces)
+	- [Line wrapping](#line-wrapping)
+	- [Blank Lines](#blank-lines)
+- [Class declaration](#class-declaration)
+- [Naming](#naming)
+	- [Constant names](#constant-names)
+	- [Variable names](#variable-names)
+- [Programming Practices](#programming-practices)
+	- [File history](#file-history)
+	- [Organization of setter methods](#organization-of-setter-methods)
+	- [Ternary Operator](#ternary-operator)
+	- [Null Checks](#null-checks)
+	- [Use of @Override](#use-of-override)
+	- [Utility classes](#utility-classes)
+	- [Field and method references](#field-and-method-references)
+	- [Local variable type inference](#local-variable-type-inference)
+	- [Some rules from experience](#some-rules-from-experience)
+- [Javadoc](#javadoc)
+	- [Javadoc formatting](#javadoc-formatting)
+- [Tests](#tests)
+	- [Testing Framework](#testing-framework)
+	- [Naming](#naming-1)
+	- [Assertions](#assertions)
+	- [Mocking](#mocking)
+	- [Some rules from experience](#some-rules-from-experience-1)
+
 ## Introduction
 
 This document defines the coding standards for source files in the plugin. It is primarily intended for the plugin team but can be used as a reference by contributors.
@@ -216,6 +250,14 @@ A field of a class should *always* be referenced using `this`. A method of class
 
 The use of `var` for variable declarations (_local variable type inference_) is not permitted. Instead, declare variables using the concrete type or interface (where applicable).
 
+### Some rules from experience
+
+#### Protections against ClassCast exceptions
+
+From experience with issue [#42](https://github.com/green-code-initiative/ecoCode/issues/42), when an exception occurs during Sonar analysis with maven command, the consequence is a crash. If this phase is launched in a CI/CD pipeline, this crash will block the pipeline. Thus, our plugins will be deleted until next corrections.
+
+Please, make a maximum of controls in the code to avoid ClassCast exceptions and thus, avoid uninstalling our plugin from SonarQube.
+
 ## Javadoc
 
 ### Javadoc formatting
@@ -294,15 +336,9 @@ Use AssertJ for assertions.
 
 Use the BDD Mockito support.
 
-## Some rules from experience
+### Some rules from experience
 
-### Protections against ClassCast exceptions
-
-From experience with issue [#42](https://github.com/green-code-initiative/ecoCode/issues/42), when an exception occurs during Sonar analysis with maven command, the consequence is a crash. If this phase is launched in a CI/CD pipeline, this crash will block the pipeline. Thus, our plugins will be deleted until next corrections.
-
-Please, make a maximum of controls in the code to avoid ClassCast exceptions and thus, avoid uninstalling our plugin from SonarQube.
-
-### Unit tests
+#### Unit tests
 
 Unit test are mandatory. If you can, use Test Driven Development method to write your tests.
 Check coverage of your tests with SoanrQube integration of our code.
