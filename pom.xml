@@ -47,7 +47,7 @@
 
 		<!-- <sonar.organization>green-code-initiative</sonar.organization> -->
 		<sonar.organization>green-code-initiative</sonar.organization>
-    <sonar.projectKey>green-code-initiative_ecoCode</sonar.projectKey>
+    <!-- <sonar.projectKey>green-code-initiative_ecoCode</sonar.projectKey> -->
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
 		<!-- Don't forget to update this version -->
