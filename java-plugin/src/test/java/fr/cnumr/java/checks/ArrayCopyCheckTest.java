@@ -9,7 +9,7 @@ class ArrayCopyCheckTest {
 	 * @formatter:off
 	 */
 	@Test
-	public void test() {
+	void test() {
 		CheckVerifier.newVerifier()
 			.onFile("src/test/files/ArrayCopyCheck.java")
 			.withCheck(new ArrayCopyCheck())
