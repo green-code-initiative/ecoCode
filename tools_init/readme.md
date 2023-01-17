@@ -19,6 +19,7 @@ Requirements
 
 - Sonar installed
   - add new token in personal account settings to communicate with Sonar API
+  - Got **'Admininister: Quality Profiles'** global permission on your account.
 - Check `_config.sh` file :
   - debug mode (`DEBUG` variable) : 0 to disable, 1 to enable
   - simulation mode (`SIMULATION` variable) : 0 to disable, 1 to enable
@@ -48,7 +49,7 @@ Call Sonar API rest to
 - ... create custom quality profile
 - ... change parent profile
 - ... get profile key
-- ... add new rules to profile
+- ... activate existing rules associated with mentionned tag
 
 Tags modifications
 ------------------
@@ -71,7 +72,7 @@ Algorithm
 
 - create a custom profile for each language
 - change parent profiles with "Sonar Way"
-- add new rules tag by `TAG_ECOCONCEPTION` variable to the custom profile
+- activate existing rules tag by `TAG_ECOCONCEPTION` variable to the custom profile
 
 Scripts
 -------
