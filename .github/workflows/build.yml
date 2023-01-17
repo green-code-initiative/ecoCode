@@ -12,6 +12,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read # allows SonarCloud to decorate PRs with analysis results
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -33,10 +35,7 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
       - name: Build and analyze
-        working-directory: .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
