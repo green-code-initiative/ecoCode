@@ -21,10 +21,10 @@ do
   res_json=$(find_rule_sonarapi $rule_key)
   echo -e "Existing sysTags : $(echo "$res_json" | jq -r '.rules[].sysTags')"
   echo -e "Existing tags : $(echo "$res_json" | jq -r '.rules[].tags')"
-  
+
   # loop on systags array to check if tag is already present
   is_systag_found=0
-  while read -r systag ; do 
+  while read -r systag ; do
     debug "  Processing systag $systag"
     if [ "$systag" == "$TAG_ECOCONCEPTION" ]; then
       is_systag_found=1
@@ -45,11 +45,11 @@ do
   # secondly, creating all tags list to add the newone inside if new tag has to be added
   declare tags_string=""
   is_tag_found=0
-  while read -r tag ; do 
+  while read -r tag ; do
     debug "  Processing tag $tag"
     if [ -n "$tags_string" ]; then
       tags_string+=","
-    fi 
+    fi
     tags_string+="$tag"
 
     if [ "$tag" == "$TAG_ECOCONCEPTION" ]; then
@@ -57,7 +57,7 @@ do
       # don't break the loop here (like systags loop above) because we have to build complete tags_string
     fi
   done < <(echo "$res_json" | jq -r '.rules[].tags[]')
-  
+
   # check if tag was found on tags array
   # if not found, add the new tag to actual tag list and call Sonar API to update tags of the current rule
   if [ $is_tag_found == 0 ]; then
@@ -65,7 +65,7 @@ do
 
     if [ -n "$tags_string" ]; then
       tags_string+=","
-    fi 
+    fi
     tags_string+="$TAG_ECOCONCEPTION"
 
     update_rule_sonarapi "$rule_key" "$tags_string"
@@ -74,7 +74,7 @@ do
   else
     echo -e "  Tag ${MAGENTA}$TAG_ECOCONCEPTION${NC} ${RED}already exists${NC} in tags array"
   fi
-  
+
   # tag_ecoconception=$(echo "$res_json" | jq --arg TAG_ECOCONCEPTION -r '.rules[] | select( .tags | index("$TAG_ECOCONCEPTION"))')
   # echo "tag_ecoconception : ${tag_ecoconception}"
 
