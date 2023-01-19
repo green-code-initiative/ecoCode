@@ -137,10 +137,6 @@ public class AvoidGlobalVariableInFunctionCheck extends PythonSubscriptionCheck 
             case CALL_EXPR:
                 extractVariablesFromExpression(((CallExpression) element).argumentList(), isAssigned);
                 break;
-//            TODO : Check if usefull or not
-//            case CLASSDEF:
-//                (ClassDef) element;
-//                break;
             case CONDITIONAL_EXPR:
                 ConditionalExpression conditionalExpression = (ConditionalExpression) element;
                 extractVariablesFromExpression(conditionalExpression.trueExpression(), isAssigned);
@@ -323,6 +319,7 @@ public class AvoidGlobalVariableInFunctionCheck extends PythonSubscriptionCheck 
                 extractVariablesFromExpression(keyValuePair.key(), true);
                 extractVariablesFromExpression(keyValuePair.value(), false);
                 break;
+            default:
         }
     }
 }

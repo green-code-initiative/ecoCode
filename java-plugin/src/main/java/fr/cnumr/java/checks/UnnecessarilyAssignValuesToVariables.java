@@ -148,10 +148,12 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
 
         @Override
         public void visitReturnStatement(ReturnStatementTree tree) {
-            if (tree != null && tree.expression() != null) {
-                variableList.remove(tree.expression().toString());
+            if (tree != null) {
+                if (tree.expression() != null) {
+                    variableList.remove(tree.expression().toString());
+                }
+                super.visitReturnStatement(tree);
             }
-            super.visitReturnStatement(tree);
         }
 
         @Override

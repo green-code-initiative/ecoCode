@@ -53,12 +53,7 @@ public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
             LOGGER.debug("interface NewClassTree NOT found (real interface : {}) => casting to TryStatementTree", tree.kind().getAssociatedInterface());
             TryStatementTree tryStatementTree = (TryStatementTree) tree;
             List<CatchTree> catchTreeList = tryStatementTree.catches();
-            /*
-            LOGGER.debug("display CatchTree List");
-            for (CatchTree catchTree : catchTreeList) {
-                LOGGER.debug("catchTree : " + catchTree.parameter().type().symbolType());
-            }
-            */
+
             LOGGER.debug("compute 'isExceptionFound'");
             this.isExceptionFound = computeIsExceptionFound(catchTreeList);
             LOGGER.debug("isExceptionFound : " + isExceptionFound);

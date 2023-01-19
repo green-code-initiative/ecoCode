@@ -21,7 +21,7 @@ import org.sonar.plugins.java.api.tree.PackageDeclarationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
 @Rule(key = "S69", name = "Developpement", description = NoFunctionCallWhenDeclaringForLoop.MESSAGERULE, priority = Priority.MINOR, tags = {
-        "bug" })
+        "bug"})
 public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Do not call a function when declaring a for-type loop";
@@ -61,7 +61,7 @@ public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisi
         private boolean lineAlreadyHasThisIssue(Tree tree) {
             if (tree.firstToken() != null) {
                 final String classname = getFullyQualifiedNameOfClassOf(tree);
-                final int line = tree.firstToken().line();
+                final int line = tree.firstToken().range().start().line();
 
                 return linesWithIssuesByClass.containsKey(classname)
                         && linesWithIssuesByClass.get(classname).contains(line);
@@ -73,7 +73,7 @@ public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisi
         private void report(Tree tree) {
             if (tree.firstToken() != null) {
                 final String classname = getFullyQualifiedNameOfClassOf(tree);
-                final int line = tree.firstToken().line();
+                final int line = tree.firstToken().range().start().line();
 
                 linesWithIssuesByClass.computeIfAbsent(classname, k -> new ArrayList<>());
 
@@ -101,7 +101,7 @@ public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisi
 
             return "";
         }
-        
+
         private String getPackageName(CompilationUnitTree compilationUnitTree) {
             final PackageDeclarationTree packageDeclarationTree = compilationUnitTree.packageDeclaration();
             if (packageDeclarationTree == null) {
