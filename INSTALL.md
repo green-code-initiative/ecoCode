@@ -152,7 +152,7 @@ Howto create a release
     2. give empty `Unreleased` section
         1. in majority cases, old content of `Unreleased` section is now the content of the new `Release X.Y.Z` section
     3. add a new section at the bottom of file with new version
-    4. update `docker-compose.yml` with new SNAPSHOT version
+    4. update docker-compose.yml with new SNAPSHOT version
     5. commit these modifications
 2. if all is ok, execute `tool_release_1_prepare.sh` to prepare locally the next release and next SNAPSHOT (creation of
    2 new commits and a tag)
