@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.ecocode</groupId>
         <artifactId>ecocode-parent</artifactId>
-        <version>0.2.2-SNAPSHOT</version>
+        <version>0.2.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>ecocode-python-plugin</artifactId>
@@ -64,6 +64,7 @@
                     <!-- TODO : check how to resolve it (how to force this version in SonarQube installation) -->
                     <!-- <requirePlugins>python:${sonar.python.version}</requirePlugins> -->
                     <basePlugin>python</basePlugin>
+                    <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
             </plugin>
             <plugin>

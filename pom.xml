@@ -4,15 +4,15 @@
 
 	<groupId>io.ecocode</groupId>
 	<artifactId>ecocode-parent</artifactId>
-	<version>0.2.2-SNAPSHOT</version>
+	<version>0.2.3-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>ecoCode Sonar Plugins Project</name>
 	<description>Les règles s'appuient sur l'édition 3 du livre "Ecoconception Web / Les 115 bonnes pratiques" =&gt; https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html</description>
-
+	<url>https://github.com/green-code-initiative/ecocode</url>
 	<organization>
-		<name>CNumR</name>
-		<url>https://collectif.greenit.fr</url>
+		<name>green-code-initiative</name>
+		<url>https://github.com/green-code-initiative</url>
 	</organization>
 	<licenses>
 		<license>
