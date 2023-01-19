@@ -1,7 +1,7 @@
 /*
- * SonarQube PHP Custom Rules Example
- * Copyright (C) 2016-2016 SonarSource SA
- * mailto:contact AT sonarsource DOT com
+ * SonarQube Java
+ * Copyright (C) 2012-2021 SonarSource SA
+ * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,17 +17,23 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package fr.cnumr.php;
+package fr.cnumr.java;
 
 import org.sonar.api.Plugin;
 
 /**
- * Extension point to define a Sonar Plugin.
+ * Entry point of your plugin containing your custom rules
  */
-public class PHPCustomRulesPlugin implements Plugin {
+public class JavaPlugin implements Plugin {
 
-  @Override
-  public void define(Context context) {
-    context.addExtension(MyPhpRules.class);
-  }
+    @Override
+    public void define(Context context) {
+        // server extensions -> objects are instantiated during server startup
+        context.addExtension(JavaRulesDefinition.class);
+
+        // batch extensions -> objects are instantiated during code analysis
+        context.addExtension(JavaCheckRegistrar.class);
+
+    }
+
 }

@@ -19,21 +19,13 @@
  */
 package fr.cnumr.python;
 
-import org.junit.Test;
-import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.api.Plugin;
 
-import static fr.cnumr.python.CustomPythonRuleRepository.REPOSITORY_KEY;
-import static org.assertj.core.api.Assertions.assertThat;
+public class PythonPlugin implements Plugin {
 
-public class CustomPythonRuleRepositoryTest {
+    @Override
+    public void define(Context context) {
+        context.addExtension(PythonRulesDefinition.class);
+    }
 
-  @Test
-  public void test_rule_repository() {
-    CustomPythonRuleRepository customPythonRuleRepository = new CustomPythonRuleRepository();
-    RulesDefinition.Context context = new RulesDefinition.Context();
-    customPythonRuleRepository.define(context);
-    assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(REPOSITORY_KEY);
-    assertThat(context.repositories().get(0).rules()).hasSize(6);
-    assertThat(RulesList.getChecks()).hasSize(6);
-  }
 }

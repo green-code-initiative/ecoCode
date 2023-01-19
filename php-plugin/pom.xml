@@ -53,7 +53,7 @@
                 <configuration>
                     <pluginKey>${project.artifactId}</pluginKey>
                     <pluginName>${project.name}</pluginName>
-                    <pluginClass>fr.cnumr.php.PHPCustomRulesPlugin</pluginClass>
+                    <pluginClass>fr.cnumr.php.PHPPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                     <basePlugin>php</basePlugin>

@@ -58,7 +58,7 @@
                 <configuration>
                     <pluginKey>${project.artifactId}</pluginKey>
                     <pluginName>${project.name}</pluginName>
-                    <pluginClass>fr.cnumr.python.CustomPythonRulesPlugin</pluginClass>
+                    <pluginClass>fr.cnumr.python.PythonPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                     <!-- TODO : commented because plugin not loaded in SONAR if required version of python plugin is not installed -->

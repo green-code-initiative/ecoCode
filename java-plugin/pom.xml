@@ -85,7 +85,7 @@
                 <configuration>
                     <pluginKey>${project.artifactId}</pluginKey>
                     <pluginName>${project.name}</pluginName>
-                    <pluginClass>fr.cnumr.java.MyJavaRulesPlugin</pluginClass>
+                    <pluginClass>fr.cnumr.java.JavaPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                     <!-- TODO : commented because plugin not loaded in SONAR if required version of java plugin is not installed -->
