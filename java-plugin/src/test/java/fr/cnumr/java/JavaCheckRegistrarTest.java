@@ -1,6 +1,6 @@
 /*
- * SonarQube Python Plugin
- * Copyright (C) 2012-2019 SonarSource SA
+ * SonarQube Java
+ * Copyright (C) 2012-2021 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
  * This program is free software; you can redistribute it and/or
@@ -17,25 +17,22 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package fr.cnumr.python;
-
-import org.junit.Test;
-import org.sonar.api.Plugin;
-import org.sonar.api.SonarEdition;
-import org.sonar.api.SonarQubeSide;
-import org.sonar.api.SonarRuntime;
-import org.sonar.api.internal.PluginContextImpl;
-import org.sonar.api.internal.SonarRuntimeImpl;
-import org.sonar.api.utils.Version;
+package fr.cnumr.java;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.Test;
+import org.sonar.plugins.java.api.CheckRegistrar;
 
-public class CustomPythonRulesPluginTest {
-  @Test
-  public void test() {
-    SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(7, 9), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
-    Plugin.Context context = new PluginContextImpl.Builder().setSonarRuntime(sonarRuntime).build();
-    new CustomPythonRulesPlugin().define(context);
-    assertThat(context.getExtensions()).hasSize(1);
-  }
+class JavaCheckRegistrarTest {
+
+    @Test
+    void checkNumberRules() {
+        final CheckRegistrar.RegistrarContext context = new CheckRegistrar.RegistrarContext();
+
+        final JavaCheckRegistrar registrar = new JavaCheckRegistrar();
+        registrar.register(context);
+
+        assertThat(context.checkClasses()).hasSize(19);
+        assertThat(context.testCheckClasses()).isEmpty();
+    }
 }

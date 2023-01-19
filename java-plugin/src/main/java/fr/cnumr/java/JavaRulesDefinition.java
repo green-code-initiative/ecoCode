@@ -36,37 +36,37 @@ import org.sonarsource.analyzer.commons.RuleMetadataLoader;
  * Declare rule metadata in server repository of rules.
  * That allows to list the rules in the page "Rules".
  */
-public class MyJavaRulesDefinition implements RulesDefinition {
+public class JavaRulesDefinition implements RulesDefinition {
 
-  // don't change that because the path is hard coded in CheckVerifier
-  private static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/java/rules/java";
+    // don't change that because the path is hard coded in CheckVerifier
+    private static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/java/rules/java";
 
 
-  // Add the rule keys of the rules which need to be considered as template-rules
-  private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
-  public static final String NAME = "Collectif Conception Numérique Responsable ";
-  public static final String LANGUAGE = "java";
-  public static final String REPOSITORY_KEY = "cnumr-java";
+    // Add the rule keys of the rules which need to be considered as template-rules
+    private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
+    public static final String NAME = "Collectif Conception Numérique Responsable ";
+    public static final String LANGUAGE = "java";
+    public static final String REPOSITORY_KEY = "cnumr-java";
 
-  @Override
-  public void define(Context context) {
-    NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
+    @Override
+    public void define(Context context) {
+        NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
 
-    SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(9, 8), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
+        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(9, 8), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
 
-    RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH,sonarRuntime);
+        RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH, sonarRuntime);
 
-    ruleMetadataLoader.addRulesByAnnotatedClass(repository, new ArrayList<>(RulesList.getChecks()));
+        ruleMetadataLoader.addRulesByAnnotatedClass(repository, new ArrayList<>(RulesList.getChecks()));
 
-    setTemplates(repository);
+        setTemplates(repository);
 
-    repository.done();
-  }
+        repository.done();
+    }
 
-  private static void setTemplates(NewRepository repository) {
-    RULE_TEMPLATES_KEY.stream()
-      .map(repository::rule)
-      .filter(Objects::nonNull)
-      .forEach(rule -> rule.setTemplate(true));
-  }
+    private static void setTemplates(NewRepository repository) {
+        RULE_TEMPLATES_KEY.stream()
+                .map(repository::rule)
+                .filter(Objects::nonNull)
+                .forEach(rule -> rule.setTemplate(true));
+    }
 }
