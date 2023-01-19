@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [#44](https://github.com/green-code-initiative/ecoCode/pull/44) Update the PHP description rules
+
 ### Changed
 
 ## [0.2.2] - 2023-01-19
