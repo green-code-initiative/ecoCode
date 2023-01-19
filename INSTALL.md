@@ -174,7 +174,7 @@ Howto create a release
    2 new commits and a tag)
 3. if all is ok, execute `tool_release_2_branch.sh` to create and push a new branch with that release and SNAPSHOT
 4. if all is ok, on github, create a PR based on this new branch to `main` branch
-5. wait that automatic check on the new branch are OK, then check modifications and finally merge it
+5. wait that automatic check on the new branch are OK, then check modifications and finally merge it with `Create a merge commit` option
 6. if PR merge is OK, then delete the branch as mentionned when PR merged
 7. wait that automatic check on the `main` branch are OK, and then if all is ok, upgrade your local source code from
    remote, and go to `main` branch and finally check locally if the
