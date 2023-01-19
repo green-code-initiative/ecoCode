@@ -1,6 +1,22 @@
 Installation documentation
 ==========================
 
+- [Installation documentation](#installation-documentation)
+  - [Requirements](#requirements)
+  - [Project structure](#project-structure)
+  - [Howto build the SonarQube ecoCode plugins](#howto-build-the-sonarqube-ecocode-plugins)
+    - [Requirements](#requirements-1)
+    - [Build the code](#build-the-code)
+  - [Howto install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
+    - [Requirements](#requirements-2)
+    - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
+    - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
+  - [Howto install Plugin Ecocode](#howto-install-plugin-ecocode)
+  - [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
+  - [Howto create a release](#howto-create-a-release)
+  - [Howto debug a rule (with logs)](#howto-debug-a-rule-with-logs)
+  - [Links](#links)
+
 Requirements
 ------------
 
