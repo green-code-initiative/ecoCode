@@ -1,0 +1,12 @@
+<p>The time gap will be noticeable within a large number of inclusions. If you are developing a large web application and have hundreds, using an absolute path will save CPU and RAM usage.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    include 'menu.php'; // NOK
+    include './menu.php'; // NOK
+    include '../menu.php'; // NOK
+    require 'menu.php'; // NOK
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+    include '/menu.php';
+</pre>

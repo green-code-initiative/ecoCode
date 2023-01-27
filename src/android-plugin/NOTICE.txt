@@ -1,3 +1,0 @@
-ecoCode SonarQube plugin
-Copyright (C) 2020-2021 Snapp' - Université de Pau et des Pays de l'Adour
-mailto: contact@ecocode.io
