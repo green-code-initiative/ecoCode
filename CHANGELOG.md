@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - [#44](https://github.com/green-code-initiative/ecoCode/pull/44) Update the PHP description rules
+- modifying documentation to move a part to `ecoCode-common` repository
 
 ### Changed
 
