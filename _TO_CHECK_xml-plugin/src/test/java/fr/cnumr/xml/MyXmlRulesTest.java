@@ -1,4 +1,4 @@
-package fr.cnumr.xml;
+package fr.greencodeinitiative.xml;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,7 +7,7 @@ import org.sonar.api.server.rule.RulesDefinition;
 
 public class MyXmlRulesTest {
 
-	private int NumberOfRuleInRepository = 6;
+	private final int NumberOfRuleInRepository = 6;
 
 	@Test
 	public void rules() {

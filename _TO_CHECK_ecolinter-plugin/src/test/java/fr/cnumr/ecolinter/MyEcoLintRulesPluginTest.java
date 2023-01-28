@@ -1,4 +1,4 @@
-package fr.cnumr.ecolinter;
+package fr.greencodeinitiative.ecolinter;
 
 import org.junit.jupiter.api.Test;
 import org.sonar.api.Plugin;

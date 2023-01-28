@@ -1,7 +1,7 @@
-package fr.cnumr.java.checks;
+package fr.greencodeinitiative.java.checks;
 
 class AvoidMultipleIfElseStatementCheck {
-    AvoidMultipleIfElseStatementCheck (AvoidMultipleIfElseStatementCheck mc) {
+    AvoidMultipleIfElseStatementCheck(AvoidMultipleIfElseStatementCheck mc) {
     }
 
     public void methodWithMultipleIfElseIf() {

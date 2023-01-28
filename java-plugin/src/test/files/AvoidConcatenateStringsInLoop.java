@@ -1,4 +1,4 @@
-package fr.cnumr.java.utils;
+package fr.greencodeinitiative.java.utils;
 
 public class AvoidConcatenateStringsInLoop {
 

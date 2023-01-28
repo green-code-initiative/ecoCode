@@ -1,7 +1,7 @@
-package fr.cnumr.java.checks;
+package fr.greencodeinitiative.java.checks;
 
 class AvoidMultipleIfElseStatementNoIssueCheck {
-    AvoidMultipleIfElseStatementNoIssueCheck (AvoidMultipleIfElseStatementNoIssueCheck mc) {
+    AvoidMultipleIfElseStatementNoIssueCheck(AvoidMultipleIfElseStatementNoIssueCheck mc) {
     }
 
     public void methodWithOneIfElseIf() {

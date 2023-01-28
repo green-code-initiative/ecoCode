@@ -1,4 +1,4 @@
-package fr.cnumr.xml.checks;
+package fr.greencodeinitiative.xml.checks;
 
 import java.util.Collections;
 
@@ -7,7 +7,7 @@ import org.sonar.check.Rule;
 import org.sonarsource.analyzer.commons.xml.XmlFile;
 import org.sonarsource.analyzer.commons.xml.checks.SonarXmlCheck;
 
-@Rule(key = "S99", name = "Developpement", description = UseUnoptimizedVectorImage.MESSAGERULE, priority = Priority.MINOR, tags = { "bug" })
+@Rule(key = "S99", name = "Developpement", description = UseUnoptimizedVectorImage.MESSAGERULE, priority = Priority.MINOR, tags = {"bug"})
 public class UseUnoptimizedVectorImage extends SonarXmlCheck {
 
 	protected static final String MESSAGERULE = "Avoid the use of unoptimized vector images";
