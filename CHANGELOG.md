@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - modifying documentation to move a part to `ecoCode-common` repository
 - move common init scripts to `ecoCode-common` repository
 
+### Deleted
+
+- cleaning old files (move them to `ecoCode-archive` repository)
+
 ## [0.2.2] - 2023-01-19
 
 ### Added
