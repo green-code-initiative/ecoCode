@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	
+
 	<parent>
 		<groupId>io.ecocode</groupId>
 		<artifactId>ecocode-parent</artifactId>
@@ -10,9 +11,9 @@
 
 	<artifactId>ecocode-xml-plugin</artifactId>
 	<packaging>sonar-plugin</packaging>
-	
+
 	<name>ecoCode XML Sonar Plugin</name>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.sonarsource.sonarqube</groupId>
@@ -40,7 +41,7 @@
 		<dependency>
 			<groupId>org.sonarsource.analyzer-commons</groupId>
 			<artifactId>test-sonar-xml-parsing</artifactId>
-			 <version>1.25.0.1003</version>
+			<version>1.25.0.1003</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -55,7 +56,7 @@
 				<configuration>
 					<pluginKey>${project.artifactId}</pluginKey>
 					<pluginName>${project.name}</pluginName>
-					<pluginClass>fr.cnumr.xml.XMLCustomRulesPlugin</pluginClass>
+					<pluginClass>fr.greencodeinitiative.xml.XMLCustomRulesPlugin</pluginClass>
 					<sonarLintSupported>true</sonarLintSupported>
 					<sonarQubeMinVersion>6.7</sonarQubeMinVersion>
 					<basePlugin>xml</basePlugin>

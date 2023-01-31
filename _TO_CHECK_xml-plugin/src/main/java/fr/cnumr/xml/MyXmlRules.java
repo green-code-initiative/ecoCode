@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package fr.cnumr.xml;
+package fr.greencodeinitiative.xml;
 
 import java.util.Collections;
 import java.util.Set;
@@ -25,31 +25,31 @@ import java.util.Set;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
-import fr.cnumr.xml.checks.CheckList;
+import fr.greencodeinitiative.xml.checks.CheckList;
 
 /**
  * Extension point to define a PHP rule repository.
  */
 public class MyXmlRules implements RulesDefinition {
 
-	public static final String LANGUAGE = "xml";
-	public static final String NAME = "Collectif Conception Numérique Responsable";
-	public static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/xml/rules/custom";
-	public static final String REPOSITORY_KEY = "cnumr-xml";
-	private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
+    public static final String LANGUAGE = "xml";
+    public static final String NAME = "Collectif Conception Numérique Responsable";
+    public static final String RESOURCE_BASE_PATH = "fr/greencodeinitiative/l10n/xml/rules/custom";
+    public static final String REPOSITORY_KEY = "greencodeinitiative-xml";
+    private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
 
-	@Override
-	public void define(Context context) {
-		NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
+    @Override
+    public void define(Context context) {
+        NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
 
-		RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH);
+        RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH);
 
-		// add the new checks
-		ruleMetadataLoader.addRulesByAnnotatedClass(repository, CheckList.getCheckClasses());
+        // add the new checks
+        ruleMetadataLoader.addRulesByAnnotatedClass(repository, CheckList.getCheckClasses());
 
 //		repository.rule("XPathCheck").setTemplate(true);
 //		repository.rule("S3417").setTemplate(true);
-		repository.done();
-	}
+        repository.done();
+    }
 
 }

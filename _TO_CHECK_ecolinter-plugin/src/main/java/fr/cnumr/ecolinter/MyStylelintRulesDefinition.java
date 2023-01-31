@@ -17,7 +17,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-package fr.cnumr.ecolinter;
+package fr.greencodeinitiative.ecolinter;
 
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonarsource.analyzer.commons.ExternalRuleLoader;
@@ -29,7 +29,7 @@ import org.sonarsource.analyzer.commons.ExternalRuleLoader;
 public class MyStylelintRulesDefinition implements RulesDefinition {
 
     // don't change that because the path is hard coded in CheckVerifier
-    private static final String RESOURCE_BASE_PATH = "fr/cnumr/l10n/ecolint/rules/stylelint/";
+    private static final String RESOURCE_BASE_PATH = "fr/greencodeinitiative/l10n/ecolint/rules/stylelint/";
 
     public static final String LINTER_NAME = "STYLELINT";
 

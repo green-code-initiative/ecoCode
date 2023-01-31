@@ -1,4 +1,4 @@
-package fr.cnumr.java.checks;
+package fr.greencodeinitiative.java.checks;
 
 import java.util.Arrays;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 class ReadFile {
 	ReadFile(ReadFile readFile) {
 	}
+
 	public void readPreferences(String filename) {
 		//...
 		InputStream in = null;

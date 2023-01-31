@@ -13,7 +13,7 @@
     <artifactId>ecocode-ecolinter-plugin</artifactId>
     <name>ecoCode EcoLinter Sonar Plugin</name>
     <packaging>sonar-plugin</packaging>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.sonarsource.sonarqube</groupId>
@@ -54,7 +54,7 @@
                 <configuration>
                     <pluginKey>${project.artifactId}</pluginKey>
                     <pluginName>${project.name}</pluginName>
-                    <pluginClass>fr.cnumr.ecolinter.MyEcoLintRulesPlugin</pluginClass>
+                    <pluginClass>fr.greencodeinitiative.ecolinter.MyEcoLintRulesPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                 </configuration>

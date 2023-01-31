@@ -1,10 +1,9 @@
-package fr.cnumr.java.checks;
+package fr.greencodeinitiative.java.checks;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.*;
 import java.sql.PreparedStatement;
-
 
 
 class AvoidStatementForDMLQueries {

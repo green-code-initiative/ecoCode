@@ -1,4 +1,4 @@
-package fr.cnumr.java.checks;
+package fr.greencodeinitiative.java.checks;
 
 import java.io.*;
 
@@ -11,8 +11,7 @@ class FreeResourcesOfAutoCloseableInterface {
         String fileName = "./FreeResourcesOfAutoCloseableInterface.java";
         try (FileReader fr = new FileReader(fileName);
              BufferedReader br = new BufferedReader(fr)) {
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.err.println(e.getMessage());
         }
     }

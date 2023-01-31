@@ -1,4 +1,4 @@
-package fr.cnumr.java.checks;
+package fr.greencodeinitiative.java.checks;
 
 import java.util.Collection;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package fr.cnumr.xml.checks;
+package fr.greencodeinitiative.xml.checks;
 
 import java.io.IOException;
 

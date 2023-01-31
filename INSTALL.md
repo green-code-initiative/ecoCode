@@ -2,20 +2,20 @@ Installation documentation
 ==========================
 
 - [Installation documentation](#installation-documentation)
-  - [Requirements](#requirements)
-  - [Project structure](#project-structure)
-  - [Howto build the SonarQube ecoCode plugins](#howto-build-the-sonarqube-ecocode-plugins)
-    - [Requirements](#requirements-1)
-    - [Build the code](#build-the-code)
-  - [Howto install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
-    - [Requirements](#requirements-2)
-    - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
-    - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
-  - [Howto install Plugin Ecocode](#howto-install-plugin-ecocode)
-  - [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
-  - [Howto create a release](#howto-create-a-release)
-  - [Howto debug a rule (with logs)](#howto-debug-a-rule-with-logs)
-  - [Links](#links)
+    - [Requirements](#requirements)
+    - [Project structure](#project-structure)
+    - [Howto build the SonarQube ecoCode plugins](#howto-build-the-sonarqube-ecocode-plugins)
+        - [Requirements](#requirements-1)
+        - [Build the code](#build-the-code)
+    - [Howto install SonarQube dev environment](#howto-install-sonarqube-dev-environment)
+        - [Requirements](#requirements-2)
+        - [Start SonarQube (if first time)](#start-sonarqube-if-first-time)
+        - [Reinstall SonarQube (if needed)](#reinstall-sonarqube-if-needed)
+    - [Howto install Plugin Ecocode](#howto-install-plugin-ecocode)
+    - [Howto start or stop service (already installed)](#howto-start-or-stop-service-already-installed)
+    - [Howto create a release](#howto-create-a-release)
+    - [Howto debug a rule (with logs)](#howto-debug-a-rule-with-logs)
+    - [Links](#links)
 
 Requirements
 ------------
@@ -174,7 +174,8 @@ Howto create a release
    2 new commits and a tag)
 3. if all is ok, execute `tool_release_2_branch.sh` to create and push a new branch with that release and SNAPSHOT
 4. if all is ok, on github, create a PR based on this new branch to `main` branch
-5. wait that automatic check on the new branch are OK, then check modifications and finally merge it with `Create a merge commit` option
+5. wait that automatic check on the new branch are OK, then check modifications and finally merge it
+   with `Create a merge commit` option
 6. if PR merge is OK, then delete the branch as mentionned when PR merged
 7. wait that automatic check on the `main` branch are OK, and then if all is ok, upgrade your local source code from
    remote, and go to `main` branch and finally check locally if the
@@ -187,10 +188,11 @@ Howto create a release
 Howto debug a rule (with logs)
 ------------------------------
 
-1. Add logs like in `java-plugin/src/main/java/fr/cnumr/java/checks/OptimizeReadFileExceptions` class file
+1. Add logs like in `java-plugin/src/main/java/fr/greencodeinitiative/java/checks/OptimizeReadFileExceptions` class file
 2. Build plugin JARs with `tool_build.sh`
 3. Launch local Sonar with `tool_docker_init.sh`
-4. Launch a sonar scanner on an exemple project with `mvn verify` command (only the first time), followed by `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=***** -Dsonar.password=***** -X`
+4. Launch a sonar scanner on an exemple project with `mvn verify` command (only the first time), followed
+   by `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=***** -Dsonar.password=***** -X`
 5. logs will appear in console (debug logs will appear if `-X` option is given like above)
 
 Links

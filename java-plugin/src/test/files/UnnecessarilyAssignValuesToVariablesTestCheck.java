@@ -1,78 +1,78 @@
-package fr.cnumr.java.checks;
+package fr.greencodeinitiative.java.checks;
 
 class UnnecessarilyAssignValuesToVariablesTestCheck {
-	UnnecessarilyAssignValuesToVariablesTestCheck(UnnecessarilyAssignValuesToVariablesTestCheck mc) {
-	}
+    UnnecessarilyAssignValuesToVariablesTestCheck(UnnecessarilyAssignValuesToVariablesTestCheck mc) {
+    }
 
-	public int testSwitchCase() throws Exception {
-		int variableFor = 5;
-		int variableIf = 5;
-		int variableWhile = 5;
-		int variableExp = 5;
-		int variableReturn = 5;
-		int variableCLass = 5;
-		int [] intArray = { 10, 20, 30, 40, 50 };
-		
-		Exception variableException = new Exception("message");
-		int variableNotUse = 5; // Noncompliant
-		
-		
-		variableNotUse = 10;
-		for (variableFor = 0;variableFor < 5;++variableFor) {
-			System.out.println(variableFor);
-		}
-		
-		for (int ia : intArray)  {
-			System.out.println((char) ia);
-		}
-		
-		if (variableIf > 10) {
-			System.out.println(variableIf);
-		}
-		
-		while (variableWhile > 10) {
-			System.out.println(variableWhile);
-		}
+    public int testSwitchCase() throws Exception {
+        int variableFor = 5;
+        int variableIf = 5;
+        int variableWhile = 5;
+        int variableExp = 5;
+        int variableReturn = 5;
+        int variableCLass = 5;
+        int[] intArray = {10, 20, 30, 40, 50};
 
-		variableExp += 1;
-		variableNotUse = variableExp;
-		TestClass testClass = new TestClass(variableCLass); 
-		if (testClass.isTrue()) {
-			throw variableException;
-		}
-		return variableReturn;
-	}
-
-	private class TestClass {
-		TestClass(int i) {
-			++i;
-		}
-
-		public boolean isTrue() {
-			return true;
-		}
-	}
+        Exception variableException = new Exception("message");
+        int variableNotUse = 5; // Noncompliant
 
 
-	private int getIntValue() {
-		return 3;
-	}
+        variableNotUse = 10;
+        for (variableFor = 0; variableFor < 5; ++variableFor) {
+            System.out.println(variableFor);
+        }
 
-	public int testNonCompliantReturn() {
-		int i = getIntValue(); // Noncompliant
-		return i;
-	}
+        for (int ia : intArray) {
+            System.out.println((char) ia);
+        }
 
-	public int testCompliantReturn() {
-		return getIntValue();
-	}
+        if (variableIf > 10) {
+            System.out.println(variableIf);
+        }
 
-	public void testNonCompliantThrow() throws Exception {
-		Exception exception = new Exception("dummy"); // Noncompliant
-		throw exception;
-	}
+        while (variableWhile > 10) {
+            System.out.println(variableWhile);
+        }
 
-	public void testCompliantThrow() throws Exception {
-		throw new Exception("dummy");
+        variableExp += 1;
+        variableNotUse = variableExp;
+        TestClass testClass = new TestClass(variableCLass);
+        if (testClass.isTrue()) {
+            throw variableException;
+        }
+        return variableReturn;
+    }
+
+    private class TestClass {
+        TestClass(int i) {
+            ++i;
+        }
+
+        public boolean isTrue() {
+            return true;
+        }
+    }
+
+
+    private int getIntValue() {
+        return 3;
+    }
+
+    public int testNonCompliantReturn() {
+        int i = getIntValue(); // Noncompliant
+        return i;
+    }
+
+    public int testCompliantReturn() {
+        return getIntValue();
+    }
+
+    public void testNonCompliantThrow() throws Exception {
+        Exception exception = new Exception("dummy"); // Noncompliant
+        throw exception;
+    }
+
+    public void testCompliantThrow() throws Exception {
+        throw new Exception("dummy");
 	}
 }
