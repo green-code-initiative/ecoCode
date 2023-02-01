@@ -1,0 +1,14 @@
+[
+  {
+    "key": "@ecocode/no-multiple-access-dom-element",
+    "type": "CODE_SMELL",
+    "name": "Disallow multiple access of same DOM element",
+    "description": "This rule aims to reduce DOM access assigning its object to variable when access multiple time. It saves CPU cycles.\n<h2>Noncompliant Code Example</h2>\n<pre>\ndocument.getElementById('block1').innerHTML = \"Hello World\";\ndocument.getElementById('block1').style.width = \"50px\";\n</pre>\n<h2>Compliant Solution</h2>\n<pre>\nvar block1 = document.getElementById('block1');\nblock1.innerHTML = \"Hello World\";\nblock1.style.width = \"50px\";\n</pre>\n",
+    "url": "https://github.com/green-code-initiative/ecoCode-linter/blob/main/eslint-plugin/docs/rules/no-multiple-access-dom-element.md",
+    "constantDebtMinutes": 5,
+    "severity": "MINOR",
+    "tags": [
+      "eco-conception"
+    ]
+  }
+]
