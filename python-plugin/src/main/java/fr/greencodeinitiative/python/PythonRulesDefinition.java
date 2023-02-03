@@ -35,7 +35,7 @@ import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
 public class PythonRulesDefinition implements RulesDefinition {
     public static final String LANGUAGE = "py";
-    public static final String NAME = "Collectif Conception Numérique Responsable";
+    public static final String NAME = "Green Code Initiative";
     public static final String RESOURCE_BASE_PATH = "fr/greencodeinitiative/l10n/python/rules/python";
     public static final String REPOSITORY_KEY = "greencodeinitiative-python";
     private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
