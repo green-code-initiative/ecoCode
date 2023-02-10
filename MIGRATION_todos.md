@@ -1,17 +1,6 @@
 
 # Migration TODOs
 
-## TODOs
-
-- check if `_TODO_CHECK_sonarqube-plugin-greenit` is used
-- delete `_TO_DELETE_images` if images not used
-- [IN PROGRESS] check if `xml-plugin` is useful because
-  - module is not declared as module in `pom.xml`
-  - there is already XML rules in android-plugin
-- [IN PROGRESS] migrate https://github.com/cnumr/ecoLinter to a new repo (`ecoCode-linter`)
-  - split JS from CSS
-  - compare actual ecollinter-plugin in ecocode standard and ecocodelinter of external repo
-
 ## IDEAS
 
 .. to tranform into issues ?
