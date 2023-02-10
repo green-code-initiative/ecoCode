@@ -30,7 +30,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 ## Code of Conduct
 
 This project and everyone participating in it is governed by the
-[Ecocode Code of Conduct]([CODE_OF_CONDUCT.md](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/CODE_OF_CONDUCT.md)).
+Ecocode Code of Conduct ([CODE_OF_CONDUCT.md](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/CODE_OF_CONDUCT.md)).
 By participating, you are expected to uphold this code. Please report unacceptable behavior
 with [form contact](https://www.ecocode.io/contact).
 
