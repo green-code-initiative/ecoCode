@@ -79,7 +79,7 @@ We are listening to you to make the project progress collectively, and maybe wit
 
 WE NEED YOU !
 
-Here the [starter-pack](https://github.com/green-code-initiative/ecoCode-challenge/blob/main/starter-pack.md)
+Here the [Starter pack](STARTER_PACK.md)
 
 🤓 Main contributors
 --------------------
