@@ -56,15 +56,16 @@ Or you can directly use a [all-in-one docker-compose](INSTALL.md)
 
 🛒 Distribution
 ------------------
+
 Ready to use binaries are available [from GitHub](https://github.com/green-code-initiative/ecoCode/releases).
 
 🧩 Plugins version compatibility
 ------------------
 
-| Plugins Version	 | SonarQube version          |
+| Plugins Version  | SonarQube version          |
 |------------------|----------------------------|
-| 0.1.+	           | SonarQube 8.9.+ LTS to 9.3 |
-| 0.2.+	           | SonarQube 9.4.+ LTS to 9.8 |
+| 0.1.+            | SonarQube 8.9.+ LTS to 9.3 |
+| 0.2.+            | SonarQube 9.4.+ LTS to 9.8 |
 
 🤝 Contribution
 ---------------
@@ -79,7 +80,7 @@ We are listening to you to make the project progress collectively, and maybe wit
 
 WE NEED YOU !
 
-Here the [Starter pack](STARTER_PACK.md)
+Here the [Starter pack](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/starter-pack.md)
 
 🤓 Main contributors
 --------------------
