@@ -72,11 +72,11 @@ Ready to use binaries are available [from GitHub](https://github.com/green-code-
 
 You are a technical expert, a designer, a project manager, a CSR expert, an ecodesign expert...
 
-You want to offer the help of your company, help us to organize, communicate on the project?
+You want to offer the help of your company, help us to organize, communicate on the project ?
 
-You have ideas to submit to us?
+You have ideas to submit to us ?
 
-We are listening to you to make the project progress collectively, and maybe with you!
+We are listening to you to make the project progress collectively, and maybe with you !
 
 WE NEED YOU !
 
