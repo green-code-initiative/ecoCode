@@ -65,7 +65,7 @@ Ready to use binaries are available [from GitHub](https://github.com/green-code-
 | Plugins Version  | SonarQube version          |
 |------------------|----------------------------|
 | 0.1.+            | SonarQube 8.9.+ LTS to 9.3 |
-| 0.2.+            | SonarQube 9.4.+ LTS to 9.8 |
+| 0.2.+            | SonarQube 9.4.+ LTS to 9.9 |
 
 🤝 Contribution
 ---------------

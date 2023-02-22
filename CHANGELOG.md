@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#40](https://github.com/green-code-initiative/ecoCode/issues/40) (PR [#54](https://github.com/green-code-initiative/ecoCode/pull/54)) Refactoring of package names (`cnumr` to  `greencodeinitiative`)
 - modifying documentation to move a part to `ecoCode-common` repository
 - move common init scripts to `ecoCode-common` repository
+- [#58](https://github.com/green-code-initiative/ecoCode/issues/58) check and upgrade compatibility to SonarQube 9.9
 
 ### Deleted
 
