@@ -22,5 +22,5 @@ All rules listed above are not applicable on scanner tool.
 Here is the selected rules used on ecoCode : 
 - [List of applicable web rules](web-rules.md)
 
-We try to apply these rules to each supported langage, so we maintain a matrix to follow current development :
+We try to apply these rules to each supported language, so we maintain a matrix to follow current development :
 - [Rules support matrix by techno](web-matrix.md)
