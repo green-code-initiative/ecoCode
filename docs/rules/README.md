@@ -11,17 +11,16 @@ An applicable rule must follow these conditions:
 
 ## Rules
 
-### Web oriented
+Web-oriented rules are based on :
 
-Web-oriented rules are based on the 3rd edition of the "Ecoconception Web / Les 115 bonnes pratiques" book:
-[Eco-conception Web : Les 115 bonnes pratiques (greenit.fr)](https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html)
+- Ecoconception Web / Les 115 bonnes pratiques" book:
+(https://github.com/cnumr/best-practices)
+- GR491, LE GUIDE DE RÉFÉRENCE DE CONCEPTION RESPONSABLE DE SERVICES NUMÉRIQUES (https://gr491.isit-europe.org/)
+- Référentiel général d'écoconception de services numériques (RGESN) (https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/)
 
-[List of applicable web rules](web-rules.md)
+All rules listed above are not applicable on scanner tool.
+Here is the selected rules used on ecoCode : 
+- [List of applicable web rules](web-rules.md)
 
-
-[Rules support matrix by techno](web-matrix.md)
-
-
-### Android
-
-The rules dedicated to Android are based on the work of Dr. Olivier Le Goaër : [Energy Smells for Android](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) and [Social Smells for Android](https://olegoaer.perso.univ-pau.fr/android-social-smells/)
+We try to apply these rules to each supported language, so we maintain a matrix to follow current development :
+- [Rules support matrix by techno](web-matrix.md)
