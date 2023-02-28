@@ -18,6 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - move common init scripts to `ecoCode-common` repository
 - [#58](https://github.com/green-code-initiative/ecoCode/issues/58) check and upgrade compatibility to SonarQube 9.9
 - move `CONTRIBUTING.md` to common doc in `ecoCode-common` repository
+- move `CODE_STYLE.md` to common doc in `ecoCode-common` repository
 
 ### Deleted
 
