@@ -88,9 +88,6 @@
                     <pluginClass>fr.greencodeinitiative.java.JavaPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
-                    <!-- TODO : commented because plugin not loaded in SONAR if required version of java plugin is not installed -->
-                    <!-- TODO : check how to resolve it (how to force this version in SonarQube installation) -->
-                    <!-- <requirePlugins>java:${sonarjava.version}</requirePlugins> -->
                     <basePlugin>java</basePlugin>
                     <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>

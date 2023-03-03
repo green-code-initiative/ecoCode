@@ -37,7 +37,7 @@
 
     <properties>
 
-        <java.version>11</java.version>
+        <java.version>1.8</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 
@@ -45,8 +45,10 @@
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
-        <sonarqube.version>9.4.0.54424</sonarqube.version>
-        <sonarjava.version>7.15.0.30507</sonarjava.version>
+        <!--        <sonarqube.version>9.4.0.54424</sonarqube.version>-->
+        <!--        <sonarjava.version>7.15.0.30507</sonarjava.version>-->
+        <sonarqube.version>8.7.1.42226</sonarqube.version>
+        <sonarjava.version>6.14.0.25463</sonarjava.version>
 
         <sonar.organization>green-code-initiative</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -54,10 +56,16 @@
         <!-- Don't forget to update this version -->
         <jacoco.version>0.8.8</jacoco.version>
 
-        <sonar-plugin-api-impl.version>9.7.1.62043</sonar-plugin-api-impl.version>
+        <!--        <sonar-plugin-api-impl.version>9.7.1.62043</sonar-plugin-api-impl.version>-->
+        <sonar-plugin-api-impl.version>8.9.10.61524</sonar-plugin-api-impl.version>
+
+        <!--        <sonar-analyzer-commons.version>2.1.0.1111</sonar-analyzer-commons.version>-->
+        <!--        <sonar.python.version>3.19.0.10254</sonar.python.version>-->
+        <!--        <sonarphp.version>3.25.0.9077</sonarphp.version>-->
         <sonar-analyzer-commons.version>2.1.0.1111</sonar-analyzer-commons.version>
-        <sonar.python.version>3.19.0.10254</sonar.python.version>
-        <sonarphp.version>3.25.0.9077</sonarphp.version>
+        <sonar.python.version>3.9.0.9230</sonar.python.version>
+        <sonarphp.version>3.3.0.5166</sonarphp.version>
+
         <sonar-packaging.version>1.21.0.505</sonar-packaging.version>
         <sonar.skipDependenciesPackaging>true</sonar.skipDependenciesPackaging>
         <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>

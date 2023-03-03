@@ -3,6 +3,7 @@ package fr.greencodeinitiative.java.checks;
 import java.math.BigDecimal;
 import java.util.Set;
 
+import com.google.common.collect.ImmutableSet;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import static org.sonar.plugins.java.api.semantic.MethodMatchers.create;
 import org.sonar.plugins.java.api.tree.MemberSelectExpressionTree;
@@ -28,7 +29,7 @@ enum ConstOrLiteralDeclare {
 
         @Override
         Set<String> publicMembers() {
-            return Set.of("TRUE", "FALSE");
+            return ImmutableSet.of("TRUE", "FALSE");
         }
 
         @Override
@@ -164,7 +165,7 @@ enum ConstOrLiteralDeclare {
 
         @Override
         Set<String> publicMembers() {
-            return Set.of("ZERO", "ONE", "TEN");
+            return ImmutableSet.of("ZERO", "ONE", "TEN");
         }
 
         @Override
@@ -191,13 +192,13 @@ enum ConstOrLiteralDeclare {
 
     abstract MethodMatchers methodMatchers();
 
-    private static final Set<String> NUMBER_DEFAULT_MEMBERS = Set.of("MIN_VALUE", "MAX_VALUE");
+    private static final Set<String> NUMBER_DEFAULT_MEMBERS = ImmutableSet.of("MIN_VALUE", "MAX_VALUE");
 
     private static final MethodMatchers DEFAULT_METHOD_MATCHERS = create()
             .ofSubTypes(Number.class.getName(), Boolean.class.getName(), Character.class.getName()).names("valueOf")
             .addParametersMatcher(args -> !args.isEmpty()).build();
 
-    public static final boolean isLiteral(Tree arg) {
+    public static boolean isLiteral(Tree arg) {
         if (arg.is(TYPE_CAST)) {
             arg = ((TypeCastTree) arg).expression();
         }

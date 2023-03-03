@@ -62,23 +62,23 @@ public class FilesUtils {
     private static List<File> getFilesRecursively(Path root, String... extensions) {
         final List<File> files = new ArrayList<>();
 
-        FileVisitor<Path> visitor = new SimpleFileVisitor<>() {
-          @Override
-          public FileVisitResult visitFile(Path filePath, BasicFileAttributes attrs) {
-            for (String extension : extensions) {
-              if (filePath.toString().endsWith("."
-                      + extension)) {
-                files.add(filePath.toFile());
-                break;
-              }
+        FileVisitor<Path> visitor = new SimpleFileVisitor<Path>() {
+            @Override
+            public FileVisitResult visitFile(Path filePath, BasicFileAttributes attrs) {
+                for (String extension : extensions) {
+                    if (filePath.toString().endsWith("."
+                            + extension)) {
+                        files.add(filePath.toFile());
+                        break;
+                    }
+                }
+                return FileVisitResult.CONTINUE;
             }
-            return FileVisitResult.CONTINUE;
-          }
 
-          @Override
-          public FileVisitResult visitFileFailed(Path file, IOException exc) {
-            return FileVisitResult.CONTINUE;
-          }
+            @Override
+            public FileVisitResult visitFileFailed(Path file, IOException exc) {
+                return FileVisitResult.CONTINUE;
+            }
         };
 
         try {
