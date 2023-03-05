@@ -13,13 +13,15 @@ Project structure
 Here is a preview of project tree :
 
 ```txt
-ecoCode              # Root directory
+ecoCode                 # Root directory
 |
-+--java-plugin       # JAVA
++--java-plugin          # JAVA
 |
-+--php-plugin        # PHP
++--javascript-plugin    # JavaScript
 |
-+--python-plugin     # Python
++--php-plugin           # PHP
+|
++--python-plugin        # Python
 |
 \--docker-compose.yml   # Docker compose file
 ```

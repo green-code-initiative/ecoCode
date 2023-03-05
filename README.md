@@ -17,9 +17,10 @@ refer to the contribution section.
 🌿 SonarQube Plugins
 -------------------
 
-3 technologies are supported by the plugin right now:
+4 technologies are supported by the plugin right now:
 
 - [Java](java-plugin/)
+- [JavaScript](javascript-plugin/)
 - [PHP](php-plugin/)
 - [Python](python-plugin/)
 
@@ -31,7 +32,7 @@ refer to the contribution section.
 
 There is two kind of plugins :
 
-- One for web / backoffice (PHP, Python, Java), using smells described in the 2nd edition of the repository published in
+- One for web / backoffice (PHP, Python, Java, JavaScript), using smells described in the 2nd edition of the repository published in
   september 2015
   You can find all the
   rules [here (in french)](https://docs.google.com/spreadsheets/d/1nujR4EnajnR0NSXjvBW3GytOopDyTfvl3eTk2XGLh5Y/edit#gid=1386834576)
