@@ -65,6 +65,8 @@
         <junit.jupiter.version>5.9.1</junit.jupiter.version>
         <assertJ.version>3.23.1</assertJ.version>
 
+        <google.re2j>1.7</google.re2j>
+
     </properties>
 
     <dependencyManagement>
@@ -88,6 +90,13 @@
                 <groupId>org.sonarsource.sonarqube</groupId>
                 <artifactId>sonar-plugin-api-impl</artifactId>
                 <version>${sonar-plugin-api-impl.version}</version>
+            </dependency>
+
+            <!-- for security on regex patterns : https://github.com/google/re2j -->
+            <dependency>
+                <groupId>com.google.re2j</groupId>
+                <artifactId>re2j</artifactId>
+                <version>${google.re2j}</version>
             </dependency>
 
             <!-- JAVA -->
