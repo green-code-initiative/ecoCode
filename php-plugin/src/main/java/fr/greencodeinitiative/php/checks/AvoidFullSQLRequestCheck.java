@@ -21,7 +21,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 public class AvoidFullSQLRequestCheck extends PHPSubscriptionCheck {
 
     public static final String ERROR_MESSAGE = "Don't use the query SELECT * FROM";
-    private static final String REGEXPSELECTFROM = "(?i).*select.*\\*.*from.*";
+    private static final String REGEXPSELECTFROM = "(?i).*select.*\\*.*from.*+";
 
     @Override
     public List<Kind> nodesToVisit() {
