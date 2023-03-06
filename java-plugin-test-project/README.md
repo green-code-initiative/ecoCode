@@ -1,3 +1,11 @@
+Purpose of this project
+---
+To check locally all rules on java language.
+To do this :
+- first launch local development environment (SonarQube)
+- launch sonar maven command to send sonar metrics to local SonarQube
+- check if each Java class contains (or not) the rule error defined for this class
+
 Step 0 : requirements
 ---
 
@@ -18,7 +26,7 @@ Step 1 : compile and build
 
 `mvn clean compile`
 
-Step 2 : Send metrics to local SonarQube
+Step 2 : Send Sonar metrics to local SonarQube
 ---
 
 `mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar -Dsonar.login=admin -Dsonar.password=XXX`
