@@ -1,11 +1,13 @@
 - [Installation notes / requirements](#installation-notes--requirements)
 - [Project structure](#project-structure)
-- [Links](#links)
+- [Plugin-specific guides](#plugin-specific-guides)
 
 Installation notes / requirements
 ---------------------------------
 
-Please read common [INSTALL.md](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md) in `ecoCode-common` repository.
+Please read common [INSTALL.md](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md)
+in `ecoCode-common` repository. Please follow the specific guides below for additional information on installing the
+desired plugins.
 
 Project structure
 -----------------
@@ -28,9 +30,10 @@ ecoCode                 # Root directory
 
 You will find more information about the plugins’ architecture in their folders
 
-Links
------
+Plugin-specific guides
+----------------------
 
-- Java how-to : https://github.com/SonarSource/sonar-java/blob/master/docs/CUSTOM_RULES_101.md
-- Python how-to : https://github.com/SonarSource/sonar-custom-rules-examples/tree/master/python-custom-rules
-- PHP how-to : https://github.com/SonarSource/sonar-custom-rules-examples/tree/master/php-custom-rules
+- [Java how-to](java-plugin/README.md)
+- [JavaScript how-to](javascript-plugin/README.md)
+- [Python how-to](python-plugin/README.md)
+- [PHP how-to](php-plugin/README.md)

@@ -1,23 +1,23 @@
 ![Logo](docs/resources/logo-large.png)
 ======================================
 
-*ecoCode* is a collective project aiming to reduce environmental footprint of software at the code level. The goal of
+_ecoCode_ is a collective project aiming to reduce environmental footprint of software at the code level. The goal of
 the project is to provide a list of static code analyzers to highlight code structures that may have a negative
 ecological impact: energy and resources over-consumption, "fatware", shortening terminals' lifespan, etc.
 
-ecoCode is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin then
-implement these catalogs as rules for scanning your projects.
+_ecoCode_ is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin
+then implement these catalogs as rules for scanning your projects.
 
 **Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please
 refer to the contribution section.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/CODE_OF_CONDUCT.md)
 
 🌿 SonarQube Plugins
 -------------------
 
-4 technologies are supported by the plugin right now:
+4 technologies are supported by ecoCode right now:
 
 - [Java](java-plugin/)
 - [JavaScript](javascript-plugin/)
@@ -32,10 +32,10 @@ refer to the contribution section.
 
 There is two kind of plugins :
 
-- One for web / backoffice (PHP, Python, Java, JavaScript), using smells described in the 2nd edition of the repository published in
-  september 2015
+- One for web / backoffice (PHP, Python, Java, JavaScript), using smells described in the 2nd edition of the repository
+  published in september 2015.
   You can find all the
-  rules [here (in french)](https://docs.google.com/spreadsheets/d/1nujR4EnajnR0NSXjvBW3GytOopDyTfvl3eTk2XGLh5Y/edit#gid=1386834576)
+  rules [here (in french)](https://docs.google.com/spreadsheets/d/1nujR4EnajnR0NSXjvBW3GytOopDyTfvl3eTk2XGLh5Y/edit#gid=1386834576).
   The current repository is for web / backOffice
 - One for mobile (Android), using [a set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised
   by Olivier Le Goaër for Android.
@@ -46,7 +46,9 @@ There is two kind of plugins :
 Code is parsed to be transformed as AST. AST will allow you to access one or more nodes of your code.
 For example, you’ll be able to access of all your `for` loop, to explore content etc.
 
-To better understand AST structure, y a can use [AST Explorer](https://astexplorer.net/)
+To better understand AST structure, you can use the [AST Explorer](https://astexplorer.net/).
+
+JavaScript plugin works differently because it does not use AST. [More information here](javascript-plugin/README.md)
 
 🚀 Getting Started
 ------------------
