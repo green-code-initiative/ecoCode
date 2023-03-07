@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.re2j.Pattern;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
@@ -23,7 +24,7 @@ import org.sonar.plugins.python.api.tree.Tree;
 public class AvoidFullSQLRequest extends PythonSubscriptionCheck {
 
     protected static final String MESSAGERULE = "Don't use the query SELECT * FROM";
-    private static final String REGEXPSELECTFROM = "(?i).*select.*\\*.*from.*";
+    private static final Pattern PATTERN = Pattern.compile("(?i).*select.*\\*.*from.*");
     private static final Map<String, Collection<Integer>> linesWithIssuesByFile = new HashMap<>();
 
 
@@ -39,7 +40,7 @@ public class AvoidFullSQLRequest extends PythonSubscriptionCheck {
 
     public void checkIssue(StringElement stringElement, SubscriptionContext ctx) {
         if (lineAlreadyHasThisIssue(stringElement, ctx)) return;
-        if (stringElement.value().matches(REGEXPSELECTFROM)) {
+        if (PATTERN.matcher(stringElement.value()).matches()) {
             repport(stringElement, ctx);
         }
     }

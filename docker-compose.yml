@@ -2,7 +2,7 @@ version: "3.3"
 services:
   sonar:
     image: sonarqube:9.9-community
-    container_name: sonar_standard
+    container_name: sonar_ecocode
     ports:
       - "9000:9000"
     networks:
@@ -30,7 +30,7 @@ services:
 
   db:
     image: postgres:12
-    container_name: postgresql_standard
+    container_name: postgresql_ecocode
     networks:
       - sonarnet
     volumes:
