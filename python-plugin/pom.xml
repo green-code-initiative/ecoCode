@@ -35,6 +35,12 @@
             <artifactId>sonar-analyzer-commons</artifactId>
         </dependency>
 
+        <!-- for security on regex patterns : https://github.com/google/re2j -->
+        <dependency>
+            <groupId>com.google.re2j</groupId>
+            <artifactId>re2j</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.sonarsource.python</groupId>
             <artifactId>python-checks-testkit</artifactId>

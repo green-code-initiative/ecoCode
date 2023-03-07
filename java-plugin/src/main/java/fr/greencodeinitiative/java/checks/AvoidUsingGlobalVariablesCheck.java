@@ -2,8 +2,8 @@ package fr.greencodeinitiative.java.checks;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
 
+import com.google.re2j.Pattern;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
@@ -19,10 +19,8 @@ import org.sonar.plugins.java.api.tree.VariableTree;
         tags = {"bug"})
 public class AvoidUsingGlobalVariablesCheck extends IssuableSubscriptionVisitor {
 
-    public static final String KEY = "PreferLocalVariablesToGlobalsCheck";
     private static final String ERROR_MESSAGE = "Avoid using global variables";
-    public static final String GLOBALS_PATTERN = "^.*(static).*$";
-    private Pattern pattern;
+    private static final Pattern PATTERN = Pattern.compile("^.*(static).*$", Pattern.CASE_INSENSITIVE);
 
     @Override
     public List<Kind> nodesToVisit() {
@@ -31,7 +29,6 @@ public class AvoidUsingGlobalVariablesCheck extends IssuableSubscriptionVisitor 
 
     @Override
     public void visitNode(Tree tree) {
-        pattern = Pattern.compile(GLOBALS_PATTERN, Pattern.CASE_INSENSITIVE);
 
         if (tree.is(Kind.STATIC_INITIALIZER)) {
             reportIssue(tree, String.format(ERROR_MESSAGE, tree));
@@ -41,7 +38,7 @@ public class AvoidUsingGlobalVariablesCheck extends IssuableSubscriptionVisitor 
             int modifiersSize = (variableTree).modifiers().modifiers().size();
             for (int i = 0; i < modifiersSize; i++) {
                 String modifier = ((VariableTree) tree).modifiers().modifiers().get(i).modifier().toString();
-                if (pattern.matcher(modifier).matches()) {
+                if (PATTERN.matcher(modifier).matches()) {
                     reportIssue(tree, String.format(ERROR_MESSAGE, modifier));
                 }
             }
