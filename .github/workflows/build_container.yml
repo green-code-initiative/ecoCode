@@ -16,7 +16,7 @@ env:
   # github.repository as <account>/<repo>
   IMAGE_NAME: sonarqube-ecocode
   IMAGES: |
-    docker.io/${{ github.repository_owner }}/sonarqube-ecocode
+    ghcr.io/${{ github.repository_owner }}/sonarqube-ecocode
 jobs:
   Build:
     runs-on: ubuntu-latest
