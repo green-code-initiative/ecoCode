@@ -54,7 +54,7 @@ jobs:
           images: ${{ env.IMAGES }}
           flavor: |
             latest=auto
-          tags:
+          tags: |
             type=semver,event=tag,pattern={{version}}
             type=semver,event=tag,pattern={{major}}.{{minor}}
             type=semver,event=tag,pattern={{major}}
