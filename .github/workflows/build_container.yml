@@ -55,6 +55,7 @@ jobs:
           flavor: |
             latest=auto
           tags: |
+            type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'main') }}
             type=semver,event=tag,pattern={{version}}
             type=semver,event=tag,pattern={{major}}.{{minor}}
             type=semver,event=tag,pattern={{major}}
