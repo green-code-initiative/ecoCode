@@ -50,8 +50,19 @@ To better understand AST structure, y a can use [AST Explorer](https://astexplor
 🚀 Getting Started
 ------------------
 
-You can download each plugin separatly and copy the plugin (jar file) to `$SONAR_INSTALL_DIR/extensions/plugins` and
+You can give a try with a one command docker :
+```
+docker run -ti --rm \
+       -v sq_ecocode_logs:/opt/sonarqube/logs \
+       -v sq_ecocode_data:/opt/sonarqube/data \
+       -p 9000:9000 \
+       --name sonarqube-ecocode ghcr.io/green-code-initiative/sonarqube-ecocode:latest
+```
+And add the `eco-conception` tagged rules to Quality Profiles.
+
+You can also download each plugin separatly and copy the plugin (jar file) to `$SONAR_INSTALL_DIR/extensions/plugins` and
 restart SonarQube.
+
 Or you can directly use a [all-in-one docker-compose](INSTALL.md)
 
 🛒 Distribution
