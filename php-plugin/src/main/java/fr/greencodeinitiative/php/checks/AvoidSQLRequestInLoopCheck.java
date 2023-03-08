@@ -2,8 +2,8 @@ package fr.greencodeinitiative.php.checks;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
 
+import com.google.re2j.Pattern;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
@@ -26,7 +26,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 
     public static final String ERROR_MESSAGE = "Avoid SQL request in loop";
-    private static final Pattern RegExSQLCall = Pattern.compile("(mysql(i::|_)query\\s*\\(.*)|(oci_execute\\(.*)");
+    private static final Pattern PATTERN = Pattern.compile("(mysql(i::|_)query\\s*\\(.*)|(oci_execute\\(.*)");
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -67,7 +67,7 @@ public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
     }
 
     private void verifyIfThereIsAError(String expression, ExpressionStatementTree expressionStatementTree) {
-        if (RegExSQLCall.matcher(expression).find())
+        if (PATTERN.matcher(expression).find())
             context().newIssue(this, expressionStatementTree, ERROR_MESSAGE);
     }
 

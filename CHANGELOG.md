@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - move `CONTRIBUTING.md` to common doc in `ecoCode-common` repository
 - move `CODE_STYLE.md` to common doc in `ecoCode-common` repository
 - move `INSTALL.md` to common doc in `ecoCode-common` repository
+- security / performance optimizations : correction of `sonarcloud.io` security hotspots (java / php, python) and move Pattern compilation to static attribute
 
 ### Deleted
 

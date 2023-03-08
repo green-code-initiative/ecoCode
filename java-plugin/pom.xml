@@ -49,6 +49,12 @@
             <version>31.0.1-jre</version>
         </dependency>
 
+        <!-- for security on regex patterns : https://github.com/google/re2j -->
+        <dependency>
+            <groupId>com.google.re2j</groupId>
+            <artifactId>re2j</artifactId>
+        </dependency>
+
         <!-- TEST sources dependencies -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
