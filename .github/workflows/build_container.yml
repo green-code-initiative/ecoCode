@@ -6,77 +6,69 @@ on:
   push:
     branches:
       - main
-
-    # don't rebuild image if someone only edited unrelated files
-    paths-ignore:
-      - '**.md'
-      - 'docs/**'
+    tags:
+      - '*'
   pull_request:
-    # don't rebuild image if someone only edited unrelated files
-    paths-ignore:
-      - '**.md'
-      - 'docs/**'
+    branches:
+      - main
 
+env:
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: sonarqube-ecocode
+  IMAGES: |
+    docker.io/${{ github.repository_owner }}/sonarqube-ecocode
 jobs:
-  call-docker-build:
-    name: Call Docker Build
-    uses: bretfisher/docker-build-workflow/.github/workflows/reusable-docker-build.yaml@2f9fdc0325196df9f11bfe4263e277793e648922
-
+  Build:
+    runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write # needed to push docker image to ghcr.io
-      pull-requests: write # needed to create and update comments in PRs
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
 
-    secrets:
-      # Only needed if with:dockerhub-enable is true below
-      # https://hub.docker.com/settings/security
-      dockerhub-username: ""
-      dockerhub-token: ""
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-    with:
-      ### REQUIRED
-      ### ENABLE ONE OR BOTH REGISTRIES
-      ### tell docker where to push.
-      ### NOTE if Docker Hub is set to true, you must set secrets above and also add account/repo/tags below
-      dockerhub-enable: false
-      ghcr-enable: true
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-      ### A list of the account/repo names for docker build. List should match what's enabled above
-      ### defaults to:
-      image-names: |
-        name=ghcr.io/${{ github.repository_owner }}/sonarqube-ecocode
-      #  name=${{ github.repository }},enable=false
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
 
-      ### set rules for tagging images, based on special action syntax:
-      ### https://github.com/docker/metadata-action#tags-input
-      ### defaults to:
-      #tag-rules: |
-      #  type=raw,value=latest,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
-      #  type=raw,value=stable-{{date 'YYYYMMDDHHmmss'}},enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
-      #  type=ref,event=pr
-      #  type=ref,event=branch
-      #  type=raw,value=gha-${{ github.run_id }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
 
-      ### path to where docker should copy files into image
-      ### defaults to root of repository (.)
-      context: .
+      - name: Docker metadata
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          images: ${{ env.IMAGES }}
+          flavor: |
+            latest=auto
+          tags:
+            type=semver,event=tag,pattern={{version}}
+            type=semver,event=tag,pattern={{major}}.{{minor}}
+            type=semver,event=tag,pattern={{major}}
+            type=ref,event=branch
+            type=ref,event=pr
+            type=sha
 
-      ### Dockerfile alternate name. Default is Dockerfile (relative to context path)
-      # file: Containerfile
-
-      ### build stage to target, defaults to empty, which builds to last stage in Dockerfile
-      # target:
-
-      ### platforms to build for
-      ### defaults to linux/amd64
-      ### other options: linux/amd64,linux/arm64,linux/arm/v7
-      platforms: linux/amd64
-
-      ### Create a PR comment with image tags and labels
-      ### defaults to true
-      # comment-enable: false
-
-      # Additionals parameters
-      # (cf https://github.com/marketplace/actions/docker-metadata-action#flavor-input)
-      flavor-rules: |
-        latest=auto
+      - name: Publish image
+        id: push
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          pull: true
+          cache-to: type=gha,mode=max
+          cache-from: type=gha,mode=max
