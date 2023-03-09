@@ -63,7 +63,7 @@
                 <artifactId>sonar-packaging-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <pluginKey>${project.artifactId}</pluginKey>
+                    <pluginKey>ecocodejavascript</pluginKey>
                     <pluginName>${project.name}</pluginName>
                     <pluginClass>fr.greencodeinitiative.javascript.JavaScriptPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
