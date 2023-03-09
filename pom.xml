@@ -58,6 +58,7 @@
         <sonar-analyzer-commons.version>2.1.0.1111</sonar-analyzer-commons.version>
         <sonar.python.version>3.19.0.10254</sonar.python.version>
         <sonarphp.version>3.25.0.9077</sonarphp.version>
+        <sonarjavascript.version>9.13.0.20537</sonarjavascript.version>
         <sonar-packaging.version>1.21.0.505</sonar-packaging.version>
         <sonar.skipDependenciesPackaging>true</sonar.skipDependenciesPackaging>
         <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
@@ -105,6 +106,15 @@
                 <artifactId>sonar-java-plugin</artifactId>
                 <type>sonar-plugin</type>
                 <version>${sonarjava.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- JavaScript -->
+            <dependency>
+                <groupId>org.sonarsource.javascript</groupId>
+                <artifactId>sonar-javascript-plugin</artifactId>
+                <type>sonar-plugin</type>
+                <version>${sonarjavascript.version}</version>
                 <scope>provided</scope>
             </dependency>
 
@@ -207,6 +217,7 @@
     <modules>
         <module>python-plugin</module>
         <module>java-plugin</module>
+        <module>javascript-plugin</module>
         <module>php-plugin</module>
     </modules>
 
