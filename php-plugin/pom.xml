@@ -57,7 +57,7 @@
                 <artifactId>sonar-packaging-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <pluginKey>${project.artifactId}</pluginKey>
+                    <pluginKey>ecocodephp</pluginKey>
                     <pluginName>${project.name}</pluginName>
                     <pluginClass>fr.greencodeinitiative.php.PHPPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>

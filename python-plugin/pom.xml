@@ -62,7 +62,7 @@
                 <artifactId>sonar-packaging-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <pluginKey>${project.artifactId}</pluginKey>
+                    <pluginKey>ecocodepython</pluginKey>
                     <pluginName>${project.name}</pluginName>
                     <pluginClass>fr.greencodeinitiative.python.PythonPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
