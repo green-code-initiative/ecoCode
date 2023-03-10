@@ -27,6 +27,9 @@ import org.sonar.plugins.java.api.tree.TryStatementTree;
 import org.sonar.plugins.java.api.tree.VariableTree;
 import org.sonar.plugins.java.api.tree.WhileStatementTree;
 
+// TODO DDC : rule already existing natively in SonarQube 9.9 (see java:S3012) for a part of checks
+// ==> analyse / add our tag to it (?)
+
 /**
  * Array Copy Check
  *
