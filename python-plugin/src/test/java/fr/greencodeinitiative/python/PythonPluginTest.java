@@ -32,7 +32,7 @@ import org.sonar.api.utils.Version;
 public class PythonPluginTest {
     @Test
     public void test() {
-        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(7, 9), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
+        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(9, 9), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
         Plugin.Context context = new PluginContextImpl.Builder().setSonarRuntime(sonarRuntime).build();
         new PythonPlugin().define(context);
         assertThat(context.getExtensions()).hasSize(1);
