@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -9,16 +10,18 @@
         <version>0.3.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>ecocode-python-plugin</artifactId>
+    <artifactId>ecocode-javascript-plugin</artifactId>
     <packaging>sonar-plugin</packaging>
 
-    <name>ecoCode Python Sonar Plugin</name>
+    <name>ecoCode JavaScript Sonar Plugin</name>
+    <description>Provides rules to reduce the environmental footprint of your JavaScript programs</description>
+    <url>https://github.com/green-code-initiative/ecoCode/tree/main/javascript-plugin</url>
 
     <dependencies>
 
         <dependency>
-            <groupId>org.sonarsource.python</groupId>
-            <artifactId>sonar-python-plugin</artifactId>
+            <groupId>org.sonarsource.javascript</groupId>
+            <artifactId>sonar-javascript-plugin</artifactId>
             <type>sonar-plugin</type>
         </dependency>
 
@@ -26,30 +29,28 @@
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api-impl</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.sonarsource.analyzer-commons</groupId>
             <artifactId>sonar-analyzer-commons</artifactId>
         </dependency>
 
-        <!-- for security on regex patterns : https://github.com/google/re2j -->
-        <dependency>
-            <groupId>com.google.re2j</groupId>
-            <artifactId>re2j</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.sonarsource.python</groupId>
-            <artifactId>python-checks-testkit</artifactId>
-            <scope>test</scope>
-        </dependency>
+        <!-- Testing dependencies -->
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -62,15 +63,12 @@
                 <artifactId>sonar-packaging-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <pluginKey>ecocodepython</pluginKey>
+                    <pluginKey>ecocodejavascript</pluginKey>
                     <pluginName>${project.name}</pluginName>
-                    <pluginClass>fr.greencodeinitiative.python.PythonPlugin</pluginClass>
+                    <pluginClass>fr.greencodeinitiative.javascript.JavaScriptPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
-                    <!-- TODO : commented because plugin not loaded in SONAR if required version of python plugin is not installed -->
-                    <!-- TODO : check how to resolve it (how to force this version in SonarQube installation) -->
-                    <!-- <requirePlugins>python:${sonar.python.version}</requirePlugins> -->
-                    <basePlugin>python</basePlugin>
+                    <basePlugin>javascript</basePlugin>
                     <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
             </plugin>
@@ -98,17 +96,10 @@
                                         <exclude>org/sonar/api/batch/sensor/**</exclude>
                                     </excludes>
                                 </filter>
-                                <filter>
-                                    <artifact>com.*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/**</exclude>
-                                    </excludes>
-                                </filter>
                             </filters>
                         </configuration>
                     </execution>
                 </executions>
-
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -132,6 +123,29 @@
                             </artifactItems>
                             <outputDirectory>../lib</outputDirectory>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <configuration>
+                    <output>file</output>
+                    <append>false</append>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

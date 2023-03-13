@@ -43,7 +43,7 @@ class JavaPluginTest {
 
         @Override
         public Version getApiVersion() {
-            return Version.create(7, 9);
+            return Version.create(9, 9);
         }
 
         @Override

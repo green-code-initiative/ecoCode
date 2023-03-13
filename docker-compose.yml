@@ -19,6 +19,9 @@ services:
         source: ./java-plugin/target/ecocode-java-plugin-0.3.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/ecocode-java-plugin-0.3.0-SNAPSHOT.jar
       - type: bind
+        source: ./javascript-plugin/target/ecocode-javascript-plugin-0.3.0-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-javascript-plugin-0.3.0-SNAPSHOT.jar
+      - type: bind
         source: ./php-plugin/target/ecocode-php-plugin-0.3.0-SNAPSHOT.jar
         target: /opt/sonarqube/extensions/plugins/ecocode-php-plugin-0.3.0-SNAPSHOT.jar
       - type: bind

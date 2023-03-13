@@ -90,6 +90,12 @@
                                         <exclude>org/sonar/api/batch/sensor/**</exclude>
                                     </excludes>
                                 </filter>
+                                <filter>
+                                    <artifact>com.*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/**</exclude>
+                                    </excludes>
+                                </filter>
                             </filters>
                         </configuration>
                     </execution>
