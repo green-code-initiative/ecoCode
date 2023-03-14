@@ -92,11 +92,11 @@
             </dependency>
 
             <!-- for security on regex patterns : https://github.com/google/re2j -->
-<!--            <dependency>-->
-<!--                <groupId>com.google.re2j</groupId>-->
-<!--                <artifactId>re2j</artifactId>-->
-<!--                <version>${google.re2j}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.google.re2j</groupId>
+                <artifactId>re2j</artifactId>
+                <version>${google.re2j}</version>
+            </dependency>
 
             <!-- JAVA -->
             <dependency>
