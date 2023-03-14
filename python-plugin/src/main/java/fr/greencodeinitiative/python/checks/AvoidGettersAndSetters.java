@@ -19,14 +19,14 @@ import org.sonar.plugins.python.api.tree.Tree;
 
 @Rule(
         key = AvoidGettersAndSetters.RULE_KEY,
-        name = "Developpement",
+        name = "Avoid the use of getters and setters",
         description = AvoidGettersAndSetters.DESCRIPTION,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"bug", "eco-design"})
 public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "D7";
-    public static final String DESCRIPTION = "Avoid the use of getters and setters";
+    public static final String DESCRIPTION = "Avoid creating getter and setter methods in classes";
 
     @Override
     public void initialize(Context context) {

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
-import com.google.re2j.Pattern;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
@@ -16,14 +16,19 @@ import org.sonar.plugins.python.api.tree.StringLiteral;
 import org.sonar.plugins.python.api.tree.Tree;
 
 @Rule(
-        key = "S74",
-        name = "Developpement",
+        key = AvoidFullSQLRequest.RULE_KEY,
+        name = AvoidFullSQLRequest.MESSAGERULE,
         description = AvoidFullSQLRequest.MESSAGERULE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"bug", "eco-design"})
 public class AvoidFullSQLRequest extends PythonSubscriptionCheck {
 
+    public static final String RULE_KEY = "S74";
+
     protected static final String MESSAGERULE = "Don't use the query SELECT * FROM";
+
+    // TODO DDC : create support to add in deployment th dependency com.google.re2j:re2j
+    // and replace "import java.util.regex.Pattern" by "import com.google.re2j.Pattern"
     private static final Pattern PATTERN = Pattern.compile("(?i).*select.*\\*.*from.*");
     private static final Map<String, Collection<Integer>> linesWithIssuesByFile = new HashMap<>();
 

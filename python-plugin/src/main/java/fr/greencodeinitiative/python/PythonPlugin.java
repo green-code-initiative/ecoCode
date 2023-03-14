@@ -25,7 +25,7 @@ public class PythonPlugin implements Plugin {
 
     @Override
     public void define(Context context) {
-        context.addExtension(PythonRulesDefinition.class);
+        context.addExtension(PythonRuleRepository.class);
     }
 
 }
