@@ -9,9 +9,7 @@
     <packaging>pom</packaging>
 
     <name>ecoCode Sonar Plugins Project</name>
-    <description>Les règles s'appuient sur l'édition 3 du livre "Ecoconception Web / Les 115 bonnes pratiques" =&gt;
-        https://collectif.greenit.fr/ecoconception-web/115-bonnes-pratiques-eco-conception_web.html
-    </description>
+    <description>Provides rules to reduce the environmental footprint of your programs</description>
     <url>https://github.com/green-code-initiative/ecocode</url>
     <organization>
         <name>green-code-initiative</name>
