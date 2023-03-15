@@ -11,7 +11,8 @@
     <artifactId>ecocode-php-plugin</artifactId>
     <packaging>sonar-plugin</packaging>
 
-    <name>ecoCode PHP Sonar Plugin</name>
+    <name>ecoCode - PHP language</name>
+    <description>Provides rules to reduce the environmental footprint of your PHP programs</description>
     <url>https://github.com/green-code-initiative/ecoCode/tree/main/php-plugin</url>
 
     <dependencies>

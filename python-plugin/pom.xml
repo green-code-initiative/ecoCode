@@ -11,7 +11,8 @@
     <artifactId>ecocode-python-plugin</artifactId>
     <packaging>sonar-plugin</packaging>
 
-    <name>ecoCode Python Sonar Plugin</name>
+    <name>ecoCode - Python language</name>
+    <description>Provides rules to reduce the environmental footprint of your Python programs</description>
     <url>https://github.com/green-code-initiative/ecoCode/tree/main/python-plugin</url>
 
     <dependencies>
