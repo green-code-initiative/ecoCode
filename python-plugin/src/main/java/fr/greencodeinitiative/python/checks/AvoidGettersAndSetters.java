@@ -19,7 +19,7 @@ import org.sonar.plugins.python.api.tree.Tree;
 
 @Rule(
         key = AvoidGettersAndSetters.RULE_KEY,
-        name = "Avoid the use of getters and setters",
+        name = AvoidGettersAndSetters.DESCRIPTION,
         description = AvoidGettersAndSetters.DESCRIPTION,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design"})
