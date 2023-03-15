@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.ecocode</groupId>
@@ -21,16 +21,24 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <issueManagement>
-        <system>GitHub</system>
-        <url>https://github.com/green-code-initiative/ecocode/issues</url>
-    </issueManagement>
+
+    <modules>
+        <module>python-plugin</module>
+        <module>java-plugin</module>
+        <module>javascript-plugin</module>
+        <module>php-plugin</module>
+    </modules>
+
     <scm>
         <connection>scm:git:https://github.com/green-code-initiative/ecocode</connection>
         <developerConnection>scm:git:https://github.com/green-code-initiative/ecocode</developerConnection>
         <url>https://github.com/green-code-initiative/ecocode</url>
         <tag>HEAD</tag>
     </scm>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/green-code-initiative/ecocode/issues</url>
+    </issueManagement>
 
     <properties>
 
@@ -101,8 +109,8 @@
             <dependency>
                 <groupId>org.sonarsource.java</groupId>
                 <artifactId>sonar-java-plugin</artifactId>
-                <type>sonar-plugin</type>
                 <version>${sonarjava.version}</version>
+                <type>sonar-plugin</type>
                 <scope>provided</scope>
             </dependency>
 
@@ -110,8 +118,8 @@
             <dependency>
                 <groupId>org.sonarsource.javascript</groupId>
                 <artifactId>sonar-javascript-plugin</artifactId>
-                <type>sonar-plugin</type>
                 <version>${sonarjavascript.version}</version>
+                <type>sonar-plugin</type>
                 <scope>provided</scope>
             </dependency>
 
@@ -119,8 +127,8 @@
             <dependency>
                 <groupId>org.sonarsource.php</groupId>
                 <artifactId>sonar-php-plugin</artifactId>
-                <type>sonar-plugin</type>
                 <version>${sonarphp.version}</version>
+                <type>sonar-plugin</type>
                 <scope>provided</scope>
             </dependency>
 
@@ -128,8 +136,8 @@
             <dependency>
                 <groupId>org.sonarsource.python</groupId>
                 <artifactId>sonar-python-plugin</artifactId>
-                <type>sonar-plugin</type>
                 <version>${sonar.python.version}</version>
+                <type>sonar-plugin</type>
                 <scope>provided</scope>
             </dependency>
 
@@ -210,12 +218,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <modules>
-        <module>python-plugin</module>
-        <module>java-plugin</module>
-        <module>javascript-plugin</module>
-        <module>php-plugin</module>
-    </modules>
-
 </project>
