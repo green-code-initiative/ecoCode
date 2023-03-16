@@ -8,9 +8,10 @@ import org.sonar.plugins.python.api.tree.Tree;
 
 @Rule(
         key = NoFunctionCallWhenDeclaringForLoop.RULE_KEY,
-        priority = Priority.MINOR,
         name = NoFunctionCallWhenDeclaringForLoop.DESCRIPTION,
-        description = "")
+        description = NoFunctionCallWhenDeclaringForLoop.DESCRIPTION,
+        priority = Priority.MINOR,
+        tags = {"bug", "eco-design"})
 public class NoFunctionCallWhenDeclaringForLoop extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "S69";
