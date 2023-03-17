@@ -14,14 +14,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [#40](https://github.com/green-code-initiative/ecoCode/issues/40) (PR [#54](https://github.com/green-code-initiative/ecoCode/pull/54)) Refactoring of package names (`cnumr` to  `greencodeinitiative`)
-- modifying documentation to move a part to `ecoCode-common` repository
-- move common init scripts to `ecoCode-common` repository
+- [#40](https://github.com/green-code-initiative/ecoCode/issues/40) Refactoring of package names (`cnumr` to  `greencodeinitiative`)
 - [#58](https://github.com/green-code-initiative/ecoCode/issues/58) check and upgrade compatibility to SonarQube 9.9
-- move `CONTRIBUTING.md` to common doc in `ecoCode-common` repository
-- move `CODE_STYLE.md` to common doc in `ecoCode-common` repository
-- move `INSTALL.md` to common doc in `ecoCode-common` repository
+- move common init scripts to `ecoCode-common` repository
+- modifying documentation and move `CONTRIBUTING.md`, `CODE_STYLE.md` and `INSTALL.md` to common doc in `ecoCode-common` repository
 - security / performance optimizations : correction of `sonarcloud.io` security hotspots (java / php, python) and move Pattern compilation to static attribute
+- [#65](https://github.com/green-code-initiative/ecoCode/issues/65) Create a test project to check new plugin rule in real environment
+- [#71](https://github.com/green-code-initiative/ecoCode/issues/71) After an PHP analysis, no ecocode code smells appears in my Sonar project
+- [#64](https://github.com/green-code-initiative/ecoCode/issues/64) Python: ecoCode plugin with SonarQube, no code-smell detection
+- [#55](https://github.com/green-code-initiative/ecoCode/issues/55) rename `eco-conception` tag of rules to `eco-design`
 
 ### Deleted
 
