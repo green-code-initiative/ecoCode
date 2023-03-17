@@ -36,14 +36,26 @@ public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 
     @Override
     public void visitNode(Tree tree) {
-        if (tree.is(Kind.FOR_STATEMENT))
-            visitBlockNode((BlockTree) ((ForStatementTree) tree).statements().get(0));
+        if (tree.is(Kind.FOR_STATEMENT)) {
+            StatementTree stTree = ((ForStatementTree) tree).statements().get(0);
+            if (stTree.is(Kind.BLOCK)) {
+                visitBlockNode((BlockTree) stTree);
+            }
+        }
 
-        if (tree.is(Kind.FOREACH_STATEMENT))
-            visitBlockNode((BlockTree) ((ForEachStatementTree) tree).statements().get(0));
+        if (tree.is(Kind.FOREACH_STATEMENT)) {
+            StatementTree stTree = ((ForEachStatementTree) tree).statements().get(0);
+            if (stTree.is(Kind.BLOCK)) {
+                visitBlockNode((BlockTree) stTree);
+            }
+        }
 
-        if (tree.is(Kind.DO_WHILE_STATEMENT))
-            visitBlockNode((BlockTree) ((DoWhileStatementTree) tree).statement());
+        if (tree.is(Kind.DO_WHILE_STATEMENT)) {
+            StatementTree stTree = ((DoWhileStatementTree) tree).statement();
+            if (stTree.is(Kind.BLOCK)) {
+                visitBlockNode((BlockTree) stTree);
+            }
+        }
     }
 
     private void visitBlockNode(BlockTree block) {
