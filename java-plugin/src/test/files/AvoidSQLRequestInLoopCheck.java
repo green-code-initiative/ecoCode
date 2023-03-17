@@ -54,7 +54,7 @@ class AvoidSQLRequestInLoopCheck {
                 // create the java statement
                 String query = baseQuery.concat("" + i);
                 Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery(query); // Noncompliant
+                ResultSet rs = st.executeQuery(query); // Noncompliant {{Avoid SQL request in loop}}
 
                 // iterate through the java resultset
                 while (rs.next()) {
@@ -85,7 +85,7 @@ class AvoidSQLRequestInLoopCheck {
                 System.out.println(i);
                 // create the java statement
                 Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery(query); // Noncompliant
+                ResultSet rs = st.executeQuery(query); // Noncompliant {{Avoid SQL request in loop}}
 
                 // iterate through the java resultset
                 while (rs.next()) {
@@ -116,7 +116,7 @@ class AvoidSQLRequestInLoopCheck {
 
                 // create the java statement
                 Statement st = conn.createStatement();
-                ResultSet rs = st.executeQuery(query); // Noncompliant
+                ResultSet rs = st.executeQuery(query); // Noncompliant {{Avoid SQL request in loop}}
 
                 // iterate through the java resultset
                 while (rs.next()) {

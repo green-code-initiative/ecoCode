@@ -37,8 +37,11 @@ import org.sonar.plugins.java.api.tree.VariableTree;
         "bug"})
 public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implements JavaFileScanner {
 
+    protected static final String MESSAGERULE1 = "The variable is not assigned";
+    protected static final String MESSAGERULE2 = "Immediately throw this expression instead of assigning it to the temporary variable";
+    protected static final String MESSAGERULE3 = "Immediately return this expression instead of assigning it to the temporary variable";
     private JavaFileScannerContext context;
-    private String lastTypeForMessage;
+    private String errorMessage;
     private final Map<String, VariableTree> variableList = new HashMap<>();
     private static final Map<String, Collection<Integer>> linesWithIssuesByVariable = new HashMap<>();
 
@@ -71,7 +74,7 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
 
             linesWithIssuesByVariable.get(name).add(issueLine);
 
-            context.reportIssue(this, tree, "The variable " + name + " is not assigned");
+            context.reportIssue(this, tree, MESSAGERULE1);
         }
     }
 
@@ -187,10 +190,7 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
             if (lastStatementIdentifier != null) {
                 String identifier = variableTree.simpleName().name();
                 if (StringUtils.equals(lastStatementIdentifier, identifier)) {
-                    context.reportIssue(this, variableTree.initializer(),
-                            "Immediately " + lastTypeForMessage
-                                    + " this expression instead of assigning it to the temporary variable \""
-                                    + identifier + "\".");
+                    context.reportIssue(this, variableTree.initializer(), errorMessage);
                 }
             }
         }
@@ -198,13 +198,13 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
 
     @CheckForNull
     private String getReturnOrThrowIdentifier(StatementTree lastStatementOfBlock) {
-        lastTypeForMessage = null;
+        errorMessage = null;
         ExpressionTree expr = null;
         if (lastStatementOfBlock.is(Kind.THROW_STATEMENT)) {
-            lastTypeForMessage = "throw";
+            errorMessage = MESSAGERULE2;
             expr = ((ThrowStatementTree) lastStatementOfBlock).expression();
         } else if (lastStatementOfBlock.is(Kind.RETURN_STATEMENT)) {
-            lastTypeForMessage = "return";
+            errorMessage = MESSAGERULE3;
             expr = ((ReturnStatementTree) lastStatementOfBlock).expression();
         }
         if (expr != null && expr.is(Kind.IDENTIFIER)) {

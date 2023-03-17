@@ -6,7 +6,7 @@ public class AvoidConcatenateStringsInLoop {
         String result1 = "";
 
         for (String string : strings) {
-            result1 += string; // Noncompliant
+            result1 += string; // Noncompliant {{Don't concatenate Strings in loop, use StringBuilder instead.}}
         }
         return result1;
     }
@@ -15,7 +15,7 @@ public class AvoidConcatenateStringsInLoop {
         String result2 = "";
 
         for (int i = 0; i < 1000; ++i) {
-            result2 += "another"; // Noncompliant
+            result2 += "another"; // Noncompliant {{Don't concatenate Strings in loop, use StringBuilder instead.}}
         }
         return result2;
     }
@@ -24,7 +24,7 @@ public class AvoidConcatenateStringsInLoop {
         String result3 = "";
 
         for (int i = 0; i < 1000; ++i) {
-            result3 = result3 + "another"; // Noncompliant
+            result3 = result3 + "another"; // Noncompliant {{Don't concatenate Strings in loop, use StringBuilder instead.}}
         }
         return result3;
     }

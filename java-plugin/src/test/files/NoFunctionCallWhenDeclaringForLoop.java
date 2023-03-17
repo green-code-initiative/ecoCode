@@ -26,28 +26,28 @@ class NoFunctionCallWhenDeclaringForLoop {
     }
 
     public void test3() {
-        for (int i = getMyValue(); i < 20; i++) {  // Noncompliant
+        for (int i = getMyValue(); i < 20; i++) {  // Noncompliant {{Do not call a function when declaring a for-type loop}}
             System.out.println(i);
             boolean b = getMyValue() > 6;
         }
     }
 
     public void test4() {
-        for (int i = 0; i < getMyValue(); i++) {  // Noncompliant
+        for (int i = 0; i < getMyValue(); i++) {  // Noncompliant {{Do not call a function when declaring a for-type loop}}
             System.out.println(i);
             boolean b = getMyValue() > 6;
         }
     }
 
     public void test5() {
-        for (int i = 0; i < getMyValue(); incrementeMyValue(i)) {  // Noncompliant
+        for (int i = 0; i < getMyValue(); incrementeMyValue(i)) {  // Noncompliant {{Do not call a function when declaring a for-type loop}}
             System.out.println(i);
             boolean b = getMyValue() > 6;
         }
     }
 
     public void test6() {
-        for (int i = getMyValue(); i < getMyValue(); i++) { // Noncompliant
+        for (int i = getMyValue(); i < getMyValue(); i++) { // Noncompliant {{Do not call a function when declaring a for-type loop}}
             System.out.println(i);
             boolean b = getMyValue() > 6;
         }

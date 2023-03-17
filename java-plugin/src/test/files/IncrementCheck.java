@@ -4,7 +4,7 @@ class MyClass {
 
     int foo1() {
         int counter = 0;
-        return counter++; // Noncompliant
+        return counter++; // Noncompliant {{Use ++i instead of i++}}
     }
 
     int foo11() {
@@ -14,7 +14,7 @@ class MyClass {
 
     void foo2(int value) {
         int counter = 0;
-        counter++; // Noncompliant
+        counter++; // Noncompliant {{Use ++i instead of i++}}
     }
 
     void foo22(int value) {

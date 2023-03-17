@@ -48,19 +48,19 @@ class TestClass {
 		boolean[] dest = new boolean[len];
 		
 		// Simple copy
-		for (int i = 0; i < len; i++) { // Noncompliant
+		for (int i = 0; i < len; i++) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			dest[i] = src[i];
 		}
 		
 		// Copy with nested conditions
-		for (int i = 0; i < len; i++) { // Noncompliant
+		for (int i = 0; i < len; i++) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 < len) {
 				dest[i] = src[i + 2];
 			}
 		}
 		
 		// Copy with nested ELSE conditions
-		for (int i = 0; i < len; i++) { // Noncompliant
+		for (int i = 0; i < len; i++) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 >= len) {
 				i++;
 			} else {
@@ -69,7 +69,7 @@ class TestClass {
 		}
 		
 		// Copy with more nested conditions
-		for (int i = 0; i < len; i++) { // Noncompliant
+		for (int i = 0; i < len; i++) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 < len) {
 				if(dest != null) {
 					if(src != null) {
@@ -82,7 +82,7 @@ class TestClass {
 		}
 		
 		// Copy nested by try/catch
-		for (int i = 0; i < len; i++) { // Noncompliant
+		for (int i = 0; i < len; i++) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest[i] = src[i];
 			} catch (RuntimeException e) {
@@ -91,7 +91,7 @@ class TestClass {
 		}
 		
 		// Copy nested by try/catch and if
-		for (int i = 0; i < len; i++) { // Noncompliant
+		for (int i = 0; i < len; i++) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				if(dest != null) {
 					dest[i] = src[i];
@@ -102,7 +102,7 @@ class TestClass {
 		}
 		
 		// Copy nested by try/catch in catch
-		for (int i = 0; i < len; i++) { // Noncompliant
+		for (int i = 0; i < len; i++) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest.toString();
 			} catch (RuntimeException e) {
@@ -113,7 +113,7 @@ class TestClass {
 		}
 		
 		// Copy nested by try/catch in finally
-		for (int i = 0; i < len; i++) { // Noncompliant
+		for (int i = 0; i < len; i++) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest.toString();
 			} catch (RuntimeException e) {
@@ -136,13 +136,13 @@ class TestClass {
 		
 		// Simple copy by foreach
 		int i = -1;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			dest[++i] = b;
 		}
 		
 		// Copy with nested conditions by foreach
 		i = -1;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(b) {
 				dest[++i] = b;
 			}
@@ -150,7 +150,7 @@ class TestClass {
 		
 		// Copy with nested ELSE conditions by foreach
 		i = -1;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 >= len) {
 				i++;
 			} else {
@@ -160,7 +160,7 @@ class TestClass {
 		
 		// Copy with more nested conditions
 		i = -1;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 < len) {
 				if(dest != null) {
 					if(src != null) {
@@ -174,7 +174,7 @@ class TestClass {
 		
 		// Copy nested by try/catch
 		i = -1;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest[++i] = b;
 			} catch (RuntimeException e) {
@@ -184,7 +184,7 @@ class TestClass {
 		
 		// Copy nested by try/catch and if
 		i = -1;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				if(dest != null) {
 					dest[++i] = b;
@@ -196,7 +196,7 @@ class TestClass {
 		
 		// Copy nested by try/catch in catch
 		i = -1;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest.toString();
 			} catch (RuntimeException e) {
@@ -208,7 +208,7 @@ class TestClass {
 		
 		// Copy nested by try/catch in finally
 		i = -1;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest.toString();
 			} catch (RuntimeException e) {
@@ -226,14 +226,14 @@ class TestClass {
 		
 		// Simple copy
 		int i = 0;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			dest[i] = src[i];
 			i++;
 		}
 		
 		// Copy with nested conditions
 		i = 0;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(b) {
 				dest[i] = src[i];
 			}
@@ -242,7 +242,7 @@ class TestClass {
 		
 		// Copy with nested ELSE conditions
 		i = 0;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 >= len) {
 				i++;
 			} else {
@@ -253,7 +253,7 @@ class TestClass {
 		
 		// Copy with more nested conditions
 		i = 0;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 < len) {
 				if(dest != null) {
 					if(src != null) {
@@ -268,7 +268,7 @@ class TestClass {
 		
 		// Copy nested by try/catch
 		i = 0;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest[i] = src[i];
 			} catch (RuntimeException e) {
@@ -279,7 +279,7 @@ class TestClass {
 		
 		// Copy nested by try/catch and if
 		i = 0;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				if(dest != null) {
 					dest[i] = src[i];
@@ -292,7 +292,7 @@ class TestClass {
 		
 		// Copy nested by try/catch in catch
 		i = 0;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest.toString();
 			} catch (RuntimeException e) {
@@ -305,7 +305,7 @@ class TestClass {
 		
 		// Copy nested by try/catch in finally
 		i = 0;
-		for (boolean b : src) { // Noncompliant
+		for (boolean b : src) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest.toString();
 			} catch (RuntimeException e) {
@@ -331,14 +331,14 @@ class TestClass {
 		
 		// Simple copy
 		int i = 0;
-		while (i < len) { // Noncompliant
+		while (i < len) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			dest[i] = src[i];
 			i++;
 		}
 		
 		// Copy with nested conditions
 		i = 0;
-		while (i < len) { // Noncompliant
+		while (i < len) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 < len) {
 				dest[i] = src[i + 2];
 			}
@@ -347,7 +347,7 @@ class TestClass {
 		
 		// Copy with nested ELSE conditions
 		i = 0;
-		while (i < len) { // Noncompliant
+		while (i < len) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 >= len) {
 				i++;
 			} else {
@@ -358,7 +358,7 @@ class TestClass {
 		
 		// Copy with more nested conditions
 		i = 0;
-		while (i < len) { // Noncompliant
+		while (i < len) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 < len) {
 				if(dest != null) {
 					if(src != null) {
@@ -373,7 +373,7 @@ class TestClass {
 		
 		// Copy nested by try/catch and if
 		i = 0;
-		while (i < len) { // Noncompliant
+		while (i < len) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				if(dest != null) {
 					dest[i] = src[i];
@@ -386,7 +386,7 @@ class TestClass {
 		
 		// Copy nested by try/catch in catch
 		i = 0;
-		while (i < len) { // Noncompliant
+		while (i < len) { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest.toString();
 			} catch (RuntimeException e) {
@@ -412,14 +412,14 @@ class TestClass {
 		
 		// Simple copy
 		int i = 0;
-		do { // Noncompliant
+		do { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			dest[i] = src[i];
 			i++;
 		} while (i < len);
 		
 		// Copy with nested conditions
 		i = 0;
-		do { // Noncompliant
+		do { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 < len) {
 				dest[i] = src[i + 2];
 			}
@@ -428,7 +428,7 @@ class TestClass {
 		
 		// Copy with nested ELSE conditions
 		i = 0;
-		do { // Noncompliant
+		do { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 >= len) {
 				i++;
 			} else {
@@ -439,7 +439,7 @@ class TestClass {
 		
 		// Copy with more nested conditions
 		i = 0;
-		do { // Noncompliant
+		do { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			if(i + 2 < len) {
 				if(dest != null) {
 					if(src != null) {
@@ -454,7 +454,7 @@ class TestClass {
 		
 		// Copy nested by try/catch and if
 		i = 0;
-		do { // Noncompliant
+		do { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				if(dest != null) {
 					dest[i] = src[i];
@@ -467,7 +467,7 @@ class TestClass {
 		
 		// Copy nested by try/catch in catch
 		i = 0;
-		do { // Noncompliant
+		do { // Noncompliant {{Use System.arraycopy to copy arrays}}
 			try {
 				dest.toString();
 			} catch (RuntimeException e) {
