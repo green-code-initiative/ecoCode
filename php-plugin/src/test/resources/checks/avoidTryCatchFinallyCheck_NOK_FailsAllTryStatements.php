@@ -17,7 +17,7 @@ catch(Exception $ex)
   throw new Exception($msg);
 }
 
-try {// NOK {{Avoid using try-catch-finally}}
+try { // NOK {{Avoid using try-catch-finally}}
     throw new \Exception("Hello");
 } catch(\Exception $e) {
     echo $e->getMessage()." catch in\n";
@@ -26,6 +26,7 @@ try {// NOK {{Avoid using try-catch-finally}}
     echo $e->getMessage()." finally \n";
     throw new \Exception("Bye");
 }
+
 //FAILS with this RULE
 /*try {
     throw new \Exception("Hello");

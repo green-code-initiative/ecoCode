@@ -9,13 +9,14 @@ import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
 @Rule(
-        key = "S34",
-        name = "Developpement",
+        key = AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements.RULE_KEY,
+        name = AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements.ERROR_MESSAGE,
         description = AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"bug", "eco-design"})
 public class AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements extends PHPSubscriptionCheck {
 
+    public static final String RULE_KEY = "S34";
     public static final String ERROR_MESSAGE = "Avoid using try-catch-finally";
 
     @Override

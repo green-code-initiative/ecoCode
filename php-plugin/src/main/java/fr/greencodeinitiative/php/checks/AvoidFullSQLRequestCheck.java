@@ -2,8 +2,8 @@ package fr.greencodeinitiative.php.checks;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
-import com.google.re2j.Pattern;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
@@ -12,14 +12,14 @@ import org.sonar.plugins.php.api.tree.expression.LiteralTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
 @Rule(
-        key = "S74",
-        name = "Developpement",
+        key = AvoidFullSQLRequestCheck.RULE_KEY,
+        name = AvoidFullSQLRequestCheck.ERROR_MESSAGE,
         description = AvoidFullSQLRequestCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug"}
-)
-
+        tags = {"bug", "eco-design"})
 public class AvoidFullSQLRequestCheck extends PHPSubscriptionCheck {
+
+    public static final String RULE_KEY = "S74";
 
     public static final String ERROR_MESSAGE = "Don't use the query SELECT * FROM";
 

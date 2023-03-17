@@ -28,6 +28,6 @@ public class PHPPlugin implements Plugin {
 
     @Override
     public void define(Context context) {
-        context.addExtension(PhpRulesDefinition.class);
+        context.addExtension(PhpRuleRepository.class);
     }
 }
