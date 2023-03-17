@@ -36,7 +36,7 @@ public class AvoidMultipleIfElseStatement extends IssuableSubscriptionVisitor {
             ++idx;
         }
         if (countIfStatement > 1)
-            reportIssue(tree, "using a switch statement instead of multiple if-else conditions (more than one)");
+            reportIssue(tree, RULE_MESSAGE);
     }
 
     private void checkElseIfStatement(Tree tree) {
@@ -46,7 +46,7 @@ public class AvoidMultipleIfElseStatement extends IssuableSubscriptionVisitor {
 
         while (true) {
             if (count >= 2)
-                reportIssue(tree, "using a switch statement instead of multiple if-else if possible");
+                reportIssue(tree, RULE_MESSAGE);
             statementTree = node.elseStatement();
             if (statementTree instanceof IfStatementTree) {
                 ++count;
