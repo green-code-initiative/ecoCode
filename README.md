@@ -6,7 +6,7 @@ the project is to provide a list of static code analyzers to highlight code stru
 ecological impact: energy and resources over-consumption, "fatware", shortening terminals' lifespan, etc.
 
 _ecoCode_ is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin
-then implement these catalogs as rules for scanning your projects.
+then implements these catalogs as rules for scanning your projects.
 
 **Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please
 refer to the contribution section.
