@@ -13,6 +13,7 @@
     <packaging>sonar-plugin</packaging>
 
     <name>ecoCode Java Sonar Plugin</name>
+    <url>https://github.com/green-code-initiative/ecoCode/tree/main/java-plugin</url>
 
     <dependencies>
 
