@@ -22,7 +22,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         name = UseOfMethodsForBasicOperations.ERROR_MESSAGE,
         description = UseOfMethodsForBasicOperations.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class UseOfMethodsForBasicOperations extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "D2";

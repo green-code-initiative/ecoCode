@@ -16,7 +16,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         name = AvoidFullSQLRequestCheck.ERROR_MESSAGE,
         description = AvoidFullSQLRequestCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidFullSQLRequestCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "S74";

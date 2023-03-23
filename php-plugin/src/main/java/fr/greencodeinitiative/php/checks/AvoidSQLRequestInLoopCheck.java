@@ -22,7 +22,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         name = AvoidSQLRequestInLoopCheck.ERROR_MESSAGE,
         description = AvoidSQLRequestInLoopCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "S72";

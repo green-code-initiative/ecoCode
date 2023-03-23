@@ -18,7 +18,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         name = AvoidDoubleQuoteCheck.ERROR_MESSAGE,
         description = AvoidDoubleQuoteCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidDoubleQuoteCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "S66";

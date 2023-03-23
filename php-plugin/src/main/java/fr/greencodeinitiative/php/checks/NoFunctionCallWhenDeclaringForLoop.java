@@ -18,7 +18,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         name = NoFunctionCallWhenDeclaringForLoop.ERROR_MESSAGE,
         description = NoFunctionCallWhenDeclaringForLoop.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class NoFunctionCallWhenDeclaringForLoop extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "S69";

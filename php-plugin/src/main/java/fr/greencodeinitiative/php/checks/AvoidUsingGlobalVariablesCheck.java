@@ -12,7 +12,7 @@ import org.sonar.plugins.php.api.visitors.PHPVisitorCheck;
         name = AvoidUsingGlobalVariablesCheck.ERROR_MESSAGE,
         description = AvoidUsingGlobalVariablesCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidUsingGlobalVariablesCheck extends PHPVisitorCheck {
 
     public static final String RULE_KEY = "D4";

@@ -33,7 +33,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         name = IncrementCheck.ERROR_MESSAGE,
         description = IncrementCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class IncrementCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "S67";
