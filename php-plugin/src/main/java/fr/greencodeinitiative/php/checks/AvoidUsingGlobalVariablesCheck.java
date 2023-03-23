@@ -1,20 +1,21 @@
 package fr.greencodeinitiative.php.checks;
 
-import com.google.re2j.Pattern;
+import java.util.regex.Pattern;
+
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.declaration.FunctionDeclarationTree;
 import org.sonar.plugins.php.api.visitors.PHPVisitorCheck;
 
 @Rule(
-        key = "D4",
-        name = "Developpement",
+        key = AvoidUsingGlobalVariablesCheck.RULE_KEY,
+        name = AvoidUsingGlobalVariablesCheck.ERROR_MESSAGE,
         description = AvoidUsingGlobalVariablesCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug"})
-
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidUsingGlobalVariablesCheck extends PHPVisitorCheck {
 
+    public static final String RULE_KEY = "D4";
     public static final String ERROR_MESSAGE = "Prefer local variables to globals";
 
     private static final Pattern PATTERN = Pattern.compile("^.*(global \\$|\\$GLOBALS).*$", Pattern.CASE_INSENSITIVE);

@@ -14,14 +14,14 @@ import org.sonar.plugins.php.api.tree.expression.LiteralTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
 @Rule(
-        key = "S66",
-        name = "Developpement",
+        key = AvoidDoubleQuoteCheck.RULE_KEY,
+        name = AvoidDoubleQuoteCheck.ERROR_MESSAGE,
         description = AvoidDoubleQuoteCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug"})
-
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidDoubleQuoteCheck extends PHPSubscriptionCheck {
 
+    public static final String RULE_KEY = "S66";
     public static final String ERROR_MESSAGE = "Avoid using double quote (\"), prefer using simple quote (')";
     private static final Map<String, Collection<Integer>> linesWithIssuesByFile = new HashMap<>();
 

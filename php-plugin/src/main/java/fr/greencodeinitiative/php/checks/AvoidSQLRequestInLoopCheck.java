@@ -2,8 +2,8 @@ package fr.greencodeinitiative.php.checks;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
-import com.google.re2j.Pattern;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
@@ -18,13 +18,14 @@ import org.sonar.plugins.php.api.tree.statement.StatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
 @Rule(
-        key = "S72",
-        name = "Developpement", description = AvoidSQLRequestInLoopCheck.ERROR_MESSAGE,
+        key = AvoidSQLRequestInLoopCheck.RULE_KEY,
+        name = AvoidSQLRequestInLoopCheck.ERROR_MESSAGE,
+        description = AvoidSQLRequestInLoopCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug"}
-)
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 
+    public static final String RULE_KEY = "S72";
     public static final String ERROR_MESSAGE = "Avoid SQL request in loop";
     private static final Pattern PATTERN = Pattern.compile("(mysql(i::|_)query\\s*\\(.*)|(oci_execute\\(.*)");
 
@@ -35,14 +36,26 @@ public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 
     @Override
     public void visitNode(Tree tree) {
-        if (tree.is(Kind.FOR_STATEMENT))
-            visitBlockNode((BlockTree) ((ForStatementTree) tree).statements().get(0));
+        if (tree.is(Kind.FOR_STATEMENT)) {
+            StatementTree stTree = ((ForStatementTree) tree).statements().get(0);
+            if (stTree.is(Kind.BLOCK)) {
+                visitBlockNode((BlockTree) stTree);
+            }
+        }
 
-        if (tree.is(Kind.FOREACH_STATEMENT))
-            visitBlockNode((BlockTree) ((ForEachStatementTree) tree).statements().get(0));
+        if (tree.is(Kind.FOREACH_STATEMENT)) {
+            StatementTree stTree = ((ForEachStatementTree) tree).statements().get(0);
+            if (stTree.is(Kind.BLOCK)) {
+                visitBlockNode((BlockTree) stTree);
+            }
+        }
 
-        if (tree.is(Kind.DO_WHILE_STATEMENT))
-            visitBlockNode((BlockTree) ((DoWhileStatementTree) tree).statement());
+        if (tree.is(Kind.DO_WHILE_STATEMENT)) {
+            StatementTree stTree = ((DoWhileStatementTree) tree).statement();
+            if (stTree.is(Kind.BLOCK)) {
+                visitBlockNode((BlockTree) stTree);
+            }
+        }
     }
 
     private void visitBlockNode(BlockTree block) {

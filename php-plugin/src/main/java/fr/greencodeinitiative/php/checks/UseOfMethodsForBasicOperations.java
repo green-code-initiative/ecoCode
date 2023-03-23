@@ -18,13 +18,14 @@ import org.sonar.plugins.php.api.tree.statement.StatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
 @Rule(
-        key = "D2",
-        name = "Developpement",
+        key = UseOfMethodsForBasicOperations.RULE_KEY,
+        name = UseOfMethodsForBasicOperations.ERROR_MESSAGE,
         description = UseOfMethodsForBasicOperations.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class UseOfMethodsForBasicOperations extends PHPSubscriptionCheck {
 
+    public static final String RULE_KEY = "D2";
     protected static final String ERROR_MESSAGE = "Use of methods for basic operations";
 
     @Override

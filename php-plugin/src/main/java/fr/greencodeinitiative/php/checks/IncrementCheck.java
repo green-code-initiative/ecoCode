@@ -29,13 +29,14 @@ import org.sonar.plugins.php.api.tree.Tree.Kind;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
 @Rule(
-        key = "S67",
-        name = "Developpement",
+        key = IncrementCheck.RULE_KEY,
+        name = IncrementCheck.ERROR_MESSAGE,
         description = IncrementCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class IncrementCheck extends PHPSubscriptionCheck {
 
+    public static final String RULE_KEY = "S67";
     public static final String ERROR_MESSAGE = "Remove the usage of $i++. prefer ++$i";
 
     @Override
