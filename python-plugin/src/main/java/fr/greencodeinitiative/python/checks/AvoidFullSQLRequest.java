@@ -20,7 +20,7 @@ import org.sonar.plugins.python.api.tree.Tree;
         name = AvoidFullSQLRequest.MESSAGERULE,
         description = AvoidFullSQLRequest.MESSAGERULE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidFullSQLRequest extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "S74";

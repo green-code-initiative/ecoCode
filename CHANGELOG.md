@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#44](https://github.com/green-code-initiative/ecoCode/pull/44) Update the PHP description rules
 - [#67](https://github.com/green-code-initiative/ecoCode/pull/67) Add JavaScript plugin
+- add `ecocode` tag on all rules on Java, PHP, Python and javascript plugins
 
 ### Changed
 

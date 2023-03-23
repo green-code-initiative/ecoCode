@@ -22,7 +22,7 @@ import org.sonar.plugins.python.api.tree.Tree;
         name = AvoidGettersAndSetters.DESCRIPTION,
         description = AvoidGettersAndSetters.DESCRIPTION,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "D7";

@@ -24,7 +24,7 @@ import org.sonar.plugins.python.api.tree.Tree;
         name = "Avoid SQL request in loop",
         description = AvoidSQLRequestInLoop.MESSAGE_RULE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "S72";

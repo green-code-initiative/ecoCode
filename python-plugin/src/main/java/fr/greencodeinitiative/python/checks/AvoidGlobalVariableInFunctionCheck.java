@@ -66,7 +66,7 @@ import org.sonar.plugins.python.api.tree.YieldStatement;
         name = "Do not call global variables directly inside functions",
         description = AvoidGlobalVariableInFunctionCheck.DESCRIPTION,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design"})
+        tags = {"bug", "eco-design", "ecocode"})
 public class AvoidGlobalVariableInFunctionCheck extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "D4";

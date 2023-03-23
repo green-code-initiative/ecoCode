@@ -61,7 +61,7 @@ docker run -ti --rm \
        -p 9000:9000 \
        --name sonarqube-ecocode ghcr.io/green-code-initiative/sonarqube-ecocode:latest
 ```
-And add the `eco-conception` tagged rules to Quality Profiles.
+And add the `eco-design` tagged rules to Quality Profiles.
 
 You can also download each plugin separatly and copy the plugin (jar file) to `$SONAR_INSTALL_DIR/extensions/plugins` and
 restart SonarQube.
