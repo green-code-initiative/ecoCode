@@ -9,7 +9,7 @@ class ReadFile {
 
     public void readPreferences(String filename) {
         //...
-        try (InputStream in = new FileInputStream(filename)) { // Noncompliant
+        try (InputStream in = new FileInputStream(filename)) { // Noncompliant {{Optimize Read File Exceptions}}
             logger.log("my log");
         } catch (FileNotFoundException e) {
             logger.log(e);

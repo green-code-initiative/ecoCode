@@ -11,7 +11,7 @@ class ReadFile {
 		//...
 		InputStream in = null;
 		try {
-			in = new FileInputStream(filename); // Noncompliant
+			in = new FileInputStream(filename); // Noncompliant {{Optimize Read File Exceptions}}
 		} catch (FileNotFoundException e) {
 			logger.log(e);
 		}

@@ -6,7 +6,7 @@ the project is to provide a list of static code analyzers to highlight code stru
 ecological impact: energy and resources over-consumption, "fatware", shortening terminals' lifespan, etc.
 
 _ecoCode_ is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin
-then implement these catalogs as rules for scanning your projects.
+then implements these catalogs as rules for scanning your projects.
 
 **Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please
 refer to the contribution section.
@@ -53,8 +53,19 @@ JavaScript plugin works differently because it does not use AST. [More informati
 🚀 Getting Started
 ------------------
 
-You can download each plugin separatly and copy the plugin (jar file) to `$SONAR_INSTALL_DIR/extensions/plugins` and
+You can give a try with a one command docker :
+```
+docker run -ti --rm \
+       -v sq_ecocode_logs:/opt/sonarqube/logs \
+       -v sq_ecocode_data:/opt/sonarqube/data \
+       -p 9000:9000 \
+       --name sonarqube-ecocode ghcr.io/green-code-initiative/sonarqube-ecocode:latest
+```
+And add the `eco-conception` tagged rules to Quality Profiles.
+
+You can also download each plugin separatly and copy the plugin (jar file) to `$SONAR_INSTALL_DIR/extensions/plugins` and
 restart SonarQube.
+
 Or you can directly use a [all-in-one docker-compose](INSTALL.md)
 
 🛒 Distribution

@@ -14,7 +14,7 @@ class UnnecessarilyAssignValuesToVariablesTestCheck {
         int[] intArray = {10, 20, 30, 40, 50};
 
         Exception variableException = new Exception("message");
-        int variableNotUse = 5; // Noncompliant
+        int variableNotUse = 5; // Noncompliant {{The variable is not assigned}}
 
 
         variableNotUse = 10;
@@ -59,7 +59,7 @@ class UnnecessarilyAssignValuesToVariablesTestCheck {
     }
 
     public int testNonCompliantReturn() {
-        int i = getIntValue(); // Noncompliant
+        int i = getIntValue(); // Noncompliant {{Immediately return this expression instead of assigning it to the temporary variable}}
         return i;
     }
 
@@ -68,7 +68,7 @@ class UnnecessarilyAssignValuesToVariablesTestCheck {
     }
 
     public void testNonCompliantThrow() throws Exception {
-        Exception exception = new Exception("dummy"); // Noncompliant
+        Exception exception = new Exception("dummy"); // Noncompliant {{Immediately throw this expression instead of assigning it to the temporary variable}}
         throw exception;
     }
 

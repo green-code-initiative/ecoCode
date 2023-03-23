@@ -30,19 +30,19 @@ class AvoidSetConstantInBatchUpdateCheck {
         for (int i = 0; i < data.length; i++) {
             stmt.setInt(1, data[i]);
 
-            stmt.setBoolean(2, true); // Noncompliant
-            stmt.setByte(3, (byte) 3); // Noncompliant
-            stmt.setByte(4, 'v'); // Noncompliant
-            stmt.setShort(5, (short) 5); // Noncompliant
-            stmt.setInt(6, 6); // Noncompliant
-            stmt.setLong(7, (long) 7); // Noncompliant
-            stmt.setLong(7, 7l); // Noncompliant
-            stmt.setFloat(8, (float) 8.); // Noncompliant
-            stmt.setFloat(8, 8.f); // Noncompliant
-            stmt.setDouble(9, 9.); // Noncompliant
-            stmt.setDouble(9, 9.); // Noncompliant
-            stmt.setString(10, "10"); // Noncompliant
-            stmt.setBigDecimal(11, BigDecimal.valueOf(.77));  // Noncompliant
+            stmt.setBoolean(2, true); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setByte(3, (byte) 3); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setByte(4, 'v'); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setShort(5, (short) 5); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setInt(6, 6); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setLong(7, (long) 7); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setLong(7, 7l); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setFloat(8, (float) 8.); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setFloat(8, 8.f); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setDouble(9, 9.); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setDouble(9, 9.); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setString(10, "10"); // Noncompliant {{Avoid setting constants in batch update}}
+            stmt.setBigDecimal(11, BigDecimal.valueOf(.77));  // Noncompliant {{Avoid setting constants in batch update}}
             stmt.addBatch();
         }
         int[] nr = stmt.executeBatch();
@@ -57,16 +57,16 @@ class AvoidSetConstantInBatchUpdateCheck {
             PreparedStatement stmt = con.prepareStatement("insert into Emp values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
             for (DummyClass o : data) {
                 stmt.setInt(1, o.getField1());
-                stmt.setBoolean(2, Boolean.valueOf("false")); // Noncompliant
+                stmt.setBoolean(2, Boolean.valueOf("false")); // Noncompliant {{Avoid setting constants in batch update}}
                 stmt.setByte(3, o.getField3());
-                stmt.setByte(4, 'v'); // Noncompliant
-                stmt.setShort(5, (short) 5); // Noncompliant
-                stmt.setInt(6, 6); // Noncompliant
-                stmt.setLong(7, 7); // Noncompliant
-                stmt.setFloat(8, (float) 8.); // Noncompliant
+                stmt.setByte(4, 'v'); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setShort(5, (short) 5); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setInt(6, 6); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setLong(7, 7); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setFloat(8, (float) 8.); // Noncompliant {{Avoid setting constants in batch update}}
                 stmt.setDouble(9, o.getField4());
                 stmt.setString(10, o.getField2());
-                stmt.setBigDecimal(11, BigDecimal.valueOf(11)); // Noncompliant
+                stmt.setBigDecimal(11, BigDecimal.valueOf(11)); // Noncompliant {{Avoid setting constants in batch update}}
                 stmt.addBatch();
             }
             return stmt.executeBatch();
@@ -82,17 +82,17 @@ class AvoidSetConstantInBatchUpdateCheck {
             while (i < data.length) {
                 DummyClass o = data[i];
                 stmt.setInt(1, o.getField1());
-                stmt.setBoolean(2, Boolean.TRUE); // Noncompliant
+                stmt.setBoolean(2, Boolean.TRUE); // Noncompliant {{Avoid setting constants in batch update}}
                 stmt.setByte(3, o.getField3());
-                stmt.setByte(4, Byte.MAX_VALUE); // Noncompliant
-                stmt.setByte(4, Character.MAX_VALUE); // Noncompliant
-                stmt.setShort(5, Short.MIN_VALUE); // Noncompliant
-                stmt.setInt(6, Integer.MAX_VALUE); // Noncompliant
-                stmt.setLong(7, Long.MIN_VALUE); // Noncompliant
-                stmt.setFloat(8, Float.MAX_VALUE); // Noncompliant
-                stmt.setDouble(9, Double.MIN_VALUE);  // Noncompliant
+                stmt.setByte(4, Byte.MAX_VALUE); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setByte(4, Character.MAX_VALUE); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setShort(5, Short.MIN_VALUE); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setInt(6, Integer.MAX_VALUE); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setLong(7, Long.MIN_VALUE); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setFloat(8, Float.MAX_VALUE); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setDouble(9, Double.MIN_VALUE);  // Noncompliant {{Avoid setting constants in batch update}}
                 stmt.setString(10, o.getField2());
-                stmt.setBigDecimal(11, BigDecimal.TEN); // Noncompliant
+                stmt.setBigDecimal(11, BigDecimal.TEN); // Noncompliant {{Avoid setting constants in batch update}}
                 stmt.addBatch();
                 i++;
             }
@@ -110,17 +110,17 @@ class AvoidSetConstantInBatchUpdateCheck {
             do {
                 DummyClass o = data[i];
                 stmt.setInt(1, o.getField1());
-                stmt.setBoolean(2, Boolean.valueOf(true)); // Noncompliant
+                stmt.setBoolean(2, Boolean.valueOf(true)); // Noncompliant {{Avoid setting constants in batch update}}
                 stmt.setByte(3, o.getField3());
-                stmt.setByte(4, Byte.valueOf((byte) 3)); // Noncompliant
-                stmt.setByte(4, Character.valueOf('1')); // Noncompliant
-                stmt.setShort(5, Short.valueOf((short) 55)); // Noncompliant
-                stmt.setInt(6, Integer.valueOf("222")); // Noncompliant
-                stmt.setLong(7, Long.valueOf(0)); // Noncompliant
-                stmt.setFloat(8, Float.valueOf(.33)); // Noncompliant
-                stmt.setDouble(9, Double.valueOf(22));  // Noncompliant
+                stmt.setByte(4, Byte.valueOf((byte) 3)); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setByte(4, Character.valueOf('1')); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setShort(5, Short.valueOf((short) 55)); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setInt(6, Integer.valueOf("222")); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setLong(7, Long.valueOf(0)); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setFloat(8, Float.valueOf(.33)); // Noncompliant {{Avoid setting constants in batch update}}
+                stmt.setDouble(9, Double.valueOf(22));  // Noncompliant {{Avoid setting constants in batch update}}
                 stmt.setString(10, o.getField2());
-                stmt.setBigDecimal(11, BigDecimal.valueOf(11)); // Noncompliant
+                stmt.setBigDecimal(11, BigDecimal.valueOf(11)); // Noncompliant {{Avoid setting constants in batch update}}
                 stmt.addBatch();
                 i++;
             } while (i < data.length);

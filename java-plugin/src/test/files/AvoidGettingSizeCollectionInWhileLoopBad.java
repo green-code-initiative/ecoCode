@@ -15,7 +15,7 @@ class AvoidGettingSizeCollectionInWhileLoopBad {
         numberList.add(20);
 
         int i = 0;
-        while (i < numberList.size()) { // Noncompliant
+        while (i < numberList.size()) { // Noncompliant {{Avoid getting the size of the collection in the loop}}
             System.out.println("numberList.size()");
             i++;
         }
