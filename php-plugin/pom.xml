@@ -12,6 +12,7 @@
     <artifactId>ecocode-php-plugin</artifactId>
     <packaging>sonar-plugin</packaging>
     <name>ecoCode PHP Sonar Plugin</name>
+    <url>https://github.com/green-code-initiative/ecoCode/tree/main/php-plugin</url>
 
     <dependencies>
 
@@ -32,6 +33,7 @@
         </dependency>
 
         <!-- for security on regex patterns : https://github.com/google/re2j -->
+        <!-- TODO DDC : in progress because of pb with external dependencies in plugins -->
 <!--        <dependency>-->
 <!--            <groupId>com.google.re2j</groupId>-->
 <!--            <artifactId>re2j</artifactId>-->
