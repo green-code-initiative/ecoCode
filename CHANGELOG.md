@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deleted
+
+## [1.0.0] - 2023-03-24
+
+### Added
+
 - [#44](https://github.com/green-code-initiative/ecoCode/pull/44) Update the PHP description rules
 - [#67](https://github.com/green-code-initiative/ecoCode/pull/67) Add JavaScript plugin
 - add `ecocode` tag on all rules on Java, PHP, Python and javascript plugins
@@ -84,7 +92,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v0.2.2...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.0.0...HEAD
+
+[1.0.0]: https://github.com/green-code-initiative/ecoCode/compare/v0.2.2...v1.0.0
 
 [0.2.2]: https://github.com/green-code-initiative/ecoCode/compare/v0.2.1...v0.2.2
 
