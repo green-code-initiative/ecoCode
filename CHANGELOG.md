@@ -25,6 +25,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#64](https://github.com/green-code-initiative/ecoCode/issues/64) Python: ecoCode plugin with SonarQube, no code-smell detection
 - [#55](https://github.com/green-code-initiative/ecoCode/issues/55) rename `eco-conception` tag of rules to `eco-design`
 - [#76](https://github.com/green-code-initiative/ecoCode/issues/76) correction of SonarQube plugins homepage link broken
+- documentation upgrade
 
 ### Deleted
 
