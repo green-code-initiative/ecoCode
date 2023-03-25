@@ -44,9 +44,9 @@ public class JavaRulesDefinition implements RulesDefinition {
 
     // Add the rule keys of the rules which need to be considered as template-rules
     private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
-    public static final String NAME = "Green Code Initiative";
+    public static final String NAME = "ecoCode";
     public static final String LANGUAGE = "java";
-    public static final String REPOSITORY_KEY = "greencodeinitiative-java";
+    public static final String REPOSITORY_KEY = "ecocode-java";
 
     @Override
     public void define(Context context) {
