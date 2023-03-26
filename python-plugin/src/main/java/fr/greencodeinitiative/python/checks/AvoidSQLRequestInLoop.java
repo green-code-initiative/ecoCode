@@ -27,7 +27,7 @@ import org.sonar.plugins.python.api.tree.Tree;
         tags = {"bug", "eco-design", "ecocode"})
 public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "S72";
+    public static final String RULE_KEY = "EC72";
 
     // TODO: Handle ORM lib
     private static final List<String> SQL_LIBS = Arrays.asList("cx_Oracle", "mysql.connector", "psycopg2", "pymssql", "pyodbc", "sqlite3");

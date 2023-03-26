@@ -21,7 +21,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         tags = {"bug", "eco-design", "ecocode"})
 public class NoFunctionCallWhenDeclaringForLoop extends PHPSubscriptionCheck {
 
-    public static final String RULE_KEY = "S69";
+    public static final String RULE_KEY = "EC69";
     public static final String ERROR_MESSAGE = "Do not call a function in for-type loop declaration";
 
     @Override

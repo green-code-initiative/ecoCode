@@ -13,7 +13,7 @@ import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 
-@Rule(key = "S72", name = "Developpement", description = AvoidSQLRequestInLoop.MESSAGERULE, priority = Priority.MINOR,
+@Rule(key = "EC72", name = "Developpement", description = AvoidSQLRequestInLoop.MESSAGERULE, priority = Priority.MINOR,
         tags = {"bug"})
 public class AvoidSQLRequestInLoop extends IssuableSubscriptionVisitor {
 

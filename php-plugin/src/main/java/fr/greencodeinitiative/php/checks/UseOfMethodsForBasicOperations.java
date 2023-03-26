@@ -25,7 +25,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         tags = {"bug", "eco-design", "ecocode"})
 public class UseOfMethodsForBasicOperations extends PHPSubscriptionCheck {
 
-    public static final String RULE_KEY = "D2";
+    public static final String RULE_KEY = "EC22";
     protected static final String ERROR_MESSAGE = "Use of methods for basic operations";
 
     @Override

@@ -15,7 +15,7 @@ import org.sonar.plugins.php.api.visitors.PHPVisitorCheck;
         tags = {"bug", "eco-design", "ecocode"})
 public class AvoidUsingGlobalVariablesCheck extends PHPVisitorCheck {
 
-    public static final String RULE_KEY = "D4";
+    public static final String RULE_KEY = "EC4";
     public static final String ERROR_MESSAGE = "Prefer local variables to globals";
 
     private static final Pattern PATTERN = Pattern.compile("^.*(global \\$|\\$GLOBALS).*$", Pattern.CASE_INSENSITIVE);

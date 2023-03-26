@@ -10,7 +10,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 
 @Rule(
-        key = "S67",
+        key = "EC67",
         name = "Developpement",
         description = IncrementCheck.MESSAGERULE,
         priority = Priority.MINOR,

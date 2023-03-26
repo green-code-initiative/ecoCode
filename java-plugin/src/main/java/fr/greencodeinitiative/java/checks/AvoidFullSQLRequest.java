@@ -14,7 +14,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 
 @Rule(
-        key = "S74",
+        key = "EC74",
         name = "Developpement",
         description = AvoidFullSQLRequest.MESSAGERULE,
         priority = Priority.MINOR,

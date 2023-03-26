@@ -19,7 +19,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         tags = {"bug", "eco-design", "ecocode"})
 public class AvoidFullSQLRequestCheck extends PHPSubscriptionCheck {
 
-    public static final String RULE_KEY = "S74";
+    public static final String RULE_KEY = "EC74";
 
     public static final String ERROR_MESSAGE = "Don't use the query SELECT * FROM";
 

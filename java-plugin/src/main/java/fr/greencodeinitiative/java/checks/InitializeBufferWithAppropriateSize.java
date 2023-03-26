@@ -11,7 +11,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 
 @Rule(
-        key = "GRSP0032",
+        key = "EC32",
         name = "Developpement",
         description = InitializeBufferWithAppropriateSize.RULE_MESSAGE,
         priority = Priority.MINOR,

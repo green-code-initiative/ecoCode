@@ -16,7 +16,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         tags = {"bug", "eco-design", "ecocode"})
 public class AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements extends PHPSubscriptionCheck {
 
-    public static final String RULE_KEY = "S34";
+    public static final String RULE_KEY = "EC34";
     public static final String ERROR_MESSAGE = "Avoid using try-catch-finally";
 
     @Override

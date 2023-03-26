@@ -19,7 +19,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 import static org.sonar.plugins.java.api.tree.Tree.Kind.MEMBER_SELECT;
 import static org.sonar.plugins.java.api.tree.Tree.Kind.METHOD_INVOCATION;
 
-@Rule(key = "S78", name = "Developpement",
+@Rule(key = "EC78", name = "Developpement",
         description = AvoidSetConstantInBatchUpdate.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})

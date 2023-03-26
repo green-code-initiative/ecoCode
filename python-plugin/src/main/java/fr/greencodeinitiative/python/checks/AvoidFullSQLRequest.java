@@ -23,7 +23,7 @@ import org.sonar.plugins.python.api.tree.Tree;
         tags = {"bug", "eco-design", "ecocode"})
 public class AvoidFullSQLRequest extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "S74";
+    public static final String RULE_KEY = "EC74";
 
     protected static final String MESSAGERULE = "Don't use the query SELECT * FROM";
 

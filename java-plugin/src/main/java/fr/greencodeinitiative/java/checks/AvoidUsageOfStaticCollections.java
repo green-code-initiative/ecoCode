@@ -14,7 +14,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.VariableTree;
 
 @Rule(
-        key = "S76",
+        key = "EC76",
         name = "Developpement",
         description = AvoidUsageOfStaticCollections.MESSAGE_RULE,
         priority = Priority.MINOR,

@@ -20,7 +20,7 @@ import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.PackageDeclarationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
-@Rule(key = "S69", name = "Developpement", description = NoFunctionCallWhenDeclaringForLoop.MESSAGERULE, priority = Priority.MINOR, tags = {
+@Rule(key = "EC69", name = "Developpement", description = NoFunctionCallWhenDeclaringForLoop.MESSAGERULE, priority = Priority.MINOR, tags = {
         "bug"})
 public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisitor {
 

@@ -25,7 +25,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         tags = {"bug", "eco-design", "ecocode"})
 public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 
-    public static final String RULE_KEY = "S72";
+    public static final String RULE_KEY = "EC72";
     public static final String ERROR_MESSAGE = "Avoid SQL request in loop";
     private static final Pattern PATTERN = Pattern.compile("(mysql(i::|_)query\\s*\\(.*)|(oci_execute\\(.*)");
 

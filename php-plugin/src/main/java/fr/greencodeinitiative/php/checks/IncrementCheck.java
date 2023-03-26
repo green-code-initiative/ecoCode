@@ -36,7 +36,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         tags = {"bug", "eco-design", "ecocode"})
 public class IncrementCheck extends PHPSubscriptionCheck {
 
-    public static final String RULE_KEY = "S67";
+    public static final String RULE_KEY = "EC67";
     public static final String ERROR_MESSAGE = "Remove the usage of $i++. prefer ++$i";
 
     @Override

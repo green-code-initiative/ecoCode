@@ -16,7 +16,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonar.plugins.java.api.tree.TryStatementTree;
 
 @Rule(
-        key = "GRSP0028",
+        key = "EC28",
         name = "Developpement",
         description = OptimizeReadFileExceptions.MESSAGERULE,
         priority = Priority.MINOR,
