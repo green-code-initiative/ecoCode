@@ -8,6 +8,9 @@
   },
   "tags": [
     "eco-design",
+    "performance",
+    "memory",
+    "bug",
     "ecocode"
   ],
   "defaultSeverity": "Minor"

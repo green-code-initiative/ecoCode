@@ -8,6 +8,11 @@
   },
   "tags": [
     "eco-design",
+    "performance",
+    "memory",
+    "network",
+    "sql",
+    "bug",
     "ecocode"
   ],
   "defaultSeverity": "Minor"
