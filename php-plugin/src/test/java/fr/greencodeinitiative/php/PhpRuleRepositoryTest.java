@@ -50,7 +50,7 @@ public class PhpRuleRepositoryTest {
    */
   @Test()
   public void testRuleKeyPrefix() {
-    RulesDefinition.Repository repository = context.repository(PhpRulesDefinition.REPOSITORY_KEY);
+    RulesDefinition.Repository repository = context.repository(PhpRuleRepository.REPOSITORY_KEY);
     SoftAssertions assertions = new SoftAssertions();
     repository.rules().forEach(
             rule -> assertions.assertThat(rule.key()).startsWith("EC")
