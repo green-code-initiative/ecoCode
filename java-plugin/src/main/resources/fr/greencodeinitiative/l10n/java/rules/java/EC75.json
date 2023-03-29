@@ -1,0 +1,17 @@
+{
+  "title": "Don't concatenate Strings in loop, use StringBuilder instead.",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "20min"
+  },
+  "tags": [
+    "eco-design",
+    "performance",
+    "memory",
+    "bug",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}

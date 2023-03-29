@@ -17,7 +17,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonar.plugins.java.api.tree.WhileStatementTree;
 
-@Rule(key = "GSCIL",
+@Rule(key = "EC3",
         name = "Developpement",
         description = AvoidGettingSizeCollectionInLoop.MESSAGERULE,
         priority = Priority.MINOR,

@@ -39,9 +39,9 @@ import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 public class PhpRulesDefinition implements RulesDefinition {
 
     public static final String LANGUAGE = "php";
-    public static final String NAME = "Green Code Initiative";
+    public static final String NAME = "ecoCode";
     public static final String RESOURCE_BASE_PATH = "fr/greencodeinitiative/l10n/php/rules/custom";
-    public static final String REPOSITORY_KEY = "greencodeinitiative-php";
+    public static final String REPOSITORY_KEY = "ecocode-php";
     private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
 
     @Override

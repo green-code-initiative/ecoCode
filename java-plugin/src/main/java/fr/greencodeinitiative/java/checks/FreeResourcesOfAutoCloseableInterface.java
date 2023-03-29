@@ -19,7 +19,7 @@ import org.sonar.plugins.java.api.tree.TryStatementTree;
 
 
 @Rule(
-        key = "S79",
+        key = "EC79",
         name = "Developpement",
         description = FreeResourcesOfAutoCloseableInterface.MESSAGE_RULE,
         priority = Priority.MINOR,

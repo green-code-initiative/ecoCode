@@ -20,19 +20,44 @@
 package fr.greencodeinitiative.python;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import org.assertj.core.api.SoftAssertions;
+import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.server.rule.RulesDefinition;
 
 public class PythonRuleRepositoryTest {
 
+  private PythonRuleRepository pythonRuleRepository;
+  private RulesDefinition.Context context;
+  private RulesDefinition.Repository repository;
+
+  @Before
+  public void init() {
+    pythonRuleRepository = new PythonRuleRepository();
+    context = new RulesDefinition.Context();
+    pythonRuleRepository.define(context);
+    repository = context.repository(PythonRuleRepository.REPOSITORY_KEY);
+  }
+
   @Test
   public void test() {
-    PythonRuleRepository pythonRuleRepository = new PythonRuleRepository();
-    RulesDefinition.Context context = new RulesDefinition.Context();
-    pythonRuleRepository.define(context);
     assertThat(pythonRuleRepository.repositoryKey()).isEqualTo(PythonRuleRepository.REPOSITORY_KEY);
     assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(pythonRuleRepository.repositoryKey());
     assertThat(context.repositories().get(0).rules()).hasSize(6);
     assertThat(pythonRuleRepository.checkClasses()).hasSize(6);
+  }
+
+
+  /**
+   * Check all rule keys must be prefixed by 'EC'
+   */
+  @Test
+  public void testRuleKeyPrefix() {
+    SoftAssertions assertions = new SoftAssertions();
+    repository.rules().forEach(
+            rule -> assertions.assertThat(rule.key()).startsWith("EC")
+    );
+    assertions.assertAll();
   }
 }

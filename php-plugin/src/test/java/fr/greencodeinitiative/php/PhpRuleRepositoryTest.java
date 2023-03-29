@@ -20,19 +20,41 @@
 package fr.greencodeinitiative.php;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import org.assertj.core.api.SoftAssertions;
+import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.server.rule.RulesDefinition;
 
 public class PhpRuleRepositoryTest {
 
+  private PhpRuleRepository phpRuleRepository;
+  private RulesDefinition.Context context;
+
+  @Before
+  public void init() {
+    phpRuleRepository = new PhpRuleRepository();
+    context = new RulesDefinition.Context();
+    phpRuleRepository.define(context);
+  }
+
   @Test
   public void test() {
-    PhpRuleRepository phpRuleRepository = new PhpRuleRepository();
-    RulesDefinition.Context context = new RulesDefinition.Context();
-    phpRuleRepository.define(context);
     assertThat(phpRuleRepository.repositoryKey()).isEqualTo(PhpRuleRepository.REPOSITORY_KEY);
     assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(phpRuleRepository.repositoryKey());
     assertThat(context.repositories().get(0).rules()).hasSize(8);
     assertThat(phpRuleRepository.checkClasses()).hasSize(8);
+  }
+
+  /**
+   * Check all rule keys must be prefixed by 'EC'
+   */
+  @Test()
+  public void testRuleKeyPrefix() {
+    RulesDefinition.Repository repository = context.repository(PhpRulesDefinition.REPOSITORY_KEY);
+    SoftAssertions assertions = new SoftAssertions();
+    repository.rules().forEach(
+            rule -> assertions.assertThat(rule.key()).startsWith("EC")
+    );
+    assertions.assertAll();
   }
 }

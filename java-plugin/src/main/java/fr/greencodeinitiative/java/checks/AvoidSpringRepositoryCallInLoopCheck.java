@@ -11,7 +11,7 @@ import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
-@Rule(key = "GRC1",
+@Rule(key = "EC1",
         name = "Developpement",
         description = AvoidSpringRepositoryCallInLoopCheck.RULE_MESSAGE,
         priority = Priority.MINOR,

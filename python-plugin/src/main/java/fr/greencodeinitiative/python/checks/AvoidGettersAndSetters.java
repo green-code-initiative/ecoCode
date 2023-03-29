@@ -25,7 +25,7 @@ import org.sonar.plugins.python.api.tree.Tree;
         tags = {"bug", "eco-design", "ecocode"})
 public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "D7";
+    public static final String RULE_KEY = "EC7";
     public static final String DESCRIPTION = "Avoid creating getter and setter methods in classes";
 
     @Override

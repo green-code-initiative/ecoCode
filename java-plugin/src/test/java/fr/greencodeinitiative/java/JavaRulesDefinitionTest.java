@@ -19,7 +19,9 @@
  */
 package fr.greencodeinitiative.java;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import org.assertj.core.api.SoftAssertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.debt.DebtRemediationFunction.Type;
@@ -28,15 +30,22 @@ import org.sonar.api.server.rule.RulesDefinition.Param;
 import org.sonar.api.server.rule.RulesDefinition.Repository;
 import org.sonar.api.server.rule.RulesDefinition.Rule;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class JavaRulesDefinitionTest {
+
+    private RulesDefinition.Repository repository;
+
+    @BeforeEach
+    void init() {
+        final JavaRulesDefinition rulesDefinition = new JavaRulesDefinition();
+        final RulesDefinition.Context context = new RulesDefinition.Context();
+        rulesDefinition.define(context);
+        repository = context.repository(JavaRulesDefinition.REPOSITORY_KEY);
+    }
 
     @Test
     void test() {
-        JavaRulesDefinition rulesDefinition = new JavaRulesDefinition();
-        RulesDefinition.Context context = new RulesDefinition.Context();
-        rulesDefinition.define(context);
-        RulesDefinition.Repository repository = context.repository(JavaRulesDefinition.REPOSITORY_KEY);
-
         assertThat(repository.name()).isEqualTo(JavaRulesDefinition.NAME);
         assertThat(repository.language()).isEqualTo(JavaRulesDefinition.LANGUAGE);
         assertThat(repository.rules()).hasSize(RulesList.getChecks().size());
@@ -46,9 +55,18 @@ class JavaRulesDefinitionTest {
         assertAllRuleParametersHaveDescription(repository);
     }
 
+    @Test
+    @DisplayName("All rule keys must be prefixed by 'EC'")
+    void testRuleKeyPrefix() {
+        SoftAssertions assertions = new SoftAssertions();
+        repository.rules().forEach(
+                rule -> assertions.assertThat(rule.key()).startsWith("EC")
+        );
+        assertions.assertAll();
+    }
 
     private static void assertRuleProperties(Repository repository) {
-        Rule rule = repository.rule("S67");
+        Rule rule = repository.rule("EC67");
         assertThat(rule).isNotNull();
         assertThat(rule.name()).isEqualTo("Use ++i instead of i++");
         assertThat(rule.debtRemediationFunction().type()).isEqualTo(Type.CONSTANT_ISSUE);

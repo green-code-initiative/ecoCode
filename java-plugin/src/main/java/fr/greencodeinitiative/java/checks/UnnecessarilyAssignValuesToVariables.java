@@ -33,7 +33,7 @@ import org.sonar.plugins.java.api.tree.TypeCastTree;
 import org.sonar.plugins.java.api.tree.UnaryExpressionTree;
 import org.sonar.plugins.java.api.tree.VariableTree;
 
-@Rule(key = "S63", name = "Developpement", description = "Do not unnecessarily assign values to variables", priority = Priority.MINOR, tags = {
+@Rule(key = "EC63", name = "Developpement", description = "Do not unnecessarily assign values to variables", priority = Priority.MINOR, tags = {
         "bug"})
 public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implements JavaFileScanner {
 

@@ -13,7 +13,7 @@ import org.sonar.plugins.java.api.tree.LiteralTree;
 import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
-@Rule(key = "SDMLQ1")
+@Rule(key = "EC5")
 public class AvoidStatementForDMLQueries extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "You must not use Statement for a DML query";

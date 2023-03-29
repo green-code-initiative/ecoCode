@@ -15,7 +15,7 @@ import org.sonar.plugins.java.api.tree.ExpressionTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
 @Rule(
-        key = "S75",
+        key = "EC75",
         name = "Developpement",
         description = AvoidConcatenateStringsInLoop.MESSAGE_RULE,
         priority = Priority.MINOR,

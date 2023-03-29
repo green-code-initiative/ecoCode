@@ -12,7 +12,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonar.plugins.java.api.tree.VariableTree;
 
 @Rule(
-        key = "D4",
+        key = "EC4",
         name = "Developpement",
         description = "<p>Prefer local variables to globals</p>",
         priority = Priority.MINOR,

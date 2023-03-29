@@ -11,7 +11,7 @@ import org.sonar.plugins.java.api.tree.IfStatementTree;
 import org.sonar.plugins.java.api.tree.StatementTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
-@Rule(key = "AMIES",
+@Rule(key = "EC2",
         name = "Developpement",
         description = AvoidMultipleIfElseStatement.RULE_MESSAGE,
         priority = Priority.MINOR,

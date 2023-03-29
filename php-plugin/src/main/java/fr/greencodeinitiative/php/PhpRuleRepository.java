@@ -45,9 +45,9 @@ import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
 public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleRepository {
 
   public static final String LANGUAGE = "php";
-  public static final String NAME = "Green Code Initiative";
+  public static final String NAME = "ecoCode";
   public static final String RESOURCE_BASE_PATH = "/fr/greencodeinitiative/l10n/php/rules/custom/";
-  public static final String REPOSITORY_KEY = "gci-php";
+  public static final String REPOSITORY_KEY = "ecocode-php";
 
   @Override
   public void define(Context context) {

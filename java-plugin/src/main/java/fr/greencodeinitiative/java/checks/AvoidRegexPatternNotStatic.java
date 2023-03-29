@@ -16,7 +16,7 @@ import org.sonar.plugins.java.api.tree.MethodTree;
 import org.sonar.plugins.java.api.tree.Tree;
 
 @Rule(
-        key = "S77",
+        key = "EC77",
         name = "Developpement",
         description = AvoidRegexPatternNotStatic.MESSAGE_RULE,
         priority = Priority.MINOR,

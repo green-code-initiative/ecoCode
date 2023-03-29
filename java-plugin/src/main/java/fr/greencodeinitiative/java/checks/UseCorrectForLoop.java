@@ -11,7 +11,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 
 @Rule(
-        key = "S53",
+        key = "EC53",
         name = "Developpement",
         description = UseCorrectForLoop.MESSAGERULE,
         priority = Priority.MINOR,
