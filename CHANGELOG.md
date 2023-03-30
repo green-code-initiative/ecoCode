@@ -11,7 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#63](https://github.com/green-code-initiative/ecoCode/issues/63) Update plugins to be compliant for SonarQube MarketPlace integration ( PR [#79](https://github.com/green-code-initiative/ecoCode/pull/79) )
+
 ### Deleted
+
+- [85](https://github.com/green-code-initiative/ecoCode/issues/85) Cleaning some useless classes on PHP plugin
 
 ## [1.0.0] - 2023-03-24
 
