@@ -26,7 +26,7 @@ Here is the list of rules already available in ecoCode project code.
 |  | Modify a CSS property directly | 🚫 | 🚫 | 🚧 | 🚫 | 🚫 |
 | EC34 | Using try...catch...finally calls | 🚧 | ✅ | 🚧 | ✅ | 🚧 |
 | EC22 | The use of methods for basic operations | 🚧 | ✅ | 🚧 | 🚧 | 🚧 |
-|  | Call a DOM element multiple times without caching | 🚫 | 🚫 | ✅ | 🚫 | 🚫 |
+| ??? | Call a DOM element multiple times without caching | 🚫 | 🚫 | ✅ | 🚫 | 🚫 |
 | EC4 | Use global variables | ✅ | ✅ | 🚧 | ✅ | 🚧 |
 |  | Using strings as arguments to SetTimeout() and setInterval() | 🚫 | 🚫 | ✅ | 🚫 | 🚫 |
 | EC53 | Using arrays in foreach loops | ✅ | 🚧 | 🚧 | 🚧 | 🚧 |
