@@ -1,4 +1,4 @@
-## List of "Bad Green Practices" Web-oriented Rules
+# List of "Bad Green Practices" Web-oriented Rules
 
 | Title  | Reference in "115" book | Category | Priority | Weighting | Level of complexity of realization | Example / Comment |
 |--|--|--|--|--|--|--|
