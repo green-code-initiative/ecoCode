@@ -67,7 +67,7 @@ jobs:
             type=ref,event=pr
             type=sha
 
-      - name: Publish image
+      - name: Build and publish image
         id: push
         uses: docker/build-push-action@v4
         with:
