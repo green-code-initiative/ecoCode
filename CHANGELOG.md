@@ -12,10 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - [#63](https://github.com/green-code-initiative/ecoCode/issues/63) Update plugins to be compliant for SonarQube MarketPlace integration ( PR [#79](https://github.com/green-code-initiative/ecoCode/pull/79) )
+- [#88](https://github.com/green-code-initiative/ecoCode/pull/88) upgrade rules matrix with new ids + refactoring rules documentation (`RULES.md`)
+  - _*WARNING*_ : since this plugin version, ids of plugin rules changed. In consequence, if you have already made some issue checks in your SonarQube instance, you will have to do them again (example : false-positive issues will appear again)
 
 ### Deleted
 
-- [85](https://github.com/green-code-initiative/ecoCode/issues/85) Cleaning some useless classes on PHP plugin
+- [#85](https://github.com/green-code-initiative/ecoCode/issues/85) Cleaning some useless classes on PHP plugin
 
 ## [1.0.0] - 2023-03-24
 
@@ -83,7 +85,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [161](https://github.com/cnumr/ecoCode/issues/161) adding tool to update tags of native rules with our custom tags
+- [#161](https://github.com/cnumr/ecoCode/issues/161) adding tool to update tags of native rules with our custom tags
 
 ### Changed
 
