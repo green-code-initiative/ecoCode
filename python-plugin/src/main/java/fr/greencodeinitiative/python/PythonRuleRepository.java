@@ -35,7 +35,6 @@ import fr.greencodeinitiative.python.checks.AvoidGlobalVariableInFunctionCheck;
 import fr.greencodeinitiative.python.checks.AvoidSQLRequestInLoop;
 import fr.greencodeinitiative.python.checks.AvoidTryCatchFinallyCheck;
 import fr.greencodeinitiative.python.checks.NoFunctionCallWhenDeclaringForLoop;
-import org.apache.commons.lang.StringUtils;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
 import org.sonar.plugins.python.api.PythonCustomRuleRepository;
