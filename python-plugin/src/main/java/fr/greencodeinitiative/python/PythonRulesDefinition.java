@@ -39,12 +39,12 @@ public class PythonRulesDefinition implements RulesDefinition {
     public static final String REPOSITORY_KEY = "ecocode-python";
     private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
 
-//    private static void setTemplates(NewRepository repository) {
-//        RULE_TEMPLATES_KEY.stream()
-//                .map(repository::rule)
-//                .filter(Objects::nonNull)
-//                .forEach(rule -> rule.setTemplate(true));
-//    }
+    private static void setTemplates(NewRepository repository) {
+        RULE_TEMPLATES_KEY.stream()
+                .map(repository::rule)
+                .filter(Objects::nonNull)
+                .forEach(rule -> rule.setTemplate(true));
+    }
 
     @Override
     public void define(Context context) {
@@ -56,7 +56,7 @@ public class PythonRulesDefinition implements RulesDefinition {
 
         ruleMetadataLoader.addRulesByAnnotatedClass(repository, new ArrayList<>(RulesList.getChecks()));
 
-//        setTemplates(repository);
+        setTemplates(repository);
 
         repository.done();
     }
