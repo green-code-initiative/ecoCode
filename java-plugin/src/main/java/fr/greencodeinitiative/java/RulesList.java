@@ -47,6 +47,7 @@ public final class RulesList {
                 NoFunctionCallWhenDeclaringForLoop.class,
                 AvoidStatementForDMLQueries.class,
                 AvoidSpringRepositoryCallInLoopCheck.class,
+                AvoidSpringRepositoryCallInLoopWithStream.class,
                 AvoidSQLRequestInLoop.class,
                 AvoidFullSQLRequest.class,
                 UseCorrectForLoop.class,

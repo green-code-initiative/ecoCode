@@ -1,0 +1,17 @@
+<p>The use of Spring repository in a stream operation like "peek, forEach, forEachOrdered, map" induces unnecessary multiple access to the database instead of single batch call</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+	List&lt;Employee&gt; employees = new ArrayList<>();
+        Stream stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        stream.forEach(id -> {
+            Optional&lt;Employee&gt; employee = employeeRepository.findById(id); // Noncompliant
+            if (employee.isPresent()) {
+                employees.add(employee.get());
+            }
+        });
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+	private final List&lt;Integer&gt; ids = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).toList();
+	List&lt;Employee&gt; employees = employeeRepository.findAllById(ids);
+</pre>
