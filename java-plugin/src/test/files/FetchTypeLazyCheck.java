@@ -15,5 +15,5 @@ class FetchTypeLazyCheck {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="USER_ID")
     private UserLazy user;
-   
+
 }

@@ -10,7 +10,7 @@ public class FetchTypeLazyCheckTest {
         CheckVerifier.newVerifier()
                 .onFile("src/test/files/FetchTypeLazyCheck.java")
                 .withCheck(new FetchTypeLazyCheck())
-                .verifyIssues();
+                .verifyNoIssues();
     }
 
 }
