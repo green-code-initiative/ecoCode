@@ -10,7 +10,4 @@ class CustomerDataCopyCheck {
 		// set the validity
 		C.setMaxAge(24*3600);
 	}
-
-
-	
 }
