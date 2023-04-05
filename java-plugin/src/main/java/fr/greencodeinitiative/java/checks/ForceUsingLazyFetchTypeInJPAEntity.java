@@ -37,6 +37,7 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
                 if("OneToMany".equals(annotationTree.annotationType().symbolType().name())||"ManyToOne".equals(annotationTree.annotationType().symbolType().name())){
 
                     Arguments arguments = annotationTree.arguments();
+
                     for (ListIterator<ExpressionTree> it = arguments.listIterator(); it.hasNext(); ) {
 
                         ExpressionTree argument = it.next();
@@ -47,7 +48,6 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
 
                         if("fetch".equals(variable.name())){
                             String fetchValue = ((MemberSelectExpressionTree)assignementExpression.expression()).identifier().name();
-                            System.out.print(fetchValue);
                             if("EAGER".equals(fetchValue)){
                                 reportIssue(tree, MESSAGERULE);
                             }
