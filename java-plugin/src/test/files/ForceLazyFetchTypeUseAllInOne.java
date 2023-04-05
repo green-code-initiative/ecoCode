@@ -11,16 +11,16 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "purchaseOrder")
+@Table(name = "myTable")
 public class ForceLazyFetchTypeUseAllInOne implements Serializable {
    
-  @OneToMany(mappedBy = "order", fetch = FetchType.EAGER) // Noncompliant {{Force the use of LAZY FetchType}}
+  @OneToMany(mappedBy = "myOrders", fetch = FetchType.EAGER) // Noncompliant {{Force the use of LAZY FetchType}}
   private Set<OrderItem> items = new HashSet<OrderItem>();
 
-  @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "myOrders", fetch = FetchType.LAZY)
   private Set<OrderItem> items = new HashSet<OrderItem>();
 
-  @Column(name = "STUDENT_NAME", length = 50, nullable = false, unique = false)
+  @Column(name = "ORDER", length = 50, nullable = false, unique = false)
   private Set<OrderItem> items = new HashSet<OrderItem>();
 
 }

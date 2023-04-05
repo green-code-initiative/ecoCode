@@ -11,10 +11,10 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "purchaseOrder")
+@Table(name = "myTable")
 public class ForceLazyFetchTypeUseCompliant implements Serializable {
    
-  @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "myOrders", fetch = FetchType.LAZY)
   private Set<OrderItem> items = new HashSet<OrderItem>();
 
 }
