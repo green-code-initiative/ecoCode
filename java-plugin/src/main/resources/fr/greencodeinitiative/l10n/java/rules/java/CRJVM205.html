@@ -1,0 +1,30 @@
+<p>Consider forcing the use of LAZY's FetchType on collections in JPA type entities. To reduce RAM load.</p>
+
+<h2>Non-compliant Code Example</h2>
+<pre>
+    @Entity
+    @Table(name = "purchaseOrder")
+    public class Order implements Serializable {
+       
+      @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+      private Set<OrderItem> items = new HashSet<OrderItem>();
+       
+      ...
+       
+    }
+
+</pre>
+<h2>Compliant Code Example</h2>
+<pre>
+    @Entity
+    @Table(name = "purchaseOrder")
+    public class Order implements Serializable {
+       
+      @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+      private Set<OrderItem> items = new HashSet<OrderItem>();
+       
+      ...
+       
+    }
+
+</pre>
