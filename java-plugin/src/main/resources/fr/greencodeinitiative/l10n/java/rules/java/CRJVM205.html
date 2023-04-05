@@ -1,0 +1,30 @@
+<p>Consider using LAZY mode on your FetchType for collections in JPA type entities. This will reduce the amount of data loaded into memory.</p>
+
+<h2>Non-compliant Code Example</h2>
+<pre>
+    @Entity
+    @Table(name = "purchaseOrder")
+    public class Order implements Serializable {
+       
+      @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+      private Set<OrderItem> items = new HashSet<OrderItem>();
+       
+      ...
+       
+    }
+
+</pre>
+<h2>Compliant Code Example</h2>
+<pre>
+    @Entity
+    @Table(name = "purchaseOrder")
+    public class Order implements Serializable {
+       
+      @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+      private Set<OrderItem> items = new HashSet<OrderItem>();
+       
+      ...
+       
+    }
+
+</pre>
