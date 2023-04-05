@@ -3,21 +3,12 @@ package fr.greencodeinitiative.java.checks;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
-import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.*;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 
-import java.sql.PreparedStatement;
 import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
-import java.util.stream.Stream;
-
-import static fr.greencodeinitiative.java.checks.ConstOrLiteralDeclare.isLiteral;
-import static java.util.Arrays.asList;
-import static org.sonar.plugins.java.api.semantic.Type.Primitives.INT;
-import static org.sonar.plugins.java.api.tree.Tree.Kind.MEMBER_SELECT;
-import static org.sonar.plugins.java.api.tree.Tree.Kind.METHOD_INVOCATION;
 
 @Rule(key = "CRJVM205", name = "Developpement",
         description = ForceUsingLazyFetchTypeInJPAEntity.MESSAGERULE,
@@ -27,7 +18,10 @@ import static org.sonar.plugins.java.api.tree.Tree.Kind.METHOD_INVOCATION;
 public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Force the use of LAZY FetchType";
-
+    private static final String EAGER_KEYWORD = "EAGER";
+    private static final String FETCH_KEYWORD = "fetch";
+    private static final String ONE_TO_MANY =  "OneToMany";
+    private static final String MANY_TO_ONE =  "ManyToOne";
     @Override
     public List<Kind> nodesToVisit() {
         return Arrays.asList(Kind.VARIABLE);
@@ -39,23 +33,25 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
         if (tree.is(Kind.VARIABLE)) {
             VariableTree variableTree = (VariableTree) tree;
             List<AnnotationTree> annotations = variableTree.modifiers().annotations();
-
+            //-- get all annotations on the attribut
             for(AnnotationTree annotationTree : annotations){
-                System.out.print(annotationTree.annotationType());
+                //--access only to One
 
-                if("OneToMany".equals(annotationTree.annotationType().toString())||"ManyToOne".equals(annotationTree.annotationType())){
+                if(ONE_TO_MANY.equals(annotationTree.annotationType().symbolType().name())||MANY_TO_ONE.equals(annotationTree.annotationType().symbolType().name())){
 
                     Arguments arguments = annotationTree.arguments();
+
                     for (ListIterator<ExpressionTree> it = arguments.listIterator(); it.hasNext(); ) {
+
                         ExpressionTree argument = it.next();
+
                         AssignmentExpressionTree assignementExpression = (AssignmentExpressionTree)argument;
 
                         IdentifierTree variable = (IdentifierTree) assignementExpression.variable();
-                        if("fetch".equals(variable.name())){
-                            //--attribut
+
+                        if(FETCH_KEYWORD.equals(variable.name())){
                             String fetchValue = ((MemberSelectExpressionTree)assignementExpression.expression()).identifier().name();
-                            System.out.print(fetchValue);
-                            if("EAGER".equals(fetchValue)){
+                            if(EAGER_KEYWORD.equals(fetchValue)){
                                 reportIssue(tree, MESSAGERULE);
                             }
                         }

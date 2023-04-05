@@ -11,10 +11,10 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
-@Table(name = "purchaseOrder")
+@Table(name = "myTable")
 public class ForceLazyFetchTypeUseFalseTest implements Serializable {
   
-  @Column(name = "STUDENT_NAME", length = 50, nullable = false, unique = false)
+  @Column(name = "ORDER", length = 50, nullable = false, unique = false)
   private Set<OrderItem> items = new HashSet<OrderItem>();
 
 }
