@@ -37,10 +37,10 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
 
         if (tree.is(Kind.VARIABLE)) {
             VariableTree variableTree = (VariableTree) tree;
-            List<AnnotationTree> listOfAnnotations = variableTree.type().annotations();
-            for(AnnotationTree annotationTree : listOfAnnotations){
+            List<AnnotationTree> annotations = variableTree.modifiers().annotations();
 
-                System.out.print(annotationTree.toString());
+            for(AnnotationTree annotationTree : annotations){
+                System.out.print(annotationTree.annotationType());
             }
             reportIssue(tree, MESSAGERULE);
         }

@@ -31,7 +31,7 @@ public class ForceUsingLazyFetchTypeInJPAEntityTest {
     }
 
     @Test
-    void checkPositiveFalseTests() {
+    void checkAllTests() {
         CheckVerifier.newVerifier()
                 .onFile("src/test/files/ForceLazyFetchTypeUseAllInOne.java")
                 .withCheck(new ForceUsingLazyFetchTypeInJPAEntity())
