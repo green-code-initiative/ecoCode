@@ -10,6 +10,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 import java.sql.PreparedStatement;
 import java.util.Arrays;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.stream.Stream;
 
 import static fr.greencodeinitiative.java.checks.ConstOrLiteralDeclare.isLiteral;
@@ -42,9 +43,21 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
             for(AnnotationTree annotationTree : annotations){
                 System.out.print(annotationTree.annotationType());
 
-                if("OneToMany".equals(annotationTree.annotationType())||"ManyToOne".equals(annotationTree.annotationType())){
+                if("OneToMany".equals(annotationTree.annotationType().toString())||"ManyToOne".equals(annotationTree.annotationType())){
 
                     Arguments arguments = annotationTree.arguments();
+                    for (ListIterator<ExpressionTree> it = arguments.listIterator(); it.hasNext(); ) {
+                        ExpressionTree argument = it.next();
+                        AssignmentExpressionTree assignementExpression = (AssignmentExpressionTree)argument;
+                        String attribute = assignementExpression.variable().toString();
+                        if("fetch".equals(attribute)){
+                            //--attribut
+                            assignementExpression.variable();
+                            //--value
+                            assignementExpression.expression();
+                        }
+                        System.out.print(attribute);
+                    }
 
                 }
             }
