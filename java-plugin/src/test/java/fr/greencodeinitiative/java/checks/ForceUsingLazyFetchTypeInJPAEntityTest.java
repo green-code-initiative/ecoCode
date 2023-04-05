@@ -37,4 +37,36 @@ public class ForceUsingLazyFetchTypeInJPAEntityTest {
                 .withCheck(new ForceUsingLazyFetchTypeInJPAEntity())
                 .verifyIssues();
     }
+    @Test
+    void checkDefaultOneToOneTests() {
+        CheckVerifier.newVerifier()
+                .onFile("src/test/files/ForceLazyFetchTypeUseDefaultOneToOne.java")
+                .withCheck(new ForceUsingLazyFetchTypeInJPAEntity())
+                .verifyIssues();
+    }
+    @Test
+    void checkDefaultManyToOneTests() {
+        CheckVerifier.newVerifier()
+                .onFile("src/test/files/ForceLazyFetchTypeUseDefaultManyToOne.java")
+                .withCheck(new ForceUsingLazyFetchTypeInJPAEntity())
+                .verifyIssues();
+    }
+
+    @Test
+    void checkManyToOneTests() {
+        CheckVerifier.newVerifier()
+                .onFile("src/test/files/ForceLazyFetchTypeUseManyToOne.java")
+                .withCheck(new ForceUsingLazyFetchTypeInJPAEntity())
+                .verifyIssues();
+    }
+
+    @Test
+    void checkOneToOneTests() {
+        CheckVerifier.newVerifier()
+                .onFile("src/test/files/ForceLazyFetchTypeUseOneToOne.java")
+                .withCheck(new ForceUsingLazyFetchTypeInJPAEntity())
+                .verifyIssues();
+
+    }
+
 }
