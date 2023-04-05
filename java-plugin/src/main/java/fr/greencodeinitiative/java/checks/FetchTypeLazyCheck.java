@@ -10,7 +10,6 @@ import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.TypeTree;
 
-import java.lang.reflect.AnnotatedType;
 import java.util.List;
 
 import static java.util.Collections.singletonList;
@@ -22,9 +21,9 @@ import static java.util.Collections.singletonList;
         priority = Priority.MINOR,
         tags = { "bug" } )
 public class FetchTypeLazyCheck extends IssuableSubscriptionVisitor {
+    public static final    String MANY_TO_ONE = "ManyToOne";
+    public static final    String LAZY        = "LAZY";
     protected static final String MESSAGERULE = "Use lazy fetch type instead of egger ";
-    public static final String MANY_TO_ONE = "ManyToOne";
-    public static final String LAZY = "LAZY";
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -34,7 +33,8 @@ public class FetchTypeLazyCheck extends IssuableSubscriptionVisitor {
     @Override
     public void visitNode( Tree tree ) {
         TypeTree typeTree = (( AnnotationTreeImpl ) tree).annotationType();
-        if ( MANY_TO_ONE.equals( typeTree.symbolType().name() ) ) {
+        if ( MANY_TO_ONE.equals( typeTree.symbolType()
+                                         .name() ) ) {
             List<Tree> annotationListTree = (( AnnotationTreeImpl ) tree).children();
             if ( !annotationListTree.isEmpty() && annotationListTree.size() > 1 ) {
                 ArgumentListTreeImpl argumentListTree = ( ArgumentListTreeImpl ) annotationListTree.get( 2 );
@@ -43,8 +43,10 @@ public class FetchTypeLazyCheck extends IssuableSubscriptionVisitor {
                     AssignmentExpressionTreeImpl assignmentExpressionTree = ( AssignmentExpressionTreeImpl ) argumentListTreeChildren.get( 1 );
                     List<Tree> assignmentExpressionTreeChildren = assignmentExpressionTree.getChildren();
                     if ( !assignmentExpressionTreeChildren.isEmpty() && assignmentExpressionTreeChildren.size() > 1 ) {
-                        MemberSelectExpressionTreeImpl memberSelectExpressionTree = ( MemberSelectExpressionTreeImpl ) assignmentExpressionTreeChildren.get( 2 );
-                        if ( ! LAZY.equals( memberSelectExpressionTree.identifier().name() ) ) {
+                        MemberSelectExpressionTreeImpl memberSelectExpressionTree = ( MemberSelectExpressionTreeImpl ) assignmentExpressionTreeChildren.get(
+                                2 );
+                        if ( !LAZY.equals( memberSelectExpressionTree.identifier()
+                                                                     .name() ) ) {
                             reportIssue( tree, MESSAGERULE );
                         }
                     }
