@@ -1,0 +1,14 @@
+{
+  "title": "Avoid using try-catch-finally",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "50min"
+  },
+  "tags": [
+    "eco-design",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}
