@@ -41,6 +41,12 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
 
             for(AnnotationTree annotationTree : annotations){
                 System.out.print(annotationTree.annotationType());
+
+                if("OneToMany".equals(annotationTree.annotationType())||"ManyToOne".equals(annotationTree.annotationType())){
+
+                    Arguments arguments = annotationTree.arguments();
+
+                }
             }
             reportIssue(tree, MESSAGERULE);
         }
