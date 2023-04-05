@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 
-@Rule(key = "CRJVM205", name = "Developpement",
+@Rule(key = "EC80", name = "Developpement",
         description = ForceUsingLazyFetchTypeInJPAEntity.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
@@ -22,6 +22,10 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
     private static final String FETCH_KEYWORD = "fetch";
     private static final String ONE_TO_MANY =  "OneToMany";
     private static final String MANY_TO_ONE =  "ManyToOne";
+
+    private static final String ONE_TO_ONE = "OneToOne";
+
+    private static final String MANY_TO_MANY = "ManyToMany";
     @Override
     public List<Kind> nodesToVisit() {
         return Arrays.asList(Kind.VARIABLE);
@@ -37,9 +41,10 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
             for(AnnotationTree annotationTree : annotations){
                 //--access only to One
 
-                if(ONE_TO_MANY.equals(annotationTree.annotationType().symbolType().name())||MANY_TO_ONE.equals(annotationTree.annotationType().symbolType().name())){
+                if(ONE_TO_MANY.equals(annotationTree.annotationType().symbolType().name()) || MANY_TO_ONE.equals(annotationTree.annotationType().symbolType().name()) || ONE_TO_ONE.equals(annotationTree.annotationType().symbolType().name())|| MANY_TO_MANY.equals(annotationTree.annotationType().symbolType().name())) {
 
                     Arguments arguments = annotationTree.arguments();
+                    boolean fectchFound = false;
 
                     for (ListIterator<ExpressionTree> it = arguments.listIterator(); it.hasNext(); ) {
 
@@ -51,18 +56,19 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
 
                         if(FETCH_KEYWORD.equals(variable.name())){
                             String fetchValue = ((MemberSelectExpressionTree)assignementExpression.expression()).identifier().name();
+                            fectchFound = true;
                             if(EAGER_KEYWORD.equals(fetchValue)){
                                 reportIssue(tree, MESSAGERULE);
                             }
                         }
 
                     }
-
+                    //-The default case of the ManyToOne and the  OneToOne
+                    if(!fectchFound && (MANY_TO_ONE.equals(annotationTree.annotationType().symbolType().name()) || ONE_TO_ONE.equals(annotationTree.annotationType().symbolType().name()))){
+                        reportIssue(tree, MESSAGERULE);
+                    }
                 }
             }
-
         }
     }
-
-
 }
