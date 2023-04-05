@@ -18,7 +18,10 @@ import java.util.ListIterator;
 public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Force the use of LAZY FetchType";
-
+    private static final String EAGER_KEYWORD = "EAGER";
+    private static final String FETCH_KEYWORD = "fetch";
+    private static final String ONE_TO_MANY =  "OneToMany";
+    private static final String MANY_TO_ONE =  "ManyToOne";
     @Override
     public List<Kind> nodesToVisit() {
         return Arrays.asList(Kind.VARIABLE);
@@ -33,8 +36,8 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
             //-- get all annotations on the attribut
             for(AnnotationTree annotationTree : annotations){
                 //--access only to One
-                ;
-                if("OneToMany".equals(annotationTree.annotationType().symbolType().name())||"ManyToOne".equals(annotationTree.annotationType().symbolType().name())){
+
+                if(ONE_TO_MANY.equals(annotationTree.annotationType().symbolType().name())||MANY_TO_ONE.equals(annotationTree.annotationType().symbolType().name())){
 
                     Arguments arguments = annotationTree.arguments();
 
@@ -46,9 +49,9 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
 
                         IdentifierTree variable = (IdentifierTree) assignementExpression.variable();
 
-                        if("fetch".equals(variable.name())){
+                        if(FETCH_KEYWORD.equals(variable.name())){
                             String fetchValue = ((MemberSelectExpressionTree)assignementExpression.expression()).identifier().name();
-                            if("EAGER".equals(fetchValue)){
+                            if(EAGER_KEYWORD.equals(fetchValue)){
                                 reportIssue(tree, MESSAGERULE);
                             }
                         }
