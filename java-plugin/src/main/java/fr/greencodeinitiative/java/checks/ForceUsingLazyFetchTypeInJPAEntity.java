@@ -49,19 +49,22 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
                     for (ListIterator<ExpressionTree> it = arguments.listIterator(); it.hasNext(); ) {
                         ExpressionTree argument = it.next();
                         AssignmentExpressionTree assignementExpression = (AssignmentExpressionTree)argument;
-                        String attribute = assignementExpression.variable().toString();
-                        if("fetch".equals(attribute)){
+
+                        IdentifierTree variable = (IdentifierTree) assignementExpression.variable();
+                        if("fetch".equals(variable.name())){
                             //--attribut
-                            assignementExpression.variable();
-                            //--value
-                            assignementExpression.expression();
+                            String fetchValue = ((MemberSelectExpressionTree)assignementExpression.expression()).identifier().name();
+                            System.out.print(fetchValue);
+                            if("EAGER".equals(fetchValue)){
+                                reportIssue(tree, MESSAGERULE);
+                            }
                         }
-                        System.out.print(attribute);
+
                     }
 
                 }
             }
-            reportIssue(tree, MESSAGERULE);
+
         }
     }
 
