@@ -1,19 +1,21 @@
-<p>Avoid using try-catch-finally</p>
-<h2>Noncompliant Code Example</h2>
+<p>
+    Use try catch... only if necessary
+</p>
+<p>When an exception is thrown, a variable (the exception itself) is created in the catch block and destroyed at the end of the block. Creating this variable and destroying it consumes CPU cycles and RAM unnecessarily. That is why it is important not to use this construction and to prefer, as much as possible, a logical test.</p>
+<h2> Noncompliant Code Example</h2>
 <pre>
-		try{
-            ...
-        }catch{
-            ...
-        }finally{
-            ...
-        }
+    try{
+        isNumber(2); // isNumber is a function which checks if argument is number
+        echo "It's a number";
+    }catch(CheckTypeException $exception){ // CheckTypeException personalized exception
+        echo "Erreur:" $execption->getMessage();
+    }
 </pre>
-<h2>Compliant Solution</h2>
+<h2> Compliant Code Example</h2>
 <pre>
-		try{
-            ...
-        }catch{
-            ...
-        }
+    if(isNumber(2){
+        echo "It's a number";
+    }else{
+        echo "It's not a number";
+    }
 </pre>

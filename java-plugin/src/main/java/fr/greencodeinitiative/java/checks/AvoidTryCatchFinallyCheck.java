@@ -27,10 +27,8 @@ public class AvoidTryCatchFinallyCheck extends IssuableSubscriptionVisitor {
     @Override
     public void visitNode(Tree tree) {
         TryStatementTree tryStatement = (TryStatementTree) tree;
-        SyntaxToken finallyKeyword= tryStatement.finallyKeyword();
-        if(finallyKeyword!=null){
-            reportIssue(finallyKeyword, MESSAGE);
-        }
+        reportIssue(tree, MESSAGE);
+
     }
 }
 

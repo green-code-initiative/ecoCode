@@ -5,21 +5,23 @@ class AvoidUsingFinallyInTryCatchCheckClass{
 		}
 		return 1/x;
 	}
+
 	public void function() {
-		try {
+        try {// Noncompliant {{Avoid using try-catch-finally}}
 			System.out.println(inverse(1)+"\n");
 		} catch (Exception e) {
 			System.out.println("Exception reçue : "+ e.printStackTrace()+ "\n");
 		}
-		finally {// Noncompliant {{Avoid using try-catch-finally}}
+		finally {
 			System.out.println("Première fin.\n");
 		}
-
-		try {
-			System.out.println(inverse(2)+"\n");
+	}
+	public void functionEncore() {
+        try {// Noncompliant {{Avoid using try-catch-finally}}
+			System.out.println(inverse(1)+"\n");
 		} catch (Exception e) {
 			System.out.println("Exception reçue : "+ e.printStackTrace()+ "\n");
 		}
-
 	}
+
 }
