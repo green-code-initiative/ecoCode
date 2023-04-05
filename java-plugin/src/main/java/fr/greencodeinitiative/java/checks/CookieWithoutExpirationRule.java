@@ -3,6 +3,7 @@ package fr.greencodeinitiative.java.checks;
 
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
+import org.sonar.java.model.declaration.MethodTreeImpl;
 import org.sonar.java.model.expression.NewArrayTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.*;
@@ -50,8 +51,14 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
 
     private MethodInvocationTree getMethodInvocation(Tree tree) {
 
-     //LOGGER.debug("--------------------_____-----_____----- AvoidGettingSizeCollectionInLoop.visitNode METHOD - BEGIN");
-        if (tree.is(Tree.Kind.EXPRESSION_STATEMENT)) {
+      List<Tree> children = ((MethodTreeImpl)tree).children();
+      for (Tree child : children) {
+        if (child instanceof MethodInvocationTree) {
+         return (MethodInvocationTree) child;
+        }
+      }
+
+        /*if (tree.is(Tree.Kind.EXPRESSION_STATEMENT)) {
 
             ExpressionTree children = ((AssignmentExpressionTree)tree).variable();
             if(children.is(Tree.Kind.IDENTIFIER))
@@ -60,7 +67,7 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
                 current.name().equals("Cookie");
                  return (MethodInvocationTree) tree;
             }
-        }
+        }*/
      return null;
  }
 
