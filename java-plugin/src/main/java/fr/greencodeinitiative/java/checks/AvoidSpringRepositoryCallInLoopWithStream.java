@@ -12,14 +12,13 @@ import java.util.Collections;
 import java.util.List;
 
 @Rule(
-        key = "CRJVM208",
+        key = "EC_CRJVM208",
         name = "Developpement",
         description = AvoidSpringRepositoryCallInLoopWithStream.MESSAGE_RULE,
-        priority = Priority.MINOR,
-        tags = {"bug"})
+        priority = Priority.MINOR)
 public class AvoidSpringRepositoryCallInLoopWithStream extends IssuableSubscriptionVisitor {
 
-    public static final String MESSAGE_RULE = "Avoid spring repository call in stream!";
+    public static final String MESSAGE_RULE = "Avoid spring repository call in stream !";
     private static final String SPRING_REPOSITORY = "org.springframework.data.repository.Repository";
     private static final String BASE_STREAM = "java.util.stream.BaseStream";
     private static final MethodMatchers REPOSITORY_METHOD =  MethodMatchers.create().ofSubTypes(SPRING_REPOSITORY).anyName().withAnyParameters().build();

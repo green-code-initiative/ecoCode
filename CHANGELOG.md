@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#109](https://github.com/green-code-initiative/ecoCode/issues/109) new PHP rule EC3 : Getting the size of the collection in the loop. For further [RULES.md](./RULES.md) file
 - [#113](https://github.com/green-code-initiative/ecoCode/issues/113) new Python rule EC10 : Use unoptimized vector images
 - [#127](https://github.com/green-code-initiative/ecoCode/issues/127) new Python rule EC404 : Usage of generator comprehension instead of list comprehension in for loop declaration
+- [#151](https://github.com/green-code-initiative/ecoCode/pull/151) new Java rule CRJVM208 : Avoid spring repository call in stream
 - [#190](https://github.com/green-code-initiative/ecoCode/pull/190) Add Python rule: Use unoptimized vector images
 - [#191](https://github.com/green-code-initiative/ecoCode/issues/191) Update rule tags for Java, Python, and PHP plugins
 - [#192](https://github.com/green-code-initiative/ecoCode/pull/192) new Python rule EC203 : Detect unoptimized file formats
