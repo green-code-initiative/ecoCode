@@ -44,7 +44,7 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
      tree.accept(visitorInFile);
      if (visitorInFile.hasANewCookieWithoutMaxDate())
      {
-         reportIssue(tree, "RULE_MESSAGE");
+         reportIssue(tree, "Avoid not setting MaxAge");
      }
  }
 
