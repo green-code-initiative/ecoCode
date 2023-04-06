@@ -1,5 +1,9 @@
 import org.springframework.data.repository.CrudRepository;
 import java.util.List;
+
+/**
+ * Should succeed because is not a repository
+ */
 public interface UserRepository extends User {
 
     User findById();

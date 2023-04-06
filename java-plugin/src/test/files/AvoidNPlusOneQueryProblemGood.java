@@ -5,20 +5,21 @@ import java.util.List;
 public interface UserRepository extends CrudRepository<User, Long> {
 
 
-    User findById();
+    User shloudSucceedBecauseDoesNotReturnAnIterable();
 
     @Query("SELECT p FROM User p LEFT JOIN FETCH p.roles")
-    List<User> findWithoutNPlusOne();
+    List<User> shouldSucceedBecauseQueryAnnotationContainsJointFetch();
 
     @EntityGraph(attributePaths = {"roles"})
-    List<User> findAll();
+    List<User> shouldSucceedBecauseIsAnnotatedWithEntityGraph();
+
     @Query(value = "SELECT p FROM User p LEFT JOIN FETCH p.roles", nativeQuery = false)
     @Override
-    List<User> findAllWithRoles();
+    List<User> shouldSucceedBecauseIsAnnotatedSeveralTimesIncludingOnceQueryAnnotationContainsJointFetch();
 
     @Query("SELECT p FROM User p LEFT JOIN FETCH p.roles")
     @Override
-    List<User> findAllWithAdminRoles();
+    List<User> shouldSucceedBecauseIsAnnotatedSeveralTimesIncludingOnceQueryAnnotationContainsJointFetch();
 
 }
 

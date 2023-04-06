@@ -21,7 +21,7 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
     private static final String SPRING_REPOSITORY = "org.springframework.data.repository.Repository";
     private static final String QUERY = "org.springframework.data.jpa.repository.Query";
     private static final String ENTITY_GRAPH = "org.springframework.data.jpa.repository.EntityGraph";
-    private static final String LEFT_JOIN = "LEFT JOIN";
+    private static final String JOIN_FETCH = "JOIN FETCH";
     private static final String VALUE = "value";
 
     private static final List<String> SPRING_PROBLEMATIC_ANNOTATIONS = List.of(
@@ -46,6 +46,7 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
         }
     }
 
+    //Check if the repository entity contains parameter annotate with ManyToOne, OneToMany or ManyToMany
     private boolean hasManyToOneAnnotations(ClassTree classTree) {
         Optional<Type> crudRepositoryInterface = classTree.symbol().interfaces().stream()
                 .filter(t -> t.isSubtypeOf(SPRING_REPOSITORY))
@@ -68,6 +69,11 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
                 .orElse(false);
     }
 
+    /**
+     * Check if this class implements jpa Repository
+     * @param classTree the class to analyze
+     * @return true  if this class implements jpa Repository
+     */
     private static boolean isSpringRepository(ClassTree classTree) {
         return classTree.symbol().type().isSubtypeOf(SPRING_REPOSITORY);
     }
@@ -77,6 +83,7 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
         @Override
         public void visitMethod(MethodTree tree) {
             if (
+                    //Check all methods of the repository that return an iterable
                     tree.returnType().symbolType().isSubtypeOf(Iterable.class.getName())
                             && hasNoCompliantAnnotation(tree)
             ) {
@@ -86,6 +93,11 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
             }
         }
 
+        /**
+         * Check if the method is correctly annotated with Query or EntityGraph
+         * @param tree the method to analyze
+         * @return true if the method is not correctly annotated
+         */
         boolean hasNoCompliantAnnotation(MethodTree tree) {
             return tree.modifiers().annotations().stream().noneMatch(
                     a -> isQueryAnnotationWithFetch(a) ||
@@ -93,13 +105,66 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
             );
         }
 
-        private boolean isQueryAnnotationWithFetch(AnnotationTree a) {
-            return a.symbolType().is(QUERY)
-            && (a.arguments().stream().filter(arg -> Tree.Kind.STRING_LITERAL.equals(arg.kind()))
-                    .anyMatch(arg -> arg.firstToken().text().contains(LEFT_JOIN))
-                    || (a.arguments().stream().filter(arg -> Tree.Kind.ASSIGNMENT.equals(arg.kind()))
+        /**
+         * Check if the method is correctly annotated with Query. That is to say the value parameter of the annotation
+         * contains an sql query with {@link #JOIN_FETCH}.
+         *
+         * Query("SELECT p FROM User p LEFT JOIN FETCH p.roles")
+         * With this first solution, the annotation contains a single argument containing a single token which is the sql query
+         *
+         * Query(value = "SELECT p FROM User p LEFT JOIN FETCH p.roles")
+         * With this second solution, the annotation contains a single argument containing three tokens which are :
+         * - value
+         * - equal sign
+         * - sql query
+         *
+         * @param annotationTree annotation to analyze
+         * @return true if annotationTree is a query annotation with sql query that contains "JOIN FETCH"
+         */
+        private boolean isQueryAnnotationWithFetch(AnnotationTree annotationTree) {
+            return annotationTree.symbolType().is(QUERY)
+                    && getSqlQuery(annotationTree).map(this::isValidSqlQuery).orElse(false);
+        }
+
+        /**
+         * @param annotationTree annotation whose symbolType is {@link #QUERY}
+         * @return the SQLQuery which is in annotation value attribute
+         */
+        private Optional<String> getSqlQuery(AnnotationTree annotationTree) {
+            return getSqlQueryFromStringLiteralArgument(annotationTree)
+                    .or(() -> getSqlQueryFromAssignementArgument(annotationTree));
+        }
+
+        /**
+         * @param annotationTree annotation whose symbolType is {@link #QUERY}
+         * @return the SQLQuery which is in annotation value attribute
+         */
+        private Optional<String> getSqlQueryFromStringLiteralArgument(AnnotationTree annotationTree) {
+            return annotationTree.arguments().stream()
+                    .filter(arg -> Tree.Kind.STRING_LITERAL.equals(arg.kind()))
+                    .findAny()
+                    .map(arg -> arg.firstToken().text());
+        }
+
+        /**
+         * @param annotationTree annotation whose symbolType is {@link #QUERY}
+         * @return the SQLQuery which is in annotation value attribute
+         */
+        private Optional<String> getSqlQueryFromAssignementArgument(AnnotationTree annotationTree) {
+            return annotationTree.arguments().stream()
+                    .filter(arg -> Tree.Kind.ASSIGNMENT.equals(arg.kind()))
                     .filter(arg -> VALUE.equals(arg.firstToken().text()))
-                    .anyMatch(arg -> arg.lastToken().text().contains(LEFT_JOIN))));
+                    .map(arg -> arg.lastToken().text())
+                    .findAny();
+        }
+
+        /**
+         *
+         * @param sqlQuery sql query to analyze
+         * @return true sqlQuery contains {@link #JOIN_FETCH}
+         */
+        private boolean isValidSqlQuery(String sqlQuery) {
+            return sqlQuery.contains(JOIN_FETCH);
         }
     }
 }

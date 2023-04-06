@@ -1,17 +1,21 @@
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    List<User> findAll(); // Noncompliant {{Avoid N+1 Query problem}}
+    List<User> shouldFailedBecauseIsNotAnnotated(); // Noncompliant {{Avoid N+1 Query problem}}
 
     @Override // Noncompliant {{Avoid N+1 Query problem}}
-    List<User> findByIds();
+    List<User> shouldFailedBecauseIsNotAnnotatedWithARightAnnotation();
 
     @Query(value = "SELECT p FROM User p LEFT JOIN p.roles", nativeQuery = false) // Noncompliant {{Avoid N+1 Query problem}}
-    List<User> findAllWithRoles();
+    List<User> shouldFailedBecauseQueryAnnotationDoesNotContainsJointFetch();
+
+    @Query("SELECT p FROM User p LEFT JOIN p.roles") // Noncompliant {{Avoid N+1 Query problem}}
+    List<User> shouldFailedBecauseQueryAnnotationDoesNotContainsJointFetch();
 }
 
 @Entity
