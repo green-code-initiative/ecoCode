@@ -41,8 +41,8 @@ public class PhpRuleRepositoryTest {
   public void test() {
     assertThat(phpRuleRepository.repositoryKey()).isEqualTo(PhpRuleRepository.REPOSITORY_KEY);
     assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(phpRuleRepository.repositoryKey());
-    assertThat(context.repositories().get(0).rules()).hasSize(8);
-    assertThat(phpRuleRepository.checkClasses()).hasSize(8);
+    assertThat(context.repositories().get(0).rules()).hasSize(9);
+    assertThat(phpRuleRepository.checkClasses()).hasSize(9);
   }
 
   /**
