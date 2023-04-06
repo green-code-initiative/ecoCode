@@ -4,7 +4,7 @@ import fr.greencodeinitiative.java.utils.FilesUtils;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.verifier.CheckVerifier;
 
-class AvoidOnePlusOneQueryProblemTest {
+class AvoidNPlusOneQueryProblemTest {
 
     /**
      * @formatter:off
