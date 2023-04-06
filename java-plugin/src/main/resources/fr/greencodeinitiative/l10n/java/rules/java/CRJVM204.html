@@ -1,0 +1,15 @@
+<p>"If possible, utilisation of svg image format is recommended over other image format.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    jEditorPane.setContentType("text/html");
+    jEditorPane.setText("<html><img class=\"fit-picture\"
+                                    src=\"/media/cc0-images/grapefruit-slice-332-332.jpg\"
+                                    alt=\"Grapefruit\"></html>");
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+    jEditorPane.setContentType("text/html");
+    jEditorPane.setText("<html><img class=\"fit-picture\"
+                                    src=\"/media/cc0-images/grapefruit-slice-332-332.svg\"
+                                    alt=\"Grapefruit\"></html>");
+</pre>
