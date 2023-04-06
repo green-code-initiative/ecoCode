@@ -9,6 +9,8 @@ import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.Type;
 import org.sonar.plugins.java.api.tree.*;
 
+// TODO : Check repository default methods call returning a List of Entity having members with annotation OneToMany
+// TODO : Check repository methods having a return type : List of any Entity having members with annotation OneToMany
 @Rule(key = "EC206",
         name = "Developpement",
         description = AvoidNPlusOneQueryProblemCheck.RULE_MESSAGE,
