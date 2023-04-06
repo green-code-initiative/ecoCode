@@ -1,6 +1,5 @@
 package fr.greencodeinitiative.python.checks;
 
-import com.sun.source.tree.LiteralTree;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
