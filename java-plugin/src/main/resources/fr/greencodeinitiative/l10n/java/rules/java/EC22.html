@@ -1,0 +1,13 @@
+<p>we should not use methods for only basic operations</p>
+<h2>Non compliant Code Example</h2>
+<pre>
+    public int sum(int a, int b) {
+        return a + b; // Noncompliant
+    }
+
+    x = sum(5, 4); // Noncompliant
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+    x = a + b;
+</pre>
