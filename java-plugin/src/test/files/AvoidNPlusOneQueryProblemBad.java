@@ -3,6 +3,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import org.springframework.data.jpa.repository.Query;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
