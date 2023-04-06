@@ -13,17 +13,16 @@ import java.util.regex.Pattern;
 
 @Rule(
         key = DetectUnoptimizedImageFormat.RULE_KEY,
-        name = "Detect unoptimized image format",
+        name = DetectUnoptimizedImageFormat.MESSAGERULE,
         description = DetectUnoptimizedImageFormat.MESSAGEERROR,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design", "ecocode"})
 public class DetectUnoptimizedImageFormat extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC203";
-
+    protected static final String RULE_KEY = "EC203";
     protected static final String MESSAGERULE = "Detect unoptimized image format";
     protected static final String MESSAGEERROR = "If possible, the utilisation of svg image format (or <svg/> html tag) is recommended over other image format.";
-    protected static Pattern IMG_EXTENSION = Pattern.compile("\\.(bmp|ico|tiff|webp|png|jpg|jpeg|jfif|pjpeg|pjp|gif|avif|apng)");
+    protected static Pattern IMGEXTENSION = Pattern.compile("\\.(bmp|ico|tiff|webp|png|jpg|jpeg|jfif|pjpeg|pjp|gif|avif|apng)");
 
     @Override
     public void initialize(Context context) {
@@ -34,7 +33,7 @@ public class DetectUnoptimizedImageFormat extends PythonSubscriptionCheck {
         if (ctx.syntaxNode().is(Tree.Kind.STRING_LITERAL)) {
             final  StringLiteral stringLiteral = (StringLiteral) ctx.syntaxNode();
             final String strValue = stringLiteral.trimmedQuotesValue();
-            final Matcher matcher = IMG_EXTENSION.matcher(strValue);
+            final Matcher matcher = IMGEXTENSION.matcher(strValue);
             if(matcher.find()) {
                 ctx.addIssue(stringLiteral, MESSAGEERROR);
             }
