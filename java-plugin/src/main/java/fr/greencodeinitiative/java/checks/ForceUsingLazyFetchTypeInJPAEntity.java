@@ -12,7 +12,7 @@ import java.util.List;
         description = ForceUsingLazyFetchTypeInJPAEntity.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
-class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisitor {
+public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Force the use of LAZY FetchType";
     private static final String EAGER_KEYWORD = "EAGER";
