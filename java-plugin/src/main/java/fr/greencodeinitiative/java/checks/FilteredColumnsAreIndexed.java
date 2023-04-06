@@ -8,6 +8,8 @@ import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.SymbolMetadata;
 import org.sonar.plugins.java.api.semantic.Type;
+import org.sonar.plugins.java.api.tree.IdentifierTree;
+import org.sonar.plugins.java.api.tree.MethodTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.VariableTree;
 
@@ -19,18 +21,27 @@ public class FilteredColumnsAreIndexed extends IssuableSubscriptionVisitor {
 
 	@Override
 	public List<Tree.Kind> nodesToVisit() {
-		return Arrays.asList(Tree.Kind.VARIABLE);
+		return Arrays.asList(Tree.Kind.METHOD, Tree.Kind.VARIABLE);
 	}
 
 	@Override
 	public void visitNode(final Tree tree) {
-		final VariableTree variableTree = (VariableTree) tree;
-		final SymbolMetadata symMeta = variableTree.symbol().metadata();
+		SymbolMetadata symMeta = null;
+		IdentifierTree name = null;
+		if (tree instanceof MethodTree) {
+			final MethodTree methodTree = (MethodTree) tree;
+			symMeta = methodTree.symbol().metadata();
+			name = methodTree.simpleName();
+		} else if (tree instanceof VariableTree) {
+			final VariableTree variableTree = (VariableTree) tree;
+			symMeta = variableTree.symbol().metadata();
+			name = variableTree.simpleName();
+		}
 		final boolean isRelation = containsAnnotation(symMeta, "ManyToOne", "OneToMany", "ManyToMany", "OneToOne");
 		final boolean hasIndex = containsAnnotation(symMeta, "Index", "Id");
 		final boolean hasJoinIndex = hasJoinIndex(symMeta);
 		if (isRelation && !hasIndex && !hasJoinIndex) {
-			reportIssue(variableTree.simpleName(), "Add @Index on foreign key");
+			reportIssue(name, "Add @Index on foreign key");
 		}
 	}
 
@@ -41,7 +52,7 @@ public class FilteredColumnsAreIndexed extends IssuableSubscriptionVisitor {
 		for (final SymbolMetadata.AnnotationInstance annotation : symMeta.annotations()) {
 			final Type type = annotation.symbol().type();
 			if (type.name().equals("JoinTable")) {
-				// Check if @JoinTable contains @Index
+				// Check if @JoinTable contains indexes={@Index()}
 			}
 		}
 		return false;
