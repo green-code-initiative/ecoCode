@@ -1,0 +1,36 @@
+<p>When using JPA on a relation One to Many, Many to One or Many to Many, you should use a query (Query annotation) with LEFT JOIN FETCH or use attribute path (@EntityGraph annotation) to avoid the generation of N+1 query instead of 1 query </p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+public interface UserRepository extends CrudRepository<User, Long> {
+
+    List<User> findAllBy();             
+}
+
+@Entity
+public class User {
+
+    @OneToMany
+    private List<Role> roles;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+}
+
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+<pre>
+public interface UserRepository extends CrudRepository<User, Long> {
+
+    @Query("SELECT p FROM User p LEFT JOIN FETCH p.roles")  
+    List<User> findWithoutNPlusOne();
+
+    @EntityGraph(attributePaths = {"roles"})                
+    List<User> findAll();
+}
+</pre>

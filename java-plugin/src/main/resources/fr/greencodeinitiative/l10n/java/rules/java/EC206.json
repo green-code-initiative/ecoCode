@@ -1,0 +1,18 @@
+{
+  "title": "Avoid to generate N+1 query when using JPA on relations One to Many, Many To One or Many To One",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "10min"
+  },
+  "tags": [
+    "eco-design",
+    "java",
+    "performance",
+    "bug",
+    "ecocode",
+    "sql"
+  ],
+  "defaultSeverity": "Minor"
+}
