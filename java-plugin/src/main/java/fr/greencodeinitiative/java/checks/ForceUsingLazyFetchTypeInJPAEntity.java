@@ -19,9 +19,7 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
     private static final String FETCH_KEYWORD = "fetch";
     private static final String ONE_TO_MANY = "OneToMany";
     private static final String MANY_TO_ONE = "ManyToOne";
-
     private static final String ONE_TO_ONE = "OneToOne";
-
     private static final String MANY_TO_MANY = "ManyToMany";
 
     @Override
