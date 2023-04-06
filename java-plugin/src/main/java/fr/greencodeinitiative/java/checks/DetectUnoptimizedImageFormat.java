@@ -12,7 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Rule(
-        key = "CRJVM204",
+        key = "EC204",
         name = "Developpement",
         description = IncrementCheck.MESSAGERULE,
         priority = Priority.MINOR,
