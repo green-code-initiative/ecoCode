@@ -3,11 +3,11 @@
 <p>For more details on list comprehensions vs generator comprehensions, see <a href="https://docs.python.org/3/howto/functional.html#generator-expressions-and-list-comprehensions">Python documentation</a>.</p>
 <h2>Noncompliant Code Example</h2>
 <pre>
-for var in [for var2 in range(100)]:
+for var in [var2 for var2 in range(100)]:
     ...
 </pre>
 <h2>Compliant Solution</h2>
 <pre>
-for var in (for var2 in range(100)):
+for var in (var2 for var2 in range(100)):
     ...
 </pre>
