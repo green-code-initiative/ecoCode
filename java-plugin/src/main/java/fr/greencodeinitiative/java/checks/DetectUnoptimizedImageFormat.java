@@ -21,7 +21,7 @@ public class DetectUnoptimizedImageFormat extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Detect unoptimized image format";
     protected static final String MESSAGEERROR = "If possible, the utilisation of svg image format (or <svg/> html tag) is recommended over other image format.";
-    protected static Pattern IMG_EXTENSION = Pattern.compile("\\.(bmp|ico|tiff|webp|png|jpg|jpeg|jfif|pjpeg|pjp|gif|avif|apng)");
+    protected static Pattern IMGEXTENSION = Pattern.compile("\\.(bmp|ico|tiff|webp|png|jpg|jpeg|jfif|pjpeg|pjp|gif|avif|apng)");
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -33,7 +33,7 @@ public class DetectUnoptimizedImageFormat extends IssuableSubscriptionVisitor {
 
         if (tree.is(Tree.Kind.STRING_LITERAL, Tree.Kind.TEXT_BLOCK)) {
             final String strValue = ((LiteralTree) tree).value();
-            final Matcher matcher = IMG_EXTENSION.matcher(strValue);
+            final Matcher matcher = IMGEXTENSION.matcher(strValue);
             if(matcher.find()) {
                 reportIssue(tree, MESSAGEERROR);
             }
