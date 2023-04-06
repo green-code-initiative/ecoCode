@@ -29,12 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import fr.greencodeinitiative.python.checks.AvoidFullSQLRequest;
-import fr.greencodeinitiative.python.checks.AvoidGettersAndSetters;
-import fr.greencodeinitiative.python.checks.AvoidGlobalVariableInFunctionCheck;
-import fr.greencodeinitiative.python.checks.AvoidSQLRequestInLoop;
-import fr.greencodeinitiative.python.checks.AvoidTryCatchFinallyCheck;
-import fr.greencodeinitiative.python.checks.NoFunctionCallWhenDeclaringForLoop;
+import fr.greencodeinitiative.python.checks.*;
 import org.apache.commons.lang.StringUtils;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
@@ -87,6 +82,7 @@ public class PythonRuleRepository implements RulesDefinition, PythonCustomRuleRe
   @Override
   public List<Class> checkClasses() {
     return Arrays.asList(
+            AvoidDoubleQuoteCheck.class,
             AvoidGettersAndSetters.class,
             AvoidGlobalVariableInFunctionCheck.class,
             AvoidSQLRequestInLoop.class,
