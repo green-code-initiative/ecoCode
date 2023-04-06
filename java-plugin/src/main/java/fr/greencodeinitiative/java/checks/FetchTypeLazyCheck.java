@@ -23,7 +23,7 @@ import static java.util.Collections.singletonList;
 public class FetchTypeLazyCheck extends IssuableSubscriptionVisitor {
     public static final    String MANY_TO_ONE = "ManyToOne";
     public static final    String LAZY        = "LAZY";
-    protected static final String MESSAGERULE = "Use lazy fetch type instead of egger ";
+    protected static final String MESSAGERULE = "Use lazy fetch type instead of egger";
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
