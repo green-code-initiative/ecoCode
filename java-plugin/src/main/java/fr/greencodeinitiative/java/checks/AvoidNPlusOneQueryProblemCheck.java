@@ -1,15 +1,11 @@
 package fr.greencodeinitiative.java.checks;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.Optional;
-
 
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
-import org.sonar.plugins.java.api.semantic.Type;
 import org.sonar.plugins.java.api.semantic.Type;
 import org.sonar.plugins.java.api.tree.*;
 
@@ -38,7 +34,7 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
-        return Arrays.asList(Tree.Kind.INTERFACE);
+        return List.of(Tree.Kind.INTERFACE);
     }
 
     @Override
