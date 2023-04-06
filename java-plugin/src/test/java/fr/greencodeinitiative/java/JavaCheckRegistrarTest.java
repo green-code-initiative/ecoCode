@@ -20,19 +20,20 @@
 package fr.greencodeinitiative.java;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Test;
 import org.sonar.plugins.java.api.CheckRegistrar;
 
 class JavaCheckRegistrarTest {
 
-    @Test
-    void checkNumberRules() {
-        final CheckRegistrar.RegistrarContext context = new CheckRegistrar.RegistrarContext();
+	@Test
+	void checkNumberRules() {
+		final CheckRegistrar.RegistrarContext context = new CheckRegistrar.RegistrarContext();
 
-        final JavaCheckRegistrar registrar = new JavaCheckRegistrar();
-        registrar.register(context);
+		final JavaCheckRegistrar registrar = new JavaCheckRegistrar();
+		registrar.register(context);
 
-        assertThat(context.checkClasses()).hasSize(19);
-        assertThat(context.testCheckClasses()).isEmpty();
-    }
+		assertThat(context.checkClasses()).hasSize(20);
+		assertThat(context.testCheckClasses()).isEmpty();
+	}
 }
