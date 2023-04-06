@@ -1,0 +1,16 @@
+{
+  "title": "Avoid returning persistence Entity in Spring Rest Controller",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "50min"
+  },
+  "tags": [
+    "eco-design",
+    "performance",
+    "bug",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}

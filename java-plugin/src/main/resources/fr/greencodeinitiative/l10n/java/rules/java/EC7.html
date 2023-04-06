@@ -1,0 +1,34 @@
+<p>Using persistence Entity in the return of a Rest controler is not energy efficient.
+    This use induces a multiples unnecessary SQL calls, multiple unused fields serialization, and thus unnecessary calculations by the CPU, RAM usage and network usage.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+@RestController
+public class BookController {
+    private final BookService bookService;
+
+    public BookController(BookService bookstoreService) {
+        this.bookService = bookstoreService;
+    }
+
+    @RequestMapping("books")
+    public List&lt;Book&gt; findBooks() {
+        return bookService.findAll();
+    }
+}
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+@RestController
+public class BookController {
+    private final BookService bookService;
+
+    public BookController(BookService bookstoreService) {
+        this.bookService = bookstoreService;
+    }
+
+    @RequestMapping("books")
+    public List&lt;BookDTO&gt; findBooks() {
+        return BookMapper.from(bookService.findAll());
+    }
+}
+</pre>
