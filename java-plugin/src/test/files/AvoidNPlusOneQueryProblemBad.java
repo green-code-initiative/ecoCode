@@ -8,6 +8,8 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Override // Noncompliant {{Avoid N+1 Query problem}}
     List<User> findByIds();
 
+    @Query(value = "SELECT p FROM User p LEFT JOIN p.roles", nativeQuery = false) // Noncompliant {{Avoid N+1 Query problem}}
+    List<User> findAllWithRoles();
 }
 
 public class User {
