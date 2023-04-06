@@ -12,17 +12,17 @@ class FilteredColumnsAreIndexed {
 	class MyEntity {
 		
 		@ManyToOne
-		private List<String> subEntities; // Noncompliant {{Add @Index on foreign key}}
+		private MyEntity subEntities; // Noncompliant {{Add @Index on foreign key}}
 
 		@ManyToOne
 		@Index(name = "indexSubEntity2", columnNames = "subEntity2Id")
-		private List<String> subEntities2; // Compliant 
+		private MyEntity subEntities2; // Compliant
 
 		@OneToMany
 		@Index(name = "indexSubEntity3", columnNames = "subEntity3Id")
-		private MyEntity subEntity3; // Compliant 
+		private List<String> subEntity3; // Compliant
 
 		@OneToMany
-		private MyEntity subEntity4; // Noncompliant {{Add @Index on foreign key}} 
+		private List<String>  subEntity4; // Noncompliant {{Add @Index on foreign key}}
 	}
 }

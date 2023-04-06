@@ -1,0 +1,28 @@
+<p>Spring Data, avoid usage of joints on non primary keys or non Indexed columns. <br> The purpose is to avoid consuming unnecessary resource to collect data</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+  @Entity
+	class MyEntity {
+
+		@ManyToOne
+		private MyEntity subEntities; // Noncompliant {{Add @Index on foreign key}}
+
+		@OneToMany
+		private List<String> subEntity4; // Noncompliant {{Add @Index on foreign key}}
+  }
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+
+  @Entity
+	class MyEntity {
+
+		@ManyToOne
+		@Index(name = "indexSubEntity2", columnNames = "subEntity2Id")
+		private MyEntity subEntities2;
+
+		@OneToMany
+		@Index(name = "indexSubEntity3", columnNames = "subEntity3Id")
+		private List<String> subEntity3;
+	}
+</pre>
