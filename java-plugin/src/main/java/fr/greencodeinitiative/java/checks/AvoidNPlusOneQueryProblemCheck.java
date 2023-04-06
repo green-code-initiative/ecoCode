@@ -18,8 +18,12 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
     protected static final String RULE_MESSAGE = "Avoid N+1 Query problem";
 
     private static final String SPRING_REPOSITORY = "org.springframework.data.repository.Repository";
+    private static final String QUERY = "org.springframework.data.jpa.repository.Query";
+    private static final String ENTITY_GRAPH = "org.springframework.data.jpa.repository.EntityGraph";
+    private static final String LEFT_JOIN = "LEFT JOIN";
+    private static final String VALUE = "value";
 
-    private final AvoidSpringRepositoryCallInLoopCheckVisitor visitorInFile = new AvoidSpringRepositoryCallInLoopCheckVisitor();
+    private final AvoidNPlusOneQueryProblemCheckVisitor visitorInFile = new AvoidNPlusOneQueryProblemCheckVisitor();
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -33,12 +37,10 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
         }
     }
 
-    private class AvoidSpringRepositoryCallInLoopCheckVisitor extends BaseTreeVisitor {
-
+    private class AvoidNPlusOneQueryProblemCheckVisitor extends BaseTreeVisitor {
 
         @Override
         public void visitMethod(MethodTree tree) {
-
             if (
                     tree.returnType().symbolType().isSubtypeOf(Iterable.class.getName())
                             && hasNoCompliantAnnotation(tree)
@@ -47,27 +49,22 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
             } else {
                 super.visitMethod(tree);
             }
-
-
         }
 
         boolean hasNoCompliantAnnotation(MethodTree tree) {
             return tree.modifiers().annotations().stream().noneMatch(
                     a -> isQueryAnnotationWithFetch(a) ||
-                            a.symbolType().is("EntityGraph")
+                            a.symbolType().is(ENTITY_GRAPH)
             );
         }
 
         private boolean isQueryAnnotationWithFetch(AnnotationTree a) {
-            return a.symbolType().is("Query")
-                    // kind = ASSIGNMENT Value
-                    // variable = value
-                    // children[2] = HQL
-
-                    // Kind = String LITERAL
-                    // Children[0] = HQL
-                    ;
+            return a.symbolType().is(QUERY)
+            && (a.arguments().stream().filter(arg -> Tree.Kind.STRING_LITERAL.equals(arg.kind()))
+                    .anyMatch(arg -> arg.firstToken().text().contains(LEFT_JOIN))
+                    || (a.arguments().stream().filter(arg -> Tree.Kind.ASSIGNMENT.equals(arg.kind()))
+                    .filter(arg -> VALUE.equals(arg.firstToken().text()))
+                    .anyMatch(arg -> arg.lastToken().text().contains(LEFT_JOIN))));
         }
-
     }
 }

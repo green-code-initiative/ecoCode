@@ -29,6 +29,7 @@ import fr.greencodeinitiative.java.checks.AvoidConcatenateStringsInLoop;
 import fr.greencodeinitiative.java.checks.AvoidFullSQLRequest;
 import fr.greencodeinitiative.java.checks.AvoidGettingSizeCollectionInLoop;
 import fr.greencodeinitiative.java.checks.AvoidMultipleIfElseStatement;
+import fr.greencodeinitiative.java.checks.AvoidNPlusOneQueryProblemCheck;
 import fr.greencodeinitiative.java.checks.AvoidRegexPatternNotStatic;
 import fr.greencodeinitiative.java.checks.AvoidSQLRequestInLoop;
 import fr.greencodeinitiative.java.checks.AvoidSetConstantInBatchUpdate;
@@ -77,7 +78,8 @@ public final class RulesList {
                 AvoidUsingGlobalVariablesCheck.class,
                 AvoidSetConstantInBatchUpdate.class,
                 FreeResourcesOfAutoCloseableInterface.class,
-                AvoidMultipleIfElseStatement.class
+                AvoidMultipleIfElseStatement.class,
+                AvoidNPlusOneQueryProblemCheck.class
         ));
     }
 
