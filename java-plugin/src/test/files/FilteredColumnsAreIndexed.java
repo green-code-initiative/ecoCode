@@ -24,5 +24,19 @@ class FilteredColumnsAreIndexed {
 
 		@OneToMany
 		private List<String>  subEntity4; // Noncompliant {{Add @Index on foreign key}}
+
+		private MyEntity subEntity5;
+
+		@ManyToOne
+		public MyEntity getSubEntity5() { // Noncompliant {{Add @Index on foreign key}}
+			return this.subEntity5;
+		}
+
+		private MyEntity subEntity6;
+		@ManyToOne
+		@Index(name = "indexSubEntity6", columnNames = "subEntity6Id")
+		public MyEntity getSubEntity6() { // Compliant
+			return this.subEntity6;
+		}
 	}
 }
