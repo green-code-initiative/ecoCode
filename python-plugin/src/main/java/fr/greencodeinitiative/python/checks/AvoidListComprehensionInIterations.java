@@ -6,6 +6,8 @@ import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;
 import org.sonar.plugins.python.api.tree.*;
 
+import java.util.Objects;
+
 import static org.sonar.plugins.python.api.tree.Tree.Kind.*;
 
 @Rule(
@@ -39,7 +41,7 @@ public class AvoidListComprehensionInIterations extends PythonSubscriptionCheck 
                 case "zip":
                 case "filter":
                 case "enumerate":
-                    callExpression.argumentList().
+                    Objects.requireNonNull(callExpression.argumentList()).
                             arguments().forEach(e -> visitFunctionArguments(context, e.children().get(0)));
             }
         }
@@ -55,7 +57,7 @@ public class AvoidListComprehensionInIterations extends PythonSubscriptionCheck 
                 case "zip":
                 case "filter":
                 case "enumerate":
-                    callExpression.argumentList().
+                    Objects.requireNonNull(callExpression.argumentList()).
                             arguments().forEach(e -> visitFunctionArguments(context, e.children().get(0)));
                     break;
 
