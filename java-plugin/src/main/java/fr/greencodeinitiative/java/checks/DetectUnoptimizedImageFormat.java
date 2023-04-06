@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
 public class DetectUnoptimizedImageFormat extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Detect unoptimized image format";
-    protected static final String MESSAGEERROR = "If possible, utilisation of svg image format is recommended over other image format.";
+    protected static final String MESSAGEERROR = "If possible, the utilisation of svg image format (or <svg/> html tag) is recommended over other image format.";
     protected static Pattern IMG_EXTENSION = Pattern.compile("\\.(bmp|ico|tiff|webp|png|jpg|jpeg|jfif|pjpeg|pjp|gif|avif|apng)");
 
     @Override
