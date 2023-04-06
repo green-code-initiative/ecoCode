@@ -3,6 +3,7 @@ package fr.greencodeinitiative.java.checks;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +23,13 @@ public class AvoidReturningSpringEntityInRestController {
     }
 
     @RequestMapping("books")
-    public List<Book> findBooks() {
+    public List<Book> findBooks() { // Noncompliant {{Avoid returning a persistence Entity in a Spring RestController}}
         return bookService.findAll();
+    }
+
+    @RequestMapping("books/{id}")
+    public Book findBookById(@PathVariable Long id) { // Noncompliant {{Avoid returning a persistence Entity in a Spring RestController}}
+        return bookService.findById(id);
     }
 
     @Service
@@ -37,10 +43,13 @@ public class AvoidReturningSpringEntityInRestController {
         public List<Book> findAll() {
             return bookRepository.findAll();
         }
+        public Book findById(Long id) {
+            return bookRepository.findById(id).orElse(null);
+        }
     }
 
     @Repository
-    public interface BookRepository extends JpaRepository<Book, Integer> {
+    public interface BookRepository extends JpaRepository<Book, Long> {
     }
 
     @Entity

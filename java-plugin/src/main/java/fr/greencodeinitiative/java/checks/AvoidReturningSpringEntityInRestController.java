@@ -20,7 +20,7 @@ import java.util.stream.Stream;
         tags = {"bug"})
 public class AvoidReturningSpringEntityInRestController extends IssuableSubscriptionVisitor {
 
-    protected static final String RULE_MESSAGE = "Avoid returning a JPA Entity in a RestController";
+    protected static final String RULE_MESSAGE = "Avoid returning a persistence Entity in a Spring RestController";
     private static final String SPRING_REST_CONTROLLER = "org.springframework.web.bind.annotation.RestController";
     private static final String JPA_ENTITY = "javax.persistence.Entity";
 
@@ -33,9 +33,8 @@ public class AvoidReturningSpringEntityInRestController extends IssuableSubscrip
     public void visitNode(Tree tree) {
         ClassTree classTree = (ClassTree) tree;
         var annotations = classTree.symbol().metadata().annotations();
-        if (containsAnnotation(annotations, SPRING_REST_CONTROLLER)
-                && hasMethodsReturningJpaEntity(classTree))
-            reportIssue(tree, RULE_MESSAGE);
+        if (containsAnnotation(annotations, SPRING_REST_CONTROLLER))
+            reportMethodsReturningEntity(classTree);
     }
 
     private boolean containsAnnotation(List<SymbolMetadata.AnnotationInstance> annotations,
@@ -46,7 +45,7 @@ public class AvoidReturningSpringEntityInRestController extends IssuableSubscrip
                 annotation.symbol().type().is(annotationClass));
     }
 
-    private boolean hasMethodsReturningJpaEntity(ClassTree classTree) {
+    private void reportMethodsReturningEntity(ClassTree classTree) {
         List<MethodTree> methods = classTree.members()
                 .stream()
                 .filter(member -> member.is(Tree.Kind.METHOD))
@@ -54,11 +53,11 @@ public class AvoidReturningSpringEntityInRestController extends IssuableSubscrip
                 .filter(method -> method.symbol().isPublic())
                 .collect(Collectors.toList());
 
-        return methods.stream().anyMatch(methodTree -> {
+        methods.stream().filter(methodTree -> {
             var returnType = methods.get(0).returnType().symbolType();
             var parametrizedTypes = returnType.typeArguments();
             return Stream.concat(Stream.of(returnType), parametrizedTypes.stream())
                     .anyMatch(type -> containsAnnotation(type.symbol().metadata().annotations(), JPA_ENTITY));
-        });
+        }).forEach(methodTree -> reportIssue(methodTree.returnType(), RULE_MESSAGE));
     }
 }
