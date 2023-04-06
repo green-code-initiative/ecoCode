@@ -1,0 +1,40 @@
+<p>Use a match-case statement instead of multiple if-else if possible</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    def method_with_multiple_if_elif():
+        nb1 = 0
+        nb2 = 10
+
+        if nb1 == 1:
+           nb1 = 1
+        elif nb1 == nb2:
+           print(nb1)
+        elif nb2 == nb1:
+            print(nb2)
+        else:
+            print()
+        nb1 = nb2
+
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+    #python version 3.10
+def f(x):
+    match x:
+        case 'a':
+            return 1
+        case 'b':
+            return 2
+        case _:
+            return 0   # 0 is the default case if x is not found
+
+    #python version < 3.10
+    def switch_equivalent(switch_element):
+  switch_var = {
+    "abc": 1,
+    "def": 2,
+    "ghi": 3
+  }
+  return switch_var.get(switch_element, "else_value")
+
+</pre>
