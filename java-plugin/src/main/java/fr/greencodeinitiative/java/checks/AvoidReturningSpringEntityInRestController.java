@@ -55,8 +55,8 @@ public class AvoidReturningSpringEntityInRestController extends IssuableSubscrip
 
         methods.stream().filter(methodTree -> {
             var returnType = methods.get(0).returnType().symbolType();
-            var parametrizedTypes = returnType.typeArguments();
-            return Stream.concat(Stream.of(returnType), parametrizedTypes.stream())
+            var parameterizedTypes = returnType.typeArguments();
+            return Stream.concat(Stream.of(returnType), parameterizedTypes.stream())
                     .anyMatch(type -> containsAnnotation(type.symbol().metadata().annotations(), JPA_ENTITY));
         }).forEach(methodTree -> reportIssue(methodTree.returnType(), RULE_MESSAGE));
     }
