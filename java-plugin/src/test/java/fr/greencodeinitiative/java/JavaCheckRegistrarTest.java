@@ -32,7 +32,7 @@ class JavaCheckRegistrarTest {
         final JavaCheckRegistrar registrar = new JavaCheckRegistrar();
         registrar.register(context);
 
-        assertThat(context.checkClasses()).hasSize(19);
+        assertThat(context.checkClasses()).hasSize(20);
         assertThat(context.testCheckClasses()).isEmpty();
     }
 }
