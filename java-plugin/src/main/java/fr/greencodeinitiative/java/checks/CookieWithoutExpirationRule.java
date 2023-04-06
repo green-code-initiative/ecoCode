@@ -1,16 +1,16 @@
 package fr.greencodeinitiative.java.checks;
+import java.util.*;
 
 
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.java.model.declaration.MethodTreeImpl;
+import org.sonar.java.model.declaration.VariableTreeImpl;
+import org.sonar.java.model.expression.MemberSelectExpressionTreeImpl;
 import org.sonar.java.model.expression.NewArrayTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
+import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.*;
-
-
-import java.util.Collections;
-import java.util.List;
 
 
 @Rule(
@@ -26,84 +26,76 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
     private static final String COOKIE_CLASS_NAME = "javax.servlet.http.Cookie";
     private static final String SET_MAX_AGE_METHOD_NAME = "setMaxAge";
 
+    //TODO pour trouver les extend Cookie
+    private static final MethodMatchers REPOSITORY_METHOD =
+            MethodMatchers.create().ofSubTypes("SPRING_REPOSITORY").anyName().withAnyParameters()
+                    .build();
+
  @Override
  public List<Tree.Kind> nodesToVisit() {
      return Collections.singletonList(Tree.Kind.CLASS);
  }
+ private final CookieWithoutExpirationRuleCheckVisitor visitorInFile = new CookieWithoutExpirationRuleCheckVisitor();
+
 
  @Override
  public void visitNode(Tree tree) {
-     ClassTree classTree = (ClassTree) tree;
 
-  
-
-     for (Tree member : classTree.members()) {
-         if (member.is(Tree.Kind.METHOD)) {
-             MethodInvocationTree methodInvocation = getMethodInvocation(member);
-             if (methodInvocation != null && isCookieConstructor(methodInvocation)) {
-                 checkCookieExpiration(methodInvocation);
-             }
-         }
+     tree.accept(visitorInFile);
+     if (visitorInFile.hasANewCookieWithoutMaxDate())
+     {
+         reportIssue(tree, "RULE_MESSAGE");
      }
  }
 
-  
+    private class CookieWithoutExpirationRuleCheckVisitor extends BaseTreeVisitor {
 
-    private MethodInvocationTree getMethodInvocation(Tree tree) {
-
-      List<Tree> children = ((MethodTreeImpl)tree).children();
-      for (Tree child : children) {
-        if (child instanceof MethodInvocationTree) {
-         return (MethodInvocationTree) child;
+        @Override
+        public void visitReturnStatement(ReturnStatementTree tree) {
+            this.scan((Tree)tree.expression());
         }
-      }
 
-        /*if (tree.is(Tree.Kind.EXPRESSION_STATEMENT)) {
-
-            ExpressionTree children = ((AssignmentExpressionTree)tree).variable();
-            if(children.is(Tree.Kind.IDENTIFIER))
+        @Override
+        public void visitNewClass(NewClassTree tree) {
+            if (tree.identifier().toString().equals("Cookie"))
             {
-                IdentifierTree current = (IdentifierTree) children;
-                current.name().equals("Cookie");
-                 return (MethodInvocationTree) tree;
+                System.out.println(tree.toString());
             }
-        }*/
-     return null;
- }
+        }
+        @Override
+        public void visitVariable(VariableTree tree) {
 
-  
+            for (Tree children : ((VariableTreeImpl) tree).children())
+            {
+                if (children.is(Tree.Kind.NEW_CLASS)
+                        && ((IdentifierTree)((NewClassTree)children).identifier()).toString().equals("Cookie"))
+                {
+                    this.newCookieVariableName.add(tree.simpleName().toString());
+                }
+            }
+            //todo appel à super();
+        }
+        private ArrayList<String> hasSetMaxAgeForCookiesVariableName = new ArrayList<>();
+        private ArrayList<String>  newCookieVariableName = new ArrayList<>();
 
-    private boolean isCookieConstructor(MethodInvocationTree methodInvocation) {
-     ExpressionTree methodSelect = methodInvocation.methodSelect();
-     if (methodSelect.is(Tree.Kind.IDENTIFIER)) {
-         IdentifierTree identifier = (IdentifierTree) methodSelect;
-         return identifier.name().equals("Cookie");
-     }
-     return false;
- }
-
-  
-
-         private void checkCookieExpiration(MethodInvocationTree methodInvocation) {
-     List<ExpressionTree> arguments = methodInvocation.arguments();
-     for (ExpressionTree argument : arguments) {
-         if (argument.symbolType().fullyQualifiedName().equals(COOKIE_CLASS_NAME)) {
-             checkCookieExpirationArgument(argument);
-         }
-     }
- }
-
-  
-
-    private void checkCookieExpirationArgument(ExpressionTree argument) {
-     boolean hasExpiration = false;
+        public boolean hasANewCookieWithoutMaxDate()
+        {
+            for (String variableName : newCookieVariableName )
+            {
+                if (!hasSetMaxAgeForCookiesVariableName.contains(variableName))
+                    return true;
+            }
+            return false;
+        }
+        @Override
+        public void visitMethodInvocation(MethodInvocationTree tree) {
+            System.out.println(((MemberSelectExpressionTree)tree.methodSelect()).identifier().name());
+            if (((MemberSelectExpressionTree)tree.methodSelect()).identifier().name().equals("setMaxAge"))
+            {
+                hasSetMaxAgeForCookiesVariableName.add(((MemberSelectExpressionTree)tree.methodSelect()).expression().toString());
+            }
+        }
 
 
-
-  
-
-     if (!hasExpiration) {
-         reportIssue(argument, "Le cookie est créé sans date d'expiration.");
-     }
- }
+    }
 }
