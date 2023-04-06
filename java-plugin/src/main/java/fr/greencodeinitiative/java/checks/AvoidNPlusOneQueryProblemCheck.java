@@ -2,10 +2,15 @@ package fr.greencodeinitiative.java.checks;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.Optional;
+
 
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
+import org.sonar.plugins.java.api.semantic.Type;
+import org.sonar.plugins.java.api.semantic.Type;
 import org.sonar.plugins.java.api.tree.*;
 
 @Rule(key = "EC206",
@@ -23,6 +28,12 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
     private static final String LEFT_JOIN = "LEFT JOIN";
     private static final String VALUE = "value";
 
+    private static final List<String> SPRING_PROBLEMATIC_ANNOTATIONS = List.of(
+            "javax.persistence.OneToMany",
+            "javax.persistence.ManyToOne",
+            "javax.persistence.ManyToMany"
+    );
+
     private final AvoidNPlusOneQueryProblemCheckVisitor visitorInFile = new AvoidNPlusOneQueryProblemCheckVisitor();
 
     @Override
@@ -32,9 +43,37 @@ public class AvoidNPlusOneQueryProblemCheck extends IssuableSubscriptionVisitor 
 
     @Override
     public void visitNode(Tree tree) {
-        if (((ClassTree) tree).symbol().type().isSubtypeOf(SPRING_REPOSITORY)) {
+        ClassTree classTree = (ClassTree) tree;
+
+        if (isSpringRepository(classTree) && hasManyToOneAnnotations(classTree)) {
             tree.accept(visitorInFile);
         }
+    }
+
+    private boolean hasManyToOneAnnotations(ClassTree classTree) {
+        Optional<Type> crudRepositoryInterface = classTree.symbol().interfaces().stream()
+                .filter(t -> t.isSubtypeOf(SPRING_REPOSITORY))
+                .findFirst();
+
+        return crudRepositoryInterface.map(type -> type
+                        .typeArguments()
+                        .get(0)
+                        .symbol()
+                        .declaration()
+                        .members()
+                        .stream()
+                        .filter(t -> t.is(Tree.Kind.VARIABLE))
+                        .anyMatch(t -> ((VariableTree) t).modifiers()
+                                .annotations()
+                                .stream()
+                                .anyMatch(a ->
+                                        SPRING_PROBLEMATIC_ANNOTATIONS.stream().anyMatch(a.symbolType()::isSubtypeOf)
+                                )))
+                .orElse(false);
+    }
+
+    private static boolean isSpringRepository(ClassTree classTree) {
+        return classTree.symbol().type().isSubtypeOf(SPRING_REPOSITORY);
     }
 
     private class AvoidNPlusOneQueryProblemCheckVisitor extends BaseTreeVisitor {
