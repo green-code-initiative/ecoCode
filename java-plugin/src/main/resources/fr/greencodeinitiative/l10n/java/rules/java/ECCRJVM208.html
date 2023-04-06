@@ -1,0 +1,16 @@
+<p>Using Spring repository in loop induced unnecessary calculation by the cpu so unless energy consumption.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+		private final List&lt;Integer&gt; ids = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        ids.stream().map(element ->
+                   employeeRepository.findById(element).orElse(null);
+        ).collect(Collectors.toList());
+
+
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+		private final List&lt;Integer&gt; ids = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		List&lt;Employee&gt; employees = employeeRepository.findAllById(ids);
+</pre>
