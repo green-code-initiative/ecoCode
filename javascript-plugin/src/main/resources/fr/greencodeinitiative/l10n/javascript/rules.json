@@ -10,5 +10,17 @@
       "eco-design",
       "ecocode"
     ]
+  },
+  {
+    "key": "@ecocode/prefer-collections-with-pagination",
+    "type": "CODE_SMELL",
+    "name": "Prefer API collections with pagination",
+    "description": "\n\n<h2 id=\"rule-details\">Rule details</h2>\n<p>This rule aims to reduce the size and thus the network weight of API returns that may contain many elements. This rule\nis built for the NestJS framework but can work with a controller @Controller() and a decorated method @Get().</p>\n<h2 id=\"examples\">Examples</h2>\n<p>Examples of <strong>incorrect</strong> code for this rule:</p>\n<pre><code class=\"language-ts\">@Controller()\nclass Test {\n    @Get()\n    public find(): Promise&lt;string[]&gt; {\n    }\n}\n</code></pre>\n<p>Examples of <strong>correct</strong> code for this rule:</p>\n<pre><code class=\"language-ts\">interface Pagination {\n    items: string[];\n    currentPage: number;\n    totalPages: number;\n}\n\n@Controller()\nclass Test {\n    @Get()\n    public find(): Promise&lt;Pagination&gt; {\n    }\n}\n</code></pre>\n<br/><a href=\"https://github.com/green-code-initiative/ecoCode-linter/blob/main/eslint-plugin/docs/rules/prefer-collections-with-pagination.md\">Click here to access the rule details.</a>",
+    "constantDebtMinutes": 5,
+    "severity": "MINOR",
+    "tags": [
+      "eco-design",
+      "ecocode"
+    ]
   }
 ]
