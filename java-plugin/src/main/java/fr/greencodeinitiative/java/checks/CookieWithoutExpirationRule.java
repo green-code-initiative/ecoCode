@@ -11,6 +11,7 @@ import org.sonar.java.model.expression.NewArrayTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.*;
+import org.sonar.plugins.java.api.tree.Tree.Kind;
 
 
 @Rule(
@@ -89,11 +90,16 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
         }
         @Override
         public void visitMethodInvocation(MethodInvocationTree tree) {
-            System.out.println(((MemberSelectExpressionTree)tree.methodSelect()).identifier().name());
-            if (((MemberSelectExpressionTree)tree.methodSelect()).identifier().name().equals("setMaxAge"))
-            {
-                hasSetMaxAgeForCookiesVariableName.add(((MemberSelectExpressionTree)tree.methodSelect()).expression().toString());
-            }
+            //System.out.println(((MemberSelectExpressionTree)tree.methodSelect()).identifier().name());
+        	
+        	if (tree.methodSelect().is(Kind.MEMBER_SELECT)) {
+        		MemberSelectExpressionTree member = (MemberSelectExpressionTree)tree.methodSelect();
+        		if (member.identifier().name().equals("setMaxAge"))
+        		{
+        			hasSetMaxAgeForCookiesVariableName.add(((MemberSelectExpressionTree)tree.methodSelect()).expression().toString());
+        		}
+        		
+        	}
         }
 
 
