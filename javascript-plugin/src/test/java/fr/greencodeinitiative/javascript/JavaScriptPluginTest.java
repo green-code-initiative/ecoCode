@@ -1,6 +1,6 @@
 package fr.greencodeinitiative.javascript;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.*;
 import org.sonar.api.utils.Version;
 
