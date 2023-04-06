@@ -25,7 +25,6 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
 
     @Override
     public void initialize(Context ctx) {
-        //ctx.registerSyntaxNodeConsumer(Tree.Kind.STRING_LITERAL, this::checkSVG);
         ctx.registerSyntaxNodeConsumer(Tree.Kind.STRING_ELEMENT, this::checkSVG);
     }
 
