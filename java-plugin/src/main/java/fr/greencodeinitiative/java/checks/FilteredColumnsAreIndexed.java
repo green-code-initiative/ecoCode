@@ -13,8 +13,12 @@ import org.sonar.plugins.java.api.tree.MethodTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.VariableTree;
 
-@Rule(key = "EC141", name = "Developpement", description = FilteredColumnsAreIndexed.RULE_MESSAGE, priority = Priority.MINOR, tags = {
-		"bug" })
+@Rule(key = "EC66", name = "Developpement",
+		description = FilteredColumnsAreIndexed.RULE_MESSAGE,
+		priority = Priority.MINOR,
+		tags = {
+		"bug" }
+)
 public class FilteredColumnsAreIndexed extends IssuableSubscriptionVisitor {
 
 	protected static final String RULE_MESSAGE = "Add index on filtered database columns (foreign keys, sql filters...)";
