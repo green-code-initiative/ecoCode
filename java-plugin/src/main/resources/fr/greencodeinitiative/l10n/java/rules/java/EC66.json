@@ -1,5 +1,5 @@
 {
-  "title": "Spring Data, avoid usage of joints on non Indexed columns",
+  "title": "Persistence Java, avoid usage of joints on non Indexed columns",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
