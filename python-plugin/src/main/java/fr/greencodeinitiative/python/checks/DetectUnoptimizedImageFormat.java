@@ -1,6 +1,8 @@
 package fr.greencodeinitiative.python.checks;
 
 import com.sun.source.tree.LiteralTree;
+import org.sonar.check.Priority;
+import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;
 import org.sonar.plugins.python.api.tree.StringLiteral;
@@ -9,9 +11,15 @@ import org.sonar.plugins.python.api.tree.Tree;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Rule(
+        key = DetectUnoptimizedImageFormat.RULE_KEY,
+        name = "Detect unoptimized image format",
+        description = DetectUnoptimizedImageFormat.MESSAGEERROR,
+        priority = Priority.MINOR,
+        tags = {"bug", "eco-design", "ecocode"})
 public class DetectUnoptimizedImageFormat extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "CRPYT203";
+    public static final String RULE_KEY = "EC203";
 
     protected static final String MESSAGERULE = "Detect unoptimized image format";
     protected static final String MESSAGEERROR = "If possible, the utilisation of svg image format (or <svg/> html tag) is recommended over other image format.";
