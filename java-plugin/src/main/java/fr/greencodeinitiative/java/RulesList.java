@@ -59,8 +59,7 @@ public final class RulesList {
                 AvoidUsingGlobalVariablesCheck.class,
                 AvoidSetConstantInBatchUpdate.class,
                 FreeResourcesOfAutoCloseableInterface.class,
-                AvoidMultipleIfElseStatement.class,
-                DetectUnoptimizedImageFormat.class
+                AvoidMultipleIfElseStatement.class
         ));
     }
 
