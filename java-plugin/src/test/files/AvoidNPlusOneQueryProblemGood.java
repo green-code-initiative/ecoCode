@@ -1,28 +1,29 @@
+package fr.greencodeinitiative.java.checks;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.EntityGraph;
 import java.util.List;
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface AvoidNPlusOneQueryProblemGood extends CrudRepository<Client, Long> {
 
 
-    User shloudSucceedBecauseDoesNotReturnAnIterable();
+    Client shouldSucceedBecauseDoesNotReturnAnIterable();
 
     @Query("SELECT p FROM User p LEFT JOIN FETCH p.roles")
-    List<User> shouldSucceedBecauseQueryAnnotationContainsJointFetch();
+    List<Client> shouldSucceedBecauseQueryAnnotationContainsJointFetch();
 
     @EntityGraph(attributePaths = {"roles"})
-    List<User> shouldSucceedBecauseIsAnnotatedWithEntityGraph();
+    List<Client> shouldSucceedBecauseIsAnnotatedWithEntityGraph();
+    @Query(value = "SELECT p FROM Client p LEFT JOIN FETCH p.roles", nativeQuery = false)
+    @Deprecated
+    List<Client> shouldSucceedBecauseIsAnnotatedSeveralTimesIncludingOnceQueryAnnotationContainsJointFetch();
 
-    @Query(value = "SELECT p FROM User p LEFT JOIN FETCH p.roles", nativeQuery = false)
-    @Override
-    List<User> shouldSucceedBecauseIsAnnotatedSeveralTimesIncludingOnceQueryAnnotationContainsJointFetch();
-
-    @Query("SELECT p FROM User p LEFT JOIN FETCH p.roles")
-    @Override
-    List<User> shouldSucceedBecauseIsAnnotatedSeveralTimesIncludingOnceQueryAnnotationContainsJointFetch();
+    @Query("SELECT p FROM Client p LEFT JOIN FETCH p.roles")
+    @Deprecated
+    List<Client> shouldSucceedBecauseIsAnnotatedSeveralTimesIncludingOnceQueryAnnotationContainsJointFetchValue();
 
 }
 
-public class User {
+class Client {
 
 }

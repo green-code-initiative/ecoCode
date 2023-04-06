@@ -1,21 +1,22 @@
-import org.springframework.data.repository.CrudRepository;
+package fr.greencodeinitiative.java.checks;
+
 import java.util.List;
+public interface AvoidNPlusOneQueryProblemNotRepositoryGood extends CustomerRepository {
 
-/**
- * Should succeed because is not a repository
- */
-public interface UserRepository extends User {
+    Customer findById();
 
-    User findById();
+    List<Customer> findWithoutNPlusOne();
 
-    List<User> findWithoutNPlusOne();
-
-    List<User> findAll();
-    @Override
-    List<User> findAllWithRoles();
+    List<Customer> findAll();
+    @Deprecated
+    List<Customer> findAllWithRoles();
 
 }
 
-public class User {
+interface CustomerRepository {
+
+}
+
+class Customer {
 
 }
