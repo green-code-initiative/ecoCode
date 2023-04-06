@@ -16,7 +16,7 @@ public class DetectUnoptimizedImageFormatTest {
     @Test
     void testComplient() {
         CheckVerifier.newVerifier()
-                .onFile("src/test/files/DetectUnoptimizedFileFormatComplient.java")
+                .onFile("src/test/files/DetectUnoptimizedImageFormatComplient.java")
                 .withCheck(new DetectUnoptimizedImageFormat())
                 .verifyNoIssues();
     }
