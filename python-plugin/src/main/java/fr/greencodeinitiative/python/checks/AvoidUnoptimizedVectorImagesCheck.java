@@ -22,7 +22,7 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
     private static final Pattern COMMENT_PATTERN = Pattern.compile("(<!--|-->)");
     private static final Pattern LAYERS_PATTERN = Pattern.compile("</g>");
     private static final Pattern NAMESPACE_PATTERN = Pattern.compile("xmlns:(?!svg)[a-z0-9]+");
-    private static final String STRING_TAG_TO_DETECT = "</svg>"
+    private static final String STRING_TAG_TO_DETECT = "</svg>";
 
     @Override
     public void initialize(Context ctx) {
