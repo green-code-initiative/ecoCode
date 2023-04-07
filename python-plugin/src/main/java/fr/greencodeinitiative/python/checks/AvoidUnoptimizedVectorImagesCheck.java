@@ -14,7 +14,7 @@ import org.sonar.plugins.python.api.tree.*;
         name = AvoidUnoptimizedVectorImagesCheck.DESCRIPTION,
         description = AvoidUnoptimizedVectorImagesCheck.DESCRIPTION,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"eco-design", "ecocode"})
 public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "EC10";
@@ -22,6 +22,7 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
     private static final Pattern COMMENT_PATTERN = Pattern.compile("(<!--|-->)");
     private static final Pattern LAYERS_PATTERN = Pattern.compile("</g>");
     private static final Pattern NAMESPACE_PATTERN = Pattern.compile("xmlns:(?!svg)[a-z0-9]+");
+    private static final String STRING_TAG_TO_DETECT = "</svg>"
 
     @Override
     public void initialize(Context ctx) {
@@ -37,7 +38,7 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
     }
 
     private void checkComments(StringElement str, SubscriptionContext ctx) {
-        if (str.value().contains("</svg>") && COMMENT_PATTERN.matcher(str.value()).find()) {
+        if (str.value().contains(AvoidUnoptimizedVectorImagesCheck.STRING_TAG_TO_DETECT) && COMMENT_PATTERN.matcher(str.value()).find()) {
             ctx.addIssue(str, DESCRIPTION);
         }
     }
@@ -46,19 +47,19 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
         Matcher matcher = LAYERS_PATTERN.matcher(str.value());
         int matches = 0;
         while (matcher.find()) matches++;
-        if (str.value().contains("</svg>") && matches > 1) {
+        if (str.value().contains(AvoidUnoptimizedVectorImagesCheck.STRING_TAG_TO_DETECT) && matches > 1) {
             ctx.addIssue(str, DESCRIPTION);
         }
     }
 
     private void checkNamespaces(StringElement str, SubscriptionContext ctx) {
-        if (str.value().contains("</svg>") && NAMESPACE_PATTERN.matcher(str.value()).find()) {
+        if (str.value().contains(AvoidUnoptimizedVectorImagesCheck.STRING_TAG_TO_DETECT) && NAMESPACE_PATTERN.matcher(str.value()).find()) {
             ctx.addIssue(str, DESCRIPTION);
         }
     }
 
     private void checkMetadata(StringElement str, SubscriptionContext ctx) {
-        if (str.value().contains("</svg>") && str.value().contains("</metadata>")) {
+        if (str.value().contains(AvoidUnoptimizedVectorImagesCheck.STRING_TAG_TO_DETECT) && str.value().contains("</metadata>")) {
             ctx.addIssue(str, DESCRIPTION);
         }
     }
