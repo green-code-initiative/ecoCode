@@ -12,9 +12,9 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "myTable")
-public class ForceLazyFetchTypeUseFalseTest implements Serializable {
+public class ForceLazyFetchTypeUseFalse implements Serializable {
 
-  @ManyToOne // Noncompliant {{Force the use of LAZY FetchType}}
-  private Order order;
+    @ManyToOne // Noncompliant {{Force the use of LAZY FetchType}}
+    private Order order;
 
 }
