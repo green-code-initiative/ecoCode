@@ -22,8 +22,6 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Customer data must have end-of-life information, so cookies must have a maxAge";
 
- 
-    //TODO pour trouver les extend Cookie
     private static final MethodMatchers REPOSITORY_METHOD =
             MethodMatchers.create().ofSubTypes("SPRING_REPOSITORY").anyName().withAnyParameters()
                     .build();
