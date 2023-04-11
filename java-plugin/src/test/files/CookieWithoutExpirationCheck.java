@@ -9,6 +9,11 @@ class TestClass {// Noncompliant {{Avoid not setting MaxAge}}
 		Cookie A = new Cookie("id","674684641");
 	}
 
+	public Cookie NOK_ReturnCookieCreation() {
+		// create objet cookie
+		Cookie A = new Cookie("id","674684641");
+		return  A;
+	}
 	public void OK_CookieCreation() {
 		// create objet cookie
 		Cookie B = new Cookie("id","674684641");
