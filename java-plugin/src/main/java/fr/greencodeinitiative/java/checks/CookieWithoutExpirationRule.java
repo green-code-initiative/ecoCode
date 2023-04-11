@@ -22,9 +22,6 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Customer data must have end-of-life information, so cookies must have a maxAge";
 
-    private static final MethodMatchers REPOSITORY_METHOD =
-            MethodMatchers.create().ofSubTypes("SPRING_REPOSITORY").anyName().withAnyParameters()
-                    .build();
 
  @Override
  public List<Tree.Kind> nodesToVisit() {
@@ -54,7 +51,7 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
         private ArrayList<String>  newCookieVariableName = new ArrayList<>();
         @Override
         public void visitReturnStatement(ReturnStatementTree tree) {
-            this.scan((Tree)tree.expression());
+            this.scan(tree.expression());
         }
 
         @Override
@@ -89,14 +86,12 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
         @Override
         public void visitMethodInvocation(MethodInvocationTree tree) {
             //lors de la visite d'une méthode
-            if (tree.methodSelect().is(Kind.MEMBER_SELECT)) {
-
-                if (((MemberSelectExpressionTree)tree.methodSelect()).identifier().name().equals("setMaxAge"))
-                {
-
+            if (tree.methodSelect().is(Kind.MEMBER_SELECT) &&
+                    (((MemberSelectExpressionTree)tree.methodSelect()).identifier().name().equals("setMaxAge"))
+            )
+            {
                     //si on est sur un setMaxAge, on enregistre la variable qui est affectée
                     hasSetMaxAgeForCookiesVariableName.add(((MemberSelectExpressionTree)tree.methodSelect()).expression().toString());
-                }
             }
 
         }
