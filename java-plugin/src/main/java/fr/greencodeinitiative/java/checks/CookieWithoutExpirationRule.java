@@ -4,10 +4,7 @@ import java.util.*;
 
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
-import org.sonar.java.model.declaration.MethodTreeImpl;
 import org.sonar.java.model.declaration.VariableTreeImpl;
-import org.sonar.java.model.expression.MemberSelectExpressionTreeImpl;
-import org.sonar.java.model.expression.NewArrayTreeImpl;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.*;
@@ -25,9 +22,7 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Customer data must have end-of-life information, so cookies must have a maxAge";
 
-    private static final String COOKIE_CLASS_NAME = "javax.servlet.http.Cookie";
-    private static final String SET_MAX_AGE_METHOD_NAME = "setMaxAge";
-
+ 
     //TODO pour trouver les extend Cookie
     private static final MethodMatchers REPOSITORY_METHOD =
             MethodMatchers.create().ofSubTypes("SPRING_REPOSITORY").anyName().withAnyParameters()
