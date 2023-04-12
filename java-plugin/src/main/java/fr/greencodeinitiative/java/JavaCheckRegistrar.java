@@ -21,9 +21,13 @@ package fr.greencodeinitiative.java;
 
 import java.util.List;
 
+import io.ecocode.rules.java.JavaRulesSpecificationsRepository;
 import org.sonar.plugins.java.api.CheckRegistrar;
 import org.sonar.plugins.java.api.JavaCheck;
 import org.sonarsource.api.sonarlint.SonarLintSide;
+
+import static fr.greencodeinitiative.java.JavaRulesDefinition.ANNOTATED_RULE_CLASSES;
+import static fr.greencodeinitiative.java.JavaRulesDefinition.ANNOTATED_RULE_TEST_CLASSES;
 
 /**
  * Provide the "checks" (implementations of rules) classes that are going be executed during
@@ -40,20 +44,20 @@ public class JavaCheckRegistrar implements CheckRegistrar {
     @Override
     public void register(RegistrarContext registrarContext) {
         // Call to registerClassesForRepository to associate the classes with the correct repository key
-        registrarContext.registerClassesForRepository(JavaRulesDefinition.REPOSITORY_KEY, checkClasses(), testCheckClasses());
+        registrarContext.registerClassesForRepository(JavaRulesSpecificationsRepository.REPOSITORY_KEY, checkClasses(), testCheckClasses());
     }
 
     /**
      * Lists all the main checks provided by the plugin
      */
     public static List<Class<? extends JavaCheck>> checkClasses() {
-        return RulesList.getJavaChecks();
+        return ANNOTATED_RULE_CLASSES;
     }
 
     /**
      * Lists all the test checks provided by the plugin
      */
     public static List<Class<? extends JavaCheck>> testCheckClasses() {
-        return RulesList.getJavaTestChecks();
+        return ANNOTATED_RULE_TEST_CLASSES;
     }
 }

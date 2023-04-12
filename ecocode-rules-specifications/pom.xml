@@ -34,7 +34,6 @@
 			<plugin>
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
-				<version>2.2.3</version>
 				<executions>
 					<execution>
 						<id>convert-to-html</id>
@@ -66,13 +65,41 @@
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>3.1.0</version>
 				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<configuration>
+							<target>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/java">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/java/EC*.html"/>
+										<include name="*/EC*.json"/>
+									</fileset>
+									<flattenmapper/>
+								</copy>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
 				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.5.0</version>
 				<executions>
+					<execution>
+						<id>assembly-java</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/java.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
 				</executions>
 				<configuration>
 					<appendAssemblyId>true</appendAssemblyId>

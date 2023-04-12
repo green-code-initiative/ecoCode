@@ -19,6 +19,7 @@
  */
 package fr.greencodeinitiative.java;
 
+import io.ecocode.rules.java.JavaRulesSpecificationsRepository;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -30,7 +31,10 @@ import org.sonar.api.server.rule.RulesDefinition.Param;
 import org.sonar.api.server.rule.RulesDefinition.Repository;
 import org.sonar.api.server.rule.RulesDefinition.Rule;
 
+import static fr.greencodeinitiative.java.JavaRulesDefinition.ANNOTATED_RULE_CLASSES;
+import static fr.greencodeinitiative.java.JavaRulesDefinition.ANNOTATED_RULE_TEST_CLASSES;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 class JavaRulesDefinitionTest {
 
@@ -38,17 +42,33 @@ class JavaRulesDefinitionTest {
 
     @BeforeEach
     void init() {
+        // TODO: check to revome after git repo split
+        if (JavaRulesDefinition.class.getResource("/io/ecocode/rules/java/EC1.json") == null) {
+            String message = "'ecocode-rules-specification' resources corrupted. Please check build of 'ecocode-rules-specification' module";
+            if (System.getProperties().keySet().stream().anyMatch(k -> k.toString().startsWith("idea."))) {
+                message += "\n\nOn 'IntelliJ IDEA':" +
+                        "\n1. go to settings :" +
+                        "\n   > Build, Execution, Deployment > Build Tools > Maven > Runner" +
+                        "\n2. check option:" +
+                        "\n   > Delegate IDE build/run actions to Maven" +
+                        "\n3. Click on menu: " +
+                        "\n   > Build > Build Project"
+                ;
+            }
+            fail(message);
+        }
+
         final JavaRulesDefinition rulesDefinition = new JavaRulesDefinition();
         final RulesDefinition.Context context = new RulesDefinition.Context();
         rulesDefinition.define(context);
-        repository = context.repository(JavaRulesDefinition.REPOSITORY_KEY);
+        repository = context.repository(JavaRulesSpecificationsRepository.REPOSITORY_KEY);
     }
 
     @Test
     void test() {
-        assertThat(repository.name()).isEqualTo(JavaRulesDefinition.NAME);
-        assertThat(repository.language()).isEqualTo(JavaRulesDefinition.LANGUAGE);
-        assertThat(repository.rules()).hasSize(RulesList.getChecks().size());
+        assertThat(repository.name()).isEqualTo(JavaRulesSpecificationsRepository.NAME);
+        assertThat(repository.language()).isEqualTo(JavaRulesSpecificationsRepository.LANGUAGE);
+        assertThat(repository.rules()).hasSize(ANNOTATED_RULE_CLASSES.size() + ANNOTATED_RULE_TEST_CLASSES.size());
         assertThat(repository.rules().stream().filter(Rule::template)).isEmpty();
 
         assertRuleProperties(repository);
@@ -80,5 +100,4 @@ class JavaRulesDefinitionTest {
             }
         }
     }
-
 }
