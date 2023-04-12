@@ -8,6 +8,7 @@ import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = "EC67",
@@ -15,6 +16,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
         description = IncrementCheck.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S67")
 public class IncrementCheck extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Use ++i instead of i++";

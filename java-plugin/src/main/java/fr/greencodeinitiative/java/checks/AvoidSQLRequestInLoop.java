@@ -12,9 +12,11 @@ import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(key = "EC72", name = "Developpement", description = AvoidSQLRequestInLoop.MESSAGERULE, priority = Priority.MINOR,
         tags = {"bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S72")
 public class AvoidSQLRequestInLoop extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Avoid SQL request in loop";
