@@ -37,7 +37,7 @@ import org.sonar.plugins.java.api.tree.VariableTree;
         "bug"})
 public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implements JavaFileScanner {
 
-    protected static final String MESSAGERULE1 = "The variable is not assigned";
+    protected static final String MESSAGERULE1 = "The variable is declared but not really used";
     protected static final String MESSAGERULE2 = "Immediately throw this expression instead of assigning it to the temporary variable";
     protected static final String MESSAGERULE3 = "Immediately return this expression instead of assigning it to the temporary variable";
     private JavaFileScannerContext context;
