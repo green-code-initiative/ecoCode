@@ -110,6 +110,17 @@
 						<goals>
 							<goal>run</goal>
 						</goals>
+						<configuration>
+							<target>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/java">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/java/EC*.html"/>
+										<include name="*/EC*.json"/>
+									</fileset>
+									<flattenmapper/>
+								</copy>
+							</target>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
@@ -129,6 +140,18 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>3.6.0</version>
 				<executions>
+					<execution>
+						<id>assembly-java</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/java.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
 				</executions>
 				<configuration>
 					<appendAssemblyId>true</appendAssemblyId>
