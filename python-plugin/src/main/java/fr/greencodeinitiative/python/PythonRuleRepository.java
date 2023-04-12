@@ -36,6 +36,7 @@ import fr.greencodeinitiative.python.checks.AvoidSQLRequestInLoop;
 import fr.greencodeinitiative.python.checks.AvoidTryCatchFinallyCheck;
 import fr.greencodeinitiative.python.checks.NoFunctionCallWhenDeclaringForLoop;
 import org.apache.commons.lang.StringUtils;
+import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
 import org.sonar.plugins.python.api.PythonCustomRuleRepository;
@@ -58,6 +59,7 @@ public class PythonRuleRepository implements RulesDefinition, PythonCustomRuleRe
     remediationCosts.put(AvoidSQLRequestInLoop.RULE_KEY, "10min");
     remediationCosts.put(AvoidFullSQLRequest.RULE_KEY, "20min");
     repository.rules().forEach(rule -> {
+      rule.setType(RuleType.CODE_SMELL);
       String debt = remediationCosts.get(rule.key());
 
       // TODO DDC : create support to use org.apache.commons.lang.StringUtils
