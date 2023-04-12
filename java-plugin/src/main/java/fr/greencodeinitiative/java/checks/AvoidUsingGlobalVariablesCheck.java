@@ -12,12 +12,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonar.plugins.java.api.tree.VariableTree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = "EC4",
-        name = "Developpement",
-        description = "<p>Prefer local variables to globals</p>",
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC4")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "D4")
 public class AvoidUsingGlobalVariablesCheck extends IssuableSubscriptionVisitor {
 

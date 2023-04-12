@@ -18,16 +18,10 @@ import org.sonar.plugins.python.api.tree.StatementList;
 import org.sonar.plugins.python.api.tree.Tree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = AvoidGettersAndSetters.RULE_KEY,
-        name = AvoidGettersAndSetters.DESCRIPTION,
-        description = AvoidGettersAndSetters.DESCRIPTION,
-        priority = Priority.MINOR,
-        tags = {"convention", "eco-design", "ecocode"})
+@Rule(key = "EC7")
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "D7")
 public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC7";
     public static final String DESCRIPTION = "Avoid creating getter and setter methods in classes";
 
     @Override

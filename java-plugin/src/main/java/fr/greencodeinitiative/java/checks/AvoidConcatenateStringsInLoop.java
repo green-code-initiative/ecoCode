@@ -15,12 +15,7 @@ import org.sonar.plugins.java.api.tree.ExpressionTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = "EC75",
-        name = "Developpement",
-        description = AvoidConcatenateStringsInLoop.MESSAGE_RULE,
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode", "memory"})
+@Rule(key = "EC75")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S75")
 public class AvoidConcatenateStringsInLoop extends IssuableSubscriptionVisitor {
 

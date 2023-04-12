@@ -14,12 +14,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.VariableTree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = "EC76",
-        name = "Developpement",
-        description = AvoidUsageOfStaticCollections.MESSAGE_RULE,
-        priority = Priority.MINOR,
-        tags = {"cwe", "leak", "eco-design", "ecocode", "memory"})
+@Rule(key = "EC76")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S76")
 public class AvoidUsageOfStaticCollections extends IssuableSubscriptionVisitor {
 

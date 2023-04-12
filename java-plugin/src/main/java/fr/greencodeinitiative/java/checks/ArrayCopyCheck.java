@@ -37,11 +37,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
  * @author Aubay
  * @formatter:off
  */
-@Rule(key = "EC27",
-        name = "Developpement",
-        description = ArrayCopyCheck.MESSAGERULE,
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC27")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GRPS0027")
 public class ArrayCopyCheck extends IssuableSubscriptionVisitor {
 

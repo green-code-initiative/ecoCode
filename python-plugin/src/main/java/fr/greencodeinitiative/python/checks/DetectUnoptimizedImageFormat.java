@@ -10,12 +10,7 @@ import org.sonar.plugins.python.api.tree.Tree;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Rule(
-        key = DetectUnoptimizedImageFormat.RULE_KEY,
-        name = DetectUnoptimizedImageFormat.MESSAGERULE,
-        description = DetectUnoptimizedImageFormat.MESSAGEERROR,
-        priority = Priority.MINOR,
-        tags = {"eco-design", "ecocode", "performance", "user-experience"})
+@Rule(key = "EC203")
 public class DetectUnoptimizedImageFormat extends PythonSubscriptionCheck {
 
     protected static final String RULE_KEY = "EC203";

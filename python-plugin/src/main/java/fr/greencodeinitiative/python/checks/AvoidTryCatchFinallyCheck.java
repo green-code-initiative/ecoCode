@@ -8,16 +8,10 @@ import org.sonar.plugins.python.api.tree.Tree;
 import org.sonar.plugins.python.api.tree.TryStatement;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = AvoidTryCatchFinallyCheck.RULE_KEY,
-        name = "Avoid using try-catch statement",
-        description = AvoidTryCatchFinallyCheck.DESCRIPTION,
-        priority = Priority.MINOR,
-        tags = {"error-handling", "performance", "eco-design", "ecocode"})
+@Rule(key = "EC34")
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "S34")
 public class AvoidTryCatchFinallyCheck extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC34";
     public static final String DESCRIPTION = "Avoid the use of try-catch";
 
     @Override

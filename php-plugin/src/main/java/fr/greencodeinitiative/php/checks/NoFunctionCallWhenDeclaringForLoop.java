@@ -14,16 +14,10 @@ import org.sonar.plugins.php.api.tree.statement.ForStatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = NoFunctionCallWhenDeclaringForLoop.RULE_KEY,
-        name = NoFunctionCallWhenDeclaringForLoop.ERROR_MESSAGE,
-        description = NoFunctionCallWhenDeclaringForLoop.ERROR_MESSAGE,
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC69")
 @DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S69")
 public class NoFunctionCallWhenDeclaringForLoop extends PHPSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC69";
     public static final String ERROR_MESSAGE = "Do not call a function in for-type loop declaration";
 
     @Override
