@@ -18,7 +18,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 public class AvoidTryCatchFinallyCheck extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "EC34";
-    public static final String DESCRIPTION = "Avoid the use of try-catch-finally";
+    public static final String DESCRIPTION = "Avoid the use of try-catch";
 
     @Override
     public void initialize(Context context) {

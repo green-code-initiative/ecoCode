@@ -19,7 +19,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 public class AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC34";
-    public static final String ERROR_MESSAGE = "Avoid using try-catch-finally";
+    public static final String ERROR_MESSAGE = "Avoid using try-catch";
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
