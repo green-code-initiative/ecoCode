@@ -60,6 +60,7 @@ import org.sonar.plugins.python.api.tree.UnpackingExpression;
 import org.sonar.plugins.python.api.tree.WhileStatement;
 import org.sonar.plugins.python.api.tree.YieldExpression;
 import org.sonar.plugins.python.api.tree.YieldStatement;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = AvoidGlobalVariableInFunctionCheck.RULE_KEY,
@@ -67,6 +68,7 @@ import org.sonar.plugins.python.api.tree.YieldStatement;
         description = AvoidGlobalVariableInFunctionCheck.DESCRIPTION,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "D4")
 public class AvoidGlobalVariableInFunctionCheck extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "EC4";

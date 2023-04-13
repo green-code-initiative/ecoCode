@@ -27,6 +27,7 @@ import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.Tree.Kind;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = IncrementCheck.RULE_KEY,
@@ -34,6 +35,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         description = IncrementCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S67")
 public class IncrementCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC67";
