@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [166](https://github.com/green-code-initiative/ecoCode/issues/166) Correction of wrong message
+
 ### Deleted
 
 ## [1.1.0] - 2023-04-03

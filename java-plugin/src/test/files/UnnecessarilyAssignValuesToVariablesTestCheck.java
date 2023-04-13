@@ -14,7 +14,7 @@ class UnnecessarilyAssignValuesToVariablesTestCheck {
         int[] intArray = {10, 20, 30, 40, 50};
 
         Exception variableException = new Exception("message");
-        int variableNotUse = 5; // Noncompliant {{The variable is not assigned}}
+        int variableNotUse = 5; // Noncompliant {{The variable is declared but not really used}}
 
 
         variableNotUse = 10;
