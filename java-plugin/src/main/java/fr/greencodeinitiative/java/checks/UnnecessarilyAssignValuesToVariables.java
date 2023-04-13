@@ -32,9 +32,11 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonar.plugins.java.api.tree.TypeCastTree;
 import org.sonar.plugins.java.api.tree.UnaryExpressionTree;
 import org.sonar.plugins.java.api.tree.VariableTree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(key = "EC63", name = "Developpement", description = "Do not unnecessarily assign values to variables", priority = Priority.MINOR, tags = {
         "bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S63")
 public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implements JavaFileScanner {
 
     protected static final String MESSAGERULE1 = "The variable is declared but not really used";

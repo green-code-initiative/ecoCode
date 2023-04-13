@@ -6,6 +6,7 @@ import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;
 import org.sonar.plugins.python.api.tree.Tree;
 import org.sonar.plugins.python.api.tree.TryStatement;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = AvoidTryCatchFinallyCheck.RULE_KEY,
@@ -13,6 +14,7 @@ import org.sonar.plugins.python.api.tree.TryStatement;
         description = AvoidTryCatchFinallyCheck.DESCRIPTION,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "S34")
 public class AvoidTryCatchFinallyCheck extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "EC34";
