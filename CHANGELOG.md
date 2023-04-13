@@ -12,6 +12,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - [166](https://github.com/green-code-initiative/ecoCode/issues/166) Correction of wrong message
+- [167](https://github.com/green-code-initiative/ecoCode/issues/167) Use same kind for rules across different languages
+- [171](https://github.com/green-code-initiative/ecoCode/issues/171) Add migration mechanism to support "issue re-keying"
+- [173](https://github.com/green-code-initiative/ecoCode/issues/173) Update issue description of rule EC34 (try-catch)
 
 ### Deleted
 
