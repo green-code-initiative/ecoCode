@@ -37,7 +37,7 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
      if (visitorInFile.hasANewCookieWithoutMaxDate())
      {
          //if we found a cookie that maxDate is not initialized, we report issue
-         reportIssue(tree, "Avoid not setting MaxAge");
+         reportIssue(tree, "MaxAge must have a value");
      }
  }
 
@@ -73,23 +73,23 @@ public class CookieWithoutExpirationRule extends IssuableSubscriptionVisitor {
 
         public boolean hasANewCookieWithoutMaxDate()
         {
-            //parcours des variables pour lesquelles on a fait un new Cookie
+            //loop on variables on which a new Cookie was done
             for (String variableName : newCookieVariableName )
             {
                 if (!hasSetMaxAgeForCookiesVariableName.contains(variableName))
-                    //si on n'a pas fait setMaxAge pour ces variables
+                    //no setMaxAge has been done
                     return true;
             }
             return false;
         }
         @Override
         public void visitMethodInvocation(MethodInvocationTree tree) {
-            //lors de la visite d'une méthode
+            //Method visiting
             if (tree.methodSelect().is(Kind.MEMBER_SELECT) &&
                     (((MemberSelectExpressionTree)tree.methodSelect()).identifier().name().equals("setMaxAge"))
             )
             {
-                    //si on est sur un setMaxAge, on enregistre la variable qui est affectée
+                    //if visited methode is setMaxAge, then save the assigned variable
                     hasSetMaxAgeForCookiesVariableName.add(((MemberSelectExpressionTree)tree.methodSelect()).expression().toString());
             }
 

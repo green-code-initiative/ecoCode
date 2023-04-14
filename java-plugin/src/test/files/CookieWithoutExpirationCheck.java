@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
-class TestClass {// Noncompliant {{Avoid not setting MaxAge}}
+class TestClass {// Noncompliant {{MaxAge must have a value}}
 
 	public void NOK_CookieCreation() {
 		// create objet cookie
