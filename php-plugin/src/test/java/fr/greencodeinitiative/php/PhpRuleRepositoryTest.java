@@ -19,11 +19,17 @@
  */
 package fr.greencodeinitiative.php;
 
+import static java.util.Optional.ofNullable;
 import static org.assertj.core.api.Assertions.assertThat;
+
+import io.ecocode.rules.php.PhpRulesSpecificationsRepository;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.sonar.api.server.rule.RulesDefinition;
+
+import java.util.List;
+import java.util.Optional;
 
 public class PhpRuleRepositoryTest {
 
@@ -39,7 +45,7 @@ public class PhpRuleRepositoryTest {
 
   @Test
   public void test() {
-    assertThat(phpRuleRepository.repositoryKey()).isEqualTo(PhpRuleRepository.REPOSITORY_KEY);
+    assertThat(phpRuleRepository.repositoryKey()).isEqualTo(PhpRulesSpecificationsRepository.REPOSITORY_KEY);
     assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(phpRuleRepository.repositoryKey());
     assertThat(context.repositories().get(0).rules()).hasSize(9);
     assertThat(phpRuleRepository.checkClasses()).hasSize(9);
@@ -50,11 +56,27 @@ public class PhpRuleRepositoryTest {
    */
   @Test()
   public void testRuleKeyPrefix() {
-    RulesDefinition.Repository repository = context.repository(PhpRuleRepository.REPOSITORY_KEY);
+    Optional<List<RulesDefinition.Rule>> rules = ofNullable(context.repository(PhpRulesSpecificationsRepository.REPOSITORY_KEY))
+            .map(RulesDefinition.ExtendedRepository::rules);
+
     SoftAssertions assertions = new SoftAssertions();
-    repository.rules().forEach(
+    rules.orElseThrow().forEach(
             rule -> assertions.assertThat(rule.key()).startsWith("EC")
     );
     assertions.assertAll();
+  }
+
+  @Test()
+  public void testRepositoryKey() {
+    assertThat(phpRuleRepository.repositoryKey()).isEqualTo("ecocode-php");
+  }
+
+  @Test()
+  public void testAllRuleParametersHaveDescription() {
+    context.repositories().stream()
+            .flatMap(repository -> repository.rules().stream())
+            .flatMap(rule -> rule.params().stream())
+            .forEach(param -> assertThat(param.description()).as("description for " + param.key()).isNotEmpty());
+    ;
   }
 }

@@ -1,5 +1,5 @@
 /*
- * SonarQube Python Plugin
+ * SonarQube PHP Plugin
  * Copyright (C) 2012-2019 SonarSource SA
  * mailto:info AT sonarsource DOT com
  *
@@ -19,66 +19,60 @@
  */
 package fr.greencodeinitiative.php;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import fr.greencodeinitiative.php.checks.AvoidGettingSizeCollectionInLoopCheck;
 import fr.greencodeinitiative.php.checks.AvoidDoubleQuoteCheck;
 import fr.greencodeinitiative.php.checks.AvoidFullSQLRequestCheck;
+import fr.greencodeinitiative.php.checks.AvoidGettingSizeCollectionInLoopCheck;
 import fr.greencodeinitiative.php.checks.AvoidSQLRequestInLoopCheck;
 import fr.greencodeinitiative.php.checks.AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements;
 import fr.greencodeinitiative.php.checks.AvoidUsingGlobalVariablesCheck;
 import fr.greencodeinitiative.php.checks.IncrementCheck;
 import fr.greencodeinitiative.php.checks.NoFunctionCallWhenDeclaringForLoop;
 import fr.greencodeinitiative.php.checks.UseOfMethodsForBasicOperations;
-import org.sonar.api.rules.RuleType;
+import org.sonar.api.SonarEdition;
+import org.sonar.api.SonarProduct;
+import org.sonar.api.SonarQubeSide;
+import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
+import org.sonar.api.utils.Version;
 import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
+import org.sonarsource.analyzer.commons.RuleMetadataLoader;
+
+import java.util.List;
+
+import static io.ecocode.rules.php.PhpRulesSpecificationsRepository.LANGUAGE;
+import static io.ecocode.rules.php.PhpRulesSpecificationsRepository.NAME;
+import static io.ecocode.rules.php.PhpRulesSpecificationsRepository.REPOSITORY_KEY;
+import static io.ecocode.rules.php.PhpRulesSpecificationsRepository.RESOURCE_BASE_PATH;
 
 public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleRepository {
+  private static final Version SONARQUBE_RUNTIME_VERSION = Version.create(9, 8);
+  private static final SonarRuntime SONARQUBE_RUNTIME = new SonarRuntime() {
+    @Override
+    public Version getApiVersion() {
+      return SONARQUBE_RUNTIME_VERSION;
+    }
 
-  public static final String LANGUAGE = "php";
-  public static final String NAME = "ecoCode";
-  public static final String RESOURCE_BASE_PATH = "/fr/greencodeinitiative/l10n/php/rules/custom/";
-  public static final String REPOSITORY_KEY = "ecocode-php";
+    @Override
+    public SonarProduct getProduct() {
+      return SonarProduct.SONARQUBE;
+    }
+
+    @Override
+    public SonarQubeSide getSonarQubeSide() {
+      return SonarQubeSide.SCANNER;
+    }
+
+    @Override
+    public SonarEdition getEdition() {
+      return SonarEdition.COMMUNITY;
+    }
+  };
 
   @Override
   public void define(Context context) {
-    NewRepository repository = context.createRepository(repositoryKey(), LANGUAGE).setName(NAME);
-
-    new RulesDefinitionAnnotationLoader().load(repository, checkClasses().toArray(new Class[] {}));
-
-    // technical debt
-    Map<String, String> remediationCosts = new HashMap<>();
-    remediationCosts.put(AvoidSQLRequestInLoopCheck.RULE_KEY, "10min");
-    remediationCosts.put(AvoidFullSQLRequestCheck.RULE_KEY, "20min");
-    repository.rules().forEach(rule -> {
-      rule.setType(RuleType.CODE_SMELL);
-      String debt = remediationCosts.get(rule.key());
-
-      // TODO DDC : create support to use org.apache.commons.lang.StringUtils
-//      if (StringUtils.isBlank(debt)) {
-      if (debt == null || debt.trim().equals("")) {
-        // default debt to 5min for issue correction
-        rule.setDebtRemediationFunction(
-                rule.debtRemediationFunctions().constantPerIssue("5min"));
-      } else {
-        rule.setDebtRemediationFunction(
-                rule.debtRemediationFunctions().constantPerIssue(debt));
-      }
-    });
-
-    // HTML description
-    repository.rules().forEach(rule ->
-            rule.setHtmlDescription(loadResource(RESOURCE_BASE_PATH + rule.key() + ".html")));
-
+    NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
+    RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH, SONARQUBE_RUNTIME);
+    ruleMetadataLoader.addRulesByAnnotatedClass(repository, checkClasses());
     repository.done();
   }
 
@@ -100,22 +94,5 @@ public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleReposito
             NoFunctionCallWhenDeclaringForLoop.class,
             UseOfMethodsForBasicOperations.class
     );
-  }
-
-  private String loadResource(String path) {
-    URL resource = getClass().getResource(path);
-    if (resource == null) {
-      throw new IllegalStateException("Resource not found: " + path);
-    }
-    ByteArrayOutputStream result = new ByteArrayOutputStream();
-    try (InputStream in = resource.openStream()) {
-      byte[] buffer = new byte[1024];
-      for (int len = in.read(buffer); len != -1; len = in.read(buffer)) {
-        result.write(buffer, 0, len);
-      }
-      return new String(result.toByteArray(), StandardCharsets.UTF_8);
-    } catch (IOException e) {
-      throw new IllegalStateException("Failed to read resource: " + path, e);
-    }
   }
 }
