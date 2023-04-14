@@ -16,42 +16,88 @@
  */
 package fr.greencodeinitiative.php;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import org.assertj.core.api.SoftAssertions;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.api.utils.Version;
 
-public class PhpRuleRepositoryTest {
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 
-  private PhpRuleRepository phpRuleRepository;
-  private RulesDefinition.Context context;
+class PhpRuleRepositoryTest {
 
-  @Before
-  public void init() {
-    phpRuleRepository = new PhpRuleRepository();
-    context = new RulesDefinition.Context();
-    phpRuleRepository.define(context);
+  private RulesDefinition.Repository repository;
+
+    @BeforeEach
+  void init() {
+    // TODO: Remove this check after Git repo split
+    /*
+      On an IDE (like IntelliJ), if the developer runs the unit tests without building/generating the Maven goals on the
+      "ecocode-rules-specifications" module before, the unit tests will not see the generated HTML descriptions (from ASCIIDOC files).
+      The developer must therefore configure his IDE to build the `ecocode-rules-specifications` module before launching the Tests.
+
+      When the `php-plugin` submodule is in a specific Git repository, `ecocode-rules-specifications` will be fetched from a classic
+      external Maven dependency. There will therefore no longer be any need to perform this specific configuration.
+     */
+    if (PhpRuleRepository.class.getResource("/io/ecocode/rules/php/EC4.json") == null) {
+      String message = "'ecocode-rules-specification' resources corrupted. Please check build of 'ecocode-rules-specification' module";
+      if (System.getProperties().keySet().stream().anyMatch(k -> k.toString().startsWith("idea."))) {
+        message += "\n\nOn 'IntelliJ IDEA':" +
+                "\n1. go to settings :" +
+                "\n   > Build, Execution, Deployment > Build Tools > Maven > Runner" +
+                "\n2. check option:" +
+                "\n   > Delegate IDE build/run actions to Maven" +
+                "\n3. Click on menu: " +
+                "\n   > Build > Build Project"
+        ;
+      }
+      fail(message);
+    }
+
+    final SonarRuntime sonarRuntime = mock(SonarRuntime.class);
+    doReturn(Version.create(0, 0)).when(sonarRuntime).getApiVersion();
+    PhpRuleRepository rulesDefinition = new PhpRuleRepository(sonarRuntime);
+    RulesDefinition.Context context = new RulesDefinition.Context();
+    rulesDefinition.define(context);
+    repository = context.repository(rulesDefinition.repositoryKey());
   }
 
   @Test
-  public void test() {
-    assertThat(phpRuleRepository.repositoryKey()).isEqualTo(PhpRuleRepository.REPOSITORY_KEY);
-    assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(phpRuleRepository.repositoryKey());
-    assertThat(context.repositories().get(0).rules()).hasSize(9);
-    assertThat(phpRuleRepository.checkClasses()).hasSize(9);
+  @DisplayName("Test repository metadata")
+  void testMetadata() {
+    assertThat(repository.name()).isEqualTo("ecoCode");
+    assertThat(repository.language()).isEqualTo("php");
+    assertThat(repository.key()).isEqualTo("ecocode-php");
   }
 
-  /**
-   * Check all rule keys must be prefixed by 'EC'
-   */
-  @Test()
-  public void testRuleKeyPrefix() {
-    RulesDefinition.Repository repository = context.repository(PhpRuleRepository.REPOSITORY_KEY);
+  @Test
+  void testRegistredRules() {
+    assertThat(repository.rules()).hasSize(9);
+  }
+
+  @Test
+  @DisplayName("All rule keys must be prefixed by 'EC'")
+  void testRuleKeyPrefix() {
     SoftAssertions assertions = new SoftAssertions();
     repository.rules().forEach(
             rule -> assertions.assertThat(rule.key()).startsWith("EC")
     );
+    assertions.assertAll();
+  }
+
+  @Test
+  void testAllRuleParametersHaveDescription() {
+    SoftAssertions assertions = new SoftAssertions();
+    repository.rules().stream()
+            .flatMap(rule -> rule.params().stream())
+            .forEach(param -> assertions.assertThat(param.description())
+                    .as("description for " + param.key())
+                    .isNotEmpty());
     assertions.assertAll();
   }
 }
