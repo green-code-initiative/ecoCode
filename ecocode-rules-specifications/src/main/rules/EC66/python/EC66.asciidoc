@@ -1,27 +1,31 @@
-<p>
-    The shape using the quotation marks (") allows the developer to insert variables that will be substituted at run time.<br>
-    But if the string does not have a variable, use quotes (') instead.<br>
-    Thus, language will not look for variables to substitute, which will reduce the consumption of CPU cycles.
-</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
-    # in variables
-    firstname = "Andrea" # Noncompliant {{Avoid using quotation mark ("), prefer using simple quote (')}}
+The shape using the quotation marks (") allows the developer to insert variables that will be substituted at run time.
 
-    # in functions
-    def my_function(name, age):
-        print(name + 'is' + age + ' yo.')
+But if the string does not have a variable, use quotes (') instead.
 
-    my_function("Robert", 12) # Noncompliant {{Avoid using quotation mark ("), prefer using simple quote (')}}
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
-    # in variables
-    firstname = 'Andrea'
+Thus, language will not look for variables to substitute, which will reduce the consumption of CPU cycles.
 
-    # in functions
-    def my_function(name, age):
-        print(name + 'is' + age + ' yo.')
+## Noncompliant Code Example
 
-    my_function('Robert', 12)
-</pre>
+```python
+# in variables
+firstname = "Andrea" # Noncompliant {{Avoid using quotation mark ("), prefer using simple quote (')}}
+
+# in functions
+def my_function(name, age):
+    print(name + 'is' + age + ' yo.')
+
+my_function("Robert", 12) # Noncompliant {{Avoid using quotation mark ("), prefer using simple quote (')}}
+```
+
+## Compliant Solution
+
+```python
+# in variables
+firstname = 'Andrea'
+
+# in functions
+def my_function(name, age):
+    print(name + 'is' + age + ' yo.')
+
+my_function('Robert', 12)
+```

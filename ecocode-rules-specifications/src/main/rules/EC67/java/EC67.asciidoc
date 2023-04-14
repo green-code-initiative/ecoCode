@@ -1,7 +1,13 @@
-<p>The form $i++ creates a temporary variable whereas ++$i does not. It save CPU cycles.</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
+The form `$i++` creates a temporary variable whereas `++$i` does not. It save CPU cycles.
+
+## Noncompliant Code Example
+
+```java
 i++  // Noncompliant
-</pre>
-<h2>Compliant Solution</h2>
-<pre>++i</pre>
+```
+
+## Compliant Solution
+
+```java
+++i
+```

@@ -1,6 +1,8 @@
-<p>Avoid using getters and setters in a class, as they increase unnecessary RAM memory usage.</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
+Avoid using getters and setters in a class, as they increase unnecessary RAM memory usage.
+
+## Noncompliant Code Example
+
+```python
 class Client():
 
     def __init__(self, age):
@@ -15,10 +17,11 @@ class Client():
 client = Client(25)
 client.get_age() # Getter inutile
 client.set_age(25) # Setter inutile
+```
 
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
+## Compliant Solution
+
+```python
 class Client():
 
     def __init__(self, age):
@@ -33,4 +36,5 @@ class Client():
 client = Client(25)
 client.age # Récupérer l'attribut age
 client.age = 26 # Modifier l'attribut age
-</pre>
+```
+

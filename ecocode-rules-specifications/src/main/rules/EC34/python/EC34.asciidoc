@@ -1,8 +1,10 @@
-<p>Inside complex code parts (for example multiple loops, complex data constructions...), avoid using try...catch...finally.
-<p>When an exception is thrown, a variable (the exception itself) is created in a catch block, and it's destruction consumes unnecessary CPU cycles and RAM. Prefer using logical tests in this cases.</p>
-</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
+Inside complex code parts (for example multiple loops, complex data constructions...), avoid using try...catch...finally.
+
+When an exception is thrown, a variable (the exception itself) is created in a catch block, and it's destruction consumes unnecessary CPU cycles and RAM. Prefer using logical tests in this cases.
+
+## Noncompliant Code Example
+
+```python
 try:
     f = open(path)
     print(fh.read())
@@ -10,12 +12,14 @@ except:
     print('No such file '+path
 finally:
     f.close()
+```
 
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
+## Compliant Solution
+
+```python
 if os.path.isfile(path):
   fh = open(path, 'r')
   print(fh.read())
   fh.close
-</pre>
+```
+

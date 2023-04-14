@@ -1,41 +1,17 @@
-<p>Executing SQL queries in loop induced unnecessary calculation by the cpu, RAM usage and network transfer.</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
-    public void foo() {
-        ...
-        String baseQuery = "SELECT name FROM users where id = ";
+Executing SQL queries in loop induced unnecessary calculation by the CPU, RAM usage and network transfer.
 
-        for (int i = 0; i < 20; i++) {
+## Noncompliant Code Example
 
-            String query  = baseQuery.concat("" + i);
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(query); // Noncompliant
+```java
+public void foo() {
+    // ...
+    String baseQuery = "SELECT name FROM users where id = ";
 
-            // iterate through the java resultset
-            while (rs.next()) {
-                String name = rs.getString("name");
-                System.out.println(name);
-            }
-            st.close();
-        }
-        ...
-    }
+    for (int i = 0; i < 20; i++) {
 
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
-
-    public void foo() {
-        ...
-        String query = "SELECT name FROM users where id in (0 ";
-        for (int i = 1; i < 20; i++) {
-
-            query  = baseQuery.concat("," + i);
-        }
-
-        query  = baseQuery.concat(")");
+        String query  = baseQuery.concat("" + i);
         Statement st = conn.createStatement();
-        ResultSet rs = st.executeQuery(query); // compliant
+        ResultSet rs = st.executeQuery(query); // Noncompliant
 
         // iterate through the java resultset
         while (rs.next()) {
@@ -43,7 +19,32 @@
             System.out.println(name);
         }
         st.close();
-        ...
-   }
+    }
+    // ...
+}
+```
 
-</pre>
+## Compliant Solution
+
+```java
+public void foo() {
+    // ...
+    String query = "SELECT name FROM users where id in (0 ";
+    for (int i = 1; i < 20; i++) {
+
+        query  = baseQuery.concat("," + i);
+    }
+
+    query  = baseQuery.concat(")");
+    Statement st = conn.createStatement();
+    ResultSet rs = st.executeQuery(query); // compliant
+
+    // iterate through the java resultset
+    while (rs.next()) {
+        String name = rs.getString("name");
+        System.out.println(name);
+    }
+    st.close();
+    // ...
+}
+```
