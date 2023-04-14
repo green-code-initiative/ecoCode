@@ -57,7 +57,7 @@
                     <pluginName>${project.name}</pluginName>
                     <pluginClass>fr.greencodeinitiative.python.PythonPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
-                    <requirePlugins>python:${sonar.python.version}</requirePlugins>
+                    <requirePlugins>python:${sonarpython.version}</requirePlugins>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                     <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
