@@ -12,6 +12,7 @@ import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.VariableTree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = "EC76",
@@ -19,6 +20,7 @@ import org.sonar.plugins.java.api.tree.VariableTree;
         description = AvoidUsageOfStaticCollections.MESSAGE_RULE,
         priority = Priority.MINOR,
         tags = {"bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S76")
 public class AvoidUsageOfStaticCollections extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGE_RULE = "Avoid usage of static collections.";
