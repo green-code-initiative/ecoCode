@@ -1,73 +1,78 @@
-<p>If possible, the utilisation of svg image format (or &lt;svg/&gt; html tag) is recommended over other image format.</p>
-<p>Because SVGs are generally smaller than other image format, they’re less taxing on your server despite needing to render on load.</p>
-<p>When to use SVG :
-<ul>
-    <li>Your image is used for decorative website graphics, logos, icons, graphs and diagrams, and other simple images.</li>
-    <li>You image require animation.</li>
-    <li>You image need to be responsive and scale without lack of quality.</li>
-</ul>
-</p>
-<p>Some advantages of using SVG:
-<ul>
-    <li>SVGs are scalable and will render pixel-perfect at any resolution whereas JPEGs, PNGs and GIFs will not.</li>
-    <li>SVGs are vector images and therefore are usually much smaller in file-size than bitmap-based images.</li>
-    <li>SVGs can be embedded into the HTML which means they can be cached, edited directly using CSS and indexed for greater accessibility.</li>
-    <li>SVGs can be animated directly or by using CSS or JavaScript making it easy for web designers to add interactivity to a site.</li>
-</ul>
-</p>
+If possible, the utilisation of svg image format (or `<svg/>` html tag) is recommended over other image format.
 
+Because SVGs are generally smaller than other image format, they’re less taxing on your server despite needing to render on load.
 
-<h2>Noncompliant Code Example</h2>
-<pre>
-    ...
-    img_jpg = "image.jpg"
-    ...
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
-    ...
-    img_svg = "image.svg"
-    ...
-</pre>
+When to use SVG :
 
-<h2>Noncompliant Code Example</h2>
-<pre>
-    public void foo() {
-        ...
-        image_format = testImage("image.jpg")
-        ...
-    }
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
-    public void foo() {
-        ...
-        image_format = testImage("image.svg")
-        ...
-   }
-</pre>
+- Your image is used for decorative website graphics, logos, icons, graphs and diagrams, and other simple images.
+- You image require animation.
+- You image need to be responsive and scale without lack of quality.
 
-<h2>Noncompliant Code Example</h2>
-<pre>
-    public void foo() {
-        ...
-        return '&lt;html&gt;&lt;img src="xx/xx/image.bmp"&gt;&lt;/html&gt;'
-        ...
-    }
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
-    public void foo() {
-        ...
-        return '&lt;html&gt;&lt;img src="xx/xx/image.svg"&gt;&lt;/html&gt;'
-        ...
-   }
+Some advantages of using SVG:
 
-     public void foo2() {
-        ...
-        return ('&lt;html&gt;&lt;svg width="100" height="100"&gt;' +
-                '&lt;circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" /&gt;' +
-                '&lt;/svg&gt;&lt;/html&gt;')
-        ...
-   }
-</pre>
+- SVGs are scalable and will render pixel-perfect at any resolution whereas JPEGs, PNGs and GIFs will not.
+- SVGs are vector images and therefore are usually much smaller in file-size than bitmap-based images.
+- SVGs can be embedded into the HTML which means they can be cached, edited directly using CSS and indexed for greater accessibility.
+- SVGs can be animated directly or by using CSS or JavaScript making it easy for web designers to add interactivity to a site.
+
+## Noncompliant Code Example
+
+```
+img_jpg = "image.jpg"
+```
+
+## Compliant Solution
+
+```
+img_svg = "image.svg"
+```
+
+## Noncompliant Code Example
+
+```
+public void foo() {
+    // ...
+    image_format = testImage("image.jpg")
+    // ...
+}
+```
+
+## Compliant Solution
+
+```
+public void foo() {
+    // ...
+    image_format = testImage("image.svg")
+    // ...
+}
+```
+
+## Noncompliant Code Example
+
+```
+public void foo() {
+    // ...
+    return '<html><img src="xx/xx/image.bmp"></html>'
+    // ...
+}
+```
+
+## Compliant Solution
+
+```
+public void foo() {
+    // ...
+    return '<html><img src="xx/xx/image.svg"></html>'
+    // ...
+}
+```
+
+Or
+
+```
+ public void foo() {
+    // ...
+    return ('<html><svg width="100" height="100"><circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow"/></svg></html>')
+    // ...
+}
+```

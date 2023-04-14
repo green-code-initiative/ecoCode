@@ -1,9 +1,13 @@
-<p>Use of methods for basic operations</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
-	$min = min($a, $b);  // Noncompliant
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
-	$min = $a < $b ? $a : $b;
-</pre>
+Use of methods for basic operations
+
+## Noncompliant Code Example
+
+```php
+$min = min($a, $b);  // Noncompliant
+```
+
+## Compliant Solution
+
+```php
+$min = $a < $b ? $a : $b;
+```

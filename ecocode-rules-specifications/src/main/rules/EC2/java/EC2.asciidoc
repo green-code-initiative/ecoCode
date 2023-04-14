@@ -1,31 +1,32 @@
-<p>If we are using too many conditional if-else statements it will impact performance since JVM will have to compare the conditions. We can think of using a switch statement instead of multiple if-else if possible. Switch statement has a performance advantage over if – else.</p>
+If we are using too many conditional `if` – `else` statements it will impact performance since JVM will have to compare the conditions. We can think of using a switch statement instead of multiple `if` – `else` if possible. `switch` statement has a performance advantage over `if` – `else`.
 
-<h2>Non-compliant Code Example</h2>
-<pre>
-		int index = 1;
-        int nb = 2;
+## Non-compliant Code Example
 
-        if (nb > index) {
-            nb = nb + index;
-        } else {
-            nb = nb - 1;
-        }
-        if (nb != index + 1) {
-            nb = nb + index;
-        } else {
-            nb = nb - 1;
-        }
+```java
+int index = 1;
+int nb = 2;
 
+if (nb > index) {
+    nb = nb + index;
+} else {
+    nb = nb - 1;
+}
+if (nb != index + 1) {
+    nb = nb + index;
+} else {
+    nb = nb - 1;
+}
+```
 
-</pre>
-<h2>Compliant Code Example</h2>
-<pre>
-        int index = 1;
-        int nb = 2;
+## Compliant Code Example
 
-        if (nb > index) {
-            nb = nb + index;
-        } else {
-            nb = nb - 1;
-        }
-</pre>
+```java
+int index = 1;
+int nb = 2;
+
+if (nb > index) {
+    nb = nb + index;
+} else {
+    nb = nb - 1;
+}
+```
