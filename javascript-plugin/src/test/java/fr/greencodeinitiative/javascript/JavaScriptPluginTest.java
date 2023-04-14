@@ -6,10 +6,10 @@ import org.sonar.api.utils.Version;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class JavaScriptPluginTest {
+class JavaScriptPluginTest {
 
     @Test
-    public void extensions() {
+    void extensions() {
         Plugin.Context context = new Plugin.Context(new MockedSonarRuntime());
         new JavaScriptPlugin().define(context);
         assertThat(context.getExtensions()).hasSize(1);

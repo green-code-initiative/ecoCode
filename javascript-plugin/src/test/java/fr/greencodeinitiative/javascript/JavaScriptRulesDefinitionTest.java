@@ -5,10 +5,10 @@ import org.sonar.api.server.rule.RulesDefinition;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class JavaScriptRulesDefinitionTest {
+class JavaScriptRulesDefinitionTest {
 
     @Test
-    public void createExternalRepository() {
+    void createExternalRepository() {
         RulesDefinition.Context context = new RulesDefinition.Context();
         new JavaScriptRulesDefinition().define(context);
         assertThat(context.repositories()).hasSize(1);
