@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deleted
+
+## [1.2.0] - 2023-04-14
+
+### Added
+
 - [171](https://github.com/green-code-initiative/ecoCode/issues/171) Add migration mechanism to support "issue re-keying"
 
 ### Changed
@@ -108,9 +116,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.1.0...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.0...HEAD
 
-[1.0.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.0.0...v1.1.0
+[1.2.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.1.0...v1.2.0
+
+[1.1.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.0.0...v1.1.0
 
 [1.0.0]: https://github.com/green-code-initiative/ecoCode/compare/v0.2.2...v1.0.0
 
