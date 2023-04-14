@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - [#161](https://github.com/green-code-initiative/ecoCode/pull/161) Remove unnecessary junit dependencies in pom.xml
 
+- [#161](https://github.com/green-code-initiative/ecoCode/pull/161) Remove unnecessary junit dependencies in pom.xml
 - [166](https://github.com/green-code-initiative/ecoCode/issues/166) Correction of wrong message of rule EC63
 - [167](https://github.com/green-code-initiative/ecoCode/issues/167) Use same kind for rules across different languages
 - [173](https://github.com/green-code-initiative/ecoCode/issues/173) Update issue description of rule EC34 (try-catch)
