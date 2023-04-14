@@ -83,6 +83,13 @@
 									</fileset>
 									<flattenmapper/>
 								</copy>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/python">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/python/EC*.html"/>
+										<include name="*/EC*.json"/>
+									</fileset>
+									<flattenmapper/>
+								</copy>
 							</target>
 						</configuration>
 						<goals>
@@ -116,6 +123,18 @@
 						<configuration>
 							<descriptors>
 								<descriptor>${project.basedir}/src/main/assembly/php.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-python</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/python.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>

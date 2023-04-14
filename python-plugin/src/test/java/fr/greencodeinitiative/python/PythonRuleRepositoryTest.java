@@ -21,6 +21,7 @@ package fr.greencodeinitiative.python;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.ecocode.rules.python.PythonRulesSpecificationsRepository;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,12 +38,12 @@ public class PythonRuleRepositoryTest {
     pythonRuleRepository = new PythonRuleRepository();
     context = new RulesDefinition.Context();
     pythonRuleRepository.define(context);
-    repository = context.repository(PythonRuleRepository.REPOSITORY_KEY);
+    repository = context.repository(PythonRulesSpecificationsRepository.REPOSITORY_KEY);
   }
 
   @Test
   public void test() {
-    assertThat(pythonRuleRepository.repositoryKey()).isEqualTo(PythonRuleRepository.REPOSITORY_KEY);
+    assertThat(pythonRuleRepository.repositoryKey()).isEqualTo(PythonRulesSpecificationsRepository.REPOSITORY_KEY);
     assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(pythonRuleRepository.repositoryKey());
     assertThat(context.repositories().get(0).rules()).hasSize(10);
     assertThat(pythonRuleRepository.checkClasses()).hasSize(10);
@@ -59,5 +60,19 @@ public class PythonRuleRepositoryTest {
             rule -> assertions.assertThat(rule.key()).startsWith("EC")
     );
     assertions.assertAll();
+  }
+
+  @Test()
+  public void testRepositoryKey() {
+    assertThat(pythonRuleRepository.repositoryKey()).isEqualTo("ecocode-python");
+  }
+
+  @Test()
+  public void testAllRuleParametersHaveDescription() {
+    context.repositories().stream()
+            .flatMap(repository -> repository.rules().stream())
+            .flatMap(rule -> rule.params().stream())
+            .forEach(param -> assertThat(param.description()).as("description for " + param.key()).isNotEmpty());
+    ;
   }
 }

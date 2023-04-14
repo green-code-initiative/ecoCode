@@ -19,61 +19,62 @@
  */
 package fr.greencodeinitiative.python;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-
-import fr.greencodeinitiative.python.checks.*;
-import org.apache.commons.lang.StringUtils;
-import org.sonar.api.rules.RuleType;
+import fr.greencodeinitiative.python.checks.AvoidDoubleQuoteCheck;
+import fr.greencodeinitiative.python.checks.AvoidFullSQLRequest;
+import fr.greencodeinitiative.python.checks.AvoidGettersAndSetters;
+import fr.greencodeinitiative.python.checks.AvoidGlobalVariableInFunctionCheck;
+import fr.greencodeinitiative.python.checks.AvoidListComprehensionInIterations;
+import fr.greencodeinitiative.python.checks.AvoidSQLRequestInLoop;
+import fr.greencodeinitiative.python.checks.AvoidTryCatchFinallyCheck;
+import fr.greencodeinitiative.python.checks.AvoidUnoptimizedVectorImagesCheck;
+import fr.greencodeinitiative.python.checks.DetectUnoptimizedImageFormat;
+import fr.greencodeinitiative.python.checks.NoFunctionCallWhenDeclaringForLoop;
+import org.sonar.api.SonarEdition;
+import org.sonar.api.SonarProduct;
+import org.sonar.api.SonarQubeSide;
+import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
+import org.sonar.api.utils.Version;
 import org.sonar.plugins.python.api.PythonCustomRuleRepository;
+import org.sonarsource.analyzer.commons.RuleMetadataLoader;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static io.ecocode.rules.python.PythonRulesSpecificationsRepository.LANGUAGE;
+import static io.ecocode.rules.python.PythonRulesSpecificationsRepository.NAME;
+import static io.ecocode.rules.python.PythonRulesSpecificationsRepository.REPOSITORY_KEY;
+import static io.ecocode.rules.python.PythonRulesSpecificationsRepository.RESOURCE_BASE_PATH;
 
 public class PythonRuleRepository implements RulesDefinition, PythonCustomRuleRepository {
+  private static final Version SONARQUBE_RUNTIME_VERSION = Version.create(9, 8);
+  private static final SonarRuntime SONARQUBE_RUNTIME = new SonarRuntime() {
+    @Override
+    public Version getApiVersion() {
+      return SONARQUBE_RUNTIME_VERSION;
+    }
 
-  public static final String LANGUAGE = "py";
-  public static final String NAME = "ecoCode";
-  public static final String RESOURCE_BASE_PATH = "/fr/greencodeinitiative/l10n/python/rules/python/";
-  public static final String REPOSITORY_KEY = "ecocode-python";
+    @Override
+    public SonarProduct getProduct() {
+      return SonarProduct.SONARQUBE;
+    }
+
+    @Override
+    public SonarQubeSide getSonarQubeSide() {
+      return SonarQubeSide.SCANNER;
+    }
+
+    @Override
+    public SonarEdition getEdition() {
+      return SonarEdition.COMMUNITY;
+    }
+  };
 
   @Override
   public void define(Context context) {
-    NewRepository repository = context.createRepository(repositoryKey(), LANGUAGE).setName(NAME);
-
-    new RulesDefinitionAnnotationLoader().load(repository, checkClasses().toArray(new Class[] {}));
-
-    // technical debt
-    Map<String, String> remediationCosts = new HashMap<>();
-    remediationCosts.put(AvoidSQLRequestInLoop.RULE_KEY, "10min");
-    remediationCosts.put(AvoidFullSQLRequest.RULE_KEY, "20min");
-    repository.rules().forEach(rule -> {
-      rule.setType(RuleType.CODE_SMELL);
-      String debt = remediationCosts.get(rule.key());
-
-      // TODO DDC : create support to use org.apache.commons.lang.StringUtils
-//      if (StringUtils.isBlank(debt)) {
-      if (debt == null || debt.trim().equals("")) {
-        // default debt to 5min for issue correction
-        rule.setDebtRemediationFunction(
-                rule.debtRemediationFunctions().constantPerIssue("5min"));
-      } else {
-        rule.setDebtRemediationFunction(
-                rule.debtRemediationFunctions().constantPerIssue(debt));
-      }
-    });
-
-    // HTML description
-    repository.rules().forEach(rule ->
-            rule.setHtmlDescription(loadResource(RESOURCE_BASE_PATH + rule.key() + ".html")));
-
+    NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
+    RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH, SONARQUBE_RUNTIME);
+    ruleMetadataLoader.addRulesByAnnotatedClass(repository, (List) checkClasses());
     repository.done();
   }
 
@@ -96,22 +97,5 @@ public class PythonRuleRepository implements RulesDefinition, PythonCustomRuleRe
             AvoidListComprehensionInIterations.class,
             DetectUnoptimizedImageFormat.class
     );
-  }
-
-  private String loadResource(String path) {
-    URL resource = getClass().getResource(path);
-    if (resource == null) {
-      throw new IllegalStateException("Resource not found: " + path);
-    }
-    ByteArrayOutputStream result = new ByteArrayOutputStream();
-    try (InputStream in = resource.openStream()) {
-      byte[] buffer = new byte[1024];
-      for (int len = in.read(buffer); len != -1; len = in.read(buffer)) {
-        result.write(buffer, 0, len);
-      }
-      return new String(result.toByteArray(), StandardCharsets.UTF_8);
-    } catch (IOException e) {
-      throw new IllegalStateException("Failed to read resource: " + path, e);
-    }
   }
 }
