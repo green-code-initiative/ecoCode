@@ -38,6 +38,7 @@ import fr.greencodeinitiative.php.checks.AvoidUsingGlobalVariablesCheck;
 import fr.greencodeinitiative.php.checks.IncrementCheck;
 import fr.greencodeinitiative.php.checks.NoFunctionCallWhenDeclaringForLoop;
 import fr.greencodeinitiative.php.checks.UseOfMethodsForBasicOperations;
+import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
 import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
@@ -60,6 +61,7 @@ public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleReposito
     remediationCosts.put(AvoidSQLRequestInLoopCheck.RULE_KEY, "10min");
     remediationCosts.put(AvoidFullSQLRequestCheck.RULE_KEY, "20min");
     repository.rules().forEach(rule -> {
+      rule.setType(RuleType.CODE_SMELL);
       String debt = remediationCosts.get(rule.key());
 
       // TODO DDC : create support to use org.apache.commons.lang.StringUtils
