@@ -10,7 +10,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = AvoidTryCatchFinallyCheck.RULE_KEY,
-        name = "Avoid using try-catch-finally statement",
+        name = "Avoid using try-catch statement",
         description = AvoidTryCatchFinallyCheck.DESCRIPTION,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design", "ecocode"})
