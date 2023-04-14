@@ -51,7 +51,6 @@
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
         <sonarqube.version>9.4.0.54424</sonarqube.version>
-        <sonarjava.version>7.15.0.30507</sonarjava.version>
 
         <sonar.organization>green-code-initiative</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
@@ -59,11 +58,13 @@
         <!-- Don't forget to update this version -->
         <jacoco.version>0.8.8</jacoco.version>
 
-        <sonar-plugin-api-impl.version>9.7.1.62043</sonar-plugin-api-impl.version>
-        <sonar-analyzer-commons.version>2.1.0.1111</sonar-analyzer-commons.version>
-        <sonar.python.version>3.19.0.10254</sonar.python.version>
+        <sonarjava.version>7.15.0.30507</sonarjava.version>
+        <sonarpython.version>3.19.0.10254</sonarpython.version>
         <sonarphp.version>3.25.0.9077</sonarphp.version>
         <sonarjavascript.version>9.13.0.20537</sonarjavascript.version>
+
+        <sonar-plugin-api-impl.version>9.7.1.62043</sonar-plugin-api-impl.version>
+        <sonar-analyzer-commons.version>2.1.0.1111</sonar-analyzer-commons.version>
         <sonar-packaging.version>1.21.0.505</sonar-packaging.version>
         <sonar.skipDependenciesPackaging>true</sonar.skipDependenciesPackaging>
         <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
@@ -135,7 +136,7 @@
             <dependency>
                 <groupId>org.sonarsource.python</groupId>
                 <artifactId>sonar-python-plugin</artifactId>
-                <version>${sonar.python.version}</version>
+                <version>${sonarpython.version}</version>
                 <type>sonar-plugin</type>
                 <scope>provided</scope>
             </dependency>
@@ -165,7 +166,7 @@
             <dependency>
                 <groupId>org.sonarsource.python</groupId>
                 <artifactId>python-checks-testkit</artifactId>
-                <version>${sonar.python.version}</version>
+                <version>${sonarpython.version}</version>
                 <scope>test</scope>
             </dependency>
 
