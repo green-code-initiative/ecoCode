@@ -59,9 +59,7 @@
                     <pluginClass>fr.greencodeinitiative.php.PHPPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
-                    <basePlugin>php</basePlugin>
                     <jreMinVersion>${java.version}</jreMinVersion>
-                    <requirePlugins>php:${sonarphp.version}</requirePlugins>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                     <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
