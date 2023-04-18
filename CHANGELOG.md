@@ -13,6 +13,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [1.2.1] - 2023-04-18
+
+### Added
+
+### Changed
+
+- [#180](https://github.com/green-code-initiative/ecoCode/pull/180) correction of SonarQube review for MarketPlace (sonar plugin)
+
+### Deleted
+
 ## [1.2.0] - 2023-04-14
 
 ### Added
@@ -116,7 +126,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.0...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.1...HEAD
+
+[1.2.1]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.0...v1.2.1
 
 [1.2.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.1.0...v1.2.0
 
