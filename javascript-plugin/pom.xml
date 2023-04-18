@@ -64,7 +64,6 @@
                     <pluginClass>fr.greencodeinitiative.javascript.JavaScriptPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
-                    <basePlugin>javascript</basePlugin>
                     <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
             </plugin>

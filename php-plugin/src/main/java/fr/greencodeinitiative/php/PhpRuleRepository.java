@@ -24,12 +24,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.ImmutableList;
 import fr.greencodeinitiative.php.checks.AvoidDoubleQuoteCheck;
 import fr.greencodeinitiative.php.checks.AvoidFullSQLRequestCheck;
 import fr.greencodeinitiative.php.checks.AvoidSQLRequestInLoopCheck;
@@ -90,7 +88,7 @@ public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleReposito
 
   @Override
   public List<Class<?>> checkClasses() {
-    return ImmutableList.of(
+    return List.of(
             AvoidDoubleQuoteCheck.class,
             AvoidFullSQLRequestCheck.class,
             AvoidSQLRequestInLoopCheck.class,
