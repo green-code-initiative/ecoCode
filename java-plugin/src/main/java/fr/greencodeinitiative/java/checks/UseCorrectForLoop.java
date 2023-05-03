@@ -9,6 +9,7 @@ import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.ForEachStatement;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = "EC53",
@@ -16,6 +17,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
         description = UseCorrectForLoop.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S53")
 public class UseCorrectForLoop extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Avoid the use of Foreach with Arrays";

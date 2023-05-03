@@ -16,6 +16,7 @@ import org.sonar.plugins.php.api.tree.declaration.MethodDeclarationTree;
 import org.sonar.plugins.php.api.tree.expression.FunctionCallTree;
 import org.sonar.plugins.php.api.tree.statement.StatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = UseOfMethodsForBasicOperations.RULE_KEY,
@@ -23,6 +24,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         description = UseOfMethodsForBasicOperations.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "D2")
 public class UseOfMethodsForBasicOperations extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC22";

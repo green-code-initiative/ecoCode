@@ -16,6 +16,7 @@ import org.sonar.plugins.python.api.tree.ReturnStatement;
 import org.sonar.plugins.python.api.tree.Statement;
 import org.sonar.plugins.python.api.tree.StatementList;
 import org.sonar.plugins.python.api.tree.Tree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = AvoidGettersAndSetters.RULE_KEY,
@@ -23,6 +24,7 @@ import org.sonar.plugins.python.api.tree.Tree;
         description = AvoidGettersAndSetters.DESCRIPTION,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "D7")
 public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "EC7";
