@@ -9,6 +9,7 @@ import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.NewClassTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = "EC32",
@@ -16,6 +17,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
         description = InitializeBufferWithAppropriateSize.RULE_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GRSP0032")
 public class InitializeBufferWithAppropriateSize extends IssuableSubscriptionVisitor {
 
     protected static final String RULE_MESSAGE = "Initialize StringBuilder or StringBuffer with appropriate size";

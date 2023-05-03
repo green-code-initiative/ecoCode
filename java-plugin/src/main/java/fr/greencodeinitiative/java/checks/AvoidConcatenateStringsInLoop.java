@@ -13,6 +13,7 @@ import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 import org.sonar.plugins.java.api.tree.BinaryExpressionTree;
 import org.sonar.plugins.java.api.tree.ExpressionTree;
 import org.sonar.plugins.java.api.tree.Tree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = "EC75",
@@ -20,6 +21,7 @@ import org.sonar.plugins.java.api.tree.Tree;
         description = AvoidConcatenateStringsInLoop.MESSAGE_RULE,
         priority = Priority.MINOR,
         tags = {"bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S75")
 public class AvoidConcatenateStringsInLoop extends IssuableSubscriptionVisitor {
 
     public static final String MESSAGE_RULE = "Don't concatenate Strings in loop, use StringBuilder instead.";
