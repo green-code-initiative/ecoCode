@@ -14,6 +14,7 @@ import org.sonar.plugins.java.api.tree.NewClassTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonar.plugins.java.api.tree.TryStatementTree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = "EC28",
@@ -21,6 +22,7 @@ import org.sonar.plugins.java.api.tree.TryStatementTree;
         description = OptimizeReadFileExceptions.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GRSP0028")
 public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Optimize Read File Exceptions";

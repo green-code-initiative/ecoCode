@@ -16,6 +16,7 @@ import org.sonar.plugins.php.api.tree.statement.ForStatementTree;
 import org.sonar.plugins.php.api.tree.statement.IfStatementTree;
 import org.sonar.plugins.php.api.tree.statement.StatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = AvoidSQLRequestInLoopCheck.RULE_KEY,
@@ -23,6 +24,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         description = AvoidSQLRequestInLoopCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S72")
 public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC72";

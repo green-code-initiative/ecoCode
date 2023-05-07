@@ -10,6 +10,7 @@ import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.Tree.Kind;
 import org.sonar.plugins.php.api.tree.expression.LiteralTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = AvoidFullSQLRequestCheck.RULE_KEY,
@@ -17,6 +18,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         description = AvoidFullSQLRequestCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S74")
 public class AvoidFullSQLRequestCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC74";

@@ -16,17 +16,17 @@ services:
       SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: 'true'
     volumes:
       - type: bind
-        source: ./java-plugin/target/ecocode-java-plugin-1.1.1-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-java-plugin-1.1.1-SNAPSHOT.jar
+        source: ./java-plugin/target/ecocode-java-plugin-1.2.2-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-java-plugin-1.2.2-SNAPSHOT.jar
       - type: bind
-        source: ./javascript-plugin/target/ecocode-javascript-plugin-1.1.1-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-javascript-plugin-1.1.1-SNAPSHOT.jar
+        source: ./javascript-plugin/target/ecocode-javascript-plugin-1.2.2-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-javascript-plugin-1.2.2-SNAPSHOT.jar
       - type: bind
-        source: ./php-plugin/target/ecocode-php-plugin-1.1.1-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-php-plugin-1.1.1-SNAPSHOT.jar
+        source: ./php-plugin/target/ecocode-php-plugin-1.2.2-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-php-plugin-1.2.2-SNAPSHOT.jar
       - type: bind
-        source: ./python-plugin/target/ecocode-python-plugin-1.1.1-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-python-plugin-1.1.1-SNAPSHOT.jar
+        source: ./python-plugin/target/ecocode-python-plugin-1.2.2-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-python-plugin-1.2.2-SNAPSHOT.jar
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"
