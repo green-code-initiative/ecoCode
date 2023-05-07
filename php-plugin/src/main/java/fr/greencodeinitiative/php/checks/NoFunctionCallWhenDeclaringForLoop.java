@@ -12,6 +12,7 @@ import org.sonar.plugins.php.api.tree.expression.BinaryExpressionTree;
 import org.sonar.plugins.php.api.tree.expression.ExpressionTree;
 import org.sonar.plugins.php.api.tree.statement.ForStatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = NoFunctionCallWhenDeclaringForLoop.RULE_KEY,
@@ -19,6 +20,7 @@ import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
         description = NoFunctionCallWhenDeclaringForLoop.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S69")
 public class NoFunctionCallWhenDeclaringForLoop extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC69";
