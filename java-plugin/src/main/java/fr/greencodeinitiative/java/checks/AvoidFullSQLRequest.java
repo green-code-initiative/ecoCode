@@ -12,6 +12,7 @@ import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.LiteralTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = "EC74",
@@ -19,6 +20,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
         description = AvoidFullSQLRequest.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S74")
 public class AvoidFullSQLRequest extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Don't use the query SELECT * FROM";

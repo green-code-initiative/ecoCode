@@ -10,12 +10,14 @@ import org.sonar.plugins.java.api.semantic.MethodMatchers;
 import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(key = "EC1",
         name = "Developpement",
         description = AvoidSpringRepositoryCallInLoopCheck.RULE_MESSAGE,
         priority = Priority.MINOR,
         tags = {"bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GRC1")
 public class AvoidSpringRepositoryCallInLoopCheck extends IssuableSubscriptionVisitor {
 
     protected static final String RULE_MESSAGE = "Avoid Spring repository call in loop";
