@@ -4,11 +4,16 @@ import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;
-import org.sonar.plugins.python.api.tree.*;
+import org.sonar.plugins.python.api.tree.Tree;
+import org.sonar.plugins.python.api.tree.ForStatement;
+import org.sonar.plugins.python.api.tree.Expression;
+import org.sonar.plugins.python.api.tree.CallExpression;
 
 import java.util.Objects;
 
-import static org.sonar.plugins.python.api.tree.Tree.Kind.*;
+import static org.sonar.plugins.python.api.tree.Tree.Kind.LIST_COMPREHENSION;
+import static org.sonar.plugins.python.api.tree.Tree.Kind.CALL_EXPR;
+import static org.sonar.plugins.python.api.tree.Tree.Kind.FOR_STMT;
 
 @Rule(
         key = AvoidListComprehensionInIterations.RULE_KEY,
@@ -37,33 +42,31 @@ public class AvoidListComprehensionInIterations extends PythonSubscriptionCheck 
 
         } else if (forTestExpression.is(CALL_EXPR)) {
             CallExpression callExpression = (CallExpression) forTestExpression;
-            switch (callExpression.callee().firstToken().value()) {
-                case "zip":
-                case "filter":
-                case "enumerate":
-                    Objects.requireNonNull(callExpression.argumentList()).
-                            arguments().forEach(e -> visitFunctionArguments(context, e.children().get(0)));
-            }
+            visitCallExpression(context, callExpression);
         }
     }
 
-    private void visitFunctionArguments(SubscriptionContext context, Tree argument) {
+    private void visitFunctionArgument(SubscriptionContext context, Tree argument) {
         if (argument.is(LIST_COMPREHENSION)) {
             context.addIssue(argument.firstToken(), DESCRIPTION);
 
         } else if (argument.is(CALL_EXPR)) {
             CallExpression callExpression = (CallExpression) argument;
-            switch (callExpression.callee().firstToken().value()) {
-                case "zip":
-                case "filter":
-                case "enumerate":
-                    Objects.requireNonNull(callExpression.argumentList()).
-                            arguments().forEach(e -> visitFunctionArguments(context, e.children().get(0)));
-                    break;
-
-            }
+            visitCallExpression(context, callExpression);
         }
+    }
 
+    private void visitCallExpression(SubscriptionContext context, CallExpression callExpression){
+        switch (callExpression.callee().firstToken().value()) {
+            case "zip":
+            case "filter":
+            case "enumerate":
+                Objects.requireNonNull(callExpression.argumentList()).
+                  arguments().forEach(e -> visitFunctionArgument(context, e.children().get(0)));
+                break;
+            default:
+                break;
+        }
     }
 
 }
