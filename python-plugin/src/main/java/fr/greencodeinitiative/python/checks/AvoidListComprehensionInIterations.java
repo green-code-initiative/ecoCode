@@ -32,7 +32,6 @@ public class AvoidListComprehensionInIterations extends PythonSubscriptionCheck 
     @Override
     public void initialize(Context context) {
         context.registerSyntaxNodeConsumer(FOR_STMT, this::visitIteration);
-
     }
 
     private void visitIteration(SubscriptionContext context) {
@@ -40,9 +39,7 @@ public class AvoidListComprehensionInIterations extends PythonSubscriptionCheck 
 
         Expression forTestExpression = forStatement.testExpressions().get(0);
         if (forTestExpression.is(LIST_COMPREHENSION)) {
-
             context.addIssue(forTestExpression.firstToken(), DESCRIPTION);
-
         } else if (forTestExpression.is(CALL_EXPR)) {
             CallExpression callExpression = (CallExpression) forTestExpression;
             visitCallExpression(context, callExpression);
@@ -67,7 +64,6 @@ public class AvoidListComprehensionInIterations extends PythonSubscriptionCheck 
             Expression expression = ((RegularArgument)argument).expression();
             if (expression.is(LIST_COMPREHENSION)) {
                 context.addIssue(expression.firstToken(), DESCRIPTION);
-
             } else if (expression.is(CALL_EXPR)) {
                 CallExpression callExpression = (CallExpression) expression;
                 visitCallExpression(context, callExpression);
@@ -75,9 +71,8 @@ public class AvoidListComprehensionInIterations extends PythonSubscriptionCheck 
         }
     }
 
-    private static String getFunctionNameFromCallExpression(CallExpression callExpression) {
+    private String getFunctionNameFromCallExpression(CallExpression callExpression) {
         Symbol symbol = callExpression.calleeSymbol();
         return symbol != null && symbol.name() != null ? symbol.name() : "";
     }
-
 }
