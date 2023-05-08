@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [#127](https://github.com/green-code-initiative/ecoCode/issues/127) Add Python rule EC404: Usage of generator comprehension instead of list comprehension in for loop declaration.
+
 ### Changed
 
 ### Deleted
