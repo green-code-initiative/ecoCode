@@ -8,6 +8,7 @@ import org.sonar.plugins.java.api.tree.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Rule(key = "ECCRJVM208",
         name = "Developpement",
@@ -33,7 +34,6 @@ public class AvoidSpringRepositoryCallInStreamCheck extends IssuableSubscription
     public void visitNode(Tree tree) {
 
             LambdaExpressionTree lambda = (LambdaExpressionTree) tree;
-
         if (Objects.requireNonNull(Objects.requireNonNull(Objects.requireNonNull(lambda.parent()).parent()).parent()).is(Tree.Kind.MEMBER_SELECT)){
            String methodName = ( (MemberSelectExpressionTree) Objects.requireNonNull(Objects.requireNonNull(Objects.requireNonNull(lambda.parent()).parent()).parent())).expression().symbolType().name();
            if (methodName.equals(STREAM)){

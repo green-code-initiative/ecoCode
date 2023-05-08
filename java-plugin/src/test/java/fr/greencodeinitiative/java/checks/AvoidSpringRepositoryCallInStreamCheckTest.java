@@ -8,6 +8,8 @@ import org.sonar.api.utils.log.LoggerLevel;
 import org.sonar.java.checks.verifier.CheckVerifier;
 
 class AvoidSpringRepositoryCallInStreamCheckTest {
+    @Rule
+    public LogTester logTester = new LogTester().setLevel(LoggerLevel.DEBUG);
     @Test
     void test() {
         CheckVerifier.newVerifier()

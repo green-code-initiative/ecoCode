@@ -10,23 +10,16 @@ public class AvoidSpringRepositoryCallInStreamCheck {
 
     public List<Employee> smellGetAllEmployeesByIds(List<Integer> ids) {
       return   ids.stream().map(element ->
-                     employeeRepository.findById(element).orElse(null)// Noncompliant
+      {
+          return employeeRepository.findById(element).orElse(null);// Noncompliant
+          }
         ).collect(Collectors.toList());
     }
 
-    public List<Employee> smellGetAllEmployeesByIds(List<Integer> ids) {
-        return   ids.stream().filter(element -> element == 1).map(element ->
-                employeeRepository.findById(element).orElse(null)// Noncompliant
-        ).collect(Collectors.toList());
-    }
 
-    public List<Employee> smellGetAllEmployeesByIds(List<Integer> ids) {
-        return   ids.stream().filter(element ->
-                element == 1// Compliant
-        ).collect(Collectors.toList());
-    }
 
-    public List<Employee> smellGetAllEmployeesByIds(List<Integer> ids) {
+
+    public List<Employee> smellGetAllEmployeesByIdsWithoutStream(List<Integer> ids) {
         return   employeeRepository.findAllById(ids);// Compliant
     }
 
