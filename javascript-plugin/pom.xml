@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.ecocode</groupId>
         <artifactId>ecocode-parent</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.2.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>ecocode-javascript-plugin</artifactId>
@@ -38,11 +38,9 @@
             <artifactId>sonar-analyzer-commons</artifactId>
         </dependency>
 
-        <!-- Testing dependencies -->
-
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -66,7 +64,6 @@
                     <pluginClass>fr.greencodeinitiative.javascript.JavaScriptPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
-                    <basePlugin>javascript</basePlugin>
                     <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
             </plugin>

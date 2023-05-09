@@ -11,11 +11,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [#63](https://github.com/green-code-initiative/ecoCode/issues/63) Update plugins to be compliant for SonarQube MarketPlace integration ( PR [#79](https://github.com/green-code-initiative/ecoCode/pull/79) )
+### Deleted
+
+## [1.2.1] - 2023-04-18
+
+### Added
+
+### Changed
+
+- [#180](https://github.com/green-code-initiative/ecoCode/pull/180) correction of SonarQube review for MarketPlace (sonar plugin)
 
 ### Deleted
 
-- [85](https://github.com/green-code-initiative/ecoCode/issues/85) Cleaning some useless classes on PHP plugin
+## [1.2.0] - 2023-04-14
+
+### Added
+
+- [#171](https://github.com/green-code-initiative/ecoCode/issues/171) Add migration mechanism to support "issue re-keying"
+
+### Changed
+
+- [#161](https://github.com/green-code-initiative/ecoCode/pull/161) Remove unnecessary junit dependencies in pom.xml
+- [#166](https://github.com/green-code-initiative/ecoCode/issues/166) Correction of wrong message of rule EC63
+- [#167](https://github.com/green-code-initiative/ecoCode/issues/167) Use same kind for rules across different languages
+- [#173](https://github.com/green-code-initiative/ecoCode/issues/173) Update issue description of rule EC34 (try-catch)
+
+### Deleted
+
+## [1.1.0] - 2023-04-03
+
+### Changed
+
+- [#63](https://github.com/green-code-initiative/ecoCode/issues/63) Update plugins to be compliant for SonarQube MarketPlace integration ( PR [#79](https://github.com/green-code-initiative/ecoCode/pull/79) )
+- [#88](https://github.com/green-code-initiative/ecoCode/pull/88) upgrade rules matrix with new ids + refactoring rules documentation (`RULES.md`)
+
+### Deleted
+
+- [#85](https://github.com/green-code-initiative/ecoCode/issues/85) Cleaning some useless classes on PHP plugin
 
 ## [1.0.0] - 2023-03-24
 
@@ -60,8 +92,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.2.1] - 2022-12-30
 
-### Added
-
 ### Changed
 
 - [#22](https://github.com/green-code-initiative/ecoCode/issues/22) Error when running sonar scan with ecocode
@@ -83,7 +113,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [161](https://github.com/cnumr/ecoCode/issues/161) adding tool to update tags of native rules with our custom tags
+- [#161](https://github.com/cnumr/ecoCode/issues/161) adding tool to update tags of native rules with our custom tags
 
 ### Changed
 
@@ -96,7 +126,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.0.0...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.1...HEAD
+
+[1.2.1]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.0...v1.2.1
+
+[1.2.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.1.0...v1.2.0
+
+[1.1.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.0.0...v1.1.0
 
 [1.0.0]: https://github.com/green-code-initiative/ecoCode/compare/v0.2.2...v1.0.0
 
