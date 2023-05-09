@@ -19,9 +19,11 @@ import org.sonar.plugins.java.api.tree.IdentifierTree;
 import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.PackageDeclarationTree;
 import org.sonar.plugins.java.api.tree.Tree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(key = "EC69", name = "Developpement", description = NoFunctionCallWhenDeclaringForLoop.MESSAGERULE, priority = Priority.MINOR, tags = {
         "bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S69")
 public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Do not call a function when declaring a for-type loop";

@@ -16,12 +16,14 @@ import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonar.plugins.java.api.tree.WhileStatementTree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(key = "EC3",
         name = "Developpement",
         description = AvoidGettingSizeCollectionInLoop.MESSAGERULE,
         priority = Priority.MINOR,
         tags = {"bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GSCIL")
 public class AvoidGettingSizeCollectionInLoop extends IssuableSubscriptionVisitor {
     protected static final String MESSAGERULE = "Avoid getting the size of the collection in the loop";
     private static final MethodMatchers SIZE_METHOD = MethodMatchers.or(
