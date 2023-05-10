@@ -1,0 +1,17 @@
+{
+  "title": "Use lazy fetch type instead of egger",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "20min"
+  },
+  "tags": [
+    "eco-design",
+    "performance",
+    "orm",
+    "jpa",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}

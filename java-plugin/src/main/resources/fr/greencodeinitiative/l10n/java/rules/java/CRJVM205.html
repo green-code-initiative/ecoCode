@@ -1,0 +1,32 @@
+<p>Use lazy fetch type instead of egger.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+  class FetchTypeLazyCheck {
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="USER_ID")
+    private UserLazy user;
+
+   }
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+  class FetchTypeLazyCheck {
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name="USER_ID")
+        private UserLazy user;
+
+   }
+
+    OR
+
+    class FetchTypeLazyCheck {
+
+        @ManyToOne
+        @JoinColumn(name="USER_ID")
+        private UserLazy user;
+
+   }
+
+</pre>
