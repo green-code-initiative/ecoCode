@@ -68,33 +68,13 @@
                 </configuration>
             </plugin>
             <plugin>
+                <!-- plugin TO KEEP because of an error on SonarQube logs when it starts
+                "java.lang.ClassNotFoundException: org.sonarsource.analyzer.commons.ExternalRuleLoader"
+                possible reaseon : some libraries aren't available at runtime if no shaded Jar file produced
+                 -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <filters>
-                                <filter>
-                                    <artifact>commons-*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/**</exclude>
-                                    </excludes>
-                                </filter>
-                                <filter>
-                                    <artifact>org.*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/**</exclude>
-                                        <exclude>org/sonar/api/batch/sensor/**</exclude>
-                                    </excludes>
-                                </filter>
-                            </filters>
-                        </configuration>
-                    </execution>
-                </executions>
+                <!-- shade plugin configuration is on parent pom.xml beacause of use for other modules -->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

@@ -32,7 +32,7 @@ import org.sonar.api.utils.Version;
 public class PhpPluginTest {
     @Test
     public void test() {
-        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(9, 9), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
+        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(10, 0), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
         Plugin.Context context = new PluginContextImpl.Builder().setSonarRuntime(sonarRuntime).build();
         new PHPPlugin().define(context);
         assertThat(context.getExtensions()).hasSize(1);
