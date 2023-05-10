@@ -94,6 +94,7 @@ Ready to use binaries are available [from GitHub](https://github.com/green-code-
 | 0.2.+            | 11 / 17      |
 | 1.0.+            | 11 / 17      |
 | 1.1.+            | 11 / 17      |
+| 1.2.+            | 11 / 17      |
 
 🤝 Contribution
 ---------------
@@ -117,13 +118,13 @@ Any question ? We are here for you !
 first, create an issue, please.
 Then, if no answer, contact ...
 
-- Jules Delecour
+- [Jules Delecour](https://www.linkedin.com/in/jules-delecour-498680118/)
 - [Geoffrey Lalloué](https://github.com/glalloue)
-- Julien Hertout
+- [Julien Hertout](https://www.linkedin.com/in/julien-hertout-b1175449/)
 - [Justin Berque](https://www.linkedin.com/in/justin-berque-444412140)
 - [Olivier Le Goaër](https://olegoaer.perso.univ-pau.fr)
-- Maxime DUBOIS
-- [David DE CARVALHO](https://www.linkedin.com/in/%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-david%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-de-carvalho%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-8b395284/)
+- [Maxime DUBOIS](https://www.linkedin.com/in/maxime-dubois-%F0%9F%8C%B1-649a3a3/)
+- [David DE CARVALHO](https://www.linkedin.com/in/david%E2%80%8E-de-carvalho-8b395284/)
 
 🧐 Core Team Emeriti
 --------------------
