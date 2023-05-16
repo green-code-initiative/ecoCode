@@ -29,7 +29,7 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
         ctx.registerSyntaxNodeConsumer(Tree.Kind.STRING_ELEMENT, this::checkSVG);
     }
 
-    public void checkSVG(SubscriptionContext ctx) {
+    private void checkSVG(SubscriptionContext ctx) {
         StringElement stringLiteral = (StringElement) ctx.syntaxNode();
         checkComments(stringLiteral, ctx);
         checkLayers(stringLiteral, ctx);
@@ -38,29 +38,45 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
     }
 
     private void checkComments(StringElement str, SubscriptionContext ctx) {
-        if (str.value().contains(AvoidUnoptimizedVectorImagesCheck.STRING_TAG_TO_DETECT) && COMMENT_PATTERN.matcher(str.value()).find()) {
+        if (isSvgTagNotDetected(str))
+            return;
+
+        if (COMMENT_PATTERN.matcher(str.value()).find()) {
             ctx.addIssue(str, DESCRIPTION);
         }
     }
 
     private void checkLayers(StringElement str, SubscriptionContext ctx) {
+        if (isSvgTagNotDetected(str))
+            return;
+
         Matcher matcher = LAYERS_PATTERN.matcher(str.value());
         int matches = 0;
         while (matcher.find()) matches++;
-        if (str.value().contains(AvoidUnoptimizedVectorImagesCheck.STRING_TAG_TO_DETECT) && matches > 1) {
+        if (matches > 1) {
             ctx.addIssue(str, DESCRIPTION);
         }
     }
 
     private void checkNamespaces(StringElement str, SubscriptionContext ctx) {
-        if (str.value().contains(AvoidUnoptimizedVectorImagesCheck.STRING_TAG_TO_DETECT) && NAMESPACE_PATTERN.matcher(str.value()).find()) {
+        if (isSvgTagNotDetected(str))
+            return;
+
+        if (NAMESPACE_PATTERN.matcher(str.value()).find()) {
             ctx.addIssue(str, DESCRIPTION);
         }
     }
 
     private void checkMetadata(StringElement str, SubscriptionContext ctx) {
-        if (str.value().contains(AvoidUnoptimizedVectorImagesCheck.STRING_TAG_TO_DETECT) && str.value().contains("</metadata>")) {
+        if (isSvgTagNotDetected(str))
+            return;
+
+        if (str.value().contains("</metadata>")) {
             ctx.addIssue(str, DESCRIPTION);
         }
+    }
+
+    private boolean isSvgTagNotDetected(StringElement str) {
+        return !str.value().contains(AvoidUnoptimizedVectorImagesCheck.STRING_TAG_TO_DETECT);
     }
 }
