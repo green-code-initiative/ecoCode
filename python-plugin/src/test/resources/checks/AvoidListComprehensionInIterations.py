@@ -10,10 +10,6 @@ def non_compliant_example_zip():
     for var, var_ in zip([var2 for var2 in range(1000)], [var2 for var2 in range(1000)]): # Noncompliant {{Use generator comprehension instead of list comprehension in for loop declaration}} {{Use generator comprehension instead of list comprehension in for loop declaration}}
         print(var)
 
-def non_compliant_example_zip():
-    for var, var_ in zip([var2 for var2 in range(1000)], [var2 for var2 in range(1000)]): # Noncompliant {{Use generator comprehension instead of list comprehension in for loop declaration}} {{Use generator comprehension instead of list comprehension in for loop declaration}}
-        print(var)
-
 def non_compliant_example_enumerate_zip():
     for packed_var in enumerate(zip([1, 2, 3], filter(bool, [idx % 2 for idx in range(100)]))): # Noncompliant {{Use generator comprehension instead of list comprehension in for loop declaration}}
         print(packed_var)
