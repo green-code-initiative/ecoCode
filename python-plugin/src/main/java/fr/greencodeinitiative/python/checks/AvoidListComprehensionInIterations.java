@@ -23,7 +23,7 @@ import static org.sonar.plugins.python.api.tree.Tree.Kind.REGULAR_ARGUMENT;
         name = AvoidListComprehensionInIterations.DESCRIPTION,
         description = AvoidListComprehensionInIterations.DESCRIPTION,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"eco-design", "ecocode", "performance"})
 public class AvoidListComprehensionInIterations extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "EC404";
