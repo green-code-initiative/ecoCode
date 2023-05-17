@@ -30,7 +30,11 @@ public class ForceUsingLazyFetchTypeInJPAEntity extends IssuableSubscriptionVisi
     @Override
     public void visitNode(Tree tree) {
         VariableTree variableTree = (VariableTree) tree;
-        List<AnnotationTree> annotations = variableTree.modifiers().annotations();
+        ModifiersTree modifierTrees = variableTree.modifiers();
+        if (modifierTrees == null) {
+            return;
+        }
+        List<AnnotationTree> annotations = modifierTrees.annotations();
         // get all annotations on the attribute
         for (AnnotationTree annotationTree : annotations) {
             if (!needToCheckExplicitAnnotation(annotationTree.annotationType().symbolType().name())) {

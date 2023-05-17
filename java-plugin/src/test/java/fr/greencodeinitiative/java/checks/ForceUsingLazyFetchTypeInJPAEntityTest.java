@@ -3,7 +3,7 @@ package fr.greencodeinitiative.java.checks;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.verifier.CheckVerifier;
 
-public class ForceUsingLazyFetchTypeInJPAEntityTest {
+class ForceUsingLazyFetchTypeInJPAEntityTest {
 
     @Test
     void checkNonCompliantTests() {
@@ -37,6 +37,7 @@ public class ForceUsingLazyFetchTypeInJPAEntityTest {
                 .withCheck(new ForceUsingLazyFetchTypeInJPAEntity())
                 .verifyIssues();
     }
+
     @Test
     void checkDefaultOneToOneTests() {
         CheckVerifier.newVerifier()
@@ -44,6 +45,7 @@ public class ForceUsingLazyFetchTypeInJPAEntityTest {
                 .withCheck(new ForceUsingLazyFetchTypeInJPAEntity())
                 .verifyIssues();
     }
+
     @Test
     void checkDefaultManyToOneTests() {
         CheckVerifier.newVerifier()
