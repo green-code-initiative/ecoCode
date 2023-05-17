@@ -1,5 +1,29 @@
 [
   {
+    "key": "@ecocode/avoid-high-accuracy-geolocation",
+    "type": "CODE_SMELL",
+    "name": "Avoid using high accuracy geolocation in web applications",
+    "description": "\n\n<h2 id=\"rule-details\">Rule details</h2>\n<p>This rule aims at reducing CPU consumption by telling the device to use a less accurate yet more eco friendly geolocation, when geolocation API is used.</p>\n<h2 id=\"examples\">Examples</h2>\n<p>Examples of <strong>non compliant</strong> code for this rule:</p>\n<pre><code class=\"language-js\">var options = { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 };\nfunction success(pos) {\n  console.log(pos.coords);\n}\n\nfunction error(err) {\n  console.warn(err);\n}\n\nnavigator.geolocation.getCurrentPosition(success, error, options);\n</code></pre>\n<p>Examples of <strong>compliant</strong> code for this rule:</p>\n<pre><code class=\"language-js\">// enableHighAccuracy is false by default, so not declaring it is correct\nfunction success(pos) {\n  console.log(pos);\n}\nnavigator.geolocation.getCurrentPosition(success);\n</code></pre>\n<pre><code class=\"language-js\">var options = { enableHighAccuracy: false, timeout: 5000, maximumAge: 0 };\nfunction success(pos) {\n  console.log(pos.coords);\n}\n\nfunction error(err) {\n  console.warn(err);\n}\n\nnavigator.geolocation.getCurrentPosition(success, error, options);\n</code></pre>\n<br/><a href=\"https://github.com/green-code-initiative/ecoCode-linter/blob/main/eslint-plugin/docs/rules/avoid-high-accuracy-geolocation.md\">Click here to access the rule details.</a>",
+    "constantDebtMinutes": 5,
+    "severity": "MINOR",
+    "tags": [
+      "eco-design",
+      "ecocode"
+    ]
+  },
+  {
+    "key": "@ecocode/no-import-all-from-library",
+    "type": "CODE_SMELL",
+    "name": "Should not import all from librar",
+    "description": "\n\n<h2 id=\"rule-details\">Rule details</h2>\n<p>This rule aims to reduce weight of programs by using only needed modules. Many libraries export only one module by\ndefault, but some of them are exporting ES modules or submodules. We should use them to select more precisly needed\nmodules and avoid unnecessarily overloading files weight.</p>\n<p><img src=\"https://raw.githubusercontent.com/green-code-initiative/ecoCode-linter/main/eslint-plugin/docs/images/no-import-all-from-library.jpg\" alt=\"Example with lodash\"></p>\n<p><em>Example with the well-known <a href=\"https://lodash.com/\">lodash</a> library, if you only need &quot;isEmpty&quot; method.</em></p>\n<h2 id=\"options\">Options</h2>\n<p>You can externally add your own libraries to be checked.\nTo add your own libraries you need to modify your .eslintrc.js by adding the following rule configuration:</p>\n<pre><code class=\"language-js\">module.exports = {\n  ...yourConf,\n  rules: {\n    &quot;no-import-all-from-library&quot;: [\n      &quot;warn&quot;,\n      {\n        notAllowedLibraries: [&quot;some-lib&quot;], // will check for -&gt; import someLib from &quot;some-lib&quot;\n        importByNamespaceNotAllowedLibraries: [&quot;some-other-lib&quot;], // will check for -&gt; import * as someOtherLib from &quot;some-other-lib&quot;\n      },\n    ],\n  },\n};\n</code></pre>\n<h2 id=\"examples\">Examples</h2>\n<p>Examples of <strong>non-compliant</strong> code for this rule:</p>\n<pre><code class=\"language-js\">// Example with lodash\nimport lodash from &quot;lodash&quot;;\nimport { isEmpty } from &quot;lodash&quot;;\nimport * as lodash from &quot;lodash&quot;;\n\n// Example with underscore\nimport _ from &quot;underscore&quot;;\n</code></pre>\n<p>Examples of <strong>compliant</strong> code for this rule:</p>\n<pre><code class=\"language-js\">// Example with lodash (uses submodules)\nimport isEmpty from &quot;lodash/isEmpty&quot;;\nimport intersect from &quot;lodash/intersect&quot;;\n\n// Example with underscore (uses esm modules)\nimport map from &quot;underscore/modules/map.js&quot;;\n</code></pre>\n<br/><a href=\"https://github.com/green-code-initiative/ecoCode-linter/blob/main/eslint-plugin/docs/rules/no-import-all-from-library.md\">Click here to access the rule details.</a>",
+    "constantDebtMinutes": 5,
+    "severity": "MINOR",
+    "tags": [
+      "eco-design",
+      "ecocode"
+    ]
+  },
+  {
     "key": "@ecocode/no-multiple-access-dom-element",
     "type": "CODE_SMELL",
     "name": "Disallow multiple access of same DOM element",
