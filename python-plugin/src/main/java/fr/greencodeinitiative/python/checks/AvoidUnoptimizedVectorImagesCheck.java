@@ -19,10 +19,7 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "EC10";
     public static final String DESCRIPTION = "Avoid using unoptimized vector images";
-    private static final Pattern COMMENT_PATTERN = Pattern.compile("(<!--|-->)");
     private static final Pattern LAYERS_PATTERN = Pattern.compile("</g>");
-    private static final Pattern NAMESPACE_PATTERN = Pattern.compile("xmlns:(?!svg)[a-z0-9]+");
-    private static final String STRING_TAG_TO_DETECT = "</svg>";
 
     @Override
     public void initialize(Context ctx) {
@@ -41,7 +38,7 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
         if (isSvgTagNotDetected(str))
             return;
 
-        if (COMMENT_PATTERN.matcher(str.value()).find()) {
+        if (str.value().contains("<!--") || str.value().contains("-->")) {
             ctx.addIssue(str, DESCRIPTION);
         }
     }
@@ -53,7 +50,7 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
         Matcher matcher = LAYERS_PATTERN.matcher(str.value());
         int matches = 0;
         while (matcher.find()) matches++;
-        if (matches > 1) {
+        if (matches > 1) { // if at least 2 finds, create an issue
             ctx.addIssue(str, DESCRIPTION);
         }
     }
@@ -62,7 +59,7 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
         if (isSvgTagNotDetected(str))
             return;
 
-        if (NAMESPACE_PATTERN.matcher(str.value()).find()) {
+        if (str.value().contains("xmlns:") && !str.value().contains("xmlns:svg=")) {
             ctx.addIssue(str, DESCRIPTION);
         }
     }
@@ -77,6 +74,6 @@ public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
     }
 
     private boolean isSvgTagNotDetected(StringElement str) {
-        return !str.value().contains(AvoidUnoptimizedVectorImagesCheck.STRING_TAG_TO_DETECT);
+        return !str.value().contains("</svg>");
     }
 }
