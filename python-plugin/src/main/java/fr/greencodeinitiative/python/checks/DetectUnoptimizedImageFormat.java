@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
         name = DetectUnoptimizedImageFormat.MESSAGERULE,
         description = DetectUnoptimizedImageFormat.MESSAGEERROR,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"eco-design", "ecocode", "performance", "user-experience"})
 public class DetectUnoptimizedImageFormat extends PythonSubscriptionCheck {
 
     protected static final String RULE_KEY = "EC203";

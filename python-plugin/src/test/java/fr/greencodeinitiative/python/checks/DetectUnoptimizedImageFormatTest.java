@@ -8,6 +8,6 @@ public class DetectUnoptimizedImageFormatTest {
     @Test
     public void test() {
         PythonCheckVerifier.verify("src/test/resources/checks/detectUnoptimizedImageFormat.py", new DetectUnoptimizedImageFormat());
-        PythonCheckVerifier.verifyNoIssue("src/test/resources/checks/detectUnoptimizedImageFormatComplient.py", new DetectUnoptimizedImageFormat());
+        PythonCheckVerifier.verifyNoIssue("src/test/resources/checks/detectUnoptimizedImageFormatCompliant.py", new DetectUnoptimizedImageFormat());
     }
 }
