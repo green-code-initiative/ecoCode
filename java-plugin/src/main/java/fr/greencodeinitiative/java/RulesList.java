@@ -36,6 +36,7 @@ import fr.greencodeinitiative.java.checks.AvoidSpringRepositoryCallInLoopCheck;
 import fr.greencodeinitiative.java.checks.AvoidStatementForDMLQueries;
 import fr.greencodeinitiative.java.checks.AvoidUsageOfStaticCollections;
 import fr.greencodeinitiative.java.checks.AvoidUsingGlobalVariablesCheck;
+import fr.greencodeinitiative.java.checks.FilteredColumnsAreIndexed;
 import fr.greencodeinitiative.java.checks.FreeResourcesOfAutoCloseableInterface;
 import fr.greencodeinitiative.java.checks.IncrementCheck;
 import fr.greencodeinitiative.java.checks.InitializeBufferWithAppropriateSize;
@@ -77,7 +78,8 @@ public final class RulesList {
                 AvoidUsingGlobalVariablesCheck.class,
                 AvoidSetConstantInBatchUpdate.class,
                 FreeResourcesOfAutoCloseableInterface.class,
-                AvoidMultipleIfElseStatement.class
+                AvoidMultipleIfElseStatement.class,
+                FilteredColumnsAreIndexed.class
         ));
     }
 

@@ -1,0 +1,15 @@
+{
+  "title": "Persistence Java, avoid usage of joints on non Indexed columns",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "30min"
+  },
+  "tags": [
+    "eco-design",
+    "bug",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}
