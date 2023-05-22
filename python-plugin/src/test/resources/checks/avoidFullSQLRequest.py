@@ -8,5 +8,3 @@ requestNonCompiliant = '   SeLeCt * FrOm myTable' # Noncompliant {{Don't use the
 requestCompiliant = '   SeLeCt user FrOm myTable' 
 displayMessage(requestNonCompiliant)
 displayMessage(requestCompiliant)
-	   
-
