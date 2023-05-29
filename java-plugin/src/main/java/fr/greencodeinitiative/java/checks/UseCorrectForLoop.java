@@ -16,7 +16,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Developpement",
         description = UseCorrectForLoop.MESSAGERULE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S53")
 public class UseCorrectForLoop extends IssuableSubscriptionVisitor {
 

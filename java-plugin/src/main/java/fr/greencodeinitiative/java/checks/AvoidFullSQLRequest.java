@@ -19,7 +19,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Developpement",
         description = AvoidFullSQLRequest.MESSAGERULE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"performance", "sql", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S74")
 public class AvoidFullSQLRequest extends IssuableSubscriptionVisitor {
 
