@@ -35,7 +35,7 @@ import org.sonar.plugins.java.api.tree.VariableTree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(key = "EC63", name = "Developpement", description = "Do not unnecessarily assign values to variables", priority = Priority.MINOR,
-  tags = {"eco-design", "ecocode"})
+  tags = {"eco-design", "ecocode", "memory"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S63")
 public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implements JavaFileScanner {
 

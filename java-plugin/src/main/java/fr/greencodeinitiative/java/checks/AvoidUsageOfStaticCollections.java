@@ -19,7 +19,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Developpement",
         description = AvoidUsageOfStaticCollections.MESSAGE_RULE,
         priority = Priority.MINOR,
-        tags = {"cwe", "leak", "eco-design", "ecocode"})
+        tags = {"cwe", "leak", "eco-design", "ecocode", "memory"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S76")
 public class AvoidUsageOfStaticCollections extends IssuableSubscriptionVisitor {
 

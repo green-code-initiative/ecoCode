@@ -21,7 +21,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Developpement",
         description = AvoidRegexPatternNotStatic.MESSAGE_RULE,
         priority = Priority.MINOR,
-        tags = {"performance", "regex", "eco-design", "ecocode"})
+        tags = {"performance", "regex", "eco-design", "ecocode", "memory"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S77")
 public class AvoidRegexPatternNotStatic extends IssuableSubscriptionVisitor {
 

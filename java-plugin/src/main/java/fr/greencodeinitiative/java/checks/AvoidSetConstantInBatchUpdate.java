@@ -24,7 +24,7 @@ import static org.sonar.plugins.java.api.tree.Tree.Kind.METHOD_INVOCATION;
 @Rule(key = "EC78", name = "Developpement",
         description = AvoidSetConstantInBatchUpdate.MESSAGERULE,
         priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+        tags = {"eco-design", "ecocode", "sql", "performance", "memory"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S78")
 public class AvoidSetConstantInBatchUpdate extends IssuableSubscriptionVisitor {
 
