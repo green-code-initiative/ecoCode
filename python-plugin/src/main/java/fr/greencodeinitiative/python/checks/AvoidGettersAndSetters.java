@@ -23,7 +23,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = AvoidGettersAndSetters.DESCRIPTION,
         description = AvoidGettersAndSetters.DESCRIPTION,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"convention", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "D7")
 public class AvoidGettersAndSetters extends PythonSubscriptionCheck {
 

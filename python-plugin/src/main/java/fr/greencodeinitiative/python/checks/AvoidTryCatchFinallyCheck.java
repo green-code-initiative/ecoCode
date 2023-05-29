@@ -13,7 +13,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Avoid using try-catch statement",
         description = AvoidTryCatchFinallyCheck.DESCRIPTION,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"error-handling", "performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "S34")
 public class AvoidTryCatchFinallyCheck extends PythonSubscriptionCheck {
 
