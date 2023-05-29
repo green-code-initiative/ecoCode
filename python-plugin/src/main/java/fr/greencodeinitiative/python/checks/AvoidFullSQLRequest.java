@@ -21,7 +21,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = AvoidFullSQLRequest.MESSAGERULE,
         description = AvoidFullSQLRequest.MESSAGERULE,
         priority = Priority.MINOR,
-        tags = {"sql", "eco-design", "ecocode"})
+        tags = {"sql", "performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "S74")
 public class AvoidFullSQLRequest extends PythonSubscriptionCheck {
 
