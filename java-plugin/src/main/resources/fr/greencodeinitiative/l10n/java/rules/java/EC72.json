@@ -7,13 +7,13 @@
     "constantCost": "10min"
   },
   "tags": [
-    "eco-design",
     "performance",
-    "memory",
-    "network",
     "sql",
-    "bug",
-    "ecocode"
+    "spring",
+    "eco-design",
+    "ecocode",
+    "memory",
+    "network"
   ],
   "defaultSeverity": "Minor"
 }
