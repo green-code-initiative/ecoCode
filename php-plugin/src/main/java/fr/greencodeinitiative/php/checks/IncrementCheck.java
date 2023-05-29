@@ -34,7 +34,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = IncrementCheck.ERROR_MESSAGE,
         description = IncrementCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S67")
 public class IncrementCheck extends PHPSubscriptionCheck {
 
