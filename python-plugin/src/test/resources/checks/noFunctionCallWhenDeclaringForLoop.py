@@ -6,6 +6,4 @@ for i in my_function(): # Noncompliant {{Do not call a function when declaring a
     my_function()
     pass
 
-
-
 my_function()
