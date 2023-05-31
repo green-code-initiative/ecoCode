@@ -6,7 +6,10 @@ import org.sonar.plugins.php.api.tree.SeparatedList;
 import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.expression.ExpressionTree;
 import org.sonar.plugins.php.api.tree.expression.ParenthesisedExpressionTree;
-import org.sonar.plugins.php.api.tree.statement.*;
+import org.sonar.plugins.php.api.tree.statement.DoWhileStatementTree;
+import org.sonar.plugins.php.api.tree.statement.ForStatementTree;
+import org.sonar.plugins.php.api.tree.statement.StatementTree;
+import org.sonar.plugins.php.api.tree.statement.WhileStatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
 import java.util.Arrays;
@@ -18,7 +21,8 @@ import java.util.regex.Pattern;
         name = AvoidGettingSizeCollectionInForLoopCheck.ERROR_MESSAGE,
         description = AvoidGettingSizeCollectionInForLoopCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"eco-design", "ecocode"})
+        tags = {"eco-design", "ecocode", "bad-practice", "performance"}
+)
 public class AvoidGettingSizeCollectionInForLoopCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC3";

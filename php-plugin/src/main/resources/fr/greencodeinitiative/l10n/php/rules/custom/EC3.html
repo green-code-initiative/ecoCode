@@ -15,20 +15,33 @@
 		var_dump($array[$i]);
 	}
 
-	// WHILE STATEMENTS
+	// WHILE STATEMENTS / Right operand
 	$i = 0;
 	while($i < count($array)) {
 		var_dump($array[$i]);
 		++$i;
 	}
 
-	// DO WHILE STATEMENTS
+	// WHILE STATEMENTS / Left operand
+	$i = 0;
+	while(count($array) > $i) {
+		var_dump($array[$i]);
+		++$i;
+	}
+
+	// DO WHILE STATEMENTS / Right operand
 	$i = 0;
 	do {
 		var_dump($array[$i]);
 		++$i;
 	} while ($i < count($array));
 
+	// DO WHILE STATEMENTS / Left operand
+	$i = 0;
+	do {
+		var_dump($array[$i]);
+		++$i;
+	} while (count($array) > $i);
 </pre>
 
 <h2>Compliant Solution</h2>
@@ -46,7 +59,7 @@
 		var_dump($array[$i]);
 	}
 
-	// WHILE STATEMENTS
+	// WHILE STATEMENTS / Right operand
 	$i = 0;
 	$size = count($array);
 	while($i < $size) {
@@ -54,7 +67,15 @@
 		++$i;
 	}
 
-	// DO WHILE STATEMENTS
+	// WHILE STATEMENTS / Left operand
+	$i = 0;
+	$size = count($array);
+	while($size > $i) {
+		var_dump($array[$i]);
+		++$i;
+	}
+
+	// DO WHILE STATEMENTS / Right operand
 	$i = 0;
 	$size = count($array);
 	do {
@@ -62,4 +83,11 @@
 		++$i;
 	} while ($i < $size);
 
+	// DO WHILE STATEMENTS / Left operand
+	$i = 0;
+	$size = count($array);
+	do {
+		var_dump($array[$i]);
+		++$i;
+	} while ($size > $i);
 </pre>
