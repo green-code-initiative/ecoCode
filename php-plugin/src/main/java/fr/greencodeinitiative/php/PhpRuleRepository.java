@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import fr.greencodeinitiative.php.checks.*;
+import fr.greencodeinitiative.php.checks.AvoidGettingSizeCollectionInForLoopCheck;
 import fr.greencodeinitiative.php.checks.AvoidDoubleQuoteCheck;
 import fr.greencodeinitiative.php.checks.AvoidFullSQLRequestCheck;
 import fr.greencodeinitiative.php.checks.AvoidSQLRequestInLoopCheck;

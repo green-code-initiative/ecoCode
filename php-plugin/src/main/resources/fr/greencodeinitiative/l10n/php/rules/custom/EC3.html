@@ -1,55 +1,65 @@
 <p>When iterating over any collection, fetch the size of the collection in advance to avoid fetching it on each iteration, this saves CPU cycles, and therefore consumes less power.</p>
+<p>NB : note that we are using the count() method to get the size of an array but it would work the same with the sizeof() and iterator_count() methods</p>
 
-<h2>Noncompliant Code Example</h2>
+<h2>Noncompliant Code Examples</h2>
 <pre>
-	$food = array('orange', 'banana', 'apple', 'carrot', 'collard', 'pea');
+	$array = array('orange', 'banana', 'apple', 'carrot', 'collard', 'pea');
 
-	// FOR STATEMENTS
-	for ($i = 0; $i < count($food); $i++) {
-		var_dump($food[$i]);
+	// FOR STATEMENTS / Right operand
+	for ($i = 0; $i < count($array); ++$i) {
+		var_dump($array[$i]);
+	}
+
+	// FOR STATEMENTS / Left operand
+	for ($i = 0; count($array) > $i; ++$i) {
+		var_dump($array[$i]);
 	}
 
 	// WHILE STATEMENTS
 	$i = 0;
-	while($i < count($food))
-	{
-		var_dump($food[$i]);
-		$i++;
+	while($i < count($array)) {
+		var_dump($array[$i]);
+		++$i;
 	}
 
 	// DO WHILE STATEMENTS
 	$i = 0;
 	do {
-		var_dump($food[$i]);
-		$i++;
-	} while ($i < count($food));
+		var_dump($array[$i]);
+		++$i;
+	} while ($i < count($array));
 
 </pre>
 
 <h2>Compliant Solution</h2>
 <pre>
-	$food = array('orange', 'banana', 'apple', 'carrot', 'collard', 'pea');
-	// FOR STATEMENTS
-	$size = sizeof($food);
-	for ($i = 0; $i < $size; $i++) {
-		var_dump($food[$i]);
+	$array = array('orange', 'banana', 'apple', 'carrot', 'collard', 'pea');
+	// FOR STATEMENTS / Right operand
+	$size = sizeof($array);
+	for ($i = 0; $i < $size; ++$i) {
+		var_dump($array[$i]);
+	}
+
+	// FOR STATEMENTS / Left operand
+	$size = sizeof($array);
+	for ($i = 0; $size > $i; ++$i) {
+		var_dump($array[$i]);
 	}
 
 	// WHILE STATEMENTS
 	$i = 0;
-	$size = count($food);
-	while($i < $size)
-	{
-		var_dump($food[$i]);
-		$i++;
+	$size = count($array);
+	while($i < $size) {
+		var_dump($array[$i]);
+		++$i;
 	}
 
 	// DO WHILE STATEMENTS
 	$i = 0;
-	$size = count($food);
+	$size = count($array);
 	do {
-		var_dump($food[$i]);
-		$i++;
+		var_dump($array[$i]);
+		++$i;
 	} while ($i < $size);
 
 </pre>
