@@ -29,6 +29,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import fr.greencodeinitiative.python.checks.*;
 import org.apache.commons.lang.StringUtils;
 import org.sonar.api.rules.RuleType;
@@ -84,6 +85,7 @@ public class PythonRuleRepository implements RulesDefinition, PythonCustomRuleRe
   @Override
   public List<Class> checkClasses() {
     return Arrays.asList(
+            AvoidDoubleQuoteCheck.class,
             AvoidGettersAndSetters.class,
             AvoidGlobalVariableInFunctionCheck.class,
             AvoidSQLRequestInLoop.class,
