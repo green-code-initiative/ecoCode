@@ -10,7 +10,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [#109](https://github.com/green-code-initiative/ecoCode/issues/109) PHP rule : **Getting the size of the collection in the loop**. For further [RULES.md](./RULES.md) file. 
 
+- [#113](https://github.com/green-code-initiative/ecoCode/issues/113) new PYTHON rule : Use unoptimized vector images
+- [#127](https://github.com/green-code-initiative/ecoCode/issues/127) Add Python rule EC404: Usage of generator comprehension instead of list comprehension in for loop declaration
+- [#192](https://github.com/green-code-initiative/ecoCode/pull/192) Add Python rule EC203: Detect unoptimized file formats
+
 ### Changed
+
+- [#19](https://github.com/green-code-initiative/ecoCode-common/issues/19) process changed for development environment installation : easier to initialize locally environment (check [`INSTALL.md`](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment) file)
+
+### Deleted
+
+## [1.2.1] - 2023-04-18
+
+### Added
+
+### Changed
+
+- [#180](https://github.com/green-code-initiative/ecoCode/pull/180) correction of SonarQube review for MarketPlace (sonar plugin)
+
+### Deleted
+
+## [1.2.0] - 2023-04-14
+
+### Added
+
+- [#171](https://github.com/green-code-initiative/ecoCode/issues/171) Add migration mechanism to support "issue re-keying"
+
+### Changed
+
+- [#161](https://github.com/green-code-initiative/ecoCode/pull/161) Remove unnecessary junit dependencies in pom.xml
+- [#166](https://github.com/green-code-initiative/ecoCode/issues/166) Correction of wrong message of rule EC63
+- [#167](https://github.com/green-code-initiative/ecoCode/issues/167) Use same kind for rules across different languages
+- [#173](https://github.com/green-code-initiative/ecoCode/issues/173) Update issue description of rule EC34 (try-catch)
 
 ### Deleted
 
@@ -20,7 +51,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#63](https://github.com/green-code-initiative/ecoCode/issues/63) Update plugins to be compliant for SonarQube MarketPlace integration ( PR [#79](https://github.com/green-code-initiative/ecoCode/pull/79) )
 - [#88](https://github.com/green-code-initiative/ecoCode/pull/88) upgrade rules matrix with new ids + refactoring rules documentation (`RULES.md`)
-  - _*WARNING*_ : since this plugin version, ids of plugin rules changed. In consequence, if you have already made some issue checks in your SonarQube instance, you will have to do them again (example : false-positive issues will appear again)
 
 ### Deleted
 
@@ -103,9 +133,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.1.0...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.1...HEAD
 
-[1.0.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.0.0...v1.1.0
+[1.2.1]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.0...v1.2.1
+
+[1.2.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.1.0...v1.2.0
+
+[1.1.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.0.0...v1.1.0
 
 [1.0.0]: https://github.com/green-code-initiative/ecoCode/compare/v0.2.2...v1.0.0
 

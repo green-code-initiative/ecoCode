@@ -24,13 +24,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.ImmutableList;
 import fr.greencodeinitiative.php.checks.*;
+import fr.greencodeinitiative.php.checks.AvoidDoubleQuoteCheck;
+import fr.greencodeinitiative.php.checks.AvoidFullSQLRequestCheck;
+import fr.greencodeinitiative.php.checks.AvoidSQLRequestInLoopCheck;
+import fr.greencodeinitiative.php.checks.AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements;
+import fr.greencodeinitiative.php.checks.AvoidUsingGlobalVariablesCheck;
+import fr.greencodeinitiative.php.checks.IncrementCheck;
+import fr.greencodeinitiative.php.checks.NoFunctionCallWhenDeclaringForLoop;
+import fr.greencodeinitiative.php.checks.UseOfMethodsForBasicOperations;
+import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
 import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
@@ -53,6 +60,7 @@ public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleReposito
     remediationCosts.put(AvoidSQLRequestInLoopCheck.RULE_KEY, "10min");
     remediationCosts.put(AvoidFullSQLRequestCheck.RULE_KEY, "20min");
     repository.rules().forEach(rule -> {
+      rule.setType(RuleType.CODE_SMELL);
       String debt = remediationCosts.get(rule.key());
 
       // TODO DDC : create support to use org.apache.commons.lang.StringUtils

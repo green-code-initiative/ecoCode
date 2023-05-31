@@ -32,12 +32,14 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonar.plugins.java.api.tree.TypeCastTree;
 import org.sonar.plugins.java.api.tree.UnaryExpressionTree;
 import org.sonar.plugins.java.api.tree.VariableTree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(key = "EC63", name = "Developpement", description = "Do not unnecessarily assign values to variables", priority = Priority.MINOR, tags = {
         "bug"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S63")
 public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implements JavaFileScanner {
 
-    protected static final String MESSAGERULE1 = "The variable is not assigned";
+    protected static final String MESSAGERULE1 = "The variable is declared but not really used";
     protected static final String MESSAGERULE2 = "Immediately throw this expression instead of assigning it to the temporary variable";
     protected static final String MESSAGERULE3 = "Immediately return this expression instead of assigning it to the temporary variable";
     private JavaFileScannerContext context;
