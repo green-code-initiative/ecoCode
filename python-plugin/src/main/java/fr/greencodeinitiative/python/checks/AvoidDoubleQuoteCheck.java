@@ -12,7 +12,7 @@ import org.sonar.plugins.python.api.tree.Tree;
         name = AvoidDoubleQuoteCheck.MESSAGE_RULE,
         description = AvoidDoubleQuoteCheck.MESSAGE_RULE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"eco-design", "ecocode", "bad-practice"})
 public class AvoidDoubleQuoteCheck extends PythonSubscriptionCheck {
     public static final String RULE_KEY = "EC66";
     public static final String MESSAGE_RULE = "Avoid using quotation mark (\"), prefer using simple quote (')";
