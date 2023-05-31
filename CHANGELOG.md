@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- [#109](https://github.com/green-code-initiative/ecoCode/issues/109) PHP rule : **Getting the size of the collection in the loop**. For further [RULES.md](./RULES.md) file. 
 
 ### Changed
 
@@ -64,7 +65,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#33](https://github.com/green-code-initiative/ecoCode/issues/33) Update plugin description in code
 - [#42](https://github.com/green-code-initiative/ecoCode/issues/42) Fix Crash SonarQube analysis because of some ClassCast Exceptions
 - [#48](https://github.com/green-code-initiative/ecoCode/pull/48) correction SONAR issue info - delete public keyword on tests
-- Improve "build" Github actions to execute checks on branches from fork repositories
+- Improve "build" GitHub actions to execute checks on branches from fork repositories
 
 ## [0.2.1] - 2022-12-30
 
