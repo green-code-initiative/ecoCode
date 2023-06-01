@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import fr.greencodeinitiative.php.checks.AvoidGettingSizeCollectionInForLoopCheck;
+import fr.greencodeinitiative.php.checks.AvoidGettingSizeCollectionInLoopCheck;
 import fr.greencodeinitiative.php.checks.AvoidDoubleQuoteCheck;
 import fr.greencodeinitiative.php.checks.AvoidFullSQLRequestCheck;
 import fr.greencodeinitiative.php.checks.AvoidSQLRequestInLoopCheck;
@@ -90,7 +90,7 @@ public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleReposito
   @Override
   public List<Class<?>> checkClasses() {
     return List.of(
-            AvoidGettingSizeCollectionInForLoopCheck.class,
+            AvoidGettingSizeCollectionInLoopCheck.class,
             AvoidDoubleQuoteCheck.class,
             AvoidFullSQLRequestCheck.class,
             AvoidSQLRequestInLoopCheck.class,

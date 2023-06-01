@@ -17,13 +17,13 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 @Rule(
-        key = AvoidGettingSizeCollectionInForLoopCheck.RULE_KEY,
-        name = AvoidGettingSizeCollectionInForLoopCheck.ERROR_MESSAGE,
-        description = AvoidGettingSizeCollectionInForLoopCheck.ERROR_MESSAGE,
+        key = AvoidGettingSizeCollectionInLoopCheck.RULE_KEY,
+        name = AvoidGettingSizeCollectionInLoopCheck.ERROR_MESSAGE,
+        description = AvoidGettingSizeCollectionInLoopCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"eco-design", "ecocode", "bad-practice", "performance"}
 )
-public class AvoidGettingSizeCollectionInForLoopCheck extends PHPSubscriptionCheck {
+public class AvoidGettingSizeCollectionInLoopCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC3";
     public static final String ERROR_MESSAGE = "Avoid getting the size of the collection in the loop";
