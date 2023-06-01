@@ -18,3 +18,4 @@ echo $b;
 function somme3($a, $b) { // Compliant
     return $a + $b;
 }
+echo somme3($a, $b);

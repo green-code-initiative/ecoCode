@@ -30,8 +30,7 @@ for (; ; ) {
 for ($i = 1, $j = 0; $i <= 10; $j += $i, print $i, $i++); // NOK {{Do not call a function in for-type loop declaration}}
 
 
-function somewhat_calcMax()
-{
+function somewhat_calcMax() {
     return 500;
 }
 
