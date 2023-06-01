@@ -10,7 +10,7 @@ public class AvoidTryCatchFinallyCheckNOKfailsAllTryStatementsTest {
 
     @Test
     public void test() throws Exception {
-        PHPCheckTest.check(new AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements(), new PhpTestFile(new File("src/test/resources/checks/avoidTryCatchFinallyCheck_NOK_FailsAllTryStatements.php")));
+        PHPCheckTest.check(new AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements(), new PhpTestFile(new File("src/test/resources/checks/AvoidTryCatchFinallyCheck_NOK_FailsAllTryStatements.php")));
     }
 
 }

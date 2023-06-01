@@ -1,24 +1,25 @@
 <?php
 
-$sql1 = "SeLeCt * FrOm"; // NOK {{Don't use the query SELECT * FROM}}
-$sql2 = "SeLeCt DiStInCt * FrOm"; // NOK {{Don't use the query SELECT * FROM}}
-$sql3 = "select name from";
+$sql1 = "SELECT * FROM"; // NOK {{Don't use the query SELECT * FROM}}
+$sql2 = "SELECT DISTINCT * FROM"; // NOK {{Don't use the query SELECT * FROM}}
+$sql3 = "SELECT name FROM";
 
 class AvoidFullSQLRequest
 {
 	public function LiteralString()
 	{
-		OtherClass->SqlCall("SeLeCt * FrOm table"); // NOK {{Don't use the query SELECT * FROM}}
-		OtherClass->SqlCall("SeLeCt DiStInCt * FrOm table"); // NOK {{Don't use the query SELECT * FROM}}
-		OtherClass->SqlCall("SeLeCt name FrOm table");
+		OtherClass->SqlCall('SELECT * FROM'); // NOK {{Don't use the query SELECT * FROM}}
+		OtherClass->SqlCall('SELECT DISTINCT * FROM'); // NOK {{Don't use the query SELECT * FROM}}
+		OtherClass->SqlCall('SELECT name FROM');
 	}
 
 	public function PasseAsVariable()
 	{
-		$sqlQuery1 = "SeLeCt * FrOm table"; // NOK {{Don't use the query SELECT * FROM}}
-		$sqlQuery2 = "SeLeCt DiStInCt * FrOm table"; // NOK {{Don't use the query SELECT * FROM}}
-		$sqlQuery3 = "SeLeCt name FrOm table";
+        $sqlQuery1 = "SELECT * FROM"; // NOK {{Don't use the query SELECT * FROM}}
+        $sqlQuery2 = "SELECT DISTINCT * FROM"; // NOK {{Don't use the query SELECT * FROM}}
+        $sqlQuery3 = "SELECT name FROM";
 		OtherClass->SqlCall($sqlQuery1);
 		OtherClass->SqlCall($sqlQuery2);
+		OtherClass->SqlCall($sqlQuery3);
 	}
 }

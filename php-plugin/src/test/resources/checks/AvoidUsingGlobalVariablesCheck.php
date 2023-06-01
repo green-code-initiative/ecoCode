@@ -1,4 +1,5 @@
 <?php
+
 $a = 1;
 $b = 2;
 function somme() { // NOK {{Prefer local variables to globals}}
@@ -13,4 +14,7 @@ function somme2() { // NOK {{Prefer local variables to globals}}
 }
 somme2();
 echo $b;
-?>
+
+function somme3($a, $b) { // Compliant
+    return $a + $b;
+}

@@ -34,4 +34,3 @@ try { // NOK {{Avoid using try-catch}}
     echo $e->getMessage()." catch in\n";
     throw $e;
 }*/
-?>
