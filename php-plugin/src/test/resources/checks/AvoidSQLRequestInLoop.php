@@ -9,7 +9,8 @@ class AvoidFullSQLRequest
     private $query = 'SELECT * FROM Table';
     private $otherQuery = 'SELECT name FROM User';
     private $connection;
-    public function launchSQLRequest($someCondition) {
+    public function launchSQLRequest($someCondition)
+    {
         $expectedNbOfRequest = 5;
         $arrayOfQuery = array($this->query, $this->query, $this->query, $this->query, $this->query);
         $this->init();
@@ -19,17 +20,20 @@ class AvoidFullSQLRequest
         $this->whileLoop($expectedNbOfRequest, $someCondition);
         $this->emptyLoop();
     }
-    private function init() {
+    private function init()
+    {
         $this->connection = mysql_connect($this->dbHost, $this->dbUser, $this->dbPass) or die("Unable to Connect to '$dbhost'");
         mysql_select_db($this->dbName) or die("Could not open the db '$this->dbName'");
     }
 
-    private function noLoop() {
+    private function noLoop()
+    {
         $result = mysql_query($this->query);
         echo $result;
     }
 
-    private function forLoop($expectedNbOfRequest, $someCondition) {
+    private function forLoop($expectedNbOfRequest, $someCondition)
+    {
         for ($index = 0; $expectedNbOfRequest > $index; ++$index) {
             $result = mysql_query($this->query); // NOK {{Avoid SQL request in loop}}
 
@@ -41,7 +45,8 @@ class AvoidFullSQLRequest
         }
     }
 
-    private function forEachLoop($arrayOfQuery, $someCondition) {
+    private function forEachLoop($arrayOfQuery, $someCondition)
+    {
         foreach ($arrayOfQuery as $query) {
             $result = mysql_query($query); // NOK {{Avoid SQL request in loop}}
 
@@ -53,7 +58,8 @@ class AvoidFullSQLRequest
         }
     }
 
-    private function whileLoop($expectedNbOfRequest, $someCondition) {
+    private function whileLoop($expectedNbOfRequest, $someCondition)
+    {
         $nbOfRequest = 0;
         do {
             $result = mysql_query($this->query); // NOK {{Avoid SQL request in loop}}
@@ -67,7 +73,8 @@ class AvoidFullSQLRequest
         } while ($expectedNbOfRequest > $nbOfRequest);
     }
 
-    private function emptyLoop() {
+    private function emptyLoop()
+    {
         for ($i = 1, $j = 0; $i <= 10; $j += $i, print $i, $i++);
     }
 }
