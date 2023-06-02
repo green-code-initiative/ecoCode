@@ -8,10 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- [#109](https://github.com/green-code-initiative/ecoCode/issues/109) PHP rule : **Getting the size of the collection in the loop**. For further [RULES.md](./RULES.md) file. 
 
 - [#113](https://github.com/green-code-initiative/ecoCode/issues/113) new PYTHON rule : Use unoptimized vector images
 - [#127](https://github.com/green-code-initiative/ecoCode/issues/127) Add Python rule EC404: Usage of generator comprehension instead of list comprehension in for loop declaration
 - [#192](https://github.com/green-code-initiative/ecoCode/pull/192) Add Python rule EC203: Detect unoptimized file formats
+- [#108](https://github.com/green-code-initiative/ecoCode/issues/108) Add Python rule EC66: Use single quote (') instead of quotation mark (")
 
 ### Changed
 
@@ -94,7 +96,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#33](https://github.com/green-code-initiative/ecoCode/issues/33) Update plugin description in code
 - [#42](https://github.com/green-code-initiative/ecoCode/issues/42) Fix Crash SonarQube analysis because of some ClassCast Exceptions
 - [#48](https://github.com/green-code-initiative/ecoCode/pull/48) correction SONAR issue info - delete public keyword on tests
-- Improve "build" Github actions to execute checks on branches from fork repositories
+- Improve "build" GitHub actions to execute checks on branches from fork repositories
 
 ## [0.2.1] - 2022-12-30
 
