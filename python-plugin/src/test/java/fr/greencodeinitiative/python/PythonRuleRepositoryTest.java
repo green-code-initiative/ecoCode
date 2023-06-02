@@ -44,8 +44,8 @@ public class PythonRuleRepositoryTest {
   public void test() {
     assertThat(pythonRuleRepository.repositoryKey()).isEqualTo(PythonRuleRepository.REPOSITORY_KEY);
     assertThat(context.repositories()).hasSize(1).extracting("key").containsExactly(pythonRuleRepository.repositoryKey());
-    assertThat(context.repositories().get(0).rules()).hasSize(6);
-    assertThat(pythonRuleRepository.checkClasses()).hasSize(6);
+    assertThat(context.repositories().get(0).rules()).hasSize(10);
+    assertThat(pythonRuleRepository.checkClasses()).hasSize(10);
   }
 
 
