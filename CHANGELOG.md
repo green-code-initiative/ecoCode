@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- [#191](https://github.com/green-code-initiative/ecoCode/issues/191) update rule tags for Java, Python, and PHP plugins.
 
 ### Added
 - [#109](https://github.com/green-code-initiative/ecoCode/issues/109) PHP rule : **Getting the size of the collection in the loop**. For further [RULES.md](./RULES.md) file. 

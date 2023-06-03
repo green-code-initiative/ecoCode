@@ -7,9 +7,9 @@
     "constantCost": "50min"
   },
   "tags": [
-    "eco-design",
     "performance",
-    "bug",
+    "spring",
+    "eco-design",
     "ecocode"
   ],
   "defaultSeverity": "Minor"

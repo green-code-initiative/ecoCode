@@ -14,7 +14,7 @@ import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(key = "EC5")
+@Rule(key = "EC5", tags={"performance", "sql", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "SDMLQ1")
 public class AvoidStatementForDMLQueries extends IssuableSubscriptionVisitor {
 

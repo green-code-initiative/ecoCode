@@ -24,7 +24,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Developpement",
         description = FreeResourcesOfAutoCloseableInterface.MESSAGE_RULE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S79")
 public class FreeResourcesOfAutoCloseableInterface extends IssuableSubscriptionVisitor {
     private final Deque<TryStatementTree> withinTry = new LinkedList<>();
