@@ -17,7 +17,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = AvoidFullSQLRequestCheck.ERROR_MESSAGE,
         description = AvoidFullSQLRequestCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"sql", "performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S74")
 public class AvoidFullSQLRequestCheck extends PHPSubscriptionCheck {
 

@@ -16,7 +16,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Developpement",
         description = AvoidSpringRepositoryCallInLoopCheck.RULE_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"performance", "spring", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GRC1")
 public class AvoidSpringRepositoryCallInLoopCheck extends IssuableSubscriptionVisitor {
 

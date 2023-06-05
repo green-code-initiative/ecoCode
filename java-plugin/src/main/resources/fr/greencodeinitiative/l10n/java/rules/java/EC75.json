@@ -7,11 +7,10 @@
     "constantCost": "20min"
   },
   "tags": [
-    "eco-design",
     "performance",
-    "memory",
-    "bug",
-    "ecocode"
+    "eco-design",
+    "ecocode",
+    "memory"
   ],
   "defaultSeverity": "Minor"
 }

@@ -12,7 +12,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = NoFunctionCallWhenDeclaringForLoop.DESCRIPTION,
         description = NoFunctionCallWhenDeclaringForLoop.DESCRIPTION,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "S69")
 public class NoFunctionCallWhenDeclaringForLoop extends PythonSubscriptionCheck {
 

@@ -16,7 +16,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Developpement",
         description = InitializeBufferWithAppropriateSize.RULE_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GRSP0032")
 public class InitializeBufferWithAppropriateSize extends IssuableSubscriptionVisitor {
 

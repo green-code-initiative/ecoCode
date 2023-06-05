@@ -7,9 +7,9 @@
     "constantCost": "10min"
   },
   "tags": [
-    "eco-design",
     "performance",
-    "bug",
+    "sql",
+    "eco-design",
     "ecocode"
   ],
   "defaultSeverity": "Minor"

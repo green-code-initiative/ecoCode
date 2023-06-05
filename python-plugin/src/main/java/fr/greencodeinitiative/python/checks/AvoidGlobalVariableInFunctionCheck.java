@@ -67,7 +67,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Do not call global variables directly inside functions",
         description = AvoidGlobalVariableInFunctionCheck.DESCRIPTION,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "D4")
 public class AvoidGlobalVariableInFunctionCheck extends PythonSubscriptionCheck {
 
