@@ -8,16 +8,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- [#109](https://github.com/green-code-initiative/ecoCode/issues/109) PHP rule : **Getting the size of the collection in the loop**. For further [RULES.md](./RULES.md) file. 
+
+- [#109](https://github.com/green-code-initiative/ecoCode/issues/109) PHP rule : **Getting the size of the collection in
+  the loop**. For further [RULES.md](./RULES.md) file.
 
 - [#113](https://github.com/green-code-initiative/ecoCode/issues/113) new PYTHON rule : Use unoptimized vector images
-- [#127](https://github.com/green-code-initiative/ecoCode/issues/127) Add Python rule EC404: Usage of generator comprehension instead of list comprehension in for loop declaration
-- [#192](https://github.com/green-code-initiative/ecoCode/pull/192) Add Python rule EC203: Detect unoptimized file formats
-- [#108](https://github.com/green-code-initiative/ecoCode/issues/108) Add Python rule EC66: Use single quote (') instead of quotation mark (")
+- [#127](https://github.com/green-code-initiative/ecoCode/issues/127) Add Python rule EC404: Usage of generator
+  comprehension instead of list comprehension in for loop declaration
+- [#192](https://github.com/green-code-initiative/ecoCode/pull/192) Add Python rule EC203: Detect unoptimized file
+  formats
+- [#108](https://github.com/green-code-initiative/ecoCode/issues/108) Add Python rule EC66: Use single quote (') instead
+  of quotation mark (")
 
 ### Changed
 
-- [#19](https://github.com/green-code-initiative/ecoCode-common/issues/19) process changed for development environment installation : easier to initialize locally environment (check [`INSTALL.md`](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment) file)
+- [#19](https://github.com/green-code-initiative/ecoCode-common/issues/19) process changed for development environment
+  installation : easier to initialize locally environment (
+  check [`INSTALL.md`](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment)
+  file)
+- [#196](https://github.com/green-code-initiative/ecoCode/issues/196) updating PHP files to make them following the
+  coding standards (PSR-12)
 
 ### Deleted
 
@@ -27,7 +37,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [#180](https://github.com/green-code-initiative/ecoCode/pull/180) correction of SonarQube review for MarketPlace (sonar plugin)
+- [#180](https://github.com/green-code-initiative/ecoCode/pull/180) correction of SonarQube review for MarketPlace (
+  sonar plugin)
 
 ### Deleted
 
@@ -35,7 +46,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [#171](https://github.com/green-code-initiative/ecoCode/issues/171) Add migration mechanism to support "issue re-keying"
+- [#171](https://github.com/green-code-initiative/ecoCode/issues/171) Add migration mechanism to support "issue
+  re-keying"
 
 ### Changed
 
@@ -50,8 +62,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [#63](https://github.com/green-code-initiative/ecoCode/issues/63) Update plugins to be compliant for SonarQube MarketPlace integration ( PR [#79](https://github.com/green-code-initiative/ecoCode/pull/79) )
-- [#88](https://github.com/green-code-initiative/ecoCode/pull/88) upgrade rules matrix with new ids + refactoring rules documentation (`RULES.md`)
+- [#63](https://github.com/green-code-initiative/ecoCode/issues/63) Update plugins to be compliant for SonarQube
+  MarketPlace integration ( PR [#79](https://github.com/green-code-initiative/ecoCode/pull/79) )
+- [#88](https://github.com/green-code-initiative/ecoCode/pull/88) upgrade rules matrix with new ids + refactoring rules
+  documentation (`RULES.md`)
 
 ### Deleted
 
@@ -67,14 +81,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [#40](https://github.com/green-code-initiative/ecoCode/issues/40) Refactoring of package names (`cnumr` to  `greencodeinitiative`)
+- [#40](https://github.com/green-code-initiative/ecoCode/issues/40) Refactoring of package names (`cnumr`
+  to  `greencodeinitiative`)
 - [#58](https://github.com/green-code-initiative/ecoCode/issues/58) check and upgrade compatibility to SonarQube 9.9
 - move common init scripts to `ecoCode-common` repository
-- modifying documentation and move `CONTRIBUTING.md`, `CODE_STYLE.md` and `INSTALL.md` to common doc in `ecoCode-common` repository
-- security / performance optimizations : correction of `sonarcloud.io` security hotspots (java / php, python) and move Pattern compilation to static attribute
-- [#65](https://github.com/green-code-initiative/ecoCode/issues/65) Create a test project to check new plugin rule in real environment
-- [#71](https://github.com/green-code-initiative/ecoCode/issues/71) After an PHP analysis, no ecocode code smells appears in my Sonar project
-- [#64](https://github.com/green-code-initiative/ecoCode/issues/64) Python: ecoCode plugin with SonarQube, no code-smell detection
+- modifying documentation and move `CONTRIBUTING.md`, `CODE_STYLE.md` and `INSTALL.md` to common doc in `ecoCode-common`
+  repository
+- security / performance optimizations : correction of `sonarcloud.io` security hotspots (java / php, python) and move
+  Pattern compilation to static attribute
+- [#65](https://github.com/green-code-initiative/ecoCode/issues/65) Create a test project to check new plugin rule in
+  real environment
+- [#71](https://github.com/green-code-initiative/ecoCode/issues/71) After an PHP analysis, no ecocode code smells
+  appears in my Sonar project
+- [#64](https://github.com/green-code-initiative/ecoCode/issues/64) Python: ecoCode plugin with SonarQube, no code-smell
+  detection
 - [#55](https://github.com/green-code-initiative/ecoCode/issues/55) rename `eco-conception` tag of rules to `eco-design`
 - [#76](https://github.com/green-code-initiative/ecoCode/issues/76) correction of SonarQube plugins homepage link broken
 - documentation upgrade
@@ -88,14 +108,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - [#23](https://github.com/green-code-initiative/ecoCode/pull/23) Add images to the description files.
-- [#46](https://github.com/green-code-initiative/ecoCode/pull/46) Add CONTRIBUTING.MD, CODE_OF_CONDUCT.md and CODE_STYLE.md
+- [#46](https://github.com/green-code-initiative/ecoCode/pull/46) Add CONTRIBUTING.MD, CODE_OF_CONDUCT.md and
+  CODE_STYLE.md
 
 ### Changed
 
-- [#27](https://github.com/green-code-initiative/ecoCode/pull/27) Fix [WARNING] Maven-shade-plugin overlapping classes and upgrade SonarRuntime.
+- [#27](https://github.com/green-code-initiative/ecoCode/pull/27) Fix [WARNING] Maven-shade-plugin overlapping classes
+  and upgrade SonarRuntime.
 - [#33](https://github.com/green-code-initiative/ecoCode/issues/33) Update plugin description in code
-- [#42](https://github.com/green-code-initiative/ecoCode/issues/42) Fix Crash SonarQube analysis because of some ClassCast Exceptions
-- [#48](https://github.com/green-code-initiative/ecoCode/pull/48) correction SONAR issue info - delete public keyword on tests
+- [#42](https://github.com/green-code-initiative/ecoCode/issues/42) Fix Crash SonarQube analysis because of some
+  ClassCast Exceptions
+- [#48](https://github.com/green-code-initiative/ecoCode/pull/48) correction SONAR issue info - delete public keyword on
+  tests
 - Improve "build" GitHub actions to execute checks on branches from fork repositories
 
 ## [0.2.1] - 2022-12-30
