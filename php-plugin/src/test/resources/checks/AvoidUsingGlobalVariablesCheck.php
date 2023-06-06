@@ -2,6 +2,7 @@
 
 $a = 1;
 $b = 2;
+
 function somme() // NOK {{Prefer local variables to globals}}
 {
     $GLOBALS['b'] = $GLOBALS['a'] + $GLOBALS['b'];
