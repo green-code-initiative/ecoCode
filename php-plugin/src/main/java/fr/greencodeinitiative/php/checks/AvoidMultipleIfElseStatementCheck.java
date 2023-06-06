@@ -19,7 +19,6 @@
  */
 package fr.greencodeinitiative.php.checks;
 
-import org.apache.commons.lang.StringUtils;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
@@ -40,6 +39,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC2";
     public static final String ERROR_MESSAGE = "Use a switch statement instead of multiple if-else if possible";
+    public static final int INDEX_NOT_FOUND = -1;
 
     @Override
     public List<Kind> nodesToVisit() {
@@ -75,11 +75,27 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
     private void checkElseIfStatement(Tree tree) {
         String ifTree = tree.toString();
         String findStr = "elseif";
-        int count = StringUtils.countMatches(ifTree, findStr);
+        int count = countMatches(ifTree, findStr);
         if (count >= 2) {
            context().newIssue(this, tree, ERROR_MESSAGE);
         }
     }
 
+    public static int countMatches(String str, String sub) {
+        if (isEmpty(str) || isEmpty(sub)) {
+            return 0;
+        }
+        int count = 0;
+        int idx = 0;
+        while ((idx = str.indexOf(sub, idx)) != INDEX_NOT_FOUND) {
+            count++;
+            idx += sub.length();
+        }
+        return count;
+    }
+
+    public static boolean isEmpty(String str) {
+        return str == null || str.length() == 0;
+    }
 
 }
