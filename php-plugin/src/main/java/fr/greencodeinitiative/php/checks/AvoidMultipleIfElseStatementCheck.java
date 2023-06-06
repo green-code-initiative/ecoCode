@@ -26,21 +26,16 @@ import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.Tree.Kind;
 import org.sonar.plugins.php.api.tree.statement.*;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
-import org.sonar.plugins.php.api.visitors.VisitorCheck;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 @Rule(
         key = AvoidMultipleIfElseStatementCheck.RULE_KEY,
         name = AvoidMultipleIfElseStatementCheck.ERROR_MESSAGE,
         description = AvoidMultipleIfElseStatementCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"eco-design", "ecocode"})
+        tags = {"eco-design", "ecocode", "performance"})
 public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC2";
@@ -61,10 +56,10 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         int countIfStatement = 0;
 
         Tree parentNode = tree.getParent();
-
         if (!(parentNode instanceof BlockTree)) {
             return;
         }
+
         BlockTree node = (BlockTree) parentNode;
         int sizeBody = node.statements().toArray().length;
         for(int i=0; i<sizeBody;++i){
