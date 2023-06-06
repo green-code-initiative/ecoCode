@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#191](https://github.com/green-code-initiative/ecoCode/issues/191) update rule tags for Java, Python, and PHP plugins.
 
 ### Added
-- [#109](https://github.com/green-code-initiative/ecoCode/issues/109) PHP rule : **Getting the size of the collection in the loop**. For further [RULES.md](./RULES.md) file. 
+- [#109](https://github.com/green-code-initiative/ecoCode/issues/109) PHP rule : **Getting the size of the collection in the loop**. For further [RULES.md](./RULES.md) file.
 
 - [#113](https://github.com/green-code-initiative/ecoCode/issues/113) new PYTHON rule : Use unoptimized vector images
 - [#127](https://github.com/green-code-initiative/ecoCode/issues/127) Add Python rule EC404: Usage of generator comprehension instead of list comprehension in for loop declaration
@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - [#19](https://github.com/green-code-initiative/ecoCode-common/issues/19) process changed for development environment installation : easier to initialize locally environment (check [`INSTALL.md`](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment) file)
+- [#196](https://github.com/green-code-initiative/ecoCode/issues/196) updating PHP files to make them following the coding standards (PSR-12)
 
 ### Deleted
 

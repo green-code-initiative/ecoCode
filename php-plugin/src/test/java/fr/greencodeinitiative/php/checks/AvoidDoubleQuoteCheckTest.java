@@ -10,7 +10,7 @@ public class AvoidDoubleQuoteCheckTest {
 
     @Test
     public void test() throws Exception {
-        PHPCheckTest.check(new AvoidDoubleQuoteCheck(), new PhpTestFile(new File("src/test/resources/checks/avoidDoubleQuote.php")));
+        PHPCheckTest.check(new AvoidDoubleQuoteCheck(), new PhpTestFile(new File("src/test/resources/checks/AvoidDoubleQuote.php")));
     }
 
 }
