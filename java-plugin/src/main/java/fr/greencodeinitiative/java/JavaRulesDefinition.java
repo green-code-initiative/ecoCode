@@ -19,18 +19,14 @@
  */
 package fr.greencodeinitiative.java;
 
+import org.sonar.api.SonarRuntime;
+import org.sonar.api.server.rule.RulesDefinition;
+import org.sonarsource.analyzer.commons.RuleMetadataLoader;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
-
-import org.sonar.api.SonarEdition;
-import org.sonar.api.SonarQubeSide;
-import org.sonar.api.SonarRuntime;
-import org.sonar.api.internal.SonarRuntimeImpl;
-import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.utils.Version;
-import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
 /**
  * Declare rule metadata in server repository of rules.
@@ -48,11 +44,15 @@ public class JavaRulesDefinition implements RulesDefinition {
     public static final String LANGUAGE = "java";
     public static final String REPOSITORY_KEY = "ecocode-java";
 
+    private final SonarRuntime sonarRuntime;
+
+    public JavaRulesDefinition(SonarRuntime sonarRuntime) {
+        this.sonarRuntime = sonarRuntime;
+    }
+
     @Override
     public void define(Context context) {
         NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
-
-        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(10, 0), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
 
         RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH, sonarRuntime);
 

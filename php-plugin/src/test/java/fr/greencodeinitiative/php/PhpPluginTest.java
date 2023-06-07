@@ -19,22 +19,21 @@
  */
 package fr.greencodeinitiative.php;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 import org.sonar.api.Plugin;
-import org.sonar.api.SonarEdition;
-import org.sonar.api.SonarQubeSide;
 import org.sonar.api.SonarRuntime;
-import org.sonar.api.internal.PluginContextImpl;
-import org.sonar.api.internal.SonarRuntimeImpl;
-import org.sonar.api.utils.Version;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
 public class PhpPluginTest {
+
     @Test
     public void test() {
-        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(10, 0), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
-        Plugin.Context context = new PluginContextImpl.Builder().setSonarRuntime(sonarRuntime).build();
+        SonarRuntime sonarRuntime = mock(SonarRuntime.class);
+        Plugin.Context context = new Plugin.Context(sonarRuntime);
         new PHPPlugin().define(context);
         assertThat(context.getExtensions()).hasSize(1);
     }
+
 }

@@ -23,14 +23,18 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.sonar.api.SonarRuntime;
 import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.debt.DebtRemediationFunction.Type;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinition.Param;
 import org.sonar.api.server.rule.RulesDefinition.Repository;
 import org.sonar.api.server.rule.RulesDefinition.Rule;
+import org.sonar.api.utils.Version;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 
 class JavaRulesDefinitionTest {
 
@@ -38,8 +42,10 @@ class JavaRulesDefinitionTest {
 
     @BeforeEach
     void init() {
-        final JavaRulesDefinition rulesDefinition = new JavaRulesDefinition();
-        final RulesDefinition.Context context = new RulesDefinition.Context();
+        SonarRuntime sonarRuntime = mock(SonarRuntime.class);
+        doReturn(Version.create(0, 0)).when(sonarRuntime).getApiVersion();
+        JavaRulesDefinition rulesDefinition = new JavaRulesDefinition(sonarRuntime);
+        RulesDefinition.Context context = new RulesDefinition.Context();
         rulesDefinition.define(context);
         repository = context.repository(JavaRulesDefinition.REPOSITORY_KEY);
     }
