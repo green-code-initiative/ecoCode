@@ -26,12 +26,12 @@ class AvoidMultipleIfElseStatement
         if ($nb1 == 1) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
             $nb1 = 1;
         } else {
-            //
-        }
-        if ($nb1 == 1) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-            $nb1 = 1;
-        } else {
             $nb1 = 2;
+        }
+        if ($nb1 == 2) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+            $nb1 = 3;
+        } else {
+            $nb1 = 4;
         }
 
         return $nb1;
@@ -61,6 +61,86 @@ class AvoidMultipleIfElseStatement
             $nb1 = 1;
         } else {
             $nb1 = 2;
+        }
+
+        return $nb1;
+    }
+
+    public function methodWithMultipleIfElseDifferentVariables() // Compliant (2 if on different variables)
+    {
+        $nb1 = 0;
+        $nb2 = 0;
+
+        if ($nb1 == 1) {
+            $nb1 = 1;
+        } else {
+            $nb2 = 2;
+        }
+
+        if ($nb2 == 2) {
+            $nb1 = 3;
+        } else {
+            $nb1 = 4;
+        }
+
+        return $nb1;
+    }
+
+    public function methodWithMultipleIfElseIfSeparated() // Compliant (only 2 if on the same variable)
+    {
+        $nb1 = 0;
+
+        if ($nb1 == 1) {
+            $nb1 = 1;
+        } else {
+            if ($nb1 == 2) {
+                $nb1 = 3;
+            } else {
+                $nb1 = 2;
+            }
+        }
+
+        return $nb1;
+    }
+
+    public function methodWithMultipleIfElseIfSeparatedDeep()
+    {
+        $nb1 = 0;
+
+        if ($nb1 == 1) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+            $nb1 = 1;
+        } else {
+            if ($nb1 == 2) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+                $nb1 = 3;
+            } else {
+                if ($nb1 == 3) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+                    $nb1 = 4;
+                } else {
+                    $nb1 = 5;
+                }
+            }
+        }
+
+        return $nb1;
+    }
+
+    public function methodWithMultipleIfElseIfSeparatedDeepButDifferentVariables() // Compliant
+    {
+        $nb1 = 0;
+        $nb2 = 0;
+
+        if ($nb1 == 1) {
+            $nb1 = 1;
+        } else {
+            if ($nb1 == 2) {
+                $nb1 = 3;
+            } else {
+                if ($nb2 == 2) {
+                    $nb1 = 3;
+                } else {
+                    $nb1 = 2;
+                }
+            }
         }
 
         return $nb1;

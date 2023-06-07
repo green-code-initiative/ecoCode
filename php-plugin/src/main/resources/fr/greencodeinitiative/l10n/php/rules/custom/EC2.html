@@ -1,31 +1,29 @@
-<p>If we are using too many conditional if-else statements it will impact performance since. We can think of using a switch statement instead of multiple if-else if possible. Switch statement has a performance advantage over if – else.</p>
+<p>If we are using too many conditional if-else statements it will impact performance. We can think of using a switch statement instead of multiple if-else if possible. Switch statement has a performance advantage over if – else.</p>
 
 <h2>Non-compliant Code Example</h2>
 <pre>
-		$index = 1;
-        $nb = 2;
+    $index = 1;
+    $nb = 2;
 
-        if ($nb > $index) {
-            $nb = $nb + $index;
-        } else {
-            $nb = $nb - 1;
-        }
-        if ($nb != $index + 1) {
-            $nb = $nb + $index;
-        } else {
-            $nb = $nb - 1;
-        }
-
-
+    if ($nb > $index) {
+        $nb = $nb + $index;
+    } else {
+        $nb = $nb - 1;
+    }
+    if ($nb != $index + 1) {
+        $nb = $nb + $index;
+    } else {
+        $nb = $nb - 1;
+    }
 </pre>
 <h2>Compliant Code Example</h2>
 <pre>
-        $index = 1;
-        $nb = 2;
+    $index = 1;
+    $nb = 2;
 
-        if ($nb > $index) {
-            $nb = $nb + $index;
-        } else {
-            $nb = $nb - 1;
-        }
+    if ($nb > $index) {
+        $nb = $nb + $index;
+    } else {
+        $nb = $nb - 1;
+    }
 </pre>
