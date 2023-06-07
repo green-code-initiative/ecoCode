@@ -32,7 +32,7 @@ public class IncrementCheckTest {
 
     @Test
     public void test() throws Exception {
-        PHPCheckTest.check(new IncrementCheck(), new PhpTestFile(new File("src/test/resources/checks/incrementCheck.php")));
+        PHPCheckTest.check(new IncrementCheck(), new PhpTestFile(new File("src/test/resources/checks/IncrementCheck.php")));
     }
 
 }

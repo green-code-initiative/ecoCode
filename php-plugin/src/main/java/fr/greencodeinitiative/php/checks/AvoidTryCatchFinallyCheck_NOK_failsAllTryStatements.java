@@ -14,7 +14,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements.ERROR_MESSAGE,
         description = AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"error-handling", "performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S34")
 public class AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements extends PHPSubscriptionCheck {
 

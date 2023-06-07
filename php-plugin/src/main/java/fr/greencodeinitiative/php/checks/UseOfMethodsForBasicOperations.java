@@ -23,7 +23,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = UseOfMethodsForBasicOperations.ERROR_MESSAGE,
         description = UseOfMethodsForBasicOperations.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "D2")
 public class UseOfMethodsForBasicOperations extends PHPSubscriptionCheck {
 

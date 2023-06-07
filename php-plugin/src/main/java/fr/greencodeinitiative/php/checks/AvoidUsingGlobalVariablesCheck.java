@@ -13,7 +13,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = AvoidUsingGlobalVariablesCheck.ERROR_MESSAGE,
         description = AvoidUsingGlobalVariablesCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "D4")
 public class AvoidUsingGlobalVariablesCheck extends PHPVisitorCheck {
 
