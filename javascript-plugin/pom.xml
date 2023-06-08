@@ -70,7 +70,7 @@
             <plugin>
                 <!-- plugin TO KEEP because of an error on SonarQube logs when it starts
                 "java.lang.ClassNotFoundException: org.sonarsource.analyzer.commons.ExternalRuleLoader"
-                possible reaseon : some libraries aren't available at runtime if no shaded Jar file produced
+                possible reason : some libraries aren't available at runtime if no shaded Jar file produced
                  -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
