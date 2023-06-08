@@ -9,12 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [#109](https://github.com/green-code-initiative/ecoCode/issues/109) new PHP rule : Getting the size of the collection in the loop. For further [RULES.md](./RULES.md) file
-- [#191](https://github.com/green-code-initiative/ecoCode/issues/191) update rule tags for Java, Python, and PHP plugins
-- [#113](https://github.com/green-code-initiative/ecoCode/issues/113) new PYTHON rule : Use unoptimized vector images
+- [#109](https://github.com/green-code-initiative/ecoCode/issues/109) Add PHP rule EC3: Getting the size of the collection in the loop.
+- [#190](https://github.com/green-code-initiative/ecoCode/pull/190) Add Python rule: Use unoptimized vector images
 - [#127](https://github.com/green-code-initiative/ecoCode/issues/127) Add Python rule EC404: Usage of generator comprehension instead of list comprehension in for loop declaration
 - [#192](https://github.com/green-code-initiative/ecoCode/pull/192) Add Python rule EC203: Detect unoptimized file formats
 - [#108](https://github.com/green-code-initiative/ecoCode/issues/108) Add Python rule EC66: Use single quote (') instead of quotation mark (")
+- [#191](https://github.com/green-code-initiative/ecoCode/issues/191) Update rule tags for Java, Python, and PHP plugins
+- Add JavaScript rules from [ecoCode ESLint plugin v0.2.0](https://github.com/green-code-initiative/ecoCode-linter/releases/tag/eslint-plugin%2F0.2.0)
 
 ### Changed
 
