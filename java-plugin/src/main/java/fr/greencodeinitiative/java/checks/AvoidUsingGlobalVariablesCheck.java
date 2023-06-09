@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.google.re2j.Pattern;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.Tree;

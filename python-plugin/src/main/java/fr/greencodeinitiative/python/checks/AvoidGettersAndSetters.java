@@ -3,7 +3,6 @@ package fr.greencodeinitiative.python.checks;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;

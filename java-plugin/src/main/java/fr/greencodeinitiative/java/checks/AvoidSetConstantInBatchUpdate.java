@@ -6,7 +6,6 @@ import java.util.stream.Stream;
 
 import static fr.greencodeinitiative.java.checks.ConstOrLiteralDeclare.isLiteral;
 import static java.util.Arrays.asList;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;

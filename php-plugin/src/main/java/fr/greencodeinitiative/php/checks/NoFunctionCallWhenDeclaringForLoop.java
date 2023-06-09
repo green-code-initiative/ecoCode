@@ -3,7 +3,6 @@ package fr.greencodeinitiative.php.checks;
 import java.util.Collections;
 import java.util.List;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.SeparatedList;
 import org.sonar.plugins.php.api.tree.Tree;

@@ -2,7 +2,6 @@ package fr.greencodeinitiative.php.checks;
 
 import java.util.regex.Pattern;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.declaration.FunctionDeclarationTree;
 import org.sonar.plugins.php.api.visitors.PHPVisitorCheck;

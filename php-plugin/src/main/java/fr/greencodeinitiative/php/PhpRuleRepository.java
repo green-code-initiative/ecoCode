@@ -28,12 +28,7 @@ import fr.greencodeinitiative.php.checks.AvoidUsingGlobalVariablesCheck;
 import fr.greencodeinitiative.php.checks.IncrementCheck;
 import fr.greencodeinitiative.php.checks.NoFunctionCallWhenDeclaringForLoop;
 import fr.greencodeinitiative.php.checks.UseOfMethodsForBasicOperations;
-import org.sonar.api.SonarEdition;
-import org.sonar.api.SonarProduct;
-import org.sonar.api.SonarQubeSide;
-import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.utils.Version;
 import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 

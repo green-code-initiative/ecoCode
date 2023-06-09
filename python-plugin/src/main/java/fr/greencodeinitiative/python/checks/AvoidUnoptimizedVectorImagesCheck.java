@@ -3,7 +3,6 @@ package fr.greencodeinitiative.python.checks;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;

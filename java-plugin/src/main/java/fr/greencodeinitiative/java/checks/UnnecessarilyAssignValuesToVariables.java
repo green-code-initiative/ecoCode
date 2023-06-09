@@ -9,7 +9,6 @@ import java.util.Map;
 import javax.annotation.CheckForNull;
 
 import org.apache.commons.lang3.StringUtils;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;

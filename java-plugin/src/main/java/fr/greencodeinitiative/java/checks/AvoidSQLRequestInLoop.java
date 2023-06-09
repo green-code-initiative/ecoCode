@@ -3,7 +3,6 @@ package fr.greencodeinitiative.java.checks;
 import java.util.Arrays;
 import java.util.List;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
