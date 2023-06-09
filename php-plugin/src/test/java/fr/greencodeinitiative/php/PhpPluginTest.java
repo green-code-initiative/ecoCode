@@ -19,22 +19,49 @@
  */
 package fr.greencodeinitiative.php;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.Plugin;
 import org.sonar.api.SonarEdition;
+import org.sonar.api.SonarProduct;
 import org.sonar.api.SonarQubeSide;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.internal.PluginContextImpl;
-import org.sonar.api.internal.SonarRuntimeImpl;
 import org.sonar.api.utils.Version;
 
-public class PhpPluginTest {
-    @Test
-    public void test() {
-        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(9, 9), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
-        Plugin.Context context = new PluginContextImpl.Builder().setSonarRuntime(sonarRuntime).build();
-        new PHPPlugin().define(context);
-        assertThat(context.getExtensions()).hasSize(1);
-    }
+import static fr.greencodeinitiative.php.PhpRuleRepository.SONARQUBE_RUNTIME;
+import static org.assertj.core.api.Assertions.assertThat;
+
+class PhpPluginTest {
+  private static final Version MINIMAL_SONARQUBE_VERSION_COMPATIBILITY = Version.create(9, 8);
+
+  private Plugin.Context context;
+
+  @BeforeEach
+  void init() {
+    context = new PluginContextImpl.Builder().setSonarRuntime(SONARQUBE_RUNTIME).build();
+  }
+
+  @Test
+  void test() {
+    new PHPPlugin().define(context);
+    assertThat(context.getExtensions()).hasSize(1);
+  }
+
+  @Test
+  void testPluginCompatibility() {
+    SonarRuntime sonarRuntime = context.getRuntime();
+    assertThat(MINIMAL_SONARQUBE_VERSION_COMPATIBILITY.isGreaterThanOrEqual(sonarRuntime.getApiVersion()))
+            .describedAs("Plugin must be compatible with SonarQube 9.8")
+            .isTrue();
+    assertThat(sonarRuntime.getProduct())
+            .describedAs("Plugin should applied to SonarQube")
+            .isEqualTo(SonarProduct.SONARQUBE);
+    assertThat(sonarRuntime.getEdition())
+            .describedAs("Plugin should be compatible with Community Edition")
+            .isEqualTo(SonarEdition.COMMUNITY);
+    assertThat(sonarRuntime.getSonarQubeSide())
+            .describedAs("Plugin should be executed by scanner")
+            .isEqualTo(SonarQubeSide.SCANNER);
+  }
 }

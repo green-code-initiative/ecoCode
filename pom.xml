@@ -56,9 +56,6 @@
         <sonar.organization>green-code-initiative</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
-        <!-- Don't forget to update this version -->
-        <jacoco.version>0.8.8</jacoco.version>
-
         <sonarjava.version>7.15.0.30507</sonarjava.version>
         <sonarpython.version>3.19.0.10254</sonarpython.version>
         <sonarphp.version>3.25.0.9077</sonarphp.version>
@@ -200,7 +197,7 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>${jacoco.version}</version>
+                    <version>0.8.10</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>

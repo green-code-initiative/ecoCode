@@ -46,7 +46,7 @@ import static io.ecocode.rules.php.PhpRulesSpecificationsRepository.RESOURCE_BAS
 
 public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleRepository {
   private static final Version SONARQUBE_RUNTIME_VERSION = Version.create(9, 8);
-  private static final SonarRuntime SONARQUBE_RUNTIME = new SonarRuntime() {
+  static final SonarRuntime SONARQUBE_RUNTIME = new SonarRuntime() {
     @Override
     public Version getApiVersion() {
       return SONARQUBE_RUNTIME_VERSION;
