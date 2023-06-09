@@ -29,46 +29,20 @@ import fr.greencodeinitiative.python.checks.AvoidTryCatchFinallyCheck;
 import fr.greencodeinitiative.python.checks.AvoidUnoptimizedVectorImagesCheck;
 import fr.greencodeinitiative.python.checks.DetectUnoptimizedImageFormat;
 import fr.greencodeinitiative.python.checks.NoFunctionCallWhenDeclaringForLoop;
-import org.sonar.api.SonarEdition;
-import org.sonar.api.SonarProduct;
-import org.sonar.api.SonarQubeSide;
-import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.utils.Version;
 import org.sonar.plugins.python.api.PythonCustomRuleRepository;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static io.ecocode.rules.Common.SONARQUBE_RUNTIME;
 import static io.ecocode.rules.python.PythonRulesSpecificationsRepository.LANGUAGE;
 import static io.ecocode.rules.python.PythonRulesSpecificationsRepository.NAME;
 import static io.ecocode.rules.python.PythonRulesSpecificationsRepository.REPOSITORY_KEY;
 import static io.ecocode.rules.python.PythonRulesSpecificationsRepository.RESOURCE_BASE_PATH;
 
 public class PythonRuleRepository implements RulesDefinition, PythonCustomRuleRepository {
-  private static final Version SONARQUBE_RUNTIME_VERSION = Version.create(9, 8);
-  static final SonarRuntime SONARQUBE_RUNTIME = new SonarRuntime() {
-    @Override
-    public Version getApiVersion() {
-      return SONARQUBE_RUNTIME_VERSION;
-    }
-
-    @Override
-    public SonarProduct getProduct() {
-      return SonarProduct.SONARQUBE;
-    }
-
-    @Override
-    public SonarQubeSide getSonarQubeSide() {
-      return SonarQubeSide.SCANNER;
-    }
-
-    @Override
-    public SonarEdition getEdition() {
-      return SonarEdition.COMMUNITY;
-    }
-  };
 
   @Override
   public void define(Context context) {

@@ -34,35 +34,13 @@ import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
 import java.util.List;
 
+import static io.ecocode.rules.Common.SONARQUBE_RUNTIME;
 import static io.ecocode.rules.php.PhpRulesSpecificationsRepository.LANGUAGE;
 import static io.ecocode.rules.php.PhpRulesSpecificationsRepository.NAME;
 import static io.ecocode.rules.php.PhpRulesSpecificationsRepository.REPOSITORY_KEY;
 import static io.ecocode.rules.php.PhpRulesSpecificationsRepository.RESOURCE_BASE_PATH;
 
 public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleRepository {
-  private static final Version SONARQUBE_RUNTIME_VERSION = Version.create(9, 8);
-  static final SonarRuntime SONARQUBE_RUNTIME = new SonarRuntime() {
-    @Override
-    public Version getApiVersion() {
-      return SONARQUBE_RUNTIME_VERSION;
-    }
-
-    @Override
-    public SonarProduct getProduct() {
-      return SonarProduct.SONARQUBE;
-    }
-
-    @Override
-    public SonarQubeSide getSonarQubeSide() {
-      return SonarQubeSide.SCANNER;
-    }
-
-    @Override
-    public SonarEdition getEdition() {
-      return SonarEdition.COMMUNITY;
-    }
-  };
-
   @Override
   public void define(Context context) {
     NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);

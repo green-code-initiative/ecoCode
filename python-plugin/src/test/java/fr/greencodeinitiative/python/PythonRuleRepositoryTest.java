@@ -19,23 +19,15 @@
  */
 package fr.greencodeinitiative.python;
 
-import static fr.greencodeinitiative.python.PythonRuleRepository.SONARQUBE_RUNTIME;
-import static org.assertj.core.api.Assertions.assertThat;
-
 import io.ecocode.rules.python.PythonRulesSpecificationsRepository;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
-import org.sonar.api.SonarEdition;
-import org.sonar.api.SonarProduct;
-import org.sonar.api.SonarQubeSide;
-import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.utils.Version;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class PythonRuleRepositoryTest {
-  private static final Version MINIMAL_SONARQUBE_VERSION_COMPATIBILITY = Version.create(9, 8);
-
   private PythonRuleRepository pythonRuleRepository;
   private RulesDefinition.Context context;
   private RulesDefinition.Repository repository;
@@ -80,23 +72,5 @@ public class PythonRuleRepositoryTest {
             .flatMap(repository -> repository.rules().stream())
             .flatMap(rule -> rule.params().stream())
             .forEach(param -> assertThat(param.description()).as("description for " + param.key()).isNotEmpty());
-    ;
-  }
-
-  @Test
-  public void testPluginCompatibility() {
-    SonarRuntime sonarRuntime = SONARQUBE_RUNTIME;
-    assertThat(MINIMAL_SONARQUBE_VERSION_COMPATIBILITY.isGreaterThanOrEqual(sonarRuntime.getApiVersion()))
-            .describedAs("Plugin must be compatible with SonarQube 9.8")
-            .isTrue();
-    assertThat(sonarRuntime.getProduct())
-            .describedAs("Plugin should applied to SonarQube")
-            .isEqualTo(SonarProduct.SONARQUBE);
-    assertThat(sonarRuntime.getEdition())
-            .describedAs("Plugin should be compatible with Community Edition")
-            .isEqualTo(SonarEdition.COMMUNITY);
-    assertThat(sonarRuntime.getSonarQubeSide())
-            .describedAs("Plugin should be executed by scanner")
-            .isEqualTo(SonarQubeSide.SCANNER);
   }
 }

@@ -38,12 +38,7 @@ import fr.greencodeinitiative.java.checks.NoFunctionCallWhenDeclaringForLoop;
 import fr.greencodeinitiative.java.checks.OptimizeReadFileExceptions;
 import fr.greencodeinitiative.java.checks.UnnecessarilyAssignValuesToVariables;
 import fr.greencodeinitiative.java.checks.UseCorrectForLoop;
-import org.sonar.api.SonarEdition;
-import org.sonar.api.SonarProduct;
-import org.sonar.api.SonarQubeSide;
-import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.utils.Version;
 import org.sonar.plugins.java.api.JavaCheck;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
@@ -51,6 +46,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static io.ecocode.rules.Common.SONARQUBE_RUNTIME;
 import static io.ecocode.rules.java.JavaRulesSpecificationsRepository.LANGUAGE;
 import static io.ecocode.rules.java.JavaRulesSpecificationsRepository.NAME;
 import static io.ecocode.rules.java.JavaRulesSpecificationsRepository.REPOSITORY_KEY;
@@ -84,28 +80,6 @@ public class JavaRulesDefinition implements RulesDefinition {
   );
 
   static final List<Class<? extends JavaCheck>> ANNOTATED_RULE_TEST_CLASSES = Collections.emptyList();
-  private static final Version SONARQUBE_RUNTIME_VERSION = Version.create(9, 8);
-  static final SonarRuntime SONARQUBE_RUNTIME = new SonarRuntime() {
-    @Override
-    public Version getApiVersion() {
-      return SONARQUBE_RUNTIME_VERSION;
-    }
-
-    @Override
-    public SonarProduct getProduct() {
-      return SonarProduct.SONARQUBE;
-    }
-
-    @Override
-    public SonarQubeSide getSonarQubeSide() {
-      return SonarQubeSide.SCANNER;
-    }
-
-    @Override
-    public SonarEdition getEdition() {
-      return SonarEdition.COMMUNITY;
-    }
-  };
 
   @Override
   public void define(Context context) {

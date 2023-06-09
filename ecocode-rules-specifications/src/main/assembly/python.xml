@@ -10,6 +10,7 @@
 		<fileSet>
 			<directory>${project.build.outputDirectory}</directory>
 			<includes>
+				<include>io/ecocode/rules/*.class</include>
 				<include>io/ecocode/rules/python/*.*</include>
 			</includes>
 			<outputDirectory/>
