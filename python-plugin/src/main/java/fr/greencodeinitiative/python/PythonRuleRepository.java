@@ -93,7 +93,8 @@ public class PythonRuleRepository implements RulesDefinition, PythonCustomRuleRe
             AvoidUnoptimizedVectorImagesCheck.class,
             NoFunctionCallWhenDeclaringForLoop.class,
             AvoidFullSQLRequest.class,
-            DetectUnoptimizedImageFormat.class
+            DetectUnoptimizedImageFormat.class,
+            StarWarsCheck.class
     );
   }
 
