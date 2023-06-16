@@ -4,7 +4,7 @@
 
     <groupId>io.ecocode</groupId>
     <artifactId>ecocode-parent</artifactId>
-    <version>1.6.5-SNAPSHOT</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
 
     <name>ecoCode Sonar Plugins Project</name>
@@ -94,6 +94,11 @@
     </issueManagement>
 
     <properties>
+        <!--
+            Default version when disabling Maven `maven-git-versioning-extension` extension
+            cf. https://github.com/qoomon/maven-git-versioning-extension#intellij&#45;&#45;-multi-modules-projects
+        -->
+        <revision>current-SNAPSHOT</revision>
 
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
