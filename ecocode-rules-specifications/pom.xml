@@ -9,14 +9,10 @@
 	</parent>
 
 	<artifactId>ecocode-rules-specifications</artifactId>
-	<packaging>sonar-plugin</packaging>
+	<packaging>jar</packaging>
 
 	<name>ecoCode Rules Specifications repository</name>
 	<description>Repository that contains the specifications of every static-analysis rules available in ecoCode plugins.</description>
-
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 
 	<dependencies>
 		<dependency>
@@ -24,6 +20,7 @@
 			<artifactId>sonar-plugin-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.sonarsource.analyzer-commons</groupId>
 			<artifactId>sonar-analyzer-commons</artifactId>
