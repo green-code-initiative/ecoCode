@@ -13,6 +13,7 @@
 
 	<name>ecoCode Rules Specifications repository</name>
 	<description>Repository that contains the specifications of every static-analysis rules available in ecoCode plugins.</description>
+	<url>https://github.com/green-code-initiative/ecoCode/tree/main/ecocode-rules-specifications</url>
 
 	<dependencies>
 		<dependency>
