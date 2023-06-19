@@ -9,6 +9,7 @@
 	</parent>
 
 	<artifactId>ecocode-rules-specifications</artifactId>
+	<packaging>sonar-plugin</packaging>
 
 	<name>ecoCode Rules Specifications repository</name>
 	<description>Repository that contains the specifications of every static-analysis rules available in ecoCode plugins.</description>
