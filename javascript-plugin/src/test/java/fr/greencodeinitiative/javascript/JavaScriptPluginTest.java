@@ -19,7 +19,7 @@ class JavaScriptPluginTest {
 
         @Override
         public Version getApiVersion() {
-            return Version.create(9, 9);
+            return Version.create(10, 0);
         }
 
         @Override

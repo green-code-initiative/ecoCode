@@ -9,17 +9,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [#109](https://github.com/green-code-initiative/ecoCode/issues/109) Add PHP rule EC3: Getting the size of the collection in the loop.
+- [#108](https://github.com/green-code-initiative/ecoCode/issues/108) new Python rule EC66 : Use single quote (') instead of quotation mark (")
+- [#109](https://github.com/green-code-initiative/ecoCode/issues/109) new PHP rule EC3 : Getting the size of the collection in the loop. For further [RULES.md](./RULES.md) file
+- [#113](https://github.com/green-code-initiative/ecoCode/issues/113) new Python rule EC10 : Use unoptimized vector images
+- [#127](https://github.com/green-code-initiative/ecoCode/issues/127) new Python rule EC404 : Usage of generator comprehension instead of list comprehension in for loop declaration
 - [#190](https://github.com/green-code-initiative/ecoCode/pull/190) Add Python rule: Use unoptimized vector images
-- [#127](https://github.com/green-code-initiative/ecoCode/issues/127) Add Python rule EC404: Usage of generator comprehension instead of list comprehension in for loop declaration
-- [#192](https://github.com/green-code-initiative/ecoCode/pull/192) Add Python rule EC203: Detect unoptimized file formats
-- [#108](https://github.com/green-code-initiative/ecoCode/issues/108) Add Python rule EC66: Use single quote (') instead of quotation mark (")
 - [#191](https://github.com/green-code-initiative/ecoCode/issues/191) Update rule tags for Java, Python, and PHP plugins
+- [#192](https://github.com/green-code-initiative/ecoCode/pull/192) new Python rule EC203 : Detect unoptimized file formats
 - Add JavaScript rules from [ecoCode ESLint plugin v0.2.0](https://github.com/green-code-initiative/ecoCode-linter/releases/tag/eslint-plugin%2F0.2.0)
 
 ### Changed
 
 - [#19](https://github.com/green-code-initiative/ecoCode-common/issues/19) process changed for development environment installation : easier to initialize locally environment (check [`INSTALL.md`](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment) file)
+- [#107](https://github.com/green-code-initiative/ecoCode/issues/107) upgrade librairies to SonarQube 10.0.0
 - [#196](https://github.com/green-code-initiative/ecoCode/issues/196) updating PHP files to make them following the coding standards (PSR-12)
 - technical : upgrade of maven plugins versions
 
@@ -72,14 +74,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - [#40](https://github.com/green-code-initiative/ecoCode/issues/40) Refactoring of package names (`cnumr` to  `greencodeinitiative`)
+- [#55](https://github.com/green-code-initiative/ecoCode/issues/55) rename `eco-conception` tag of rules to `eco-design`
 - [#58](https://github.com/green-code-initiative/ecoCode/issues/58) check and upgrade compatibility to SonarQube 9.9
 - move common init scripts to `ecoCode-common` repository
 - modifying documentation and move `CONTRIBUTING.md`, `CODE_STYLE.md` and `INSTALL.md` to common doc in `ecoCode-common` repository
 - security / performance optimizations : correction of `sonarcloud.io` security hotspots (java / php, python) and move Pattern compilation to static attribute
+- [#64](https://github.com/green-code-initiative/ecoCode/issues/64) Python: ecoCode plugin with SonarQube, no code-smell detection
 - [#65](https://github.com/green-code-initiative/ecoCode/issues/65) Create a test project to check new plugin rule in real environment
 - [#71](https://github.com/green-code-initiative/ecoCode/issues/71) After an PHP analysis, no ecocode code smells appears in my Sonar project
-- [#64](https://github.com/green-code-initiative/ecoCode/issues/64) Python: ecoCode plugin with SonarQube, no code-smell detection
-- [#55](https://github.com/green-code-initiative/ecoCode/issues/55) rename `eco-conception` tag of rules to `eco-design`
 - [#76](https://github.com/green-code-initiative/ecoCode/issues/76) correction of SonarQube plugins homepage link broken
 - documentation upgrade
 

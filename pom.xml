@@ -50,18 +50,18 @@
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
-        <sonarqube.version>9.4.0.54424</sonarqube.version>
-
         <sonar.organization>green-code-initiative</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
-        <sonarjava.version>7.15.0.30507</sonarjava.version>
-        <sonarpython.version>3.19.0.10254</sonarpython.version>
-        <sonarphp.version>3.25.0.9077</sonarphp.version>
-        <sonarjavascript.version>9.13.0.20537</sonarjavascript.version>
+        <sonarqube.version>9.4.0.54424</sonarqube.version>
+        <sonar-plugin-api-impl.version>10.0.0.68432</sonar-plugin-api-impl.version>
+        <sonarjava.version>7.19.0.31550</sonarjava.version>
+        <sonarpython.version>4.3.0.11660</sonarpython.version>
+        <sonarphp.version>3.29.0.9684</sonarphp.version>
+        <sonarjavascript.version>10.2.0.21568</sonarjavascript.version>
 
-        <sonar-plugin-api-impl.version>9.7.1.62043</sonar-plugin-api-impl.version>
-        <sonar-analyzer-commons.version>2.1.0.1111</sonar-analyzer-commons.version>
+        <sonar-analyzer-commons.version>2.5.0.1358</sonar-analyzer-commons.version>
+
         <sonar-packaging.version>1.21.0.505</sonar-packaging.version>
         <sonar.skipDependenciesPackaging>true</sonar.skipDependenciesPackaging>
 
@@ -192,6 +192,45 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
                     <version>3.5.0</version>
+                    <!-- common configuration for shade plugin -->
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <filters>
+                                    <filter>
+                                        <artifact>commons-*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/**</exclude>
+                                        </excludes>
+                                    </filter>
+                                    <filter>
+                                        <artifact>org.*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/**</exclude>
+                                            <exclude>org/sonar/api/batch/sensor/**</exclude>
+                                            <exclude>javax/annotation/**</exclude>
+                                        </excludes>
+                                    </filter>
+                                    <filter>
+                                        <artifact>com.*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/**</exclude>
+                                        </excludes>
+                                    </filter>
+                                    <filter>
+                                        <artifact>junit:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/**</exclude>
+                                        </excludes>
+                                    </filter>
+                                </filters>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
