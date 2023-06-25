@@ -56,7 +56,8 @@ public final class RulesList {
                 AvoidUsingGlobalVariablesCheck.class,
                 AvoidSetConstantInBatchUpdate.class,
                 FreeResourcesOfAutoCloseableInterface.class,
-                AvoidMultipleIfElseStatement.class
+                AvoidMultipleIfElseStatement.class,
+                UseFetchTypeLazyRule.class
         ));
     }
 

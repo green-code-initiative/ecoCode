@@ -1,0 +1,34 @@
+<h1>Avoid using a FetchType other than FetchType.LAZY</h1>
+<p> Using <code>FetchType.EAGER</code> can lead to performance issues and should be avoided. Always use <code>FetchType.LAZY</code> instead.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "otherEntity_id")
+    @Column(name = "otherEntity_id")
+    private Collection&lt;otherEntity&gt; otherEntities;
+</pre>
+<pre>
+    @ManyToMany(fetch = FetchType.EAGER)
+    @Column(name = "otherEntity_id")
+    private Collection&lt;otherEntity&gt; otherEntities;
+</pre>
+<pre>
+    @OneToMany
+    @Column(name = "otherEntity_id")
+    private Collection&lt;otherEntity&gt; otherEntities;
+</pre>
+<pre>
+    @ManyToMany
+    @Column(name = "otherEntity_id")
+    private Collection&lt;otherEntity&gt; otherEntities;
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "otherEntity_id")
+    @Column(name = "otherEntity_id")
+    private Collection&lt;otherEntity&gt; otherEntities;
+</pre>
+<pre>
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "otherEntity_id")
+        @Column(name = "otherEntity_id")
+    private Collection&lt;otherEntity&gt; otherEntities;
+</pre>
