@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#19](https://github.com/green-code-initiative/ecoCode-common/issues/19) process changed for development environment installation : easier to initialize locally environment (check [`INSTALL.md`](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md#howto-install-sonarqube-dev-environment) file)
 - [#187](https://github.com/green-code-initiative/ecoCode/issues/187) upgrade librairies to SonarQube 10.0.0
 - [#196](https://github.com/green-code-initiative/ecoCode/issues/196) updating PHP files to make them following the coding standards (PSR-12)
+- [#201](https://github.com/green-code-initiative/ecoCode/pull/201) Clean-up plugins and dependencies
 - technical : upgrade of maven plugins versions
 
 ### Deleted
@@ -159,3 +160,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.1.1]: https://github.com/green-code-initiative/ecoCode/compare/v0.1.0...v0.1.1
 
 [0.1.0]: https://github.com/green-code-initiative/ecoCode/releases/tag/v0.1.0
+

@@ -1,7 +1,5 @@
 /*
- * SonarQube Python Plugin
- * Copyright (C) 2012-2019 SonarSource SA
- * mailto:info AT sonarsource DOT com
+ * Copyright (C) 2023 Green Code Initiative
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -13,11 +11,16 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package fr.greencodeinitiative.python;
+
+import fr.greencodeinitiative.python.checks.*;
+import org.sonar.api.rules.RuleType;
+import org.sonar.api.server.rule.RulesDefinition;
+import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
+import org.sonar.plugins.python.api.PythonCustomRuleRepository;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -28,14 +31,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-
-import fr.greencodeinitiative.python.checks.*;
-import org.apache.commons.lang.StringUtils;
-import org.sonar.api.rules.RuleType;
-import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
-import org.sonar.plugins.python.api.PythonCustomRuleRepository;
 
 public class PythonRuleRepository implements RulesDefinition, PythonCustomRuleRepository {
 

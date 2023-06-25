@@ -54,7 +54,6 @@
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <sonarqube.version>9.4.0.54424</sonarqube.version>
-        <sonar-plugin-api-impl.version>10.0.0.68432</sonar-plugin-api-impl.version>
         <sonarjava.version>7.19.0.31550</sonarjava.version>
         <sonarpython.version>4.3.0.11660</sonarpython.version>
         <sonarphp.version>3.29.0.9684</sonarphp.version>
@@ -67,6 +66,7 @@
 
         <junit.jupiter.version>5.9.1</junit.jupiter.version>
         <assertJ.version>3.23.1</assertJ.version>
+        <mockito.version>5.3.1</mockito.version>
 
         <google.re2j>1.7</google.re2j>
 
@@ -87,12 +87,6 @@
                 <groupId>org.sonarsource.analyzer-commons</groupId>
                 <artifactId>sonar-analyzer-commons</artifactId>
                 <version>${sonar-analyzer-commons.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.sonarsource.sonarqube</groupId>
-                <artifactId>sonar-plugin-api-impl</artifactId>
-                <version>${sonar-plugin-api-impl.version}</version>
             </dependency>
 
             <!-- for security on regex patterns : https://github.com/google/re2j -->
@@ -157,6 +151,13 @@
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
                 <version>${assertJ.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-junit-jupiter</artifactId>
+                <version>${mockito.version}</version>
                 <scope>test</scope>
             </dependency>
 

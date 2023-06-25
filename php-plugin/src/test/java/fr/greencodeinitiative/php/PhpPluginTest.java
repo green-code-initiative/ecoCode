@@ -1,7 +1,5 @@
 /*
- * SonarQube Python Plugin
- * Copyright (C) 2012-2019 SonarSource SA
- * mailto:info AT sonarsource DOT com
+ * Copyright (C) 2023 Green Code Initiative
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -13,28 +11,26 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package fr.greencodeinitiative.php;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.Test;
 import org.sonar.api.Plugin;
-import org.sonar.api.SonarEdition;
-import org.sonar.api.SonarQubeSide;
 import org.sonar.api.SonarRuntime;
-import org.sonar.api.internal.PluginContextImpl;
-import org.sonar.api.internal.SonarRuntimeImpl;
-import org.sonar.api.utils.Version;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
 
 public class PhpPluginTest {
+
     @Test
     public void test() {
-        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(10, 0), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
-        Plugin.Context context = new PluginContextImpl.Builder().setSonarRuntime(sonarRuntime).build();
+        SonarRuntime sonarRuntime = mock(SonarRuntime.class);
+        Plugin.Context context = new Plugin.Context(sonarRuntime);
         new PHPPlugin().define(context);
         assertThat(context.getExtensions()).hasSize(1);
     }
+
 }

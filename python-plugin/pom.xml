@@ -27,10 +27,6 @@
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
-            <artifactId>sonar-plugin-api-impl</artifactId>
-        </dependency>
 
         <!-- for security on regex patterns : https://github.com/google/re2j -->
 <!--        <dependency>-->
@@ -41,6 +37,12 @@
         <dependency>
             <groupId>org.sonarsource.python</groupId>
             <artifactId>python-checks-testkit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
 
