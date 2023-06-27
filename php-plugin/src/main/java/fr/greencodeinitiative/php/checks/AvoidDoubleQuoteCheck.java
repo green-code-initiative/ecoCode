@@ -19,7 +19,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = AvoidDoubleQuoteCheck.ERROR_MESSAGE,
         description = AvoidDoubleQuoteCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S66")
 public class AvoidDoubleQuoteCheck extends PHPSubscriptionCheck {
 

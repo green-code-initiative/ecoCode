@@ -25,7 +25,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Avoid SQL request in loop",
         description = AvoidSQLRequestInLoop.MESSAGE_RULE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"sql", "performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "S72")
 public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
 

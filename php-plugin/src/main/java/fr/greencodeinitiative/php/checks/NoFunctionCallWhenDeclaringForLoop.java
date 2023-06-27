@@ -19,7 +19,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = NoFunctionCallWhenDeclaringForLoop.ERROR_MESSAGE,
         description = NoFunctionCallWhenDeclaringForLoop.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S69")
 public class NoFunctionCallWhenDeclaringForLoop extends PHPSubscriptionCheck {
 

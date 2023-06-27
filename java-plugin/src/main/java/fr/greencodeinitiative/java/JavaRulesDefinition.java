@@ -1,7 +1,5 @@
 /*
- * SonarQube Java
- * Copyright (C) 2012-2021 SonarSource SA
- * mailto:info AT sonarsource DOT com
+ * Copyright (C) 2023 Green Code Initiative
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -13,24 +11,19 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package fr.greencodeinitiative.java;
+
+import org.sonar.api.SonarRuntime;
+import org.sonar.api.server.rule.RulesDefinition;
+import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
-
-import org.sonar.api.SonarEdition;
-import org.sonar.api.SonarQubeSide;
-import org.sonar.api.SonarRuntime;
-import org.sonar.api.internal.SonarRuntimeImpl;
-import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.utils.Version;
-import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
 /**
  * Declare rule metadata in server repository of rules.
@@ -48,11 +41,15 @@ public class JavaRulesDefinition implements RulesDefinition {
     public static final String LANGUAGE = "java";
     public static final String REPOSITORY_KEY = "ecocode-java";
 
+    private final SonarRuntime sonarRuntime;
+
+    public JavaRulesDefinition(SonarRuntime sonarRuntime) {
+        this.sonarRuntime = sonarRuntime;
+    }
+
     @Override
     public void define(Context context) {
         NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
-
-        SonarRuntime sonarRuntime = SonarRuntimeImpl.forSonarQube(Version.create(9, 8), SonarQubeSide.SCANNER, SonarEdition.DEVELOPER);
 
         RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH, sonarRuntime);
 

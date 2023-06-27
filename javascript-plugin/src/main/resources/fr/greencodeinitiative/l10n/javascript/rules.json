@@ -34,5 +34,29 @@
       "eco-design",
       "ecocode"
     ]
+  },
+  {
+    "key": "@ecocode/no-multiple-style-changes",
+    "type": "CODE_SMELL",
+    "name": "Disallow multiple style changes at once",
+    "description": "\n\n<h2 id=\"rule-details\">Rule Details</h2>\n<p>This rule aims to disallow batching multiple style changes at once.</p>\n<p>To limit the number of repaint/reflow, it is advised to batch style modifications by adding a class containing all style\nchanges that will generate a unique reflow.</p>\n<h2 id=\"examples\">Examples</h2>\n<p>Examples of <strong>non-compliant</strong> code for this rule:</p>\n<pre><code class=\"language-html\">&lt;script&gt;\n  element.style.height = &quot;800px&quot;;\n  element.style.width = &quot;600px&quot;;\n  element.style.color = &quot;red&quot;;\n&lt;/script&gt;\n</code></pre>\n<p>Examples of <strong>compliant</strong> code for this rule:</p>\n<pre><code class=\"language-html\">&lt;style&gt;\n  .in-error {\n    color: red;\n    height: 800px;\n    width: 800px;\n  }\n&lt;/style&gt;\n\n&lt;script&gt;\n  element.addClass(&quot;in-error&quot;);\n&lt;/script&gt;\n</code></pre>\n<br/><a href=\"https://github.com/green-code-initiative/ecoCode-linter/blob/main/eslint-plugin/docs/rules/no-multiple-style-changes.md\">Click here to access the rule details.</a>",
+    "constantDebtMinutes": 5,
+    "severity": "MINOR",
+    "tags": [
+      "eco-design",
+      "ecocode"
+    ]
+  },
+  {
+    "key": "@ecocode/prefer-collections-with-pagination",
+    "type": "CODE_SMELL",
+    "name": "Prefer API collections with pagination",
+    "description": "\n\n<h2 id=\"rule-details\">Rule details</h2>\n<p>This rule aims to reduce the size and thus the network weight of API returns that may contain many elements. This rule\nis built for the <a href=\"https://nestjs.com\">NestJS framework</a> but can work with a controller @Controller() and a decorated method @Get().</p>\n<h2 id=\"examples\">Examples</h2>\n<p>Examples of <strong>non-compliant</strong> code for this rule:</p>\n<pre><code class=\"language-ts\">@Controller()\nclass Test {\n  @Get()\n  public find(): Promise&lt;string[]&gt; {}\n}\n</code></pre>\n<p>Examples of <strong>compliant</strong> code for this rule:</p>\n<pre><code class=\"language-ts\">interface Pagination {\n  items: string[];\n  currentPage: number;\n  totalPages: number;\n}\n\n@Controller()\nclass Test {\n  @Get()\n  public find(): Promise&lt;Pagination&gt; {}\n}\n</code></pre>\n<br/><a href=\"https://github.com/green-code-initiative/ecoCode-linter/blob/main/eslint-plugin/docs/rules/prefer-collections-with-pagination.md\">Click here to access the rule details.</a>",
+    "constantDebtMinutes": 5,
+    "severity": "MINOR",
+    "tags": [
+      "eco-design",
+      "ecocode"
+    ]
   }
 ]

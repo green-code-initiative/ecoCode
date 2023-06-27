@@ -1,5 +1,5 @@
-
 <?php
+
 /* exemple 1 */
 
 for ($i = 1; $i <= 10; $i++) {
@@ -18,7 +18,7 @@ for ($i = 1; ; $i++) {
 /* exemple 3 */
 
 $i = 1;
-for (; ; ) {
+for (; ;) {
     if ($i > 10) {
         break;
     }
@@ -38,12 +38,10 @@ function somewhat_calcMax()
 
 
 for ($i = 0; $i <= somewhat_calcMax(); $i++) { // NOK {{Do not call a function in for-type loop declaration}}
-  somewhat_doSomethingWith($i);
+    var_dump($i);
 }
 
 $maxI = somewhat_calcMax();
-for ($i = 0; $i <= $maxI; $i++) {
-  somewhat_doSomethingWith($i);
+for ($i = 0; $i <= $maxI; $i++) { // COMPLIANT
+    var_dump($i);
 }
-
-?>

@@ -1,7 +1,5 @@
 /*
- * SonarQube Python Plugin
- * Copyright (C) 2012-2019 SonarSource SA
- * mailto:info AT sonarsource DOT com
+ * Copyright (C) 2023 Green Code Initiative
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -13,9 +11,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package fr.greencodeinitiative.php;
 
@@ -28,6 +25,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import fr.greencodeinitiative.php.checks.AvoidGettingSizeCollectionInLoopCheck;
 import fr.greencodeinitiative.php.checks.AvoidDoubleQuoteCheck;
 import fr.greencodeinitiative.php.checks.AvoidFullSQLRequestCheck;
 import fr.greencodeinitiative.php.checks.AvoidSQLRequestInLoopCheck;
@@ -89,6 +87,7 @@ public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleReposito
   @Override
   public List<Class<?>> checkClasses() {
     return List.of(
+            AvoidGettingSizeCollectionInLoopCheck.class,
             AvoidDoubleQuoteCheck.class,
             AvoidFullSQLRequestCheck.class,
             AvoidSQLRequestInLoopCheck.class,

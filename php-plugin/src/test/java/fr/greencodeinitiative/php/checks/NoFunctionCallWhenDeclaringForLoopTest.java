@@ -10,6 +10,6 @@ public class NoFunctionCallWhenDeclaringForLoopTest {
 
     @Test
     public void test() throws Exception {
-        PHPCheckTest.check(new NoFunctionCallWhenDeclaringForLoop(), new PhpTestFile(new File("src/test/resources/checks/noFunctionCallWhenDeclaringForLoop.php")));
+        PHPCheckTest.check(new NoFunctionCallWhenDeclaringForLoop(), new PhpTestFile(new File("src/test/resources/checks/NoFunctionCallWhenDeclaringForLoop.php")));
     }
 }

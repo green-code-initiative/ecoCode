@@ -10,6 +10,6 @@ public class UseOfMethodsForBasicOperationsTest {
 
     @Test
     public void test() throws Exception {
-        PHPCheckTest.check(new UseOfMethodsForBasicOperations(), new PhpTestFile(new File("src/test/resources/checks/useOfMethodsForBasicOperations.php")));
+        PHPCheckTest.check(new UseOfMethodsForBasicOperations(), new PhpTestFile(new File("src/test/resources/checks/UseOfMethodsForBasicOperations.php")));
     }
 }

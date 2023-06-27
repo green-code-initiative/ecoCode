@@ -29,19 +29,8 @@
         </dependency>
 
         <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
-            <artifactId>sonar-plugin-api-impl</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.sonarsource.analyzer-commons</groupId>
             <artifactId>sonar-analyzer-commons</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.11</version>
         </dependency>
 
         <!-- for security on regex patterns : https://github.com/google/re2j -->
@@ -69,6 +58,12 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -87,40 +82,9 @@
                 </configuration>
             </plugin>
             <plugin>
+                <!-- shade plugin configuration is on parent pom.xml because of use for other modules -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <filters>
-                                <filter>
-                                    <artifact>commons-*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/**</exclude>
-                                    </excludes>
-                                </filter>
-                                <filter>
-                                    <artifact>org.*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/**</exclude>
-                                        <exclude>org/sonar/api/batch/sensor/**</exclude>
-                                        <exclude>javax/annotation/**</exclude>
-                                    </excludes>
-                                </filter>
-                                <filter>
-                                    <artifact>com.*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/**</exclude>
-                                    </excludes>
-                                </filter>
-                            </filters>
-                        </configuration>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>

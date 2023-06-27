@@ -1,7 +1,5 @@
 /*
- * SonarQube Java
- * Copyright (C) 2012-2021 SonarSource SA
- * mailto:info AT sonarsource DOT com
+ * Copyright (C) 2023 Green Code Initiative
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -13,15 +11,15 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package fr.greencodeinitiative.java;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.sonar.plugins.java.api.CheckRegistrar;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class JavaCheckRegistrarTest {
 
@@ -35,4 +33,5 @@ class JavaCheckRegistrarTest {
         assertThat(context.checkClasses()).hasSize(20);
         assertThat(context.testCheckClasses()).isEmpty();
     }
+
 }

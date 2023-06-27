@@ -15,7 +15,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Developpement",
         description = IncrementCheck.MESSAGERULE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"performance", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S67")
 public class IncrementCheck extends IssuableSubscriptionVisitor {
 

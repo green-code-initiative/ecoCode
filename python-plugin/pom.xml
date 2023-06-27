@@ -27,10 +27,6 @@
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
-            <artifactId>sonar-plugin-api-impl</artifactId>
-        </dependency>
 
         <!-- for security on regex patterns : https://github.com/google/re2j -->
 <!--        <dependency>-->
@@ -41,6 +37,12 @@
         <dependency>
             <groupId>org.sonarsource.python</groupId>
             <artifactId>python-checks-testkit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -61,41 +63,6 @@
                     <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-shade-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>shade</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <filters>-->
-<!--                                <filter>-->
-<!--                                    <artifact>commons-*:*</artifact>-->
-<!--                                    <excludes>-->
-<!--                                        <exclude>META-INF/**</exclude>-->
-<!--                                    </excludes>-->
-<!--                                </filter>-->
-<!--                                <filter>-->
-<!--                                    <artifact>org.*:*</artifact>-->
-<!--                                    <excludes>-->
-<!--                                        <exclude>META-INF/**</exclude>-->
-<!--                                        <exclude>org/sonar/api/batch/sensor/**</exclude>-->
-<!--                                    </excludes>-->
-<!--                                </filter>-->
-<!--                                <filter>-->
-<!--                                    <artifact>com.*:*</artifact>-->
-<!--                                    <excludes>-->
-<!--                                        <exclude>META-INF/**</exclude>-->
-<!--                                    </excludes>-->
-<!--                                </filter>-->
-<!--                            </filters>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>

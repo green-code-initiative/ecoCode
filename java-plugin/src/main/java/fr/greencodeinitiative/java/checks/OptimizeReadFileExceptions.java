@@ -21,7 +21,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
         name = "Developpement",
         description = OptimizeReadFileExceptions.MESSAGERULE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"performance", "error-handling", "eco-design", "ecocode"})
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GRSP0028")
 public class OptimizeReadFileExceptions extends IssuableSubscriptionVisitor {
 
