@@ -3,19 +3,13 @@ package fr.greencodeinitiative.java.checks;
 import java.util.Collections;
 import java.util.List;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = "EC67",
-        name = "Developpement",
-        description = IncrementCheck.MESSAGERULE,
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC67")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S67")
 public class IncrementCheck extends IssuableSubscriptionVisitor {
 

@@ -3,7 +3,6 @@ package fr.greencodeinitiative.java.checks;
 import java.util.Arrays;
 import java.util.List;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
@@ -14,8 +13,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(key = "EC72", name = "Developpement", description = AvoidSQLRequestInLoop.MESSAGERULE, priority = Priority.MINOR,
-        tags = {"performance", "sql", "spring", "eco-design", "ecocode", "memory", "network"})
+@Rule(key = "EC72")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S72")
 public class AvoidSQLRequestInLoop extends IssuableSubscriptionVisitor {
 

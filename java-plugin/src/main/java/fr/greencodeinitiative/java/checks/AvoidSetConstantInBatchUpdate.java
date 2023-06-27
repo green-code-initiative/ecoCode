@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 import static fr.greencodeinitiative.java.checks.ConstOrLiteralDeclare.isLiteral;
 import static java.util.Arrays.asList;
-import org.sonar.check.Priority;
+
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
@@ -21,10 +21,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 import static org.sonar.plugins.java.api.tree.Tree.Kind.MEMBER_SELECT;
 import static org.sonar.plugins.java.api.tree.Tree.Kind.METHOD_INVOCATION;
 
-@Rule(key = "EC78", name = "Developpement",
-        description = AvoidSetConstantInBatchUpdate.MESSAGERULE,
-        priority = Priority.MINOR,
-        tags = {"eco-design", "ecocode", "sql", "performance", "memory"})
+@Rule(key = "EC78")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S78")
 public class AvoidSetConstantInBatchUpdate extends IssuableSubscriptionVisitor {
 

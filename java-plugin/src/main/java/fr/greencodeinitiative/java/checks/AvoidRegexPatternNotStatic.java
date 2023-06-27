@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 
 import javax.annotation.Nonnull;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
@@ -16,12 +15,7 @@ import org.sonar.plugins.java.api.tree.MethodTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = "EC77",
-        name = "Developpement",
-        description = AvoidRegexPatternNotStatic.MESSAGE_RULE,
-        priority = Priority.MINOR,
-        tags = {"performance", "regex", "eco-design", "ecocode", "memory"})
+@Rule(key = "EC77")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S77")
 public class AvoidRegexPatternNotStatic extends IssuableSubscriptionVisitor {
 

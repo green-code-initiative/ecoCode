@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
@@ -21,8 +20,7 @@ import org.sonar.plugins.java.api.tree.PackageDeclarationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(key = "EC69", name = "Developpement", description = NoFunctionCallWhenDeclaringForLoop.MESSAGERULE, priority = Priority.MINOR,
-  tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC69")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S69")
 public class NoFunctionCallWhenDeclaringForLoop extends IssuableSubscriptionVisitor {
 

@@ -1,5 +1,5 @@
 {
-  "title": "Avoid using try-catch-finally statement",
+  "title": "Avoid using try-catch statement",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
