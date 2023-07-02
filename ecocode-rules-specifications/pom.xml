@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -11,7 +12,9 @@
 	<artifactId>ecocode-rules-specifications</artifactId>
 
 	<name>ecoCode Rules Specifications repository</name>
-	<description>Repository that contains the specifications of every static-analysis rules available in ecoCode plugins.</description>
+	<description>Repository that contains the specifications of every static-analysis rules available in ecoCode
+		plugins.
+	</description>
 	<url>https://github.com/green-code-initiative/ecoCode/tree/main/ecocode-rules-specifications</url>
 
 	<dependencies>
@@ -147,6 +150,13 @@
 									</fileset>
 									<flattenmapper />
 								</copy>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/swift">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/swift/EC*.html" />
+										<include name="*/EC*.json" />
+									</fileset>
+									<flattenmapper />
+								</copy>
 							</target>
 						</configuration>
 					</execution>
@@ -225,6 +235,18 @@
 						<configuration>
 							<descriptors>
 								<descriptor>${project.basedir}/src/main/assembly/ts.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-swift</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/swift.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>
