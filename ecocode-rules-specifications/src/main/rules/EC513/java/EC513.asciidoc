@@ -1,5 +1,3 @@
-Score ecoCode: 1sur5
-
 Most Android-powered devices have built-in sensors that measure motion, orientation, and various environmental conditions.
     In addition to these are the image sensor (a.k.a. Camera) and the geo-positioning sensor (a.k.a. GPS).
 

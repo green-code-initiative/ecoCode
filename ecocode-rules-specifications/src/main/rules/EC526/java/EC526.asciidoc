@@ -1,5 +1,3 @@
-Score ecoCode: 2sur5
-
 With Bluetooth Low Energy technology (see BLE API smell), a Bluetooth Smart Ready device (the master) will establish a link with a Bluetooth Smart device (the slave).
 
 Most often, the slave is a GATT server and the master is a GATT client. GATT capable devices can be discovered using BLE scan process.

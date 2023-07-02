@@ -13,5 +13,6 @@
     "android",
     "eco-design"
   ],
+  "ecoScore": "0.2",
   "defaultSeverity": "Critical"
 }

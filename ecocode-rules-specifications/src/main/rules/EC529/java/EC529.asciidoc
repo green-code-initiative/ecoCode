@@ -1,5 +1,3 @@
-Score ecoCode: 2sur5
-
 Giving information to the end-user through notifications is an important aspect of a modern app.
 
 However, a notification does not necessarily need to be loud and vibrant to achieve its purpose. Default mode is enough. That is why when building a notification with `NotificationManager` there should be no extra calls to the methods `setSound()` nor `setVibrate()` (API26) nor `setVibrationPattern()` (API31) on the builder object.

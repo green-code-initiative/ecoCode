@@ -1,5 +1,3 @@
-Score ecoCode: 2sur5
-
 Turning on the torch mode programmatically with `CameraManager#setTorchMode(..., true)` must absolutely be avoided because the flashlight is one of the most energy-intensive component.
 
 ## Noncompliant Code Example

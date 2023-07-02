@@ -13,5 +13,6 @@
     "android",
     "eco-design"
   ],
+  "ecoScore": "1.0",
   "defaultSeverity": "Info"
 }

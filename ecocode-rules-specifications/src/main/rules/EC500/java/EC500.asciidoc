@@ -1,5 +1,3 @@
-Score ecoCode: 2sur5
-
 With `SensorManager#registerListener(SensorEventListener, Sensor, int)` the events are delivered as soon as possible.
 
 Instead, `SensorManager#registerListener(SensorEventListener, Sensor, int, int maxReportLatencyUs)` allows events to stay temporarily in the hardware FIFO (queue) before being delivered. The events can be stored in the hardware FIFO up to `maxReportLatencyUs` microseconds.

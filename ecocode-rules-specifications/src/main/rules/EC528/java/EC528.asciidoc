@@ -1,5 +1,3 @@
-Score ecoCode: 2sur5
-
 Shaking of an Android device is possible in all circumstances with a call to `getSystemService(Context.VIBRATOR_SERVICE)` (API 26) or `getSystemService(Context.VIBRATOR.MANAGER.SERVICE)` (API 31).
     Behind this effect stands a specific miniature hardware component, motor or actuator, that consumes power.
     As a consequence, its usage must be discouraged, especially since its added value is not clear.

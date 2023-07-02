@@ -1,5 +1,3 @@
-Score ecoCode: 2sur5
-
 The Android 5.0 Lollipop (API 21) release introduces a job scheduler API via the Job Scheduler class.
 
 Compared to a custom Sync Adapter or the alarm manager, the Job Scheduler supports batch scheduling of jobs.

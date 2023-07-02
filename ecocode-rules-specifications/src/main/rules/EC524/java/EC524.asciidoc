@@ -1,5 +1,3 @@
-Score ecoCode: 2sur5
-
 Location awareness is one of the most popular features used by apps.
 
 An important point is to try to get the best possible provider (`LocationManager#getBestProvider()`) based on an energy criteria thanks to `Criteria#setPowerRequirement(int level)`, using constant `POWER_LOW` instead of `POWER_HIGH` or `POWER_MEDIUM`.

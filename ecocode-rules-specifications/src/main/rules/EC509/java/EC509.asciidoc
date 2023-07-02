@@ -1,5 +1,3 @@
-Score ecoCode: 2sur5
-
 Applications are strongly discouraged from using exact alarms unnecessarily as they reduce the OS's ability to minimize battery use (i.e. Doze Mode).
 
 For most apps prior to API 19, `setInexactRepeating()` is preferable over `setRepeating()`. When you use this method, Android synchronizes multiple inexact repeating alarms and fires them at the same time, thus reducing the battery drain.
