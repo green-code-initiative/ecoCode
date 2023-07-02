@@ -1,12 +1,17 @@
-<img src="http://www.neomades.com/extern/partage/ecoCode/2sur5_1x.png">
-<p>To avoid draining the battery, an Android device that is left idle quickly falls asleep.
-    Hence, keeping the screen on should be avoided, unless it is absolutely necessary.<br>
-    If so, developers typically use a Power Manager system service feature called wake locks
-    by invoking <code>PowerManager.WakeLock#newWakeLock(int levelAndFlags, String tag)</code>,
-    along with the specific permission <code>WAKE_LOCK</code> in their manifest.</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
-    &lt;manifest&gt;
-        &lt;uses-permission android:name="android.permission.WAKE_LOCK" /&gt;
-    &lt;/manifest&gt;
-</pre>
+Score ecoCode: 2sur5
+
+To avoid draining the battery, an Android device that is left idle quickly falls asleep.
+
+Hence, keeping the screen on should be avoided, unless it is absolutely necessary.
+
+If so, developers typically use a Power Manager system service feature called wake locks
+by invoking `PowerManager.WakeLock#newWakeLock(int levelAndFlags, String tag)`,
+along with the specific permission `WAKE_LOCK` in their manifest.
+
+## Noncompliant Code Example
+
+```xml
+<manifest>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+</manifest>
+```
