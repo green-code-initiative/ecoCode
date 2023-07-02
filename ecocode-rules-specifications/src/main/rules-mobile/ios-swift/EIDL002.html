@@ -1,0 +1,17 @@
+<img src="http://www.neomades.com/extern/partage/ecoCode/2sur5_1x.png">
+<p>Setting a tolerance for timers will allow them to fire later than the scheduled fire date.
+    The system will use this flexibility to shift the execution of timers by small amounts of time,
+    within their tolerances, increasing the ability to optimize power savings.
+    Your app can set the <code>Timer#tolerance</code> property to specify a tolerance for a timer.
+    Using this approach dramatically increases the amount of time that the processor spends idling
+    while users detect no change in system responsiveness.
+</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in }
+</pre>
+<h2>Compliant Code Example</h2>
+<pre>
+    let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in }
+    timer.tolerance = 0.5
+</pre>

@@ -1,0 +1,9 @@
+<img src="http://www.neomades.com/extern/partage/ecoCode/2sur5_1x.png">
+<p>To avoid draining the battery, an iOS device that is left idle quickly falls asleep.<br>
+    Hence, keeping the screen on should be avoided, unless it is absolutely necessary. If so, developers typically
+    disable the idle timer with <code>UIApplication.shared.isIdleTimerDisabled = true</code>.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+    UIApplication.shared.isIdleTimerDisabled = true
+</pre>
+

@@ -1,0 +1,24 @@
+<img src="http://www.neomades.com/extern/partage/ecoCode/5sur5_1x.png">
+<p>It's always good that an app has different behavior when device is connected/disconnected to a power station,
+    or has different battery levels. Your app can query the <code>UIDevice#batteryLevel</code> and
+    <code>UIDevice#batteryState</code> properties at any time to determine the level of charge and
+    the state of the battery. Your app can also register to receive notifications when the battery level
+    or state changes, using <code>batteryLevelDidChangeNotification</code>
+    and <code>batteryStateDidChangeNotification</code>.
+</p>
+<h2>Compliant Code Example</h2>
+<pre>
+    let level = UIDevice.current.batteryLevel
+</pre>
+OR
+<pre>
+    let state = UIDevice.current.batteryState
+</pre>
+OR
+<pre>
+    NotificationCenter.default.addObserver(forName: UIDevice.batteryLevelDidChangeNotification, object: nil, queue: nil) { _ in }
+</pre>
+OR
+<pre>
+    NotificationCenter.default.addObserver(forName: UIDevice.batteryStateDidChangeNotification, object: nil, queue: nil) { _ in }
+</pre>
