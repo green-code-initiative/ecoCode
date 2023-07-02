@@ -1,23 +1,25 @@
-<img src="http://www.neomades.com/extern/partage/ecoCode/2sur5_1x.png">
-<p>Location awareness is one of the most popular features used by apps.
-    An important point is to try to get the best possible provider
-    (<code>LocationManager#getBestProvider()</code>) based on an energy criteria
-    thanks to <code>Criteria#setPowerRequirement(int level)</code>, using constant
-    <code>POWER_LOW</code> instead of <code>POWER_HIGH</code> or
-    <code>POWER_MEDIUM</code>.</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
-    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                1000L,
-                1.0f,
-                this);
-</pre>
-<h2>Compliant Code Example</h2>
-<pre>
-    Criteria criteria = new Criteria();
-    criteria.setPowerRequirement(Criteria.POWER_LOW);
-    locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria,true),
-                1000L,
-                1.0f,
-                this);
-</pre>
+Score ecoCode: 2sur5
+
+Location awareness is one of the most popular features used by apps.
+
+An important point is to try to get the best possible provider (`LocationManager#getBestProvider()`) based on an energy criteria thanks to `Criteria#setPowerRequirement(int level)`, using constant `POWER_LOW` instead of `POWER_HIGH` or `POWER_MEDIUM`.
+
+## Noncompliant Code Example
+
+```java
+locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+    1000L,
+    1.0f,
+    this);
+```
+
+## Compliant Code Example
+
+```java
+Criteria criteria = new Criteria();
+criteria.setPowerRequirement(Criteria.POWER_LOW);
+locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria,true),
+    1000L,
+    1.0f,
+    this);
+```
