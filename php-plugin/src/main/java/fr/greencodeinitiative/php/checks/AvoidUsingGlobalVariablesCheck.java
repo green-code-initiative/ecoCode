@@ -6,13 +6,15 @@ import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.declaration.FunctionDeclarationTree;
 import org.sonar.plugins.php.api.visitors.PHPVisitorCheck;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = AvoidUsingGlobalVariablesCheck.RULE_KEY,
         name = AvoidUsingGlobalVariablesCheck.ERROR_MESSAGE,
         description = AvoidUsingGlobalVariablesCheck.ERROR_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"performance", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "D4")
 public class AvoidUsingGlobalVariablesCheck extends PHPVisitorCheck {
 
     public static final String RULE_KEY = "EC4";

@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.ecocode</groupId>
         <artifactId>ecocode-parent</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <version>1.2.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>ecocode-javascript-plugin</artifactId>
@@ -29,26 +29,25 @@
         </dependency>
 
         <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
-            <artifactId>sonar-plugin-api-impl</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.sonarsource.analyzer-commons</groupId>
             <artifactId>sonar-analyzer-commons</artifactId>
         </dependency>
 
-        <!-- Testing dependencies -->
-
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -66,38 +65,17 @@
                     <pluginClass>fr.greencodeinitiative.javascript.JavaScriptPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
-                    <basePlugin>javascript</basePlugin>
                     <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
             </plugin>
             <plugin>
+                <!-- plugin TO KEEP because of an error on SonarQube logs when it starts
+                "java.lang.ClassNotFoundException: org.sonarsource.analyzer.commons.ExternalRuleLoader"
+                possible reason : some libraries aren't available at runtime if no shaded Jar file produced
+                 -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <filters>
-                                <filter>
-                                    <artifact>commons-*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/**</exclude>
-                                    </excludes>
-                                </filter>
-                                <filter>
-                                    <artifact>org.*:*</artifact>
-                                    <excludes>
-                                        <exclude>META-INF/**</exclude>
-                                        <exclude>org/sonar/api/batch/sensor/**</exclude>
-                                    </excludes>
-                                </filter>
-                            </filters>
-                        </configuration>
-                    </execution>
-                </executions>
+                <!-- shade plugin configuration is on parent pom.xml beacause of use for other modules -->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

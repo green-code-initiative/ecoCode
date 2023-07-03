@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.ecocode</groupId>
         <artifactId>ecocode-parent</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <version>1.2.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>ecocode-python-plugin</artifactId>
@@ -27,10 +27,6 @@
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
-            <artifactId>sonar-plugin-api-impl</artifactId>
-        </dependency>
 
         <!-- for security on regex patterns : https://github.com/google/re2j -->
 <!--        <dependency>-->
@@ -45,8 +41,8 @@
         </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -63,46 +59,10 @@
                     <pluginName>${project.name}</pluginName>
                     <pluginClass>fr.greencodeinitiative.python.PythonPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
-                    <requirePlugins>python:${sonar.python.version}</requirePlugins>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                     <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-shade-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>shade</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <filters>-->
-<!--                                <filter>-->
-<!--                                    <artifact>commons-*:*</artifact>-->
-<!--                                    <excludes>-->
-<!--                                        <exclude>META-INF/**</exclude>-->
-<!--                                    </excludes>-->
-<!--                                </filter>-->
-<!--                                <filter>-->
-<!--                                    <artifact>org.*:*</artifact>-->
-<!--                                    <excludes>-->
-<!--                                        <exclude>META-INF/**</exclude>-->
-<!--                                        <exclude>org/sonar/api/batch/sensor/**</exclude>-->
-<!--                                    </excludes>-->
-<!--                                </filter>-->
-<!--                                <filter>-->
-<!--                                    <artifact>com.*:*</artifact>-->
-<!--                                    <excludes>-->
-<!--                                        <exclude>META-INF/**</exclude>-->
-<!--                                    </excludes>-->
-<!--                                </filter>-->
-<!--                            </filters>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -125,6 +85,30 @@
                             </artifactItems>
                             <outputDirectory>../lib</outputDirectory>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <configuration>
+                    <!-- TODO DDC : checker si options nécessaires (idem sur autres plugins) -->
+                    <output>file</output>
+                    <append>false</append>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

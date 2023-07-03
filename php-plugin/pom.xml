@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.ecocode</groupId>
         <artifactId>ecocode-parent</artifactId>
-        <version>1.1.1-SNAPSHOT</version>
+        <version>1.2.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>ecocode-php-plugin</artifactId>
@@ -28,11 +28,6 @@
             <artifactId>sonar-plugin-api</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.sonarsource.sonarqube</groupId>
-            <artifactId>sonar-plugin-api-impl</artifactId>
-        </dependency>
-
         <!-- for security on regex patterns : https://github.com/google/re2j -->
         <!-- TODO DDC : in progress because of pb with external dependencies in plugins -->
 <!--        <dependency>-->
@@ -41,14 +36,14 @@
 <!--        </dependency>-->
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -66,48 +61,11 @@
                     <pluginClass>fr.greencodeinitiative.php.PHPPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
-                    <basePlugin>php</basePlugin>
                     <jreMinVersion>${java.version}</jreMinVersion>
-                    <requirePlugins>php:${sonarphp.version}</requirePlugins>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                     <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
             </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-shade-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>shade</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <filters>-->
-<!--                                <filter>-->
-<!--                                    <artifact>commons-*:*</artifact>-->
-<!--                                    <excludes>-->
-<!--                                        <exclude>META-INF/**</exclude>-->
-<!--                                    </excludes>-->
-<!--                                </filter>-->
-<!--                                <filter>-->
-<!--                                    <artifact>org.*:*</artifact>-->
-<!--                                    <excludes>-->
-<!--                                        <exclude>META-INF/**</exclude>-->
-<!--                                        <exclude>org/sonar/api/batch/sensor/**</exclude>-->
-<!--                                    </excludes>-->
-<!--                                </filter>-->
-<!--                                <filter>-->
-<!--                                    <artifact>com.*:*</artifact>-->
-<!--                                    <excludes>-->
-<!--                                        <exclude>META-INF/**</exclude>-->
-<!--                                    </excludes>-->
-<!--                                </filter>-->
-<!--                            </filters>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>

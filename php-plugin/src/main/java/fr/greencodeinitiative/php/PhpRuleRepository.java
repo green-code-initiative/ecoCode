@@ -1,7 +1,5 @@
 /*
- * SonarQube Python Plugin
- * Copyright (C) 2012-2019 SonarSource SA
- * mailto:info AT sonarsource DOT com
+ * Copyright (C) 2023 Green Code Initiative
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -13,9 +11,8 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
  * Lesser General Public License for more details.
  *
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation,
- * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package fr.greencodeinitiative.php;
 
@@ -24,12 +21,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.google.common.collect.ImmutableList;
+import fr.greencodeinitiative.php.checks.AvoidGettingSizeCollectionInLoopCheck;
 import fr.greencodeinitiative.php.checks.AvoidDoubleQuoteCheck;
 import fr.greencodeinitiative.php.checks.AvoidFullSQLRequestCheck;
 import fr.greencodeinitiative.php.checks.AvoidSQLRequestInLoopCheck;
@@ -38,6 +34,7 @@ import fr.greencodeinitiative.php.checks.AvoidUsingGlobalVariablesCheck;
 import fr.greencodeinitiative.php.checks.IncrementCheck;
 import fr.greencodeinitiative.php.checks.NoFunctionCallWhenDeclaringForLoop;
 import fr.greencodeinitiative.php.checks.UseOfMethodsForBasicOperations;
+import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
 import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
@@ -60,6 +57,7 @@ public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleReposito
     remediationCosts.put(AvoidSQLRequestInLoopCheck.RULE_KEY, "10min");
     remediationCosts.put(AvoidFullSQLRequestCheck.RULE_KEY, "20min");
     repository.rules().forEach(rule -> {
+      rule.setType(RuleType.CODE_SMELL);
       String debt = remediationCosts.get(rule.key());
 
       // TODO DDC : create support to use org.apache.commons.lang.StringUtils
@@ -88,7 +86,8 @@ public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleReposito
 
   @Override
   public List<Class<?>> checkClasses() {
-    return ImmutableList.of(
+    return List.of(
+            AvoidGettingSizeCollectionInLoopCheck.class,
             AvoidDoubleQuoteCheck.class,
             AvoidFullSQLRequestCheck.class,
             AvoidSQLRequestInLoopCheck.class,

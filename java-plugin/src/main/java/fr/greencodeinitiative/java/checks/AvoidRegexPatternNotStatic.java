@@ -14,13 +14,15 @@ import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
 import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.MethodTree;
 import org.sonar.plugins.java.api.tree.Tree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = "EC77",
         name = "Developpement",
         description = AvoidRegexPatternNotStatic.MESSAGE_RULE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"performance", "regex", "eco-design", "ecocode", "memory"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S77")
 public class AvoidRegexPatternNotStatic extends IssuableSubscriptionVisitor {
 
     public static final String MESSAGE_RULE = "Avoid using Pattern.compile() in a non-static context.";

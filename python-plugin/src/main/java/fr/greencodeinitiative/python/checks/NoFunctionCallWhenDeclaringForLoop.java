@@ -5,13 +5,15 @@ import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.tree.CallExpression;
 import org.sonar.plugins.python.api.tree.Tree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(
         key = NoFunctionCallWhenDeclaringForLoop.RULE_KEY,
         name = NoFunctionCallWhenDeclaringForLoop.DESCRIPTION,
         description = NoFunctionCallWhenDeclaringForLoop.DESCRIPTION,
         priority = Priority.MINOR,
-        tags = {"bug", "eco-design", "ecocode"})
+        tags = {"performance", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "S69")
 public class NoFunctionCallWhenDeclaringForLoop extends PythonSubscriptionCheck {
 
     public static final String RULE_KEY = "EC69";

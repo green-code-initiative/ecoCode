@@ -16,14 +16,16 @@ import org.sonar.plugins.java.api.tree.MemberSelectExpressionTree;
 import org.sonar.plugins.java.api.tree.MethodInvocationTree;
 import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
+
 import static org.sonar.plugins.java.api.tree.Tree.Kind.MEMBER_SELECT;
 import static org.sonar.plugins.java.api.tree.Tree.Kind.METHOD_INVOCATION;
 
 @Rule(key = "EC78", name = "Developpement",
         description = AvoidSetConstantInBatchUpdate.MESSAGERULE,
         priority = Priority.MINOR,
-        tags = {"bug"})
-
+        tags = {"eco-design", "ecocode", "sql", "performance", "memory"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S78")
 public class AvoidSetConstantInBatchUpdate extends IssuableSubscriptionVisitor {
 
     protected static final String MESSAGERULE = "Avoid setting constants in batch update";

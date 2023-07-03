@@ -10,12 +10,14 @@ import org.sonar.plugins.java.api.tree.BlockTree;
 import org.sonar.plugins.java.api.tree.IfStatementTree;
 import org.sonar.plugins.java.api.tree.StatementTree;
 import org.sonar.plugins.java.api.tree.Tree;
+import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(key = "EC2",
         name = "Developpement",
         description = AvoidMultipleIfElseStatement.RULE_MESSAGE,
         priority = Priority.MINOR,
-        tags = {"bug"})
+        tags = {"performance", "eco-design", "ecocode"})
+@DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "AMIES")
 public class AvoidMultipleIfElseStatement extends IssuableSubscriptionVisitor {
     protected static final String RULE_MESSAGE = "Using a switch statement instead of multiple if-else if possible";
 
