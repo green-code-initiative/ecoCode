@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deleted
+
+## [1.3.0] - 2023-07-04
+
+### Added
+
 - [#108](https://github.com/green-code-initiative/ecoCode/issues/108) new Python rule EC66 : Use single quote (') instead of quotation mark (")
 - [#109](https://github.com/green-code-initiative/ecoCode/issues/109) new PHP rule EC3 : Getting the size of the collection in the loop. For further [RULES.md](./RULES.md) file
 - [#113](https://github.com/green-code-initiative/ecoCode/issues/113) new Python rule EC10 : Use unoptimized vector images
@@ -26,17 +34,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#201](https://github.com/green-code-initiative/ecoCode/pull/201) Clean-up plugins and dependencies
 - technical : upgrade of maven plugins versions
 
-### Deleted
-
 ## [1.2.1] - 2023-04-18
-
-### Added
 
 ### Changed
 
 - [#180](https://github.com/green-code-initiative/ecoCode/pull/180) correction of SonarQube review for MarketPlace (sonar plugin)
-
-### Deleted
 
 ## [1.2.0] - 2023-04-14
 
@@ -50,8 +52,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#166](https://github.com/green-code-initiative/ecoCode/issues/166) Correction of wrong message of rule EC63
 - [#167](https://github.com/green-code-initiative/ecoCode/issues/167) Use same kind for rules across different languages
 - [#173](https://github.com/green-code-initiative/ecoCode/issues/173) Update issue description of rule EC34 (try-catch)
-
-### Deleted
 
 ## [1.1.0] - 2023-04-03
 
@@ -141,7 +141,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.1...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.3.0...HEAD
+
+[1.3.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.1...v1.3.0
 
 [1.2.1]: https://github.com/green-code-initiative/ecoCode/compare/v1.2.0...v1.2.1
 
@@ -160,4 +162,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.1.1]: https://github.com/green-code-initiative/ecoCode/compare/v0.1.0...v0.1.1
 
 [0.1.0]: https://github.com/green-code-initiative/ecoCode/releases/tag/v0.1.0
-
