@@ -133,6 +133,20 @@
 									</fileset>
 									<flattenmapper/>
 								</copy>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/js">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/js/EC*.html"/>
+										<include name="*/EC*.json"/>
+									</fileset>
+									<flattenmapper/>
+								</copy>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/ts">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/ts/EC*.html"/>
+										<include name="*/EC*.json"/>
+									</fileset>
+									<flattenmapper/>
+								</copy>
 							</target>
 						</configuration>
 					</execution>
@@ -187,6 +201,30 @@
 						<configuration>
 							<descriptors>
 								<descriptor>${project.basedir}/src/main/assembly/python.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-js</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/js.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-ts</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/ts.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>
