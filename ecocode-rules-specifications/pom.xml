@@ -65,6 +65,11 @@
 					- syntax highlighting (see code blocks on ASCIIDOC rules)
 					- inclusions (see: php/EC74.asciidoc)
 					- table data generation from CSV (see: php/EC34.asciidoc)
+
+					NB: Current version has a bug which display following false positive warning :
+					[WARNING] Duplicated destination found: overwriting file ...
+
+					This issue is fixed in 3.x release of asciidoctor-maven-plugin
 				-->
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
@@ -78,12 +83,13 @@
 						</goals>
 						<configuration>
 							<sourceDirectory>${project.basedir}/src/main/rules</sourceDirectory>
-							<outputDirectory>${project.build.directory}/rules</outputDirectory>
+							<outputDirectory>${project.build.directory}/rules-html</outputDirectory>
 							<attributes>
 								<source-highlighter>coderay</source-highlighter>
 								<coderay-css>style</coderay-css>
 							</attributes>
 							<preserveDirectories>true</preserveDirectories>
+							<embedAssets>true</embedAssets>
 							<headerFooter>false</headerFooter>
 							<relativeBaseDir>true</relativeBaseDir>
 							<logHandler>
@@ -97,57 +103,24 @@
 			</plugin>
 			<plugin>
 				<!--
-					Target resources tree need to be "flat".
-					Each metadata JSON file must be in the same tree as the HTML description file for the corresponding language.
-					The only way currently found to generate the correct file tree is to use antrun-plugin with `flattenmapper`
+					Prepare resources tree needed by language.
+					Each metadata JSON file must be in the same folder as the HTML description file for the corresponding language.
 				-->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>3.1.0</version>
+				<groupId>org.codehaus.gmaven</groupId>
+				<artifactId>groovy-maven-plugin</artifactId>
+				<version>2.1.1</version>
 				<executions>
 					<execution>
-						<phase>process-resources</phase>
+						<phase>generate-resources</phase>
 						<goals>
-							<goal>run</goal>
+							<goal>execute</goal>
 						</goals>
 						<configuration>
-							<target>
-								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/java">
-									<fileset dir="${project.build.directory}/rules">
-										<include name="*/java/EC*.html" />
-										<include name="*/EC*.json" />
-									</fileset>
-									<flattenmapper />
-								</copy>
-								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/php">
-									<fileset dir="${project.build.directory}/rules">
-										<include name="*/php/EC*.html" />
-										<include name="*/EC*.json" />
-									</fileset>
-									<flattenmapper />
-								</copy>
-								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/python">
-									<fileset dir="${project.build.directory}/rules">
-										<include name="*/python/EC*.html" />
-										<include name="*/EC*.json" />
-									</fileset>
-									<flattenmapper />
-								</copy>
-								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/js">
-									<fileset dir="${project.build.directory}/rules">
-										<include name="*/js/EC*.html" />
-										<include name="*/EC*.json" />
-									</fileset>
-									<flattenmapper />
-								</copy>
-								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/ts">
-									<fileset dir="${project.build.directory}/rules">
-										<include name="*/ts/EC*.html" />
-										<include name="*/EC*.json" />
-									</fileset>
-									<flattenmapper />
-								</copy>
-							</target>
+							<source>${project.basedir}/src/main/script/prepare-resources.groovy</source>
+							<properties>
+								<sourceDir>${project.build.directory}/rules-html</sourceDir>
+								<targetDir>${project.build.outputDirectory}/io/ecocode/rules</targetDir>
+							</properties>
 						</configuration>
 					</execution>
 				</executions>
