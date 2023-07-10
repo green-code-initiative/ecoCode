@@ -178,26 +178,14 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>assembly-js</id>
+						<id>assembly-javascript</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 						<configuration>
 							<descriptors>
-								<descriptor>${project.basedir}/src/main/assembly/js.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-					<execution>
-						<id>assembly-ts</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<descriptors>
-								<descriptor>${project.basedir}/src/main/assembly/ts.xml</descriptor>
+								<descriptor>${project.basedir}/src/main/assembly/javascript.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>
