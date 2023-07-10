@@ -14,52 +14,9 @@
 	<description>Repository that contains the specifications of every static-analysis rules available in ecoCode plugins.</description>
 	<url>https://github.com/green-code-initiative/ecoCode/tree/main/ecocode-rules-specifications</url>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.sonarsource.sonarqube</groupId>
-			<artifactId>sonar-plugin-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.sonarsource.analyzer-commons</groupId>
-			<artifactId>sonar-analyzer-commons</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>prepare-agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<!--
+			<plugin><!--
 					This plugin convert ASCIIDOC rule specification in HTML format
 					ASCIIDOC format is used with custom features such as :
 					- syntax highlighting (see code blocks on ASCIIDOC rules)
@@ -101,8 +58,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<!--
+			<plugin><!--
 					Prepare resources tree needed by language.
 					Each metadata JSON file must be in the same folder as the HTML description file for the corresponding language.
 				-->
@@ -125,8 +81,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<!--
+			<plugin><!--
 					This module produce one artifact by language (with corresponding classifier)
 					For example, to add rule specifications for Python language, add following dependency in python sonarqube plugin:
 
