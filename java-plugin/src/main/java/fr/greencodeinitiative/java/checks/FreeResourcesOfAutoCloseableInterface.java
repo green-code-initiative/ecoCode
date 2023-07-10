@@ -8,7 +8,6 @@ import java.util.List;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -19,12 +18,7 @@ import org.sonar.plugins.java.api.tree.TryStatementTree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 
-@Rule(
-        key = "EC79",
-        name = "Developpement",
-        description = FreeResourcesOfAutoCloseableInterface.MESSAGE_RULE,
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC79")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S79")
 public class FreeResourcesOfAutoCloseableInterface extends IssuableSubscriptionVisitor {
     private final Deque<TryStatementTree> withinTry = new LinkedList<>();

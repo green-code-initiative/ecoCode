@@ -16,30 +16,22 @@
  */
 package fr.greencodeinitiative.java;
 
+import java.util.ArrayList;
+
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Objects;
-import java.util.Set;
 
 /**
  * Declare rule metadata in server repository of rules.
  * That allows to list the rules in the page "Rules".
  */
 public class JavaRulesDefinition implements RulesDefinition {
+    private static final String RESOURCE_BASE_PATH = "io/ecocode/rules/java";
 
-    // don't change that because the path is hard coded in CheckVerifier
-    private static final String RESOURCE_BASE_PATH = "fr/greencodeinitiative/l10n/java/rules/java";
-
-
-    // Add the rule keys of the rules which need to be considered as template-rules
-    private static final Set<String> RULE_TEMPLATES_KEY = Collections.emptySet();
-    public static final String NAME = "ecoCode";
-    public static final String LANGUAGE = "java";
-    public static final String REPOSITORY_KEY = "ecocode-java";
+    private static final String NAME = "ecoCode";
+    private static final String LANGUAGE = "java";
+    static final String REPOSITORY_KEY = "ecocode-java";
 
     private final SonarRuntime sonarRuntime;
 
@@ -53,17 +45,11 @@ public class JavaRulesDefinition implements RulesDefinition {
 
         RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH, sonarRuntime);
 
-        ruleMetadataLoader.addRulesByAnnotatedClass(repository, new ArrayList<>(RulesList.getChecks()));
-
-        setTemplates(repository);
-
+        ruleMetadataLoader.addRulesByAnnotatedClass(repository, new ArrayList<>(JavaCheckRegistrar.checkClasses()));
         repository.done();
     }
 
-    private static void setTemplates(NewRepository repository) {
-        RULE_TEMPLATES_KEY.stream()
-                .map(repository::rule)
-                .filter(Objects::nonNull)
-                .forEach(rule -> rule.setTemplate(true));
+    public String repositoryKey() {
+        return REPOSITORY_KEY;
     }
 }

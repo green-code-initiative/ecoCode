@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;
@@ -20,16 +19,9 @@ import org.sonar.plugins.python.api.tree.QualifiedExpression;
 import org.sonar.plugins.python.api.tree.Tree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = AvoidSQLRequestInLoop.RULE_KEY,
-        name = "Avoid SQL request in loop",
-        description = AvoidSQLRequestInLoop.MESSAGE_RULE,
-        priority = Priority.MINOR,
-        tags = {"sql", "performance", "eco-design", "ecocode"})
+@Rule(key = "EC72")
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "S72")
 public class AvoidSQLRequestInLoop extends PythonSubscriptionCheck {
-
-    public static final String RULE_KEY = "EC72";
 
     // TODO: Handle ORM lib
     private static final List<String> SQL_LIBS = Arrays.asList("cx_Oracle", "mysql.connector", "psycopg2", "pymssql", "pyodbc", "sqlite3");

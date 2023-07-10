@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.Tree.Kind;
@@ -12,16 +11,9 @@ import org.sonar.plugins.php.api.tree.expression.LiteralTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = AvoidFullSQLRequestCheck.RULE_KEY,
-        name = AvoidFullSQLRequestCheck.ERROR_MESSAGE,
-        description = AvoidFullSQLRequestCheck.ERROR_MESSAGE,
-        priority = Priority.MINOR,
-        tags = {"sql", "performance", "eco-design", "ecocode"})
+@Rule(key = "EC74")
 @DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S74")
 public class AvoidFullSQLRequestCheck extends PHPSubscriptionCheck {
-
-    public static final String RULE_KEY = "EC74";
 
     public static final String ERROR_MESSAGE = "Don't use the query SELECT * FROM";
 

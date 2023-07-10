@@ -3,7 +3,6 @@ package fr.greencodeinitiative.java.checks;
 import java.util.Collections;
 import java.util.List;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.NewClassTree;
@@ -11,12 +10,7 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = "EC32",
-        name = "Developpement",
-        description = InitializeBufferWithAppropriateSize.RULE_MESSAGE,
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC32")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GRSP0032")
 public class InitializeBufferWithAppropriateSize extends IssuableSubscriptionVisitor {
 

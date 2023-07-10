@@ -1,22 +1,15 @@
 package fr.greencodeinitiative.python.checks;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.tree.CallExpression;
 import org.sonar.plugins.python.api.tree.Tree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = NoFunctionCallWhenDeclaringForLoop.RULE_KEY,
-        name = NoFunctionCallWhenDeclaringForLoop.DESCRIPTION,
-        description = NoFunctionCallWhenDeclaringForLoop.DESCRIPTION,
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC69")
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "S69")
 public class NoFunctionCallWhenDeclaringForLoop extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC69";
     public static final String DESCRIPTION = "Do not call a function when declaring a for-type loop";
 
     @Override

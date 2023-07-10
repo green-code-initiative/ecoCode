@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
@@ -18,11 +17,7 @@ import org.sonar.plugins.java.api.tree.Tree.Kind;
 import org.sonar.plugins.java.api.tree.WhileStatementTree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(key = "EC3",
-        name = "Developpement",
-        description = AvoidGettingSizeCollectionInLoop.MESSAGERULE,
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC3")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GSCIL")
 public class AvoidGettingSizeCollectionInLoop extends IssuableSubscriptionVisitor {
     protected static final String MESSAGERULE = "Avoid getting the size of the collection in the loop";

@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionCheck;
@@ -62,16 +61,10 @@ import org.sonar.plugins.python.api.tree.YieldExpression;
 import org.sonar.plugins.python.api.tree.YieldStatement;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = AvoidGlobalVariableInFunctionCheck.RULE_KEY,
-        name = "Do not call global variables directly inside functions",
-        description = AvoidGlobalVariableInFunctionCheck.DESCRIPTION,
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC4")
 @DeprecatedRuleKey(repositoryKey = "gci-python", ruleKey = "D4")
 public class AvoidGlobalVariableInFunctionCheck extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC4";
     public static final String DESCRIPTION = "Use local variable (function/class scope) instead of global variable (application scope)";
 
     private List<String> globalVariables;

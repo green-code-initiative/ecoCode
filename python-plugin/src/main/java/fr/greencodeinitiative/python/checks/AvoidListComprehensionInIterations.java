@@ -1,6 +1,5 @@
 package fr.greencodeinitiative.python.checks;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;
@@ -18,15 +17,9 @@ import static org.sonar.plugins.python.api.tree.Tree.Kind.FOR_STMT;
 import static org.sonar.plugins.python.api.tree.Tree.Kind.LIST_COMPREHENSION;
 import static org.sonar.plugins.python.api.tree.Tree.Kind.REGULAR_ARGUMENT;
 
-@Rule(
-        key = AvoidListComprehensionInIterations.RULE_KEY,
-        name = AvoidListComprehensionInIterations.DESCRIPTION,
-        description = AvoidListComprehensionInIterations.DESCRIPTION,
-        priority = Priority.MINOR,
-        tags = {"eco-design", "ecocode", "performance"})
+@Rule(key = "EC404")
 public class AvoidListComprehensionInIterations extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC404";
     public static final String DESCRIPTION = "Use generator comprehension instead of list comprehension in for loop declaration";
 
     @Override

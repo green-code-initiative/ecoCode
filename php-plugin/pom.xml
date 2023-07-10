@@ -16,16 +16,24 @@
     <url>https://github.com/green-code-initiative/ecoCode/tree/main/php-plugin</url>
 
     <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>ecocode-rules-specifications</artifactId>
+            <version>${project.version}</version>
+            <classifier>php</classifier>
+        </dependency>
 
         <dependency>
             <groupId>org.sonarsource.php</groupId>
             <artifactId>sonar-php-plugin</artifactId>
             <type>sonar-plugin</type>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <!-- for security on regex patterns : https://github.com/google/re2j -->
@@ -34,6 +42,19 @@
 <!--            <groupId>com.google.re2j</groupId>-->
 <!--            <artifactId>re2j</artifactId>-->
 <!--        </dependency>-->
+
+        <!-- TEST sources dependencies -->
+        <dependency>
+            <groupId>org.sonarsource.java</groupId>
+            <artifactId>java-checks-testkit</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.assertj</groupId>
@@ -62,9 +83,12 @@
                     <sonarLintSupported>true</sonarLintSupported>
                     <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
                     <jreMinVersion>${java.version}</jreMinVersion>
-                    <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
-                    <jreMinVersion>${java.version}</jreMinVersion>
                 </configuration>
+            </plugin>
+            <plugin>
+                <!-- shade plugin configuration is on parent pom.xml because of use for other modules -->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

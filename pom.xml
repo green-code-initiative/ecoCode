@@ -23,6 +23,7 @@
     </licenses>
 
     <modules>
+        <module>ecocode-rules-specifications</module>
         <module>python-plugin</module>
         <module>java-plugin</module>
         <module>javascript-plugin</module>

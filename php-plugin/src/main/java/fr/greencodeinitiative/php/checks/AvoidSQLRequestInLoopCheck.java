@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.Tree.Kind;
@@ -18,16 +17,10 @@ import org.sonar.plugins.php.api.tree.statement.StatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(
-        key = AvoidSQLRequestInLoopCheck.RULE_KEY,
-        name = AvoidSQLRequestInLoopCheck.ERROR_MESSAGE,
-        description = AvoidSQLRequestInLoopCheck.ERROR_MESSAGE,
-        priority = Priority.MINOR,
-        tags = {"sql", "performance", "eco-design", "ecocode"})
+@Rule(key = "EC72")
 @DeprecatedRuleKey(repositoryKey = "gci-php", ruleKey = "S72")
 public class AvoidSQLRequestInLoopCheck extends PHPSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC72";
     public static final String ERROR_MESSAGE = "Avoid SQL request in loop";
     private static final Pattern PATTERN = Pattern.compile("(mysql(i::|_)query\\s*\\(.*)|(oci_execute\\(.*)");
 

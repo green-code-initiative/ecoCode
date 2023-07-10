@@ -1,6 +1,5 @@
 package fr.greencodeinitiative.php.checks;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.SeparatedList;
 import org.sonar.plugins.php.api.tree.Tree;
@@ -16,16 +15,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
-@Rule(
-        key = AvoidGettingSizeCollectionInLoopCheck.RULE_KEY,
-        name = AvoidGettingSizeCollectionInLoopCheck.ERROR_MESSAGE,
-        description = AvoidGettingSizeCollectionInLoopCheck.ERROR_MESSAGE,
-        priority = Priority.MINOR,
-        tags = {"eco-design", "ecocode", "bad-practice", "performance"}
-)
+@Rule(key = "EC3")
 public class AvoidGettingSizeCollectionInLoopCheck extends PHPSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC3";
     public static final String ERROR_MESSAGE = "Avoid getting the size of the collection in the loop";
     private static final Pattern PATTERN = Pattern.compile("\\b(?:count|sizeof|iterator_count)\\b");
 

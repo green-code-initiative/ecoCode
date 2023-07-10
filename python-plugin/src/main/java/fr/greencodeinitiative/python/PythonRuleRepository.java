@@ -17,58 +17,32 @@
 package fr.greencodeinitiative.python;
 
 import fr.greencodeinitiative.python.checks.*;
-import org.sonar.api.rules.RuleType;
+import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
-import org.sonar.api.server.rule.RulesDefinitionAnnotationLoader;
 import org.sonar.plugins.python.api.PythonCustomRuleRepository;
+import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class PythonRuleRepository implements RulesDefinition, PythonCustomRuleRepository {
 
   public static final String LANGUAGE = "py";
   public static final String NAME = "ecoCode";
-  public static final String RESOURCE_BASE_PATH = "/fr/greencodeinitiative/l10n/python/rules/python/";
+  public static final String RESOURCE_BASE_PATH = "io/ecocode/rules/python";
   public static final String REPOSITORY_KEY = "ecocode-python";
+
+  private final SonarRuntime sonarRuntime;
+
+  public PythonRuleRepository(SonarRuntime sonarRuntime) {
+    this.sonarRuntime = sonarRuntime;
+  }
 
   @Override
   public void define(Context context) {
-    NewRepository repository = context.createRepository(repositoryKey(), LANGUAGE).setName(NAME);
-
-    new RulesDefinitionAnnotationLoader().load(repository, checkClasses().toArray(new Class[] {}));
-
-    // technical debt
-    Map<String, String> remediationCosts = new HashMap<>();
-    remediationCosts.put(AvoidSQLRequestInLoop.RULE_KEY, "10min");
-    remediationCosts.put(AvoidFullSQLRequest.RULE_KEY, "20min");
-    repository.rules().forEach(rule -> {
-      rule.setType(RuleType.CODE_SMELL);
-      String debt = remediationCosts.get(rule.key());
-
-      // TODO DDC : create support to use org.apache.commons.lang.StringUtils
-//      if (StringUtils.isBlank(debt)) {
-      if (debt == null || debt.trim().equals("")) {
-        // default debt to 5min for issue correction
-        rule.setDebtRemediationFunction(
-                rule.debtRemediationFunctions().constantPerIssue("5min"));
-      } else {
-        rule.setDebtRemediationFunction(
-                rule.debtRemediationFunctions().constantPerIssue(debt));
-      }
-    });
-
-    // HTML description
-    repository.rules().forEach(rule ->
-            rule.setHtmlDescription(loadResource(RESOURCE_BASE_PATH + rule.key() + ".html")));
-
+    NewRepository repository = context.createRepository(REPOSITORY_KEY, LANGUAGE).setName(NAME);
+    RuleMetadataLoader ruleMetadataLoader = new RuleMetadataLoader(RESOURCE_BASE_PATH, sonarRuntime);
+    ruleMetadataLoader.addRulesByAnnotatedClass(repository, (List) checkClasses());
     repository.done();
   }
 
@@ -91,22 +65,5 @@ public class PythonRuleRepository implements RulesDefinition, PythonCustomRuleRe
             AvoidListComprehensionInIterations.class,
             DetectUnoptimizedImageFormat.class
     );
-  }
-
-  private String loadResource(String path) {
-    URL resource = getClass().getResource(path);
-    if (resource == null) {
-      throw new IllegalStateException("Resource not found: " + path);
-    }
-    ByteArrayOutputStream result = new ByteArrayOutputStream();
-    try (InputStream in = resource.openStream()) {
-      byte[] buffer = new byte[1024];
-      for (int len = in.read(buffer); len != -1; len = in.read(buffer)) {
-        result.write(buffer, 0, len);
-      }
-      return new String(result.toByteArray(), StandardCharsets.UTF_8);
-    } catch (IOException e) {
-      throw new IllegalStateException("Failed to read resource: " + path, e);
-    }
   }
 }

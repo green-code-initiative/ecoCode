@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.tree.ArrayAccessExpressionTree;
@@ -37,11 +36,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
  * @author Aubay
  * @formatter:off
  */
-@Rule(key = "EC27",
-        name = "Developpement",
-        description = ArrayCopyCheck.MESSAGERULE,
-        priority = Priority.MINOR,
-        tags = {"performance", "eco-design", "ecocode"})
+@Rule(key = "EC27")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "GRPS0027")
 public class ArrayCopyCheck extends IssuableSubscriptionVisitor {
 

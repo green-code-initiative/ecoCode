@@ -16,20 +16,26 @@
  */
 package fr.greencodeinitiative.php;
 
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.sonar.api.Plugin;
 import org.sonar.api.SonarRuntime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
-public class PhpPluginTest {
+class PhpPluginTest {
+  private Plugin.Context context;
+
+    @BeforeEach
+    void init() {
+        SonarRuntime sonarRuntime = mock(SonarRuntime.class);
+        context = new Plugin.Context(sonarRuntime);
+        new PHPPlugin().define(context);
+    }
 
     @Test
-    public void test() {
-        SonarRuntime sonarRuntime = mock(SonarRuntime.class);
-        Plugin.Context context = new Plugin.Context(sonarRuntime);
-        new PHPPlugin().define(context);
+    void test() {
         assertThat(context.getExtensions()).hasSize(1);
     }
 

@@ -1,6 +1,5 @@
 package fr.greencodeinitiative.java.checks;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
@@ -11,8 +10,7 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 import javax.annotation.CheckForNull;
 import java.util.*;
 
-@Rule(key = "EC63", name = "Developpement", description = "Do not unnecessarily assign values to variables", priority = Priority.MINOR,
-  tags = {"eco-design", "ecocode", "memory"})
+@Rule(key = "EC63")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S63")
 public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implements JavaFileScanner {
 

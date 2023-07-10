@@ -3,21 +3,14 @@ package fr.greencodeinitiative.python.checks;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.python.api.PythonSubscriptionCheck;
 import org.sonar.plugins.python.api.SubscriptionContext;
 import org.sonar.plugins.python.api.tree.*;
 
-@Rule(
-        key = AvoidUnoptimizedVectorImagesCheck.RULE_KEY,
-        name = AvoidUnoptimizedVectorImagesCheck.DESCRIPTION,
-        description = AvoidUnoptimizedVectorImagesCheck.DESCRIPTION,
-        priority = Priority.MINOR,
-        tags = {"eco-design", "ecocode"})
+@Rule(key = "EC10")
 public class AvoidUnoptimizedVectorImagesCheck extends PythonSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC10";
     public static final String DESCRIPTION = "Avoid using unoptimized vector images";
     private static final Pattern LAYERS_PATTERN = Pattern.compile("</g>");
 
