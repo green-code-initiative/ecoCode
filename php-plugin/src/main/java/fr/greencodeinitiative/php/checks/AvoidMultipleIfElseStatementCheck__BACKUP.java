@@ -23,24 +23,19 @@ import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.Tree.Kind;
-import org.sonar.plugins.php.api.tree.statement.*;
+import org.sonar.plugins.php.api.tree.statement.BlockTree;
+import org.sonar.plugins.php.api.tree.statement.IfStatementTree;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-/**
- * functional description : please see HTML description file of this rule (resources directory)
- */
 @Rule(
-        key = AvoidMultipleIfElseStatementCheck.RULE_KEY,
-        name = AvoidMultipleIfElseStatementCheck.ERROR_MESSAGE,
-        description = AvoidMultipleIfElseStatementCheck.ERROR_MESSAGE,
+        key = AvoidMultipleIfElseStatementCheck__BACKUP.RULE_KEY,
+        name = AvoidMultipleIfElseStatementCheck__BACKUP.ERROR_MESSAGE,
+        description = AvoidMultipleIfElseStatementCheck__BACKUP.ERROR_MESSAGE,
         priority = Priority.MINOR,
         tags = {"eco-design", "ecocode", "performance"})
-public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
+public class AvoidMultipleIfElseStatementCheck__BACKUP extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC2";
     public static final String ERROR_MESSAGE = "Use a switch statement instead of multiple if-else if possible";
@@ -48,24 +43,14 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     @Override
     public List<Kind> nodesToVisit() {
-        return List.of(Kind.IF_STATEMENT, Kind.ELSEIF_CLAUSE, Kind.ELSE_CLAUSE);
+        return List.of(Kind.IF_STATEMENT);
+//        return List.of(Kind.IF_STATEMENT, Kind.ELSEIF_CLAUSE);
     }
 
     @Override
     public void visitNode(Tree tree) {
-        Tree parentNode = tree.getParent();
-        if ( ! (parentNode instanceof BlockTree)) {
-            return;
-        }
-
-        visitConditionalNodes(0, new VariablesPerLevelDataStructure());
-
-//        checkIfStatementAtTheSameLevel(tree);
-//        checkElseIfStatement(tree);
-    }
-
-    private void visitConditionalNodes(int level, VariablesPerLevelDataStructure parentDataMap) {
-
+        checkIfStatementAtTheSameLevel(tree);
+        checkElseIfStatement(tree);
     }
 
     private void checkIfStatementAtTheSameLevel(Tree tree) {
@@ -112,39 +97,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
     }
 
     public static boolean isBlankString(String str) {
-        return str == null || str.isBlank();
-    }
-
-    private class VariablesPerLevelDataStructure {
-        /*
-        Map<Integer, Map<String, Integer>> ==>
-            - Key : index of Level (1 = first level)
-            - Value : Map<String, Integer>
-                - Key : name of variable in the current level
-                - Value : number of usage of this variable in a IF statement in current level or one of parent levels
-        */
-        private final Map<Integer, Map<String, Integer>> mapVariablesPerLevel;
-
-        public VariablesPerLevelDataStructure() {
-            mapVariablesPerLevel = new HashMap<>(10);
-        }
-
-        public VariablesPerLevelDataStructure(Map<Integer, Map<String, Integer>> pMapVariablesPerLevel) {
-            mapVariablesPerLevel = Map.copyOf(pMapVariablesPerLevel);
-        }
-
-        public void incrementUsageForVariableForLevel(String variableName, int level) {
-
-            // variables map initilization if absent
-            Map<String, Integer> mapVariables = mapVariablesPerLevel.computeIfAbsent(level, k -> new HashMap<>(5));
-
-            Integer nbUsed = mapVariables.get(variableName);
-            if (nbUsed == null) {
-                nbUsed = 0;
-            }
-            nbUsed++;
-            mapVariables.put(variableName, nbUsed);
-        }
+        return str == null || str.length() == 0 || str.isBlank();
     }
 
 }
