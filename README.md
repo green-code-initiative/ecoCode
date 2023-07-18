@@ -20,7 +20,7 @@ refer to the contribution section.
 4 technologies are supported by ecoCode right now:
 
 - [Java](java-plugin/)
-- [JavaScript](javascript-plugin/)
+- [JavaScript](https://github.com/green-code-initiative/ecoCode-javascript)
 - [PHP](php-plugin/)
 - [Python](python-plugin/)
 
@@ -47,8 +47,6 @@ Code is parsed to be transformed as AST. AST will allow you to access one or mor
 For example, you’ll be able to access of all your `for` loop, to explore content etc.
 
 To better understand AST structure, you can use the [AST Explorer](https://astexplorer.net/).
-
-JavaScript plugin works differently because it does not use AST. [More information here](javascript-plugin/README.md)
 
 🚀 Getting Started
 ------------------

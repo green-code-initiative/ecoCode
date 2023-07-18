@@ -26,7 +26,6 @@
         <module>ecocode-rules-specifications</module>
         <module>python-plugin</module>
         <module>java-plugin</module>
-        <module>javascript-plugin</module>
         <module>php-plugin</module>
     </modules>
 
@@ -58,7 +57,6 @@
         <sonarjava.version>7.19.0.31550</sonarjava.version>
         <sonarpython.version>4.3.0.11660</sonarpython.version>
         <sonarphp.version>3.29.0.9684</sonarphp.version>
-        <sonarjavascript.version>10.2.0.21568</sonarjavascript.version>
 
         <sonar-analyzer-commons.version>2.5.0.1358</sonar-analyzer-commons.version>
 
@@ -102,15 +100,6 @@
                 <groupId>org.sonarsource.java</groupId>
                 <artifactId>sonar-java-plugin</artifactId>
                 <version>${sonarjava.version}</version>
-                <type>sonar-plugin</type>
-                <scope>provided</scope>
-            </dependency>
-
-            <!-- JavaScript -->
-            <dependency>
-                <groupId>org.sonarsource.javascript</groupId>
-                <artifactId>sonar-javascript-plugin</artifactId>
-                <version>${sonarjavascript.version}</version>
                 <type>sonar-plugin</type>
                 <scope>provided</scope>
             </dependency>

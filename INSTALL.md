@@ -23,8 +23,6 @@ ecoCode                 # Root directory
 |
 +--java-plugin          # JAVA
 |
-+--javascript-plugin    # JavaScript
-|
 +--php-plugin           # PHP
 |
 +--python-plugin        # Python
@@ -38,6 +36,5 @@ Plugin-specific guides
 ----------------------
 
 - [Java how-to](java-plugin/README.md)
-- [JavaScript how-to](javascript-plugin/README.md)
 - [Python how-to](python-plugin/README.md)
 - [PHP how-to](php-plugin/README.md)
