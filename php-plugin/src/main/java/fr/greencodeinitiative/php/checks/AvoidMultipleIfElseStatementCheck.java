@@ -19,14 +19,19 @@
  */
 package fr.greencodeinitiative.php.checks;
 
+import org.sonar.api.utils.log.Logger;
+import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.Tree.Kind;
+import org.sonar.plugins.php.api.tree.declaration.MethodDeclarationTree;
+import org.sonar.plugins.php.api.tree.expression.BinaryExpressionTree;
+import org.sonar.plugins.php.api.tree.expression.ExpressionTree;
+import org.sonar.plugins.php.api.tree.expression.VariableIdentifierTree;
 import org.sonar.plugins.php.api.tree.statement.*;
 import org.sonar.plugins.php.api.visitors.PHPSubscriptionCheck;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,107 +49,237 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     public static final String RULE_KEY = "EC2";
     public static final String ERROR_MESSAGE = "Use a switch statement instead of multiple if-else if possible";
-    public static final int INDEX_NOT_FOUND = -1;
+
+    private static final Logger LOGGER = Loggers.get(AvoidMultipleIfElseStatementCheck.class);
+
+    private static final VariablesPerLevelDataStructure variablesStruct = new VariablesPerLevelDataStructure();
 
     @Override
     public List<Kind> nodesToVisit() {
-        return List.of(Kind.IF_STATEMENT, Kind.ELSEIF_CLAUSE, Kind.ELSE_CLAUSE);
+        return List.of(Kind.METHOD_DECLARATION);
     }
 
     @Override
     public void visitNode(Tree tree) {
-        Tree parentNode = tree.getParent();
-        if ( ! (parentNode instanceof BlockTree)) {
+
+        MethodDeclarationTree method = (MethodDeclarationTree)tree;
+
+        if (!method.body().is(Kind.BLOCK)) {
             return;
         }
 
-        visitConditionalNodes(0, new VariablesPerLevelDataStructure());
-
-//        checkIfStatementAtTheSameLevel(tree);
-//        checkElseIfStatement(tree);
-    }
-
-    private void visitConditionalNodes(int level, VariablesPerLevelDataStructure parentDataMap) {
+        visitNodeContent(((BlockTree) method.body()).statements(), 0);
 
     }
 
-    private void checkIfStatementAtTheSameLevel(Tree tree) {
-        int countIfStatement = 0;
-
-        Tree parentNode = tree.getParent();
-        if (!(parentNode instanceof BlockTree)) {
+    private void visitNodeContent(List<StatementTree> lstStatements, int pLevel) {
+        if (lstStatements == null || lstStatements.isEmpty()) {
             return;
         }
 
-        // getting parent bloc to count if several IF at the same level
-        BlockTree node = (BlockTree) parentNode;
-        int sizeBody = node.statements().size();
-        for(int i=0; i<sizeBody;++i){
-            if (node.statements().get(i) instanceof IfStatementTree){
-                ++countIfStatement;
+        for (StatementTree statement : lstStatements) {
+            if (statement.is(Kind.IF_STATEMENT)) {
+                LOGGER.debug("Visiting IF_STATEMENT node : {}", statement.toString());
+                visitIfNode((IfStatementTree)statement, pLevel);
+            } else if (statement.is(Kind.ELSEIF_CLAUSE)) {
+                LOGGER.debug("Visiting ELSEIF_CLAUSE node : {}", statement.toString());
+                // TODO DDC
+            } else if (statement.is(Kind.ELSE_CLAUSE)) {
+                LOGGER.debug("Visiting ELSE_CLAUSE node : {}", statement.toString());
+                // TODO DDC
+            } else if (statement.is(Kind.BLOCK)) {
+                LOGGER.debug("NO node visit because of incompatibility : {}", statement.toString());
+                visitNodeContent(((BlockTree)statement).statements(), pLevel); // Block Statement is not a new LEVEL
+            } else {
+                LOGGER.debug("NO node visit because of incompatibility : {}", statement.toString());
             }
         }
-        if (countIfStatement > 1){
-            context().newIssue(this, tree, ERROR_MESSAGE);
+    }
+
+    private void visitIfNode(IfStatementTree pIfTree, int pLevel) {
+        // analyse variables and raise error if neede
+        analyseVariables(pIfTree, pLevel);
+
+        // go to next child level
+        visitNodeContent(pIfTree.statements(), pLevel + 1);
+    }
+
+    private void analyseVariables(IfStatementTree pIfTree, int pLevel) {
+        ExpressionTree expr = pIfTree.condition().expression();
+        LOGGER.debug(expr.toString());
+
+        if (expr instanceof BinaryExpressionTree) {
+            analyseVariables((BinaryExpressionTree) expr, pLevel);
+        }
+
+    }
+
+    private void analyseVariables(BinaryExpressionTree pBinExprTree, int pLevel) {
+        if (pBinExprTree.is(Kind.EQUAL_TO)
+                || pBinExprTree.is(Kind.NOT_EQUAL_TO)
+                || pBinExprTree.is(Kind.GREATER_THAN_OR_EQUAL_TO)
+                || pBinExprTree.is(Kind.LESS_THAN_OR_EQUAL_TO)) {
+            if (pBinExprTree.leftOperand().is(Kind.VARIABLE_IDENTIFIER)) {
+                analyseVariables((VariableIdentifierTree) pBinExprTree.leftOperand(), pLevel);
+            }
+            if (pBinExprTree.rightOperand().is(Kind.VARIABLE_IDENTIFIER)) {
+                analyseVariables((VariableIdentifierTree) pBinExprTree.rightOperand(), pLevel);
+            }
+        } else if (pBinExprTree.is(Kind.CONDITIONAL_AND) || pBinExprTree.is(Kind.CONDITIONAL_OR)) {
+            analyseVariables((BinaryExpressionTree) pBinExprTree.leftOperand(), pLevel);
+            analyseVariables((BinaryExpressionTree) pBinExprTree.rightOperand(), pLevel);
         }
     }
 
-    private void checkElseIfStatement(Tree tree) {
-        String ifTree = tree.toString();
-        String findStr = "elseif";
-        int count = countMatches(ifTree, findStr);
-        if (count >= 2) {
-           context().newIssue(this, tree, ERROR_MESSAGE);
+    private void analyseVariables(VariableIdentifierTree pVarIdTree, int pLevel) {
+        if (pVarIdTree.variableExpression().is(Kind.VARIABLE_IDENTIFIER)) {
+            int nbUsed = variablesStruct.incrementVariableUsageForLevel(pVarIdTree.text(), pLevel);
+
+            // raise an error if maximum
+            if (nbUsed > 2) {
+                context().newIssue(this, pVarIdTree, ERROR_MESSAGE);
+            }
         }
     }
 
-    public static int countMatches(String str, String sub) {
-        if (isBlankString(str) || isBlankString(sub)) {
-            return 0;
-        }
-        int count = 0;
-        int idx = 0;
-        while ((idx = str.indexOf(sub, idx)) != INDEX_NOT_FOUND) {
-            count++;
-            idx += sub.length();
-        }
-        return count;
-    }
+//    private void checkIfStatementAtTheSameLevel(Tree tree) {
+//        int countIfStatement = 0;
+//
+//        Tree parentNode = tree.getParent();
+//        if (!(parentNode instanceof BlockTree)) {
+//            return;
+//        }
+//
+//        // getting parent bloc to count if several IF at the same level
+//        BlockTree node = (BlockTree) parentNode;
+//        int sizeBody = node.statements().size();
+//        for (int i = 0; i < sizeBody; ++i) {
+//            if (node.statements().get(i) instanceof IfStatementTree) {
+//                ++countIfStatement;
+//            }
+//        }
+//        if (countIfStatement > 1) {
+//            context().newIssue(this, tree, ERROR_MESSAGE);
+//        }
+//    }
+//
+//    private void checkElseIfStatement(Tree tree) {
+//        String ifTree = tree.toString();
+//        String findStr = "elseif";
+//        int count = countMatches(ifTree, findStr);
+//        if (count >= 2) {
+//            context().newIssue(this, tree, ERROR_MESSAGE);
+//        }
+//    }
+//
+//    public static int countMatches(String str, String sub) {
+//        if (isBlankString(str) || isBlankString(sub)) {
+//            return 0;
+//        }
+//        int count = 0;
+//        int idx = 0;
+//        while ((idx = str.indexOf(sub, idx)) != INDEX_NOT_FOUND) {
+//            count++;
+//            idx += sub.length();
+//        }
+//        return count;
+//    }
+//
+//    public static boolean isBlankString(String str) {
+//        return str == null || str.isBlank();
+//    }
 
-    public static boolean isBlankString(String str) {
-        return str == null || str.isBlank();
-    }
+    /**
+     * Complex data structure representing variables count per AST level (cumulative count with parent levels)
+     *  Map<Integer, Map<String, Integer>> ==>
+     *  - Key : index of Level (0 = first level)
+     *  - Value : Map<String, Integer>
+     *      - Key : name of variable in the current or parent level
+     *      - Value : number of usage of this variable in a IF statement in current level or one of parent levels
+     *
+     */
+    private static class VariablesPerLevelDataStructure {
 
-    private class VariablesPerLevelDataStructure {
-        /*
-        Map<Integer, Map<String, Integer>> ==>
-            - Key : index of Level (1 = first level)
-            - Value : Map<String, Integer>
-                - Key : name of variable in the current level
-                - Value : number of usage of this variable in a IF statement in current level or one of parent levels
-        */
         private final Map<Integer, Map<String, Integer>> mapVariablesPerLevel;
 
         public VariablesPerLevelDataStructure() {
             mapVariablesPerLevel = new HashMap<>(10);
         }
 
-        public VariablesPerLevelDataStructure(Map<Integer, Map<String, Integer>> pMapVariablesPerLevel) {
-            mapVariablesPerLevel = Map.copyOf(pMapVariablesPerLevel);
+        public VariablesPerLevelDataStructure(Map<Integer, Map<String, Integer>> pParentLevelMap) {
+            mapVariablesPerLevel = Map.copyOf(pParentLevelMap);
         }
 
-        public void incrementUsageForVariableForLevel(String variableName, int level) {
+        public int incrementVariableUsageForLevel(String variableName, int pLevel) {
 
-            // variables map initilization if absent
-            Map<String, Integer> mapVariables = mapVariablesPerLevel.computeIfAbsent(level, k -> new HashMap<>(5));
-
-            Integer nbUsed = mapVariables.get(variableName);
-            if (nbUsed == null) {
-                nbUsed = 0;
+            // get variable usage map for current level
+            Map<String, Integer> variablesMap = mapVariablesPerLevel.get(pLevel);
+            if (variablesMap == null) {
+                variablesMap = new HashMap<>(5);
+                mapVariablesPerLevel.put(pLevel, variablesMap);
             }
+
+            // get usage from parent if needed
+            Integer nbUsed = variablesMap.get(variableName);
+            if (nbUsed == null) {
+                Integer nbParentUsed = getVariableUsageOfNearestParent(variableName, pLevel - 1);
+                nbUsed = nbParentUsed == null ? 0 : nbParentUsed;
+            }
+
+            // increment usage for current level
             nbUsed++;
-            mapVariables.put(variableName, nbUsed);
+            variablesMap.put(variableName, nbUsed);
+
+            return nbUsed;
         }
+
+        private Integer getVariableUsageOfNearestParent(String variableName, int pLevel) {
+
+            Integer nbParentUsed = null;
+            for (int i = pLevel; i >= 0 && nbParentUsed == null; i--) {
+                Map<String, Integer> variablesParentLevelMap = mapVariablesPerLevel.get(i);
+                nbParentUsed = variablesParentLevelMap.get(variableName);
+            }
+
+            return nbParentUsed;
+        }
+
+//        private Map<String, Integer> initializeAndOrGetVariablesMap(int pLevel) {
+//
+//            Map<String, Integer> variablesMap = mapVariablesPerLevel.get(pLevel);
+//            if (variablesMap == null) {
+//                // getting variables map from parent level to copy to current level if initialization needed
+//                Map<String, Integer> variablesParentLevelMap = mapVariablesPerLevel.get(pLevel - 1);
+//            }
+//
+//
+//            // getting variables map from parent level to copy to current level if initialization needed
+//            Map<String, Integer> variablesParentLevelMap = mapVariablesPerLevel.get(pLevel - 1);
+//
+//            Map<String, Integer> variablesMap = mapVariablesPerLevel.computeIfAbsent(pLevel, k -> new HashMap<>(5));
+//
+//            // variables map initialization : create empty HashMap if needed
+//            if (variablesParentLevelMap != null && !variablesParentLevelMap.isEmpty() && !variablesMap.isEmpty()) {
+//                for (Map.Entry<String, Integer> entry : variablesParentLevelMap.entrySet()) {
+//                    variablesMap.putIfAbsent(entry.getKey(), entry.getValue());
+//                }
+//            }
+//
+//            return variablesMap;
+//        }
+//
+//        private void incrementVariableUsageForExistingChildLevels(String variableName, int level) {
+//
+//            // variables map initilization if absent
+//            Map<String, Integer> mapVariables = mapVariablesPerLevel.computeIfAbsent(level, k -> new HashMap<>(5));
+//
+//            Integer nbUsed = mapVariables.get(variableName);
+//            if (nbUsed == null) {
+//                nbUsed = 0;
+//            }
+//            nbUsed++;
+//            mapVariables.put(variableName, nbUsed);
+//        }
     }
 
 }
