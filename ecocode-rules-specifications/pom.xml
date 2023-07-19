@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.ecocode</groupId>
 		<artifactId>ecocode-parent</artifactId>
-		<version>1.3.1-SNAPSHOT</version>
+		<version>1.3.2-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>ecocode-rules-specifications</artifactId>
@@ -114,38 +114,38 @@
 							<target>
 								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/java">
 									<fileset dir="${project.build.directory}/rules">
-										<include name="*/java/EC*.html"/>
-										<include name="*/EC*.json"/>
+										<include name="*/java/EC*.html" />
+										<include name="*/EC*.json" />
 									</fileset>
-									<flattenmapper/>
+									<flattenmapper />
 								</copy>
 								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/php">
 									<fileset dir="${project.build.directory}/rules">
-										<include name="*/php/EC*.html"/>
-										<include name="*/EC*.json"/>
+										<include name="*/php/EC*.html" />
+										<include name="*/EC*.json" />
 									</fileset>
-									<flattenmapper/>
+									<flattenmapper />
 								</copy>
 								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/python">
 									<fileset dir="${project.build.directory}/rules">
-										<include name="*/python/EC*.html"/>
-										<include name="*/EC*.json"/>
+										<include name="*/python/EC*.html" />
+										<include name="*/EC*.json" />
 									</fileset>
-									<flattenmapper/>
+									<flattenmapper />
 								</copy>
 								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/js">
 									<fileset dir="${project.build.directory}/rules">
-										<include name="*/js/EC*.html"/>
-										<include name="*/EC*.json"/>
+										<include name="*/js/EC*.html" />
+										<include name="*/EC*.json" />
 									</fileset>
-									<flattenmapper/>
+									<flattenmapper />
 								</copy>
 								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/ts">
 									<fileset dir="${project.build.directory}/rules">
-										<include name="*/ts/EC*.html"/>
-										<include name="*/EC*.json"/>
+										<include name="*/ts/EC*.html" />
+										<include name="*/EC*.json" />
 									</fileset>
-									<flattenmapper/>
+									<flattenmapper />
 								</copy>
 							</target>
 						</configuration>
