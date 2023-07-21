@@ -182,7 +182,7 @@ class AvoidMultipleIfElseStatement
         $nb2 = 0;
 
         if ($nb1 == 1) {
-            if ($nb1 == 2) {
+            if ($nb1 == 2) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
                 $nb1 = 1;
             } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
                 $nb2 = 3;
