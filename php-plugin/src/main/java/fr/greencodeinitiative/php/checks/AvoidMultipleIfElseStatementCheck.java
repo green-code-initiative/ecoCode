@@ -93,12 +93,6 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             } else if (statement.is(Kind.IF_STATEMENT)) {
                 LOGGER.debug("Visiting IF_STATEMENT node : {}", statement.toString());
                 visitIfNode((IfStatementTree)statement, pLevel);
-//            } else if (statement.is(Kind.ELSEIF_CLAUSE)) {
-//                LOGGER.debug("Visiting ELSEIF_CLAUSE node : {}", statement.toString());
-//                // TODO DDC
-//            } else if (statement.is(Kind.ELSE_CLAUSE)) {
-//                LOGGER.debug("Visiting ELSE_CLAUSE node : {}", statement.toString());
-//                visitElseNode((ElseClauseTree)statement, pLevel);
             } else {
                 LOGGER.debug("NO node visit because of incompatibility : {}", statement.toString());
             }
@@ -110,7 +104,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         if (pIfTree == null) return;
 
         // analyze condition variables and raise error if needed
-        analyzeConditionVariables(pIfTree, pLevel);
+        computeConditionVariables(pIfTree, pLevel);
 
         // analyze ELSEIF clauses
         if (pIfTree.elseifClauses() != null && !pIfTree.elseifClauses().isEmpty()) {
@@ -126,13 +120,67 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         visitNodeContent(pIfTree.statements(), pLevel + 1);
     }
 
-    private void analyzeConditionVariables(IfStatementTree pIfTree, int pLevel) {
+    private void computeConditionVariables(IfStatementTree pIfTree, int pLevel) {
 
         if (pIfTree.condition() == null) return;
 
         ExpressionTree expr = pIfTree.condition().expression();
         if (expr instanceof BinaryExpressionTree) {
-            analyzeConditionVariables((BinaryExpressionTree) expr, pLevel);
+            computeConditionVariables((BinaryExpressionTree) expr, pLevel);
+        }
+
+    }
+
+    private void computeConditionVariables(BinaryExpressionTree pBinExprTree, int pLevel) {
+        if (pBinExprTree.is(Kind.CONDITIONAL_AND) || pBinExprTree.is(Kind.CONDITIONAL_OR)) {
+            if (pBinExprTree.leftOperand() instanceof BinaryExpressionTree) {
+                computeConditionVariables((BinaryExpressionTree) pBinExprTree.leftOperand(), pLevel);
+            }
+            if (pBinExprTree.rightOperand() instanceof BinaryExpressionTree) {
+                computeConditionVariables((BinaryExpressionTree) pBinExprTree.rightOperand(), pLevel);
+            }
+        } else if (pBinExprTree.is(Kind.EQUAL_TO)
+                || pBinExprTree.is(Kind.NOT_EQUAL_TO)
+                || pBinExprTree.is(Kind.GREATER_THAN_OR_EQUAL_TO)
+                || pBinExprTree.is(Kind.LESS_THAN_OR_EQUAL_TO)) {
+            if (pBinExprTree.leftOperand().is(Kind.VARIABLE_IDENTIFIER)) {
+                computeVariables((VariableIdentifierTree) pBinExprTree.leftOperand(), pLevel);
+            }
+            if (pBinExprTree.rightOperand().is(Kind.VARIABLE_IDENTIFIER)) {
+                computeVariables((VariableIdentifierTree) pBinExprTree.rightOperand(), pLevel);
+            }
+        }
+    }
+
+    private void computeVariables(VariableIdentifierTree pVarIdTree, int pLevel) {
+        if (pVarIdTree.variableExpression().is(Kind.VARIABLE_IDENTIFIER)) {
+            int nbUsed = variablesStruct.incrementVariableUsageForLevel(pVarIdTree.text(), pLevel);
+
+            // raise an error if maximum
+            if (nbUsed > 2) {
+                context().newIssue(this, pVarIdTree, ERROR_MESSAGE);
+            }
+        }
+    }
+
+    private void visitElseIfNode(ElseifClauseTree pElseIfTree, int pLevel) {
+
+        if (pElseIfTree == null) { return; }
+
+        // analyze variables and raise error if needed
+        computeConditionVariables(pElseIfTree, pLevel);
+
+        // go to next child level
+        visitNodeContent(pElseIfTree.statements(), pLevel + 1);
+    }
+
+    private void computeConditionVariables(ElseifClauseTree pElseIfTree, int pLevel) {
+
+        if (pElseIfTree.condition() == null) return;
+
+        ExpressionTree expr = pElseIfTree.condition().expression();
+        if (expr instanceof BinaryExpressionTree) {
+            computeConditionVariables((BinaryExpressionTree) expr, pLevel);
         }
 
     }
@@ -142,13 +190,13 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         if (pElseTree == null) { return; }
 
         // analyze variables and raise error if needed
-        analyzeVariables(pElseTree, pLevel);
+        computeVariables(pElseTree, pLevel);
 
         // go to next child level
         visitNodeContent(pElseTree.statements(), pLevel + 1);
     }
 
-    private void analyzeVariables(ElseClauseTree pElseTree, int pLevel) {
+    private void computeVariables(ElseClauseTree pElseTree, int pLevel) {
 
         for (Map.Entry<String, Integer> entry : variablesStruct.getVariables(pLevel).entrySet()) {
             String variableName = entry.getKey();
@@ -159,64 +207,6 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             // raise an error if maximum
             if (nbUsed > 2) {
                 context().newIssue(this, pElseTree, ERROR_MESSAGE);
-            }
-        }
-    }
-
-    private void visitElseIfNode(ElseifClauseTree pElseIfTree, int pLevel) {
-
-        if (pElseIfTree == null) { return; }
-
-        // analyze variables and raise error if needed
-        analyzeVariables(pElseIfTree, pLevel);
-
-        // go to next child level
-        visitNodeContent(pElseIfTree.statements(), pLevel + 1);
-    }
-
-    private void analyzeVariables(ElseifClauseTree pElseIfTree, int pLevel) {
-
-        for (Map.Entry<String, Integer> entry : variablesStruct.getVariables(pLevel).entrySet()) {
-            String variableName = entry.getKey();
-
-            // increment usage of all varibales in the same level of ELSE staetement
-            int nbUsed = variablesStruct.incrementVariableUsageForLevel(variableName, pLevel);
-
-            // raise an error if maximum
-            if (nbUsed > 2) {
-                context().newIssue(this, pElseIfTree, ERROR_MESSAGE);
-            }
-        }
-    }
-
-    private void analyzeConditionVariables(BinaryExpressionTree pBinExprTree, int pLevel) {
-        if (pBinExprTree.is(Kind.CONDITIONAL_AND) || pBinExprTree.is(Kind.CONDITIONAL_OR)) {
-            if (pBinExprTree.leftOperand() instanceof BinaryExpressionTree) {
-                analyzeConditionVariables((BinaryExpressionTree) pBinExprTree.leftOperand(), pLevel);
-            }
-            if (pBinExprTree.rightOperand() instanceof BinaryExpressionTree) {
-                analyzeConditionVariables((BinaryExpressionTree) pBinExprTree.rightOperand(), pLevel);
-            }
-        } else if (pBinExprTree.is(Kind.EQUAL_TO)
-                || pBinExprTree.is(Kind.NOT_EQUAL_TO)
-                || pBinExprTree.is(Kind.GREATER_THAN_OR_EQUAL_TO)
-                || pBinExprTree.is(Kind.LESS_THAN_OR_EQUAL_TO)) {
-            if (pBinExprTree.leftOperand().is(Kind.VARIABLE_IDENTIFIER)) {
-                analyzeVariables((VariableIdentifierTree) pBinExprTree.leftOperand(), pLevel);
-            }
-            if (pBinExprTree.rightOperand().is(Kind.VARIABLE_IDENTIFIER)) {
-                analyzeVariables((VariableIdentifierTree) pBinExprTree.rightOperand(), pLevel);
-            }
-        }
-    }
-
-    private void analyzeVariables(VariableIdentifierTree pVarIdTree, int pLevel) {
-        if (pVarIdTree.variableExpression().is(Kind.VARIABLE_IDENTIFIER)) {
-            int nbUsed = variablesStruct.incrementVariableUsageForLevel(pVarIdTree.text(), pLevel);
-
-            // raise an error if maximum
-            if (nbUsed > 2) {
-                context().newIssue(this, pVarIdTree, ERROR_MESSAGE);
             }
         }
     }
