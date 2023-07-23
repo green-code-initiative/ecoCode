@@ -39,9 +39,10 @@ import java.util.Map;
 /**
  * functional description : please see HTML description file of this rule (resources directory)
  * technical choices :
- * - Kind.IF_STATEMENT, Kind.ELSE_STATEMENT, Kind.ELSEIF_STATEMENT because it isn't possible
+ * - Kind.IF_STATEMENT, Kind.ELSE_STATEMENT, Kind.ELSEIF_STATEMENT not used because it isn't possible
  * to keep parent references to check later if variables already used or not in parent tree
  * - only one way to keep parent history : manually go throw the all tree and thus, start at method declaration
+ * - an "ELSE" statement is considered as a second IF statement using the same variables tests
  *
  */
 @Rule(
@@ -57,7 +58,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     private static final Logger LOGGER = Loggers.get(AvoidMultipleIfElseStatementCheck.class);
 
-    private static final VariablesPerLevelDataStructure variablesStruct = new VariablesPerLevelDataStructure();
+    private static VariablesPerLevelDataStructure variablesStruct = new VariablesPerLevelDataStructure();
 
     @Override
     public List<Kind> nodesToVisit() {
@@ -72,6 +73,9 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         if (!method.body().is(Kind.BLOCK)) {
             return;
         }
+
+        // reinit data structure before each method analysis
+        variablesStruct = new VariablesPerLevelDataStructure();
 
         visitNodeContent(((BlockTree) method.body()).statements(), 0);
 
@@ -108,16 +112,15 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         // analyze condition variables and raise error if needed
         analyzeConditionVariables(pIfTree, pLevel);
 
+        // analyze ELSEIF clauses
+        if (pIfTree.elseifClauses() != null && !pIfTree.elseifClauses().isEmpty()) {
+            for (ElseifClauseTree elseifClause : pIfTree.elseifClauses()) {
+                visitElseIfNode(elseifClause, pLevel);
+            }
+        }
+
         // analyze ELSE clause
         visitElseNode(pIfTree.elseClause(), pLevel);
-
-        // TODO DDC
-        // analyze ELSEIF clauses
-//        if (pIfTree.elseifClauses() != null && !pIfTree.elseifClauses().isEmpty()) {
-//            for (ElseifClauseTree elseifClause : pIfTree.elseifClauses()) {
-//                visitElseIfNode(elseifClause, pLevel);
-//            }
-//        }
 
         // go to next child level of if statement
         visitNodeContent(pIfTree.statements(), pLevel + 1);
@@ -135,6 +138,9 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
     }
 
     private void visitElseNode(ElseClauseTree pElseTree, int pLevel) {
+
+        if (pElseTree == null) { return; }
+
         // analyze variables and raise error if needed
         analyzeVariables(pElseTree, pLevel);
 
@@ -155,7 +161,32 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
                 context().newIssue(this, pElseTree, ERROR_MESSAGE);
             }
         }
+    }
 
+    private void visitElseIfNode(ElseifClauseTree pElseIfTree, int pLevel) {
+
+        if (pElseIfTree == null) { return; }
+
+        // analyze variables and raise error if needed
+        analyzeVariables(pElseIfTree, pLevel);
+
+        // go to next child level
+        visitNodeContent(pElseIfTree.statements(), pLevel + 1);
+    }
+
+    private void analyzeVariables(ElseifClauseTree pElseIfTree, int pLevel) {
+
+        for (Map.Entry<String, Integer> entry : variablesStruct.getVariables(pLevel).entrySet()) {
+            String variableName = entry.getKey();
+
+            // increment usage of all varibales in the same level of ELSE staetement
+            int nbUsed = variablesStruct.incrementVariableUsageForLevel(variableName, pLevel);
+
+            // raise an error if maximum
+            if (nbUsed > 2) {
+                context().newIssue(this, pElseIfTree, ERROR_MESSAGE);
+            }
+        }
     }
 
     private void analyzeConditionVariables(BinaryExpressionTree pBinExprTree, int pLevel) {

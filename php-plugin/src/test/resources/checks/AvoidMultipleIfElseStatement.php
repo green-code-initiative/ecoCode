@@ -12,30 +12,62 @@ class AvoidMultipleIfElseStatement
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    // COMPLIANT
+    // USE CASE : compliant use case to check if a variable is used maximum twice on several IF / ELSE statements
+    // at the same level AND no problem with several IF staments at the same level using different variables
+    public function shouldBeCompliantBecauseVariablesUsedMaximumTwiceAndDifferentsVariablesUsed()
+    {
+        $nb1 = 0;
+        $nb2 = 0;
+        $nb3 = 0;
+
+        if ($nb3 == 1 && $nb1 == 1) {
+            $nb1 = 1;
+        } else {
+            $nb2 = 2;
+        }
+
+        if ($nb2 == 2) {
+            $nb1 = 3;
+        } else {
+            $nb1 = 4;
+        }
+
+        return $nb1;
+    }
+
 //     // COMPLIANT
 //     // USE CASE : compliant use case to check if a variable is used maximum twice on several IF / ELSE statements
 //     // at the same level AND no problem with several IF staments at the same level using different variables
-//     public function shouldBeCompliantBecauseVariablesUsedMaximumTwiceAndDifferentsVariablesUsed()
+//     public function shouldBeCompliantBecauseVariablesUsedMaximumTwiceAndDifferentsVariablesUsedAtDifferentLevels()
 //     {
 //         $nb1 = 0;
 //         $nb2 = 0;
 //         $nb3 = 0;
 //
-//         if ($nb3 == 1 && $nb1 == 1) {
-//             $nb1 = 1;
+//         if ($nb1 == 1) {
+//             if ($nb2 == 2) {
+//                 $nb1 = 3;
+//             } else {
+//                 $nb1 = 4;
+//             }
 //         } else {
 //             $nb2 = 2;
 //         }
 //
-//         if ($nb2 == 2) {
-//             $nb1 = 3;
+//         if ($nb3 == 1) {
+//             if ($nb2 == 2) {
+//                 $nb1 = 3;
+//             } else {
+//                 $nb1 = 4;
+//             }
 //         } else {
-//             $nb1 = 4;
+//             $nb2 = 2;
 //         }
 //
 //         return $nb1;
 //     }
-//
+
 //     // COMPLIANT
 //     // USE CASE : compliant use case to check if one variable is used maximum twice in different IF statements
 //     public function shouldBeCompliantBecauseVariableUsedMaximumTwiceInIfStatements()
@@ -151,27 +183,27 @@ class AvoidMultipleIfElseStatement
 //     //
 //     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//
-//     // NON COMPLIANT
-//     // USE CASE : NON compliant use case to check if following is NOT COMPLIANT :
-//     // one variable is used maximum in two IF / ELSE / ELSEIF statements
-//     public function shouldBeNotCompliantBecauseVariablesIsUsedMoreThanTwice()
-//     {
-//         $nb1 = 0;
-//         $nb2 = 0;
-//
-//         if ($nb1 == 1) {
-//             $nb1 = 1;
-//         } else {
-//             $nb2 = 2;
-//         }
-//
-//         if ($nb1 == 2) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-//             $nb2 = 3;
-//         }
-//
-//         return $nb1;
-//     }
+
+    // NON COMPLIANT
+    // USE CASE : NON compliant use case to check if following is NOT COMPLIANT :
+    // one variable is used maximum in two IF / ELSE / ELSEIF statements
+    public function shouldBeNotCompliantBecauseVariablesIsUsedMoreThanTwice()
+    {
+        $nb1 = 0;
+        $nb2 = 0;
+
+        if ($nb1 == 1) {
+            $nb1 = 1;
+        } else {
+            $nb2 = 2;
+        }
+
+        if ($nb1 == 2) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+            $nb2 = 3;
+        }
+
+        return $nb1;
+    }
 
     // NON COMPLIANT
     // USE CASE : NON compliant use case to check if following is NOT OK :
@@ -194,96 +226,96 @@ class AvoidMultipleIfElseStatement
         return $nb1;
     }
 
-//     // NON COMPLIANT
-//     // USE CASE : non compliant use case to check if following is NOT OK :
-//     // - two uses of the same variable : use thre times with 2 IFs and 1 ELSE
-//     // - usage of the same variable on different levels of IF statements
-//     public function shouldBeNotCompliantBecauseVariableUsedMoreThanTwiceInComposedElseStatements()
-//     {
-//         $nb1 = 0;
-//         $nb2 = 0;
-//
-//         if ($nb1 == 1) {
-//             $nb2 = 2;
-//         } else {
-//             if ($nb1 == 2) {
-//                 $nb1 = 1;
-//             } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-//                 $nb2 = 3;
-//             }
-//         }
-//
-//         return $nb1;
-//     }
-//
-//     // NON COMPLIANT
-//     // USE CASE : NON compliant use case to check if following is NOT OK :
-//     // - the same variable must used maximum twice
-//     // - usage of the same variable on different levels of IF / ELSE statements
-//     public function shouldBeNotCompliantBecauseVariableUsedMaximumTwiceInComposedElseStatements()
-//     {
-//         $nb1 = 0;
-//         $nb2 = 0;
-//
-//         if ($nb1 == 1) {
-//             $nb2 = 2;
-//         } else {
-//             if ($nb1 == 2) {
-//                 $nb1 = 1;
-//             } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-//                 if ($nb1 == 3) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-//                     $nb1 = 4;
-//                 } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-//                     $nb2 = 5;
-//                 }
-//             }
-//         }
-//
-//         return $nb1;
-//     }
-//
-//     // NON COMPLIANT
-//     // USE CASE : NON compliant use case to check if following is NOT OK :
-//     // - more than twice uses of the same variable
-//     // - usage of the same variable on different kind of test statements (IF and ELSEIF)
-//     public function shouldBeNotCompliantBecauseTheSameVariableIsUsedMoreThanTwice() // NOT Compliant
-//     {
-//         $nb1 = 0;
-//         $nb2 = 10;
-//         $nb3 = 11;
-//
-//         if ($nb1 == 1) {
-//             $nb2 = 1;
-//         } elseif ($nb1 == $nb2) {
-//             $nb2 = 2;
-//         } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-//             $nb2 = 4;
-//         }
-//
-//         return $nb2;
-//     }
-//
-//     // NON COMPLIANT
-//     // USE CASE : NON compliant use case to check if following is NOT OK :
-//     // - more than twice uses of the same variable
-//     // - usage of the same variable on different kind of test statements (IF and ELSEIF)
-//     public function shouldBeNotCompliantBecauseTheSameVariableIsUsedManyTimes() // NOT Compliant
-//     {
-//         $nb1 = 0;
-//         $nb2 = 10;
-//         $nb3 = 11;
-//
-//         if ($nb1 == 1) {
-//             $nb2 = 1;
-//         } elseif ($nb1 == $nb2) {
-//             $nb2 = 2;
-//         } elseif ($nb3 == $nb1) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-//             $nb2 = 3;
-//         } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-//             $nb2 = 4;
-//         }
-//
-//         return $nb2;
-//     }
+    // NON COMPLIANT
+    // USE CASE : non compliant use case to check if following is NOT OK :
+    // - two uses of the same variable : use thre times with 2 IFs and 1 ELSE
+    // - usage of the same variable on different levels of IF statements
+    public function shouldBeNotCompliantBecauseVariableUsedMoreThanTwiceInComposedElseStatements()
+    {
+        $nb1 = 0;
+        $nb2 = 0;
+
+        if ($nb1 == 1) {
+            $nb2 = 2;
+        } else {
+            if ($nb1 == 2) {  // NOK {{Use a switch statement instead of multiple if-else if possible}}
+                $nb1 = 1;
+            } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+                $nb2 = 3;
+            }
+        }
+
+        return $nb1;
+    }
+
+    // NON COMPLIANT
+    // USE CASE : NON compliant use case to check if following is NOT OK :
+    // - the same variable must used maximum twice
+    // - usage of the same variable on different levels of IF / ELSE statements
+    public function shouldBeNotCompliantBecauseVariableUsedMaximumTwiceInComposedElseStatements()
+    {
+        $nb1 = 0;
+        $nb2 = 0;
+
+        if ($nb1 == 1) {
+            $nb2 = 2;
+        } else {
+            if ($nb1 == 2) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+                $nb1 = 1;
+            } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+                if ($nb1 == 3) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+                    $nb1 = 4;
+                } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+                    $nb2 = 5;
+                }
+            }
+        }
+
+        return $nb1;
+    }
+
+    // NON COMPLIANT
+    // USE CASE : NON compliant use case to check if following is NOT OK :
+    // - more than twice uses of the same variable
+    // - usage of the same variable on different kind of test statements (IF and ELSEIF)
+    public function shouldBeNotCompliantBecauseTheSameVariableIsUsedMoreThanTwice() // NOT Compliant
+    {
+        $nb1 = 0;
+        $nb2 = 10;
+        $nb3 = 11;
+
+        if ($nb1 == 1) {
+            $nb2 = 1;
+        } elseif ($nb1 == $nb2) {
+            $nb2 = 2;
+        } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+            $nb2 = 4;
+        }
+
+        return $nb2;
+    }
+
+    // NON COMPLIANT
+    // USE CASE : NON compliant use case to check if following is NOT OK :
+    // - more than twice uses of the same variable
+    // - usage of the same variable on different kind of test statements (IF and ELSEIF)
+    public function shouldBeNotCompliantBecauseTheSameVariableIsUsedManyTimes() // NOT Compliant
+    {
+        $nb1 = 0;
+        $nb2 = 10;
+        $nb3 = 11;
+
+        if ($nb1 == 1) {
+            $nb2 = 1;
+        } elseif ($nb1 == $nb2) {
+            $nb2 = 2;
+        } elseif ($nb3 == $nb1) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+            $nb2 = 3;
+        } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+            $nb2 = 4;
+        }
+
+        return $nb2;
+    }
 
 }
