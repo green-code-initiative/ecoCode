@@ -60,6 +60,8 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     private static VariablesPerLevelDataStructure variablesStruct = new VariablesPerLevelDataStructure();
 
+    // only visit each method to keep data of all conditional tree
+    // with IF, ELSE or ELSEID statements, we can't keep all data of conditionzl tree
     @Override
     public List<Kind> nodesToVisit() {
         return List.of(Kind.METHOD_DECLARATION);
@@ -103,8 +105,16 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
         if (pIfTree == null) return;
 
+        // init current if structure with cleaning child levels
+        variablesStruct.reinitVariableUsageForLevel(pLevel + 1);
+        // init current if structure with cleaning for else verification
+        variablesStruct.reinitVariableUsageForLevelForCurrentIfStruct(pLevel);
+
         // analyze condition variables and raise error if needed
-        computeConditionVariables(pIfTree, pLevel);
+        computeIfVariables(pIfTree, pLevel);
+
+        // visit the content of if block
+        visitNodeContent(pIfTree.statements(), pLevel + 1);
 
         // analyze ELSEIF clauses
         if (pIfTree.elseifClauses() != null && !pIfTree.elseifClauses().isEmpty()) {
@@ -116,11 +126,9 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         // analyze ELSE clause
         visitElseNode(pIfTree.elseClause(), pLevel);
 
-        // go to next child level of if statement
-        visitNodeContent(pIfTree.statements(), pLevel + 1);
     }
 
-    private void computeConditionVariables(IfStatementTree pIfTree, int pLevel) {
+    private void computeIfVariables(IfStatementTree pIfTree, int pLevel) {
 
         if (pIfTree.condition() == null) return;
 
@@ -154,7 +162,11 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     private void computeVariables(VariableIdentifierTree pVarIdTree, int pLevel) {
         if (pVarIdTree.variableExpression().is(Kind.VARIABLE_IDENTIFIER)) {
+            // add 1 variable count to list of all variables
             int nbUsed = variablesStruct.incrementVariableUsageForLevel(pVarIdTree.text(), pLevel);
+
+            // add 1 variable count to list of variables already declared for current if or elseif struture
+            variablesStruct.incrementVariableUsageForLevelForCurrentIfStruct(pVarIdTree.text(), pLevel);
 
             // raise an error if maximum
             if (nbUsed > 2) {
@@ -167,14 +179,19 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
         if (pElseIfTree == null) { return; }
 
+        // init current if structure with cleaning child levels
+        variablesStruct.reinitVariableUsageForLevel(pLevel + 1);
+        // init current if structure with cleaning for else verification
+        variablesStruct.reinitVariableUsageForLevelForCurrentIfStruct(pLevel);
+
         // analyze variables and raise error if needed
-        computeConditionVariables(pElseIfTree, pLevel);
+        computeElseIfVariables(pElseIfTree, pLevel);
 
         // go to next child level
         visitNodeContent(pElseIfTree.statements(), pLevel + 1);
     }
 
-    private void computeConditionVariables(ElseifClauseTree pElseIfTree, int pLevel) {
+    private void computeElseIfVariables(ElseifClauseTree pElseIfTree, int pLevel) {
 
         if (pElseIfTree.condition() == null) return;
 
@@ -190,19 +207,21 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         if (pElseTree == null) { return; }
 
         // analyze variables and raise error if needed
-        computeVariables(pElseTree, pLevel);
+        computeElseVariables(pElseTree, pLevel);
 
         // go to next child level
         visitNodeContent(pElseTree.statements(), pLevel + 1);
     }
 
-    private void computeVariables(ElseClauseTree pElseTree, int pLevel) {
+    private void computeElseVariables(ElseClauseTree pElseTree, int pLevel) {
 
-        for (Map.Entry<String, Integer> entry : variablesStruct.getVariables(pLevel).entrySet()) {
+        for (Map.Entry<String, Integer> entry : variablesStruct.getVariablesForCurrentIfStruct(pLevel).entrySet()) {
             String variableName = entry.getKey();
 
-            // increment usage of all varibales in the same level of ELSE staetement
+            // increment usage of all variables in the same level of ELSE staetement
             int nbUsed = variablesStruct.incrementVariableUsageForLevel(variableName, pLevel);
+
+            variablesStruct.incrementVariableUsageForLevelForCurrentIfStruct(variableName, pLevel);
 
             // raise an error if maximum
             if (nbUsed > 2) {
@@ -210,53 +229,6 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             }
         }
     }
-
-//    private void checkIfStatementAtTheSameLevel(Tree tree) {
-//        int countIfStatement = 0;
-//
-//        Tree parentNode = tree.getParent();
-//        if (!(parentNode instanceof BlockTree)) {
-//            return;
-//        }
-//
-//        // getting parent bloc to count if several IF at the same level
-//        BlockTree node = (BlockTree) parentNode;
-//        int sizeBody = node.statements().size();
-//        for (int i = 0; i < sizeBody; ++i) {
-//            if (node.statements().get(i) instanceof IfStatementTree) {
-//                ++countIfStatement;
-//            }
-//        }
-//        if (countIfStatement > 1) {
-//            context().newIssue(this, tree, ERROR_MESSAGE);
-//        }
-//    }
-//
-//    private void checkElseIfStatement(Tree tree) {
-//        String ifTree = tree.toString();
-//        String findStr = "elseif";
-//        int count = countMatches(ifTree, findStr);
-//        if (count >= 2) {
-//            context().newIssue(this, tree, ERROR_MESSAGE);
-//        }
-//    }
-//
-//    public static int countMatches(String str, String sub) {
-//        if (isBlankString(str) || isBlankString(sub)) {
-//            return 0;
-//        }
-//        int count = 0;
-//        int idx = 0;
-//        while ((idx = str.indexOf(sub, idx)) != INDEX_NOT_FOUND) {
-//            count++;
-//            idx += sub.length();
-//        }
-//        return count;
-//    }
-//
-//    public static boolean isBlankString(String str) {
-//        return str == null || str.isBlank();
-//    }
 
     /**
      * Complex data structure representing variables count per AST level (cumulative count with parent levels)
@@ -271,27 +243,34 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
         private final Map<Integer, Map<String, Integer>> mapVariablesPerLevel;
 
+        private final Map<Integer, Map<String, Integer>> mapVariablesPerLevelForCurrentIfStruct;
+
         public VariablesPerLevelDataStructure() {
             mapVariablesPerLevel = new HashMap<>(10);
+            mapVariablesPerLevelForCurrentIfStruct = new HashMap<>(10);
         }
 
-        public VariablesPerLevelDataStructure(Map<Integer, Map<String, Integer>> pParentLevelMap) {
-            mapVariablesPerLevel = Map.copyOf(pParentLevelMap);
+        public Map<String, Integer> getVariables(int pLevel) {
+            return mapVariablesPerLevel.get(pLevel);
         }
 
         public int incrementVariableUsageForLevel(String variableName, int pLevel) {
+            return internalIncrementVariableUsage(mapVariablesPerLevel, variableName, pLevel);
+        }
+
+        private int internalIncrementVariableUsage(Map<Integer, Map<String, Integer>> pDataMap, String variableName, int pLevel) {
 
             // get variable usage map for current level
-            Map<String, Integer> variablesMap = mapVariablesPerLevel.get(pLevel);
+            Map<String, Integer> variablesMap = pDataMap.get(pLevel);
             if (variablesMap == null) {
                 variablesMap = new HashMap<>(5);
-                mapVariablesPerLevel.put(pLevel, variablesMap);
+                pDataMap.put(pLevel, variablesMap);
             }
 
             // get usage from parent if needed
             Integer nbUsed = variablesMap.get(variableName);
             if (nbUsed == null) {
-                Integer nbParentUsed = getVariableUsageOfNearestParent(variableName, pLevel - 1);
+                Integer nbParentUsed = internalGetVariableUsageOfNearestParent(pDataMap, variableName, pLevel - 1);
                 nbUsed = nbParentUsed == null ? 0 : nbParentUsed;
             }
 
@@ -302,57 +281,43 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             return nbUsed;
         }
 
-        private Integer getVariableUsageOfNearestParent(String variableName, int pLevel) {
+        private Integer internalGetVariableUsageOfNearestParent(Map<Integer, Map<String, Integer>> pDataMap, String variableName, int pLevel) {
 
             Integer nbParentUsed = null;
             for (int i = pLevel; i >= 0 && nbParentUsed == null; i--) {
-                Map<String, Integer> variablesParentLevelMap = mapVariablesPerLevel.get(i);
+                Map<String, Integer> variablesParentLevelMap = pDataMap.get(i);
                 nbParentUsed = variablesParentLevelMap.get(variableName);
             }
 
             return nbParentUsed;
         }
 
-        public Map<String, Integer> getVariables(int pLevel) {
-            return mapVariablesPerLevel.get(pLevel);
+        public void reinitVariableUsageForLevel(int pLevel) {
+            internalReinitVariableUsageForLevelForCurrentIfStruct(mapVariablesPerLevel, pLevel);
         }
 
-//        private Map<String, Integer> initializeAndOrGetVariablesMap(int pLevel) {
-//
-//            Map<String, Integer> variablesMap = mapVariablesPerLevel.get(pLevel);
-//            if (variablesMap == null) {
-//                // getting variables map from parent level to copy to current level if initialization needed
-//                Map<String, Integer> variablesParentLevelMap = mapVariablesPerLevel.get(pLevel - 1);
-//            }
-//
-//
-//            // getting variables map from parent level to copy to current level if initialization needed
-//            Map<String, Integer> variablesParentLevelMap = mapVariablesPerLevel.get(pLevel - 1);
-//
-//            Map<String, Integer> variablesMap = mapVariablesPerLevel.computeIfAbsent(pLevel, k -> new HashMap<>(5));
-//
-//            // variables map initialization : create empty HashMap if needed
-//            if (variablesParentLevelMap != null && !variablesParentLevelMap.isEmpty() && !variablesMap.isEmpty()) {
-//                for (Map.Entry<String, Integer> entry : variablesParentLevelMap.entrySet()) {
-//                    variablesMap.putIfAbsent(entry.getKey(), entry.getValue());
-//                }
-//            }
-//
-//            return variablesMap;
-//        }
-//
-//        private void incrementVariableUsageForExistingChildLevels(String variableName, int level) {
-//
-//            // variables map initilization if absent
-//            Map<String, Integer> mapVariables = mapVariablesPerLevel.computeIfAbsent(level, k -> new HashMap<>(5));
-//
-//            Integer nbUsed = mapVariables.get(variableName);
-//            if (nbUsed == null) {
-//                nbUsed = 0;
-//            }
-//            nbUsed++;
-//            mapVariables.put(variableName, nbUsed);
-//        }
+        private void internalReinitVariableUsageForLevelForCurrentIfStruct(Map<Integer, Map<String, Integer>> pDataMap, int pLevel) {
+            if (pDataMap.get(pLevel) == null) { return; }
+
+            // cleaning of current If Structure beginning at level specified
+            for (int i = pLevel; i < pDataMap.size(); i++) {
+                pDataMap.remove(i);
+            }
+
+        }
+
+        public void reinitVariableUsageForLevelForCurrentIfStruct(int pLevel) {
+            internalReinitVariableUsageForLevelForCurrentIfStruct(mapVariablesPerLevelForCurrentIfStruct, pLevel);
+        }
+
+        public int incrementVariableUsageForLevelForCurrentIfStruct(String variableName, int pLevel) {
+            return internalIncrementVariableUsage(mapVariablesPerLevelForCurrentIfStruct, variableName, pLevel);
+        }
+
+        public Map<String, Integer> getVariablesForCurrentIfStruct(int pLevel) {
+            return mapVariablesPerLevelForCurrentIfStruct.get(pLevel);
+        }
+
     }
 
 }
