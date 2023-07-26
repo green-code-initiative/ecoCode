@@ -38,11 +38,12 @@ import java.util.Map;
 
 /**
  * functional description : please see HTML description file of this rule (resources directory)
- * technical choices :
+ * Technical choices :
  * - Kind.IF_STATEMENT, Kind.ELSE_STATEMENT, Kind.ELSEIF_STATEMENT not used because it isn't possible
  * to keep parent references to check later if variables already used or not in parent tree
  * - only one way to keep parent history : manually go throw the all tree and thus, start at method declaration
- * - an "ELSE" statement is considered as a second IF statement using the same variables tests
+ * - an "ELSE" statement is considered as a second IF statement using the same variables used on previous
+ * IF and ELSEIF statements
  *
  */
 @Rule(
@@ -58,7 +59,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     private static final Logger LOGGER = Loggers.get(AvoidMultipleIfElseStatementCheck.class);
 
-    private static VariablesPerLevelDataStructure variablesStruct = new VariablesPerLevelDataStructure();
+    private VariablesPerLevelDataStructure variablesStruct = new VariablesPerLevelDataStructure();
 
     // only visit each method to keep data of all conditional tree
     // with IF, ELSE or ELSEID statements, we can't keep all data of conditionzl tree
@@ -68,7 +69,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
     }
 
     @Override
-    public void visitNode(Tree tree) {
+    public void visitNode(@SuppressWarnings("NullableProblems") Tree tree) {
 
         MethodDeclarationTree method = (MethodDeclarationTree)tree;
 
@@ -236,7 +237,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
      *  - Key : index of Level (0 = first level)
      *  - Value : Map<String, Integer>
      *      - Key : name of variable in the current or parent level
-     *      - Value : number of usage of this variable in a IF statement in current level or one of parent levels
+     *      - Value : number of usage of this variable in an IF statement in current level or one of parent levels
      *
      */
     private static class VariablesPerLevelDataStructure {
@@ -250,22 +251,14 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             mapVariablesPerLevelForCurrentIfStruct = new HashMap<>(10);
         }
 
-        public Map<String, Integer> getVariables(int pLevel) {
-            return mapVariablesPerLevel.get(pLevel);
-        }
-
         public int incrementVariableUsageForLevel(String variableName, int pLevel) {
             return internalIncrementVariableUsage(mapVariablesPerLevel, variableName, pLevel);
         }
 
         private int internalIncrementVariableUsage(Map<Integer, Map<String, Integer>> pDataMap, String variableName, int pLevel) {
 
-            // get variable usage map for current level
-            Map<String, Integer> variablesMap = pDataMap.get(pLevel);
-            if (variablesMap == null) {
-                variablesMap = new HashMap<>(5);
-                pDataMap.put(pLevel, variablesMap);
-            }
+            // get variable usage map for current level and init if null
+            Map<String, Integer> variablesMap = pDataMap.computeIfAbsent(pLevel, k -> new HashMap<>(5));
 
             // get usage from parent if needed
             Integer nbUsed = variablesMap.get(variableName);
@@ -310,8 +303,8 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             internalReinitVariableUsageForLevelForCurrentIfStruct(mapVariablesPerLevelForCurrentIfStruct, pLevel);
         }
 
-        public int incrementVariableUsageForLevelForCurrentIfStruct(String variableName, int pLevel) {
-            return internalIncrementVariableUsage(mapVariablesPerLevelForCurrentIfStruct, variableName, pLevel);
+        public void incrementVariableUsageForLevelForCurrentIfStruct(String variableName, int pLevel) {
+            internalIncrementVariableUsage(mapVariablesPerLevelForCurrentIfStruct, variableName, pLevel);
         }
 
         public Map<String, Integer> getVariablesForCurrentIfStruct(int pLevel) {

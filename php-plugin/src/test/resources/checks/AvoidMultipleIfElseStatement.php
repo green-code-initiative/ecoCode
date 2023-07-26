@@ -221,6 +221,30 @@ class AvoidMultipleIfElseStatement
     }
 
     // NON COMPLIANT
+    // USE CASE : non compliant use case to check if a variable is not used maximum twice on several IF / ELSE statements
+    // at the same level
+    public function shouldBeNotCompliantBecauseVariablesUsedMaximumTwiceAndDifferentsVariablesUsed()
+    {
+        $nb1 = 0;
+        $nb2 = 0;
+        $nb3 = 0;
+
+        if ($nb3 == 1 && $nb3 == 2 && $nb3 == 3) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+            $nb1 = 1;
+        } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+            $nb2 = 2;
+        }
+
+        if ($nb2 == 2) {
+            $nb1 = 3;
+        } else {
+            $nb1 = 4;
+        }
+
+        return $nb1;
+    }
+
+    // NON COMPLIANT
     // USE CASE : NON compliant use case to check if following is NOT COMPLIANT :
     // one variable is used maximum in two IF / ELSE / ELSEIF statements
     public function shouldBeNotCompliantBecauseVariablesIsUsedMoreThanTwice()
