@@ -21,7 +21,6 @@ package fr.greencodeinitiative.php.checks;
 
 import org.sonar.api.utils.log.Logger;
 import org.sonar.api.utils.log.Loggers;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.Tree.Kind;
@@ -46,15 +45,9 @@ import java.util.Map;
  * IF and ELSEIF statements
  *
  */
-@Rule(
-        key = AvoidMultipleIfElseStatementCheck.RULE_KEY,
-        name = AvoidMultipleIfElseStatementCheck.ERROR_MESSAGE,
-        description = AvoidMultipleIfElseStatementCheck.ERROR_MESSAGE,
-        priority = Priority.MINOR,
-        tags = {"eco-design", "ecocode", "performance"})
+@Rule(key = "EC2")
 public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
-    public static final String RULE_KEY = "EC2";
     public static final String ERROR_MESSAGE = "Use a switch statement instead of multiple if-else if possible";
 
     private static final Logger LOGGER = Loggers.get(AvoidMultipleIfElseStatementCheck.class);
