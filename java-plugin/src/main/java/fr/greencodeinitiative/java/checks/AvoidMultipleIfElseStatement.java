@@ -12,9 +12,6 @@ import org.sonar.plugins.java.api.tree.Tree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(key = "EC2")
- * functional RULES : please see HTML description file of this rule (resources directory)
- */
-
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "AMIES")
 public class AvoidMultipleIfElseStatement extends IssuableSubscriptionVisitor {
     protected static final String RULE_MESSAGE = "Using a switch statement instead of multiple if-else if possible";
