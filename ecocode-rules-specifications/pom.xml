@@ -62,21 +62,24 @@
 					Prepare resources tree needed by language.
 					Each metadata JSON file must be in the same folder as the HTML description file for the corresponding language.
 				-->
-				<groupId>org.codehaus.gmaven</groupId>
-				<artifactId>groovy-maven-plugin</artifactId>
-				<version>2.1.1</version>
+				<groupId>com.github.johnpoth</groupId>
+				<artifactId>jshell-maven-plugin</artifactId>
+				<version>1.4</version>
 				<executions>
 					<execution>
+						<id>prepare-rules-resources</id>
 						<phase>generate-resources</phase>
 						<goals>
-							<goal>execute</goal>
+							<goal>run</goal>
 						</goals>
 						<configuration>
-							<source>${project.basedir}/src/main/script/prepare-resources.groovy</source>
-							<properties>
-								<sourceDir>${project.build.directory}/rules-html</sourceDir>
-								<targetDir>${project.build.outputDirectory}/io/ecocode/rules</targetDir>
-							</properties>
+							<scripts>
+								<script>${project.basedir}/src/main/script/PrepareResources.jsh</script>
+							</scripts>
+							<options>
+								<option>-R "-DsourceDir=${project.build.directory}/rules-html"</option>
+								<option>-R "-DtargetDir=${project.build.outputDirectory}/io/ecocode/rules"</option>
+							</options>
 						</configuration>
 					</execution>
 				</executions>

@@ -9,8 +9,8 @@
 
     <name>ecoCode Sonar Plugins Project</name>
     <description>Provides rules to reduce the environmental footprint of your programs</description>
-    <inceptionYear>2023</inceptionYear>
     <url>https://github.com/green-code-initiative/ecocode</url>
+    <inceptionYear>2023</inceptionYear>
     <organization>
         <name>green-code-initiative</name>
         <url>https://github.com/green-code-initiative</url>
@@ -262,7 +262,7 @@
                                         </excludes>
                                     </filter>
                                 </filters>
-</configuration>
+                            </configuration>
                         </execution>
                     </executions>
                 </plugin>
