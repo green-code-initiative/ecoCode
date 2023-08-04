@@ -39,7 +39,7 @@ class AvoidMultipleIfElseStatement
     // COMPLIANT
     // USE CASE : compliant use case to check if a variable is used maximum twice on several IF / ELSE statements
     // at the same level AND no problem with several IF staments at the same level using different variables
-    public function shouldBeCompliantBecauseVariablesUsedMaximumTwiceAndDifferentsVariablesUsedAtDifferentLevels()
+    public function shouldBeCompliantBecauseVariablesUsedMaximumTwiceAndDifferentsVariablesUsedAtDiffLevels()
     {
         $nb1 = 0;
         $nb2 = 0;
@@ -47,9 +47,9 @@ class AvoidMultipleIfElseStatement
 
         if ($nb1 < 1) {
             if ($nb2 == 2) {
-                $nb1 = 3;
+                $nb3 = 3;
             } else {
-                $nb1 = 4;
+                $nb3 = 4;
             }
         } else {
             $nb2 = 2;
@@ -62,7 +62,7 @@ class AvoidMultipleIfElseStatement
                 $nb1 = 4;
             }
         } else {
-            $nb2 = 2;
+            $nb1 = 2;
         }
 
         return $nb1;
@@ -71,7 +71,7 @@ class AvoidMultipleIfElseStatement
     // COMPLIANT
     // USE CASE : compliant use case to check if a variable is used maximum twice on several IF / ELSE statements
     // at the same level AND no problem with several IF staments at the same level using different variables
-    public function shouldBeCompliantBecauseVariablesUsedMaximumTwiceAndDifferentsVariablesUsedAtDifferentLevelsScenario2()
+    public function shouldBeCompliantBecauseVariablesUsedMaximumTwiceAndDiffVariablesUsedAtDiffLevelsScenario2()
     {
         $nb1 = 0;
         $nb2 = 0;
@@ -80,12 +80,12 @@ class AvoidMultipleIfElseStatement
         if ($nb1 <= 1) {
             if ($nb2 == 2) {
                 if ($nb3 == 2) {
-                    $nb1 = 3;
+                    $nb3 = 3;
                 } else {
-                    $nb1 = 4;
+                    $nb3 = 4;
                 }
             } else {
-                $nb1 = 4;
+                $nb3 = 4;
             }
         } else {
             $nb2 = 2;
@@ -98,7 +98,7 @@ class AvoidMultipleIfElseStatement
                 $nb1 = 4;
             }
         } else {
-            $nb2 = 2;
+            $nb1 = 2;
         }
 
         return $nb1;
@@ -109,7 +109,6 @@ class AvoidMultipleIfElseStatement
     public function shouldBeCompliantBecauseVariableUsedMaximumTwiceInIfStatements()
     {
         $nb1 = 0;
-        $nb2 = 0;
 
         if ($nb1 == 1) {
             $nb1 = 1;
@@ -133,7 +132,7 @@ class AvoidMultipleIfElseStatement
         $nb3 = 0;
 
         if ($nb1 == 1) {
-            $nb2 = 2;
+            $nb1 = 2;
         } else {
             if ($nb2 == 2) {
                 $nb1 = 1;
@@ -207,10 +206,9 @@ class AvoidMultipleIfElseStatement
     public function shouldBeCompliantBecauseVariableUsedMaximumTwiceInComposedElseStatements()
     {
         $nb1 = 0;
-        $nb2 = 0;
 
         if ($nb1 == 1) {
-            $nb2 = 2;
+            $nb1 = 2;
         } else {
             if ($nb1 == 2) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
                 $nb1 = 1;
@@ -221,7 +219,7 @@ class AvoidMultipleIfElseStatement
     }
 
     // NON COMPLIANT
-    // USE CASE : non compliant use case to check if a variable is not used maximum twice on several IF / ELSE statements
+    // USE CASE : non compliant use case to check if a variable is not used max twice on several IF / ELSE statements
     // at the same level
     public function shouldBeNotCompliantBecauseVariablesUsedMaximumTwiceAndDifferentsVariablesUsed()
     {
@@ -229,7 +227,9 @@ class AvoidMultipleIfElseStatement
         $nb2 = 0;
         $nb3 = 0;
 
-        if ($nb3 == 1 && $nb3 == 2 && $nb3 == 3) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
+        if ($nb3 == 1
+            && $nb3 == 2
+            && $nb3 == 3) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
             $nb1 = 1;
         } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
             $nb2 = 2;
@@ -250,16 +250,15 @@ class AvoidMultipleIfElseStatement
     public function shouldBeNotCompliantBecauseVariablesIsUsedMoreThanTwice()
     {
         $nb1 = 0;
-        $nb2 = 0;
 
         if ($nb1 == 1) {
-            $nb1 = 1;
+            $nb1 = 2;
         } else {
-            $nb2 = 2;
+            $nb1 = 3;
         }
 
         if ($nb1 == 2) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-            $nb2 = 3;
+            $nb1 = 4;
         }
 
         return $nb1;
@@ -271,16 +270,15 @@ class AvoidMultipleIfElseStatement
     public function shouldBeNotCompliantBecauseVariableUsedMoreThanTwiceInIfStatementsAtDifferentsLevels()
     {
         $nb1 = 0;
-        $nb2 = 0;
 
         if ($nb1 == 1) {
             if ($nb1 == 2) {
                 $nb1 = 1;
             } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-                $nb2 = 3;
+                $nb1 = 3;
             }
         } else {
-            $nb2 = 2;
+            $nb1 = 2;
         }
 
         return $nb1;
@@ -293,15 +291,14 @@ class AvoidMultipleIfElseStatement
     public function shouldBeNotCompliantBecauseVariableUsedMoreThanTwiceInComposedElseStatements()
     {
         $nb1 = 0;
-        $nb2 = 0;
 
         if ($nb1 == 1) {
-            $nb2 = 2;
+            $nb1 = 2;
         } else {
             if ($nb1 == 2) {  // NOK {{Use a switch statement instead of multiple if-else if possible}}
                 $nb1 = 1;
             } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-                $nb2 = 3;
+                $nb1 = 3;
             }
         }
 
@@ -315,19 +312,18 @@ class AvoidMultipleIfElseStatement
     public function shouldBeNotCompliantBecauseVariableUsedMoreThanTwiceInComposedElseStatementsScenario2()
     {
         $nb1 = 0;
-        $nb2 = 0;
 
         if ($nb1 == 1) {
             if ($nb1 == 3) {
                 $nb1 = 4;
             } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-                $nb2 = 5;
+                $nb1 = 5;
             }
         } else {
             if ($nb1 == 2) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
                 $nb1 = 1;
             } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-                $nb2 = 3;
+                $nb1 = 3;
             }
         }
 
@@ -347,13 +343,13 @@ class AvoidMultipleIfElseStatement
             if ($nb1 == 3) {
                 $nb1 = 4;
             } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-                $nb2 = 5;
+                $nb1 = 5;
             }
         } elseif ($nb2 == 2) {
-            if ($nb1 == 3) {
-                $nb1 = 4;
+            if ($nb1 == 4) {
+                $nb1 = 5;
             } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-                $nb2 = 5;
+                $nb1 = 6;
             }
         }
 
@@ -379,7 +375,7 @@ class AvoidMultipleIfElseStatement
             if ($nb1 == 3) {
                 $nb1 = 4;
             } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-                $nb2 = 5;
+                $nb1 = 5;
             }
         }
 
@@ -393,10 +389,9 @@ class AvoidMultipleIfElseStatement
     public function shouldBeNotCompliantBecauseVariableUsedMaximumTwiceInComposedElseStatements()
     {
         $nb1 = 0;
-        $nb2 = 0;
 
         if ($nb1 == 1) {
-            $nb2 = 2;
+            $nb1 = 2;
         } else {
             if ($nb1 == 2) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
                 $nb1 = 1;
@@ -404,7 +399,7 @@ class AvoidMultipleIfElseStatement
                 if ($nb1 == 3) { // NOK {{Use a switch statement instead of multiple if-else if possible}}
                     $nb1 = 4;
                 } else { // NOK {{Use a switch statement instead of multiple if-else if possible}}
-                    $nb2 = 5;
+                    $nb1 = 5;
                 }
             }
         }
@@ -420,7 +415,6 @@ class AvoidMultipleIfElseStatement
     {
         $nb1 = 0;
         $nb2 = 10;
-        $nb3 = 11;
 
         if ($nb1 == 1) {
             $nb2 = 1;
