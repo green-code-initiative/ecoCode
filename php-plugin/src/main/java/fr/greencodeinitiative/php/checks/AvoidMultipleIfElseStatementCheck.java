@@ -285,9 +285,12 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
      */
     private static class VariablesPerLevelDataStructure {
 
-
+        // global map variable counters per level
         private final Map<Integer, Map<String, Integer>> mapVariablesPerLevel;
 
+        // map variable counters per level for current If / ElseIf structure
+        // purpose : used by compute variables Else process (because Else structure is particular : 
+        // we don't know previous variables and we need previous If / ElseIf structure to know variables)
         private final Map<Integer, Map<String, Integer>> mapVariablesPerLevelForCurrentIfStruct;
 
         public VariablesPerLevelDataStructure() {
@@ -295,10 +298,16 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             mapVariablesPerLevelForCurrentIfStruct = new HashMap<>(10);
         }
 
+        /**
+         * increment variable counters on global map
+         */
         public int incrementVariableUsageForLevel(String variableName, int pLevel) {
             return internalIncrementVariableUsage(mapVariablesPerLevel, variableName, pLevel);
         }
 
+        /**
+         * increment variable counters on input map
+         */
         private int internalIncrementVariableUsage(Map<Integer, Map<String, Integer>> pDataMap, String variableName, int pLevel) {
 
             // get variable usage map for current level and init if null
@@ -318,6 +327,9 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             return nbUsed;
         }
 
+        /**
+         * get usage of a variable in top tree (nearest top parent)
+         */
         private Integer internalGetVariableUsageOfNearestParent(Map<Integer, Map<String, Integer>> pDataMap, String variableName, int pLevel) {
 
             Integer nbParentUsed = null;
@@ -329,10 +341,16 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             return nbParentUsed;
         }
 
+        /**
+         * reinitialization of variable usages for input level and global map
+         */
         public void reinitVariableUsageForLevel(int pLevel) {
             internalReinitVariableUsageForLevelForCurrentIfStruct(mapVariablesPerLevel, pLevel);
         }
 
+        /**
+         * reinitialization of variable usages in input level in input map
+         */
         private void internalReinitVariableUsageForLevelForCurrentIfStruct(Map<Integer, Map<String, Integer>> pDataMap, int pLevel) {
             if (pDataMap.get(pLevel) == null) { return; }
 
@@ -343,14 +361,23 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
         }
 
+        /**
+         * reinitialization of variable usages for input level on if/elseif map
+         */
         public void reinitVariableUsageForLevelForCurrentIfStruct(int pLevel) {
             internalReinitVariableUsageForLevelForCurrentIfStruct(mapVariablesPerLevelForCurrentIfStruct, pLevel);
         }
 
+        /**
+         * increment variable counters on if/elseif map
+         */
         public void incrementVariableUsageForLevelForCurrentIfStruct(String variableName, int pLevel) {
             internalIncrementVariableUsage(mapVariablesPerLevelForCurrentIfStruct, variableName, pLevel);
         }
 
+        /**
+         * get usage of a variable in a level on if/elseif map
+         */
         public Map<String, Integer> getVariablesForCurrentIfStruct(int pLevel) {
             return mapVariablesPerLevelForCurrentIfStruct.get(pLevel);
         }
