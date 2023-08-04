@@ -19,8 +19,6 @@
  */
 package fr.greencodeinitiative.php.checks;
 
-import org.sonar.api.utils.log.Logger;
-import org.sonar.api.utils.log.Loggers;
 import org.sonar.check.Rule;
 import org.sonar.plugins.php.api.tree.Tree;
 import org.sonar.plugins.php.api.tree.Tree.Kind;
@@ -48,8 +46,6 @@ import java.util.Map;
 public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     public static final String ERROR_MESSAGE = "Use a switch statement instead of multiple if-else if possible";
-
-    private static final Logger LOGGER = Loggers.get(AvoidMultipleIfElseStatementCheck.class);
 
     // data structure for following usage of variable inside all the AST tree
     private VariablesPerLevelDataStructure variablesStruct = new VariablesPerLevelDataStructure();
