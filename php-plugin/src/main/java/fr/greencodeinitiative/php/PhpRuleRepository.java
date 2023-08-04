@@ -19,14 +19,7 @@ package fr.greencodeinitiative.php;
 import java.util.List;
 
 import fr.greencodeinitiative.php.checks.AvoidGettingSizeCollectionInLoopCheck;
-import fr.greencodeinitiative.php.checks.AvoidDoubleQuoteCheck;
-import fr.greencodeinitiative.php.checks.AvoidFullSQLRequestCheck;
-import fr.greencodeinitiative.php.checks.AvoidSQLRequestInLoopCheck;
-import fr.greencodeinitiative.php.checks.AvoidTryCatchFinallyCheck_NOK_failsAllTryStatements;
-import fr.greencodeinitiative.php.checks.AvoidUsingGlobalVariablesCheck;
-import fr.greencodeinitiative.php.checks.IncrementCheck;
-import fr.greencodeinitiative.php.checks.NoFunctionCallWhenDeclaringForLoop;
-import fr.greencodeinitiative.php.checks.UseOfMethodsForBasicOperations;
+import fr.greencodeinitiative.php.checks.*;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.server.rule.RulesDefinition;
 import org.sonar.plugins.php.api.visitors.PHPCustomRuleRepository;
@@ -69,7 +62,8 @@ public class PhpRuleRepository implements RulesDefinition, PHPCustomRuleReposito
             AvoidUsingGlobalVariablesCheck.class,
             IncrementCheck.class,
             NoFunctionCallWhenDeclaringForLoop.class,
-            UseOfMethodsForBasicOperations.class
+            UseOfMethodsForBasicOperations.class,
+            AvoidMultipleIfElseStatementCheck.class
     );
   }
 }

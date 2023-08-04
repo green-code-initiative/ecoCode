@@ -77,7 +77,7 @@ class PhpRuleRepositoryTest {
 
   @Test
   void testRegistredRules() {
-    assertThat(repository.rules()).hasSize(9);
+    assertThat(repository.rules()).hasSize(10);
   }
 
   @Test
