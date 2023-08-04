@@ -21,7 +21,7 @@ class AvoidMultipleIfElseStatement
         $nb2 = 0;
         $nb3 = 0;
 
-        if ($nb3 == 1 && $nb1 == 1) {
+        if ($nb3 != 1 && $nb1 > 1) {
             $nb1 = 1;
         } else {
             $nb2 = 2;
@@ -45,7 +45,7 @@ class AvoidMultipleIfElseStatement
         $nb2 = 0;
         $nb3 = 0;
 
-        if ($nb1 == 1) {
+        if ($nb1 < 1) {
             if ($nb2 == 2) {
                 $nb1 = 3;
             } else {
@@ -55,7 +55,7 @@ class AvoidMultipleIfElseStatement
             $nb2 = 2;
         }
 
-        if ($nb3 == 1) {
+        if ($nb3 >= 1) {
             if ($nb2 == 2) {
                 $nb1 = 3;
             } else {
@@ -77,7 +77,7 @@ class AvoidMultipleIfElseStatement
         $nb2 = 0;
         $nb3 = 0;
 
-        if ($nb1 == 1) {
+        if ($nb1 <= 1) {
             if ($nb2 == 2) {
                 if ($nb3 == 2) {
                     $nb1 = 3;

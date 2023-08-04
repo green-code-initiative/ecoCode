@@ -161,8 +161,11 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             }
         } else if (pBinExprTree.is(Kind.EQUAL_TO)
                 || pBinExprTree.is(Kind.NOT_EQUAL_TO)
+                || pBinExprTree.is(Kind.GREATER_THAN)
                 || pBinExprTree.is(Kind.GREATER_THAN_OR_EQUAL_TO)
-                || pBinExprTree.is(Kind.LESS_THAN_OR_EQUAL_TO)) {
+                || pBinExprTree.is(Kind.LESS_THAN_OR_EQUAL_TO)
+                || pBinExprTree.is(Kind.LESS_THAN)
+        ) {
             // continue analyze with variables if some key-words are found
             if (pBinExprTree.leftOperand().is(Kind.VARIABLE_IDENTIFIER)) {
                 computeVariables((VariableIdentifierTree) pBinExprTree.leftOperand(), pLevel);
