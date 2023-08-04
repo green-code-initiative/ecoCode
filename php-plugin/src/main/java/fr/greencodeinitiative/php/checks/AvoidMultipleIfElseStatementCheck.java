@@ -36,14 +36,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * functional description : please see HTML description file of this rule (resources directory)
- * Technical choices :
+ * FUNCTIONAL DESCRIPTION : please see ASCIIDOC description file of this rule (inside `ecocode-rules-spcifications`)
+ * TECHNICAL CHOICES :
  * - Kind.IF_STATEMENT, Kind.ELSE_STATEMENT, Kind.ELSEIF_STATEMENT not used because it isn't possible
  * to keep parent references to check later if variables already used or not in parent tree
  * - only one way to keep parent history : manually go throw the all tree and thus, start at method declaration
  * - an "ELSE" statement is considered as a second IF statement using the same variables used on previous
- * IF and ELSEIF statements
- *
+ * - IF and ELSEIF statements are considered as an IF statement
  */
 @Rule(key = "EC2")
 public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
@@ -52,19 +51,20 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     private static final Logger LOGGER = Loggers.get(AvoidMultipleIfElseStatementCheck.class);
 
+    // data structure for following usage of variable inside all the AST tree
     private VariablesPerLevelDataStructure variablesStruct = new VariablesPerLevelDataStructure();
 
     // only visit each method to keep data of all conditional tree
-    // with IF, ELSE or ELSEID statements, we can't keep all data of conditionzl tree
+    // with IF, ELSE or ELSEIF statements, we can't keep all data of conditional tree
     @Override
     public List<Kind> nodesToVisit() {
         return List.of(Kind.METHOD_DECLARATION);
     }
 
     @Override
-    public void visitNode(@SuppressWarnings("NullableProblems") Tree tree) {
+    public void visitNode(@SuppressWarnings("NullableProblems") Tree pTree) {
 
-        MethodDeclarationTree method = (MethodDeclarationTree)tree;
+        MethodDeclarationTree method = (MethodDeclarationTree)pTree;
 
         if (!method.body().is(Kind.BLOCK)) {
             return;
@@ -73,35 +73,44 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         // reinit data structure before each method analysis
         variablesStruct = new VariablesPerLevelDataStructure();
 
+        // starting visit
         visitNodeContent(((BlockTree) method.body()).statements(), 0);
 
     }
 
-    private void visitNodeContent(List<StatementTree> lstStatements, int pLevel) {
-        if (lstStatements == null || lstStatements.isEmpty()) {
+    /**
+     * Visit all content of a node for one level (with its statements list)
+     *
+     * @param pLstStatements statements list of current node
+     * @param pLevel level of current node
+     */
+    private void visitNodeContent(List<StatementTree> pLstStatements, int pLevel) {
+        if (pLstStatements == null || pLstStatements.isEmpty()) {
             return;
         }
 
-        for (StatementTree statement : lstStatements) {
+        for (StatementTree statement : pLstStatements) {
             if (statement.is(Kind.BLOCK)) {
-                LOGGER.debug("BLOCK node - go to child nodes : {}", statement.toString());
-                visitNodeContent(((BlockTree)statement).statements(), pLevel); // Block Statement is not a new LEVEL
+                // the cirrent node is a block : visit block content
+                visitNodeContent(((BlockTree)statement).statements(), pLevel);
             } else if (statement.is(Kind.IF_STATEMENT)) {
-                LOGGER.debug("Visiting IF_STATEMENT node : {}", statement.toString());
                 visitIfNode((IfStatementTree)statement, pLevel);
-            } else {
-                LOGGER.debug("NO node visit because of incompatibility : {}", statement.toString());
             }
         }
     }
 
+    /**
+     * Visit an IF type node
+     * @param pIfTree the current node (Tree type)
+     * @param pLevel the level of node
+     */
     private void visitIfNode(IfStatementTree pIfTree, int pLevel) {
 
         if (pIfTree == null) return;
 
         // init current if structure with cleaning child levels
         variablesStruct.reinitVariableUsageForLevel(pLevel + 1);
-        // init current if structure with cleaning for else verification
+        // init current if structure with cleaning for ELSE process checking
         variablesStruct.reinitVariableUsageForLevelForCurrentIfStruct(pLevel);
 
         // analyze condition variables and raise error if needed
@@ -122,10 +131,16 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     }
 
+    /**
+     * Analyze and compute variables usage for IF AST structure
+     * @param pIfTree IF node
+     * @param pLevel the level of IF node
+     */
     private void computeIfVariables(IfStatementTree pIfTree, int pLevel) {
 
         if (pIfTree.condition() == null) return;
 
+        // analysing content of conditions of IF node
         ExpressionTree expr = pIfTree.condition().expression();
         if (expr instanceof BinaryExpressionTree) {
             computeConditionVariables((BinaryExpressionTree) expr, pLevel);
@@ -133,7 +148,14 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     }
 
+    /**
+     * Analyze and compute variables usage for Expression structure
+     * @param pBinExprTree binary expression to analyze
+     * @param pLevel The level of binary expression
+     */
     private void computeConditionVariables(BinaryExpressionTree pBinExprTree, int pLevel) {
+
+        // if multiple conditions, continue with each part of complex expression
         if (pBinExprTree.is(Kind.CONDITIONAL_AND) || pBinExprTree.is(Kind.CONDITIONAL_OR)) {
             if (pBinExprTree.leftOperand() instanceof BinaryExpressionTree) {
                 computeConditionVariables((BinaryExpressionTree) pBinExprTree.leftOperand(), pLevel);
@@ -145,6 +167,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
                 || pBinExprTree.is(Kind.NOT_EQUAL_TO)
                 || pBinExprTree.is(Kind.GREATER_THAN_OR_EQUAL_TO)
                 || pBinExprTree.is(Kind.LESS_THAN_OR_EQUAL_TO)) {
+            // continue analyze with variables if some key-words are found
             if (pBinExprTree.leftOperand().is(Kind.VARIABLE_IDENTIFIER)) {
                 computeVariables((VariableIdentifierTree) pBinExprTree.leftOperand(), pLevel);
             }
@@ -154,12 +177,17 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         }
     }
 
+    /**
+     * Analyze and compute variables usage for Variable AST structure
+     * @param pVarIdTree The Variable AST structure
+     * @param pLevel the level of structure
+     */
     private void computeVariables(VariableIdentifierTree pVarIdTree, int pLevel) {
         if (pVarIdTree.variableExpression().is(Kind.VARIABLE_IDENTIFIER)) {
-            // add 1 variable count to list of all variables
+            // increment the variable counter to list of all variables
             int nbUsed = variablesStruct.incrementVariableUsageForLevel(pVarIdTree.text(), pLevel);
 
-            // add 1 variable count to list of variables already declared for current if or elseif struture
+            // increment variable counter to list of variables already declared for current if or elseif struture
             variablesStruct.incrementVariableUsageForLevelForCurrentIfStruct(pVarIdTree.text(), pLevel);
 
             // raise an error if maximum
@@ -169,12 +197,18 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         }
     }
 
+    /**
+     * Analyze and compute variables usage for ELSEIF AST structure
+     * @param pElseIfTree ELSEIF node
+     * @param pLevel the level of ELSEIF node
+     */
     private void visitElseIfNode(ElseifClauseTree pElseIfTree, int pLevel) {
 
         if (pElseIfTree == null) { return; }
 
         // init current if structure with cleaning child levels
         variablesStruct.reinitVariableUsageForLevel(pLevel + 1);
+
         // init current if structure with cleaning for else verification
         variablesStruct.reinitVariableUsageForLevelForCurrentIfStruct(pLevel);
 
@@ -185,6 +219,11 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         visitNodeContent(pElseIfTree.statements(), pLevel + 1);
     }
 
+    /**
+     * Analyze and compute variables usage for ELSEIF AST structure
+     * @param pElseIfTree ELSEIF node
+     * @param pLevel the level of ELSEIF node
+     */
     private void computeElseIfVariables(ElseifClauseTree pElseIfTree, int pLevel) {
 
         if (pElseIfTree.condition() == null) return;
@@ -196,6 +235,11 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
 
     }
 
+    /**
+     * Analyze and compute variables usage for ELSE AST structure
+     * @param pElseTree ELSE node
+     * @param pLevel the level of ELSE node
+     */
     private void visitElseNode(ElseClauseTree pElseTree, int pLevel) {
 
         if (pElseTree == null) { return; }
@@ -207,6 +251,11 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
         visitNodeContent(pElseTree.statements(), pLevel + 1);
     }
 
+    /**
+     * Analyze and compute variables usage for ELSE AST structure
+     * @param pElseTree ELSE node
+     * @param pLevel the level of ELSE node
+     */
     private void computeElseVariables(ElseClauseTree pElseTree, int pLevel) {
 
         for (Map.Entry<String, Integer> entry : variablesStruct.getVariablesForCurrentIfStruct(pLevel).entrySet()) {
@@ -215,6 +264,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
             // increment usage of all variables in the same level of ELSE staetement
             int nbUsed = variablesStruct.incrementVariableUsageForLevel(variableName, pLevel);
 
+            // increment variable counter to list of variables already declared for current if or elseif struture
             variablesStruct.incrementVariableUsageForLevelForCurrentIfStruct(variableName, pLevel);
 
             // raise an error if maximum
@@ -225,7 +275,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
     }
 
     /**
-     * Complex data structure representing variables count per AST level (cumulative count with parent levels)
+     * Complex data structure representing variables counters per AST level (cumulative counts with parent levels)
      *  Map<Integer, Map<String, Integer>> ==>
      *  - Key : index of Level (0 = first level)
      *  - Value : Map<String, Integer>
@@ -234,6 +284,7 @@ public class AvoidMultipleIfElseStatementCheck extends PHPSubscriptionCheck {
      *
      */
     private static class VariablesPerLevelDataStructure {
+
 
         private final Map<Integer, Map<String, Integer>> mapVariablesPerLevel;
 
