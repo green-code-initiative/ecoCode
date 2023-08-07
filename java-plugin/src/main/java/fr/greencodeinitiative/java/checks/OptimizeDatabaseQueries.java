@@ -22,7 +22,7 @@ import static java.util.regex.Pattern.compile;
         tags = {"eco-design", "ecocode", "bad-practice"})
 public class OptimizeDatabaseQueries extends IssuableSubscriptionVisitor{
 
-    public static final String RULE_KEY = "OptimizeDatabaseQueries";
+    public static final String RULE_KEY = "EC575";
     public static final String MESSAGE_RULE = "Optimize Database Queries (Clause LIMIT)";
     private static final Predicate<String> LIMIT_REGEXP =
             compile("limit", CASE_INSENSITIVE).asPredicate(); //simple regexp, more precision

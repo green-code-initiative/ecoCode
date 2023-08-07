@@ -82,7 +82,7 @@ class JavaRulesDefinitionTest {
 
     @Test
     void testRegistredRules() {
-        assertThat(repository.rules()).hasSize(19);
+        assertThat(repository.rules()).hasSize(20);
     }
 
     @Test
