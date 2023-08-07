@@ -19,25 +19,7 @@ package fr.greencodeinitiative.java;
 import java.util.Collections;
 import java.util.List;
 
-import fr.greencodeinitiative.java.checks.ArrayCopyCheck;
-import fr.greencodeinitiative.java.checks.AvoidConcatenateStringsInLoop;
-import fr.greencodeinitiative.java.checks.AvoidFullSQLRequest;
-import fr.greencodeinitiative.java.checks.AvoidGettingSizeCollectionInLoop;
-import fr.greencodeinitiative.java.checks.AvoidMultipleIfElseStatement;
-import fr.greencodeinitiative.java.checks.AvoidRegexPatternNotStatic;
-import fr.greencodeinitiative.java.checks.AvoidSQLRequestInLoop;
-import fr.greencodeinitiative.java.checks.AvoidSetConstantInBatchUpdate;
-import fr.greencodeinitiative.java.checks.AvoidSpringRepositoryCallInLoopCheck;
-import fr.greencodeinitiative.java.checks.AvoidStatementForDMLQueries;
-import fr.greencodeinitiative.java.checks.AvoidUsageOfStaticCollections;
-import fr.greencodeinitiative.java.checks.AvoidUsingGlobalVariablesCheck;
-import fr.greencodeinitiative.java.checks.FreeResourcesOfAutoCloseableInterface;
-import fr.greencodeinitiative.java.checks.IncrementCheck;
-import fr.greencodeinitiative.java.checks.InitializeBufferWithAppropriateSize;
-import fr.greencodeinitiative.java.checks.NoFunctionCallWhenDeclaringForLoop;
-import fr.greencodeinitiative.java.checks.OptimizeReadFileExceptions;
-import fr.greencodeinitiative.java.checks.UnnecessarilyAssignValuesToVariables;
-import fr.greencodeinitiative.java.checks.UseCorrectForLoop;
+import fr.greencodeinitiative.java.checks.*;
 import org.sonar.plugins.java.api.CheckRegistrar;
 import org.sonar.plugins.java.api.JavaCheck;
 import org.sonarsource.api.sonarlint.SonarLintSide;
@@ -69,7 +51,8 @@ public class JavaCheckRegistrar implements CheckRegistrar {
             AvoidUsingGlobalVariablesCheck.class,
             AvoidSetConstantInBatchUpdate.class,
             FreeResourcesOfAutoCloseableInterface.class,
-            AvoidMultipleIfElseStatement.class
+            AvoidMultipleIfElseStatement.class,
+            OptimizeDatabaseQueries.class
     );
 
     /**
