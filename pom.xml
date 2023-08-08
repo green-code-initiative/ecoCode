@@ -4,7 +4,7 @@
 
     <groupId>io.ecocode</groupId>
     <artifactId>ecocode-parent</artifactId>
-    <version>1.3.2-SNAPSHOT</version>
+    <version>1.4.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>ecoCode Sonar Plugins Project</name>
@@ -80,7 +80,6 @@
     <modules>
         <module>ecocode-rules-specifications</module>
         <module>java-plugin</module>
-        <module>php-plugin</module>
     </modules>
 
     <scm>
@@ -109,7 +108,6 @@
 
         <sonarqube.version>9.4.0.54424</sonarqube.version>
         <sonarjava.version>7.19.0.31550</sonarjava.version>
-        <sonarphp.version>3.29.0.9684</sonarphp.version>
 
         <sonar-analyzer-commons.version>2.5.0.1358</sonar-analyzer-commons.version>
 
@@ -153,15 +151,6 @@
                 <groupId>org.sonarsource.java</groupId>
                 <artifactId>sonar-java-plugin</artifactId>
                 <version>${sonarjava.version}</version>
-                <type>sonar-plugin</type>
-                <scope>provided</scope>
-            </dependency>
-
-            <!-- PHP -->
-            <dependency>
-                <groupId>org.sonarsource.php</groupId>
-                <artifactId>sonar-php-plugin</artifactId>
-                <version>${sonarphp.version}</version>
                 <type>sonar-plugin</type>
                 <scope>provided</scope>
             </dependency>

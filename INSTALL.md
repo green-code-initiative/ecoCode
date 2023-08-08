@@ -22,8 +22,6 @@ ecoCode                 # Root directory
 |
 +--java-plugin          # JAVA
 |
-+--php-plugin           # PHP
-|
 \--docker-compose.yml   # Docker compose file
 ```
 
@@ -32,4 +30,3 @@ You will find more information about the plugins’ architecture in their folder
 ### Plugin-specific guides
 
 - [Java how-to](java-plugin/README.md)
-- [PHP how-to](php-plugin/README.md)
