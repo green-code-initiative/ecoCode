@@ -1,7 +1,5 @@
-- [Common installation notes / requirements](#common-installation-notes--requirements)
-- [Special points for Standard plugins](#special-points-for-standard-plugins)
-  - [Project structure](#project-structure)
-  - [Plugin-specific guides](#plugin-specific-guides)
+- [Project structure](#project-structure)
+- [Plugin-specific guides](#plugin-specific-guides)
 
 Common installation notes / requirements
 ========================================
@@ -25,8 +23,6 @@ ecoCode                 # Root directory
 |
 +--php-plugin           # PHP
 |
-+--python-plugin        # Python
-|
 \--docker-compose.yml   # Docker compose file
 ```
 
@@ -36,5 +32,4 @@ Plugin-specific guides
 ----------------------
 
 - [Java how-to](java-plugin/README.md)
-- [Python how-to](python-plugin/README.md)
 - [PHP how-to](php-plugin/README.md)

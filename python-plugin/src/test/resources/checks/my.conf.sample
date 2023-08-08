@@ -1,5 +1,0 @@
-[client]
-host = localhost
-user = dbtest
-password = dbtest
-database = dbtest
