@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deleted
+
+## [1.4.0] - 2023-08-08
+
+### Added
+
 - [#205](https://github.com/green-code-initiative/ecoCode/issues/205) compatibility with SonarQube 10.1
 - [#210](https://github.com/green-code-initiative/ecoCode/pull/210) Publish to Maven Central (module ecocode-rules-specifications)
 
@@ -157,7 +165,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.3.1...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.0...HEAD
+
+[1.4.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.3.1...v1.4.0
 
 [1.3.1]: https://github.com/green-code-initiative/ecoCode/compare/v1.3.0...v1.3.1
 
