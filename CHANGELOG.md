@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deleted
 
 - [#182](https://github.com/green-code-initiative/ecoCode/issues/182) Split repository : move Python module to new `ecoCode-python` repository
+- [#182](https://github.com/green-code-initiative/ecoCode/issues/182) Split repository : move Php module to new `ecoCode-php` repository
 
 ## [1.3.1] - 2023-07-19
 
