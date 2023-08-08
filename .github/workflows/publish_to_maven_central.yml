@@ -13,8 +13,7 @@
 name: Publish package to the Maven Central Repository
 
 on:
-  release:
-    types: [ published ]
+  workflow_dispatch:
 
 jobs:
   publish:
