@@ -14,24 +14,15 @@ import static java.util.Collections.singletonList;
 import static java.util.regex.Pattern.CASE_INSENSITIVE;
 import static java.util.regex.Pattern.compile;
 
-@Rule(
-        key = OptimizeDatabaseQueries.RULE_KEY,
-        name = OptimizeDatabaseQueries.MESSAGE_RULE,
-        description = OptimizeDatabaseQueries.MESSAGE_RULE,
-        priority = Priority.MINOR,
-        tags = {"eco-design", "ecocode", "bad-practice"})
+@Rule(key = "EC475")
 public class OptimizeDatabaseQueries extends IssuableSubscriptionVisitor{
-
-    public static final String RULE_KEY = "EC575";
     public static final String MESSAGE_RULE = "Optimize Database Queries (Clause LIMIT)";
     private static final Predicate<String> LIMIT_REGEXP =
-            compile("limit", CASE_INSENSITIVE).asPredicate(); //simple regexp, more precision
-
+            compile("limit", CASE_INSENSITIVE).asPredicate();
     private static final Predicate<String> SELECT_REGEXP =
-            compile("select", CASE_INSENSITIVE).asPredicate(); //simple regexp, more precision
-
+            compile("select", CASE_INSENSITIVE).asPredicate();
     private static final Predicate<String> FROM_REGEXP =
-            compile("from", CASE_INSENSITIVE).asPredicate(); //simple regexp, more precision
+            compile("from", CASE_INSENSITIVE).asPredicate();
 
     @Override
     public List<Kind> nodesToVisit() {
@@ -41,7 +32,7 @@ public class OptimizeDatabaseQueries extends IssuableSubscriptionVisitor{
     @Override
     public void visitNode(Tree tree) {
         String value = ((LiteralTree) tree).value();
-        if (!LIMIT_REGEXP.test(value) && SELECT_REGEXP.test(value) && FROM_REGEXP.test(value)) {
+        if (SELECT_REGEXP.test(value) && FROM_REGEXP.test(value) && !LIMIT_REGEXP.test(value)) {
             reportIssue(tree, MESSAGE_RULE);
         }
     }
