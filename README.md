@@ -22,7 +22,7 @@ refer to the contribution section.
 - [Java](java-plugin/)
 - [JavaScript](https://github.com/green-code-initiative/ecoCode-javascript)
 - [PHP](php-plugin/)
-- [Python](python-plugin/)
+- [Python](https://github.com/green-code-initiative/ecoCode-python)
 
 ![Screenshot](docs/resources/screenshot.PNG)
 

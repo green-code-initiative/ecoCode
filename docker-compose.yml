@@ -1,7 +1,7 @@
 version: "3.3"
 services:
   sonar:
-    image: sonarqube:10.0.0-community
+    image: sonarqube:10.1.0-community
     container_name: sonar_ecocode
     ports:
       - "9000:9000"
@@ -16,14 +16,8 @@ services:
       SONAR_ES_BOOTSTRAP_CHECKS_DISABLE: 'true'
     volumes:
       - type: bind
-        source: ./java-plugin/target/ecocode-java-plugin-1.3.2-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-java-plugin-1.3.2-SNAPSHOT.jar
-      - type: bind
-        source: ./php-plugin/target/ecocode-php-plugin-1.3.2-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-php-plugin-1.3.2-SNAPSHOT.jar
-      - type: bind
-        source: ./python-plugin/target/ecocode-python-plugin-1.3.2-SNAPSHOT.jar
-        target: /opt/sonarqube/extensions/plugins/ecocode-python-plugin-1.3.2-SNAPSHOT.jar
+        source: ./java-plugin/target/ecocode-java-plugin-1.4.1-SNAPSHOT.jar
+        target: /opt/sonarqube/extensions/plugins/ecocode-java-plugin-1.4.1-SNAPSHOT.jar
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"
