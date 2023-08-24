@@ -1,0 +1,20 @@
+{
+    "title": "Monitoring power changes and customizing behavior depending on battery level is a good practice.",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "0min"
+    },
+    "tags": [
+      "eco-design",
+      "environment",
+      "power",
+      "ecocode"
+    ],
+    "defaultSeverity": "Info",
+    "compatibleLanguages": [
+      "SWIFT"
+    ]
+  }
+  
