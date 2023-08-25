@@ -21,7 +21,7 @@ refer to the contribution section.
 
 - [Java](java-plugin/)
 - [JavaScript](https://github.com/green-code-initiative/ecoCode-javascript)
-- [PHP](php-plugin/)
+- [PHP](https://github.com/green-code-initiative/ecoCode-php)
 - [Python](https://github.com/green-code-initiative/ecoCode-python)
 
 ![Screenshot](docs/resources/screenshot.PNG)
@@ -78,24 +78,26 @@ Ready to use binaries are available [from GitHub](https://github.com/green-code-
 
 | Plugins Version  | SonarQube version           |
 |------------------|-----------------------------|
-| 0.1.+            | SonarQube 8.9.+ LTS to 9.3  |
-| 0.2.+            | SonarQube 9.4.+ LTS to 9.9  |
-| 1.0.+            | SonarQube 9.4.+ LTS to 9.9  |
-| 1.1.+            | SonarQube 9.4.+ LTS to 9.9  |
-| 1.2.+            | SonarQube 9.4.+ LTS to 10.0 |
+| 1.4.+            | SonarQube 9.4.+ LTS to 10.1 |
 | 1.3.+            | SonarQube 9.4.+ LTS to 10.0 |
+| 1.2.+            | SonarQube 9.4.+ LTS to 10.0 |
+| 1.1.+            | SonarQube 9.4.+ LTS to 9.9  |
+| 1.0.+            | SonarQube 9.4.+ LTS to 9.9  |
+| 0.2.+            | SonarQube 9.4.+ LTS to 9.9  |
+| 0.1.+            | SonarQube 8.9.+ LTS to 9.3  |
 
 ☕ Plugin Java part compatibility
 ------------------
 
 | Plugins Version  | Java version |
 |------------------|--------------|
-| 0.1.+            | 11 / 17      |
-| 0.2.+            | 11 / 17      |
-| 1.0.+            | 11 / 17      |
-| 1.1.+            | 11 / 17      |
-| 1.2.+            | 11 / 17      |
+| 1.4.+            | 11 / 17      |
 | 1.3.+            | 11 / 17      |
+| 1.2.+            | 11 / 17      |
+| 1.1.+            | 11 / 17      |
+| 1.0.+            | 11 / 17      |
+| 0.2.+            | 11 / 17      |
+| 0.1.+            | 11 / 17      |
 
 🤝 Contribution
 ---------------
@@ -126,6 +128,7 @@ Then, if no answer, contact ...
 - [Olivier Le Goaër](https://olegoaer.perso.univ-pau.fr)
 - [Maxime DUBOIS](https://www.linkedin.com/in/maxime-dubois-%F0%9F%8C%B1-649a3a3/)
 - [David DE CARVALHO](https://www.linkedin.com/in/david%E2%80%8E-de-carvalho-8b395284/)
+- [Maxime MALGORN](https://www.linkedin.com/in/maximemalgorn/)
 
 🧐 Core Team Emeriti
 --------------------
