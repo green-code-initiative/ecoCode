@@ -4,7 +4,8 @@ import java.sql.PreparedStatement;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static fr.greencodeinitiative.java.checks.ConstOrLiteralDeclare.isLiteral;
+import fr.greencodeinitiative.java.checks.enums.ConstOrLiteralDeclare;
+import static fr.greencodeinitiative.java.checks.enums.ConstOrLiteralDeclare.isLiteral;
 import static java.util.Arrays.asList;
 
 import org.sonar.check.Rule;

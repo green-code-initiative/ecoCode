@@ -7,9 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-
 ### Changed
+
+- [#216](https://github.com/green-code-initiative/ecoCode/issues/216) Upgrade rule EC2 for Java : Multiple if-else statement improvment
+- [#106](https://github.com/green-code-initiative/ecoCode/issues/106) Upgrade RULES.md : rule EC67 not relevant neither for Python nor Rust
 
 ### Deleted
 
