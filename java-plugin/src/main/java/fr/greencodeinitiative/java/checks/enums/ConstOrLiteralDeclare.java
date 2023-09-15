@@ -1,4 +1,4 @@
-package fr.greencodeinitiative.java.checks;
+package fr.greencodeinitiative.java.checks.enums;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -18,7 +18,7 @@ import static org.sonar.plugins.java.api.tree.Tree.Kind.STRING_LITERAL;
 import static org.sonar.plugins.java.api.tree.Tree.Kind.TYPE_CAST;
 import org.sonar.plugins.java.api.tree.TypeCastTree;
 
-enum ConstOrLiteralDeclare {
+public enum ConstOrLiteralDeclare {
 
     BOOLEAN {
         @Override
