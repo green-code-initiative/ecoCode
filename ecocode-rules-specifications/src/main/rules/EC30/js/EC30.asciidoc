@@ -1,0 +1,39 @@
+This rule aims to remind developers to use CSS print to limit the number of pages printed therefore indirectly reducing the impact of the web page.
+
+== Examples
+
+Examples of **non-compliant** code for this rule:
+
+[source,html]
+----
+<head>
+  <title>Web Page</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+</head>
+----
+
+Examples of **compliant** code for this rule:
+
+[source,html]
+----
+<head>
+  <title>Web Page</title>
+  <link rel="stylesheet" media="print" type="text/css" href="print.css" />
+</head>
+----
+
+[source,html]
+----
+<head>
+  <title>Web Page</title>
+  <style>
+    @media print {
+      /* Print-specific styles */
+    }
+  </style>
+</head>
+----
+
+== Further details
+
+This recommendation is made by the CNUMR: https://github.com/cnumr/best-practices/blob/main/chapters/BP_027_en.md[Provide a print CSS]

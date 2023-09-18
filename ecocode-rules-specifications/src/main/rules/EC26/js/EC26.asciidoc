@@ -1,0 +1,51 @@
+This rule aims to encourage the use of shorthand CSS notations to reduce stylesheets size.
+
+== Examples
+
+Examples of **non-compliant** code for this rule:
+
+[source,js]
+----
+<div
+  style={{
+    marginTop: "1em",
+    marginRight: 0,
+    marginBottom: "2em",
+    marginLeft: "0.5em"
+  }}
+>
+  {/* Your content here */}
+</div>
+----
+
+[source,js]
+----
+<div
+  style={{
+    transitionProperty: "width",
+    transitionDuration: "35s",
+    transitionTimingFunction: "ease-in-out",
+    transitionDelay: "0s"
+  }}
+>
+  {/* Your content here */}
+</div>
+----
+
+Examples of **compliant** code for this rule:
+
+[source,js]
+----
+<div style={{ margin: "1em 0 2em 0.5em" }}>{/* Your content here */}</div>
+----
+
+[source,js]
+----
+<div style={{ transition: "width 35s ease-in-out 0s" }}>
+  {/* Your content here */}
+</div>
+----
+
+== Further reading
+
+This recommendation is made by the CNUMR: https://github.com/cnumr/best-practices/blob/fc5a1f865bafb196e4775cce8835393751d40ed8/chapters/BP_026_en.md[Use abbreviated CSS notations]

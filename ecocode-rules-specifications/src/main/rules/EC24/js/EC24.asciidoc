@@ -1,0 +1,17 @@
+This rule aims at reducing CPU consumption by limiting the number of returns for a single SQL query.
+
+== Examples
+
+Examples of **non compliant** code for this rule:
+
+[source,js]
+----
+const query = "SELECT * FROM clients";
+----
+
+Examples of **compliant** code for this rule:
+
+[source,js]
+----
+const query = "SELECT columns FROM table_name FETCH FIRST number ROWS ONLY";
+----
