@@ -1,0 +1,31 @@
+The shape using the quotation marks (") allows the developer to insert variables that will be substituted at run time.
+
+But if the string does not have a variable, use quotes (') instead.
+
+Thus, language will not look for variables to substitute, which will reduce the consumption of CPU cycles.
+
+## Noncompliant Code Example
+
+```python
+# in variables
+firstname = "Andrea" # Noncompliant {{Avoid using quotation mark ("), prefer using simple quote (')}}
+
+# in functions
+def my_function(name, age):
+    print(name + 'is' + age + ' yo.')
+
+my_function("Robert", 12) # Noncompliant {{Avoid using quotation mark ("), prefer using simple quote (')}}
+```
+
+## Compliant Solution
+
+```python
+# in variables
+firstname = 'Andrea'
+
+# in functions
+def my_function(name, age):
+    print(name + 'is' + age + ' yo.')
+
+my_function('Robert', 12)
+```

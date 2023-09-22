@@ -1,41 +1,33 @@
+/*
+ * ecoCode - Java language - Provides rules to reduce the environmental footprint of your Java programs
+ * Copyright © 2023 Green Code Initiative (https://www.ecocode.io)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 package fr.greencodeinitiative.java.checks;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.annotation.CheckForNull;
-
-import org.apache.commons.lang3.StringUtils;
-import org.sonar.check.Priority;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.JavaFileScanner;
 import org.sonar.plugins.java.api.JavaFileScannerContext;
-import org.sonar.plugins.java.api.tree.AssignmentExpressionTree;
-import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
-import org.sonar.plugins.java.api.tree.BinaryExpressionTree;
-import org.sonar.plugins.java.api.tree.BlockTree;
-import org.sonar.plugins.java.api.tree.ExpressionTree;
-import org.sonar.plugins.java.api.tree.ForEachStatement;
-import org.sonar.plugins.java.api.tree.IdentifierTree;
-import org.sonar.plugins.java.api.tree.IfStatementTree;
-import org.sonar.plugins.java.api.tree.MemberSelectExpressionTree;
-import org.sonar.plugins.java.api.tree.MethodInvocationTree;
-import org.sonar.plugins.java.api.tree.NewClassTree;
-import org.sonar.plugins.java.api.tree.ReturnStatementTree;
-import org.sonar.plugins.java.api.tree.StatementTree;
-import org.sonar.plugins.java.api.tree.ThrowStatementTree;
-import org.sonar.plugins.java.api.tree.Tree;
+import org.sonar.plugins.java.api.tree.*;
 import org.sonar.plugins.java.api.tree.Tree.Kind;
-import org.sonar.plugins.java.api.tree.TypeCastTree;
-import org.sonar.plugins.java.api.tree.UnaryExpressionTree;
-import org.sonar.plugins.java.api.tree.VariableTree;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
-@Rule(key = "EC63", name = "Developpement", description = "Do not unnecessarily assign values to variables", priority = Priority.MINOR, tags = {
-        "bug"})
+import javax.annotation.CheckForNull;
+import java.util.*;
+
+@Rule(key = "EC63")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S63")
 public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implements JavaFileScanner {
 
@@ -191,7 +183,7 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
             String lastStatementIdentifier = getReturnOrThrowIdentifier(lastStatement);
             if (lastStatementIdentifier != null) {
                 String identifier = variableTree.simpleName().name();
-                if (StringUtils.equals(lastStatementIdentifier, identifier)) {
+                if (lastStatementIdentifier.equals(identifier)) {
                     context.reportIssue(this, variableTree.initializer(), errorMessage);
                 }
             }

@@ -1,0 +1,19 @@
+{
+  "title": "Disallow multiple style changes at once.",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "10min"
+  },
+  "tags": [
+    "eco-design",
+    "performance",
+    "ecocode"
+  ],
+  "defaultSeverity": "Major",
+  "compatibleLanguages": [
+    "JAVASCRIPT",
+    "TYPESCRIPT"
+  ]
+}
