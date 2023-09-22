@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>io.ecocode</groupId>
+		<artifactId>ecocode-parent</artifactId>
+		<version>1.4.1-SNAPSHOT</version>
+	</parent>
+
+	<artifactId>ecocode-rules-specifications</artifactId>
+
+	<name>ecoCode Rules Specifications repository</name>
+	<description>Repository that contains the specifications of every static-analysis rules available in ecoCode plugins.</description>
+	<url>https://github.com/green-code-initiative/ecoCode/tree/main/ecocode-rules-specifications</url>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.sonarsource.sonarqube</groupId>
+			<artifactId>sonar-plugin-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.sonarsource.analyzer-commons</groupId>
+			<artifactId>sonar-analyzer-commons</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<!--
+					This plugin convert ASCIIDOC rule specification in HTML format
+					ASCIIDOC format is used with custom features such as :
+					- syntax highlighting (see code blocks on ASCIIDOC rules)
+					- inclusions (see: php/EC74.asciidoc)
+					- table data generation from CSV (see: php/EC34.asciidoc)
+				-->
+				<groupId>org.asciidoctor</groupId>
+				<artifactId>asciidoctor-maven-plugin</artifactId>
+				<version>2.2.4</version>
+				<executions>
+					<execution>
+						<id>convert-to-html</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>process-asciidoc</goal>
+						</goals>
+						<configuration>
+							<sourceDirectory>${project.basedir}/src/main/rules</sourceDirectory>
+							<outputDirectory>${project.build.directory}/rules</outputDirectory>
+							<attributes>
+								<source-highlighter>coderay</source-highlighter>
+								<coderay-css>style</coderay-css>
+							</attributes>
+							<preserveDirectories>true</preserveDirectories>
+							<headerFooter>false</headerFooter>
+							<relativeBaseDir>true</relativeBaseDir>
+							<logHandler>
+								<failIf>
+									<severity>ERROR</severity>
+								</failIf>
+							</logHandler>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<!--
+					Target resources tree need to be "flat".
+					Each metadata JSON file must be in the same tree as the HTML description file for the corresponding language.
+					The only way currently found to generate the correct file tree is to use antrun-plugin with `flattenmapper`
+				-->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/java">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/java/EC*.html" />
+										<include name="*/EC*.json" />
+									</fileset>
+									<flattenmapper />
+								</copy>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/php">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/php/EC*.html" />
+										<include name="*/EC*.json" />
+									</fileset>
+									<flattenmapper />
+								</copy>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/python">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/python/EC*.html" />
+										<include name="*/EC*.json" />
+									</fileset>
+									<flattenmapper />
+								</copy>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/js">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/js/EC*.html" />
+										<include name="*/EC*.json" />
+									</fileset>
+									<flattenmapper />
+								</copy>
+								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/ts">
+									<fileset dir="${project.build.directory}/rules">
+										<include name="*/ts/EC*.html" />
+										<include name="*/EC*.json" />
+									</fileset>
+									<flattenmapper />
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<!--
+					This module produce one artifact by language (with corresponding classifier)
+					For example, to add rule specifications for Python language, add following dependency in python sonarqube plugin:
+
+			        <dependency>
+			            <groupId>io.ecocode</groupId>
+			            <artifactId>ecocode-rules-specifications</artifactId>
+			            <version>${project.version}</version>
+			            <classifier>python</classifier>
+			        </dependency>
+				-->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.6.0</version>
+				<executions>
+					<execution>
+						<id>assembly-java</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/java.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-php</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/php.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-python</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/python.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-js</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/js.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-ts</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/ts.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<appendAssemblyId>true</appendAssemblyId>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

@@ -20,9 +20,9 @@ refer to the contribution section.
 4 technologies are supported by ecoCode right now:
 
 - [Java](java-plugin/)
-- [JavaScript](javascript-plugin/)
-- [PHP](php-plugin/)
-- [Python](python-plugin/)
+- [JavaScript](https://github.com/green-code-initiative/ecoCode-javascript)
+- [PHP](https://github.com/green-code-initiative/ecoCode-php)
+- [Python](https://github.com/green-code-initiative/ecoCode-python)
 
 ![Screenshot](docs/resources/screenshot.PNG)
 
@@ -47,8 +47,6 @@ Code is parsed to be transformed as AST. AST will allow you to access one or mor
 For example, you’ll be able to access of all your `for` loop, to explore content etc.
 
 To better understand AST structure, you can use the [AST Explorer](https://astexplorer.net/).
-
-JavaScript plugin works differently because it does not use AST. [More information here](javascript-plugin/README.md)
 
 🚀 Getting Started
 ------------------
@@ -78,22 +76,28 @@ Ready to use binaries are available [from GitHub](https://github.com/green-code-
 🧩 Plugins version compatibility
 ------------------
 
-| Plugins Version  | SonarQube version          |
-|------------------|----------------------------|
-| 0.1.+            | SonarQube 8.9.+ LTS to 9.3 |
-| 0.2.+            | SonarQube 9.4.+ LTS to 9.9 |
-| 1.0.+            | SonarQube 9.4.+ LTS to 9.9 |
-| 1.1.+            | SonarQube 9.4.+ LTS to 9.9 |
+| Plugins Version  | SonarQube version           |
+|------------------|-----------------------------|
+| 1.4.+            | SonarQube 9.4.+ LTS to 10.1 |
+| 1.3.+            | SonarQube 9.4.+ LTS to 10.0 |
+| 1.2.+            | SonarQube 9.4.+ LTS to 10.0 |
+| 1.1.+            | SonarQube 9.4.+ LTS to 9.9  |
+| 1.0.+            | SonarQube 9.4.+ LTS to 9.9  |
+| 0.2.+            | SonarQube 9.4.+ LTS to 9.9  |
+| 0.1.+            | SonarQube 8.9.+ LTS to 9.3  |
 
 ☕ Plugin Java part compatibility
 ------------------
 
 | Plugins Version  | Java version |
 |------------------|--------------|
-| 0.1.+            | 11 / 17      |
-| 0.2.+            | 11 / 17      |
-| 1.0.+            | 11 / 17      |
+| 1.4.+            | 11 / 17      |
+| 1.3.+            | 11 / 17      |
+| 1.2.+            | 11 / 17      |
 | 1.1.+            | 11 / 17      |
+| 1.0.+            | 11 / 17      |
+| 0.2.+            | 11 / 17      |
+| 0.1.+            | 11 / 17      |
 
 🤝 Contribution
 ---------------
@@ -117,13 +121,14 @@ Any question ? We are here for you !
 first, create an issue, please.
 Then, if no answer, contact ...
 
-- Jules Delecour
+- [Jules Delecour](https://www.linkedin.com/in/jules-delecour-498680118/)
 - [Geoffrey Lalloué](https://github.com/glalloue)
-- Julien Hertout
+- [Julien Hertout](https://www.linkedin.com/in/julien-hertout-b1175449/)
 - [Justin Berque](https://www.linkedin.com/in/justin-berque-444412140)
 - [Olivier Le Goaër](https://olegoaer.perso.univ-pau.fr)
-- Maxime DUBOIS
-- [David DE CARVALHO](https://www.linkedin.com/in/%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-david%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-de-carvalho%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-%E2%80%8E-8b395284/)
+- [Maxime DUBOIS](https://www.linkedin.com/in/maxime-dubois-%F0%9F%8C%B1-649a3a3/)
+- [David DE CARVALHO](https://www.linkedin.com/in/david%E2%80%8E-de-carvalho-8b395284/)
+- [Maxime MALGORN](https://www.linkedin.com/in/maximemalgorn/)
 
 🧐 Core Team Emeriti
 --------------------

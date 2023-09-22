@@ -1,0 +1,21 @@
+Using List instead of Arrays with Foreach save CPU cycles calculations and RAM consumption.
+
+## Noncompliant Code Example
+
+```java
+private final Integer[] intArray = new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+for (Integer i : intArray) {
+    // ...
+}
+```
+
+## Compliant Solution
+
+```java
+private final List<Integer> intList = Arrays.asList(new Integer[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 });
+
+for (Integer i : intList) {
+    // ...
+}
+```

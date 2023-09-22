@@ -1,0 +1,31 @@
+## Rule details
+
+This rule aims to reduce the size and thus the network weight of API returns that may contain many elements. This rule is built for the https://nestjs.com[NestJS framework] but can work with a controller `@Controller()` and a decorated method `@Get()`.
+
+## Examples
+
+Examples of **non-compliant** code for this rule:
+
+```typescript
+@Controller()
+class Test {
+  @Get()
+  public find(): Promise<string[]> {}
+}
+```
+
+Examples of **compliant** code for this rule:
+
+```typescript
+interface Pagination {
+  items: string[];
+  currentPage: number;
+  totalPages: number;
+}
+
+@Controller()
+class Test {
+  @Get()
+  public find(): Promise<Pagination> {}
+}
+```

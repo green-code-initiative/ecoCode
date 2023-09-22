@@ -1,0 +1,38 @@
+Don't concatenate Strings in loop. Use `StringBuilder instead.
+
+Strings are immutable so each time you concatenate a String, a new String is created. This is a waste of memory and CPU.
+
+## Noncompliant Code Example
+
+```java
+public String concatenateStrings(String[] strings) {
+    String result = "";
+
+    for (String string : strings) {
+        result += string; // Noncompliant
+    }
+    return result;
+}
+
+public String concatenateStrings2() {
+    String result = "";
+
+    for (int i = 0; i < 1000; ++i) {
+        result += "another"; // Noncompliant
+    }
+    return result;
+}
+```
+
+## Compliant Solution
+
+```java
+public String concatenateStrings(String[] strings) {
+    StringBuilder result = new StringBuilder();
+
+    for (String string : strings) {
+        result.append(string);
+    }
+    return result.toString();
+}
+```

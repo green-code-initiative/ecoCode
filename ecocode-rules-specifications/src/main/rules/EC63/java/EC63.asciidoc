@@ -1,0 +1,17 @@
+Do not unnecessarily assign values to variables. It increases the use of RAM memory.
+
+## Noncompliant Code Example
+
+```java
+String var1 = getValue();
+return var1;
+
+String var2 = "hello"
+var2 = "world"        //Non compliant cause never assigned
+```
+
+## Compliant Solution
+
+```java
+return getValue();
+```

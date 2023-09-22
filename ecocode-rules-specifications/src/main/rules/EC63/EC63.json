@@ -1,0 +1,15 @@
+{
+  "title": "Do not unnecessarily assign values to variables",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "eco-design",
+    "ecocode",
+    "memory"
+  ],
+  "defaultSeverity": "Minor"
+}
