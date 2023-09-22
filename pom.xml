@@ -4,11 +4,12 @@
 
     <groupId>io.ecocode</groupId>
     <artifactId>ecocode-parent</artifactId>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.4.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>ecoCode Sonar Plugins Project</name>
     <description>Provides rules to reduce the environmental footprint of your programs</description>
+    <inceptionYear>2023</inceptionYear>
     <url>https://github.com/green-code-initiative/ecocode</url>
     <organization>
         <name>green-code-initiative</name>
@@ -22,11 +23,64 @@
         </license>
     </licenses>
 
+    <developers>
+        <!--
+            Mandatory information to be able to publish to Maven Central:
+            https://central.sonatype.org/publish/requirements/#developer-information
+        -->
+        <developer>
+            <name>Gilles Grousset</name>
+            <email>zippy1978@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Maxime Malgorn</name>
+            <email>utarwyn@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Geoffrey Lalloué</name>
+            <email>glalloue@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>David DE CARVALHO</name>
+            <email>dedece35@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Olivier Le Goaër</name>
+            <email>olegoaer@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Julien Hertout</name>
+            <email>jhertout@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Jules Delecour</name>
+            <email>jules-delecour-dav@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>DUBOIS Maxime</name>
+            <email>mdubois81@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+    </developers>
+
     <modules>
-        <module>python-plugin</module>
+        <module>ecocode-rules-specifications</module>
         <module>java-plugin</module>
-        <module>javascript-plugin</module>
-        <module>php-plugin</module>
     </modules>
 
     <scm>
@@ -50,26 +104,20 @@
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
-        <sonarqube.version>9.4.0.54424</sonarqube.version>
-
         <sonar.organization>green-code-initiative</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
-        <!-- Don't forget to update this version -->
-        <jacoco.version>0.8.8</jacoco.version>
+        <sonarqube.version>9.4.0.54424</sonarqube.version>
+        <sonarjava.version>7.19.0.31550</sonarjava.version>
 
-        <sonarjava.version>7.15.0.30507</sonarjava.version>
-        <sonarpython.version>3.19.0.10254</sonarpython.version>
-        <sonarphp.version>3.25.0.9077</sonarphp.version>
-        <sonarjavascript.version>9.13.0.20537</sonarjavascript.version>
+        <sonar-analyzer-commons.version>2.5.0.1358</sonar-analyzer-commons.version>
 
-        <sonar-plugin-api-impl.version>9.7.1.62043</sonar-plugin-api-impl.version>
-        <sonar-analyzer-commons.version>2.1.0.1111</sonar-analyzer-commons.version>
         <sonar-packaging.version>1.21.0.505</sonar-packaging.version>
         <sonar.skipDependenciesPackaging>true</sonar.skipDependenciesPackaging>
-        <maven-shade-plugin.version>3.4.1</maven-shade-plugin.version>
+
         <junit.jupiter.version>5.9.1</junit.jupiter.version>
         <assertJ.version>3.23.1</assertJ.version>
+        <mockito.version>5.3.1</mockito.version>
 
         <google.re2j>1.7</google.re2j>
 
@@ -92,12 +140,6 @@
                 <version>${sonar-analyzer-commons.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.sonarsource.sonarqube</groupId>
-                <artifactId>sonar-plugin-api-impl</artifactId>
-                <version>${sonar-plugin-api-impl.version}</version>
-            </dependency>
-
             <!-- for security on regex patterns : https://github.com/google/re2j -->
             <dependency>
                 <groupId>com.google.re2j</groupId>
@@ -110,33 +152,6 @@
                 <groupId>org.sonarsource.java</groupId>
                 <artifactId>sonar-java-plugin</artifactId>
                 <version>${sonarjava.version}</version>
-                <type>sonar-plugin</type>
-                <scope>provided</scope>
-            </dependency>
-
-            <!-- JavaScript -->
-            <dependency>
-                <groupId>org.sonarsource.javascript</groupId>
-                <artifactId>sonar-javascript-plugin</artifactId>
-                <version>${sonarjavascript.version}</version>
-                <type>sonar-plugin</type>
-                <scope>provided</scope>
-            </dependency>
-
-            <!-- PHP -->
-            <dependency>
-                <groupId>org.sonarsource.php</groupId>
-                <artifactId>sonar-php-plugin</artifactId>
-                <version>${sonarphp.version}</version>
-                <type>sonar-plugin</type>
-                <scope>provided</scope>
-            </dependency>
-
-            <!-- PYTHON -->
-            <dependency>
-                <groupId>org.sonarsource.python</groupId>
-                <artifactId>sonar-python-plugin</artifactId>
-                <version>${sonarpython.version}</version>
                 <type>sonar-plugin</type>
                 <scope>provided</scope>
             </dependency>
@@ -164,9 +179,9 @@
             </dependency>
 
             <dependency>
-                <groupId>org.sonarsource.python</groupId>
-                <artifactId>python-checks-testkit</artifactId>
-                <version>${sonarpython.version}</version>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-junit-jupiter</artifactId>
+                <version>${mockito.version}</version>
                 <scope>test</scope>
             </dependency>
 
@@ -179,12 +194,12 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.10.1</version>
+                    <version>3.11.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
@@ -194,14 +209,154 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-shade-plugin</artifactId>
-                    <version>${maven-shade-plugin.version}</version>
+                    <version>3.5.0</version>
+                    <!-- common configuration for shade plugin -->
+                    <executions>
+                        <execution>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>shade</goal>
+                            </goals>
+                            <configuration>
+                                <filters>
+                                    <filter>
+                                        <artifact>commons-*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/**</exclude>
+                                        </excludes>
+                                    </filter>
+                                    <filter>
+                                        <artifact>org.*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/**</exclude>
+                                            <exclude>org/sonar/api/batch/sensor/**</exclude>
+                                            <exclude>javax/annotation/**</exclude>
+                                        </excludes>
+                                    </filter>
+                                    <filter>
+                                        <artifact>com.*:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/**</exclude>
+                                        </excludes>
+                                    </filter>
+                                    <filter>
+                                        <artifact>junit:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/**</exclude>
+                                        </excludes>
+                                    </filter>
+                                </filters>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.1.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>${jacoco.version}</version>
+                    <version>0.8.10</version>
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>4.1</version>
+                <configuration>
+                    <properties>
+                        <owner>Green Code Initiative</owner>
+                        <email>https://www.ecocode.io</email>
+                    </properties>
+                    <licenseSets>
+                        <licenseSet>
+                            <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header>
+                            <includes>
+                                <include>**/*.java</include>
+                            </includes>
+                        </licenseSet>
+                    </licenseSets>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>maven-central-publishing</id>
+            <!--
+                For publishing in Maven Central.
+                For more information:
+                - https://central.sonatype.org/publish/publish-guide/#deployment
+                - https://central.sonatype.org/publish/release/#login-into-ossrh
+            -->
+
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+            </distributionManagement>
+            <build>
+                <plugins>
+                    <plugin><!--
+
+                        For publishing in Maven Central,
+                        see: https://central.sonatype.org/publish/publish-maven/#distribution-management-and-authentication
+
+                        -->
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>1.6.13</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                    <plugin><!--
+                            For publishing in Maven Central, GPG key must be published to one of following servers:
+                            - keyserver.ubuntu.com
+                            - keys.openpgp.org
+                            - pgp.mit.edu
+
+                            For more informatino: https://central.sonatype.org/publish/requirements/gpg/#distributing-your-public-key
+                        -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
