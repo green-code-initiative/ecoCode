@@ -9,6 +9,7 @@
 
     <name>ecoCode Sonar Plugins Project</name>
     <description>Provides rules to reduce the environmental footprint of your programs</description>
+    <inceptionYear>2023</inceptionYear>
     <url>https://github.com/green-code-initiative/ecocode</url>
     <organization>
         <name>green-code-initiative</name>
@@ -261,6 +262,36 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>4.1</version>
+                <configuration>
+                    <properties>
+                        <owner>Green Code Initiative</owner>
+                        <email>https://www.ecocode.io</email>
+                    </properties>
+                    <licenseSets>
+                        <licenseSet>
+                            <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header>
+                            <includes>
+                                <include>**/*.java</include>
+                            </includes>
+                        </licenseSet>
+                    </licenseSets>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>
