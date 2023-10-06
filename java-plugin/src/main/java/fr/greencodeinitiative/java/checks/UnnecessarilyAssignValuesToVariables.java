@@ -75,7 +75,7 @@ public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implem
     private class GetVariableVisitor extends BaseTreeVisitor {
         @Override
         public void visitVariable(VariableTree tree) {
-            if (!tree.parent().is(Kind.METHOD)) {
+            if (!tree.parent().is(Kind.METHOD) && !tree.parent().is(Kind.CATCH)) {
                 variableList.put(tree.simpleName().name(), tree);
             }
             super.visitVariable(tree);
