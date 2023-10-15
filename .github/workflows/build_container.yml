@@ -17,6 +17,7 @@ env:
   IMAGE_NAME: sonarqube-ecocode
   IMAGES: |
     ghcr.io/${{ github.repository_owner }}/sonarqube-ecocode
+  PLATFORMS: linux/amd64,linux/arm64/v8
 
 jobs:
   Build:
@@ -65,10 +66,12 @@ jobs:
             type=ref,event=pr
             type=sha
 
-      - name: Publish image
+      - name: Build and publish image
         id: push
         uses: docker/build-push-action@v4
         with:
+          context: .
+          platforms: ${{ env.PLATFORMS }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
