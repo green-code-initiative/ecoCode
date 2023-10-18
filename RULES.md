@@ -1,4 +1,6 @@
-# Rules support matrix by techno
+# Rules
+
+## Rules support matrix by techno
 
 This matrix lists all the rules identified as implementable within the standard ecoCode plugin.
 
@@ -52,3 +54,10 @@ Some are applicable for different technologies.
 |          | Avoid high accuracy geolocation                                                                            | Avoid using high accuracy geolocation in web applications (linter key : `@ecocode/avoid-high-accuracy-geolocation`)                                                                                                                                                                                                                                      |                                                                                                                                                                         | 🚫   | 🚫  | ✅  | 🚫     | 🚫   |
 |          | No import all from library                                                                                 | Should not import all from library (linter key : `@ecocode/no-import-all-from-library`)                                                                                                                                                                                                                                                                  |                                                                                                                                                                         | 🚫   | 🚫  | ✅  | 🚫     | 🚫   |
 |          | Prefer collections with pagination                                                                         | Prefer API collections with pagination (linter key : `@ecocode/prefer-collections-with-pagination`)                                                                                                                                                                                                                                                      |                                                                                                                                                                         | 🚫   | 🚫  | ✅  | 🚫     | 🚫   |
+
+## Refused rules
+
+This array lists rules proposed by the community but refused in ecoCode plugins with the justification.
+
+| Name                                     | Description                                                                                                                  | Language | Invalidation                                                |
+| Use numpy array instead of standard list | The use of numpy library to perform array manipulation is more energy efficient than the use of the standard list functions. | Python   | [Github discussion with measures](https://github.com/green-code-initiative/ecoCode/issues/132) |
