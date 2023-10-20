@@ -62,5 +62,4 @@ This table lists rules proposed by the community but refused in ecoCode plugins 
 | Name                                     | Description                                                                                                                  | Language | Invalidation             |
 |------------|------------|------------|------------|
 | Use numpy array instead of standard list | The use of numpy library to perform array manipulation is more energy efficient than the use of the standard list functions. | Python   | [Github discussion with measures](https://github.com/green-code-initiative/ecoCode/issues/132) |
-| HTML page must contain a doctype tag | The difference in performance is negligible, this rule is more related to 
- the user experience. | HTML | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/103) |
+| HTML page must contain a doctype tag | The difference in performance is negligible, this rule is more related to the user experience. | HTML | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/103) |
