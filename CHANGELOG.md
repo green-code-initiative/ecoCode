@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#225](https://github.com/green-code-initiative/ecoCode/pull/225) Upgrade licence system and licence headers of Java files
 - [#140](https://github.com/green-code-initiative/ecoCode/issues/140) Upgrade rule EC3 for Python : no implementation possible for python
 - [#136](https://github.com/green-code-initiative/ecoCode/issues/136) Upgrade rule EC53 for Python : no implementation possible for python
+- [#228](https://github.com/green-code-initiative/ecoCode/issues/228) Upgrade rule EC63 for java: Stop reporting caught exception even if unused
 
 ### Deleted
 
