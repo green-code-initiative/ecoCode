@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#136](https://github.com/green-code-initiative/ecoCode/issues/136) Upgrade rule EC53 for Python : no implementation possible for python
 
 ### Deleted
+- [#128](https://github.com/green-code-initiative/ecoCode/pull/128) Delete rule EC34 for Python and PHP : rule replaced by EC35 ("file not found" sepcific) 
 
 ## [1.4.0] - 2023-08-08
 
