@@ -64,7 +64,7 @@
 					ASCIIDOC format is used with custom features such as :
 					- syntax highlighting (see code blocks on ASCIIDOC rules)
 					- inclusions (see: php/EC74.asciidoc)
-					- table data generation from CSV (see: php/EC35.asciidoc)
+					- table data generation from CSV (see: php/EC34.asciidoc)
 				-->
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
