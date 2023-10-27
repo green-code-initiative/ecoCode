@@ -1,4 +1,5 @@
 Inside complex code parts (for exemple multiple loops, complex data constructions...), avoid using try...catch.
+For the moment, this rule only deals with "file open" use case in try...catch blocks.
 
 When an exception is thrown, a variable (the exception itself) is created in a catch block and it's destruction consumes unnecessary CPU cycles and RAM. Prefer using logical tests in this cases.
 
