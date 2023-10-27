@@ -19,7 +19,7 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>ecocode-rules-specifications</artifactId>
-            <version>${project.version}</version>
+            <version>0.0.4</version>
             <classifier>java</classifier>
         </dependency>
 
