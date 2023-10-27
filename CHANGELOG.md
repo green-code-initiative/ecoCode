@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#140](https://github.com/green-code-initiative/ecoCode/issues/140) Upgrade rule EC3 for Python : no implementation possible for python
 - [#136](https://github.com/green-code-initiative/ecoCode/issues/136) Upgrade rule EC53 for Python : no implementation possible for python
 - [#128](https://github.com/green-code-initiative/ecoCode/pull/128) Adding EC35 rule for Python and PHP : EC35 rule replaces EC34 with a specific use case ("file not found" sepcific)
+- [#112](https://github.com/green-code-initiative/ecoCode/issues/112) Updating EC1 rule to add controls on streams
 
 ### Deleted
 

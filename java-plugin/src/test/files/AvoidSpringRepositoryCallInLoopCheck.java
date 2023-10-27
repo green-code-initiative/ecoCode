@@ -30,7 +30,7 @@ public class AvoidRepositoryCallInLoopCheck {
     public List<Employee> smellGetAllEmployeesByIds(List<Integer> ids) {
         List<Employee> employees = new ArrayList<>();
         for (Integer id : ids) {
-            Optional<Employee> employee = employeeRepository.findById(id); // Noncompliant {{Avoid Spring repository call in loop}}
+            Optional<Employee> employee = employeeRepository.findById(id); // Noncompliant {{Avoid Spring repository call in loop or stream}}
             if (employee.isPresent()) {
                 employees.add(employee.get());
             }
