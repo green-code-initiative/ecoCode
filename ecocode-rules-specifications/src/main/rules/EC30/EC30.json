@@ -1,17 +1,19 @@
 {
-  "title": "Disallow multiple style changes at once.",
+  "title": "Provide a print stylesheet",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
-    "constantCost": "10min"
+    "constantCost": "30min"
   },
   "tags": [
     "ecocode",
     "eco-design",
-    "performance"
+    "jsx",
+    "performance",
+    "react"
   ],
-  "defaultSeverity": "Major",
+  "defaultSeverity": "Minor",
   "compatibleLanguages": [
     "JAVASCRIPT",
     "TYPESCRIPT"

@@ -1,15 +1,17 @@
 {
-  "title": "Disallow multiple style changes at once.",
+  "title": "Avoid usage of CSS animations",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
-    "constantCost": "10min"
+    "constantCost": "15min"
   },
   "tags": [
     "ecocode",
     "eco-design",
-    "performance"
+    "jsx",
+    "performance",
+    "react"
   ],
   "defaultSeverity": "Major",
   "compatibleLanguages": [
