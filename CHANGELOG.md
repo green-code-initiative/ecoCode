@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [ios#3](https://github.com/green-code-initiative/ecoCode-ios/issues/3) Move iOS rules into centralized rules repository
+- [android#67](https://github.com/green-code-initiative/ecoCode-android/issues/67) Move Android rules into centralized rules repository
 - [#216](https://github.com/green-code-initiative/ecoCode/issues/216) Upgrade rule EC2 for Java : Multiple if-else statement improvment
 - [#106](https://github.com/green-code-initiative/ecoCode/issues/106) Upgrade RULES.md : rule EC67 not relevant neither for Python nor Rust
 - [#225](https://github.com/green-code-initiative/ecoCode/pull/225) Upgrade licence system and licence headers of Java files
