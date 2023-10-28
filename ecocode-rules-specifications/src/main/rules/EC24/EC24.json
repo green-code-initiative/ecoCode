@@ -1,17 +1,18 @@
 {
-  "title": "Disallow multiple style changes at once.",
+  "title": "Limit the number of returns for a SQL query",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
-    "constantCost": "10min"
+    "constantCost": "5min"
   },
   "tags": [
     "ecocode",
     "eco-design",
-    "performance"
+    "performance",
+    "sql"
   ],
-  "defaultSeverity": "Major",
+  "defaultSeverity": "Minor",
   "compatibleLanguages": [
     "JAVASCRIPT",
     "TYPESCRIPT"
