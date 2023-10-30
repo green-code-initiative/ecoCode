@@ -10,6 +10,7 @@
     <name>ecoCode Sonar Plugins Project</name>
     <description>Provides rules to reduce the environmental footprint of your programs</description>
     <url>https://github.com/green-code-initiative/ecocode</url>
+    <inceptionYear>2023</inceptionYear>
     <organization>
         <name>green-code-initiative</name>
         <url>https://github.com/green-code-initiative</url>
@@ -98,6 +99,8 @@
         <java.version>11</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <!-- to prevent message: system modules path not set in conjunction with -source 11 -->
+        <maven.compiler.release>${java.version}</maven.compiler.release>
 
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
@@ -217,6 +220,14 @@
                                 <goal>shade</goal>
                             </goals>
                             <configuration>
+                                <transformers>
+                                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                        <manifestEntries>
+                                            <!-- Add `ecocode-rules-specifications` version in plugin metadata -->
+                                            <X-EcoCode-Rules-Specifications>${project.version}</X-EcoCode-Rules-Specifications>
+                                        </manifestEntries>
+                                    </transformer>
+                                </transformers>
                                 <filters>
                                     <filter>
                                         <artifact>commons-*:*</artifact>
@@ -244,6 +255,12 @@
                                             <exclude>META-INF/**</exclude>
                                         </excludes>
                                     </filter>
+                                    <filter>
+                                        <artifact>io.ecocode:ecocode-rules-specifications:*</artifact>
+                                        <excludes>
+                                            <exclude>META-INF/**</exclude>
+                                        </excludes>
+                                    </filter>
                                 </filters>
                             </configuration>
                         </execution>
@@ -261,6 +278,36 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>4.1</version>
+                <configuration>
+                    <properties>
+                        <owner>Green Code Initiative</owner>
+                        <email>https://www.ecocode.io</email>
+                    </properties>
+                    <licenseSets>
+                        <licenseSet>
+                            <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header>
+                            <includes>
+                                <include>**/*.java</include>
+                            </includes>
+                        </licenseSet>
+                    </licenseSets>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
     </build>
 
     <profiles>

@@ -7,9 +7,9 @@
     "constantCost": "10min"
   },
   "tags": [
+    "ecocode",
     "eco-design",
-    "performance",
-    "ecocode"
+    "performance"
   ],
   "defaultSeverity": "Major",
   "compatibleLanguages": [
