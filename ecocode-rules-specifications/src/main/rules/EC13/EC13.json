@@ -7,13 +7,13 @@
     "constantCost": "30min"
   },
   "tags": [
+    "ecocode",
     "eco-design",
-    "performance",
-    "ecocode"
+    "nestjs",
+    "performance"
   ],
   "defaultSeverity": "Minor",
   "compatibleLanguages": [
-    "JAVASCRIPT",
     "TYPESCRIPT"
   ]
 }

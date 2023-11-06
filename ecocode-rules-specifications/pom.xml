@@ -14,57 +14,19 @@
 	<description>Repository that contains the specifications of every static-analysis rules available in ecoCode plugins.</description>
 	<url>https://github.com/green-code-initiative/ecoCode/tree/main/ecocode-rules-specifications</url>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.sonarsource.sonarqube</groupId>
-			<artifactId>sonar-plugin-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.sonarsource.analyzer-commons</groupId>
-			<artifactId>sonar-analyzer-commons</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.assertj</groupId>
-			<artifactId>assertj-core</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.jacoco</groupId>
-				<artifactId>jacoco-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>prepare-agent</id>
-						<goals>
-							<goal>prepare-agent</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report</id>
-						<goals>
-							<goal>report</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<!--
+			<plugin><!--
 					This plugin convert ASCIIDOC rule specification in HTML format
 					ASCIIDOC format is used with custom features such as :
 					- syntax highlighting (see code blocks on ASCIIDOC rules)
 					- inclusions (see: php/EC74.asciidoc)
 					- table data generation from CSV (see: php/EC34.asciidoc)
+
+					NB: Current version has a bug which display following false positive warning :
+					[WARNING] Duplicated destination found: overwriting file ...
+
+					This issue is fixed in 3.x release of asciidoctor-maven-plugin
 				-->
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
@@ -78,12 +40,13 @@
 						</goals>
 						<configuration>
 							<sourceDirectory>${project.basedir}/src/main/rules</sourceDirectory>
-							<outputDirectory>${project.build.directory}/rules</outputDirectory>
+							<outputDirectory>${project.build.directory}/rules-html</outputDirectory>
 							<attributes>
 								<source-highlighter>coderay</source-highlighter>
 								<coderay-css>style</coderay-css>
 							</attributes>
 							<preserveDirectories>true</preserveDirectories>
+							<embedAssets>true</embedAssets>
 							<headerFooter>false</headerFooter>
 							<relativeBaseDir>true</relativeBaseDir>
 							<logHandler>
@@ -95,65 +58,33 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<!--
-					Target resources tree need to be "flat".
-					Each metadata JSON file must be in the same tree as the HTML description file for the corresponding language.
-					The only way currently found to generate the correct file tree is to use antrun-plugin with `flattenmapper`
+			<plugin><!--
+					Prepare resources tree needed by language.
+					Each metadata JSON file must be in the same folder as the HTML description file for the corresponding language.
 				-->
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>3.1.0</version>
+				<groupId>com.github.johnpoth</groupId>
+				<artifactId>jshell-maven-plugin</artifactId>
+				<version>1.4</version>
 				<executions>
 					<execution>
-						<phase>process-resources</phase>
+						<id>prepare-rules-resources</id>
+						<phase>generate-resources</phase>
 						<goals>
 							<goal>run</goal>
 						</goals>
 						<configuration>
-							<target>
-								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/java">
-									<fileset dir="${project.build.directory}/rules">
-										<include name="*/java/EC*.html" />
-										<include name="*/EC*.json" />
-									</fileset>
-									<flattenmapper />
-								</copy>
-								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/php">
-									<fileset dir="${project.build.directory}/rules">
-										<include name="*/php/EC*.html" />
-										<include name="*/EC*.json" />
-									</fileset>
-									<flattenmapper />
-								</copy>
-								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/python">
-									<fileset dir="${project.build.directory}/rules">
-										<include name="*/python/EC*.html" />
-										<include name="*/EC*.json" />
-									</fileset>
-									<flattenmapper />
-								</copy>
-								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/js">
-									<fileset dir="${project.build.directory}/rules">
-										<include name="*/js/EC*.html" />
-										<include name="*/EC*.json" />
-									</fileset>
-									<flattenmapper />
-								</copy>
-								<copy todir="${project.build.outputDirectory}/io/ecocode/rules/ts">
-									<fileset dir="${project.build.directory}/rules">
-										<include name="*/ts/EC*.html" />
-										<include name="*/EC*.json" />
-									</fileset>
-									<flattenmapper />
-								</copy>
-							</target>
+							<scripts>
+								<script>${project.basedir}/src/main/script/PrepareResources.jsh</script>
+							</scripts>
+							<options>
+								<option>-R "-DsourceDir=${project.build.directory}/rules-html"</option>
+								<option>-R "-DtargetDir=${project.build.outputDirectory}/io/ecocode/rules"</option>
+							</options>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<!--
+			<plugin><!--
 					This module produce one artifact by language (with corresponding classifier)
 					For example, to add rule specifications for Python language, add following dependency in python sonarqube plugin:
 
@@ -205,26 +136,38 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>assembly-js</id>
+						<id>assembly-javascript</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 						<configuration>
 							<descriptors>
-								<descriptor>${project.basedir}/src/main/assembly/js.xml</descriptor>
+								<descriptor>${project.basedir}/src/main/assembly/javascript.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>
 					<execution>
-						<id>assembly-ts</id>
+						<id>assembly-swift</id>
 						<phase>prepare-package</phase>
 						<goals>
 							<goal>single</goal>
 						</goals>
 						<configuration>
 							<descriptors>
-								<descriptor>${project.basedir}/src/main/assembly/ts.xml</descriptor>
+								<descriptor>${project.basedir}/src/main/assembly/swift.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-xml</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/xml.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>

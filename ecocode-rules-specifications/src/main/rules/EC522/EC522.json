@@ -1,0 +1,18 @@
+{
+  "title": "Sobriety: Brightness Override",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "20min"
+  },
+  "tags": [
+    "sobriety",
+    "environment",
+    "ecocode",
+    "android",
+    "eco-design"
+  ],
+  "ecoScore": "0.4",
+  "defaultSeverity": "Minor"
+}
