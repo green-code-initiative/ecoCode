@@ -147,6 +147,30 @@
 							</descriptors>
 						</configuration>
 					</execution>
+					<execution>
+						<id>assembly-swift</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/swift.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-xml</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/xml.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
 				</executions>
 				<configuration>
 					<appendAssemblyId>true</appendAssemblyId>
