@@ -59,7 +59,7 @@ Some are applicable for different technologies.
 
 This table lists rules proposed by the community but refused in ecoCode plugins with the justification.
 
-| Name                                     | Description                                                                                                                  | Language | Invalidation             |
-|------------|------------|------------|------------|
-| Use numpy array instead of standard list | The use of numpy library to perform array manipulation is more energy efficient than the use of the standard list functions. | Python   | [Github discussion with measures](https://github.com/green-code-initiative/ecoCode/issues/132) |
-| HTML page must contain a doctype tag | The difference in performance is negligible, this rule is more related to the user experience. | HTML | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/103) |
+| Language | Name                                     | Description                                                                                                                  | Invalidation                                                                                   |
+|----------|------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| Python   | Use numpy array instead of standard list | The use of numpy library to perform array manipulation is more energy efficient than the use of the standard list functions. | [Github discussion with measures](https://github.com/green-code-initiative/ecoCode/issues/132) |
+| HTML     | HTML page must contain a doctype tag     | The difference in performance is negligible, this rule is more related to the user experience.                               | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/103)  |
