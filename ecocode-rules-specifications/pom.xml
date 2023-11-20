@@ -14,6 +14,21 @@
 	<description>Repository that contains the specifications of every static-analysis rules available in ecoCode plugins.</description>
 	<url>https://github.com/green-code-initiative/ecoCode/tree/main/ecocode-rules-specifications</url>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+			<optional>true</optional> <!-- Do not expose this dependency to children -->
+			<exclusions>
+				<exclusion>
+					<groupId>*</groupId>
+					<artifactId>*</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin><!--

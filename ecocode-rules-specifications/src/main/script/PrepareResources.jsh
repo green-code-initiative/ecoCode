@@ -1,5 +1,9 @@
 //usr/bin/env jshell -v "$@" "$0"; exit $?
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -37,7 +41,7 @@ import static java.util.Optional.of;
         @Override
         public void run() {
             getResourcesToCopy().forEach(rule -> {
-                copyFile(rule.metadata, rule.getMetadataTargetPath(targetDir));
+                mergeAndCopyFile(rule.metadata, rule.specificMetadata, rule.getMetadataTargetPath(targetDir));
                 copyFile(rule.htmlDescription, rule.getHtmlDescriptionTargetPath(targetDir));
             });
         }
@@ -53,6 +57,40 @@ import static java.util.Optional.of;
             } catch (IOException e) {
                 throw new IllegalStateException(e);
             }
+        }
+
+        private void mergeAndCopyFile(Path source, Path merge, Path target) {
+            if (Files.isRegularFile(merge)) {
+                LOGGER.log(DEBUG, "Merge: {0} and {1} -> {2}", source, merge, target);
+                try (
+                    FileReader sourceReader = new FileReader(source.toFile());
+                    FileReader mergeReader = new FileReader(merge.toFile())
+                ) {
+                    JSONParser parser = new JSONParser();
+                    JSONObject sourceJson = (JSONObject) parser.parse(sourceReader);
+                    JSONObject mergeJson = (JSONObject) parser.parse(mergeReader);
+
+                    mergeJsonObjects(sourceJson, mergeJson);
+
+                    Files.createDirectories(target.getParent());
+                    Files.write(target, sourceJson.toString().getBytes());
+                } catch (IOException | ParseException e) {
+                    throw new RuntimeException("cannot process source " + source, e);
+                }
+            } else {
+                copyFile(source, target);
+            }
+        }
+
+        private void mergeJsonObjects(JSONObject object1, JSONObject object2) {
+            object2.forEach((key, value) -> {
+                Object element = object1.get(key);
+                if (element instanceof JSONObject && value instanceof JSONObject) {
+                    mergeJsonObjects((JSONObject) element, (JSONObject) value);
+                } else {
+                    object1.put(key, value);
+                }
+            });
         }
 
         private void copyFile(Path source, Path target) {
@@ -79,6 +117,7 @@ import static java.util.Optional.of;
                 }
                 final String ruleKey = matcher.group("ruleKey");
                 final Path metadata = htmlDescription.getParent().getParent().resolve(ruleKey + ".json");
+                final Path specificMetadata = htmlDescription.getParent().resolve(ruleKey + ".json");
 
                 if (!Files.isRegularFile(htmlDescription) || !Files.isRegularFile(metadata)) {
                     return empty();
@@ -87,18 +126,21 @@ import static java.util.Optional.of;
                 return of(new Rule(
                         matcher.group("language"),
                         htmlDescription,
-                        metadata
+                        metadata,
+                        specificMetadata
                 ));
             }
 
             private final String language;
             private final Path htmlDescription;
             private final Path metadata;
+            private final Path specificMetadata;
 
-            Rule(String language, Path htmlDescription, Path metadata) {
+            Rule(String language, Path htmlDescription, Path metadata, Path specificMetadata) {
                 this.language = language;
                 this.htmlDescription = htmlDescription;
                 this.metadata = metadata;
+                this.specificMetadata = specificMetadata;
             }
 
             Path getHtmlDescriptionTargetPath(Path targetDir) {
