@@ -74,7 +74,7 @@ public class AvoidSpringRepositoryCallInLoopOrStreamCheck extends IssuableSubscr
             if (STREAM_FOREACH_METHOD.matches(methodInvocationTree)) {
                 tree.accept(streamVisitor);
             }
-        } else { // loops process
+        } else { // loop process
             tree.accept(visitorInFile);
         }
     }
@@ -104,9 +104,10 @@ public class AvoidSpringRepositoryCallInLoopOrStreamCheck extends IssuableSubscr
 
         @Override
         public void visitMethodInvocation(MethodInvocationTree tree) {
+            // if the method is a spring repository method, report an issue
             if (SPRING_REPOSITORY_METHOD.matches(tree)) {
                 reportIssue(tree, RULE_MESSAGE);
-            } else {
+            } else { // else, check if the method is a method invocation and check recursively
                 if (tree.methodSelect().is(Tree.Kind.MEMBER_SELECT)) {
                     MemberSelectExpressionTree memberSelectTree = (MemberSelectExpressionTree) tree.methodSelect();
                     if ( memberSelectTree.expression().is(Tree.Kind.METHOD_INVOCATION)) {
