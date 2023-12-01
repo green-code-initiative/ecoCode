@@ -1,0 +1,17 @@
+{
+  "title": "Idleness: Keep CPU On",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "1h"
+  },
+  "tags": [
+    "idleness",
+    "environment",
+    "ecocode",
+    "android",
+    "eco-design"
+  ],
+  "defaultSeverity": "Major"
+}

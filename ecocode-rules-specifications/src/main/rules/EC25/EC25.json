@@ -1,0 +1,21 @@
+{
+  "title": "Do not use an image with empty source attribute",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "ecocode",
+    "eco-design",
+    "jsx",
+    "performance",
+    "react"
+  ],
+  "defaultSeverity": "Minor",
+  "compatibleLanguages": [
+    "JAVASCRIPT",
+    "TYPESCRIPT"
+  ]
+}

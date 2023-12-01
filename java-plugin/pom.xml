@@ -15,11 +15,18 @@
     <description>Provides rules to reduce the environmental footprint of your Java programs</description>
     <url>https://github.com/green-code-initiative/ecoCode/tree/main/java-plugin</url>
 
+    <properties>
+
+        <!-- temporary version waiting for real automatic release in ecocode repository -->
+        <ecocode-rules-specifications.version>0.0.6</ecocode-rules-specifications.version>
+
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>ecocode-rules-specifications</artifactId>
-            <version>${project.version}</version>
+            <version>${ecocode-rules-specifications.version}</version>
             <classifier>java</classifier>
         </dependency>
 
@@ -34,6 +41,11 @@
             <groupId>org.sonarsource.sonarqube</groupId>
             <artifactId>sonar-plugin-api</artifactId>
             <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.sonarsource.analyzer-commons</groupId>
+            <artifactId>sonar-analyzer-commons</artifactId>
         </dependency>
 
         <!-- for security on regex patterns : https://github.com/google/re2j -->

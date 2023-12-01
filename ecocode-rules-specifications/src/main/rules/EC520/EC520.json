@@ -1,0 +1,18 @@
+{
+  "title": "Power: Save Mode Awareness",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "0min"
+  },
+  "tags": [
+    "power",
+    "environment",
+    "ecocode",
+    "android",
+    "eco-design"
+  ],
+  "ecoScore": "1.0",
+  "defaultSeverity": "Info"
+}
