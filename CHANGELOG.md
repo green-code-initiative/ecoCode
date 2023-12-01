@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#140](https://github.com/green-code-initiative/ecoCode/issues/140) Upgrade rule EC3 for Python : no implementation possible for python
 - [#136](https://github.com/green-code-initiative/ecoCode/issues/136) Upgrade rule EC53 for Python : no implementation possible for python
 - [#128](https://github.com/green-code-initiative/ecoCode/pull/128) Adding EC35 rule for Python and PHP : EC35 rule replaces EC34 with a specific use case ("file not found" sepcific)
+- [#132](https://github.com/green-code-initiative/ecoCode/issues/132) Upgrade RULES.md: set proposed Python rule "Use numpy array instead of standard list" as refused with link to the justification
+- [#103](https://github.com/green-code-initiative/ecoCode/issues/103) Upgrade RULES.md: set proposed HTML rule "HTML page must contain a doctype tag" as refused with link to the justification
 - [#228](https://github.com/green-code-initiative/ecoCode/issues/228) Upgrade rule EC63 for java: Stop reporting caught exception even if unused
 
 ### Deleted
