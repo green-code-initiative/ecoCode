@@ -3,6 +3,7 @@
 !.gitignore
 !.gitattributes
 !.github/
+!.mvn/
 
 # Ignore generated files
 target
