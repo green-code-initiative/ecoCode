@@ -23,10 +23,7 @@ import java.util.List;
 import org.sonar.check.Rule;
 import org.sonar.plugins.java.api.IssuableSubscriptionVisitor;
 import org.sonar.plugins.java.api.semantic.MethodMatchers;
-import org.sonar.plugins.java.api.tree.BaseTreeVisitor;
-import org.sonar.plugins.java.api.tree.LambdaExpressionTree;
-import org.sonar.plugins.java.api.tree.MethodInvocationTree;
-import org.sonar.plugins.java.api.tree.Tree;
+import org.sonar.plugins.java.api.tree.*;
 import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 
 @Rule(key = "EC1")
@@ -56,6 +53,8 @@ public class AvoidSpringRepositoryCallInLoopOrStreamCheck extends IssuableSubscr
 
     private final AvoidSpringRepositoryCallInLoopCheckVisitor visitorInFile = new AvoidSpringRepositoryCallInLoopCheckVisitor();
     private final StreamVisitor streamVisitor = new StreamVisitor();
+
+    private final AncestorMethodVisitor ancestorMethodVisitor = new AncestorMethodVisitor();
 
     @Override
     public List<Tree.Kind> nodesToVisit() {
@@ -93,23 +92,31 @@ public class AvoidSpringRepositoryCallInLoopOrStreamCheck extends IssuableSubscr
     }
 
     private class StreamVisitor extends BaseTreeVisitor {
-        private final LambdaVisitor lambdaVisitor = new LambdaVisitor();
 
         @Override
         public void visitLambdaExpression(LambdaExpressionTree tree) {
-            tree.accept(lambdaVisitor);
+            tree.accept(ancestorMethodVisitor);
         }
 
     }
 
-    private class LambdaVisitor extends BaseTreeVisitor {
+    private class AncestorMethodVisitor extends BaseTreeVisitor {
 
         @Override
         public void visitMethodInvocation(MethodInvocationTree tree) {
             if (SPRING_REPOSITORY_METHOD.matches(tree)) {
                 reportIssue(tree, RULE_MESSAGE);
+            } else {
+                if (tree.methodSelect().is(Tree.Kind.MEMBER_SELECT)) {
+                    MemberSelectExpressionTree memberSelectTree = (MemberSelectExpressionTree) tree.methodSelect();
+                    if ( memberSelectTree.expression().is(Tree.Kind.METHOD_INVOCATION)) {
+                        MethodInvocationTree methodInvocationTree = (MethodInvocationTree) memberSelectTree.expression();
+                        methodInvocationTree.accept(ancestorMethodVisitor);
+                    }
+                }
             }
         }
 
     }
+
 }
