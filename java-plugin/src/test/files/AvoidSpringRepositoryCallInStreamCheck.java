@@ -32,7 +32,7 @@ public class AvoidSpringRepositoryCallInStreamCheck {
 
     public void smellGetAllEmployeesByIdsForEach() {
         List<Employee> employees = new ArrayList<>();
-        Stream stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         stream.forEach(id -> {
             Optional<Employee> employee = employeeRepository.findById(id); // Noncompliant {{Avoid Spring repository call in loop or stream}}
             if (employee.isPresent()) {
@@ -43,7 +43,7 @@ public class AvoidSpringRepositoryCallInStreamCheck {
 
     public void smellGetAllEmployeesByIdsForEachOrdered() {
         List<Employee> employees = new ArrayList<>();
-        Stream stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         stream.forEachOrdered(id -> {
             Optional<Employee> employee = employeeRepository.findById(id); // Noncompliant {{Avoid Spring repository call in loop or stream}}
             if (employee.isPresent()) {
@@ -52,48 +52,47 @@ public class AvoidSpringRepositoryCallInStreamCheck {
         });
     }
 
-    public void smellGetAllEmployeesByIdsMap() {
+    public List<Employee> smellGetAllEmployeesByIdsMap() {
         List<Employee> employees = new ArrayList<>();
-        Stream stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        stream.map(id -> {
-            Optional<Employee> employee = employeeRepository.findById(id); // Noncompliant {{Avoid Spring repository call in loop or stream}}
-            if (employee.isPresent()) {
-                employees.add(employee.get());
-            }
-        });
+        Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        return stream.map(id -> {
+                    Optional<Employee> employee = employeeRepository.findById(id); // Noncompliant {{Avoid Spring repository call in loop or stream}}
+                    if (employee.isPresent()) {
+                        employees.add(employee.get());
+                    }
+                })
+                .collect(Collectors.toList());
     }
 
-    public void smellGetAllEmployeesByIdsPeek() {
+    public List<Employee> smellGetAllEmployeesByIdsPeek() {
         List<Employee> employees = new ArrayList<>();
-        Stream stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-        stream.peek(id -> {
-            Optional<Employee> employee = employeeRepository.findById(id); // Noncompliant {{Avoid Spring repository call in loop or stream}}
-            if (employee.isPresent()) {
-                employees.add(employee.get());
-            }
-        });
+        Stream<Integer> stream = Stream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        return stream.peek(id -> {
+                    Optional<Employee> employee = employeeRepository.findById(id); // Noncompliant {{Avoid Spring repository call in loop or stream}}
+                    if (employee.isPresent()) {
+                        employees.add(employee.get());
+                    }
+                })
+                .collect(Collectors.toList());
     }
 
-    public List<Employee> smellGetAllEmployeesByIds(List<Integer> ids) {
+    public List<Employee> smellGetAllEmployeesByIdsWithOptional(List<Integer> ids) {
+        List<Employee> employees = new ArrayList<>();
         return ids
                 .stream()
                 .map(element -> {
-                    return employeeRepository.findById(element).orElse(null);// Noncompliant {{Avoid Spring repository call in loop or stream}}
+                    Employee empl = new Employee();
+                    employees.add(empl);
+                    return employeeRepository.findById(element).orElse(empl);// Noncompliant {{Avoid Spring repository call in loop or stream}}
                 })
                 .collect(Collectors.toList());
     }
 
     public List<Employee> smellGetAllEmployeesByIds(List<Integer> ids) {
-        Stream stream = ids.stream();
+        Stream<Integer> stream = ids.stream();
         return stream.map(element -> {
-                    return employeeRepository.findById(element).orElse(null);// Noncompliant {{Avoid Spring repository call in loop or stream}}
-                })
-                .collect(Collectors.toList());
-    }
-
-    public List<Employee> smellGetAllEmployeesByIds(List<Integer> ids) {
-        Stream stream = ids.stream();
-        return stream.map(element -> {
+                    Employee empl = new Employee();
+                    employees.add(empl);
                     return employeeRepository.findById(element);// Noncompliant {{Avoid Spring repository call in loop or stream}}
                 })
                 .collect(Collectors.toList());
@@ -104,22 +103,35 @@ public class AvoidSpringRepositoryCallInStreamCheck {
     }
 
     public List<Employee> smellDeleteEmployeeById(List<Integer> ids) {
-        Stream stream = ids.stream();
+        Stream<Integer> stream = ids.stream();
         return stream.map(element -> {
+                    Employee empl = new Employee();
+                    employees.add(empl);
                     return employeeRepository.deleteById(element);// Noncompliant {{Avoid Spring repository call in loop or stream}}
                 })
                 .collect(Collectors.toList());
     }
 
     public List<Employee> smellGetAllEmployeesByIdsWithSeveralMethods(List<Integer> ids) {
-        Stream stream = ids.stream();
+        Stream<Integer> stream = ids.stream();
         return stream.map(element -> {
-                    return employeeRepository.findById(element).orElse(null).anotherMethod().anotherOne();// Noncompliant {{Avoid Spring repository call in loop or stream}}
+                    Employee empl = new Employee();
+                    return employeeRepository.findById(element).orElse(empl).anotherMethod().anotherOne();// Noncompliant {{Avoid Spring repository call in loop or stream}}
                 })
                 .collect(Collectors.toList());
     }
 
     public class Employee {
+        private Integer id;
+        private String name;
+
+        public Employee(Integer id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        public Integer getId() { return id; }
+        public String getName() { return name; }
     }
 
     public interface EmployeeRepository extends JpaRepository<Employee, Integer> {

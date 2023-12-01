@@ -21,9 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-public class AvoidRepositoryCallInLoopCheck {
+public class AvoidSpringRepositoryCallInLoopCheck {
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -39,10 +38,20 @@ public class AvoidRepositoryCallInLoopCheck {
     }
 
     public class Employee {
+        private Integer id;
+        private String name;
+
+        public Employee(Integer id, String name) {
+            this.id = id;
+            this.name = name;
+        }
+
+        public Integer getId() { return id; }
+        public String getName() { return name; }
     }
 
     public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
     }
-    
+
 }
