@@ -12,7 +12,7 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-issue-stale: -1 # We don't want to address issues
-          days-before-pr-stale: 30
+          days-before-pr-stale: 60
           days-before-issue-close: -1 # We don't want to close issues in this action
           days-before-pr-close: -1 # We don't want to close PR in this action
           stale-pr-label: stale
