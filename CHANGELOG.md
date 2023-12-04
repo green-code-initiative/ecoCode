@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#185](https://github.com/green-code-initiative/ecoCode/issues/185) Add build number to manifest
 - [#216](https://github.com/green-code-initiative/ecoCode/issues/216) Upgrade rule EC2 for Java : Multiple if-else statement improvment
 - [#225](https://github.com/green-code-initiative/ecoCode/pull/225) Upgrade licence system and licence headers of Java files
-- [#247](https://github.com/green-code-initiative/ecoCode/issues/247) Disable EC2 rule for float and double comparison for java language
+- [#247](https://github.com/green-code-initiative/ecoCode/issues/247) Upgrade rule EC2 for Java : float and double types deleted because of non compatibility with rule
 
 ## [1.4.0] - 2023-08-08
 
