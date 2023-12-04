@@ -1,8 +1,12 @@
 //usr/bin/env jshell -v "$@" "$0"; exit $?
 
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
+import jakarta.json.Json;
+import jakarta.json.JsonMergePatch;
+import jakarta.json.JsonObject;
+import jakarta.json.JsonReader;
+import jakarta.json.JsonValue;
+import jakarta.json.JsonWriter;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -26,7 +30,7 @@ import static java.util.Optional.of;
         private final Path sourceDir;
         private final Path targetDir;
 
-        public static void main(String... args) throws Exception {
+        public static void main(String... args) {
             new PrepareResources(
                     Path.of(Objects.requireNonNull(System.getProperty("sourceDir"), "system property: sourceDir")),
                     Path.of(Objects.requireNonNull(System.getProperty("targetDir"), "system property: targetDir"))
@@ -41,7 +45,7 @@ import static java.util.Optional.of;
         @Override
         public void run() {
             getResourcesToCopy().forEach(rule -> {
-                mergeAndCopyFile(rule.metadata, rule.specificMetadata, rule.getMetadataTargetPath(targetDir));
+                mergeAndCopyJsonMetadata(rule.metadata, rule.specificMetadata, rule.getMetadataTargetPath(targetDir));
                 copyFile(rule.htmlDescription, rule.getHtmlDescriptionTargetPath(targetDir));
             });
         }
@@ -59,38 +63,30 @@ import static java.util.Optional.of;
             }
         }
 
-        private void mergeAndCopyFile(Path source, Path merge, Path target) {
+        private void mergeAndCopyJsonMetadata(Path source, Path merge, Path target) {
             if (Files.isRegularFile(merge)) {
                 LOGGER.log(DEBUG, "Merge: {0} and {1} -> {2}", source, merge, target);
+
                 try (
-                    FileReader sourceReader = new FileReader(source.toFile());
-                    FileReader mergeReader = new FileReader(merge.toFile())
+                        JsonReader sourceJsonReader = Json.createReader(Files.newBufferedReader(source));
+                        JsonReader mergeJsonReader = Json.createReader(Files.newBufferedReader(merge));
+                        JsonWriter resultJsonWriter = Json.createWriter(Files.newBufferedWriter(target));
                 ) {
-                    JSONParser parser = new JSONParser();
-                    JSONObject sourceJson = (JSONObject) parser.parse(sourceReader);
-                    JSONObject mergeJson = (JSONObject) parser.parse(mergeReader);
-
-                    mergeJsonObjects(sourceJson, mergeJson);
-
                     Files.createDirectories(target.getParent());
-                    Files.write(target, sourceJson.toString().getBytes());
-                } catch (IOException | ParseException e) {
+
+                    JsonObject sourceJson = sourceJsonReader.readObject();
+                    JsonObject mergeJson = mergeJsonReader.readObject();
+
+                    JsonMergePatch mergePatch = Json.createMergePatch(mergeJson);
+                    JsonValue result = mergePatch.apply(sourceJson);
+
+                    resultJsonWriter.write(result);
+                } catch (IOException e) {
                     throw new RuntimeException("cannot process source " + source, e);
                 }
             } else {
                 copyFile(source, target);
             }
-        }
-
-        private void mergeJsonObjects(JSONObject object1, JSONObject object2) {
-            object2.forEach((key, value) -> {
-                Object element = object1.get(key);
-                if (element instanceof JSONObject && value instanceof JSONObject) {
-                    mergeJsonObjects((JSONObject) element, (JSONObject) value);
-                } else {
-                    object1.put(key, value);
-                }
-            });
         }
 
         private void copyFile(Path source, Path target) {

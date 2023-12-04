@@ -14,21 +14,6 @@
 	<description>Repository that contains the specifications of every static-analysis rules available in ecoCode plugins.</description>
 	<url>https://github.com/green-code-initiative/ecoCode/tree/main/ecocode-rules-specifications</url>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-			<version>1.1.1</version>
-			<optional>true</optional> <!-- Do not expose this dependency to children -->
-			<exclusions>
-				<exclusion>
-					<groupId>*</groupId>
-					<artifactId>*</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin><!--
@@ -98,6 +83,21 @@
 						</configuration>
 					</execution>
 				</executions>
+
+				<dependencies>
+					<dependency>
+						<groupId>jakarta.json</groupId>
+						<artifactId>jakarta.json-api</artifactId>
+						<version>2.1.2</version>
+					</dependency>
+
+					<dependency>
+						<groupId>org.glassfish</groupId>
+						<artifactId>jakarta.json</artifactId>
+						<version>2.0.1</version>
+						<classifier>module</classifier>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin><!--
 					This module produce one artifact by language (with corresponding classifier)
