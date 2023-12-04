@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+### Changed
+
+### Deleted
+
+## [1.4.1] - 2023-12-04
+
 ### Changed
 
 - [android#67](https://github.com/green-code-initiative/ecoCode-android/issues/67) Move Android rules into centralized rules repository
@@ -173,7 +181,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.0...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.1...HEAD
+
+[1.4.1]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.0...v1.4.1
 
 [1.4.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.3.1...v1.4.0
 
