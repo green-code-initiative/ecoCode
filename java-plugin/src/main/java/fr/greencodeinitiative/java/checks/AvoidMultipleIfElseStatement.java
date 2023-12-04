@@ -180,7 +180,9 @@ public class AvoidMultipleIfElseStatement extends IssuableSubscriptionVisitor {
      * @param pLevel the level of structure
      */
     private void computeVariables(IdentifierTree pVarIdTree, int pLevel) {
-        if (pVarIdTree.is(Kind.IDENTIFIER)) {
+        if (pVarIdTree.is(Kind.IDENTIFIER)
+                && !pVarIdTree.symbolType().is("float")
+                && !pVarIdTree.symbolType().is("double")) {
             // increment the variable counter to list of all variables
             int nbUsed = variablesStruct.incrementVariableUsageForLevel(pVarIdTree.name(), pLevel);
 
@@ -217,18 +219,21 @@ public class AvoidMultipleIfElseStatement extends IssuableSubscriptionVisitor {
      */
     private void computeElseVariables(StatementTree pElseTree, int pLevel) {
 
-        for (Map.Entry<String, Integer> entry : variablesStruct.getVariablesForCurrentIfStruct(pLevel).entrySet()) {
-            String variableName = entry.getKey();
+        Map<String, Integer> mapVar = variablesStruct.getVariablesForCurrentIfStruct(pLevel);
+        if (mapVar != null) {
+            for (Map.Entry<String, Integer> entry : mapVar.entrySet()) {
+                String variableName = entry.getKey();
 
-            // increment usage of all variables in the same level of ELSE staetement
-            int nbUsed = variablesStruct.incrementVariableUsageForLevel(variableName, pLevel);
+                // increment usage of all variables in the same level of ELSE staetement
+                int nbUsed = variablesStruct.incrementVariableUsageForLevel(variableName, pLevel);
 
-            // increment variable counter to list of variables already declared for current if or elseif struture
-            variablesStruct.incrementVariableUsageForLevelForCurrentIfStruct(variableName, pLevel);
+                // increment variable counter to list of variables already declared for current if or elseif struture
+                variablesStruct.incrementVariableUsageForLevelForCurrentIfStruct(variableName, pLevel);
 
-            // raise an error if maximum
-            if (nbUsed > NB_MAX_VARIABLE_USAGE) {
-                reportIssue(pElseTree, ERROR_MESSAGE);
+                // raise an error if maximum
+                if (nbUsed > NB_MAX_VARIABLE_USAGE) {
+                    reportIssue(pElseTree, ERROR_MESSAGE);
+                }
             }
         }
     }

@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#132](https://github.com/green-code-initiative/ecoCode/issues/132) Upgrade RULES.md: set proposed Python rule "Use numpy array instead of standard list" as refused with link to the justification
 - [#103](https://github.com/green-code-initiative/ecoCode/issues/103) Upgrade RULES.md: set proposed HTML rule "HTML page must contain a doctype tag" as refused with link to the justification
 - [#112](https://github.com/green-code-initiative/ecoCode/issues/112) Updating EC1 rule to add controls on streams
+- [#247](https://github.com/green-code-initiative/ecoCode/issues/247) Disable EC2 rule for float and double comparison for java language
 
 ### Deleted
 
