@@ -1,4 +1,4 @@
-The use of Spring repository in a loop induces unnecessary calculations by the CPU and therefore superfluous
+The use of Spring repository in a loop induces unnecessary calculations by the CPU and therefore superfluous energy consumption.
 Also, the use of Spring repository in a stream operation like "peek, forEach, forEachOrdered, map" induces unnecessary multiple access to the database instead of single batch call.
 
 ## Noncompliant Code Example
