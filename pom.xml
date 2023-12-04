@@ -79,9 +79,7 @@
     </developers>
 
     <modules>
-        <!-- temporary modifications only to release ecocode java plugin -->
-        <!-- <module>ecocode-rules-specifications</module> -->
-        <!-- END temporary modifications -->
+        <module>ecocode-rules-specifications</module>
         <module>java-plugin</module>
     </modules>
 
