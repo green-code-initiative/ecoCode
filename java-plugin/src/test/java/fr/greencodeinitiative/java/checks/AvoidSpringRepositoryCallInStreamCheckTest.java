@@ -21,12 +21,12 @@ import fr.greencodeinitiative.java.utils.FilesUtils;
 import org.junit.jupiter.api.Test;
 import org.sonar.java.checks.verifier.CheckVerifier;
 
-class AvoidSpringRepositoryCallInLoopCheckTest {
+class AvoidSpringRepositoryCallInStreamCheckTest {
 
     @Test
     void test() {
         CheckVerifier.newVerifier()
-                .onFile("src/test/files/AvoidSpringRepositoryCallInLoopCheck.java")
+                .onFile("src/test/files/AvoidSpringRepositoryCallInStreamCheck.java")
                 .withCheck(new AvoidSpringRepositoryCallInLoopOrStreamCheck())
                 .withClassPath(FilesUtils.getClassPath("target/test-jars"))
                 .verifyIssues();
