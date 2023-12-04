@@ -1,6 +1,12 @@
 {
   "title": "Prefer API collections with pagination.",
   "type": "CODE_SMELL",
+  "code": {
+    "impacts": {
+      "MAINTAINABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  },
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
@@ -12,7 +18,7 @@
     "nestjs",
     "performance"
   ],
-  "defaultSeverity": "Minor",
+  "defaultSeverity": "Major",
   "compatibleLanguages": [
     "TYPESCRIPT"
   ]
