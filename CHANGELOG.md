@@ -7,21 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- [#224](https://github.com/green-code-initiative/ecoCode/issues/224) Add Swift rules from ecocode-ios to ecocode-rules-specifications
+
 ### Changed
 
-- [#224](https://github.com/green-code-initiative/ecoCode/issues/224) Add Swift rules from ecocode-ios
+### Deleted
+
+## [1.4.1] - 2023-12-04
+
+### Changed
+
 - [ios#3](https://github.com/green-code-initiative/ecoCode-ios/issues/3) Move iOS rules into centralized rules repository
 - [android#67](https://github.com/green-code-initiative/ecoCode-android/issues/67) Move Android rules into centralized rules repository
-- [#216](https://github.com/green-code-initiative/ecoCode/issues/216) Upgrade rule EC2 for Java : Multiple if-else statement improvment
+- [ios#3](https://github.com/green-code-initiative/ecoCode-ios/issues/3) Move iOS rules into centralized rules repository
+- [#103](https://github.com/green-code-initiative/ecoCode/issues/103) Upgrade RULES.md: set proposed HTML rule "HTML page must contain a doctype tag" as refused with link to the justification
 - [#106](https://github.com/green-code-initiative/ecoCode/issues/106) Upgrade RULES.md : rule EC67 not relevant neither for Python nor Rust
-- [#225](https://github.com/green-code-initiative/ecoCode/pull/225) Upgrade licence system and licence headers of Java files
-- [#140](https://github.com/green-code-initiative/ecoCode/issues/140) Upgrade rule EC3 for Python : no implementation possible for python
-- [#136](https://github.com/green-code-initiative/ecoCode/issues/136) Upgrade rule EC53 for Python : no implementation possible for python
+- [#112](https://github.com/green-code-initiative/ecoCode/issues/112) Updating EC1 rule to add controls on streams
 - [#128](https://github.com/green-code-initiative/ecoCode/pull/128) Adding EC35 rule for Python and PHP : EC35 rule replaces EC34 with a specific use case ("file not found" sepcific)
 - [#132](https://github.com/green-code-initiative/ecoCode/issues/132) Upgrade RULES.md: set proposed Python rule "Use numpy array instead of standard list" as refused with link to the justification
-- [#103](https://github.com/green-code-initiative/ecoCode/issues/103) Upgrade RULES.md: set proposed HTML rule "HTML page must contain a doctype tag" as refused with link to the justification
-
-### Deleted
+- [#136](https://github.com/green-code-initiative/ecoCode/issues/136) Upgrade rule EC53 for Python : no implementation possible for python
+- [#140](https://github.com/green-code-initiative/ecoCode/issues/140) Upgrade rule EC3 for Python : no implementation possible for python
+- [#185](https://github.com/green-code-initiative/ecoCode/issues/185) Add build number to manifest
+- [#216](https://github.com/green-code-initiative/ecoCode/issues/216) Upgrade rule EC2 for Java : Multiple if-else statement improvment
+- [#225](https://github.com/green-code-initiative/ecoCode/pull/225) Upgrade licence system and licence headers of Java files
+- [#247](https://github.com/green-code-initiative/ecoCode/issues/247) Upgrade rule EC2 for Java : float and double types deleted because of non compatibility with rule
 
 ## [1.4.0] - 2023-08-08
 
@@ -40,8 +51,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - [#207](https://github.com/green-code-initiative/ecoCode/issues/207) Add release tag analyzis on SonarCloud
-
-### Changed
 
 ### Deleted
 
@@ -175,7 +184,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.0...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.1...HEAD
+
+[1.4.1]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.0...v1.4.1
 
 [1.4.0]: https://github.com/green-code-initiative/ecoCode/compare/v1.3.1...v1.4.0
 

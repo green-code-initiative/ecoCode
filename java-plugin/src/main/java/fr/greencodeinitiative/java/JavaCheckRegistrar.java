@@ -28,7 +28,7 @@ import fr.greencodeinitiative.java.checks.AvoidMultipleIfElseStatement;
 import fr.greencodeinitiative.java.checks.AvoidRegexPatternNotStatic;
 import fr.greencodeinitiative.java.checks.AvoidSQLRequestInLoop;
 import fr.greencodeinitiative.java.checks.AvoidSetConstantInBatchUpdate;
-import fr.greencodeinitiative.java.checks.AvoidSpringRepositoryCallInLoopCheck;
+import fr.greencodeinitiative.java.checks.AvoidSpringRepositoryCallInLoopOrStreamCheck;
 import fr.greencodeinitiative.java.checks.AvoidStatementForDMLQueries;
 import fr.greencodeinitiative.java.checks.AvoidUsageOfStaticCollections;
 import fr.greencodeinitiative.java.checks.AvoidUsingGlobalVariablesCheck;
@@ -60,7 +60,7 @@ public class JavaCheckRegistrar implements CheckRegistrar {
             AvoidRegexPatternNotStatic.class,
             NoFunctionCallWhenDeclaringForLoop.class,
             AvoidStatementForDMLQueries.class,
-            AvoidSpringRepositoryCallInLoopCheck.class,
+            AvoidSpringRepositoryCallInLoopOrStreamCheck.class,
             AvoidSQLRequestInLoop.class,
             AvoidFullSQLRequest.class,
             UseCorrectForLoop.class,

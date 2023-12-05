@@ -4,7 +4,7 @@
 
     <groupId>io.ecocode</groupId>
     <artifactId>ecocode-parent</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.4.2-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>ecoCode Sonar Plugins Project</name>
@@ -114,7 +114,7 @@
 
         <sonar-analyzer-commons.version>2.5.0.1358</sonar-analyzer-commons.version>
 
-        <sonar-packaging.version>1.21.0.505</sonar-packaging.version>
+        <sonar-packaging.version>1.23.0.740</sonar-packaging.version>
         <sonar.skipDependenciesPackaging>true</sonar.skipDependenciesPackaging>
 
         <junit.jupiter.version>5.9.1</junit.jupiter.version>
