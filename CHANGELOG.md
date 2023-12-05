@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deleted
+
+## [1.4.2] - 2023-12-05
+
+### Added
+
 - [#224](https://github.com/green-code-initiative/ecoCode/issues/224) Add Swift rules from ecocode-ios to ecocode-rules-specifications
 
 ### Changed
@@ -188,7 +196,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.1...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.2...HEAD
+
+[1.4.2]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.1...v1.4.2
 
 [1.4.1]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.0...v1.4.1
 
