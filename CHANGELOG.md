@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+- [#243](https://github.com/green-code-initiative/ecoCode/pull/243) Deprecate rule EC4 for Java because not applicable
+
 ## [1.4.1] - 2023-12-04
 
 ### Changed
