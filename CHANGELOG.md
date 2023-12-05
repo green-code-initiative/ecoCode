@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [#224](https://github.com/green-code-initiative/ecoCode/issues/224) Add Swift rules from ecocode-ios to ecocode-rules-specifications
+
 ### Changed
 
 ### Deleted
@@ -17,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [ios#3](https://github.com/green-code-initiative/ecoCode-ios/issues/3) Move iOS rules into centralized rules repository
 - [android#67](https://github.com/green-code-initiative/ecoCode-android/issues/67) Move Android rules into centralized rules repository
 - [ios#3](https://github.com/green-code-initiative/ecoCode-ios/issues/3) Move iOS rules into centralized rules repository
 - [#103](https://github.com/green-code-initiative/ecoCode/issues/103) Upgrade RULES.md: set proposed HTML rule "HTML page must contain a doctype tag" as refused with link to the justification
