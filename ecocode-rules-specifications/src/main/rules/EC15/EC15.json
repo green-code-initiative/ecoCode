@@ -1,0 +1,20 @@
+{
+    "title": "Setting a tolerance for timers will allow them to fire later than the scheduled fire date.",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "1min"
+    },
+    "tags": [
+      "eco-design",
+      "environment",
+      "idleness",
+      "ecocode"
+    ],
+    "defaultSeverity": "Major",
+    "compatibleLanguages": [
+      "SWIFT"
+    ]
+  }
+  
