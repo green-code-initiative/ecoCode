@@ -79,7 +79,7 @@
     </developers>
 
     <modules>
-        <module>ecocode-rules-specifications</module>
+        <!-- <module>ecocode-rules-specifications</module> -->
         <module>java-plugin</module>
     </modules>
 
