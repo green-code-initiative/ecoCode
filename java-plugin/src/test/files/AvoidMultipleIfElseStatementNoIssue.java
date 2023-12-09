@@ -244,4 +244,31 @@ class AvoidMultipleIfElseStatementCheckNoIssue {
         return nb1;
     }
 
+    // COMPLIANT
+    // USE CASE : Compliant use case to check if following is OK :
+    // - usage of the same variable on different levels of IF statements but with instanceof keys
+    // - with a variable used 4 times
+    public int shouldBeCompliantBecauseVariableUsed4TimesWithInstanceOfKeys()
+    {
+        int nb1 = 0;
+        Object obj = new Object();
+
+        if (obj instanceof String) {
+            nb1 = 1;
+        } else {
+            if (obj instanceof Integer) {
+                nb1 = 2;
+            } else {
+                if (obj instanceof Double) {
+                    nb1 = 3;
+                } else {
+                    nb1 = 4;
+                }
+            }
+        }
+
+        return nb1;
+    }
+
+
 }
