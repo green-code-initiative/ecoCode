@@ -60,10 +60,11 @@ Some are applicable for different technologies.
 
 This table lists rules proposed by the community but deprecated in ecoCode plugins with the justification. These rules will be completely deleted in next releases and moved to bottom deleted rules array.
 
-| Rule key | Language            | Name                                | Description                                                                                                                | Invalidation                                                                                   |
-|----------|---------------------|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
-| EC34     | Java / Python / PHP | Using try...catch...finally calls   | Implementation is too simple (only detection of presence of "try" statement) AND replaced by `EC35` rule                   | Github discussion with measures : [general/java](https://github.com/green-code-initiative/ecoCode/pull/128) / [python](https://github.com/green-code-initiative/ecoCode-python/pull/6) / [php](https://github.com/green-code-initiative/ecoCode-php/pull/10)|
-| EC4      | Java                | Avoid using global variables        | Global variables do not exist in Java.                                                                                     | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/233)  |
+| Rule key | Language            | Name                               | Description                                                                                              | Invalidation                                                                                   |
+|----------|---------------------|------------------------------------|----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| EC34     | Java / Python / PHP | Using try...catch...finally calls  | Implementation is too simple (only detection of presence of "try" statement) AND replaced by `EC35` rule | Github discussion with measures : [general/java](https://github.com/green-code-initiative/ecoCode/pull/128) / [python](https://github.com/green-code-initiative/ecoCode-python/pull/6) / [php](https://github.com/green-code-initiative/ecoCode-php/pull/10)|
+| EC4      | Java                | Avoid using global variables       | Global variables do not exist in Java.                                                                   | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/233)  |
+| EC75     | Java                | Concatenate Strings in loop        | Optimizations on Java concatenation Strings are useless since JDK8                                       | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/246)  |
 
 ## Refused / Deleted rules
 

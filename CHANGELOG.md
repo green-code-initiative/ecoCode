@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+- [#243](https://github.com/green-code-initiative/ecoCode/pull/243) Deprecate rule EC63 for Java because not applicable since JDK8
+
 ## [1.4.2] - 2023-12-05
 
 ### Added
