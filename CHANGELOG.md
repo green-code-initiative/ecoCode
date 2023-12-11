@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+- [#240](https://github.com/green-code-initiative/ecoCode/issues/240) Deprecate rule EC53 for Java because of no good arguments and not enough green measures
 - [#258](https://github.com/green-code-initiative/ecoCode/pull/258) Deprecate rule EC63 for Java because there are already 3 native Sonarqube rules that cover the same use cases
 
 ## [1.4.2] - 2023-12-05
