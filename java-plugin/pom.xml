@@ -5,7 +5,7 @@
     <parent>
         <groupId>io.ecocode</groupId>
         <artifactId>ecocode-parent</artifactId>
-        <version>1.4.1-SNAPSHOT</version>
+        <version>1.4.3-SNAPSHOT</version>
     </parent>
 
     <artifactId>ecocode-java-plugin</artifactId>
@@ -18,7 +18,7 @@
     <properties>
 
         <!-- temporary version waiting for real automatic release in ecocode repository -->
-        <ecocode-rules-specifications.version>0.0.6</ecocode-rules-specifications.version>
+        <ecocode-rules-specifications.version>0.0.9</ecocode-rules-specifications.version>
 
     </properties>
 
@@ -89,17 +89,39 @@
                 <extensions>true</extensions>
                 <configuration>
                     <pluginKey>ecocodejava</pluginKey>
-                    <pluginName>${project.name}</pluginName>
                     <pluginClass>fr.greencodeinitiative.java.JavaPlugin</pluginClass>
                     <sonarLintSupported>true</sonarLintSupported>
-                    <sonarQubeMinVersion>${sonarqube.version}</sonarQubeMinVersion>
+                    <pluginApiMinVersion>${sonarqube.version}</pluginApiMinVersion>
                     <jreMinVersion>${java.version}</jreMinVersion>
+                    <archive>
+                        <manifestEntries>
+                            <Implementation-Build>${buildNumber}</Implementation-Build>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
             <plugin>
                 <!-- shade plugin configuration is on parent pom.xml because of use for other modules -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <!-- plugin to generate a unique build number for sonar-packaging-maven-plugin : usage of buildNumber variable -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+                    <revisionOnScmFailure>0</revisionOnScmFailure>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>

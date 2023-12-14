@@ -27,7 +27,7 @@ class AvoidSpringRepositoryCallInLoopCheckTest {
     void test() {
         CheckVerifier.newVerifier()
                 .onFile("src/test/files/AvoidSpringRepositoryCallInLoopCheck.java")
-                .withCheck(new AvoidSpringRepositoryCallInLoopCheck())
+                .withCheck(new AvoidSpringRepositoryCallInLoopOrStreamCheck())
                 .withClassPath(FilesUtils.getClassPath("target/test-jars"))
                 .verifyIssues();
     }

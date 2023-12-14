@@ -1,0 +1,20 @@
+{
+    "title": "Do not force brightness in your code, unless absolutely necessary.",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "5min"
+    },
+    "tags": [
+      "eco-design",
+      "environment",
+      "sobriety",
+      "ecocode"
+    ],
+    "defaultSeverity": "Major",
+    "compatibleLanguages": [
+      "SWIFT"
+    ]
+  }
+  

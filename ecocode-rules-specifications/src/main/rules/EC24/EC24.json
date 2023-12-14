@@ -1,10 +1,16 @@
 {
   "title": "Limit the number of returns for a SQL query",
   "type": "CODE_SMELL",
+  "code": {
+    "impacts": {
+      "MAINTAINABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  },
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
-    "constantCost": "5min"
+    "constantCost": "15min"
   },
   "tags": [
     "ecocode",
@@ -12,7 +18,7 @@
     "performance",
     "sql"
   ],
-  "defaultSeverity": "Minor",
+  "defaultSeverity": "Major",
   "compatibleLanguages": [
     "JAVASCRIPT",
     "TYPESCRIPT"
