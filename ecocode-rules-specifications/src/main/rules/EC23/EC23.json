@@ -1,0 +1,20 @@
+{
+    "title": "Turning on the torch mode programmatically must absolutely be avoided because the flashlight is one of the most energy-intensive component.",
+    "type": "CODE_SMELL",
+    "status": "ready",
+    "remediation": {
+      "func": "Constant\/Issue",
+      "constantCost": "5min"
+    },
+    "tags": [
+      "eco-design",
+      "environment",
+      "sobriety",
+      "ecocode"
+    ],
+    "defaultSeverity": "Major",
+    "compatibleLanguages": [
+      "SWIFT"
+    ]
+  }
+  

@@ -1,5 +1,5 @@
 {
-  "title": "Avoid Spring repository call in loop",
+  "title": "Avoid Spring repository call in loop or stream operations",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {

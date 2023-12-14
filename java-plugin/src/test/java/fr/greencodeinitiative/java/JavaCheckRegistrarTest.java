@@ -33,6 +33,7 @@ class JavaCheckRegistrarTest {
 
         assertThat(context.checkClasses()).hasSize(19);
         assertThat(context.testCheckClasses()).isEmpty();
+
     }
 
 }

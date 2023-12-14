@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.ecocode</groupId>
 		<artifactId>ecocode-parent</artifactId>
-		<version>1.4.1-SNAPSHOT</version>
+		<version>1.4.3-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>ecocode-rules-specifications</artifactId>
@@ -83,6 +83,21 @@
 						</configuration>
 					</execution>
 				</executions>
+
+				<dependencies>
+					<dependency>
+						<groupId>jakarta.json</groupId>
+						<artifactId>jakarta.json-api</artifactId>
+						<version>2.1.2</version>
+					</dependency>
+
+					<dependency>
+						<groupId>org.glassfish</groupId>
+						<artifactId>jakarta.json</artifactId>
+						<version>2.0.1</version>
+						<classifier>module</classifier>
+					</dependency>
+				</dependencies>
 			</plugin>
 			<plugin><!--
 					This module produce one artifact by language (with corresponding classifier)

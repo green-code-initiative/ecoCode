@@ -27,6 +27,13 @@ import org.sonarsource.analyzer.commons.annotations.DeprecatedRuleKey;
 import javax.annotation.CheckForNull;
 import java.util.*;
 
+/**
+ * @deprecated not applicable because of existing Sonarqube native rules :
+ * - unused variable : https://rules.sonarsource.com/java/tag/unused/RSPEC-1481/
+ * - useless assignment : https://rules.sonarsource.com/java/tag/unused/RSPEC-1854
+ * - immediately return : https://rules.sonarsource.com/java/RSPEC-1488/
+ */
+@Deprecated(forRemoval = true)
 @Rule(key = "EC63")
 @DeprecatedRuleKey(repositoryKey = "greencodeinitiative-java", ruleKey = "S63")
 public class UnnecessarilyAssignValuesToVariables extends BaseTreeVisitor implements JavaFileScanner {
