@@ -18,7 +18,7 @@
     <properties>
 
         <!-- temporary version waiting for real automatic release in ecocode repository -->
-        <ecocode-rules-specifications.version>0.0.9</ecocode-rules-specifications.version>
+        <ecocode-rules-specifications.version>0.0.10</ecocode-rules-specifications.version>
 
     </properties>
 
