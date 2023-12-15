@@ -1,10 +1,15 @@
+*This rule is deprecated because not applicable to Java since JDK8, and will be removed soon.*
+
+== Why is this an issue?
+
 Don't concatenate Strings in loop. Use `StringBuilder instead.
 
 Strings are immutable so each time you concatenate a String, a new String is created. This is a waste of memory and CPU.
 
-## Noncompliant Code Example
+== Noncompliant Code Example
 
-```java
+[source,java]
+----
 public String concatenateStrings(String[] strings) {
     String result = "";
 
@@ -22,11 +27,12 @@ public String concatenateStrings2() {
     }
     return result;
 }
-```
+----
 
-## Compliant Solution
+== Compliant Solution
 
-```java
+[source,java]
+----
 public String concatenateStrings(String[] strings) {
     StringBuilder result = new StringBuilder();
 
@@ -35,4 +41,4 @@ public String concatenateStrings(String[] strings) {
     }
     return result.toString();
 }
-```
+----
