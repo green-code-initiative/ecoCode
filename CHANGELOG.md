@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#123](https://github.com/green-code-initiative/ecoCode/issues/123) Complete resources for EC7 rule for Python and Java language
+
 ### Deleted
 
 - [#4](https://github.com/green-code-initiative/ecoCode-python/issues/4) Deprecate rule EC66 for Python because not applicable (see details inside issue)
