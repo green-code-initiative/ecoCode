@@ -21,7 +21,7 @@ services:
       - "extensions:/opt/sonarqube/extensions"
       - "logs:/opt/sonarqube/logs"
       - "data:/opt/sonarqube/data"
-
+    restart: unless-stopped
   db:
     image: postgres:12
     container_name: postgresql_ecocode
@@ -34,6 +34,7 @@ services:
       POSTGRES_PASSWORD: sonar
       POSTGRES_DB: sonarqube
       PGDATA: pg_data:/var/lib/postgresql/data/pgdata
+    restart: unless-stopped
 
 networks:
   sonarnet:
