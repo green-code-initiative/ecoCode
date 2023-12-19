@@ -4,7 +4,7 @@
 
     <groupId>io.ecocode</groupId>
     <artifactId>ecocode-parent</artifactId>
-    <version>1.4.4-SNAPSHOT</version>
+    <version>1.4.3-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>ecoCode Sonar Plugins Project</name>
@@ -79,7 +79,7 @@
     </developers>
 
     <modules>
-        <!-- <module>ecocode-rules-specifications</module> -->
+        <module>ecocode-rules-specifications</module>
         <module>java-plugin</module>
     </modules>
 
