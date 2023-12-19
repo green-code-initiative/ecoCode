@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deleted
+
+## [1.4.3] - 2023-12-19
+
+### Added
+
 - [#248](https://github.com/green-code-initiative/ecoCode/issues/248) EC2 : Add tests to prove there is no problem with 'instanceof' operator
 
 ### Changed
@@ -206,7 +214,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.2...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.3...HEAD
+
+[1.4.3]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.2...v1.4.3
 
 [1.4.2]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.1...v1.4.2
 
