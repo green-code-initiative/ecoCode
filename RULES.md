@@ -59,10 +59,10 @@ Some are applicable for different technologies.
 This table lists rules proposed by the community but they have to be reworked / measured / clarified before being implemented in ecoCode plugins.
 (Issues and PR are closed, but they can be reopen once rework launched)
 
-| Rule key | Language | Name                                     | Description                                                                           | Invalidation                                                                                                                                                                     |
-|----------|----------|------------------------------------------|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| EC22     | Java     | The use of methods for basic operations  | We have to measure this rule for Java before accepting the implementation             | [Github discussion - issue](https://github.com/green-code-initiative/ecoCode/issues/131)<br/>[Github discussion - PR](https://github.com/green-code-initiative/ecoCode/pull/148) |
-| CRJVM204 | Java     | The use of methods for basic operations  | We have to clarify and rework this rule for Java before accepting the implementation  | [Github discussion - issue](https://github.com/green-code-initiative/ecoCode/issues/105)<br/>[Github discussion - PR](https://github.com/green-code-initiative/ecoCode/pull/153) |
+| Rule key | Language | Name                                    | Description                                                                           | Invalidation                                                                                                                                                                     |
+|----------|----------|-----------------------------------------|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| EC22     | Java     | The use of methods for basic operations | We have to measure this rule for Java before accepting the implementation             | [Github discussion - issue](https://github.com/green-code-initiative/ecoCode/issues/131)<br/>[Github discussion - PR](https://github.com/green-code-initiative/ecoCode/pull/148) |
+| CRJVM204 | Java     | Detect unoptimized file formats         | We have to clarify and rework this rule for Java before accepting the implementation  | [Github discussion - issue](https://github.com/green-code-initiative/ecoCode/issues/105)<br/>[Github discussion - PR](https://github.com/green-code-initiative/ecoCode/pull/153) |
 
 ## Deprecated rules
 
