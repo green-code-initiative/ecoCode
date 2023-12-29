@@ -80,7 +80,7 @@
 
     <modules>
         <module>ecocode-rules-specifications</module>
-        <module>java-plugin</module>
+        <!-- <module>java-plugin</module> -->
     </modules>
 
     <scm>

@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - RULES.md upgrades
 - technical upgrade for maven central publication
 
+### Deleted
+
+- [#182](https://github.com/green-code-initiative/ecoCode/issues/182) disable java plugin beacasue moved to new repository `ecoCode-java`
+
 ## [1.4.3] - 2023-12-19
 
 ### Added
