@@ -294,6 +294,9 @@
                             <includes>
                                 <include>**/*.java</include>
                             </includes>
+                            <excludes>
+                                <exclude>java-plugin/**</exclude>
+                            </excludes>
                         </licenseSet>
                     </licenseSets>
                 </configuration>
