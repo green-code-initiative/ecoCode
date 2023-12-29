@@ -78,12 +78,12 @@ class JavaRulesDefinitionTest {
         assertThat(repository.name()).isEqualTo("ecoCode");
         assertThat(repository.language()).isEqualTo("java");
         assertThat(repository.key()).isEqualTo("ecocode-java");
-        assertThat(repository.rules()).hasSize(19);
+        assertThat(repository.rules()).hasSize(20);
     }
 
     @Test
     void testRegistredRules() {
-        assertThat(repository.rules()).hasSize(19);
+        assertThat(repository.rules()).hasSize(20);
     }
 
     @Test

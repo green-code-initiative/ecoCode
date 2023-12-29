@@ -1,0 +1,11 @@
+{
+  "title": "Optimize Database Queries",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "tags": [
+    "performance",
+    "eco-design",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}
