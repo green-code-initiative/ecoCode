@@ -19,7 +19,7 @@ refer to the contribution section.
 
 4 technologies are supported by ecoCode right now:
 
-- [Java](java-plugin/)
+- [Java](https://github.com/green-code-initiative/ecoCode-java)
 - [JavaScript](https://github.com/green-code-initiative/ecoCode-javascript)
 - [PHP](https://github.com/green-code-initiative/ecoCode-php)
 - [Python](https://github.com/green-code-initiative/ecoCode-python)
