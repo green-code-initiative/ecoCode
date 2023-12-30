@@ -4,7 +4,7 @@
 
     <groupId>io.ecocode</groupId>
     <artifactId>ecocode-parent</artifactId>
-    <version>1.4.5-SNAPSHOT</version>
+    <version>1.4.5</version>
     <packaging>pom</packaging>
 
     <name>ecoCode Sonar Plugins Project</name>
@@ -86,7 +86,7 @@
         <connection>scm:git:https://github.com/green-code-initiative/ecocode</connection>
         <developerConnection>scm:git:https://github.com/green-code-initiative/ecocode</developerConnection>
         <url>https://github.com/green-code-initiative/ecocode</url>
-        <tag>HEAD</tag>
+        <tag>1.4.5</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
