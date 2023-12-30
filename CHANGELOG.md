@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [1.4.5] - 2023-12-30
+
+### Deleted
+
 - [#182](https://github.com/green-code-initiative/ecoCode/issues/182) delete java plugin sources because it was moved to new repository `ecoCode-java`
 
 ## [1.4.4] - 2023-12-29
@@ -227,7 +231,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - First official release of ecocode plugins : java plugin, php plugin and python plugin
 
-[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.3...HEAD
+[unreleased]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.5...HEAD
+
+[1.4.5]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.4...v1.4.5
+
+[1.4.4]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.3...v1.4.4
 
 [1.4.3]: https://github.com/green-code-initiative/ecoCode/compare/v1.4.2...v1.4.3
 
