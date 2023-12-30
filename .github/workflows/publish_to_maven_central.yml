@@ -10,7 +10,7 @@
 # - https://docs.github.com/en/actions/publishing-packages/publishing-java-packages-with-maven#publishing-packages-to-the-maven-central-repository
 # - https://blogs.itemis.com/en/github-actions-releasing-artifacts-into-maven-central
 
-name: Publish package to the Maven Central Repository
+name: Publish to Maven Central
 
 on:
   workflow_dispatch:
