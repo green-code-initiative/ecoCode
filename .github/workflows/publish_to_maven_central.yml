@@ -16,14 +16,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  checks_requirements:
-    name: Requirements
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check user permissions
-        uses: 74th/workflow-permission-action@1.0.0
-        with:
-          users: dedece35,glalloue,jhertout,jules-delecour-dav,olegoaer,zippy1978,utarwyn
   publish:
     name: Deploy to Maven central
     runs-on: ubuntu-latest
