@@ -11,9 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [#266](https://github.com/green-code-initiative/ecoCode/issues/266) enable automatic publish of ecocode-rules-specifications to Maven Central
-
 ### Deleted
+
+## [1.4.6] - 2023-12-30
+
+### Changed
+
+- [#266](https://github.com/green-code-initiative/ecoCode/issues/266) enable automatic publish of ecocode-rules-specifications to Maven Central
 
 ## [1.4.5] - 2023-12-30
 
