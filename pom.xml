@@ -165,8 +165,8 @@
                         <configuration>
                             <serverId>ossrh</serverId>
                             <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                            <!-- si true publication automatique, si false, à faire en 2 temps avc publication manuelle  -->
-                            <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                            <!-- if true : automatic publish / if false : manual publish on Nexus GUI ("staging repository" tab) -->
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
                     </plugin>
                     <plugin><!--
