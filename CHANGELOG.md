@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#123](https://github.com/green-code-initiative/ecoCode/issues/123) Rule EC7 not implementable neither Java nor PHP 
+
 ### Deleted
 
 ## [1.4.6] - 2023-12-30
