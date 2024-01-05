@@ -17,12 +17,16 @@ refer to the contribution section.
 🌿 SonarQube Plugins
 -------------------
 
-4 technologies are supported by ecoCode right now:
+6 technologies are supported by ecoCode right now:
 
-- [Java](https://github.com/green-code-initiative/ecoCode-java)
-- [JavaScript](https://github.com/green-code-initiative/ecoCode-javascript)
-- [PHP](https://github.com/green-code-initiative/ecoCode-php)
-- [Python](https://github.com/green-code-initiative/ecoCode-python)
+- "standard" plugins :
+  - [Java plugin](https://github.com/green-code-initiative/ecoCode-java)
+  - [JavaScript plugin](https://github.com/green-code-initiative/ecoCode-javascript)
+  - [PHP plugin](https://github.com/green-code-initiative/ecoCode-php)
+  - [Python plugin](https://github.com/green-code-initiative/ecoCode-python)
+- mobile plugins :
+  - [Android plugin](https://github.com/green-code-initiative/ecoCode-android)
+  - [iOS plugin](https://github.com/green-code-initiative/ecoCode-ios)
 
 ![Screenshot](docs/resources/screenshot.PNG)
 
@@ -51,27 +55,35 @@ To better understand AST structure, you can use the [AST Explorer](https://astex
 🚀 Getting Started
 ------------------
 
-You can give a try with a one command docker :
+You can quickly have a look of ecoCode plugins with docker. Plase have a look at "Getting started" section of each plugin :
 
-```sh
-docker run -ti --rm \
-       -v sq_ecocode_logs:/opt/sonarqube/logs \
-       -v sq_ecocode_data:/opt/sonarqube/data \
-       -p 9000:9000 \
-       --name sonarqube-ecocode ghcr.io/green-code-initiative/sonarqube-ecocode:latest
-```
-
-And add the `eco-design` tagged rules to Quality Profiles.
-
-You can also download each plugin separatly and copy the plugin (jar file) to `$SONAR_INSTALL_DIR/extensions/plugins` and restart SonarQube.
-Then you can use different test project repositories (please check `README.md` files inside) to test the environment. Example : [PHP test project](https://github.com/green-code-initiative/ecoCode-php-test-project)
-
-Or you can directly use a [all-in-one docker-compose](INSTALL.md)
+- [Java plugin](https://github.com/green-code-initiative/ecoCode-java?tab=readme-ov-file#-getting-started)
+- [PHP plugin](https://github.com/green-code-initiative/ecoCode-php?tab=readme-ov-file#-getting-started)
+- [Python plugin](https://github.com/green-code-initiative/ecoCode-python?tab=readme-ov-file#-getting-started)
 
 🛒 Distribution
 ------------------
 
-Ready to use binaries are available [from GitHub](https://github.com/green-code-initiative/ecoCode/releases).
+The main way to get ecoCode plugins is to download them from your SonarQube Marketplace (available in Administration section).
+But if you want, you can also download them from GitHub releases.
+
+We had split our plugins repository `ecocode` to one repository for each plugin on december 2023.
+Thus, plugin versions are available on 2 repositories depending on version you want :
+
+- Java plugin :
+  - from 0.x to 1.4.3 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
+  - since 1.5.0 : [ecoCode-java repository](https://github.com/green-code-initiative/ecoCode-java/releases)
+- PHP plugin :
+  - from 0.x to 1.3.1 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
+  - since 1.4.0 : [ecoCode-php repository](https://github.com/green-code-initiative/ecoCode-php/releases)
+- Python plugin :
+  - from 0.x to 1.3.1 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
+  - since 1.4.0 : [ecoCode-python repository](https://github.com/green-code-initiative/ecoCode-python/releases)
+- Javascript plugin :
+  - from 0.x to 1.3.0 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
+  - since 1.4.0 : [ecoCode-javascript repository](https://github.com/green-code-initiative/ecoCode-javascript/releases)
+- Android plugin : [ecoCode-android repository](https://github.com/green-code-initiative/ecoCode-android/releases)
+- iOS plugin : [ecoCode-ios repository](https://github.com/green-code-initiative/ecoCode-ios/releases)
 
 🧩 Plugins version compatibility
 ------------------
