@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Refuse rule proposition [Avoid returning a JPA Entity in a RestController](https://github.com/green-code-initiative/ecoCode/pull/138) for Java because of lack of arguments and measures
+- Refuse rule proposition [Avoid use of static in interface](https://github.com/green-code-initiative/ecoCode/pull/7) for Java because of lack of arguments and measures
 
 ### Deleted
 
