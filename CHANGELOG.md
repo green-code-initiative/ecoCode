@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [#123](https://github.com/green-code-initiative/ecoCode/issues/123) Rule EC7 not implementable neither Java nor PHP 
+- [#123](https://github.com/green-code-initiative/ecoCode/issues/123) Rule EC7 not implementable neither Java nor PHP
+- Depreciation of rule EC34 for Python and PHP to replace it by EC35
 
 ### Deleted
 
