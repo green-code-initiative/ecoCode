@@ -186,6 +186,18 @@
 							</descriptors>
 						</configuration>
 					</execution>
+					<execution>
+						<id>assembly-csharp</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/csharp.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
 				</executions>
 				<configuration>
 					<appendAssemblyId>true</appendAssemblyId>
