@@ -38,4 +38,5 @@ To address this issue, you can supply multiple formats for the same image.
 
 === Articles & blog posts
 
+- https://greenspector.com/en/which-image-format-to-choose-to-reduce-its-energy-consumption-and-its-environmental-impact/[greenspector.com - Which image format choose to reduce energy consumption and environmental impact?]
 - https://dodonut.com/blog/use-cases-of-web-image-formats/[dodonut.com - The Most Efficient Web Image Formats. Use Cases For Different Types Of Images.]
