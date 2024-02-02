@@ -15,6 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.5.0] - 2024-02-02
 
+### Added
+
+- [#269](https://github.com/green-code-initiative/ecoCode/pull/269) Add new Javascript rule EC31 (Prefer lighter formats for image files)
+
 ### Changed
 
 - Refuse rule proposition [Avoid returning a JPA Entity in a RestController](https://github.com/green-code-initiative/ecoCode/pull/138) for Java because of lack of arguments and measures
