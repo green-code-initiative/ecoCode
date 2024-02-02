@@ -1,5 +1,10 @@
 # Rules
 
+- [Rules support matrix by techno](#rules-support-matrix-by-techno)
+- [Rules to be reworked / measured / clarified](#rules-to-be-reworked--measured--clarified)
+- [Deprecated rules](#deprecated-rules)
+- [Refused / Deleted rules](#refused--deleted-rules)
+
 ## Rules support matrix by techno
 
 This matrix lists all the rules identified as implementable within the standard ecoCode plugin.
