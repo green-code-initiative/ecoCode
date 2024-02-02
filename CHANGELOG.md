@@ -11,6 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+### Deleted
+
+## [1.5.0] - 2024-02-02
+
+### Changed
+
 - Refuse rule proposition [Avoid returning a JPA Entity in a RestController](https://github.com/green-code-initiative/ecoCode/pull/138) for Java because of lack of arguments and measures
 - Refuse rule proposition [Avoid use of static in interface](https://github.com/green-code-initiative/ecoCode/pull/7) for Java because of lack of arguments and measures
 - update RULES.md : close 2 old PRs and add to rework rules array
@@ -252,7 +258,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.4.7...HEAD)
+[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.5.0...HEAD)
+[1.5.0](https://github.com/green-code-initiative/ecoCode/compare/1.4.7...1.5.0)
 [1.4.7](https://github.com/green-code-initiative/ecoCode/compare/1.4.6...1.4.7)
 [1.4.6](https://github.com/green-code-initiative/ecoCode/compare/1.4.5...1.4.6)
 [1.4.5](https://github.com/green-code-initiative/ecoCode/compare/1.4.4...1.4.5)
