@@ -1,5 +1,10 @@
 # Rules
 
+- [Rules support matrix by techno](#rules-support-matrix-by-techno)
+- [Rules to be reworked / measured / clarified](#rules-to-be-reworked--measured--clarified)
+- [Deprecated rules](#deprecated-rules)
+- [Refused / Deleted rules](#refused--deleted-rules)
+
 ## Rules support matrix by techno
 
 This matrix lists all the rules identified as implementable within the standard ecoCode plugin.
@@ -64,6 +69,8 @@ This table lists rules proposed by the community but they have to be reworked / 
 | CRJVM204 | Java     | Detect unoptimized file formats                  | We have to clarify and rework this rule for Java before accepting the implementation  | [Github discussion - issue](https://github.com/green-code-initiative/ecoCode/issues/105)<br/>[Github discussion - PR](https://github.com/green-code-initiative/ecoCode/pull/153)          |
 |          | Java     | Avoid returning a JPA Entity in a RestController | We have to clarify and measure this rule for Java before accepting the implementation | [Github discussion - issue](https://github.com/green-code-initiative/ecoCode-challenge/issues/58)<br/>[Github discussion - PR](https://github.com/green-code-initiative/ecoCode/pull/138) |
 | EC53     | Java     | Using arrays in foreach loops                    | No good arguments and not enough green measures.                                      | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/240)                                                                                             |
+| GRSP0007 | PHP      | Prefer using foreach                             | We have to clarify and measure this rule for PHP before accepting the implementation  | [Github discussion - PR](https://github.com/green-code-initiative/ecoCode/pull/5)                                                                                                         |
+| GRSP0008 | PHP      | Avoid using relative path                        | We have to clarify and measure this rule for PHP before accepting the implementation  | [Github discussion - PR](https://github.com/green-code-initiative/ecoCode/pull/6)                                                                                                         |
 
 ## Deprecated rules
 
