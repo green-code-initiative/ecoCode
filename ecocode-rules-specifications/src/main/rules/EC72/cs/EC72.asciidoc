@@ -21,7 +21,7 @@ const string baseQuery = "SELECT name FROM users WHERE id = ";
 using var conn = new SqlConnection(MyConnectionString);
 using var cmd = conn.CreateCommand();
 for (int i = 0; i < 20; i++) {
-	cmd.CommandText = $"{baseQuery}{i}";
+    cmd.CommandText = $"{baseQuery}{i}";
     using var reader = cmd.ExecuteReader(); // Noncompliant
     while (reader.Next())
         Console.WriteLine(reader.getString(0));

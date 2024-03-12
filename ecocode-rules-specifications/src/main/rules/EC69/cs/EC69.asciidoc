@@ -10,7 +10,7 @@ Instead, consider calling the function once before the loop and caching the resu
 
 === When can it be ignored ?
 
-Some calls like Array.Length are beneficial in a loop condition because they help the JIT compiler optimize the code (see index bound check for more information).
+Some calls like Array.Length are beneficial in a loop condition because they help the JIT compiler optimize the code.
 However in the large majority of cases, it is better to cache the function result before the loop, and this warning shouldn't be ignored.
 
 ## Noncompliant Code Example
