@@ -1,0 +1,39 @@
+:!sectids:
+
+Don't call loop invariant functions in loop conditions and inside loops.
+
+== Why is this an issue ?
+
+Loop invariant functions do not depend on the current loop iteration, yet they are still evaluated each time.
+This can lead to performance issues, especially when the loop is executed a large number of times, and/or if the function requires a lot of processing.
+Instead, consider calling the function once before the loop and caching the result.
+
+=== When can it be ignored ?
+
+Some calls like Array.Length are beneficial in a loop condition because they help the JIT compiler optimize the code (see index bound check for more information).
+However in the large majority of cases, it is better to cache the function result before the loop, and this warning shouldn't be ignored.
+
+## Noncompliant Code Example
+
+[source, cs]
+----
+static int getMyValue() => 10;
+
+for (int i = 0; i < getMyValue(); i++) { // Noncompliant, getMyValue() is loop invariant
+    Console.WriteLine(i);
+    Console.WriteLine(getMyValue() > 6); // Noncompliant, getMyValue() is loop invariant
+}
+----
+
+## Compliant Solution
+
+[source, cs]
+----
+static int getMyValue() => 10;
+
+int myValue = getMyValue();
+for (int i = 0; i < myValue; i++) { // Compliant
+    Console.WriteLine(i);
+    Console.WriteLine(myValue > 6); // Compliant
+}
+----
