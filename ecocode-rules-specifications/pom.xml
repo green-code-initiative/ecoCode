@@ -194,7 +194,7 @@
 						</goals>
 						<configuration>
 							<descriptors>
-								<descriptor>${project.basedir}/src/main/assembly/charp.xml</descriptor>
+								<descriptor>${project.basedir}/src/main/assembly/csharp.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>
