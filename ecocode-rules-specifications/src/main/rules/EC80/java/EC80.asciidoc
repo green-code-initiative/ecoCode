@@ -1,0 +1,23 @@
+Use less data and limit it to the bare minimum.
+For example, the LIMIT clause limits the number of result rows in relational databases.
+When possible, using the 'LIMIT' clause reduces the amount of transferred data.
+Performance gains will be even more significant if records contain a large number of voluminous fields.
+
+## Noncompliant Code Example
+
+```java
+ String sql = "SELECT user FROM myTable";
+```
+
+## Compliant Solution
+
+### Add `LIMIT` clause
+```java
+ String sql = "SELECT user FROM myTable LIMIT 50";
+```
+
+### Create Index
+
+```sql
+CREATE INDEX idx_people_lastname_firstname ON people(lastname, firstname)
+```
