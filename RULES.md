@@ -15,7 +15,6 @@ Some are applicable for different technologies.
 - 🚧 Rule implementation in progress
 - 🚀 Rule to implement
 - ❓ Rule to analyze for applicability
-- 🆓 Unneeded rule, already provided by the language or framework
 - 🚫 Non applicable rule
 
 | Rule key | Name                                                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                  | Reference/Validation                                                                                                                                                    | Java | Php | JS | Python | Rust | C# |
