@@ -21,6 +21,7 @@
   "defaultSeverity": "Major",
   "compatibleLanguages": [
     "JAVASCRIPT",
-    "TYPESCRIPT"
+    "TYPESCRIPT",
+    "JAVA"
   ]
 }
