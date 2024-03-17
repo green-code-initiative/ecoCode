@@ -24,6 +24,7 @@ refer to the contribution section.
   - [JavaScript plugin](https://github.com/green-code-initiative/ecoCode-javascript)
   - [PHP plugin](https://github.com/green-code-initiative/ecoCode-php)
   - [Python plugin](https://github.com/green-code-initiative/ecoCode-python)
+  - [C# plugin](https://github.com/green-code-initiative/ecoCode-csharp)
 - mobile plugins :
   - [Android plugin](https://github.com/green-code-initiative/ecoCode-android)
   - [iOS plugin](https://github.com/green-code-initiative/ecoCode-ios)
@@ -34,7 +35,7 @@ refer to the contribution section.
 
 ![Ekko logo](docs/resources/5ekko.png)
 
-There is two kind of plugins :
+There are two kinds of plugins :
 
 - One for web / backoffice (PHP, Python, Java, JavaScript), using smells described in the 2nd edition of the repository
   published in september 2015.
@@ -60,6 +61,7 @@ You can quickly have a look of ecoCode plugins with docker. Plase have a look at
 - [Java plugin](https://github.com/green-code-initiative/ecoCode-java?tab=readme-ov-file#-getting-started)
 - [PHP plugin](https://github.com/green-code-initiative/ecoCode-php?tab=readme-ov-file#-getting-started)
 - [Python plugin](https://github.com/green-code-initiative/ecoCode-python?tab=readme-ov-file#-getting-started)
+- [C# plugin](https://github.com/green-code-initiative/ecoCode-csharp?tab=readme-ov-file#-getting-started)
 
 🛒 Distribution
 ------------------
@@ -82,6 +84,8 @@ Thus, plugin versions are available on 2 repositories depending on version you w
 - Javascript plugin :
   - from 0.x to 1.3.0 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
   - since 1.4.0 : [ecoCode-javascript repository](https://github.com/green-code-initiative/ecoCode-javascript/releases)
+- C# plugin :
+  - since 0.x : [ecocode repository](https://github.com/green-code-initiative/ecoCode-csharp/releases)
 - Android plugin : [ecoCode-android repository](https://github.com/green-code-initiative/ecoCode-android/releases)
 - iOS plugin : [ecoCode-ios repository](https://github.com/green-code-initiative/ecoCode-ios/releases)
 
