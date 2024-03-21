@@ -1,16 +1,15 @@
 {
-  "title": "Power: Compagnion In Background",
+  "title": "Animation Methods in UIKit and SwiftUI",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant\/Issue",
-    "constantCost": "20min"
+    "func": "Constant/Issue",
+    "constantCost": "5min"
   },
   "tags": [
-    "power",
+    "sobriety",
     "environment",
     "ecocode",
-    "android",
     "ios",
     "eco-design"
   ],

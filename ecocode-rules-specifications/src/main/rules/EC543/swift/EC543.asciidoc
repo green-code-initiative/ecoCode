@@ -1,5 +1,3 @@
-Score ecoCode: 5sur5
-
 Use device API to check if low power mode is enabled, and adapt resources usage accordingly.
 
 For example, you can reduce frequency of data update if low power mode is enabled.
