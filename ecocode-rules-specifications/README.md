@@ -1,4 +1,3 @@
-git
 # ecoCode rules specification repository
 
 This project contains the specifications of all ecoCode rules, for all languages.
