@@ -1,6 +1,6 @@
 :!sectids:
 
-Specify struct layouts.
+Specify struct layout.
 
 ## Why is this an issue ?
 
