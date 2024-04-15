@@ -1,0 +1,16 @@
+{
+  "title": "Specify struct layout",
+  "type": "PERFORMANCE",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "eco-design",
+    "ecocode",
+    "memory",
+    "performance"
+  ],
+  "defaultSeverity": "Minor"
+}
