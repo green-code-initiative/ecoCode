@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#286](https://github.com/green-code-initiative/ecoCode/issues/286) [EC83] [C#] Replace Enum ToString() with nameof
 - [#239](https://github.com/green-code-initiative/ecoCode/issues/239) Add new Java rule EC24 : Optimize Database SQL Queries (Clause LIMIT)
+- Swift rules cleanup and updates (removed duplicated rules, added [EC602])
 
 ### Changed
 
