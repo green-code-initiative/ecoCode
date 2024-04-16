@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#239](https://github.com/green-code-initiative/ecoCode/issues/239) Add new Java rule EC24 : Optimize Database SQL Queries (Clause LIMIT)
 - [#286](https://github.com/green-code-initiative/ecoCode/issues/286) [EC83] [C#] Replace Enum ToString() with nameof
-- [C#27](https://github.com/green-code-initiative/ecoCode-csharp/issues/27) [EC84] [C#] Avoid async void methods
+- [#27](https://github.com/green-code-initiative/ecoCode-csharp/issues/27) [EC84] [C#] Avoid async void methods
 
 ### Changed
 
