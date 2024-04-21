@@ -11,6 +11,7 @@ For a more in-depth explanation, see https://devblogs.microsoft.com/dotnet/perfo
 ### How does the analyzer identify sealable classes ?
 
 The analyzer will consider a type for sealing when the following conditions are met :
+
 * The type is not static, abstract, sealed or special (ie. implicit, script, auto-generated, etc)
 * The type is currently not inherited from in the solution
 * The type is not public, or it is public and has no overridable member (except for the default ones like GetHashcode, Equals, etc)
@@ -58,7 +59,7 @@ internal sealed class Class3
     public void Method();
 }
 
-public class Class4 // Compliant even if not inherited from, the virtual method hints at this class being inheritable
+public class Class4 // Compliant even if not inherited from, the virtual method hints at being overridable from other assemblies
 {
     public virtual void Method();
 }
