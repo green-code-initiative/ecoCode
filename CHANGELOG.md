@@ -9,9 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [#286](https://github.com/green-code-initiative/ecoCode/issues/286) [EC83] [C#] Replace Enum ToString() with nameof
 - [#239](https://github.com/green-code-initiative/ecoCode/issues/239) Add new Java rule EC24 : Optimize Database SQL Queries (Clause LIMIT)
 - Swift rules cleanup and updates (removed duplicated rules, added [EC602])
+- [#18](https://github.com/green-code-initiative/ecoCode-csharp/issues/18) [EC81] [C#] Specify struct layout
+- [#285](https://github.com/green-code-initiative/ecoCode/pull/285) [EC82] [C#] Cariable can be made constant
+- [#286](https://github.com/green-code-initiative/ecoCode/issues/286) [EC83] [C#] Replace Enum ToString() with nameof
+- [#27](https://github.com/green-code-initiative/ecoCode-csharp/issues/27) [EC84] [C#] Avoid async void methods
+- [#34](https://github.com/green-code-initiative/ecoCode-csharp/issues/34) [EC85] [C#] Make type sealed
 
 ### Changed
 

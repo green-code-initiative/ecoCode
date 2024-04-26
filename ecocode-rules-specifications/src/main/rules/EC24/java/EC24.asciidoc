@@ -20,6 +20,7 @@ It may therefore be a good idea to limit the results and use pagination, for exa
 [source,java,data-diff-id="1",data-diff-type="compliant"]
 ----
 String sql = "SELECT user FROM myTable LIMIT 50"; // Compliant
+String sql2 = "SELECT user FROM myTable WHERE user.name = 'toto'"; // Compliant
 ----
 
 ... and create an index like that ...
