@@ -24,11 +24,13 @@ public class Test
 {
     public async void Run()
     {
+        Console.WriteLine();
         AsyncMethod(); // Cannot be awaited
     }
 
     public async void AsyncMethod() // Non-compliant, use async Task
     {
+        Console.WriteLine();
         await Task.Delay(1000);
     }
 }
@@ -40,14 +42,16 @@ public class Test
 ----
 public class Test
 {
-    public async void Run()
+    public async Task Run()
     {
+        Console.WriteLine();
         await AsyncMethod();
     }
 
     public async Task AsyncMethod() // Compliant
     {
-        await Task.Delay(1000);
+        Console.WriteLine();
+        await Task.Delay(100);
     }
 }
 ----
