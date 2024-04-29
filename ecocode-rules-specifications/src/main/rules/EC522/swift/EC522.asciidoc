@@ -1,5 +1,3 @@
-Score ecoCode: 2sur5
-
 Location awareness is one of the most popular features used by apps.
 
 By default, standard location updates run with the best accuracy level, but unless your app really needs to know the user’s position within a few meters, this level of accuracy isn't needed.
