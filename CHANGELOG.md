@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [#36](https://github.com/green-code-initiative/ecoCode-csharp/issues/36) [EC86] [C#] GC.Collect should not be called
+
 ### Changed
 
 ### Deleted
@@ -23,7 +25,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#286](https://github.com/green-code-initiative/ecoCode/issues/286) [EC83] [C#] Replace Enum ToString() with nameof
 - [#27](https://github.com/green-code-initiative/ecoCode-csharp/issues/27) [EC84] [C#] Avoid async void methods
 - [#34](https://github.com/green-code-initiative/ecoCode-csharp/issues/34) [EC85] [C#] Make type sealed
-- [#36](https://github.com/green-code-initiative/ecoCode-csharp/issues/36) [EC86] [C#] GC.Collect should not be called
 
 ## [1.5.0] - 2024-02-02
 
