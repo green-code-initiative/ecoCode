@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [PHP #23](https://github.com/green-code-initiative/ecoCode-php/issues/23) Deprecation of EC22 rule for PHP (waiting for measurement)
+
 ### Deleted
 
 ## [1.5.1] - 2024-04-29
