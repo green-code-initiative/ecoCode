@@ -31,12 +31,12 @@ public class Class1 // Non-compliant if not inherited from, make type sealed
 
 public class Class2 // Non-compliant if not inherited from, make type sealed
 {
-    public sealed void Method(); // The sealed keyword will be removed by the code fix
+    public sealed void Method();
 }
 
 internal class Class3 // Non-compliant if not inherited from because the type is not public, even with a virtual method
 {
-    public virtual void Method(); // The virtual keyword will be removed by the code fix
+    public virtual void Method();
 }
 
 public class Class4 // Compliant even if not inherited from, the virtual method hints at being overridable from other assemblies
@@ -46,7 +46,7 @@ public class Class4 // Compliant even if not inherited from, the virtual method 
 
 public class Class5 : Class4 // Non-compliant if not inherited from, make type sealed
 {
-    public sealed override void Method(); // The sealed keyword will be removed by the code fix
+    public sealed override void Method();
 }
 
 public class Class6 : Class4 // Compliant, Method() is still overridable
