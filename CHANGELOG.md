@@ -15,6 +15,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [1.5.3] - 2024-05-03
+
+### Changed
+
+- [PHP #23](https://github.com/green-code-initiative/ecoCode-php/issues/23) Deprecation of EC22 rule for PHP (waiting for measurement) - correction
+
+## [1.5.2] - 2024-05-02
+
+### Changed
+
+- [PHP #23](https://github.com/green-code-initiative/ecoCode-php/issues/23) Deprecation of EC22 rule for PHP (waiting for measurement)
+
 ## [1.5.1] - 2024-04-29
 
 ### Added
@@ -275,7 +287,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.5.1...HEAD)
+[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.5.3...HEAD)
+[1.5.3](https://github.com/green-code-initiative/ecoCode/compare/1.5.2...1.5.3)
+[1.5.2](https://github.com/green-code-initiative/ecoCode/compare/1.5.1...1.5.2)
 [1.5.1](https://github.com/green-code-initiative/ecoCode/compare/1.5.0...1.5.1)
 [1.5.0](https://github.com/green-code-initiative/ecoCode/compare/1.4.7...1.5.0)
 [1.4.7](https://github.com/green-code-initiative/ecoCode/compare/1.4.6...1.4.7)
