@@ -10,6 +10,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - [#42](https://github.com/green-code-initiative/ecoCode-csharp/issues/42) [EC87] [C#] Use collection indexer
 
+- [#298](https://github.com/green-code-initiative/ecoCode/pull/298) Add HTML rule EC36 (Avoid autoplay for videos and audio content)
+
 ### Changed
 
 ### Deleted
