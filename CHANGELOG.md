@@ -9,7 +9,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [#239](https://github.com/green-code-initiative/ecoCode/issues/239) Add new Java rule EC24 : Optimize Database SQL Queries (Clause LIMIT)
+- [#298](https://github.com/green-code-initiative/ecoCode/pull/298) Add HTML rule EC36 (Avoid autoplay for videos and audio content)
+
+### Changed
+
+### Deleted
+
+## [1.5.3] - 2024-05-03
+
+### Changed
+
+- [PHP #23](https://github.com/green-code-initiative/ecoCode-php/issues/23) Deprecation of EC22 rule for PHP (waiting for measurement) - correction
+
+## [1.5.2] - 2024-05-02
+
+### Changed
+
+- [PHP #23](https://github.com/green-code-initiative/ecoCode-php/issues/23) Deprecation of EC22 rule for PHP (waiting for measurement)
+
+## [1.5.1] - 2024-04-29
+
+### Added
+
 - Swift rules cleanup and updates (removed duplicated rules, added [EC602])
 - [#18](https://github.com/green-code-initiative/ecoCode-csharp/issues/18) [EC81] [C#] Specify struct layout
 - [#285](https://github.com/green-code-initiative/ecoCode/pull/285) [EC82] [C#] Cariable can be made constant
@@ -17,10 +38,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#27](https://github.com/green-code-initiative/ecoCode-csharp/issues/27) [EC84] [C#] Avoid async void methods
 - [#34](https://github.com/green-code-initiative/ecoCode-csharp/issues/34) [EC85] [C#] Make type sealed
 - [#293](https://github.com/green-code-initiative/ecoCode/issues/293) [EC513] Swift port
-
-### Changed
-
-### Deleted
 
 ## [1.5.0] - 2024-02-02
 
@@ -271,7 +288,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.5.0...HEAD)
+[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.5.3...HEAD)
+[1.5.3](https://github.com/green-code-initiative/ecoCode/compare/1.5.2...1.5.3)
+[1.5.2](https://github.com/green-code-initiative/ecoCode/compare/1.5.1...1.5.2)
+[1.5.1](https://github.com/green-code-initiative/ecoCode/compare/1.5.0...1.5.1)
 [1.5.0](https://github.com/green-code-initiative/ecoCode/compare/1.4.7...1.5.0)
 [1.4.7](https://github.com/green-code-initiative/ecoCode/compare/1.4.6...1.4.7)
 [1.4.6](https://github.com/green-code-initiative/ecoCode/compare/1.4.5...1.4.6)
