@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>io.ecocode</groupId>
 		<artifactId>ecocode-parent</artifactId>
-		<version>1.5.1-SNAPSHOT</version>
+		<version>1.5.4-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>ecocode-rules-specifications</artifactId>
@@ -195,6 +195,18 @@
 						<configuration>
 							<descriptors>
 								<descriptor>${project.basedir}/src/main/assembly/csharp.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+					<execution>
+						<id>assembly-html</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>${project.basedir}/src/main/assembly/html.xml</descriptor>
 							</descriptors>
 						</configuration>
 					</execution>
