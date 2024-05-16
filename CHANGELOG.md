@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#298](https://github.com/green-code-initiative/ecoCode/pull/298) Add HTML rule EC36 (Avoid autoplay for videos and audio content)
 - [C# #36](https://github.com/green-code-initiative/ecoCode-csharp/issues/36) [EC86] [C#] GC.Collect should not be called
 - [C# #42](https://github.com/green-code-initiative/ecoCode-csharp/issues/42) [EC87] [C#] Use collection indexer
+- [C# #44](https://github.com/green-code-initiative/ecoCode-csharp/issues/44) [EC88] [C#] Dispose resource asynchronously
 
 ### Changed
 
