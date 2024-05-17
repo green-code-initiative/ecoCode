@@ -1,0 +1,35 @@
+{
+  "items": [
+    {
+      "id": "EC1",
+      "name": "Respect the planet",
+      "severity": "CRITICAL",
+      "technologies": [
+        "java"
+      ],
+      "status": "READY"
+    },
+    {
+      "id": "EC2",
+      "name": "Recycle whenever possible",
+      "severity": "MAJOR",
+      "technologies": [
+        "javascript"
+      ],
+      "status": "READY"
+    }
+  ],
+  "meta": {
+    "technologies": [
+      "java",
+      "javascript"
+    ],
+    "severities": [
+      "CRITICAL",
+      "MAJOR"
+    ],
+    "statuses": [
+      "READY"
+    ]
+  }
+}
