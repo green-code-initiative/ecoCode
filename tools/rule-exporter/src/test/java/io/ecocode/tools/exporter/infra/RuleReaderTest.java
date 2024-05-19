@@ -25,6 +25,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Objects;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
@@ -33,7 +34,7 @@ public class RuleReaderTest {
 
     @Test
     void validRules() throws IOException {
-        RuleReader ruleReader = new RuleReader("rules.jar");
+        RuleReader ruleReader = new RuleReader(getFilePath("rules.jar"));
         Collection<RuleMetadata> rules = ruleReader.readRules();
 
         // check rules count
@@ -52,13 +53,17 @@ public class RuleReaderTest {
 
     @Test
     void invalidRules() throws IOException {
-        RuleReader ruleReader = new RuleReader("invalid-rules.jar");
+        RuleReader ruleReader = new RuleReader(getFilePath("invalid-rules.jar"));
         try {
             ruleReader.readRules();
             fail("Exception not thrown");
         } catch (IllegalStateException e) {
             assertThat(e.getMessage()).isEqualTo("Invalid file path: io/ecocode/rules/invalid.json");
         }
+    }
+
+    private String getFilePath(String fileName) {
+        return Objects.requireNonNull(getClass().getResource("/" + fileName)).getPath();
     }
 
 }

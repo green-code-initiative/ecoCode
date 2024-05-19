@@ -17,19 +17,20 @@
  */
 package io.ecocode.tools.exporter.infra;
 
-import io.ecocode.tools.exporter.RuleExporter;
 import io.ecocode.tools.exporter.domain.RuleMetadata;
 import jakarta.json.Json;
 import jakarta.json.JsonObject;
 import jakarta.json.JsonReader;
 
+import java.io.File;
 import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -59,8 +60,9 @@ public class RuleReader {
 
     private Map<String, JsonObject> readAllMetadataFromZip() throws IOException {
         Map<String, JsonObject> metadataMap = new HashMap<>();
+        Path path = new File(zipFilename).toPath();
         try (
-                InputStream inputStream = getZipInputStream();
+                InputStream inputStream = Files.newInputStream(path);
                 ZipInputStream zipIn = new ZipInputStream(inputStream)
         ) {
             ZipEntry entry;
@@ -75,13 +77,6 @@ public class RuleReader {
         }
 
         return metadataMap;
-    }
-
-    private InputStream getZipInputStream() {
-        return Objects.requireNonNull(
-                RuleExporter.class.getResourceAsStream("/" + this.zipFilename),
-                this.zipFilename + " not found"
-        );
     }
 
     private JsonObject readContents(InputStream contentsIn) {
