@@ -1,17 +1,16 @@
 {
-  "title": "Animation Free",
+  "title": "Dispose resource asynchronously",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant/Issue",
+    "func": "Constant\/Issue",
     "constantCost": "5min"
   },
   "tags": [
-    "sobriety",
-    "environment",
+    "eco-design",
     "ecocode",
-    "ios",
-    "eco-design"
+    "performance",
+    "bad-practice"
   ],
   "defaultSeverity": "Major"
 }
