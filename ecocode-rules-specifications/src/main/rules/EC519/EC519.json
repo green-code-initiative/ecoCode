@@ -11,7 +11,8 @@
     "environment",
     "ecocode",
     "android",
-    "eco-design"
+    "eco-design",
+    "ios"
   ],
   "ecoScore": "1.0",
   "defaultSeverity": "Info"
