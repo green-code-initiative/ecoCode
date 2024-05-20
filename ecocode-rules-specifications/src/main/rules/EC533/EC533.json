@@ -1,17 +1,18 @@
 {
-  "title": "Idleness: Keep CPU On",
+  "title": "Location updates pause disabled",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
-    "constantCost": "1h"
+    "constantCost": "5min"
   },
   "tags": [
-    "idleness",
-    "environment",
     "ecocode",
-    "android",
-    "eco-design"
+    "environment",
+    "sobriety",
+    "eco-design",
+    "ios"
   ],
+  "ecoScore": "0.4",
   "defaultSeverity": "Major"
 }

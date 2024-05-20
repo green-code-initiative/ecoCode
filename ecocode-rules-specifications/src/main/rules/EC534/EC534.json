@@ -1,16 +1,16 @@
 {
-  "title": "Idleness: Keep Screen On",
+  "title": "Motion Sensor Update Rate",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant\/Issue",
-    "constantCost": "20min"
+    "func": "Constant/Issue",
+    "constantCost": "5min"
   },
   "tags": [
-    "idleness",
+    "sobriety",
     "environment",
     "ecocode",
-    "android",
+    "ios",
     "eco-design"
   ],
   "defaultSeverity": "Major"
