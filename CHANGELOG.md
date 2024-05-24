@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [mobile #302](https://github.com/green-code-initiative/ecoCode/pull/302) Big cleanup / sorting of mobile related rules
+- [C# #304](https://github.com/green-code-initiative/ecoCode/pull/304) [EC81] [C#] Fix type in json spec to allow import into Sonarqube
+
 ### Deleted
 
 ## [1.5.3] - 2024-05-03
