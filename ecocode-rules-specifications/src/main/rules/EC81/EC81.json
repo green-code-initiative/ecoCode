@@ -1,6 +1,6 @@
 {
   "title": "Specify struct layout",
-  "type": "PERFORMANCE",
+  "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
