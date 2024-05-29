@@ -1,44 +1,24 @@
-Most iOS devices have built-in sensors that measure motion, orientation, and various environmental conditions. Additionally, they have image sensors (a.k.a. Camera) and geo-positioning sensors (a.k.a. GPS).
+Most Android-powered devices have built-in sensors that measure motion, orientation, and various environmental conditions.
+    In addition to these are the image sensor (a.k.a. Camera) and the geo-positioning sensor (a.k.a. GPS).
 
-The common point of all these sensors is that they consume significant power while in use. Their common issue is processing data unnecessarily when the app is in an idle state, typically when it enters the background or becomes inactive.
+The common point of all these sensors is that they are expensive while in use. Their common bug is to let the sensor unnecessarily process data when the app enters an idle state, typically when paused or stopped.
 
-    Consequently, calls to start and stop sensor updates must be carefully managed for motion sensor: CMMotionManager#startAccelerometerUpdates()/CMMotionManager#stopAccelerometerUpdates().
-    Failing to do so can drain the battery quickly.
+    Consequently, calls must be carefully pairwised: `SensorManager#registerListener()/unregisterListener()`.
+    Failing to do so can drain the battery in just a few hours.
 
 ## Noncompliant Code Example
 
-```swift
-import CoreMotion
-
-let motionManager = CMMotionManager()
-
-func startMotionUpdates() {
-    if motionManager.isAccelerometerAvailable {
-        motionManager.startAccelerometerUpdates(to: .main) { data, error in
-            // Handle accelerometer updates
-        }
-    }
-}
+```java
+SensorManager sManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+Sensor accelerometer = sManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+sManager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
 ```
 
 ## Compliant Code Example
 
-```swift
-import CoreMotion
-
-let motionManager = CMMotionManager()
-
-func startMotionUpdates() {
-    if motionManager.isAccelerometerAvailable {
-        motionManager.startAccelerometerUpdates(to: .main) { data, error in
-            // Handle accelerometer updates
-        }
-    }
-}
-
-func stopMotionUpdates() {
-    if motionManager.isAccelerometerActive {
-        motionManager.stopAccelerometerUpdates()
-    }
-}
+```java
+SensorManager sManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+Sensor accelerometer = sManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+sManager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
+sManager.unregisterListener(this);
 ```
