@@ -1,0 +1,14 @@
+{
+  "title": "Force usage of FetchType LAZY for collections on JPA entities",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "eco-design",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}

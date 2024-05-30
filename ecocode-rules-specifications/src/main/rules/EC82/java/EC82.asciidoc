@@ -1,0 +1,29 @@
+= Make Non-Reassigned Variables Constant
+
+Declaring variables as constants whenever possible can lead to several benefits, including improved code readability, better performance, and fewer bugs. Constants, being immutable, make it clear that the value will not change once initialized, which can help developers understand and reason about the code more easily.
+
+Non-reassigned variables, if not declared as constants, can lead to misunderstandings about the potential mutability of the variable. By explicitly marking such variables with the `final` keyword, we indicate that their values are fixed after initialization, enabling potential compiler optimizations and making the code more robust.
+
+== Noncompliant Code Example
+
+```java
+public class Example {
+    public void calculate() {
+        int value = 42;  // Noncompliant
+        // ... some operations
+        System.out.println(value);
+    }
+}
+```
+
+== Compliant Code Example
+
+```java
+public class Example {
+    public void calculate() {
+        final int value = 42;  // Compliant
+        // ... some operations
+        System.out.println(value);
+    }
+}
+```

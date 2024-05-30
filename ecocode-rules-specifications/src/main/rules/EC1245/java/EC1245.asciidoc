@@ -1,0 +1,53 @@
+= Avoid Energy Consuming Methods
+
+This rule aims to identify and flag methods in Java code that have high energy consumption due to the use of computationally expensive operations. The goal is to encourage developers to write more energy-efficient code by limiting the use of costly operations within a single method.
+
+The rule works by assigning a "cost" to specific expensive operations commonly recognized for their high computational demands. These operations include:
+
+- Reflection operations (e.g., `Class.forName()`, `Method.invoke()`)
+- Synchronization operations (e.g., `synchronized` blocks or methods)
+- I/O operations (e.g., `FileInputStream`, `FileOutputStream`, `BufferedReader`, etc.)
+- SQL operations (e.g., `Statement.execute()`, `ResultSet.next()`)
+- String operations (e.g., `String.replaceAll()`, `String.split()`, etc.)
+- Thread operations (e.g., `Thread.sleep()`, `Thread.join()`, etc.)
+- XML parsing (e.g., `DocumentBuilder.parse()`)
+
+For each occurrence of these operations within a method, a predefined number of points is assigned. If the total points for a method exceed a certain threshold (e.g., 5 points), the method is considered to be energy-inefficient. A warning is then issued to indicate that the method may have high energy consumption and suggest the developer to refactor or optimize the method.
+
+== Noncompliant Code Example
+
+```java
+public class Example {
+    public void exampleMethod() {
+        String data = "example";
+        data = data.replaceAll("e", "a"); // 1 point
+        FileInputStream fis = new FileInputStream("file.txt"); // 1 point
+        FileInputStream fis2 = new FileInputStream("file2.txt"); // 1 point
+        FileInputStream fis3 = new FileInputStream("file3.txt"); // 1 point
+        FileInputStream fis4 = new FileInputStream("file4.txt"); // 1 point
+    }
+}
+```
+
+== Compliant Code Example
+
+```java
+public class Example {
+    public void exampleMethod() { // Method complexity and energy consumption reduced
+        String data = "example";
+        data = data.replaceAll("e", "a"); // 1 point
+        FileInputStream fis = new FileInputStream("file.txt"); // 1 point
+    }
+}
+```
+
+In the compliant solution, expensive operations are minimized or replaced with more efficient alternatives, ensuring the method remains within an acceptable energy consumption range.
+
+== Benefits
+
+- Improved Code Efficiency: Identifying and reducing the use of expensive operations leads to more efficient code execution.
+- Enhanced Performance: Lowering the computational demands of methods improves overall application performance.
+- Reduced Energy Consumption: Efficient methods consume less energy, contributing to greener and more sustainable software.
+- Better Resource Utilization: Optimized methods make better use of system resources, improving responsiveness and scalability.
+
+This rule helps developers identify potential performance bottlenecks and encourages the adoption of more efficient coding practices to reduce the energy footprint of their applications.

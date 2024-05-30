@@ -1,0 +1,49 @@
+= Force Usage of FetchType LAZY for Collections on JPA Entities
+
+This rule enforces the use of `FetchType.LAZY` for collections in JPA entities to minimize energy consumption and improve application performance. The rule targets the following JPA annotations:
+- `@OneToMany`
+- `@ManyToMany`
+- `@OneToOne`
+- `@ManyToOne`
+
+JPA provides two types of fetch strategies for associations: `FetchType.EAGER` and `FetchType.LAZY`.
+- `FetchType.EAGER` loads the related entities immediately, which can result in significant performance overhead and increased energy consumption, especially when loading large collections or deeply nested entity graphs.
+- `FetchType.LAZY` defers the loading of the related entities until they are accessed, reducing the initial load time, memory usage, and energy consumption.
+
+== Noncompliant Code Example
+
+```java
+@Entity
+public class Order {
+    @OneToMany(fetch = FetchType.EAGER)  // Noncompliant
+    private List<OrderItem> orderItems;
+
+    @ManyToOne  // Noncompliant, should specify fetch = FetchType.LAZY
+    private Customer customer;
+}
+```
+
+== Compliant Code Example
+
+```java
+@Entity
+public class Order {
+    @OneToMany(fetch = FetchType.LAZY)  // Compliant
+    private List<OrderItem> orderItems;
+
+    @ManyToOne(fetch = FetchType.LAZY)  // Compliant
+    private Customer customer;
+}
+```
+
+In the compliant solution, the fetch attribute is explicitly set to FetchType.LAZY for both the @OneToMany and @ManyToOne associations. This ensures that related entities are loaded only when accessed, improving performance and reducing resource consumption.
+
+== Benefits
+
+- Reduced Initial Data Load: Decreasing memory usage and startup time by loading data only when needed.
+- Optimized CPU and IO Usage: Preventing unnecessary data retrieval, thereby lowering CPU and IO usage.
+- Improved Application Performance: Enhancing overall application performance and responsiveness.
+- Minimized Energy Consumption: Avoiding the overhead of eagerly loading large amounts of data, thereby reducing energy consumption.
+
+By ensuring that JPA associations use FetchType.LAZY, developers can create more efficient and scalable applications that are better suited for high-performance environments with lower energy footprints.
+
