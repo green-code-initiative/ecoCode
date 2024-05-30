@@ -3,9 +3,10 @@ Creation of an `AVAudioRecorder` object is used to record audio. These class has
 In addition to unnecessary resources (such as memory and instances of codecs) being held, failure to properly stop and release these object if it is no longer needed may also lead to continuous battery consumption for mobile devices.
 
 
-## Noncompliant Code Example
+== Noncompliant Code Example
 
-```swift
+[source,swift]
+----
 import AVFoundation
 
 var audioRecorder: AVAudioRecorder?
@@ -25,11 +26,12 @@ func startRecording() {
         // Handle error
     }
 }
-```
+----
 
-## Compliant Solution
+== Compliant Solution
 
-```swift
+[source,swift]
+----
 import AVFoundation
 
 var audioRecorder: AVAudioRecorder?
@@ -56,4 +58,4 @@ func stopRecording() {
         audioRecorder = nil
     }
 }
-```
+----
