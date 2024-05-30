@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [#315](https://github.com/green-code-initiative/ecoCode/pull/315) Add rule EC530 for javascript
+
 ### Changed
 
 - [#21](https://github.com/green-code-initiative/ecoCode-java/issues/21) Improvement: some method calls are legitimate in a for loop expression.
