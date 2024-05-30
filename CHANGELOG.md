@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#4](https://github.com/green-code-initiative/ecoCode-java/issues/4) Improvement: "++i" statement is not so bad 
+
 ### Deleted
 
 ## [1.5.4] - 2024-05-24
