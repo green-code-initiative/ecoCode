@@ -1,7 +1,5 @@
 :!sectids:
 
-Should avoid brightness overriding (`@ecocode/avoid-brightness-override`)
-
 == Why is this an issue?
 
 To avoid draining the battery, iOS and Android devices adapt the brightness of the screen depending on the environment light.
