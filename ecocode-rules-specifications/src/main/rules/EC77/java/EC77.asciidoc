@@ -51,3 +51,14 @@ public class ValidRegexPattern3 {
     }
 }
 ```
+
+##Compliant Solution N°4
+
+```java
+public class ValidRegexPattern {
+    public boolean foo(String param) {
+        final Pattern pattern = Pattern.compile("foo" + param); // Compliant
+        return pattern.matcher("foo").find();
+    }
+}
+```
