@@ -9,6 +9,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [#315](https://github.com/green-code-initiative/ecoCode/pull/315) Add rule EC530 for javascript
+- [#321](https://github.com/green-code-initiative/ecoCode/pull/321) Add rule EC522 for javascript (avoid brightness override)
+
+### Changed
+
+### Deleted
+
+## [1.5.4] - 2024-05-24
+
+### Added
+
 - [#298](https://github.com/green-code-initiative/ecoCode/pull/298) Add HTML rule EC36 (Avoid autoplay for videos and audio content)
 - [C# #36](https://github.com/green-code-initiative/ecoCode-csharp/issues/36) [EC86] [C#] GC.Collect should not be called
 - [C# #42](https://github.com/green-code-initiative/ecoCode-csharp/issues/42) [EC87] [C#] Use collection indexer
@@ -16,7 +27,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-### Deleted
+- [mobile #302](https://github.com/green-code-initiative/ecoCode/pull/302) Big cleanup / sorting of mobile related rules
+- [C# #304](https://github.com/green-code-initiative/ecoCode/pull/304) [EC81] [C#] Fix type in json spec to allow import into Sonarqube
 
 ## [1.5.3] - 2024-05-03
 
@@ -296,7 +308,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.5.3...HEAD)
+[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.5.4...HEAD)
+[1.5.4](https://github.com/green-code-initiative/ecoCode/compare/1.5.3...1.5.4)
 [1.5.3](https://github.com/green-code-initiative/ecoCode/compare/1.5.2...1.5.3)
 [1.5.2](https://github.com/green-code-initiative/ecoCode/compare/1.5.1...1.5.2)
 [1.5.1](https://github.com/green-code-initiative/ecoCode/compare/1.5.0...1.5.1)
