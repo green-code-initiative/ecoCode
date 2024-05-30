@@ -1,9 +1,9 @@
-Creation of an `AVAudioRecorder` or `AVCaptureSession` object is used to record audio and video. These classes have methods to stop recording and release resources.
+Creation of an `AVAudioRecorder` object is used to record audio. These class has a method to stop recording and release resources.
 
-In addition to unnecessary resources (such as memory and instances of codecs) being held, failure to properly stop and release these objects if they are no longer needed may also lead to continuous battery consumption for mobile devices.
+In addition to unnecessary resources (such as memory and instances of codecs) being held, failure to properly stop and release these object if it is no longer needed may also lead to continuous battery consumption for mobile devices.
 
 
-## Noncompliant Code Examples
+## Noncompliant Code Example
 
 ```swift
 import AVFoundation
@@ -27,39 +27,7 @@ func startRecording() {
 }
 ```
 
-```swift
-import AVFoundation
-
-var captureSession: AVCaptureSession?
-
-func startVideoRecording() {
-    captureSession = AVCaptureSession()
-    captureSession?.beginConfiguration()
-
-    let videoDevice = AVCaptureDevice.default(for: .video)
-    let audioDevice = AVCaptureDevice.default(for: .audio)
-
-    do {
-        let videoInput = try AVCaptureDeviceInput(device: videoDevice!)
-        let audioInput = try AVCaptureDeviceInput(device: audioDevice!)
-
-        if (captureSession?.canAddInput(videoInput) ?? false) {
-            captureSession?.addInput(videoInput)
-        }
-
-        if (captureSession?.canAddInput(audioInput) ?? false) {
-            captureSession?.addInput(audioInput)
-        }
-
-        captureSession?.commitConfiguration()
-        captureSession?.startRunning()
-    } catch {
-        // Handle error
-    }
-}
-```
-
-## Compliant Solutions
+## Compliant Solution
 
 ```swift
 import AVFoundation
@@ -86,45 +54,6 @@ func stopRecording() {
     if let recorder = audioRecorder, recorder.isRecording {
         recorder.stop()
         audioRecorder = nil
-    }
-}
-```
-
-```swift
-import AVFoundation
-
-var captureSession: AVCaptureSession?
-
-func startVideoRecording() {
-    captureSession = AVCaptureSession()
-    captureSession?.beginConfiguration()
-
-    let videoDevice = AVCaptureDevice.default(for: .video)
-    let audioDevice = AVCaptureDevice.default(for: .audio)
-
-    do {
-        let videoInput = try AVCaptureDeviceInput(device: videoDevice!)
-        let audioInput = try AVCaptureDeviceInput(device: audioDevice!)
-
-        if (captureSession?.canAddInput(videoInput) ?? false) {
-            captureSession?.addInput(videoInput)
-        }
-
-        if (captureSession?.canAddInput(audioInput) ?? false) {
-            captureSession?.addInput(audioInput)
-        }
-
-        captureSession?.commitConfiguration()
-        captureSession?.startRunning()
-    } catch {
-        // Handle error
-    }
-}
-
-func stopVideoRecording() {
-    if let session = captureSession, session.isRunning {
-        session.stopRunning()
-        captureSession = nil
     }
 }
 ```
