@@ -1,7 +1,5 @@
 :!sectids:
 
-= Avoid using high accuracy geolocation in web applications (`@ecocode/avoid-high-accuracy-geolocation`)
-
 == Why is this an issue?
 
 High-precision geolocation typically requires more power from the device's GPS hardware.
