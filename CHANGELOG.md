@@ -15,7 +15,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#318](https://github.com/green-code-initiative/ecoCode/issues/318) Implement the rule EC523 for React Native
+
 ### Deleted
+- [#318](https://github.com/green-code-initiative/ecoCode/issues/318) Merge the rule EC8 with EC523
 
 ## [1.5.4] - 2024-05-24
 
