@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- [#310] (https://github.com/green-code-initiative/ecoCode/issues/310) EC515 Swift port
 
 - [#306](https://github.com/green-code-initiative/ecoCode/issues/306) Swift port of rule EC514
 - [#315](https://github.com/green-code-initiative/ecoCode/pull/315) Add rule EC530 for javascript
@@ -15,7 +16,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#318](https://github.com/green-code-initiative/ecoCode/issues/318) Implement the rule EC523 for React Native
+
 ### Deleted
+- [#318](https://github.com/green-code-initiative/ecoCode/issues/318) Merge the rule EC8 with EC523
 
 ## [1.5.4] - 2024-05-24
 
