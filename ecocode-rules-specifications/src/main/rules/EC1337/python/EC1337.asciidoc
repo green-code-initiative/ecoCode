@@ -1,0 +1,29 @@
+The cache is unlimited which is suspect. An unlimited cache can take a lot of RAM / Disk space.
+
+## Noncompliant Code Examples
+
+```python
+ @cache # Noncompliant
+ def cached_function():
+   ...
+```
+
+```python
+ @lru_cache(maxsize=None) # Noncompliant
+ def cached_function():
+   ...
+```
+
+## Compliant Solution
+
+```python
+ @lru_cache() # By default, the max size of the cache is 128
+ def cached_function():
+    ...
+```
+
+```python
+ @lru_cache(maxsize=16) # Define a max size to the cache
+ def cached_function():
+    ...
+```

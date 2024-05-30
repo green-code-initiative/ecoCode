@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+[Python #26](https://github.com/green-code-initiative/ecoCode-python/issues/26) [EC1337] [Python] Avoid unlimited cache
+
 ### Changed
 
 ### Deleted
