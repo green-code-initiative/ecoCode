@@ -5,5 +5,9 @@
     "ecocode",
     "react-native",
     "eco-design"
+  ],
+  "compatibleLanguages": [
+    "JAVASCRIPT",
+    "TYPESCRIPT"
   ]
 }

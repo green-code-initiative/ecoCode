@@ -1,9 +1,5 @@
 = Should avoid brightness overriding (`@ecocode/avoid-brightness-override`)
 
-:warning: This rule _warns_ in the :white_check_mark: `recommended` config.
-
-//// end auto-generated rule header ////
-
 == Why is this an issue?
 
 To avoid draining the battery, iOS and Android devices adapt the brightness of the screen depending on the environment light.
