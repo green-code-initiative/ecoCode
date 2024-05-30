@@ -145,6 +145,7 @@ Then, if no answer, contact ...
 - [Maxime DUBOIS](https://www.linkedin.com/in/maxime-dubois-%F0%9F%8C%B1-649a3a3/)
 - [David DE CARVALHO](https://www.linkedin.com/in/david%E2%80%8E-de-carvalho-8b395284/)
 - [Maxime MALGORN](https://www.linkedin.com/in/maximemalgorn/)
+- [Vianney DE BELLABRE](https://www.linkedin.com/in/vianney-de-bellabre/)
 
 🧐 Core Team Emeriti
 --------------------
@@ -162,6 +163,7 @@ They have contributed to the success of ecoCode :
 - [Snapp'](https://www.snapp.fr/)
 - [Université de Pau et des Pays de l'Adour (UPPA)](https://www.univ-pau.fr/)
 - [Solocal](https://www.solocal.com/) / [PagesJaunes.fr](https://www.pagesjaunes.fr/)
+- [Capgemini](https://www.capgemini.fr/)
 
 They supported the project :
 
