@@ -11,9 +11,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#313](https://github.com/green-code-initiative/ecoCode/issues/313) [EC528] Swift port
 
 
+- [#315](https://github.com/green-code-initiative/ecoCode/pull/315) Add rule EC530 for javascript
+- [#321](https://github.com/green-code-initiative/ecoCode/pull/321) Add rule EC522 for javascript (avoid brightness override)
+
 ### Changed
 
+- [#318](https://github.com/green-code-initiative/ecoCode/issues/318) Implement the rule EC523 for React Native
+
 ### Deleted
+- [#318](https://github.com/green-code-initiative/ecoCode/issues/318) Merge the rule EC8 with EC523
 
 ## [1.5.4] - 2024-05-24
 
