@@ -1,0 +1,16 @@
+{
+  "title": "With LINQ use Where before Order by",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "eco-design",
+    "ecocode",
+    "performance",
+    "bad-practice"
+  ],
+  "defaultSeverity": "Major"
+}

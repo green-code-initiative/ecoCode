@@ -1,0 +1,104 @@
+:!sectids:
+
+With LINQ use Where before Order by
+
+## Why is this an issue ?
+1
+When you place the 'orderby' before the 'where', LINQ sorts the entire dataset before filtering it. It is more efficient to filter first and then sort by placing the 'where' before the 'orderby'.
+
+
+### When can it be ignored ?
+
+This rule shouldn't be ignored.
+
+## Non-compliant examples
+
+[source, cs]
+----
+public static async Task Test()
+{
+    var query = items
+        .OrderBy(x => x)
+        .Where(x => x > 10)
+        .Select(x => x);
+}
+----
+
+[source, cs]
+----
+public static async Task Test()
+{
+    var query = items
+        .OrderByDescending(x => x)
+        .Where(x => x > 10)
+        .Select(x => x);
+}
+----
+
+[source, cs]
+----
+public static async Task Test()
+{
+    var query = from item in items
+                orderby item 
+                where item > 10
+                select item;
+}
+----
+
+[source, cs]
+----
+public static async Task Test()
+{
+    var query = from item in items
+                orderby item descending
+                where item > 10
+                select item;
+}
+----
+
+## Compliant examples
+
+[source, cs]
+----
+public static async Task Test()
+{
+    var query = items
+        .Where(x => x > 10)
+        .OrderBy(x => x)
+        .Select(x => x);
+}
+----
+
+[source, cs]
+----
+public static async Task Test()
+{
+    var query = items
+        .Where(x => x > 10)
+        .OrderByDescending(x => x)
+        .Select(x => x);
+}
+----
+
+[source, cs]
+----
+public static async Task Test()
+{
+    var query = from item in items
+                where item > 10
+                orderby item 
+                select item;
+}
+----
+
+[source, cs]
+----
+public static async Task Test()
+{
+    var query = from item in items
+                where item > 10
+                orderby item descending
+                select item;
+}
+----
