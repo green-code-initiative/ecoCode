@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - [#315](https://github.com/green-code-initiative/ecoCode/pull/315) Add rule EC530 for javascript
 - [#321](https://github.com/green-code-initiative/ecoCode/pull/321) Add rule EC522 for javascript (avoid brightness override)
+- [#335](https://github.com/green-code-initiative/ecoCode/pull/335) Implementing rule EC31 for javascript (prefer lighter formats for image files)
 
 ### Changed
 
