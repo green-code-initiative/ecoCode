@@ -1,0 +1,19 @@
+{
+  "title": "Avoid using a FetchType other than FetchType.LAZY",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "jpa",
+    "fetch",
+    "lazy",
+    "eco-design",
+    "performance",
+    "memory",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}
