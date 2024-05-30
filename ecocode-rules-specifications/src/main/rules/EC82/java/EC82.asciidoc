@@ -1,0 +1,59 @@
+:!sectids:
+
+Variable can be made constant.
+
+## Why is this an issue ?
+
+Unlike variables, constant values are known at compile time and are injected as is in the code, requiring no runtime processing and therefore reducing the environmental footprint.
+Although good compilers will const eligible variables by themselves, it is still good practice to declare them constant, as it makes the code intent clearer.
+
+### When can it be ignored ?
+
+This rule should not be ignored.
+
+## Non-compliant examples
+
+```java
+public class MyClass {
+    private int varDefinedInClassNotReassigned = 0; // Noncompliant {{Make variable constant}}
+    private int varDefinedInClassReassigned = 0;
+
+    void changeVarDefinedInClassReassigned() {
+        varDefinedInClassReassigned = 1;
+        System.out.println("varDefinedInClassReassigned = " + varDefinedInClassReassigned);
+        System.out.println("varDefinedInClassNotReassigned = " + varDefinedInClassNotReassigned);
+    }
+
+    void simpleMethod() {
+        String varDefinedInMethodNotReassigned = "hello"; // Noncompliant
+        String varDefinedInMethodReassigned = "hello";
+        varDefinedInMethodReassigned = "bye";
+
+        System.out.println("varDefinedInMethodNotReassigned = " + varDefinedInMethodNotReassigned);
+        System.out.println("varDefinedInMethodReassigned = " + varDefinedInMethodReassigned);
+    }
+}
+```
+## Compliant examples
+
+```java
+public class MyClass {
+    private static final int VAR_DEFINED_IN_CLASS_NOT_REASSIGNED = 0; // Compliant
+    private static final int VAR_DEFINED_IN_METHOD_NOT_REASSIGNED = 0; // Compliant
+    private int varDefinedInClassReassigned = 0;
+
+    void changeVarDefinedInClassReassigned() {
+        varDefinedInClassReassigned = 1;
+        System.out.println("varDefinedInClassReassigned = " + varDefinedInClassReassigned);
+        System.out.println("varDefinedInClassNotReassigned = " + VAR_DEFINED_IN_CLASS_NOT_REASSIGNED);
+    }
+
+    void simpleMethod() {
+        String varDefinedInMethodReassigned = "hello";
+        varDefinedInMethodReassigned = "bye";
+
+        System.out.println("varDefinedInMethodNotReassigned = " + VAR_DEFINED_IN_METHOD_NOT_REASSIGNED);
+        System.out.println("varDefinedInMethodReassigned = " + varDefinedInMethodReassigned);
+    }
+}
+```

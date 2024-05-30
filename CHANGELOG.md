@@ -13,6 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [1.5.5]
+
+### Added
+- [#TODO](https://github.com/green-code-initiative/ecoCode/pull/TODO) [EC82] [Java] Variable can be made constant
+
+### Changed
+
+### Deleted
+
 ## [1.5.4] - 2024-05-24
 
 ### Added
