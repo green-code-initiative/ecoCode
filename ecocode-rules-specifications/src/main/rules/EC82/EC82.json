@@ -10,5 +10,8 @@
     "eco-design",
     "ecocode"
   ],
-  "defaultSeverity": "Minor"
+  "defaultSeverity": "Minor",
+  "compatibleLanguages": [
+    "JAVA"
+  ]
 }
