@@ -1,10 +1,10 @@
 # Rules
 
 - [Rules](#rules)
-  - [Rules support matrix by techno](#rules-support-matrix-by-techno)
-  - [Rules to be reworked / measured / clarified](#rules-to-be-reworked--measured--clarified)
-  - [Deprecated rules](#deprecated-rules)
-  - [Refused / Deleted rules](#refused--deleted-rules)
+    - [Rules support matrix by techno](#rules-support-matrix-by-techno)
+    - [Rules to be reworked / measured / clarified](#rules-to-be-reworked--measured--clarified)
+    - [Deprecated rules](#deprecated-rules)
+    - [Refused / Deleted rules](#refused--deleted-rules)
 
 ## Rules support matrix by techno
 
@@ -77,7 +77,8 @@ Some are applicable for different technologies.
 
 ## Rules to be reworked / measured / clarified
 
-This table lists rules proposed by the community but they have to be reworked / measured / clarified before being implemented in ecoCode plugins.
+This table lists rules proposed by the community but they have to be reworked / measured / clarified before being
+implemented in ecoCode plugins.
 (Issues and PR are closed, but they can be reopen once rework launched)
 
 | Rule key | Language | Name                                             | Description                                                                           | Invalidation                                                                                                                                                                              |
@@ -92,7 +93,8 @@ This table lists rules proposed by the community but they have to be reworked / 
 
 ## Deprecated rules
 
-This table lists rules proposed by the community but deprecated in ecoCode plugins with the justification. These rules will be completely deleted in next releases and moved to bottom deleted rules array.
+This table lists rules proposed by the community but deprecated in ecoCode plugins with the justification. These rules
+will be completely deleted in next releases and moved to bottom deleted rules array.
 
 | Rule key | Language            | Name                                               | Description                                                                                              | Invalidation                                                                                                                                                                                                                                                 |
 |----------|---------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -103,10 +105,11 @@ This table lists rules proposed by the community but deprecated in ecoCode plugi
 
 This table lists rules proposed by the community but refused or/and deleted in ecoCode plugins with the justification.
 
-| Rule key | Language | Name                                        | Description                                                                                                                  | Invalidation                                                                                                                                                                     |
-|----------|----------|---------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CRDOM203 | HTML     | HTML page must contain a doctype tag        | The difference in performance is negligible, this rule is more related to the user experience.                               | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/103)                                                                                    |
-| CRPYT    | Python   | Use numpy array instead of standard list    | The use of numpy library to perform array manipulation is more energy efficient than the use of the standard list functions. | [Github discussion with measures](https://github.com/green-code-initiative/ecoCode/issues/132)                                                                                   |
-| EC4      | Java     | Avoid using global variables                | Global variables do not exist in Java.                                                                                       | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/233)                                                                                    |
-| EC63     | Java     | Unnecessarily assigning values to variables | There are already 3 native SonarQube rules for Java.                                                                         | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/pull/258)                                                                                      |
-| EC75     | Java     | Don't concatenate strings in loops          | Optimizations on Java concatenation Strings are useless since JDK8                                                           | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/246)                                                                                    |
+| Rule key | Language   | Name                                        | Description                                                                                                                  | Invalidation                                                                                   |
+|----------|------------|---------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+| CRDOM203 | HTML       | HTML page must contain a doctype tag        | The difference in performance is negligible, this rule is more related to the user experience.                               | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/103)  |
+| CRPYT    | Python     | Use numpy array instead of standard list    | The use of numpy library to perform array manipulation is more energy efficient than the use of the standard list functions. | [Github discussion with measures](https://github.com/green-code-initiative/ecoCode/issues/132) |
+| EC4      | Java       | Avoid using global variables                | Global variables do not exist in Java.                                                                                       | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/233)  |
+| EC63     | Java       | Unnecessarily assigning values to variables | There are already 3 native SonarQube rules for Java.                                                                         | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/pull/258)    |
+| EC75     | Java       | Don't concatenate strings in loops          | Optimizations on Java concatenation Strings are useless since JDK8                                                           | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/246)  |
+| EC8      | JavaScript | Avoid using high accuracy geolocation       | The rule has been merged with the rule EC523                                                                                 | [Github discussion with sources](https://github.com/green-code-initiative/ecoCode/issues/318)  |
