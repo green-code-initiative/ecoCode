@@ -1,4 +1,6 @@
-= Should avoid brightness overriding (`@ecocode/avoid-brightness-override`)
+:!sectids:
+
+Should avoid brightness overriding (`@ecocode/avoid-brightness-override`)
 
 == Why is this an issue?
 
