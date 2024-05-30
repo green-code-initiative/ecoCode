@@ -1,16 +1,130 @@
-Creation of a Media Recorder object with `new MediaRecorder()` is used to record audio and video. Class own a `release()` method.
+Creation of an `AVAudioRecorder` or `AVCaptureSession` object is used to record audio and video. These classes have methods to stop recording and release resources.
 
-In addition to unnecessary resources (such as memory and instances of codecs) being held, failure to call this method immediately if a media object is no longer needed may also lead to continuous battery consumption for mobile devices.
+In addition to unnecessary resources (such as memory and instances of codecs) being held, failure to properly stop and release these objects if they are no longer needed may also lead to continuous battery consumption for mobile devices.
 
-## Noncompliant Code Example
 
-```java
-MediaRecorder mr = new MediaRecorder();
+## Noncompliant Code Examples
+
+```swift
+import AVFoundation
+
+var audioRecorder: AVAudioRecorder?
+
+func startRecording() {
+    let settings = [
+        AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+        AVSampleRateKey: 12000,
+        AVNumberOfChannelsKey: 1,
+        AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+    ]
+
+    do {
+        audioRecorder = try AVAudioRecorder(url: getDocumentsDirectory().appendingPathComponent("recording.m4a"), settings: settings)
+        audioRecorder?.record()
+    } catch {
+        // Handle error
+    }
+}
 ```
 
-## Compliant Solution
+```swift
+import AVFoundation
 
-```java
-MediaRecorder mr = new MediaRecorder();
-mr.release();
+var captureSession: AVCaptureSession?
+
+func startVideoRecording() {
+    captureSession = AVCaptureSession()
+    captureSession?.beginConfiguration()
+
+    let videoDevice = AVCaptureDevice.default(for: .video)
+    let audioDevice = AVCaptureDevice.default(for: .audio)
+
+    do {
+        let videoInput = try AVCaptureDeviceInput(device: videoDevice!)
+        let audioInput = try AVCaptureDeviceInput(device: audioDevice!)
+
+        if (captureSession?.canAddInput(videoInput) ?? false) {
+            captureSession?.addInput(videoInput)
+        }
+
+        if (captureSession?.canAddInput(audioInput) ?? false) {
+            captureSession?.addInput(audioInput)
+        }
+
+        captureSession?.commitConfiguration()
+        captureSession?.startRunning()
+    } catch {
+        // Handle error
+    }
+}
+```
+
+## Compliant Solutions
+
+```swift
+import AVFoundation
+
+var audioRecorder: AVAudioRecorder?
+
+func startRecording() {
+    let settings = [
+        AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+        AVSampleRateKey: 12000,
+        AVNumberOfChannelsKey: 1,
+        AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+    ]
+
+    do {
+        audioRecorder = try AVAudioRecorder(url: getDocumentsDirectory().appendingPathComponent("recording.m4a"), settings: settings)
+        audioRecorder?.record()
+    } catch {
+        // Handle error
+    }
+}
+
+func stopRecording() {
+    if let recorder = audioRecorder, recorder.isRecording {
+        recorder.stop()
+        audioRecorder = nil
+    }
+}
+```
+
+```swift
+import AVFoundation
+
+var captureSession: AVCaptureSession?
+
+func startVideoRecording() {
+    captureSession = AVCaptureSession()
+    captureSession?.beginConfiguration()
+
+    let videoDevice = AVCaptureDevice.default(for: .video)
+    let audioDevice = AVCaptureDevice.default(for: .audio)
+
+    do {
+        let videoInput = try AVCaptureDeviceInput(device: videoDevice!)
+        let audioInput = try AVCaptureDeviceInput(device: audioDevice!)
+
+        if (captureSession?.canAddInput(videoInput) ?? false) {
+            captureSession?.addInput(videoInput)
+        }
+
+        if (captureSession?.canAddInput(audioInput) ?? false) {
+            captureSession?.addInput(audioInput)
+        }
+
+        captureSession?.commitConfiguration()
+        captureSession?.startRunning()
+    } catch {
+        // Handle error
+    }
+}
+
+func stopVideoRecording() {
+    if let session = captureSession, session.isRunning {
+        session.stopRunning()
+        captureSession = nil
+    }
+}
 ```
