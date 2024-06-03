@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [#306](https://github.com/green-code-initiative/ecoCode/issues/306) Swift port of rule EC514
 - [#315](https://github.com/green-code-initiative/ecoCode/pull/315) Add rule EC530 for javascript
 - [#321](https://github.com/green-code-initiative/ecoCode/pull/321) Add rule EC522 for javascript (avoid brightness override)
+- Swift rules cleanup and updates (removed duplicated rules, added [EC602])
+- [#290](https://github.com/green-code-initiative/ecoCode/issues/290) [EC512] Swift port
 
 ### Changed
 
@@ -53,8 +55,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Swift rules cleanup and updates (removed duplicated rules, added [EC602])
-- [#290](https://github.com/green-code-initiative/ecoCode/issues/290) [EC512] Swift port
 - [C# #18](https://github.com/green-code-initiative/ecoCode-csharp/issues/18) [EC81] [C#] Specify struct layout
 - [C# #285](https://github.com/green-code-initiative/ecoCode/pull/285) [EC82] [C#] Variable can be made constant
 - [C# #286](https://github.com/green-code-initiative/ecoCode/issues/286) [EC83] [C#] Replace Enum ToString() with nameof
