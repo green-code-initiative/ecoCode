@@ -1,0 +1,49 @@
+:!sectids:
+
+Return Task directly.
+
+## Why is this an issue ?
+
+Asynchronous methods that contain a single awaited statement can be optimized by removing the `async` modifier and returning the awaited `Task` directly.
+Doing so reduces the overhead of the state machine generated for the asynchronous method, leading to more efficient code and improving the resource efficiency of the application.
+
+### When can it be ignored ?
+
+When this rule is applied, the code running inside the method becomes synchronous, which may or may not be desirable.
+The decision to do so should be done with consideration to the context in which the method is used.
+
+## Non-compliant example
+
+[source, cs]
+----
+public static async Task Test()
+{
+	await Task.Delay(1000); // Non-compliant. Applying the rule is very safe here.
+}
+----
+
+[source, cs]
+----
+public static async Task Test()
+{
+	await MyAsyncMethod(GetParameters()); // Applying the rule depends on GetParameters() here, is it ok to run it synchronously ?
+}
+----
+
+## Compliant example
+
+[source, cs]
+----
+public static Task Test()
+{
+	return Task.Delay(1000); // Compliant
+}
+----
+
+[source, cs]
+----
+public static async Test()
+{
+	return MyAsyncMethod(GetParameters()); // Compliant, but GetParameters() is called synchronously now.
+}
+----
