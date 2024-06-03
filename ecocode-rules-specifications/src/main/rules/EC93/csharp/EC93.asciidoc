@@ -12,38 +12,32 @@ Doing so reduces the overhead of the state machine generated for the asynchronou
 When this rule is applied, the code running inside the method becomes synchronous, which may or may not be desirable.
 The decision to do so should be done with consideration to the context in which the method is used.
 
-## Non-compliant example
+## Non-compliant examples
 
 [source, cs]
 ----
-public static async Task Test()
+public static async Task Test1()
 {
 	await Task.Delay(1000); // Non-compliant. Applying the rule is very safe here.
 }
-----
 
-[source, cs]
-----
-public static async Task Test()
+public static async Task Test2()
 {
-	await MyAsyncMethod(GetParameters()); // Applying the rule depends on GetParameters() here, is it ok to run it synchronously ?
+	await MyAsyncMethod(GetParameters()); // Non-compliant. Applying the rule depends on GetParameters() here, is it ok to run it synchronously ?
 }
 ----
 
-## Compliant example
+## Compliant examples
 
 [source, cs]
 ----
-public static Task Test()
+public static Task Test1()
 {
 	return Task.Delay(1000); // Compliant
 }
-----
 
-[source, cs]
-----
-public static async Test()
+public static Task Test2()
 {
-	return MyAsyncMethod(GetParameters()); // Compliant, but GetParameters() is called synchronously now.
+	return MyAsyncMethod(GetParameters()); // Compliant. But GetParameters() is called synchronously now.
 }
 ----
