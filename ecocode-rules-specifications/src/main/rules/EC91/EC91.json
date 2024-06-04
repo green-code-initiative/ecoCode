@@ -1,5 +1,5 @@
 {
-  "title": "With LINQ use Where before Order by",
+  "title": "Use Where before OrderBy",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
