@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [C# #61](https://github.com/green-code-initiative/ecoCode-csharp/issues/61) [EC91] [C#] Add rule EC91: With LINQ use Where before Order by
+- [C# #61](https://github.com/green-code-initiative/ecoCode-csharp/issues/61) [EC91] [C#] Use Where before OrderBy
 
 ### Changed
 
