@@ -1,11 +1,10 @@
 :!sectids:
 
-With LINQ use Where before Order by
+Use Where before OrderBy.
 
 ## Why is this an issue ?
-1
-When you place the 'orderby' before the 'where', LINQ sorts the entire dataset before filtering it. It is more efficient to filter first and then sort by placing the 'where' before the 'orderby'.
 
+When `Orderby` is called right before `Where`, LINQ sorts all the elements before filtering them. Doing the opposite is more efficient, first filter the items then sort the remaining ones only.
 
 ### When can it be ignored ?
 
@@ -19,8 +18,7 @@ public static async Task Test()
 {
     var query = items
         .OrderBy(x => x)
-        .Where(x => x > 10)
-        .Select(x => x);
+        .Where(x => x > 10);
 }
 ----
 
@@ -29,9 +27,9 @@ public static async Task Test()
 public static async Task Test()
 {
     var query = items
-        .OrderByDescending(x => x)
-        .Where(x => x > 10)
-        .Select(x => x);
+        .OrderBy(x => x)
+        .ThenByDescending(x => x)
+        .Where(x => x > 10);
 }
 ----
 
@@ -65,8 +63,7 @@ public static async Task Test()
 {
     var query = items
         .Where(x => x > 10)
-        .OrderBy(x => x)
-        .Select(x => x);
+        .OrderBy(x => x);
 }
 ----
 
@@ -76,8 +73,8 @@ public static async Task Test()
 {
     var query = items
         .Where(x => x > 10)
-        .OrderByDescending(x => x)
-        .Select(x => x);
+        .OrderBy(x => x)
+        .ThenByDescending(x => x);
 }
 ----
 
