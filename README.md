@@ -159,7 +159,7 @@ Here we honor some no-longer-active core team members who have made valuable con
 They have contributed to the success of ecoCode :
 
 - [Davidson Consulting](https://www.davidson.fr/)
-- [Orange Business Services](https://www.orange-business.com/)
+- [Orange Business](https://www.orange-business.com/)
 - [Snapp'](https://www.snapp.fr/)
 - [Université de Pau et des Pays de l'Adour (UPPA)](https://www.univ-pau.fr/)
 - [Solocal](https://www.solocal.com/) / [PagesJaunes.fr](https://www.pagesjaunes.fr/)
