@@ -9,8 +9,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- [C# #66](https://github.com/green-code-initiative/ecoCode-csharp/pull/66) [EC93] [C#] Return Task directly
+
+### Changed
+
+### Deleted
+
+## [1.6.0] - 2024-06-03
+
+### Added
+
 - [#293](https://github.com/green-code-initiative/ecoCode/issues/293) [EC513] Swift port
-- [#310] (https://github.com/green-code-initiative/ecoCode/issues/310) EC515 Swift port
+- [#310](https://github.com/green-code-initiative/ecoCode/issues/310) EC515 Swift port
 - [#306](https://github.com/green-code-initiative/ecoCode/issues/306) Swift port of rule EC514
 - [#315](https://github.com/green-code-initiative/ecoCode/pull/315) Add rule EC530 for javascript
 - [#321](https://github.com/green-code-initiative/ecoCode/pull/321) Add rule EC522 for javascript (avoid brightness override)
@@ -310,7 +320,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.5.4...HEAD)
+[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.6.0...HEAD)
+[1.6.0](https://github.com/green-code-initiative/ecoCode/compare/1.5.4...1.6.0)
 [1.5.4](https://github.com/green-code-initiative/ecoCode/compare/1.5.3...1.5.4)
 [1.5.3](https://github.com/green-code-initiative/ecoCode/compare/1.5.2...1.5.3)
 [1.5.2](https://github.com/green-code-initiative/ecoCode/compare/1.5.1...1.5.2)
