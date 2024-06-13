@@ -1,11 +1,15 @@
 {
-  "title": "Sobriety: Brightness Override",
+  "title": "Return Task directly",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
-    "constantCost": "20min"
+    "constantCost": "5min"
   },
-  "ecoScore": "0.4",
+  "tags": [
+    "eco-design",
+    "performance",
+    "ecocode"
+  ],
   "defaultSeverity": "Minor"
 }

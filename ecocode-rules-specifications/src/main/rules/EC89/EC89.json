@@ -1,11 +1,17 @@
 {
-  "title": "Sobriety: Torch Free",
+  "title": "Avoid suspect unlimited cache size",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
     "constantCost": "5min"
   },
-  "ecoScore": "0.4",
+  "tags": [
+    "eco-design",
+    "performance",
+    "network",
+    "cache",
+    "ecocode"
+  ],
   "defaultSeverity": "Major"
 }
