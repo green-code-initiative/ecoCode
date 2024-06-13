@@ -9,12 +9,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [C# #66](https://github.com/green-code-initiative/ecoCode-csharp/pull/66) [EC93] [C#] Return Task directly
-- [JAVA #323](https://github.com/green-code-initiative/ecoCode/pull/323) [EC94] [Java] Use orElseGet instead of orElse
-
 ### Changed
 
 ### Deleted
+
+## [1.6.1] - 2024-06-13
+
+### Added
+
+- [C# #66](https://github.com/green-code-initiative/ecoCode-csharp/pull/66) [EC93] [C#] Return Task directly
+- [JAVA #323](https://github.com/green-code-initiative/ecoCode/pull/323) [EC94] [Java] Use orElseGet instead of orElse
 
 ## [1.6.0] - 2024-06-03
 
@@ -321,7 +325,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.6.0...HEAD)
+[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.6.1...HEAD)
+[1.6.1](https://github.com/green-code-initiative/ecoCode/compare/1.6.0...1.6.1)
 [1.6.0](https://github.com/green-code-initiative/ecoCode/compare/1.5.4...1.6.0)
 [1.5.4](https://github.com/green-code-initiative/ecoCode/compare/1.5.3...1.5.4)
 [1.5.3](https://github.com/green-code-initiative/ecoCode/compare/1.5.2...1.5.3)
