@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - [C# #66](https://github.com/green-code-initiative/ecoCode-csharp/pull/66) [EC93] [C#] Return Task directly
+- [JAVA #323](https://github.com/green-code-initiative/ecoCode/pull/323) [EC94] [Java] Use orElseGet instead of orElse
 
 ### Changed
 
