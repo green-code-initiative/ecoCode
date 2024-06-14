@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- [#313](https://github.com/green-code-initiative/ecoCode/issues/313) [EC528] Swift port
+
 
 - [C# #54](https://github.com/green-code-initiative/ecoCode-csharp/pull/54) [EC92] [C#] Use string.Length instead of comparison with empty string
 
