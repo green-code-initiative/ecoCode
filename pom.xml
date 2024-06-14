@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.ecocode</groupId>
@@ -80,6 +81,7 @@
 
     <modules>
         <module>ecocode-rules-specifications</module>
+        <module>tools/rule-exporter</module>
     </modules>
 
     <scm>
@@ -94,14 +96,12 @@
     </issueManagement>
 
     <properties>
-
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
-
     </properties>
 
-    <!-- <build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>com.mycila</groupId>
@@ -132,7 +132,7 @@
                 </executions>
             </plugin>
         </plugins>
-    </build> -->
+    </build>
 
     <profiles>
         <profile>
