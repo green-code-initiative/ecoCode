@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#21](https://github.com/green-code-initiative/ecoCode-java/issues/21) Improvement: some method calls are legitimate in a for loop expression.
+
 ### Deleted
 
 ## [1.6.1] - 2024-06-13
