@@ -4,7 +4,7 @@ Use string.Length instead of comparison with empty string
 
 ## Why is this an issue ?
 
-Comparing a string to an empty string is unnecessary and can be replaced by a call to `string.Length` which is more readable.
+Comparing a string to an empty string is unnecessary and can be replaced by a call to `string.Length`, which is more performant and more readable.
 
 ### When can it be ignored ?
 
