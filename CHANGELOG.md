@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Deleted
 
 - [#282](https://github.com/green-code-initiative/ecoCode/pull/282) Remove deprecated Python rule EC66
-- [#2282](https://github.com/green-code-initiative/ecoCode/pull/282) Remove unrelevant Python rule EC69
+- [#282](https://github.com/green-code-initiative/ecoCode/pull/282) Depreciate unrelevant EC69 rule for Python
 
 ## [1.5.0] - 2024-02-02
 
