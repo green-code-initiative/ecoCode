@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+### Changed
+
+### Deleted
+
+## [1.6.2] - 2024-07-17
+
+### Added
+
 - [C# #54](https://github.com/green-code-initiative/ecoCode-csharp/pull/54) [EC92] [C#] Use string.Length instead of comparison with empty string
 - [C# #61](https://github.com/green-code-initiative/ecoCode-csharp/issues/61) [EC91] [C#] Use Where before OrderBy
 
@@ -332,7 +340,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.6.1...HEAD)
+[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.6.2...HEAD)
+[1.6.2](https://github.com/green-code-initiative/ecoCode/compare/1.6.1...1.6.2)
 [1.6.1](https://github.com/green-code-initiative/ecoCode/compare/1.6.0...1.6.1)
 [1.6.0](https://github.com/green-code-initiative/ecoCode/compare/1.5.4...1.6.0)
 [1.5.4](https://github.com/green-code-initiative/ecoCode/compare/1.5.3...1.5.4)
