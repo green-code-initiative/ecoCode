@@ -9,15 +9,79 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [#239](https://github.com/green-code-initiative/ecoCode/issues/239) Add new Java rule EC24 : Optimize Database SQL Queries (Clause LIMIT)
+- [C# #54](https://github.com/green-code-initiative/ecoCode-csharp/pull/54) [EC92] [C#] Use string.Length instead of comparison with empty string
+- [C# #61](https://github.com/green-code-initiative/ecoCode-csharp/issues/61) [EC91] [C#] Use Where before OrderBy
 
 ### Changed
 
-- [#282](https://github.com/green-code-initiative/ecoCode/pull/282) Depreciate unrelevant EC69 rule for Python
+- [Python #282](https://github.com/green-code-initiative/ecoCode/pull/282) Depreciate unrelevant EC69 rule for Python
 
 ### Deleted
 
-- [#282](https://github.com/green-code-initiative/ecoCode/pull/282) Remove deprecated Python rule EC66
+- [Python #282](https://github.com/green-code-initiative/ecoCode/pull/282) Remove deprecated Python rule EC66
+
+## [1.6.1] - 2024-06-13
+
+### Added
+
+- [C# #66](https://github.com/green-code-initiative/ecoCode-csharp/pull/66) [EC93] [C#] Return Task directly
+- [JAVA #323](https://github.com/green-code-initiative/ecoCode/pull/323) [EC94] [Java] Use orElseGet instead of orElse
+
+## [1.6.0] - 2024-06-03
+
+### Added
+
+- [#293](https://github.com/green-code-initiative/ecoCode/issues/293) [EC513] Swift port
+- [#310](https://github.com/green-code-initiative/ecoCode/issues/310) EC515 Swift port
+- [#306](https://github.com/green-code-initiative/ecoCode/issues/306) Swift port of rule EC514
+- [#315](https://github.com/green-code-initiative/ecoCode/pull/315) Add rule EC530 for javascript
+- [#321](https://github.com/green-code-initiative/ecoCode/pull/321) Add rule EC522 for javascript (avoid brightness override)
+- [Python #26](https://github.com/green-code-initiative/ecoCode-python/issues/26) [EC89] [Python] Avoid unlimited cache
+
+### Changed
+
+- [#318](https://github.com/green-code-initiative/ecoCode/issues/318) Implement the rule EC523 for React Native
+
+### Deleted
+
+- [#318](https://github.com/green-code-initiative/ecoCode/issues/318) Merge the rule EC8 with EC523
+
+## [1.5.4] - 2024-05-24
+
+### Added
+
+- [#298](https://github.com/green-code-initiative/ecoCode/pull/298) Add HTML rule EC36 (Avoid autoplay for videos and audio content)
+- [C# #36](https://github.com/green-code-initiative/ecoCode-csharp/issues/36) [EC86] [C#] GC.Collect should not be called
+- [C# #42](https://github.com/green-code-initiative/ecoCode-csharp/issues/42) [EC87] [C#] Use collection indexer
+- [C# #44](https://github.com/green-code-initiative/ecoCode-csharp/issues/44) [EC88] [C#] Dispose resource asynchronously
+
+### Changed
+
+- [mobile #302](https://github.com/green-code-initiative/ecoCode/pull/302) Big cleanup / sorting of mobile related rules
+- [C# #304](https://github.com/green-code-initiative/ecoCode/pull/304) [EC81] [C#] Fix type in json spec to allow import into Sonarqube
+
+## [1.5.3] - 2024-05-03
+
+### Changed
+
+- [PHP #23](https://github.com/green-code-initiative/ecoCode-php/issues/23) Deprecation of EC22 rule for PHP (waiting for measurement) - correction
+
+## [1.5.2] - 2024-05-02
+
+### Changed
+
+- [PHP #23](https://github.com/green-code-initiative/ecoCode-php/issues/23) Deprecation of EC22 rule for PHP (waiting for measurement)
+
+## [1.5.1] - 2024-04-29
+
+### Added
+
+- Swift rules cleanup and updates (removed duplicated rules, added [EC602])
+- [C# #18](https://github.com/green-code-initiative/ecoCode-csharp/issues/18) [EC81] [C#] Specify struct layout
+- [C# #285](https://github.com/green-code-initiative/ecoCode/pull/285) [EC82] [C#] Variable can be made constant
+- [C# #286](https://github.com/green-code-initiative/ecoCode/issues/286) [EC83] [C#] Replace Enum ToString() with nameof
+- [C# #27](https://github.com/green-code-initiative/ecoCode-csharp/issues/27) [EC84] [C#] Avoid async void methods
+- [C# #34](https://github.com/green-code-initiative/ecoCode-csharp/issues/34) [EC85] [C#] Make type sealed
 
 ## [1.5.0] - 2024-02-02
 
@@ -268,7 +332,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.5.0...HEAD)
+[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.6.1...HEAD)
+[1.6.1](https://github.com/green-code-initiative/ecoCode/compare/1.6.0...1.6.1)
+[1.6.0](https://github.com/green-code-initiative/ecoCode/compare/1.5.4...1.6.0)
+[1.5.4](https://github.com/green-code-initiative/ecoCode/compare/1.5.3...1.5.4)
+[1.5.3](https://github.com/green-code-initiative/ecoCode/compare/1.5.2...1.5.3)
+[1.5.2](https://github.com/green-code-initiative/ecoCode/compare/1.5.1...1.5.2)
+[1.5.1](https://github.com/green-code-initiative/ecoCode/compare/1.5.0...1.5.1)
 [1.5.0](https://github.com/green-code-initiative/ecoCode/compare/1.4.7...1.5.0)
 [1.4.7](https://github.com/green-code-initiative/ecoCode/compare/1.4.6...1.4.7)
 [1.4.6](https://github.com/green-code-initiative/ecoCode/compare/1.4.5...1.4.6)

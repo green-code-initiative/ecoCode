@@ -6,13 +6,6 @@
     "func": "Constant\/Issue",
     "constantCost": "10min"
   },
-  "tags": [
-    "sobriety",
-    "environment",
-    "ecocode",
-    "android",
-    "eco-design"
-  ],
   "ecoScore": "0.4",
   "defaultSeverity": "Major"
 }
