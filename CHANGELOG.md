@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#308](https://github.com/green-code-initiative/ecoCode/issues/308) [EC24] [Java] EC24 rule not implemented in Java yet (upgrade RULES.md)
+
 ### Deleted
 
 ## [1.6.2] - 2024-07-17
