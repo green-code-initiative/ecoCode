@@ -9,11 +9,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [#308](https://github.com/green-code-initiative/ecoCode/issues/308) Implementing EC24 in Java
-
 ### Changed
 
 ### Deleted
+
+## [1.6.3] - 2024-07-26
+
+### Added
+
+- [#308](https://github.com/green-code-initiative/ecoCode/issues/308) Implementing EC24 in Java
 
 ## [1.6.2] - 2024-07-17
 
