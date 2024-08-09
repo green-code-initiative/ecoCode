@@ -1,5 +1,5 @@
 {
-	"title": "Use string.Length instead of comparison with empty string",
+	"title": "string.Length should be used instead of comparison with empty string",
 	"type": "CODE_SMELL",
 	"status": "ready",
 	"remediation": {
@@ -12,5 +12,11 @@
 		"performance",
 		"bad-practice"
 	],
-	"defaultSeverity": "Minor"
+	"defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

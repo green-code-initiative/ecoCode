@@ -1,5 +1,5 @@
 {
-  "title": "Bottleneck: Uncompressed Data Transmission",
+  "title": "Data transmission should use compression",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -8,11 +8,17 @@
   },
   "tags": [
     "bottleneck",
-    "environment",
     "ecocode",
     "android",
-    "eco-design"
+    "eco-design",
+    "performance"
   ],
   "ecoScore": "0.4",
-  "defaultSeverity": "Minor"
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

@@ -1,6 +1,11 @@
+:!sectids:
+
+== Why is this an issue?
+
 Do not call a function when declaring a for-type loop in order to avoid function calls each iterations. It saves CPU cycles.
 
-## Noncompliant Code Example
+== How to fix it
+=== Noncompliant code example
 
 ```java
 public void foo() {
@@ -11,7 +16,7 @@ public void foo() {
 }
 ```
 
-## Compliant Solution
+=== Compliant solution
 
 ```java
 public void foo() {
@@ -22,3 +27,7 @@ public void foo() {
     }
 }
 ```
+
+== Resources
+
+- https://www.greenit.fr/2019/05/07/ecoconception-web-les-115-bonnes-pratiques-3eme-edition/[CNumR best practices (3rd edition) BP_069 (no longer exists in edition 4)]

@@ -8,11 +8,17 @@
   },
   "tags": [
     "ecocode",
-    "environment",
-    "sobriety",
     "eco-design",
+    "performance"
     "ios"
   ],
   "ecoScore": "0.4",
-  "defaultSeverity": "Major"
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  },
+
 }

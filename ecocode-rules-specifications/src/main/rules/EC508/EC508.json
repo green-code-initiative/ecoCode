@@ -8,11 +8,18 @@
   },
   "tags": [
     "idleness",
-    "environment",
     "ecocode",
     "android",
-    "eco-design"
+    "eco-design",
+    "performance"
   ],
   "ecoScore": "0.4",
-  "defaultSeverity": "Major"
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  },
+
 }

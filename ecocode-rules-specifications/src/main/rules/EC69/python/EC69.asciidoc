@@ -1,13 +1,18 @@
+:!sectids:
+
+== Why is this an issue?
+
 Do not call a function when declaring a for-type loop in order to avoid function calls each iteration. It saves CPU cycles.
 
-## Noncompliant Code Example
+== How to fix it
+=== Noncompliant code example
 
 ```python
 for i in my_function():  # Noncompliant
     ......
 ```
 
-## Compliant Solution
+=== Compliant solution
 
 ```python
 limit = my_function()
@@ -15,3 +20,6 @@ for i in limit:
     ......
 ```
 
+== Resources
+
+- https://www.greenit.fr/2019/05/07/ecoconception-web-les-115-bonnes-pratiques-3eme-edition/[CNumR best practices (3rd edition) BP_069 (no longer exists in edition 4)]

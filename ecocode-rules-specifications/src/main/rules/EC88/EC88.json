@@ -1,5 +1,5 @@
 {
-  "title": "Dispose resource asynchronously",
+  "title": "Resources should be disposed asynchronously",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -12,5 +12,11 @@
     "performance",
     "bad-practice"
   ],
-  "defaultSeverity": "Major"
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "title": "Sobriety: Dark UI (Bright Colors)",
+  "title": "Bright Colors should not be used",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -7,12 +7,17 @@
     "constantCost": "1h"
   },
   "tags": [
-    "sobriety",
-    "environment",
     "ecocode",
     "android",
     "ios",
-    "eco-design"
+    "eco-design",
+    "performance"
   ],
-  "defaultSeverity": "Major"
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

@@ -8,10 +8,16 @@
   },
   "tags": [
     "batch",
-    "environment",
     "ecocode",
     "android",
-    "eco-design"
+    "eco-design",
+    "performance"
   ],
-  "defaultSeverity": "Major"
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

@@ -1,9 +1,9 @@
 {
-  "title": "Avoid autoplay for videos and audio content",
+  "title": "Autoplay should be avoided for video and audio content",
   "type": "CODE_SMELL",
   "code": {
     "impacts": {
-      "MAINTAINABILITY": "MEDIUM"
+      "RELIABILITY": "MEDIUM"
     },
     "attribute": "EFFICIENT"
   },
@@ -15,6 +15,7 @@
   "tags": [
     "ecocode",
     "eco-design",
+    "performance",
     "video",
     "audio"
   ],

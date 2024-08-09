@@ -8,11 +8,17 @@
   },
   "tags": [
     "power",
-    "environment",
     "ecocode",
     "android",
     "ios",
-    "eco-design"
+    "eco-design",
+    "performance"
   ],
-  "defaultSeverity": "Major"
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

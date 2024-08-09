@@ -1,9 +1,14 @@
+:!sectids:
+
+== Why is this an issue?
+
 Inside complex code parts (for exemple multiple loops, complex data constructions...), avoid using try...catch.
 For the moment, this rule only deals with "file open" use case in try...catch blocks.
 
 When an exception is thrown, a variable (the exception itself) is created in a catch block and it's destruction consumes unnecessary CPU cycles and RAM. Prefer using logical tests in this cases.
 
-## Noncompliant Code Example
+== How to fix it
+=== Noncompliant code example
 
 ```php
 try
@@ -17,7 +22,7 @@ catch(Exception $ex)
 }
 ```
 
-## Compliant Solution
+=== Compliant solution
 
 ```php
 //try
@@ -32,15 +37,23 @@ if (!$picture) {
 }
 ```
 
+== Resources
+
+=== Best practises
+
+- https://www.greenit.fr/2019/05/07/ecoconception-web-les-115-bonnes-pratiques-3eme-edition/[CNumR best practices (3rd edition) BP_047 (no longer exists in edition 4)]
+
+=== Impact
+
 include::../../etsdiff-methodology.asciidoc[]
 
-## Case for a 1GB database:
+==== Case for a 1GB database
 
 image::https://live.staticflickr.com/65535/52622382871_f19da08db4_o.png[ETSdiff percent comparison]
 
 [format=csv,cols="1h,1,1"]
 |===
-Source of impacts,Compliant,Non-compliant
+Source of impacts,Compliant,Noncompliant
 
 include::1GB.etsdiff.csv[]
 |===

@@ -1,5 +1,5 @@
 {
-  "title": "Use Where before OrderBy",
+  "title": "Where should be used before OrderBy",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -12,5 +12,11 @@
     "performance",
     "bad-practice"
   ],
-  "defaultSeverity": "Major"
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

@@ -8,10 +8,15 @@ They may consume significant browser resources, leading to slower page rendering
 On mobile devices, constant animations can contribute to increased power consumption, affecting the device's battery life.
 Limiting the usage of CSS animations helps in creating a more energy-efficient and mobile-friendly user experience.
 
+== How to fix it
+=== Noncompliant code example
+
 [source,typescriptjsx,data-diff-id="1",data-diff-type="noncompliant"]
 ----
-<div style={{ border: "1px solid black", transition: "border 2s ease" }}/> // Non-compliant
+<div style={{ border: "1px solid black", transition: "border 2s ease" }}/> // Noncompliant
 ----
+
+=== Compliant solution
 
 [source,typescriptjsx,data-diff-id="1",data-diff-type="compliant"]
 ----
@@ -26,7 +31,7 @@ You can also inform the navigator of upcoming changes with the `will-change` ins
 
 === Documentation
 
-- https://github.com/cnumr/best-practices/blob/main/chapters/BP_039_en.md[CNUMR best practices] - Avoid JavaScript / CSS animations
+- https://github.com/cnumr/best-practices/blob/main/chapters/BP_039_en.md[CNumR best practices] - Avoid JavaScript / CSS animations
 
 === Articles & blog posts
 

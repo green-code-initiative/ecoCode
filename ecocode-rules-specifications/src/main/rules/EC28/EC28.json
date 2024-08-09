@@ -1,5 +1,5 @@
 {
-  "title": "Optimize read file exceptions",
+  "title": "Read file exceptions should be optimized",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -12,5 +12,11 @@
     "eco-design",
     "ecocode"
   ],
-  "defaultSeverity": "Minor"
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
 }
