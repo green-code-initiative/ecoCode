@@ -1,8 +1,14 @@
+:!sectids:
+
+== Why is this an issue?
+
 Don't set a constant parameter in batch update. Instead, put it in query. Creating this parameter and destroying it consumes CPU cycles and RAM unnecessarily.
 
-## Noncompliant Code Example
+== How to fix it
+=== Noncompliant code example
 
 ```java
+// Noncompliant
 public void foo() {
     // ...
     String query = "insert into mytable values(?,?,?)";
@@ -17,7 +23,7 @@ public void foo() {
 }
 ```
 
-## Compliant Solution
+=== Compliant solution
 
 ```java
 public void foo() {
@@ -32,3 +38,7 @@ public void foo() {
     // ...
 }
 ```
+
+== Resources
+
+Reference/Validation is unknown.

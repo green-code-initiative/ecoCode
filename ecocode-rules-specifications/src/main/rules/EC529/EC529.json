@@ -7,12 +7,17 @@
     "constantCost": "5min"
   },
   "tags": [
-    "sobriety",
-    "environment",
     "ecocode",
     "android",
-    "eco-design"
+    "eco-design",
+    "performance"
   ],
   "ecoScore": "0.4",
-  "defaultSeverity": "Minor"
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

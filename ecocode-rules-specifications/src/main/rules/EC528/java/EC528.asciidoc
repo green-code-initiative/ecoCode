@@ -1,8 +1,13 @@
+:!sectids:
+
+== Why is this an issue?
+
 Shaking of an Android device is possible in all circumstances with a call to `getSystemService(Context.VIBRATOR_SERVICE)` (API 26) or `getSystemService(Context.VIBRATOR.MANAGER.SERVICE)` (API 31).
     Behind this effect stands a specific miniature hardware component, motor or actuator, that consumes power.
     As a consequence, its usage must be discouraged, especially since its added value is not clear.
 
-## Noncompliant Code Example
+== How to fix it
+=== Noncompliant code example
 
 API 26:
 ```java
@@ -15,3 +20,11 @@ API 31:
 VibratorManager vm = (VibratorManager) getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
 vm.getDefaultVibrator().vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
 ```
+
+=== Compliant solution
+
+Do not use the vibrator.
+
+== Resources
+
+- https://github.com/cnumr/best-practices-mobile[Mobile-specific Best Practices] by https://collectif.greenit.fr/index_en.html[CNumR]

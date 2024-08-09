@@ -1,5 +1,5 @@
 {
-  "title": "Sobriety: Dark UI (Theme)",
+  "title": "Dark UI Theme should be used",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -7,11 +7,17 @@
     "constantCost": "1h"
   },
   "tags": [
-    "sobriety",
-    "environment",
     "ecocode",
     "android",
-    "eco-design"
+    "eco-design",
+    "performance",
+    "sobriety"
   ],
-  "defaultSeverity": "Major"
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

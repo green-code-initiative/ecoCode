@@ -8,8 +8,15 @@
   },
   "tags": [
     "eco-design",
+    "performance", 
     "ecocode",
     "bad-practice"
   ],
-  "defaultSeverity": "Major"
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

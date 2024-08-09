@@ -1,5 +1,5 @@
 {
-  "title": "Leakage: Camera Leak",
+  "title": "Camera should be released",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -8,10 +8,10 @@
   },
   "tags": [
     "leakage",
-    "environment",
     "ecocode",
     "android",
-    "eco-design"
+    "eco-design",
+    "performance"
   ],
   "ecoScore": "0.2",
   "defaultSeverity": "Critical"

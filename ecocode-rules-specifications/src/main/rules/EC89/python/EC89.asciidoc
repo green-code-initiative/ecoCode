@@ -1,3 +1,7 @@
+:!sectids:
+
+== Why is this an issue?
+
 Python doesn't have TTL on cache with default libraries.
 
 With functools library @cache acts the same way than @lru_cache(maxsize=None).
@@ -7,21 +11,24 @@ By default, lru_cache set the size of cache to 128 entries.
 
 In this case, the cache is unlimited which is suspect.
 
-## Noncompliant Code Examples
+== How to fix it
+=== Noncompliant code example
 
 ```python
+# Noncompliant
  @cache # Noncompliant
  def cached_function():
    ...
 ```
 
 ```python
+# Noncompliant
  @lru_cache(maxsize=None) # Noncompliant
  def cached_function():
    ...
 ```
 
-## Compliant Solution
+=== Compliant solution
 
 ```python
  @lru_cache() # By default, the max size of the cache is 128
@@ -34,3 +41,7 @@ In this case, the cache is unlimited which is suspect.
  def cached_function():
     ...
 ```
+
+== Resources
+
+Reference/Validation is unknown.

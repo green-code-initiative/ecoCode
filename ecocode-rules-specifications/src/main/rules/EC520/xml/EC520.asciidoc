@@ -1,10 +1,21 @@
-Score ecoCode: 5sur5
+:!sectids:
+
+== Why is this an issue?
 
 Taking into account when the device is entering or exiting the power save mode is higly desirable for the battery life.
 
 It implies the existence of a broadcast receiver registered on the action `ACTION_POWER_SAVE_MODE_CHANGED`, or programmatically with a call to `PowerManager#isPowerSaveMode().`
 
-## Compliant Code Example
+== How to fix it
+
+=== Noncompliant code sample
+
+```xml
+// Noncompliant
+// No BATTERY_CHANGED intent
+```
+
+=== Compliant solution
 
 ```xml
 <receiver android:name="io.ecocode.testapp.core.service.MyReceiver">
@@ -13,3 +24,7 @@ It implies the existence of a broadcast receiver registered on the action `ACTIO
     </intent-filter>
 </receiver>
 ```
+
+== Resources
+
+- https://github.com/cnumr/best-practices-mobile[Mobile-specific Best Practices] by https://collectif.greenit.fr/index_en.html[CNumR]

@@ -1,5 +1,7 @@
 :!sectids:
 
+:!sectids:
+
 == Why is this an issue?
 
 SQL queries often involve processing large amounts of data, and fetching a large number of rows can consume significant CPU resources.
@@ -12,7 +14,7 @@ If you store data about customers, you certainly don’t need to retrieve inform
 
 [source,java,data-diff-id="1",data-diff-type="noncompliant"]
 ----
-String query = "SELECT * FROM customers"; // Non-compliant
+String query = "SELECT * FROM customers"; // Noncompliant
 ----
 
 It may therefore be a good idea to limit the results and use pagination, for example.

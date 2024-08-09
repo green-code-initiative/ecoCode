@@ -1,6 +1,11 @@
+:!sectids:
+
+== Why is this an issue?
+
 Use `try-with-resources` statement for any object that implements the `AutoCloseable` interface, it save computer resources.
 
-## Noncompliant Code Example
+== How to fix it
+=== Noncompliant code example
 
 ```java
 private static void printFileJava7() throws IOException {
@@ -13,7 +18,7 @@ private static void printFileJava7() throws IOException {
 }
 ```
 
-## Compliant Solution
+=== Compliant solution
 
 ```java
 private static void printFileJava7() throws IOException {
@@ -26,3 +31,7 @@ private static void printFileJava7() throws IOException {
     }
 }
 ```
+
+== Resources
+
+Reference/Validation is unknown.

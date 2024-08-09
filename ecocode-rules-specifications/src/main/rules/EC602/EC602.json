@@ -7,12 +7,17 @@
     "constantCost": "0min"
   },
   "tags": [
-    "sobriety",
     "ecocode",
-    "environment",
     "power",
     "ios",
-    "eco-design"
+    "eco-design",
+    "performance"
   ],
-  "defaultSeverity": "Info"
+  "defaultSeverity": "Info",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

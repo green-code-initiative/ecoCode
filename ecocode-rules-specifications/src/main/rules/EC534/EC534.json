@@ -1,5 +1,5 @@
 {
-  "title": "Motion Sensor Update Rate",
+  "title": "Motion Sensor should have an updated rate",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -7,11 +7,16 @@
     "constantCost": "5min"
   },
   "tags": [
-    "sobriety",
-    "environment",
     "ecocode",
     "ios",
-    "eco-design"
+    "eco-design",
+    "performance"
   ],
-  "defaultSeverity": "Major"
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
 }
