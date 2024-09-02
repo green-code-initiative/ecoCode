@@ -23,15 +23,10 @@
 					- syntax highlighting (see code blocks on ASCIIDOC rules)
 					- inclusions (see: php/EC74.asciidoc)
 					- table data generation from CSV (see: php/EC69.asciidoc)
-
-					NB: Current version has a bug which display following false positive warning :
-					[WARNING] Duplicated destination found: overwriting file ...
-
-					This issue is fixed in 3.x release of asciidoctor-maven-plugin
 				-->
 				<groupId>org.asciidoctor</groupId>
 				<artifactId>asciidoctor-maven-plugin</artifactId>
-				<version>2.2.4</version>
+				<version>3.0.0</version>
 				<executions>
 					<execution>
 						<id>convert-to-html</id>
@@ -48,7 +43,7 @@
 							</attributes>
 							<preserveDirectories>true</preserveDirectories>
 							<embedAssets>true</embedAssets>
-							<headerFooter>false</headerFooter>
+							<standalone>false</standalone>
 							<relativeBaseDir>true</relativeBaseDir>
 							<logHandler>
 								<failIf>
