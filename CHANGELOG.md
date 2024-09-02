@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [#208](https://github.com/green-code-initiative/ecoCode/issues/208) Improves build process and simplifies release management (now, just need to do a build on a tag checkout).
+- [#208](https://github.com/green-code-initiative/ecoCode/issues/208) Improves build process with [Maven Wrapper](https://maven.apache.org/wrapper/) and simplifies release management (now, just need to do a build on a tag checkout).
 
   If you have difficulties on some IDEs (like IntelliJ IDEA), you can follow the procedure: [configuration for Multi Modules Project](https://github.com/qoomon/maven-git-versioning-extension?tab=readme-ov-file#intellij---multi-modules-projects)
 
