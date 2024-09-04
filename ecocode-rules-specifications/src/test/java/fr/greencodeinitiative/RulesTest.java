@@ -150,7 +150,7 @@ class RulesTest {
     void testRules() throws URISyntaxException, IOException {
         RulesDefinition.Context context = new RulesDefinition.Context();
         Path[] langPaths = findAllLangs();
-        assertArrayEquals(LANGUAGES, Stream.of(langPaths).map(p -> p.toFile().getName()).toArray());
+        assertArrayEquals(LANGUAGES, Stream.of(langPaths).map(p -> p.toFile().getName()).sorted().toArray());
         for (Path langPath : langPaths) {
             String lang = langPath.toFile().getName();
             DefaultNewRepository repository = new DefaultNewRepository(context, lang, lang, false);
