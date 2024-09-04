@@ -9,9 +9,11 @@ Hence, keeping forcing the screen brightness on should be avoided, unless it is 
 == How to fix it
 === Noncompliant code example
 
-```swift
+[source,swift]
+----
+// Noncompliant
 UIScreen.main.brightness = CGFloat(0.3)
-```
+----
 
 === Compliant solution
 

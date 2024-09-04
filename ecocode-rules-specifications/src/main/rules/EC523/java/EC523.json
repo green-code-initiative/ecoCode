@@ -1,7 +1,9 @@
 {
+  "title": "minTime should be used in geolocation update",
   "tags": [
     "ecocode",
-    "android",
-    "eco-design"
+    "eco-design",
+    "performance",
+    "android"
   ]
 }

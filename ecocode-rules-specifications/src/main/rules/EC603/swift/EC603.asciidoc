@@ -9,7 +9,9 @@ To ensure animations are used effectively without draining the device's battery,
 == How to fix it in UIKit
 === Noncompliant code example
 
-```swift
+[source,swift]
+----
+// Noncompliant
 UIView.animate(withDuration:animations:)
 UIView.animate(withDuration:animations:completion:)
 UIView.animate(withDuration:delay:options:animations:completion:)
@@ -18,12 +20,18 @@ UIView.transition(with:duration:options:animations:completion:)
 CABasicAnimation
 CAKeyframeAnimation
 CATransition
-```
+----
+
+=== Compliant solution
+
+Avoid animations.
 
 == How to fix it in SwiftUI
 === Noncompliant code example
 
-```swift
+[source,swift]
+----
+// Noncompliant
 withAnimation
 Animation
 AnyTransition
@@ -31,7 +39,11 @@ AnyTransition
 .transition(AnyTransition)
 .onAppear(perform:)
 .onDisappear(perform:)
-```
+----
+
+=== Compliant solution
+
+Avoid animations.
 
 == Resources
 

@@ -22,6 +22,7 @@ Code is noncompliant, because `$nb` is used 4 times :
 
 [source,php]
 ----
+// Noncompliant
 $index = 1;
 $nb = 2;
 ...

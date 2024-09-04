@@ -7,7 +7,6 @@
     "constantCost": "20min"
   },
   "tags": [
-    "cwe",
     "leak",
     "eco-design",
     "performance",

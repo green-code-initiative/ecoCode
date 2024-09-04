@@ -10,7 +10,8 @@ It implies the existence of a broadcast receiver registered on the action `ACTIO
 
 === Noncompliant code example
 
-```java
+[source,java]
+----
 IntentFilter filter3 = new IntentFilter(ACTION_BATTERY_CHANGED); // Noncompliant
 IntentFilter filter4 = new IntentFilter(PING_ALARM_ACTION);
 
@@ -19,31 +20,35 @@ IntentFilter.create("foo", "application/blatz");
 
 filter3.addAction(ACTION_BATTERY_CHANGED);// Noncompliant
 filter4.addAction("android.provider.Telephony.SMS_RECEIVED");
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 new IntentFilter(Intent.ACTION_POWER_SAVE_MODE_CHANGED)
-```
+----
 
 Or
 
-```java
+[source,java]
+----
 intentFilter.addAction(ACTION_POWER_SAVE_MODE_CHANGED)
-```
+----
 
 Or
 
-```java
+[source,java]
+----
 IntentFilter.create(ACTION_POWER_SAVE_MODE_CHANGED,"")
-```
+----
 
 Or
 
-```java
+[source,java]
+----
 powerManager.isPowerSaveMode()
-```
+----
 
 == Resources
 

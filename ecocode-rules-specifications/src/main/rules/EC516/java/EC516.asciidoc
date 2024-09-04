@@ -9,17 +9,19 @@ Otherwise, in addition to unnecessary resources (such as memory and instances of
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 MediaPlayer mp = new MediaPlayer();
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 MediaPlayer mp = new MediaPlayer();
 mp.release();
-```
+----
 
 == Resources
 

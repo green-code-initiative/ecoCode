@@ -8,15 +8,17 @@ Do not call a function when declaring a for-type loop in order to avoid function
 == How to fix it
 === Noncompliant code example
 
-```php
+[source,php]
+----
 for ($i = 0; $i <= foo(); $i++) {  // Noncompliant
 	// ......
 }
-```
+----
 
 === Compliant solution
 
-```php
+[source,php]
+----
 $maxI = foo();
 for ($i = 0; $i <= $maxI; $i++) {
   .....
@@ -27,7 +29,7 @@ for ($i = 0; $i <= $maxI; $i++) {
 for ($i = 0, $maxI = foo(); $i <= $maxI; $i++) {
   .....
 }
-```
+----
 
 == Resources
 

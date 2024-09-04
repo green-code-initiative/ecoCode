@@ -13,17 +13,19 @@ The common point of all these sensors is that they are expensive while in use. T
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 Camera camera = Camera.open();
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 Camera camera = Camera.open();
 camera.release();
-```
+----
 
 == Resources
 

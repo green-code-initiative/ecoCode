@@ -1,8 +1,9 @@
 {
   "tags": [
     "ecocode",
-    "react-native",
-    "eco-design"
+    "eco-design",
+    "performance",
+    "react-native"
   ],
   "compatibleLanguages": [
     "JAVASCRIPT",

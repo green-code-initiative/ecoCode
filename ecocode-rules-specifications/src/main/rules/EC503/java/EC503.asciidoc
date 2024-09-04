@@ -9,21 +9,23 @@ Processing these extra packets can cause a noticeable battery drain and must be 
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 WifiManager.MulticastLock lock = wifiManager.createMulticastLock("tag");
 lock.acquire();
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 WifiManager.MulticastLock lock = wifiManager.createMulticastLock("tag");
 lock.acquire();
 lock.release()
-```
+----
 
 == Resources
 

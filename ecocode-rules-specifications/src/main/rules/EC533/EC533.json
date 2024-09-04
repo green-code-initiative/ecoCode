@@ -1,5 +1,5 @@
 {
-  "title": "Location updates pause disabled",
+  "title": "Location updates pause should not be disabled",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -9,7 +9,7 @@
   "tags": [
     "ecocode",
     "eco-design",
-    "performance"
+    "performance",
     "ios"
   ],
   "ecoScore": "0.4",
@@ -19,6 +19,5 @@
       "RELIABILITY": "MEDIUM"
     },
     "attribute": "EFFICIENT"
-  },
-
+  }
 }

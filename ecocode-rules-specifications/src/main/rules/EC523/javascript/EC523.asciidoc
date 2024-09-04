@@ -12,6 +12,7 @@ If the application or service does not critically require pinpoint accuracy, opt
 help minimize the strain on the device's CPU.
 
 == How to fix it in Web
+=== Noncompliant code example
 
 [source,js]
 ----
@@ -22,6 +23,8 @@ navigator.geolocation.getCurrentPosition(
   options
 );
 ----
+
+=== Compliant solution
 
 In these examples, the enableHighAccuracy option is set to false (the default), indicating that the application prefers
 lower-accuracy geolocation to conserve resources:
@@ -42,6 +45,7 @@ navigator.geolocation.getCurrentPosition(
 ----
 
 == How to fix it in React Native
+=== Noncompliant code example
 
 In this example, we ask the user to turn on high accuracy location mode which enables network provider that uses Google Play services to improve location accuracy and location-based services:
 
@@ -51,6 +55,8 @@ import * as Location from 'expo-location';
 
 Location.enableNetworkProviderAsync(); // Noncompliant
 ----
+
+=== Compliant solution
 
 Prefer to ask the user to turn on lower-accuracy geolocation to conserve resources:
 

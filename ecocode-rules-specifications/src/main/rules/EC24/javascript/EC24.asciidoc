@@ -18,7 +18,7 @@ If you store data about customers, you certainly don’t need to retrieve inform
 const query = "SELECT * FROM customers"; // Noncompliant
 ----
 
-== Compliant solution
+=== Compliant solution
 
 It may therefore be a good idea to limit the results and use pagination, for example.
 

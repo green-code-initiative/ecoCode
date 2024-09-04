@@ -9,25 +9,28 @@ By default, the system holds a wake lock for it while in this state, so that it 
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 VoiceInteractionSession voiceSession = new VoiceInteractionSession(this);
-```
+----
 
 or
 
-```java
+[source,java]
+----
 // Noncompliant
 VoiceInteractionSession voiceSession = new VoiceInteractionSession(this);
 voiceSession.setKeepAwake(true);
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 VoiceInteractionSession voiceSession = new VoiceInteractionSession(this);
 voiceSession.setKeepAwake(false);
-```
+----
 
 == Resources
 

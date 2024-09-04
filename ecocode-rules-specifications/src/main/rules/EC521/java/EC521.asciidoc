@@ -7,18 +7,20 @@ The rotation vector sensor is the most frequently used sensor for motion detecti
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 SensorManager sManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 sManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR);
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 SensorManager sManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 sManager.getDefaultSensor(Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR);
-```
+----
 
 == Resources
 

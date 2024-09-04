@@ -7,18 +7,20 @@ This operation requires a significant amount of computational power. Using a sin
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 public class AvoidRegexPatternNotStatic {
     public boolean foo() {
         final Pattern pattern = Pattern.compile("foo"); // Noncompliant
         return pattern.matcher("foo").find();
     }
 }
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 public class ValidRegexPattern {
     private static final Pattern pattern = Pattern.compile("foo"); // Compliant
 
@@ -26,11 +28,12 @@ public class ValidRegexPattern {
         return pattern.matcher("foo").find();
     }
 }
-```
+----
 
 or
 
-```java
+[source,java]
+----
 public class ValidRegexPattern2 {
     private final Pattern pattern = Pattern.compile("foo"); // Compliant
 
@@ -38,11 +41,12 @@ public class ValidRegexPattern2 {
         return pattern.matcher("foo").find();
     }
 }
-```
+----
 
 or
 
-```java
+[source,java]
+----
 public class ValidRegexPattern3 {
     private final Pattern pattern;
 
@@ -54,7 +58,7 @@ public class ValidRegexPattern3 {
         return pattern.matcher("foo").find();
     }
 }
-```
+----
 
 == Resources
 

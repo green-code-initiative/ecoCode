@@ -7,16 +7,18 @@ The form `$i++` creates a temporary variable whereas `++$i` does not. It save CP
 == How to fix it
 === Noncompliant code example
 
-```php
+[source,php]
+----
 // Noncompliant
 $i++
-```
+----
 
 === Compliant solution
 
-```php
+[source,php]
+----
 ++$i
-```
+----
 
 == Resources
 

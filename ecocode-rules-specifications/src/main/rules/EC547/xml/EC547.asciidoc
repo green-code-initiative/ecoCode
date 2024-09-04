@@ -9,7 +9,8 @@ Consequently, custom resources like bright colors values and bitmap images with 
 == How to fix it
 === Noncompliant code example
 
-```xml
+[source,xml]
+----
 <!-- Noncompliant -->
 <TextView
     android:layout_width="match_parent"
@@ -17,7 +18,7 @@ Consequently, custom resources like bright colors values and bitmap images with 
     android:foreground="#FFFFFF"
     android:foregroundTint="#FFFFFF">
 </TextView>
-```
+----
 
 === Compliant solution
 

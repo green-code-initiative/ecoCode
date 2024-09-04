@@ -7,15 +7,17 @@ The form `$i++` creates a temporary variable whereas `++$i` does not. It save CP
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 i++;  // Noncompliant
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 ++i;
-```
+----
 
 == Resources
 

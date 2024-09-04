@@ -7,20 +7,22 @@ PHP allows declaring a string with simple or double quotes. Using double quotes 
 == How to fix it
 === Noncompliant code example
 
-```php
+[source,php]
+----
 // Noncompliant
 myFunction("name", "age", "IsStudent");
     $lastName = "Hugo";
     $concatenatedString = "$lastName is a student";
-```
+----
 
 === Compliant solution
 
-```php
+[source,php]
+----
 myFunction('name', 'age', 'IsStudent');
     $lastName = 'Hugo';
     $concatenatedString = $lastName . 'is a student';
-```
+----
 
 == Resources
 

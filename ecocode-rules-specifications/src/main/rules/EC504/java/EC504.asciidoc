@@ -7,19 +7,22 @@ Transmitting a file over a network infrastructure without compressing it consume
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 Url url = new Url("https://www.ecocode.io/");
 HttpsUrlConnection con = (HttpsURLConnection) url.openConnection();
 OutputStream stream = con.getOutputStream();
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 Url url = new Url("https://www.ecocode.io/");
 HttpsUrlConnection con = (HttpsURLConnection) url.openConnection();
 OutputStream stream = new GZIPOutputStream(con.getOutputStream());
-```
+----
 
 == Resources
 

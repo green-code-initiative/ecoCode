@@ -9,17 +9,19 @@ In addition to unnecessary resources (such as memory and instances of codecs) be
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 MediaRecorder mr = new MediaRecorder();
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 MediaRecorder mr = new MediaRecorder();
 mr.release();
-```
+----
 
 == Resources
 

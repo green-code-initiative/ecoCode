@@ -11,18 +11,22 @@ However, a notification does not necessarily need to be loud and vibrant to achi
 
 API 26:
 
-```java
+[source,java]
+----
+// Noncompliant
 Notification.Builder notificationBuilder = new Notification.Builder(getApplicationContext(), "42");
 notificationBuilder.setVibrate(new long[] {1000, 1000, 1000, 1000, 1000});
 notificationBuilder.setSound(
     RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION),
     Notification.AUDIO_ATTRIBUTES_DEFAULT
 );
-```
+----
 
 API 31:
 
-```java
+[source,java]
+----
+// Noncompliant
 NotificationChannel notification = new NotificationChannel("42",
     "test",
     NotificationManager.IMPORTANCE_DEFAULT
@@ -32,7 +36,26 @@ notification.setSound(
     RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION),
     Notification.AUDIO_ATTRIBUTES_DEFAULT
 );
-```
+----
+
+=== Compliant solution
+
+API 26:
+
+[source,java]
+----
+Notification.Builder notificationBuilder = new Notification.Builder(getApplicationContext(), "42");
+----
+
+API 31:
+
+[source,java]
+----
+NotificationChannel notification = new NotificationChannel("42",
+    "test",
+    NotificationManager.IMPORTANCE_DEFAULT
+);
+----
 
 == Resources
 

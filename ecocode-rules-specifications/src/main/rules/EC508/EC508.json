@@ -1,5 +1,5 @@
 {
-  "title": "Idleness: Durable Wake Lock",
+  "title": "Durable wake lock should be avoided",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -20,6 +20,5 @@
       "RELIABILITY": "MEDIUM"
     },
     "attribute": "EFFICIENT"
-  },
-
+  }
 }

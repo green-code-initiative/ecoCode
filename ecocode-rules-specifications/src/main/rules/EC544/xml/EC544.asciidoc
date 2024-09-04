@@ -9,12 +9,13 @@ Most applications should not use this; there are many facilities provided by the
 == How to fix it
 === Noncompliant code example
 
-```xml
+[source,xml]
+----
 <!-- Noncompliant -->
 <manifest>
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 </manifest>
-```
+----
 
 === Compliant solution
 

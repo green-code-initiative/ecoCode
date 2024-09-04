@@ -13,7 +13,8 @@ Hence, keeping forcing the screen brightness on should be avoided, unless it is 
 == How to fix it
 === Noncompliant code example
 
-```js
+[source,javascript]
+----
 // Example with expo-brightness (Expo framework library)
 import React, { useEffect } from 'react';
 import { View, Text } from 'react-native';
@@ -29,6 +30,7 @@ export default function App() {
         </View>
     );
 }
+----
 
 === Compliant solution
 

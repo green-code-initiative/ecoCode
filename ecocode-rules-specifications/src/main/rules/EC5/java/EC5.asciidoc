@@ -7,16 +7,18 @@ Use `PreparedStatement` instead of `Statement`, because SQL will only commit the
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 public void select() {
     Statement statement = connection.createStatement();
     statement.executeUpdate("INSERT INTO persons(id, name) VALUES(2, 'John DOE')");  // Noncompliant
 }
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 public void select() {
     PreparedStatement statement = connection.prepareStatement(INSERT INTO persons(id, name) VALUES(?, ?));
 
@@ -24,7 +26,7 @@ public void select() {
     statement.setString(2, "John DOE");
     statement.executeQuery();
 }
-```
+----
 
 == Resources
 

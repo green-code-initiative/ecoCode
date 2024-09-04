@@ -9,23 +9,26 @@ An important point is to try to get the best possible provider (`LocationManager
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
     1000L,
     1.0f,
     this);
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 Criteria criteria = new Criteria();
 criteria.setPowerRequirement(Criteria.POWER_LOW);
 locationManager.requestLocationUpdates(locationManager.getBestProvider(criteria,true),
     1000L,
     1.0f,
     this);
-```
+----
 
 == Resources
 

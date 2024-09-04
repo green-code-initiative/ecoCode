@@ -8,7 +8,8 @@ Executing SQL queries in loop induced unnecessary network transfert, calculation
 == How to fix it
 === Noncompliant code example
 
-```php
+[source,php]
+----
 public function foo() {
     ...
     $baseQuery = "SELECT name FROM users where id = ";
@@ -26,11 +27,12 @@ public function foo() {
     }
     ...
 }
-```
+----
 
 === Compliant solution
 
-```php
+[source,php]
+----
 public function foo() {
     ...
     $query = "SELECT name FROM users where id in (";
@@ -48,7 +50,7 @@ public function foo() {
     ...
     mysql_close($connection);
 }
-```
+----
 
 == Resources
 

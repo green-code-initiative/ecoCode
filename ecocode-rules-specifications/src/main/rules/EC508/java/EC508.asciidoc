@@ -11,16 +11,18 @@ This can be avoided by a call to `PowerManager#acquire(long timeout)` instead of
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 PowerManager.acquire()
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 PowerManager.acquire(long timeout)
-```
+----
 
 == Resources
 

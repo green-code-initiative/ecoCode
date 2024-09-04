@@ -14,6 +14,7 @@ The common point of all these sensors is that they consume significant power whi
 
 [source,swift]
 ----
+// Noncompliant
 import CoreMotion
 
 let motionManager = CMMotionManager()

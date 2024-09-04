@@ -6,23 +6,26 @@ Using the Core Motion API, your app can receive continuous motion updates in the
 
 == How to fix it
 
-=== Noncompliant solution
+=== Noncompliant code example
 
-```swift
+[source,swift]
+----
+// Noncompliant
 CMMotionManager.accelerometerUpdateInterval = 1000
 CMMotionManager.gyroUpdateInterval = 1000
 CMMotionManager.deviceMotionUpdateInterval = 1000
 CMMotionManager.magnetometerUpdateInterval = 1000
-```
+----
 
 === Compliant solution
 
-```swift
+[source,swift]
+----
 CMMotionManager.accelerometerUpdateInterval = 1000
 CMMotionManager.gyroUpdateInterval = 1000
 CMMotionManager.deviceMotionUpdateInterval = 1000
 CMMotionManager.magnetometerUpdateInterval = 1000
-```
+----
 
 == Resources
 

@@ -1,16 +1,15 @@
 {
   "title": "Google Tracker should not be used",
   "type": "CODE_SMELL",
-  "status": "deprecated",
+  "status": "ready",
   "remediation": {
     "func": "Constant\/Issue",
     "constantCost": "20min"
   },
   "tags": [
     "ecocode",
-    "android",
     "eco-design",
-    "performance"
+    "android"
   ],
   "ecoScore": "0.4",
   "defaultSeverity": "Minor",
@@ -18,6 +17,6 @@
     "impacts": {
       "RELIABILITY": "LOW"
     },
-    "attribute": "EFFICIENT"
+    "attribute": "TRUSTWORTHY"
   }
 }

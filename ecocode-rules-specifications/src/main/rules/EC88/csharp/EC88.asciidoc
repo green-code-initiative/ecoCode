@@ -7,7 +7,7 @@ Asynchronous operations free up the main thread, allowing it to handle other tas
 Therefore, resources that implement `IAsyncDisposable` should be disposed asynchronously whenever possible.
 
 == How to fix it
-== Noncompliant code example
+=== Noncompliant code example
 
 [source, cs]
 ----

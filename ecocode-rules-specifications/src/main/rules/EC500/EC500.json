@@ -1,5 +1,5 @@
 {
-  "title": "Batch: Sensor Coalesce",
+  "title": "Reporting latency should be used for sensor listeners",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {

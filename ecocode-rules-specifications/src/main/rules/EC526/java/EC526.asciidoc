@@ -11,17 +11,20 @@ Invoking `BluetoothGatt#requestConnectionPriority(int connectionPriority)` with 
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 BluetoothGatt gatt = new BluetoothGatt();
 gatt.requestConnectionPriority(CONNECTION_PRIORITY_HIGH);
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 BluetoothGatt gatt = new BluetoothGatt();
 gatt.requestConnectionPriority(CONNECTION_PRIORITY_LOW_POWER);
-```
+----
 == Resources
 
 - https://github.com/cnumr/best-practices-mobile[Mobile-specific Best Practices] by https://collectif.greenit.fr/index_en.html[CNumR]

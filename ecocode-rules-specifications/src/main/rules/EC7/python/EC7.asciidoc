@@ -7,7 +7,8 @@ Avoid using getters and setters in a class, as they increase unnecessary RAM mem
 == How to fix it
 === Noncompliant code example
 
-```python
+[source,python]
+----
 # Noncompliant
 class Client():
 
@@ -23,11 +24,12 @@ class Client():
 client = Client(25)
 client.get_age() # Useless getter
 client.set_age(26) # Useless setter
-```
+----
 
 === Compliant solution
 
-```python
+[source,python]
+----
 class Client():
 
     def __init__(self, age):
@@ -36,7 +38,7 @@ class Client():
 client = Client(25)
 client.age
 client.age = 26
-```
+----
 
 == Resources
 

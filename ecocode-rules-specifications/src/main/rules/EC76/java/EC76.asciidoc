@@ -9,18 +9,20 @@ The static fields are more complicated for the Garbage Collector to manage and c
 == How to fix it
 === Noncompliant code example
 
-```java
-// Not compliant
+[source,java]
+----
+// Noncompliant
 public class AvoidUsageOfStaticCollections {
     public static final List<> LIST = new ArrayList<>();
     public static final Set<> SET = new HashSet<>();
     public static final Map<> MAP = new HashMap<>();
 }
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 public class GoodUsageOfStaticCollections {
     public static volatile GoodUsageOfStaticCollections INSTANCE = new GoodUsageOfStaticCollections();
 
@@ -31,7 +33,7 @@ public class GoodUsageOfStaticCollections {
     private GoodUsageOfStaticCollections() {
     }
 }
-```
+----
 
 == Resources
 

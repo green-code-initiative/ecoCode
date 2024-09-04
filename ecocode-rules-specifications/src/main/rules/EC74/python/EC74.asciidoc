@@ -7,23 +7,25 @@ Database servers have to resolve schema fields when using asterisk symbol (`*`).
 == How to fix it
 === Noncompliant code example
 
-```python
+[source,python]
+----
 public void foo() {
     ...
     String baseQuery = "SELECT * FROM users"; // Noncompliant
     ...
 }
-```
+----
 
 === Compliant solution
 
-```python
+[source,python]
+----
 public void foo() {
     ...
         String query = "SELECT id, name, address FROM users ";
     ...
 }
-```
+----
 
 == Resources
 

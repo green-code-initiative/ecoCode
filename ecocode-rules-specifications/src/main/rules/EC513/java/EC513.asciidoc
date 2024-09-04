@@ -14,18 +14,21 @@ The common point of all these sensors is that they are expensive while in use. T
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000L, 1.0f, this);
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000L, 1.0f, this);
 locationManager.removeUpdates(this);
-```
+----
 
 == Resources
 

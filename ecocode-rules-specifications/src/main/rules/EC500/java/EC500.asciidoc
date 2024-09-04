@@ -11,23 +11,26 @@ Once one of the events in the FIFO needs to be reported, all the events in the F
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 SensorEventListener sensorEventListener;
 SensorManager sensorManager;
 Sensor sensor;
 
 sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL);
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 SensorEventListener sensorEventListener;
 SensorManager sensorManager;
 Sensor sensor;
 
 sensorManager.registerListener(sensorEventListener, sensor, SensorManager.SENSOR_DELAY_NORMAL, 200000);
-```
+----
 
 == Resources
 

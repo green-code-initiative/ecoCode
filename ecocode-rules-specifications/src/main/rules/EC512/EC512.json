@@ -14,5 +14,11 @@
     "performance"
   ],
   "ecoScore": "0.2",
-  "defaultSeverity": "Critical"
+  "defaultSeverity": "Critical",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "HIGH"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

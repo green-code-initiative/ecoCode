@@ -13,20 +13,23 @@ The common point of all these sensors is that they are expensive while in use. T
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 SensorManager sManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 Sensor accelerometer = sManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 sManager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 SensorManager sManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 Sensor accelerometer = sManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 sManager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_NORMAL);
 sManager.unregisterListener(this);
-```
+----
 
 == Resources
 

@@ -17,7 +17,7 @@ If the number of concatenations is very small, typically 5 or less, then the ove
 ----
 string myString = string.Empty;
 for (int i = 0; i < 100; i++)
-    myString += i; // Non compliant : this requires a new string allocation on each iteration
+    myString += i; // Noncompliant : this requires a new string allocation on each iteration
 ----
 
 === Compliant solution

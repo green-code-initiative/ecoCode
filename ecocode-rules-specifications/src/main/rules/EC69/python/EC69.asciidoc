@@ -7,18 +7,20 @@ Do not call a function when declaring a for-type loop in order to avoid function
 == How to fix it
 === Noncompliant code example
 
-```python
+[source,python]
+----
 for i in my_function():  # Noncompliant
     ......
-```
+----
 
 === Compliant solution
 
-```python
+[source,python]
+----
 limit = my_function()
 for i in limit:
     ......
-```
+----
 
 == Resources
 

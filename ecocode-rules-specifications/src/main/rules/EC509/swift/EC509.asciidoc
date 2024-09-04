@@ -7,16 +7,19 @@ Setting a tolerance for timers will allow them to fire later than the scheduled 
 == How to fix it
 === Noncompliant code example
 
-```swift
+[source,swift]
+----
+// Noncompliant
 let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in }
-```
+----
 
 === Compliant solution
 
-```swift
+[source,swift]
+----
 let timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in }
 timer.tolerance = 0.5
-```
+----
 
 == Resources
 

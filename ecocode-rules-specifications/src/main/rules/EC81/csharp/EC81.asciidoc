@@ -11,11 +11,12 @@ In other cases however, field reordering is usually fine and there are little re
 It can be ignored if you know you require the `Sequential` layout for all of your structs, most likely for interop purposes.
 
 == How to fix it
+
 === Noncompliant code example
 
-[source, cs]
+[source,cs]
 ----
-public struct MyStruct // Non compliant, specify the layout. Will take 24 bytes with Sequential
+public struct MyStruct // Noncompliant, specify the layout. Will take 24 bytes with Sequential
 {
     public int A;
     public double B;
@@ -25,7 +26,7 @@ public struct MyStruct // Non compliant, specify the layout. Will take 24 bytes 
 
 === Compliant solution
 
-[source, cs]
+[source,cs]
 ----
 [StructLayout(LayoutKind.Sequential)]
 public struct MyStruct // Compliant, specified layout. Will take 24 bytes with Sequential
@@ -36,7 +37,7 @@ public struct MyStruct // Compliant, specified layout. Will take 24 bytes with S
 }
 ----
 
-[source, cs]
+[source,cs]
 ----
 [StructLayout(LayoutKind.Auto)]
 public struct MyStruct // Compliant, specified layout. Will take 16 bytes with Auto

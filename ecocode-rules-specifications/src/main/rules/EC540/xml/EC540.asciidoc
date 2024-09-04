@@ -13,14 +13,19 @@ Thus, any developer should avoid having a call to `Context#startService()` from 
 == How to fix it
 === Noncompliant code example
 
-```xml
+[source,xml]
+----
 <!-- Noncompliant -->
 <receiver>
     <intent-filter>
         <action android:name= "android.intent.action.BOOT_COMPLETED"/>
     </intent-filter>
 </receiver>
-```
+----
+
+=== Compliant solution
+
+Boot completed intent should be avoided.
 
 == Resources
 

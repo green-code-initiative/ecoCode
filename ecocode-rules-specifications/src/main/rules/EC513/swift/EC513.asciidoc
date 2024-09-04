@@ -15,6 +15,7 @@ The common point of all these sensors is that they are power-intensive while in 
 
 [source,swift]
 ----
+// Noncompliant
 import CoreLocation
 
 class LocationTracker: NSObject, CLLocationManagerDelegate {

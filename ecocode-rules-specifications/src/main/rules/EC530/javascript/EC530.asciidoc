@@ -4,17 +4,18 @@
 
 Turning on the torch mode programmatically with `react-native-torch` must absolutely be avoided because the flashlight is one of the most energy-intensive component.
 
-## Non compliant Code Example
+== How to fix it
+
+=== Noncompliant code example
 
 [source,js,data-diff-id="2",data-diff-type="noncompliant"]
 ----
 import Torch from 'react-native-torch'; // Noncompliant
 ----
 
-[source,js,data-diff-id="2",data-diff-type="compliant"]
-----
-import axios from 'axios'; // Compliant
-----
+=== Compliant solution
+
+Do not set the torch programmatically.
 
 == Resources
 

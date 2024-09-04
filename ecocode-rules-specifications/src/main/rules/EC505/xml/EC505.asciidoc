@@ -9,22 +9,24 @@ Hence, keeping the screen on should be avoided, unless it is absolutely necessar
 == How to fix it
 === Noncompliant code example
 
-```xml
+[source,xml]
+----
 <!-- Noncompliant -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:keepScreenOn="true"/>
-```
+----
 
 === Compliant solution
 
-```xml
+[source,xml]
+----
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:keepScreenOn="false"/>
-```
+----
 
 == Resources
 

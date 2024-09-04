@@ -14,10 +14,11 @@ Hence, keeping the screen on should be avoided, unless it is absolutely necessar
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 getWindow().addFlags(FLAG_KEEP_SCREEN_ON);
-```
+----
 
 === Compliant solution
 

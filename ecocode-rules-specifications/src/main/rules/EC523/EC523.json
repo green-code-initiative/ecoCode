@@ -1,5 +1,4 @@
 {
-  "title": "Sobriety: Thrifty Geolocation (minTime)",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {

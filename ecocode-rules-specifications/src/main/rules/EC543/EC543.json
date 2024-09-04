@@ -1,5 +1,5 @@
 {
-  "title": "Power: Compagnion In Background",
+  "title": "Compagnion in background should be avoided",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {

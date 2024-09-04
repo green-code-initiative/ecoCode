@@ -7,7 +7,8 @@ Throwing and handling exceptions is expensive and should not be used for normal 
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 public void readPreferences(String filename) {
     //...
@@ -20,11 +21,12 @@ public void readPreferences(String filename) {
     in.read(...);
     //...
 }
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 public void readPreferences(String filename) throws IllegalArgumentException, FileNotFoundException, IOException {
     if (filename == null) {
         throw new IllegalArgumentException ("filename is null");
@@ -33,7 +35,7 @@ public void readPreferences(String filename) throws IllegalArgumentException, Fi
     InputStream in = new FileInputStream(filename);
     //...
 }
-```
+----
 
 == Resources
 

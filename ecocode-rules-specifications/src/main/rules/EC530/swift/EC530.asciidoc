@@ -2,13 +2,15 @@
 
 == Why is this an issue?
 
-Turning on the torch mode programmatically using `AVCaptureDevice#torchMode` or `AVCaptureDevice#setTorchModeOn(level:)` 
+Turning on the torch mode programmatically using `AVCaptureDevice#torchMode` or `AVCaptureDevice#setTorchModeOn(level:)`
 methods must absolutely be avoided because the flashlight is one of the most energy-intensive component.
 
 == How to fix it
+
 === Noncompliant code example
 
-```swift
+[source,swift]
+----
 guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else { return }
 guard videoDevice.hasTorch else { return }
 
@@ -16,11 +18,11 @@ videoDevice.lockForConfiguration()
 videoDevice.torchMode = .on // non-compliant
 videoDevice.setTorchModeOn(level: 1.0) // Noncompliant
 videoDevice.unlockForConfiguration()
-```
+----
 
 === Compliant solution
 
-Do not set the torch programmaticaly.
+Do not set the torch programmatically.
 
 == Resources
 

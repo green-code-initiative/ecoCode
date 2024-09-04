@@ -9,15 +9,18 @@ Thus, developer has to set up Google Play Service in her gradle file with a depe
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 import android.location.*;
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 import com.google.android.gms.location.*;
-```
+----
 
 == Resources
 

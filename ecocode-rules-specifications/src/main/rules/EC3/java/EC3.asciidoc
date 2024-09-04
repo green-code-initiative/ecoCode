@@ -8,25 +8,27 @@ When iterating over any collection, fetch the size of the collection in advance 
 
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 List<String> objList = getData();
 
 for (int i = 0; i < objList.size(); i++) {  // Noncompliant
     // execute code
 }
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 List<String> objList = getData();
 
 int size = objList.size();
 for (int i = 0; i < size; i++) {
     // execute code
 }
-```
+----
 
 == Resources
 

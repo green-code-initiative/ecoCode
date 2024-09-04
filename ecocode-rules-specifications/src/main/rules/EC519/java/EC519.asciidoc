@@ -10,34 +10,39 @@ One can monitor the changes in charging state with a broadcast receiver register
 
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 // No IntentFilter for power charge status
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 new IntentFilter(Intent.ACTION_POWER_CONNECTED)
-```
+----
 
 Or
 
-```java
+[source,java]
+----
 new IntentFilter(Intent.ACTION_POWER_DISCONNECTED)
-```
+----
 
 Or
 
-```java
+[source,java]
+----
 new IntentFilter(Intent.ACTION_POWER_BATTERY_OKAY)
-```
+----
 
 Or
 
-```java
+[source,java]
+----
 new IntentFilter(Intent.ACTION_POWER_BATTERY_LOW)
-```
+----
 
 == Resources
 

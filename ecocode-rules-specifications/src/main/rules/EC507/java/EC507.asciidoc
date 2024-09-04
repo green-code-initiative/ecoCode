@@ -9,10 +9,16 @@ The bad practise includes using a Power Manager system service feature called wa
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 WakeLock manager = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "TAG");
-```
+----
+
+=== Compliant solution
+
+Do not use wake lock.
 
 == Resources
 

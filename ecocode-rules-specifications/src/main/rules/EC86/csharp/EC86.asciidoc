@@ -12,6 +12,7 @@ Calling `GC.Collect` on generation 0 (ephemeral objects) is excluded from this r
 In general, it is not recommended to call GC.Collect as the cost far outweighs the benefits.
 In some cases however, typically if you know you have a lot of long-lived objects whose memory you need reclaimed immediately, calling `GC.Collect` can make sense.
 
+== How to fix it
 === Noncompliant code example
 
 [source, cs]

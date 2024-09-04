@@ -22,7 +22,9 @@ Code is noncompliant, because `nb` is used 4 times:
 - 3 times explicitly in `if` statements
 - 1 time implicitly in `else` statement
 
-```java
+[source,java]
+----
+// Noncompliant
 int index = 1;
 int nb = 2;
 ...
@@ -36,13 +38,14 @@ if (nb == 0) {
     nb = -1;
 }
 return nb;
-```
+----
 
 === Compliant solution
 
 With a `switch`:
 
-```java
+[source,java]
+----
 int index = 1;
 int nb = 2;
 ...
@@ -56,7 +59,7 @@ switch (nb) {
         nb = -1;
 }
 return nb;
-```
+----
 
 == Resources
 

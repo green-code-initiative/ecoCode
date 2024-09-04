@@ -8,23 +8,25 @@ Database servers have to resolve schema fields when using asterisk symbol (`*`).
 == How to fix it
 === Noncompliant code example
 
-```php
+[source,php]
+----
 public function foo() {
     ...
     $baseQuery = "SELECT * FROM users"; // Noncompliant
     ...
 }
-```
+----
 
 === Compliant solution
 
-```php
+[source,php]
+----
 public function foo() {
     ...
     $baseQuery = "SELECT id,name, address FROM users ";
     ...
 }
-```
+----
 
 == Resources
 

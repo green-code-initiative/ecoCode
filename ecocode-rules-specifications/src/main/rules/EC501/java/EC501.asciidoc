@@ -11,7 +11,8 @@ The Android system can combine jobs so that battery consumption is reduced.
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 void setAlarm(Context context) {
     AlarmManager alarmManager = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
@@ -22,11 +23,12 @@ void setAlarm(Context context) {
 
 Alarm alarm = new Alarm();
 alarm.setAlarm(this);
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 JobInfo info = new JobInfo.Builder(123, COMPONENT_NAME)
                           .setRequiresCharging(true)
                           .setRequiredNetworkType(JobInfo.NETWORK_TYPE_UNMETERED)
@@ -35,7 +37,7 @@ JobInfo info = new JobInfo.Builder(123, COMPONENT_NAME)
                           .build();
 JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
 scheduler.schedule(info);
-```
+----
 
 == Resources
 

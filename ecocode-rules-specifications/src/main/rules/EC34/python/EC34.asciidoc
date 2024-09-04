@@ -9,7 +9,9 @@ When an exception is thrown, a variable (the exception itself) is created in a c
 == How to fix it
 === Noncompliant code example
 
-```python
+[source,python]
+----
+# Noncompliant
 try:
     f = open(path)
     print(fh.read())
@@ -17,16 +19,17 @@ except:
     print('No such file ' + path)
 finally:
     f.close()
-```
+----
 
 === Compliant solution
 
-```python
+[source,python]
+----
 if os.path.isfile(path):
   fh = open(path, 'r')
   print(fh.read())
   fh.close
-```
+----
 
 == Resources
 

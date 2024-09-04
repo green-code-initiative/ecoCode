@@ -7,19 +7,21 @@ Python generators resemble lazy lists from other programming languages: when ite
 == How to fix it
 === Noncompliant code example
 
-```python
+[source,python]
+----
 # Noncompliant
 for var in [var2 for var2 in range(100)]:
     ...
 
-```
+----
 
 === Compliant solution
 
-```python
+[source,python]
+----
 for var in (var2 for var2 in range(100)):
     ...
-```
+----
 
 == Resources
 

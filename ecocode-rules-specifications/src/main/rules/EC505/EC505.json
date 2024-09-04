@@ -1,5 +1,5 @@
 {
-  "title": "Idleness: Keep Screen On (addFlags)",
+  "title": "Screen should not be kept on",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {

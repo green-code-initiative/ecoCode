@@ -33,7 +33,7 @@ func startRecording() {
 }
 ----
 
-== Compliant solution
+=== Compliant solution
 
 [source,swift]
 ----

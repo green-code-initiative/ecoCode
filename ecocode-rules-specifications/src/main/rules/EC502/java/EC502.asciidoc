@@ -9,12 +9,13 @@ Also, this bad practice must be early prevented because it is the root of anothe
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 for (int val : myArray) {
     URL.openConnection();
 }
-```
+----
 
 === Compliant solution
 

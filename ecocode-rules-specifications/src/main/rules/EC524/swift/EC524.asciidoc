@@ -14,17 +14,19 @@ Also, setting the `CLLocationManager#activityType` property will let the system 
 
 === Noncompliant code example
 
-```swift
+[source,swift]
+----
 // Noncompliant
 let manager = CLLocationManager()
-```
+----
 
 === Compliant solution
 
-```swift
+[source,swift]
+----
 let manager = CLLocationManager()
 manager.desiredAccuracy = 2
-```
+----
 
 == Resources
 

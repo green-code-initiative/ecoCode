@@ -11,10 +11,11 @@ This feature was introduced to improve battery life, be careful when deactivatin
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 getWindow().getAttributes().screenBrightness = BRIGHTNESS_OVERRIDE_FULL;
-```
+----
 
 === Compliant solution
 

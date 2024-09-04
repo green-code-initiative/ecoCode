@@ -9,17 +9,20 @@ The default and preferred advertising mode is `ADVERTISE_MODE_LOW_POWER` when ca
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 AdvertiseSettings.Builder builder = new AdvertiseSettings.Builder();
 builder.setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_LATENCY);
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 AdvertiseSettings.Builder builder = new AdvertiseSettings.Builder();
 builder.setAdvertiseMode(AdvertiseSettings.ADVERTISE_MODE_LOW_POWER);
-```
+----
 
 == Resources
 

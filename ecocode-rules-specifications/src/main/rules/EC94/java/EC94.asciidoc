@@ -11,19 +11,23 @@ Therefore, using orElseGet() will save computing time.
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 Optional.of("ecoCode").orElse(getUnpredictedMethod());
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 Optional.of("ecoCode").orElseGet(() -> getUnpredictedMethod());
-```
+----
 
-```java
+[source,java]
+----
 randomClass.orElse(getUnpredictedMethod());
-```
+----
 
 == Resources
 

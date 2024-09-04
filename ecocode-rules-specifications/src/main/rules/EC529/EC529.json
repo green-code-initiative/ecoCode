@@ -1,5 +1,5 @@
 {
-  "title": "Sobriety: Thrifty Notification",
+  "title": "Specific sound or vibration should not be used for notification",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -7,6 +7,7 @@
     "constantCost": "5min"
   },
   "tags": [
+    "sobriety",
     "ecocode",
     "android",
     "eco-design",

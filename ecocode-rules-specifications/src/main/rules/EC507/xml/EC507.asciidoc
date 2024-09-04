@@ -13,12 +13,17 @@ along with the specific permission `WAKE_LOCK` in the manifest.
 == How to fix it
 === Noncompliant code example
 
-```xml
+[source,xml]
+----
 <!-- Noncompliant -->
 <manifest>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 </manifest>
-```
+----
+
+=== Compliant solution
+
+Do not use wake lock.
 
 == Resources
 

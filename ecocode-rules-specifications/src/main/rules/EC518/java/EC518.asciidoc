@@ -9,18 +9,19 @@ From the Android client side, it means append `android.bluetooth.le.\*` imports 
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
+// Noncompliant
 import android.bluetooth.*
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 import android.bluetooth.le.*
-```
+----
 
 == Resources
 
 - https://github.com/cnumr/best-practices-mobile[Mobile-specific Best Practices] by https://collectif.greenit.fr/index_en.html[CNumR]
-
-

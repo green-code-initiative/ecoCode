@@ -7,37 +7,41 @@ An app should have a different behavior when device is connected/disconnected to
 Your app can also register to receive notifications when the battery level or state changes, using `batteryLevelDidChangeNotification` and `batteryStateDidChangeNotification`.
 
 == How to fix it
+=== Noncompliant code example
 
-=== Noncompliant code sample
-
-```swift
+[source,swift]
+----
 // Noncompliant
 // No handling of power charge status
-```
+----
 
 === Compliant solution
 
-```swift
+[source,swift]
+----
 let level = UIDevice.current.batteryLevel
-```
+----
 
 or
 
-```swift
+[source,swift]
+----
 let state = UIDevice.current.batteryState
-```
+----
 
 or
 
-```swift
+[source,swift]
+----
 NotificationCenter.default.addObserver(forName: UIDevice.batteryLevelDidChangeNotification, object: nil, queue: nil) { _ in }
-```
+----
 
 or
 
-```swift
+[source,swift]
+----
 NotificationCenter.default.addObserver(forName: UIDevice.batteryStateDidChangeNotification, object: nil, queue: nil) { _ in }
-```
+----
 
 
 == Resources

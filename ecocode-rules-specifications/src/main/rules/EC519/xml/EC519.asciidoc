@@ -8,50 +8,55 @@ An app should have a different behavior when device is connected/disconnected to
 
 === Noncompliant code example
 
-```xml
+[source,xml]
+----
 // Noncompliant
 // No intent for power charge status
-```
+----
 
 === Compliant solution
 
-```xml
+[source,xml]
+----
 <receiver android:name="io.ecocode.testapp.core.service.MyReceiver">
     <intent-filter>
         <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
     </intent-filter>
 </receiver>
-```
+----
 
 or
 
-```xml
+[source,xml]
+----
 <receiver android:name="io.ecocode.testapp.core.service.MyReceiver">
     <intent-filter>
         <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
     </intent-filter>
 </receiver>
-```
+----
 
 or
 
-```xml
+[source,xml]
+----
 <receiver android:name="io.ecocode.testapp.core.service.MyReceiver">
     <intent-filter>
         <action android:name="android.intent.action.ACTION_POWER_BATTERY_OKAY"/>
     </intent-filter>
 </receiver>
-```
+----
 
 or
 
-```xml
+[source,xml]
+----
 <receiver android:name="io.ecocode.testapp.core.service.MyReceiver">
     <intent-filter>
         <action android:name="android.intent.action.ACTION_POWER_BATTERY_LOW"/>
     </intent-filter>
 </receiver>
-```
+----
 
 == Resources
 

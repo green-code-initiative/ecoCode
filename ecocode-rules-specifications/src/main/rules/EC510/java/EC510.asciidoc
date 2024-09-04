@@ -7,18 +7,20 @@ For developers wishing to display OpenGL rendering, when choosing the rendering 
 == How to fix it
 === Noncompliant code example
 
-```java
+[source,java]
+----
 // Noncompliant
 GLSurfaceView surfaceView = new GLSurfaceView(this);
 surfaceView.setRenderMode(GLSurfaceView.RENDERMODE_CONTINUOUSLY)
-```
+----
 
 === Compliant solution
 
-```java
+[source,java]
+----
 GLSurfaceView surfaceView = new GLSurfaceView(this);
 surfaceView.setRenderMode(GLSurfaceView.RENDERMODE_WHEN_DIRTY)
-```
+----
 
 == Resources
 
