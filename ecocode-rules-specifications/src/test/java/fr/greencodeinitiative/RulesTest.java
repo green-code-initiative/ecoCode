@@ -200,14 +200,18 @@ class RulesTest {
                 // https://docs.sonarsource.com/sonarqube/latest/extension-guide/adding-coding-rules/#coding-rule-guidelines
                 assertTrue(
                         rule.name().contains(" should "),
-                        rule + " name should contain 'should': " + rule.name());
+                        rule + " title should match the pattern \"X should [not] Y\": " + rule.name());
                 assertFalse(
                         rule.name().endsWith("."),
-                        rule + " name should not end with a point: " + rule.name());
+                        rule + " title should not end with a point: " + rule.name());
                 // Avoid rules such as "Idleness: Keep Screen On (addFlags)"
+                // or "Accessibility - Image tags should have an alternate text attribute"
                 assertFalse(
-                        rule.name().contains(":"),
-                        rule + " names should not have a prefix tag: " + rule.name());
+                        rule.name().contains(":") || rule.name().contains(" - "),
+                        rule + " title should not have a category/tag prefix: " + rule.name());
+                assertTrue(
+                        rule.name().length() < 80,
+                        rule + " title length should be less than 80 characters: " + rule.name());
 
                 List<String> sections = rule.ruleDescriptionSections().stream()
                         .map(RuleDescriptionSection::getKey)

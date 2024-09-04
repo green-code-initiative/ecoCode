@@ -1,5 +1,5 @@
 {
-  "title": "Generator comprehension should be used instead of list comprehension in for loop declaration",
+  "title": "Generators should be used instead of list comprehensions in for loops",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
