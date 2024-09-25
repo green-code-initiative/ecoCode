@@ -9,7 +9,7 @@ It is not necessarily sensitive information, but it is a first step towards Goog
 
 === Noncompliant code example
 
-Import of Google Analytics :
+Import of Google Analytics:
 
 [source,java]
 ----
@@ -17,7 +17,7 @@ Import of Google Analytics :
 import com.google.android.gms.analytics.Tracker;
 ----
 
-Import of Firebase Analytics :
+Import of Firebase Analytics:
 
 [source,java]
 ----

@@ -6,7 +6,7 @@ If possible, the utilisation of svg image format (or `<svg/>` html tag) is recom
 
 Because SVGs are generally smaller than other image format, they’re less taxing on your server despite needing to render on load.
 
-When to use SVG :
+When to use SVG:
 
 - Your image is used for decorative website graphics, logos, icons, graphs and diagrams, and other simple images.
 - You image require animation.

@@ -50,4 +50,4 @@ public struct MyStruct // Compliant, specified layout. Will take 16 bytes with A
 
 == Resources
 
-You can read a much more in-depth analysis of struct packing here : http://www.catb.org/esr/structure-packing/
+You can read a much more in-depth analysis of struct packing here: http://www.catb.org/esr/structure-packing/
