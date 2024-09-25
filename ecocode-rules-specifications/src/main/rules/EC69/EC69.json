@@ -1,5 +1,5 @@
 {
-  "title": "Functions should not be called when declaring a for-type loop",
+  "title": "Functions should not be called inside a for-loop condition",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
