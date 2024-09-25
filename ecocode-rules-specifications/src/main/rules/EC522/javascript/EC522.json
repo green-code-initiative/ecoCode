@@ -1,13 +1,4 @@
 {
-  "tags": [
-    "ecocode",
-    "eco-design",
-    "performance",
-    "react-native",
-    "sobriety"
-  ],
-  "compatibleLanguages": [
-    "JAVASCRIPT",
-    "TYPESCRIPT"
-  ]
+  "tags": [ "ecocode", "eco-design", "performance", "react-native", "sobriety" ],
+  "compatibleLanguages": [ "JAVASCRIPT", "TYPESCRIPT" ]
 }

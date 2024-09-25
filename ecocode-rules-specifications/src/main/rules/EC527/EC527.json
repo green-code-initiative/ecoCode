@@ -3,15 +3,10 @@
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant\/Issue",
+    "func": "Constant/Issue",
     "constantCost": "10min"
   },
-  "tags": [
-    "ecocode",
-    "android",
-    "eco-design",
-    "performance"
-  ],
+  "tags": [ "ecocode", "android", "eco-design", "performance" ],
   "ecoScore": "0.4",
   "defaultSeverity": "Minor",
   "code": {

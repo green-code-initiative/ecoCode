@@ -6,13 +6,7 @@
     "func": "Constant/Issue",
     "constantCost": "0min"
   },
-  "tags": [
-    "ecocode",
-    "power",
-    "ios",
-    "eco-design",
-    "performance"
-  ],
+  "tags": [ "ecocode", "power", "ios", "eco-design", "performance" ],
   "defaultSeverity": "Info",
   "code": {
     "impacts": {

@@ -2,7 +2,7 @@
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant\/Issue",
+    "func": "Constant/Issue",
     "constantCost": "10min"
   },
   "ecoScore": "0.4",

@@ -1,18 +1,13 @@
 {
-	"title": "string.Length should be used instead of comparison with empty string",
-	"type": "CODE_SMELL",
-	"status": "ready",
-	"remediation": {
-		"func": "Constant\/Issue",
-		"constantCost": "5min"
-	},
-	"tags": [
-		"eco-design",
-		"ecocode",
-		"performance",
-		"bad-practice"
-	],
-	"defaultSeverity": "Minor",
+  "title": "string.Length should be used instead of comparison with empty string",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [ "eco-design", "ecocode", "performance", "bad-practice" ],
+  "defaultSeverity": "Minor",
   "code": {
     "impacts": {
       "RELIABILITY": "LOW"

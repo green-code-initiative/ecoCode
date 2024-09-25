@@ -3,15 +3,10 @@
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant\/Issue",
+    "func": "Constant/Issue",
     "constantCost": "10min"
   },
-  "tags": [
-    "performance",
-    "sql",
-    "eco-design",
-    "ecocode"
-  ],
+  "tags": [ "performance", "sql", "eco-design", "ecocode" ],
   "defaultSeverity": "Minor",
   "code": {
     "impacts": {

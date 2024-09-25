@@ -3,18 +3,10 @@
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant\/Issue",
+    "func": "Constant/Issue",
     "constantCost": "10min"
   },
-  "tags": [
-    "performance",
-    "sql",
-    "spring",
-    "eco-design",
-    "ecocode",
-    "memory",
-    "network"
-  ],
+  "tags": [ "performance", "sql", "spring", "eco-design", "ecocode", "memory", "network" ],
   "defaultSeverity": "Minor",
   "code": {
     "impacts": {

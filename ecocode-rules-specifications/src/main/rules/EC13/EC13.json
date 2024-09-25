@@ -9,17 +9,10 @@
   },
   "status": "ready",
   "remediation": {
-    "func": "Constant\/Issue",
+    "func": "Constant/Issue",
     "constantCost": "30min"
   },
-  "tags": [
-    "ecocode",
-    "eco-design",
-    "nestjs",
-    "performance"
-  ],
+  "tags": [ "ecocode", "eco-design", "nestjs", "performance" ],
   "defaultSeverity": "Major",
-  "compatibleLanguages": [
-    "TYPESCRIPT"
-  ]
+  "compatibleLanguages": [ "TYPESCRIPT" ]
 }
