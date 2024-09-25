@@ -11,7 +11,7 @@ However, even without autoplay, segments of video or audio files might still dow
 This leads to unnecessary data usage, especially if users don't commence playback.
 To mitigate this, it's crucial to prevent browsers from preloading any content by configuring the appropriate settings.
 
-== How to fix it in video
+== How to fix it in a video element
 
 === Noncompliant code example
 
@@ -27,7 +27,7 @@ To mitigate this, it's crucial to prevent browsers from preloading any content b
 <video src="videofile.webm" preload="none"></video> // Compliant
 ----
 
-== How to fix it in audio
+== How to fix it in an audio element
 
 === Noncompliant code example
 
