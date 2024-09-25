@@ -3,10 +3,16 @@
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant/Issue",
+    "func": "Constant\/Issue",
     "constantCost": "20min"
   },
-  "tags": [ "leak", "eco-design", "performance", "ecocode", "memory" ],
+  "tags": [
+    "leak",
+    "eco-design",
+    "performance",
+    "ecocode",
+    "memory"
+  ],
   "defaultSeverity": "Minor",
   "code": {
     "impacts": {

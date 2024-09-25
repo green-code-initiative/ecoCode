@@ -194,18 +194,26 @@
                         </includes>
                         <sortPom />
                     </pom>
-                    <json>
-                        <includes>
-                            <include>src/**/*.json</include>
-                        </includes>
-                        <jackson />
-                        <endWithNewline />
-                    </json>
                     <java>
                         <googleJavaFormat>
                             <version>1.23.0</version>
                         </googleJavaFormat>
                     </java>
+                    <formats>
+                        <format>
+                            <includes>
+                                <include>src/**/*.json</include>
+                            </includes>
+                            <eclipseWtp>
+                                <type>JSON</type>
+                            </eclipseWtp>
+                            <endWithNewline />
+                            <indent>
+                                <spaces>true</spaces>
+                                <spacesPerTab>2</spacesPerTab>
+                            </indent>
+                        </format>
+                    </formats>
                 </configuration>
                 <executions>
                     <execution>

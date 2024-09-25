@@ -3,10 +3,17 @@
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant/Issue",
+    "func": "Constant\/Issue",
     "constantCost": "1d"
   },
-  "tags": [ "idleness", "ecocode", "android", "ios", "eco-design", "performance" ],
+  "tags": [
+    "idleness",
+    "ecocode",
+    "android",
+    "ios",
+    "eco-design",
+    "performance"
+  ],
   "ecoScore": "0.4",
   "defaultSeverity": "Major",
   "code": {

@@ -3,10 +3,16 @@
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant/Issue",
+    "func": "Constant\/Issue",
     "constantCost": "3h"
   },
-  "tags": [ "bottleneck", "ecocode", "android", "eco-design", "performance" ],
+  "tags": [
+    "bottleneck",
+    "ecocode",
+    "android",
+    "eco-design",
+    "performance"
+  ],
   "ecoScore": "0.2",
   "defaultSeverity": "Critical",
   "code": {

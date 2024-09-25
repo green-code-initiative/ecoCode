@@ -9,10 +9,19 @@
   },
   "status": "ready",
   "remediation": {
-    "func": "Constant/Issue",
+    "func": "Constant\/Issue",
     "constantCost": "15min"
   },
-  "tags": [ "ecocode", "eco-design", "jsx", "performance", "react" ],
+  "tags": [
+    "ecocode",
+    "eco-design",
+    "jsx",
+    "performance",
+    "react"
+  ],
   "defaultSeverity": "Major",
-  "compatibleLanguages": [ "JAVASCRIPT", "TYPESCRIPT" ]
+  "compatibleLanguages": [
+    "JAVASCRIPT",
+    "TYPESCRIPT"
+  ]
 }

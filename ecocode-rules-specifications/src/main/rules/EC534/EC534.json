@@ -3,10 +3,16 @@
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant/Issue",
+    "func": "Constant\/Issue",
     "constantCost": "5min"
   },
-  "tags": [ "ecocode", "ios", "eco-design", "performance" ],
+  "tags": [
+    "sobriety",
+    "ecocode",
+    "ios",
+    "eco-design",
+    "performance"
+  ],
   "defaultSeverity": "Major",
   "code": {
     "impacts": {

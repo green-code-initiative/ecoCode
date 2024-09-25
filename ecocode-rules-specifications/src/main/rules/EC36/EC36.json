@@ -9,9 +9,15 @@
   },
   "status": "ready",
   "remediation": {
-    "func": "Constant/Issue",
+    "func": "Constant\/Issue",
     "constantCost": "5min"
   },
-  "tags": [ "ecocode", "eco-design", "performance", "video", "audio" ],
+  "tags": [
+    "ecocode",
+    "eco-design",
+    "performance",
+    "video",
+    "audio"
+  ],
   "defaultSeverity": "Major"
 }

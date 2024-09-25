@@ -22,7 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -35,6 +34,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -48,6 +48,7 @@ import org.junit.jupiter.api.Test;
 import org.sonar.api.SonarRuntime;
 import org.sonar.api.issue.impact.SoftwareQuality;
 import org.sonar.api.rule.RuleScope;
+import org.sonar.api.rules.CleanCodeAttribute;
 import org.sonar.api.rules.RuleType;
 import org.sonar.api.server.rule.RuleDescriptionSection;
 import org.sonar.api.server.rule.RuleDescriptionSection.RuleDescriptionSectionKeys;
@@ -67,7 +68,25 @@ class RulesTest {
 
   private static final List<String> MANDATORY_TAGS = Arrays.asList("ecocode", "eco-design");
 
-  private static final String EFFICIENT_TAG = "performance";
+  private static final EnumMap<CleanCodeAttribute, List<String>>
+      MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS = new EnumMap<>(CleanCodeAttribute.class);
+
+  static {
+    MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.put(
+        CleanCodeAttribute.EFFICIENT, Collections.singletonList("performance"));
+    MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.put(
+        CleanCodeAttribute.TRUSTWORTHY, Arrays.asList("social"));
+  }
+
+  private static final EnumMap<CleanCodeAttribute, List<String>>
+      OPTIONAL_CLEAN_CODE_ATTRIBUTE_TO_TAGS = new EnumMap<>(CleanCodeAttribute.class);
+
+  static {
+    OPTIONAL_CLEAN_CODE_ATTRIBUTE_TO_TAGS.put(
+        CleanCodeAttribute.EFFICIENT, Collections.emptyList());
+    OPTIONAL_CLEAN_CODE_ATTRIBUTE_TO_TAGS.put(
+        CleanCodeAttribute.TRUSTWORTHY, Arrays.asList("privacy"));
+  }
 
   private static final List<String> AREA_TAGS =
       Arrays.asList(
@@ -102,13 +121,16 @@ class RulesTest {
    * not allow environment.
    */
   private static final List<String> ALL_TAGS =
-      Stream.of(
-              MANDATORY_TAGS,
-              Collections.singletonList(EFFICIENT_TAG),
-              BUILT_IN_RULE_TAGS,
-              AREA_TAGS,
-              TECHNOLOGY_TAGS,
-              BEST_PRACTISES_MOBILE_TAGS)
+      Stream.concat(
+              MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.values().stream(),
+              Stream.concat(
+                  OPTIONAL_CLEAN_CODE_ATTRIBUTE_TO_TAGS.values().stream(),
+                  Stream.of(
+                      MANDATORY_TAGS,
+                      BUILT_IN_RULE_TAGS,
+                      AREA_TAGS,
+                      TECHNOLOGY_TAGS,
+                      BEST_PRACTISES_MOBILE_TAGS)))
           .flatMap(List::stream)
           .collect(Collectors.toList());
 
@@ -177,19 +199,24 @@ class RulesTest {
         assertTrue(
             ALL_TAGS.containsAll(rule.tags()),
             rule + " should only have allowed tags but got: " + rule.tags());
-        switch (rule.cleanCodeAttribute()) {
-          case EFFICIENT:
-            assertTrue(
-                rule.tags().contains(EFFICIENT_TAG), rule + " should have tag " + EFFICIENT_TAG);
-            break;
-          case TRUSTWORTHY:
-            assertFalse(
-                rule.tags().contains(EFFICIENT_TAG),
-                rule + " should not have tag " + EFFICIENT_TAG);
-            break;
-          default:
-            fail(rule + " should have EFFICIENT or TRUSTWORTHY Clean Code Attribute");
-        }
+        assertTrue(
+            MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.keySet().contains(rule.cleanCodeAttribute()),
+            rule
+                + " should have Clean Code Attribute in "
+                + MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.keySet());
+        assertTrue(
+            rule.tags()
+                .containsAll(MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.get(rule.cleanCodeAttribute())),
+            rule
+                + " should have tags "
+                + MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.get(rule.cleanCodeAttribute()));
+        assertFalse(
+            Stream.concat(
+                    MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.entrySet().stream(),
+                    OPTIONAL_CLEAN_CODE_ATTRIBUTE_TO_TAGS.entrySet().stream())
+                .filter(e -> !rule.cleanCodeAttribute().equals(e.getKey()))
+                .anyMatch(e -> new ArrayList<>(rule.tags()).removeAll(e.getValue())),
+            rule + " should not have a tag from another Clean Code Attribute");
         // See guidelines in
         // https://docs.sonarsource.com/sonarqube/latest/extension-guide/adding-coding-rules/#coding-rule-guidelines
         assertTrue(

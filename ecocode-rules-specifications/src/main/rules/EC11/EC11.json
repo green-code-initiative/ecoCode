@@ -3,10 +3,14 @@
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
-    "func": "Constant/Issue",
+    "func": "Constant\/Issue",
     "constantCost": "5min"
   },
-  "tags": [ "ecocode", "eco-design", "performance" ],
+  "tags": [
+    "ecocode",
+    "eco-design",
+    "performance"
+  ],
   "defaultSeverity": "Major",
   "code": {
     "impacts": {
@@ -14,5 +18,8 @@
     },
     "attribute": "EFFICIENT"
   },
-  "compatibleLanguages": [ "JAVASCRIPT", "TYPESCRIPT" ]
+  "compatibleLanguages": [
+    "JAVASCRIPT",
+    "TYPESCRIPT"
+  ]
 }
