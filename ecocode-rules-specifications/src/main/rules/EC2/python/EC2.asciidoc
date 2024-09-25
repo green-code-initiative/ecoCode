@@ -7,7 +7,7 @@ One variable should be used at most twice in `if...elif...else` statements:
 
 == Why is this an issue?
 
-Performance is impacted by many conditional `if`, `elif` or `else` statements, which is sometimes called "complexity cyclomatic".
+Performance is impacted by many conditional `if`, `elif` or `else` statements, which is sometimes called "cyclomatic complexity".
 
 Switch statement has a performance advantage over `if...else`.
 

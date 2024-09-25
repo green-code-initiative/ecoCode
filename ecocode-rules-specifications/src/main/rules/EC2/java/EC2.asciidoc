@@ -7,13 +7,11 @@ One variable should be used at most twice in `if...else if...else` statements:
 
 == Why is this an issue?
 
-Performance is impacted by many conditional `if`, `else if` or `else` statements, which is sometimes called "complexity cyclomatic".
+Performance is impacted by many conditional `if`, `else if` or `else` statements, which is sometimes called "cyclomatic complexity".
 
 Switch statement has a performance advantage over `if...else`.
 
 == How to fix it
-
-A switch statement can be used instead of multiple `if...else` if possible, or code can be refactored to reduce number of `if...else if...else` statements.
 
 === Noncompliant code example
 
@@ -42,7 +40,9 @@ return nb;
 
 === Compliant solution
 
-With a `switch`:
+A switch statement can be used instead of multiple `if...else` if possible, or code can be refactored to reduce number of `if...else if...else` statements.
+
+With a `switch` statement:
 
 [source,java]
 ----

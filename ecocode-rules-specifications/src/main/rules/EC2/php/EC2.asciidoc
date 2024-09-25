@@ -7,7 +7,7 @@ One variable should be used at most twice in `if...elseif...else` statements:
 
 == Why is this an issue?
 
-Performance is impacted by many conditional `if`, `elseif` or `else` statements, which is sometimes called "complexity cyclomatic".
+Performance is impacted by many conditional `if`, `elseif` or `else` statements, which is sometimes called "cyclomatic complexity".
 
 Switch statement has a performance advantage over `if...else`.
 
@@ -15,7 +15,7 @@ Switch statement has a performance advantage over `if...else`.
 
 === Noncompliant code example
 
-Code is noncompliant, because `$nb` is used 4 times :
+Code is noncompliant, because `$nb` is used 4 times:
 
 - 3 times explicitly in `if` and `elseif` statements
 - 1 time implicitly in `else` statement
