@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.ecocode</groupId>
@@ -96,68 +94,19 @@
     </issueManagement>
 
     <properties>
-        <java.version>11</java.version>
-        <maven.compiler.source>${java.version}</maven.compiler.source>
-        <maven.compiler.target>${java.version}</maven.compiler.target>
-        <!-- to prevent message: system modules path not set in conjunction with
-        -source 11 -->
-        <maven.compiler.release>${java.version}</maven.compiler.release>
 
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
-        <junit.jupiter.version>5.9.1</junit.jupiter.version>
-        <assertJ.version>3.23.1</assertJ.version>
-        <mockito.version>5.3.1</mockito.version>
-        <sonarqube.version>10.10.0.2391</sonarqube.version>
-        <sonar-analyzer-commons.version>2.12.0.2964</sonar-analyzer-commons.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>${junit.jupiter.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.sonarsource.api.plugin</groupId>
-            <artifactId>sonar-plugin-api</artifactId>
-            <version>${sonarqube.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.sonarsource.analyzer-commons</groupId>
-            <artifactId>sonar-analyzer-commons</artifactId>
-            <version>${sonar-analyzer-commons.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>${assertJ.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
-
-    <build>
+    <!-- <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
-            </plugin>
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
-                <version>4.5</version>
+                <version>4.1</version>
                 <configuration>
                     <properties>
                         <owner>Green Code Initiative</owner>
@@ -165,8 +114,7 @@
                     </properties>
                     <licenseSets>
                         <licenseSet>
-                            <header>
-                                com/mycila/maven/plugin/license/templates/GPL-3.txt</header>
+                            <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header>
                             <includes>
                                 <include>**/*.java</include>
                             </includes>
@@ -183,49 +131,8 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>com.diffplug.spotless</groupId>
-                <artifactId>spotless-maven-plugin</artifactId>
-                <version>2.43.0</version>
-                <configuration>
-                    <pom>
-                        <includes>
-                            <include>pom.xml</include>
-                        </includes>
-                        <sortPom />
-                    </pom>
-                    <java>
-                        <googleJavaFormat>
-                            <version>1.23.0</version>
-                        </googleJavaFormat>
-                    </java>
-                    <formats>
-                        <format>
-                            <includes>
-                                <include>src/**/*.json</include>
-                            </includes>
-                            <eclipseWtp>
-                                <type>JSON</type>
-                            </eclipseWtp>
-                            <endWithNewline />
-                            <indent>
-                                <spaces>true</spaces>
-                                <spacesPerTab>2</spacesPerTab>
-                            </indent>
-                        </format>
-                    </formats>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
-    </build>
+    </build> -->
 
     <profiles>
         <profile>
@@ -245,11 +152,11 @@
             </distributionManagement>
             <build>
                 <plugins>
-                    <plugin>
-                        <!--
+                    <plugin><!--
+
                         For publishing in Maven Central,
-                        see:
-                        https://central.sonatype.org/publish/publish-maven/#distribution-management-and-authentication
+                        see: https://central.sonatype.org/publish/publish-maven/#distribution-management-and-authentication
+
                         -->
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
@@ -258,20 +165,17 @@
                         <configuration>
                             <serverId>ossrh</serverId>
                             <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
-                            <!-- if true : automatic publish / if false : manual
-                            publish on Nexus GUI ("staging repository" tab) -->
+                            <!-- if true : automatic publish / if false : manual publish on Nexus GUI ("staging repository" tab) -->
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
                     </plugin>
                     <plugin><!--
-                            For publishing in Maven Central, GPG key must be published to one of following
-                        servers:
+                            For publishing in Maven Central, GPG key must be published to one of following servers:
                             - keyserver.ubuntu.com
                             - keys.openpgp.org
                             - pgp.mit.edu
 
-                            For more informatino:
-                        https://central.sonatype.org/publish/requirements/gpg/#distributing-your-public-key
+                            For more informatino: https://central.sonatype.org/publish/requirements/gpg/#distributing-your-public-key
                         -->
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
