@@ -1,6 +1,6 @@
 :!sectids:
 
-The analyzer will consider a type for sealing when the following conditions are met :
+The analyzer will consider a type for sealing when the following conditions are met:
 
 * The type is not static, abstract, sealed or special (ie. implicit, script, auto-generated, etc)
 * The type is currently not inherited from in the solution
@@ -9,8 +9,6 @@ The analyzer will consider a type for sealing when the following conditions are 
 == Why is this an issue?
 
 A non-sealed type prevents the JIT compiler from applying strong optimizations such as devirtualization and inlining. If that type is intended to be inheritable then this is expected ; however if it doesn't, then it should be sealed explictly to bring the benefits from those optimizations.
-
-For a more in-depth explanation, see https://devblogs.microsoft.com/dotnet/performance_improvements_in_net_7/#analyzers
 
 === When can it be ignored?
 
@@ -90,4 +88,4 @@ public class Class6 : Class4
 
 == Resources
 
-Reference/Validation is unknown.
+For a more in-depth explanation, see https://devblogs.microsoft.com/dotnet/performance_improvements_in_net_7/#analyzers
