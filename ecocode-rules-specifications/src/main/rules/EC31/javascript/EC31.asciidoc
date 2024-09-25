@@ -6,6 +6,13 @@ Using appropriate image formats and optimizing image sizes is essential for impr
 Larger image file sizes consume more bandwidth, increasing the data transfer required to load a web page.
 Some image formats are generally considered better for eco-friendly web design and should be used in most cases.
 
+We recommend using the following formats:
+
+- *WebP*, developed by Google, is a modern image format that provides high compression efficiency without significant loss of quality.
+- *AVIF* (AV1 Image File Format) is a relatively new and highly efficient image format that is based on the AV1 video codec.
+- *SVG* (Scalable Vector Graphics) is a vector image format that is based on XML.
+Files are lightweight and can be scaled without loss of quality.
+
 == How to fix it
 
 === Noncompliant code example
@@ -16,13 +23,6 @@ Some image formats are generally considered better for eco-friendly web design a
 ----
 
 === Compliant solution
-
-We recommend using the following formats:
-
-- *WebP*, developed by Google, is a modern image format that provides high compression efficiency without significant loss of quality.
-- *AVIF* (AV1 Image File Format) is a relatively new and highly efficient image format that is based on the AV1 video codec.
-- *SVG* (Scalable Vector Graphics) is a vector image format that is based on XML.
-Files are lightweight and can be scaled without loss of quality.
 
 [source,html,data-diff-id="1",data-diff-type="compliant"]
 ----
