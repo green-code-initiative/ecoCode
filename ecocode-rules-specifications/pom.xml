@@ -187,7 +187,7 @@
         <!--
 					Prepare resources tree needed by language.
 					Each metadata JSON file must be in the same folder as the HTML description file
-			for the corresponding language.
+			    for the corresponding language.
 				-->
         <groupId>com.github.johnpoth</groupId>
         <artifactId>jshell-maven-plugin</artifactId>
