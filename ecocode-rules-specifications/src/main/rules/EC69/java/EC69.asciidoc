@@ -1,19 +1,26 @@
+:!sectids:
+
+== Why is this an issue?
+
 Do not call a function when declaring a for-type loop in order to avoid function calls each iterations. It saves CPU cycles.
 
-## Noncompliant Code Example
+== How to fix it
+=== Noncompliant code example
 
-```java
+[source,java]
+----
 public void foo() {
     for (int i = 0; i < getMyValue(); i++) {  // Noncompliant
         System.out.println(i);
         boolean b = getMyValue() > 6;
     }
 }
-```
+----
 
-## Compliant Solution
+=== Compliant solution
 
-```java
+[source,java]
+----
 public void foo() {
     int myValue = getMyValue();
     for (int i = 0; i < myValue; i++) {
@@ -21,4 +28,8 @@ public void foo() {
         boolean b = getMyValue() > 6;
     }
 }
-```
+----
+
+== Resources
+
+- https://www.greenit.fr/2019/05/07/ecoconception-web-les-115-bonnes-pratiques-3eme-edition/[CNumR best practices (3rd edition) BP_069 (no longer exists in edition 4)]

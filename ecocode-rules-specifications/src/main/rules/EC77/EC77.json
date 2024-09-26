@@ -1,5 +1,5 @@
 {
-  "title": "Avoid using Pattern.compile() in a non-static context.",
+  "title": "Pattern.compile() should be used in a static context",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -13,5 +13,11 @@
     "ecocode",
     "memory"
   ],
-  "defaultSeverity": "Minor"
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
 }

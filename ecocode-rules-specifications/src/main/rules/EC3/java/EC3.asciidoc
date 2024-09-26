@@ -1,22 +1,35 @@
-When iterating over any collection, fetch the size of the collection in advance to avoid fetching it on each iteration, this saves CPU cycles, and therefore consumes less power. The example provided below illustrates what should be avoided.
+:!sectids:
 
-## Noncompliant Code Example
+== Why is this an issue?
 
-```java
+When iterating over any collection, fetch the size of the collection in advance to avoid fetching it on each iteration, this saves CPU cycles, and therefore consumes less power.
+
+== How to fix it
+
+=== Noncompliant code example
+
+[source,java]
+----
+// Noncompliant
 List<String> objList = getData();
 
 for (int i = 0; i < objList.size(); i++) {  // Noncompliant
     // execute code
 }
-```
+----
 
-## Compliant Solution
+=== Compliant solution
 
-```java
+[source,java]
+----
 List<String> objList = getData();
 
 int size = objList.size();
 for (int i = 0; i < size; i++) {
     // execute code
 }
-```
+----
+
+== Resources
+
+Reference/Validation is unknown.

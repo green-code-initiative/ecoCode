@@ -1,28 +1,28 @@
-Avoid usage of static collections.
+:!sectids:
+
+== Why is this an issue?
 
 If you want to use static collections make them final and create for example a singleton if needed containing the collections.
 
 The static fields are more complicated for the Garbage Collector to manage and can lead to memory leaks.
 
-## Noncompliant Code Example
+== How to fix it
+=== Noncompliant code example
 
-```java
-/**
- * Not compliant
- */
+[source,java]
+----
+// Noncompliant
 public class AvoidUsageOfStaticCollections {
     public static final List<> LIST = new ArrayList<>();
     public static final Set<> SET = new HashSet<>();
     public static final Map<> MAP = new HashMap<>();
 }
-```
+----
 
-## Compliant Solution
+=== Compliant solution
 
-```java
-/**
- * Compliant
- */
+[source,java]
+----
 public class GoodUsageOfStaticCollections {
     public static volatile GoodUsageOfStaticCollections INSTANCE = new GoodUsageOfStaticCollections();
 
@@ -33,4 +33,8 @@ public class GoodUsageOfStaticCollections {
     private GoodUsageOfStaticCollections() {
     }
 }
-```
+----
+
+== Resources
+
+Reference/Validation is unknown.

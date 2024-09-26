@@ -1,20 +1,26 @@
-Avoid using `Pattern.compile()` in a non-static context.
-This operation requires a significant amount of computational power, Using a single match saves CPU cycles and RAM consumption.
+:!sectids:
 
-## Noncompliant Code Example
+== Why is this an issue?
 
-```java
+This operation requires a significant amount of computational power. Using a single match saves CPU cycles and RAM consumption.
+
+== How to fix it
+=== Noncompliant code example
+
+[source,java]
+----
 public class AvoidRegexPatternNotStatic {
     public boolean foo() {
         final Pattern pattern = Pattern.compile("foo"); // Noncompliant
         return pattern.matcher("foo").find();
     }
 }
-```
+----
 
-## Compliant Solution N°1
+=== Compliant solution
 
-```java
+[source,java]
+----
 public class ValidRegexPattern {
     private static final Pattern pattern = Pattern.compile("foo"); // Compliant
 
@@ -22,11 +28,12 @@ public class ValidRegexPattern {
         return pattern.matcher("foo").find();
     }
 }
-```
+----
 
-## Compliant Solution N°2
+or
 
-```java
+[source,java]
+----
 public class ValidRegexPattern2 {
     private final Pattern pattern = Pattern.compile("foo"); // Compliant
 
@@ -34,11 +41,12 @@ public class ValidRegexPattern2 {
         return pattern.matcher("foo").find();
     }
 }
-```
+----
 
-## Compliant Solution N°3
+or
 
-```java
+[source,java]
+----
 public class ValidRegexPattern3 {
     private final Pattern pattern;
 
@@ -50,4 +58,8 @@ public class ValidRegexPattern3 {
         return pattern.matcher("foo").find();
     }
 }
-```
+----
+
+== Resources
+
+- See also https://rules.sonarsource.com/java/tag/performance/RSPEC-4248/[RSPEC-4248 rule]

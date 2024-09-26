@@ -1,5 +1,5 @@
 {
-  "title": "Don't use the query SELECT * FROM",
+  "title": "SELECT * should be avoided",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
@@ -13,5 +13,11 @@
     "sql",
     "ecocode"
   ],
-  "defaultSeverity": "Minor"
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
 }
