@@ -38,6 +38,7 @@ import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
@@ -59,6 +60,8 @@ import org.sonar.api.server.rule.internal.DefaultNewRepository;
 import org.sonar.api.utils.Version;
 import org.sonarsource.analyzer.commons.RuleMetadataLoader;
 
+// Still using RuleType.CODE_SMELL to support old SonarQube instances
+@SuppressWarnings("deprecation")
 class RulesTest {
   private static final Version SONAR_API_VERSION = Version.create(10, 10);
   private static final String RESOURCE_DIR = "rules";
@@ -174,6 +177,31 @@ class RulesTest {
     Path[] langPaths = findAllLangs();
     assertArrayEquals(
         LANGUAGES, Stream.of(langPaths).map(p -> p.toFile().getName()).sorted().toArray());
+    addRules(context, langPaths);
+    assertEquals(LANGUAGES.length, context.repositories().size());
+    for (Repository repo : context.repositories()) {
+      assertFalse(repo.rules().isEmpty(), repo.key() + " repository should have rules");
+      for (Rule rule : repo.rules()) {
+        assertFalse(rule.activatedByDefault(), rule + " should not be activated by default");
+        assertEquals(RuleScope.MAIN, rule.scope(), rule + " should have MAIN scope");
+        assertEquals(RuleType.CODE_SMELL, rule.type(), rule + " should have CODE_SMELL type");
+        assertEquals(
+            Collections.singleton(SoftwareQuality.RELIABILITY),
+            rule.defaultImpacts().keySet(),
+            rule + " should have RELIABILITY Software Quality");
+        assertTrue(
+            MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.keySet().contains(rule.cleanCodeAttribute()),
+            rule
+                + " should have Clean Code Attribute in "
+                + MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.keySet());
+        checkTags(rule.key(), rule.cleanCodeAttribute(), rule.tags());
+        checkName(rule.key(), rule.name());
+        checkDescription(rule.key(), rule.ruleDescriptionSections());
+      }
+    }
+  }
+
+  private void addRules(RulesDefinition.Context context, Path[] langPaths) throws IOException {
     for (Path langPath : langPaths) {
       String lang = langPath.toFile().getName();
       DefaultNewRepository repository = new DefaultNewRepository(context, lang, lang, false);
@@ -182,98 +210,83 @@ class RulesTest {
       ruleMetadataLoader.addRulesByRuleKey(repository, new ArrayList<>(findAllRules(langPath)));
       context.registerRepository(repository);
     }
-    assertEquals(LANGUAGES.length, context.repositories().size());
-    for (Repository repo : context.repositories()) {
-      assertFalse(repo.rules().isEmpty(), repo.key() + " repository should have rules");
-      for (Rule rule : repo.rules()) {
-        assertFalse(rule.activatedByDefault(), rule + " should not be activated by default");
-        assertEquals(RuleScope.MAIN, rule.scope(), rule + " should have MAIN scope");
+  }
 
-        assertEquals(RuleType.CODE_SMELL, rule.type(), rule + " should have CODE_SMELL type");
-        assertEquals(
-            Collections.singleton(SoftwareQuality.RELIABILITY),
-            rule.defaultImpacts().keySet(),
-            rule + " should have RELIABILITY Software Quality");
-        assertTrue(
-            rule.tags().containsAll(MANDATORY_TAGS), rule + " should have tags " + MANDATORY_TAGS);
-        assertTrue(
-            ALL_TAGS.containsAll(rule.tags()),
-            rule + " should only have allowed tags but got: " + rule.tags());
-        assertTrue(
-            MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.keySet().contains(rule.cleanCodeAttribute()),
-            rule
-                + " should have Clean Code Attribute in "
-                + MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.keySet());
-        assertTrue(
-            rule.tags()
-                .containsAll(MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.get(rule.cleanCodeAttribute())),
-            rule
-                + " should have tags "
-                + MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.get(rule.cleanCodeAttribute()));
-        assertFalse(
-            Stream.concat(
-                    MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.entrySet().stream(),
-                    OPTIONAL_CLEAN_CODE_ATTRIBUTE_TO_TAGS.entrySet().stream())
-                .filter(e -> !rule.cleanCodeAttribute().equals(e.getKey()))
-                .anyMatch(e -> new ArrayList<>(rule.tags()).removeAll(e.getValue())),
-            rule + " should not have a tag from another Clean Code Attribute");
-        // See guidelines in
-        // https://docs.sonarsource.com/sonarqube/latest/extension-guide/adding-coding-rules/#coding-rule-guidelines
-        assertTrue(
-            rule.name().contains(" should "),
-            rule + " title should match the pattern \"X should [not] Y\": " + rule.name());
-        assertFalse(
-            rule.name().endsWith("."), rule + " title should not end with a point: " + rule.name());
-        // Avoid rules such as "Idleness: Keep Screen On (addFlags)"
-        // or "Accessibility - Image tags should have an alternate text attribute"
-        assertFalse(
-            rule.name().contains(":") || rule.name().contains(" - "),
-            rule + " title should not have a category/tag prefix: " + rule.name());
-        assertTrue(
-            rule.name().length() < 80,
-            rule + " title length should be less than 80 characters: " + rule.name());
-
-        List<String> sections =
-            rule.ruleDescriptionSections().stream()
-                .map(RuleDescriptionSection::getKey)
-                .collect(Collectors.toList());
-        // see https://docs.asciidoctor.org/asciidoc/latest/sections/auto-ids/
-        assertFalse(
-            sections.isEmpty(),
-            rule
-                + " should have standard description sections but got none (is"
-                + " :!sectids: present?)");
-        // Introduction is optional
-        if (RuleDescriptionSectionKeys.INTRODUCTION_SECTION_KEY.equals(sections.get(0))) {
-          sections.remove(0);
-        }
-        assertIterableEquals(
-            Arrays.asList(
-                RuleDescriptionSectionKeys.ROOT_CAUSE_SECTION_KEY,
-                RuleDescriptionSectionKeys.HOW_TO_FIX_SECTION_KEY,
-                RuleDescriptionSectionKeys.RESOURCES_SECTION_KEY),
-            // Using set since "how to fix" sections might be repeated"
-            new LinkedHashSet<String>(sections),
-            rule + " should have standard description sections");
-        String howToFix =
-            rule.ruleDescriptionSections().stream()
-                .filter(s -> RuleDescriptionSectionKeys.HOW_TO_FIX_SECTION_KEY.equals(s.getKey()))
-                .findFirst()
-                .orElse(null)
-                .getHtmlContent();
-        assertTrue(
-            NONCOMPLIANT_COMMENT_PATTERN.matcher(howToFix).matches(),
-            rule + " must have Noncompliant comment in the How to fix section: " + howToFix);
-        assertTrue(
-            howToFix.contains("<h3>Noncompliant code example</h3>"),
-            rule
-                + " must have <h3>Noncompliant code example</h3> in How to fix"
-                + " section: "
-                + howToFix);
-        assertTrue(
-            howToFix.contains("<h3>Compliant solution</h3>"),
-            rule + " must have <h3>Compliant solution</h3> in How to fix section: " + howToFix);
-      }
+  private void checkDescription(
+      String ruleKey, List<RuleDescriptionSection> ruleDescriptionSections) {
+    List<String> sections =
+        ruleDescriptionSections.stream()
+            .map(RuleDescriptionSection::getKey)
+            .collect(Collectors.toList());
+    // see https://docs.asciidoctor.org/asciidoc/latest/sections/auto-ids/
+    assertFalse(
+        sections.isEmpty(),
+        ruleKey
+            + " should have standard description sections but got none"
+            + " (is :!sectids: present?)");
+    // Introduction is optional
+    if (RuleDescriptionSectionKeys.INTRODUCTION_SECTION_KEY.equals(sections.get(0))) {
+      sections.remove(0);
     }
+    assertIterableEquals(
+        Arrays.asList(
+            RuleDescriptionSectionKeys.ROOT_CAUSE_SECTION_KEY,
+            RuleDescriptionSectionKeys.HOW_TO_FIX_SECTION_KEY,
+            RuleDescriptionSectionKeys.RESOURCES_SECTION_KEY),
+        // Using set since "how to fix" sections might be repeated
+        new LinkedHashSet<String>(sections),
+        ruleKey + " should have standard description sections");
+    String howToFix =
+        ruleDescriptionSections.stream()
+            .filter(s -> RuleDescriptionSectionKeys.HOW_TO_FIX_SECTION_KEY.equals(s.getKey()))
+            .findFirst()
+            .orElse(null)
+            .getHtmlContent();
+    assertTrue(
+        NONCOMPLIANT_COMMENT_PATTERN.matcher(howToFix).matches(),
+        ruleKey + " must have Noncompliant comment in the How to fix section: " + howToFix);
+    assertTrue(
+        howToFix.contains("<h3>Noncompliant code example</h3>"),
+        ruleKey
+            + " must have <h3>Noncompliant code example</h3> in How to fix"
+            + " section: "
+            + howToFix);
+    assertTrue(
+        howToFix.contains("<h3>Compliant solution</h3>"),
+        ruleKey + " must have <h3>Compliant solution</h3> in How to fix section: " + howToFix);
+  }
+
+  private void checkName(String ruleKey, String name) {
+    // See guidelines in
+    // https://docs.sonarsource.com/sonarqube/latest/extension-guide/adding-coding-rules/#coding-rule-guidelines
+    assertTrue(
+        name.contains(" should "),
+        ruleKey + " title should match the pattern \"X should [not] Y\": " + name);
+    assertFalse(name.endsWith("."), ruleKey + " title should not end with a point: " + name);
+    // Avoid rules such as "Idleness: Keep Screen On (addFlags)"
+    // or "Accessibility - Image tags should have an alternate text attribute"
+    assertFalse(
+        name.contains(":") || name.contains(" - "),
+        ruleKey + " title should not have a category/tag prefix: " + name);
+    assertTrue(
+        name.length() < 80, ruleKey + " title length should be less than 80 characters: " + name);
+  }
+
+  private void checkTags(String ruleKey, CleanCodeAttribute cleanCodeAttribute, Set<String> tags) {
+    assertTrue(tags.containsAll(MANDATORY_TAGS), ruleKey + " should have tags " + MANDATORY_TAGS);
+    assertTrue(
+        ALL_TAGS.containsAll(tags), ruleKey + " should only have allowed tags but got: " + tags);
+    assertTrue(
+        tags.containsAll(MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.get(cleanCodeAttribute)),
+        ruleKey
+            + " should have tags "
+            + MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.get(cleanCodeAttribute));
+    assertFalse(
+        Stream.concat(
+                MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.entrySet().stream(),
+                OPTIONAL_CLEAN_CODE_ATTRIBUTE_TO_TAGS.entrySet().stream())
+            .filter(e -> !cleanCodeAttribute.equals(e.getKey()))
+            .anyMatch(e -> new ArrayList<>(tags).removeAll(e.getValue())),
+        ruleKey + " should not have a tag from another Clean Code Attribute");
   }
 }
