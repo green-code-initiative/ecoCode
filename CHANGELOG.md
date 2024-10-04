@@ -13,6 +13,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+- deletion of deprecated python EC34 and EC69 rules
+
 ## [1.6.3] - 2024-07-26
 
 ### Added
