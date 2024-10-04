@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [1.6.4] - 2024-10-04
+
+### Deleted
+
 - deletion of deprecated python EC34 and EC69 rules
 
 ## [1.6.3] - 2024-07-26
@@ -348,7 +352,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Comparison List
 
-[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.6.2...HEAD)
+[unreleased](https://github.com/green-code-initiative/ecoCode/compare/1.6.4...HEAD)
+[1.6.4](https://github.com/green-code-initiative/ecoCode/compare/1.6.3...1.6.4)
+[1.6.3](https://github.com/green-code-initiative/ecoCode/compare/1.6.2...1.6.3)
 [1.6.2](https://github.com/green-code-initiative/ecoCode/compare/1.6.1...1.6.2)
 [1.6.1](https://github.com/green-code-initiative/ecoCode/compare/1.6.0...1.6.1)
 [1.6.0](https://github.com/green-code-initiative/ecoCode/compare/1.5.4...1.6.0)
