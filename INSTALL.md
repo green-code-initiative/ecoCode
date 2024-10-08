@@ -6,7 +6,7 @@
 
 ## Common installation notes / requirements
 
-Please read common [INSTALL.md](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/INSTALL.md)
+Please read common [HOWTO.md](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/HOWTO.md)
 in `ecoCode-common` repository. Please follow the specific guides below for additional information on installing the
 desired plugins.
 
