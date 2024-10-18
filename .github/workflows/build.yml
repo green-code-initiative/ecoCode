@@ -38,4 +38,4 @@ jobs:
           restore-keys: ${{ runner.os }}-m2
 
       - name: Verify
-        run: mvn -e -B verify
+        run: ./mvnw -e -B verify

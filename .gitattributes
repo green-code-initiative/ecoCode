@@ -5,3 +5,7 @@
 # Ensure BAT files will always be checked out with CRLFs (regardless of the
 # OS they were checked out on).
 *.bat text eol=crlf
+
+# Ensure BAT files will always be checked out with CRLFs (regardless of the
+# OS they were checked out on).
+*.cmd text eol=crlf

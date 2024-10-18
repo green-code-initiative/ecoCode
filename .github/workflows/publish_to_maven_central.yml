@@ -49,7 +49,7 @@ jobs:
       # The `OSSRH_USERNAME` environment variable will be set with the contents of your `OSSRH_USERNAME` secret,
       # and the `OSSRH_TOKEN` environment variable will be set with the contents of your `OSSRH_TOKEN` secret.
       - name: Publish package
-        run: mvn --batch-mode deploy -Pmaven-central-publishing
+        run: ./mvnw --batch-mode deploy -Pmaven-central-publishing
         env:
           OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
           OSSRH_TOKEN: ${{ secrets.OSSRH_TOKEN }}
