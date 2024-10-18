@@ -114,8 +114,9 @@
 
     </properties>
 
-    <!-- <build>
+    <build>
         <plugins>
+            <!--
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
@@ -144,8 +145,9 @@
                     </execution>
                 </executions>
             </plugin>
+            -->
         </plugins>
-    </build> -->
+    </build>
 
     <profiles>
         <profile>
