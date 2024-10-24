@@ -17,7 +17,7 @@ refer to the contribution section.
 🌿 SonarQube Plugins
 -------------------
 
-6 technologies are supported by ecoCode right now:
+7 technologies are supported by ecoCode right now:
 
 - "standard" plugins :
   - [Java plugin](https://github.com/green-code-initiative/ecoCode-java)
