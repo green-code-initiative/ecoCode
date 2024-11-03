@@ -1,0 +1,16 @@
+{
+  "title": "i++ detected (for demo EPITA)",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "50min"
+  },
+  "tags": [
+    "performance",
+    "spring",
+    "eco-design",
+    "ecocode"
+  ],
+  "defaultSeverity": "Minor"
+}

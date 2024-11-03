@@ -1,0 +1,13 @@
+The form `$i++` was detected for demo EPITA
+
+## Noncompliant Code Example
+
+```java
+i++  // Noncompliant
+```
+
+## Compliant Solution
+
+```java
+i = i + 1
+```
