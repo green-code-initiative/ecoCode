@@ -1,0 +1,48 @@
+== Why is this an issue?
+
+Using appropriate image formats and optimizing image sizes is essential for improving application performance, user experience, and overall environmental impact.
+Larger image file sizes consume more bandwidth, increasing the data transfer required to load an application.
+Some image formats are generally considered better for eco-friendly application design and should be used in most cases.
+
+We recommend using the following formats:
+
+- *WebP*, developed by Google, is a modern image format that provides high compression efficiency without significant loss of quality.
+- *AVIF* (AV1 Image File Format) is a relatively new and highly efficient image format that is based on the AV1 video codec.
+Files are lightweight and can be scaled without loss of quality.
+
+[source,java,data-diff-id="1",data-diff-type="noncompliant"]
+
+## Noncompliant Code Example
+
+```java
+public class ImageHandler {
+    public void loadImage() {
+        String imagePath1 = "images/photo.jpg";
+        String imagePath2 = "images/graphic.png";
+        //...
+    }
+}
+```
+
+## Compliant Solution
+
+```java
+public class ImageHandler {
+    public void loadImage() {
+        String imagePath1 = "images/photo.webp";
+        String imagePath2 = "images/graphic.avif";
+        //...
+    }
+}
+```
+
+== Resources
+
+=== Documentation
+
+- https://github.com/cnumr/best-practices/blob/main/chapters/BP_080_en.md[CNUMR best practices - Optimize images]
+
+=== Articles & blog posts
+
+- https://greenspector.com/en/which-image-format-to-choose-to-reduce-its-energy-consumption-and-its-environmental-impact/[greenspector.com - Which image format to choose to reduce its energy consumption and its environmental impact?]
+- https://dodonut.com/blog/use-cases-of-web-image-formats/[dodonut.com - The Most Efficient Web Image Formats. Use Cases For Different Types Of Images.]
