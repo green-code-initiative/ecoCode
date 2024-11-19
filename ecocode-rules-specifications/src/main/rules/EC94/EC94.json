@@ -1,5 +1,5 @@
 {
-  "title": "Performance: orElseGet instead of orElse",
+  "title": "orElseGet instead of orElse",
   "type": "CODE_SMELL",
   "status": "ready",
   "remediation": {
