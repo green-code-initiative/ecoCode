@@ -1,24 +1,32 @@
-Optimize read file exception
+:!sectids:
 
-## Noncompliant Code Example
+== Why is this an issue?
 
-```java
+Throwing and handling exceptions is expensive and should not be used for normal program flows.
+
+== How to fix it
+=== Noncompliant code example
+
+[source,java]
+----
+// Noncompliant
 public void readPreferences(String filename) {
     //...
     InputStream in = null;
     try {
-    in = new FileInputStream(filename);
+        in = new FileInputStream(filename);
     } catch (FileNotFoundException e) {
-    logger.log(e);
+        logger.log(e);
     }
     in.read(...);
     //...
 }
-```
+----
 
-## Compliant Solution
+=== Compliant solution
 
-```java
+[source,java]
+----
 public void readPreferences(String filename) throws IllegalArgumentException, FileNotFoundException, IOException {
     if (filename == null) {
         throw new IllegalArgumentException ("filename is null");
@@ -27,4 +35,8 @@ public void readPreferences(String filename) throws IllegalArgumentException, Fi
     InputStream in = new FileInputStream(filename);
     //...
 }
-```
+----
+
+== Resources
+
+Reference/Validation for this rule is unknown.
