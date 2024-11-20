@@ -69,14 +69,17 @@ class RulesTest {
   private static final String[] LANGUAGES =
       new String[] {"csharp", "html", "java", "javascript", "php", "python", "swift", "xml"};
 
-  private static final List<String> MANDATORY_TAGS = Arrays.asList("ecocode", "eco-design");
+  private static final List<String> MANDATORY_TAGS = Arrays.asList("ecocode");
 
   private static final EnumMap<CleanCodeAttribute, List<String>>
       MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS = new EnumMap<>(CleanCodeAttribute.class);
 
   static {
+    // performance and sustainability are already used by Sonar standard rules:
+    // https://rules.sonarsource.com/java/tag/sustainability/
+    // https://rules.sonarsource.com/java/tag/performance/
     MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.put(
-        CleanCodeAttribute.EFFICIENT, Collections.singletonList("performance"));
+        CleanCodeAttribute.EFFICIENT, Arrays.asList("performance", "sustainability"));
     MANDATORY_CLEAN_CODE_ATTRIBUTE_TO_TAGS.put(
         CleanCodeAttribute.TRUSTWORTHY, Arrays.asList("social"));
   }
@@ -120,8 +123,8 @@ class RulesTest {
           "longevity");
 
   /**
-   * Let's not have too many tags, especially tags redundant with eco-design or performance, e.g. do
-   * not allow environment.
+   * Let's not have too many tags, especially tags redundant with sustainability or performance,
+   * e.g. do not allow environment or eco-design.
    */
   private static final List<String> ALL_TAGS =
       Stream.concat(
