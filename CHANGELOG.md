@@ -68,6 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#4](https://github.com/green-code-initiative/ecoCode-java/issues/4) Improvement: "++i" statement is not so bad 
 - [#318](https://github.com/green-code-initiative/ecoCode/issues/318) Implement the rule EC523 for React Native
 
 ### Deleted
