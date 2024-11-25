@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- [#3](https://github.com/green-code-initiative/ecoCode-java/issues/3) Improvement: pattern declaration not only in a static way
+
 ### Deleted
 
 ## [1.6.5] - 2024-10-18
