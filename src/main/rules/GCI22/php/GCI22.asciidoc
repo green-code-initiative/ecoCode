@@ -1,0 +1,15 @@
+Use of methods for basic operations
+
+== Non compliant Code Example
+
+[source,php]
+----
+$min = min($a, $b);  // Noncompliant
+----
+
+== Compliant Solution
+
+[source,php]
+----
+$min = $a < $b ? $a : $b;
+----

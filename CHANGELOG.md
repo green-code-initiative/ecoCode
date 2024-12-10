@@ -13,6 +13,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Deleted
 
+## [2.0.0] - 2024-12-10
+
+### Changed
+
+- First official release of creedengo-rules-specifications component (renaming ECxx rule ids to GCIxx rule ids, refactoring)
+
 ## [1.6.5] - 2024-10-18
 
 ### Changed
