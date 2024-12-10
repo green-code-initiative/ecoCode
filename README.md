@@ -59,7 +59,7 @@ This project contains the specifications of all creedengo rules, for all languag
 
 #### Structure
 
-Rules are organized by folder based on their ID in the [root rules folder](../src/main/rules).
+Rules are organized by folder based on their ID in the [root rules folder](src/main/rules).
 Each of these folders contains a file with the metadata of the rule, and description by language.
 
 The metadata file uses the format supported by
