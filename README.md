@@ -1,11 +1,11 @@
 ![Logo](docs/resources/logo-large.png)
 ======================================
 
-_ecoCode_ is a collective project aiming to reduce environmental footprint of software at the code level. The goal of
+_creedengo_ is a collective project aiming to reduce environmental footprint of software at the code level. The goal of
 the project is to provide a list of static code analyzers to highlight code structures that may have a negative
 ecological impact: energy and resources over-consumption, "fatware", shortening terminals' lifespan, etc.
 
-_ecoCode_ is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin
+_creedengo_ is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin
 then implements these catalogs as rules for scanning your projects.
 
 **Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please
@@ -53,15 +53,62 @@ For example, you’ll be able to access of all your `for` loop, to explore conte
 
 To better understand AST structure, you can use the [AST Explorer](https://astexplorer.net/).
 
+### ecoCode rules specification repository
+
+This project contains the specifications of all ecoCode rules, for all languages.
+
+#### Structure
+
+Rules are organized by folder based on their ID in the [root rules folder](../src/main/rules).
+Each of these folders contains a file with the metadata of the rule, and description by language.
+
+The metadata file uses the format supported by
+the [SonarSource Analyzers Commons](https://github.com/SonarSource/sonar-analyzer-commons/tree/master/commons) library.
+To find out what values can be put there, we advise you to use the
+official [SonarQube documentation](https://docs.sonarsource.com/sonarqube/latest/user-guide/rules/overview/), and to
+rely on already existing files.
+
+Here is an example:
+
+```text
+src/main/rules
+├── EC104
+│   ├── java
+│   │   ├── EC104.asciidoc
+│   │   ├── EC104.json
+│   ├── php
+│   │   ├── EC104.asciidoc
+│   ├── python
+│   │   ├── EC104.asciidoc
+│   └── EC104.json
+├── ...
+```
+
+To specify metadata for a given language (for example deprecate a rule only for a single language), it is possible to
+create a json file in the language folder, and this will be merged with the common file during build. The keys in the
+specific file have priority and it is possible to add new ones but not to delete them from the global one.
+
+#### Description language
+
+The description of the rules uses the ASCIIDOC format (
+with [Markdown compatibility](https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/#markdown-compatibility))
+in order to allow the inclusion of other pages (this feature is not available in standard with Markdown).
+
+See:
+
+* [AsciiDoc Syntax Quick Reference](https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/)
+* [Compare AsciiDoc to Markdown](https://docs.asciidoctor.org/asciidoc/latest/asciidoc-vs-markdown/)
+
+
 🚀 Getting Started
 ------------------
 
 You can quickly have a look of ecoCode plugins with docker. Plase have a look at "Getting started" section of each plugin :
 
-- [Java plugin](https://github.com/green-code-initiative/ecoCode-java?tab=readme-ov-file#-getting-started)
-- [PHP plugin](https://github.com/green-code-initiative/ecoCode-php?tab=readme-ov-file#-getting-started)
-- [Python plugin](https://github.com/green-code-initiative/ecoCode-python?tab=readme-ov-file#-getting-started)
-- [C# plugin](https://github.com/green-code-initiative/ecoCode-csharp?tab=readme-ov-file#-getting-started)
+- [Java plugin](https://github.com/green-code-initiative/creedengo-java?tab=readme-ov-file#-getting-started)
+- [PHP plugin](https://github.com/green-code-initiative/creedengo-php?tab=readme-ov-file#-getting-started)
+- [Python plugin](https://github.com/green-code-initiative/creedengo-python?tab=readme-ov-file#-getting-started)
+- [C# plugin](https://github.com/green-code-initiative/creedengo-csharp?tab=readme-ov-file#-getting-started)
 
 🛒 Distribution
 ------------------

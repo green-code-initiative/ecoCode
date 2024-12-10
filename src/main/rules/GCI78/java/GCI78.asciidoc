@@ -1,0 +1,36 @@
+Don't set a constant parameter in batch update. Instead, put it in query. Creating this parameter and destroying it consumes CPU cycles and RAM unnecessarily.
+
+== Non compliant Code Example
+
+[source,java]
+----
+public void foo() {
+    // ...
+    String query = "insert into mytable values(?,?,?)";
+    // ...
+    for(DummyClass o : list) {
+        stmt.setInt(1, 123);  // Noncompliant
+        stmt.setString(2, o.getName());
+        stmt.setDouble(3, o.getPrice());
+        stmt.addBatch();
+    }
+    // ...
+}
+----
+
+== Compliant Solution
+
+[source,java]
+----
+public void foo() {
+    // ...
+    String query = "insert into mytable values(123,?,?)";
+    // ...
+    for(DummyClass o : list) {
+        stmt.setString(1, o.getName());
+        stmt.setDouble(2, o.getPrice());
+        stmt.addBatch();
+    }
+    // ...
+}
+----
