@@ -8,11 +8,11 @@
 
 ## Rules support matrix by techno
 
-This matrix lists all the rules identified as implementable within the standard ecoCode plugin.
+This matrix lists all the rules identified as implementable within the standard creedengo plugin.
 
 Some are applicable for different technologies.
 
-- ✅ Rule included in current version of ecoCode
+- ✅ Rule included in current version of creedengo
 - 🚧 Rule implementation in progress
 - 🚀 Rule to implement
 - ❓ Rule to analyze for applicability
@@ -83,7 +83,7 @@ Some are applicable for different technologies.
 ## Rules to be reworked / measured / clarified
 
 This table lists rules proposed by the community but they have to be reworked / measured / clarified before being
-implemented in ecoCode plugins.
+implemented in creedengo plugins.
 (Issues and PR are closed, but they can be reopen once rework launched)
 
 | Rule key | Language | Name                                             | Description                                                                           | Invalidation                                                                                                                                                                              |
@@ -98,7 +98,7 @@ implemented in ecoCode plugins.
 
 ## Deprecated rules
 
-This table lists rules proposed by the community but deprecated in ecoCode plugins with the justification. These rules
+This table lists rules proposed by the community but deprecated in creedengo plugins with the justification. These rules
 will be completely deleted in next releases and moved to bottom deleted rules array.
 
 | Rule key | Language   | Name                              | Description                                                                                              | Invalidation                                                                                                                                                                      |
@@ -108,7 +108,7 @@ will be completely deleted in next releases and moved to bottom deleted rules ar
 
 ## Refused / Deleted rules
 
-This table lists rules proposed by the community but refused or/and deleted in ecoCode plugins with the justification.
+This table lists rules proposed by the community but refused or/and deleted in creedengo plugins with the justification.
 
 | Rule key | Language   | Name                                                  | Description                                                                                                                  | Invalidation                                                                                                                                                                           |
 |----------|------------|-------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

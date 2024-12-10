@@ -17,17 +17,17 @@ refer to the contribution section.
 🌿 SonarQube Plugins
 -------------------
 
-7 technologies are supported by ecoCode right now:
+7 technologies are supported by creedengo right now:
 
 - "standard" plugins :
-  - [Java plugin](https://github.com/green-code-initiative/ecoCode-java)
-  - [JavaScript plugin](https://github.com/green-code-initiative/ecoCode-javascript)
-  - [PHP plugin](https://github.com/green-code-initiative/ecoCode-php)
-  - [Python plugin](https://github.com/green-code-initiative/ecoCode-python)
-  - [C# plugin](https://github.com/green-code-initiative/ecoCode-csharp)
+  - [Java plugin](https://github.com/green-code-initiative/creedengo-java)
+  - [JavaScript plugin](https://github.com/green-code-initiative/creedengo-javascript)
+  - [PHP plugin](https://github.com/green-code-initiative/creedengo-php)
+  - [Python plugin](https://github.com/green-code-initiative/creedengo-python)
+  - [C# plugin](https://github.com/green-code-initiative/creedengo-csharp)
 - mobile plugins :
-  - [Android plugin](https://github.com/green-code-initiative/ecoCode-android)
-  - [iOS plugin](https://github.com/green-code-initiative/ecoCode-ios)
+  - [Android plugin](https://github.com/green-code-initiative/creedengo-android)
+  - [iOS plugin](https://github.com/green-code-initiative/creedengo-ios)
 
 ![Screenshot](docs/resources/screenshot.PNG)
 
@@ -44,7 +44,7 @@ There are two kinds of plugins :
   The current repository is for web / backOffice
 - One for mobile (Android), using [a set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised
   by Olivier Le Goaër for Android.
-  You can find this plugin in the repository [here](https://github.com/green-code-initiative/ecocode-mobile)
+  You can find this plugin in the repository [here](https://github.com/green-code-initiative/creedengo-mobile)
 
 ### How a SonarQube plugin works
 
@@ -53,9 +53,9 @@ For example, you’ll be able to access of all your `for` loop, to explore conte
 
 To better understand AST structure, you can use the [AST Explorer](https://astexplorer.net/).
 
-### ecoCode rules specification repository
+### creedengo rules specification repository
 
-This project contains the specifications of all ecoCode rules, for all languages.
+This project contains the specifications of all creedengo rules, for all languages.
 
 #### Structure
 
@@ -103,7 +103,7 @@ See:
 🚀 Getting Started
 ------------------
 
-You can quickly have a look of ecoCode plugins with docker. Plase have a look at "Getting started" section of each plugin :
+You can quickly have a look of creedengo plugins with docker. Plase have a look at "Getting started" section of each plugin :
 
 - [Java plugin](https://github.com/green-code-initiative/creedengo-java?tab=readme-ov-file#-getting-started)
 - [PHP plugin](https://github.com/green-code-initiative/creedengo-php?tab=readme-ov-file#-getting-started)
@@ -113,28 +113,28 @@ You can quickly have a look of ecoCode plugins with docker. Plase have a look at
 🛒 Distribution
 ------------------
 
-The main way to get ecoCode plugins is to download them from your SonarQube Marketplace (available in Administration section).
+The main way to get creedengo plugins is to download them from your SonarQube Marketplace (available in Administration section).
 But if you want, you can also download them from GitHub releases.
 
-We had split our plugins repository `ecocode` to one repository for each plugin on december 2023.
+We had split our plugins repository `creedengo` to one repository for each plugin on december 2023.
 Thus, plugin versions are available on 2 repositories depending on version you want :
 
 - Java plugin :
-  - from 0.x to 1.4.3 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
-  - since 1.5.0 : [ecoCode-java repository](https://github.com/green-code-initiative/ecoCode-java/releases)
+  - from 0.x to 1.4.3 : [creedengo repository](https://github.com/green-code-initiative/creedengo-rules-specifications/releases)
+  - since 1.5.0 : [creedengo-java repository](https://github.com/green-code-initiative/creedengo-java/releases)
 - PHP plugin :
-  - from 0.x to 1.3.1 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
-  - since 1.4.0 : [ecoCode-php repository](https://github.com/green-code-initiative/ecoCode-php/releases)
+  - from 0.x to 1.3.1 : [creedengo repository](https://github.com/green-code-initiative/creedengo-rules-specifications/releases)
+  - since 1.4.0 : [creedengo-php repository](https://github.com/green-code-initiative/creedengo-php/releases)
 - Python plugin :
-  - from 0.x to 1.3.1 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
-  - since 1.4.0 : [ecoCode-python repository](https://github.com/green-code-initiative/ecoCode-python/releases)
+  - from 0.x to 1.3.1 : [creedengo repository](https://github.com/green-code-initiative/creedengo-rules-specifications/releases)
+  - since 1.4.0 : [creedengo-python repository](https://github.com/green-code-initiative/creedengo-python/releases)
 - Javascript plugin :
-  - from 0.x to 1.3.0 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
-  - since 1.4.0 : [ecoCode-javascript repository](https://github.com/green-code-initiative/ecoCode-javascript/releases)
+  - from 0.x to 1.3.0 : [creedengo repository](https://github.com/green-code-initiative/creedengo-rules-specifications/releases)
+  - since 1.4.0 : [creedengo-javascript repository](https://github.com/green-code-initiative/creedengo-javascript/releases)
 - C# plugin :
-  - since 0.x : [ecocode repository](https://github.com/green-code-initiative/ecoCode-csharp/releases)
-- Android plugin : [ecoCode-android repository](https://github.com/green-code-initiative/ecoCode-android/releases)
-- iOS plugin : [ecoCode-ios repository](https://github.com/green-code-initiative/ecoCode-ios/releases)
+  - since 0.x : [creedengo repository](https://github.com/green-code-initiative/creedengo-csharp/releases)
+- Android plugin : [creedengo-android repository](https://github.com/green-code-initiative/creedengo-android/releases)
+- iOS plugin : [creedengo-ios repository](https://github.com/green-code-initiative/creedengo-ios/releases)
 
 🧩 Plugins version compatibility
 ------------------
@@ -204,7 +204,7 @@ Here we honor some no-longer-active core team members who have made valuable con
 - [Nicolas Daviet](https://github.com/NicolasDaviet)
 - [Mathilde Grapin](https://github.com/fkotd)
 
-They have contributed to the success of ecoCode :
+They have contributed to the success of creedengo :
 
 - [Davidson Consulting](https://www.davidson.fr/)
 - [Orange Business](https://www.orange-business.com/)

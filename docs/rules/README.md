@@ -20,6 +20,6 @@ Web-oriented rules are based on :
 - Référentiel général d'écoconception de services numériques (RGESN) (https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/)
 
 We try to apply these rules to each supported language, so we maintain a matrix to follow current development.
-Here are the selected rules currently used on ecoCode
+Here are the selected rules currently used on creedengo
 
 - [Rules support matrix by techno](/RULES.md)

@@ -204,7 +204,7 @@
                             </scripts>
                             <options>
                                 <option>-R "-DsourceDir=${project.build.directory}/rules-html"</option>
-                                <option>-R "-DtargetDir=${project.build.outputDirectory}/io/ecocode/rules"</option>
+                                <option>-R "-DtargetDir=${project.build.outputDirectory}/org/green-code-initiative/rules"</option>
                             </options>
                         </configuration>
                     </execution>
@@ -213,14 +213,6 @@
             <plugin>
                 <!--
 					This module produce one artifact by language (with corresponding classifier)
-					For example, to add rule specifications for Python language, add following dependency in python sonarqube plugin:
-
-			        <dependency>
-			            <groupId>io.ecocode</groupId>
-			            <artifactId>ecocode-rules-specifications</artifactId>
-			            <version>${project.version}</version>
-			            <classifier>python</classifier>
-			        </dependency>
 				-->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -234,7 +226,7 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>../src/main/assembly/java.xml</descriptor>
+                                <descriptor>${project.basedir}/src/main/assembly/java.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
@@ -246,7 +238,7 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>../src/main/assembly/php.xml</descriptor>
+                                <descriptor>${project.basedir}/src/main/assembly/php.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
@@ -258,7 +250,7 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>../src/main/assembly/python.xml</descriptor>
+                                <descriptor>${project.basedir}/src/main/assembly/python.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
@@ -270,7 +262,7 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>../src/main/assembly/javascript.xml</descriptor>
+                                <descriptor>${project.basedir}/src/main/assembly/javascript.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
@@ -282,7 +274,7 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>../src/main/assembly/swift.xml</descriptor>
+                                <descriptor>${project.basedir}/src/main/assembly/swift.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
@@ -294,7 +286,7 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>../src/main/assembly/xml.xml</descriptor>
+                                <descriptor>${project.basedir}/src/main/assembly/xml.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
@@ -306,7 +298,7 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>../src/main/assembly/csharp.xml</descriptor>
+                                <descriptor>${project.basedir}/src/main/assembly/csharp.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
@@ -318,7 +310,7 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>../src/main/assembly/html.xml</descriptor>
+                                <descriptor>${project.basedir}/src/main/assembly/html.xml</descriptor>
                             </descriptors>
                         </configuration>
                     </execution>
