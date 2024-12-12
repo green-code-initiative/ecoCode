@@ -192,8 +192,10 @@ Then, if no answer, contact ...
 - [Maxime DUBOIS](https://www.linkedin.com/in/maxime-dubois-%F0%9F%8C%B1-649a3a3/)
 - [David DE CARVALHO](https://www.linkedin.com/in/david%E2%80%8E-de-carvalho-8b395284/)
 - [Maxime MALGORN](https://www.linkedin.com/in/maximemalgorn/)
+- [Gilles GROUSSET](https://www.linkedin.com/in/gillesgrousset/)
 - [Vianney DE BELLABRE](https://www.linkedin.com/in/vianney-de-bellabre/)
 - [Jérôme CARDON](https://www.linkedin.com/in/jcardon79/)
+- [Johanna DUIGOU](https://www.linkedin.com/in/johannaduigou/)
 
 🧐 Core Team Emeriti
 --------------------

@@ -72,6 +72,30 @@
             <organization>green-code-initiative</organization>
             <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
         </developer>
+        <developer>
+            <name>Vianney DE BELLABRE</name>
+            <email>Djoums@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Jérôme CARDON</name>
+            <email>jay-79@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Justin BERQUE</name>
+            <email>JBerque@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
+        <developer>
+            <name>Johanna DUIGOU</name>
+            <email>jduigoudev@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
     </developers>
 
     <scm>
