@@ -12,7 +12,7 @@ then implements these catalogs as rules for scanning your projects.
 refer to the contribution section.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/CODE_OF_CONDUCT.md)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/green-code-initiative/creedengo-common/blob/main/doc/CODE_OF_CONDUCT.md)
 
 🌿 SonarQube Plugins
 -------------------
@@ -175,7 +175,7 @@ We are listening to you to make the project progress collectively, and maybe wit
 
 WE NEED YOU !
 
-Here the [Starter pack](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/starter-pack.md)
+Here the [Starter pack](https://github.com/green-code-initiative/creedengo-common/blob/main/doc/starter-pack.md)
 
 🤓 Main contributors
 --------------------
