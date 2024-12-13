@@ -1,4 +1,4 @@
-![Logo](docs/resources/logo-large.png)
+![Logo](docs/resources/creedengo_logo.png)
 ======================================
 
 _creedengo_ is a collective project aiming to reduce environmental footprint of software at the code level. The goal of

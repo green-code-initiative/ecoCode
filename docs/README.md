@@ -1,4 +1,4 @@
-![Logo](resources/logo-large.png)
+![Logo](resources/creedengo_logo.png)
 
 ---
 
