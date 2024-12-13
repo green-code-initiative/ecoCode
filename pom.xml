@@ -96,6 +96,12 @@
             <organization>green-code-initiative</organization>
             <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
         </developer>
+        <developer>
+            <name>Jean-Yves CRONIER</name>
+            <email>jycr@users.noreply.github.com</email>
+            <organization>green-code-initiative</organization>
+            <organizationUrl>https://github.com/green-code-initiative</organizationUrl>
+        </developer>
     </developers>
 
     <scm>
