@@ -1,0 +1,24 @@
+{
+  "title": "High frame rate should not be set",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "sobriety",
+    "creedengo",
+    "android",
+    "sustainability",
+    "performance"
+  ],
+  "ecoScore": "0.4",
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

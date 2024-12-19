@@ -1,0 +1,24 @@
+{
+  "title": "Location Sensor should not leak",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "20min"
+  },
+  "tags": [
+    "leakage",
+    "creedengo",
+    "android",
+    "sustainability",
+    "performance"
+  ],
+  "ecoScore": "0.2",
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

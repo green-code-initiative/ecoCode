@@ -1,0 +1,21 @@
+{
+  "title": "Getter and setter methods should not be used in classes",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "sustainability",
+    "performance",
+    "creedengo"
+  ],
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

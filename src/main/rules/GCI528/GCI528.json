@@ -1,0 +1,24 @@
+{
+  "title": "Vibration should be avoided",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "sobriety",
+    "creedengo",
+    "android",
+    "sustainability",
+    "performance"
+  ],
+  "ecoScore": "0.4",
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

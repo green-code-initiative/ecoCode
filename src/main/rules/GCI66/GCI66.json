@@ -1,0 +1,22 @@
+{
+  "title": "Double quotes (\") should be used instead of using simple quotes (')",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "bad-practice",
+    "sustainability",
+    "performance",
+    "creedengo"
+  ],
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

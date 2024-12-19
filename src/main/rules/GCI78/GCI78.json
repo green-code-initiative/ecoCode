@@ -1,0 +1,23 @@
+{
+  "title": "Const parameter should be set in queries instead of batch updates",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "sustainability",
+    "creedengo",
+    "sql",
+    "performance",
+    "memory"
+  ],
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

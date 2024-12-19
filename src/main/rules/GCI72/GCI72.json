@@ -1,0 +1,25 @@
+{
+  "title": "SQL request in loop should be avoided",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "10min"
+  },
+  "tags": [
+    "performance",
+    "sql",
+    "spring",
+    "sustainability",
+    "creedengo",
+    "memory",
+    "network"
+  ],
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

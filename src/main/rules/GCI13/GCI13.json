@@ -1,0 +1,25 @@
+{
+  "title": "API collections should be preferred with pagination",
+  "type": "CODE_SMELL",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  },
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "30min"
+  },
+  "tags": [
+    "creedengo",
+    "sustainability",
+    "nestjs",
+    "performance"
+  ],
+  "defaultSeverity": "Major",
+  "compatibleLanguages": [
+    "TYPESCRIPT"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "title": "Where should be used before OrderBy",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "sustainability",
+    "creedengo",
+    "performance",
+    "bad-practice"
+  ],
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

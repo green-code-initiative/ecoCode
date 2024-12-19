@@ -1,0 +1,24 @@
+{
+  "title": "Compagnion in background should be avoided",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "20min"
+  },
+  "tags": [
+    "power",
+    "creedengo",
+    "android",
+    "ios",
+    "sustainability",
+    "performance"
+  ],
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

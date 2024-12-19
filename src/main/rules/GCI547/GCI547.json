@@ -1,0 +1,24 @@
+{
+  "title": "Bright Colors should not be used",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "1h"
+  },
+  "tags": [
+    "sobriety",
+    "creedengo",
+    "android",
+    "ios",
+    "sustainability",
+    "performance"
+  ],
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "title": "Unoptimized vector images should be avoided",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "60min"
+  },
+  "tags": [
+    "sustainability",
+    "creedengo",
+    "performance"
+  ],
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

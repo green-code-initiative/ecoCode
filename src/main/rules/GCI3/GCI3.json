@@ -1,0 +1,22 @@
+{
+  "title": "Getting the size of the collection should be avoided inside a loop",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "bad-practice",
+    "sustainability",
+    "performance",
+    "creedengo"
+  ],
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

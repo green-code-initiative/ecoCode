@@ -1,0 +1,24 @@
+{
+  "title": "Reporting latency should be used for sensor listeners",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "20min"
+  },
+  "tags": [
+    "batch",
+    "creedengo",
+    "android",
+    "sustainability",
+    "performance"
+  ],
+  "ecoScore": "0.4",
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

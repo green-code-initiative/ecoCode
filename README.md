@@ -1,33 +1,33 @@
-![Logo](docs/resources/logo-large.png)
+![Logo](docs/resources/creedengo_logo.png)
 ======================================
 
-_ecoCode_ is a collective project aiming to reduce environmental footprint of software at the code level. The goal of
+_creedengo_ is a collective project aiming to reduce environmental footprint of software at the code level. The goal of
 the project is to provide a list of static code analyzers to highlight code structures that may have a negative
 ecological impact: energy and resources over-consumption, "fatware", shortening terminals' lifespan, etc.
 
-_ecoCode_ is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin
+_creedengo_ is based on evolving catalogs of [good practices](docs/rules), for various technologies. A SonarQube plugin
 then implements these catalogs as rules for scanning your projects.
 
 **Warning**: this is still a very early stage project. Any feedback or contribution will be highly appreciated. Please
 refer to the contribution section.
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/CODE_OF_CONDUCT.md)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](https://github.com/green-code-initiative/creedengo-common/blob/main/doc/CODE_OF_CONDUCT.md)
 
 🌿 SonarQube Plugins
 -------------------
 
-7 technologies are supported by ecoCode right now:
+7 technologies are supported by creedengo right now:
 
 - "standard" plugins :
-  - [Java plugin](https://github.com/green-code-initiative/ecoCode-java)
-  - [JavaScript plugin](https://github.com/green-code-initiative/ecoCode-javascript)
-  - [PHP plugin](https://github.com/green-code-initiative/ecoCode-php)
-  - [Python plugin](https://github.com/green-code-initiative/ecoCode-python)
-  - [C# plugin](https://github.com/green-code-initiative/ecoCode-csharp)
+  - [Java plugin](https://github.com/green-code-initiative/creedengo-java)
+  - [JavaScript plugin](https://github.com/green-code-initiative/creedengo-javascript)
+  - [PHP plugin](https://github.com/green-code-initiative/creedengo-php)
+  - [Python plugin](https://github.com/green-code-initiative/creedengo-python)
+  - [C# plugin](https://github.com/green-code-initiative/creedengo-csharp)
 - mobile plugins :
-  - [Android plugin](https://github.com/green-code-initiative/ecoCode-android)
-  - [iOS plugin](https://github.com/green-code-initiative/ecoCode-ios)
+  - [Android plugin](https://github.com/green-code-initiative/creedengo-android)
+  - [iOS plugin](https://github.com/green-code-initiative/creedengo-ios)
 
 ![Screenshot](docs/resources/screenshot.PNG)
 
@@ -44,7 +44,7 @@ There are two kinds of plugins :
   The current repository is for web / backOffice
 - One for mobile (Android), using [a set of smells](https://olegoaer.perso.univ-pau.fr/android-energy-smells/) theorised
   by Olivier Le Goaër for Android.
-  You can find this plugin in the repository [here](https://github.com/green-code-initiative/ecocode-mobile)
+  You can find this plugin in the repository [here](https://github.com/green-code-initiative/creedengo-mobile)
 
 ### How a SonarQube plugin works
 
@@ -53,41 +53,88 @@ For example, you’ll be able to access of all your `for` loop, to explore conte
 
 To better understand AST structure, you can use the [AST Explorer](https://astexplorer.net/).
 
+### creedengo rules specification repository
+
+This project contains the specifications of all creedengo rules, for all languages.
+
+#### Structure
+
+Rules are organized by folder based on their ID in the [root rules folder](src/main/rules).
+Each of these folders contains a file with the metadata of the rule, and description by language.
+
+The metadata file uses the format supported by
+the [SonarSource Analyzers Commons](https://github.com/SonarSource/sonar-analyzer-commons/tree/master/commons) library.
+To find out what values can be put there, we advise you to use the
+official [SonarQube documentation](https://docs.sonarsource.com/sonarqube/latest/user-guide/rules/overview/), and to
+rely on already existing files.
+
+Here is an example:
+
+```text
+src/main/rules
+├── EC104
+│   ├── java
+│   │   ├── EC104.asciidoc
+│   │   ├── EC104.json
+│   ├── php
+│   │   ├── EC104.asciidoc
+│   ├── python
+│   │   ├── EC104.asciidoc
+│   └── EC104.json
+├── ...
+```
+
+To specify metadata for a given language (for example deprecate a rule only for a single language), it is possible to
+create a json file in the language folder, and this will be merged with the common file during build. The keys in the
+specific file have priority and it is possible to add new ones but not to delete them from the global one.
+
+#### Description language
+
+The description of the rules uses the ASCIIDOC format (
+with [Markdown compatibility](https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/#markdown-compatibility))
+in order to allow the inclusion of other pages (this feature is not available in standard with Markdown).
+
+See:
+
+* [AsciiDoc Syntax Quick Reference](https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/)
+* [Compare AsciiDoc to Markdown](https://docs.asciidoctor.org/asciidoc/latest/asciidoc-vs-markdown/)
+
+
 🚀 Getting Started
 ------------------
 
-You can quickly have a look of ecoCode plugins with docker. Plase have a look at "Getting started" section of each plugin :
+You can quickly have a look of creedengo plugins with docker. Plase have a look at "Getting started" section of each plugin :
 
-- [Java plugin](https://github.com/green-code-initiative/ecoCode-java?tab=readme-ov-file#-getting-started)
-- [PHP plugin](https://github.com/green-code-initiative/ecoCode-php?tab=readme-ov-file#-getting-started)
-- [Python plugin](https://github.com/green-code-initiative/ecoCode-python?tab=readme-ov-file#-getting-started)
-- [C# plugin](https://github.com/green-code-initiative/ecoCode-csharp?tab=readme-ov-file#-getting-started)
+- [Java plugin](https://github.com/green-code-initiative/creedengo-java?tab=readme-ov-file#-getting-started)
+- [PHP plugin](https://github.com/green-code-initiative/creedengo-php?tab=readme-ov-file#-getting-started)
+- [Python plugin](https://github.com/green-code-initiative/creedengo-python?tab=readme-ov-file#-getting-started)
+- [C# plugin](https://github.com/green-code-initiative/creedengo-csharp?tab=readme-ov-file#-getting-started)
 
 🛒 Distribution
 ------------------
 
-The main way to get ecoCode plugins is to download them from your SonarQube Marketplace (available in Administration section).
+The main way to get creedengo plugins is to download them from your SonarQube Marketplace (available in Administration section).
 But if you want, you can also download them from GitHub releases.
 
-We had split our plugins repository `ecocode` to one repository for each plugin on december 2023.
+We had split our plugins repository `creedengo` to one repository for each plugin on december 2023.
 Thus, plugin versions are available on 2 repositories depending on version you want :
 
 - Java plugin :
-  - from 0.x to 1.4.3 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
-  - since 1.5.0 : [ecoCode-java repository](https://github.com/green-code-initiative/ecoCode-java/releases)
+  - from 0.x to 1.4.3 : [creedengo repository](https://github.com/green-code-initiative/creedengo-rules-specifications/releases)
+  - since 1.5.0 : [creedengo-java repository](https://github.com/green-code-initiative/creedengo-java/releases)
 - PHP plugin :
-  - from 0.x to 1.3.1 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
-  - since 1.4.0 : [ecoCode-php repository](https://github.com/green-code-initiative/ecoCode-php/releases)
+  - from 0.x to 1.3.1 : [creedengo repository](https://github.com/green-code-initiative/creedengo-rules-specifications/releases)
+  - since 1.4.0 : [creedengo-php repository](https://github.com/green-code-initiative/creedengo-php/releases)
 - Python plugin :
-  - from 0.x to 1.3.1 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
-  - since 1.4.0 : [ecoCode-python repository](https://github.com/green-code-initiative/ecoCode-python/releases)
+  - from 0.x to 1.3.1 : [creedengo repository](https://github.com/green-code-initiative/creedengo-rules-specifications/releases)
+  - since 1.4.0 : [creedengo-python repository](https://github.com/green-code-initiative/creedengo-python/releases)
 - Javascript plugin :
-  - from 0.x to 1.3.0 : [ecocode repository](https://github.com/green-code-initiative/ecoCode/releases)
-  - since 1.4.0 : [ecoCode-javascript repository](https://github.com/green-code-initiative/ecoCode-javascript/releases)
+  - from 0.x to 1.3.0 : [creedengo repository](https://github.com/green-code-initiative/creedengo-rules-specifications/releases)
+  - since 1.4.0 : [creedengo-javascript repository](https://github.com/green-code-initiative/creedengo-javascript/releases)
 - C# plugin :
-  - since 0.x : [ecocode repository](https://github.com/green-code-initiative/ecoCode-csharp/releases)
-- Android plugin : [ecoCode-android repository](https://github.com/green-code-initiative/ecoCode-android/releases)
-- iOS plugin : [ecoCode-ios repository](https://github.com/green-code-initiative/ecoCode-ios/releases)
+  - since 0.x : [creedengo repository](https://github.com/green-code-initiative/creedengo-csharp/releases)
+- Android plugin : [creedengo-android repository](https://github.com/green-code-initiative/creedengo-android/releases)
+- iOS plugin : [creedengo-ios repository](https://github.com/green-code-initiative/creedengo-ios/releases)
 
 🧩 Plugins version compatibility
 ------------------
@@ -128,7 +175,7 @@ We are listening to you to make the project progress collectively, and maybe wit
 
 WE NEED YOU !
 
-Here the [Starter pack](https://github.com/green-code-initiative/ecoCode-common/blob/main/doc/starter-pack.md)
+Here the [Starter pack](https://github.com/green-code-initiative/creedengo-common/blob/main/doc/starter-pack.md)
 
 🤓 Main contributors
 --------------------
@@ -145,8 +192,10 @@ Then, if no answer, contact ...
 - [Maxime DUBOIS](https://www.linkedin.com/in/maxime-dubois-%F0%9F%8C%B1-649a3a3/)
 - [David DE CARVALHO](https://www.linkedin.com/in/david%E2%80%8E-de-carvalho-8b395284/)
 - [Maxime MALGORN](https://www.linkedin.com/in/maximemalgorn/)
+- [Gilles GROUSSET](https://www.linkedin.com/in/gillesgrousset/)
 - [Vianney DE BELLABRE](https://www.linkedin.com/in/vianney-de-bellabre/)
 - [Jérôme CARDON](https://www.linkedin.com/in/jcardon79/)
+- [Johanna DUIGOU](https://www.linkedin.com/in/johannaduigou/)
 
 🧐 Core Team Emeriti
 --------------------
@@ -157,7 +206,7 @@ Here we honor some no-longer-active core team members who have made valuable con
 - [Nicolas Daviet](https://github.com/NicolasDaviet)
 - [Mathilde Grapin](https://github.com/fkotd)
 
-They have contributed to the success of ecoCode :
+They have contributed to the success of creedengo :
 
 - [Davidson Consulting](https://www.davidson.fr/)
 - [Orange Business](https://www.orange-business.com/)

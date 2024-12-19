@@ -1,0 +1,23 @@
+{
+  "title": "Unlimited cache size should not be used",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "sustainability",
+    "performance",
+    "network",
+    "cache",
+    "creedengo"
+  ],
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

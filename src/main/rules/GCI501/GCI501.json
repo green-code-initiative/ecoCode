@@ -1,0 +1,24 @@
+{
+  "title": "Job Scheduler should be used instead of Alarm Manager",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "3h"
+  },
+  "tags": [
+    "batch",
+    "creedengo",
+    "android",
+    "sustainability",
+    "performance"
+  ],
+  "ecoScore": "0.4",
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

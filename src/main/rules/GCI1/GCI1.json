@@ -1,0 +1,22 @@
+{
+  "title": "Spring repository should not be called in loop or stream operations",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "50min"
+  },
+  "tags": [
+    "performance",
+    "spring",
+    "sustainability",
+    "creedengo"
+  ],
+  "defaultSeverity": "Minor",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

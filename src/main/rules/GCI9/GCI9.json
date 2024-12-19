@@ -1,0 +1,25 @@
+{
+  "title": "Importing everything from library should be avoided",
+  "type": "CODE_SMELL",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  },
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "15min"
+  },
+  "tags": [
+    "creedengo",
+    "sustainability",
+    "performance"
+  ],
+  "defaultSeverity": "Major",
+  "compatibleLanguages": [
+    "JAVASCRIPT",
+    "TYPESCRIPT"
+  ]
+}

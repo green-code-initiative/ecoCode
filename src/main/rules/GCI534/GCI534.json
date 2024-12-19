@@ -1,0 +1,23 @@
+{
+  "title": "Motion Sensor should have an updated rate",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "sobriety",
+    "creedengo",
+    "ios",
+    "sustainability",
+    "performance"
+  ],
+  "defaultSeverity": "Major",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "MEDIUM"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

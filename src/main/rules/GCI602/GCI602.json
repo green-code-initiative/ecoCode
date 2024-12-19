@@ -1,0 +1,24 @@
+{
+  "title": "Charge Awareness",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "0min"
+  },
+  "tags": [
+    "sobriety",
+    "creedengo",
+    "power",
+    "ios",
+    "sustainability",
+    "performance"
+  ],
+  "defaultSeverity": "Info",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  }
+}

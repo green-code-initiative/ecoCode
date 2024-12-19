@@ -1,0 +1,27 @@
+{
+  "title": "Print stylesheet should be provided",
+  "type": "CODE_SMELL",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  },
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "30min"
+  },
+  "tags": [
+    "creedengo",
+    "sustainability",
+    "jsx",
+    "performance",
+    "react"
+  ],
+  "defaultSeverity": "Minor",
+  "compatibleLanguages": [
+    "JAVASCRIPT",
+    "TYPESCRIPT"
+  ]
+}

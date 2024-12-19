@@ -1,0 +1,27 @@
+{
+  "title": "Image with empty source attribute should not be used",
+  "type": "CODE_SMELL",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "LOW"
+    },
+    "attribute": "EFFICIENT"
+  },
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "creedengo",
+    "sustainability",
+    "jsx",
+    "performance",
+    "react"
+  ],
+  "defaultSeverity": "Minor",
+  "compatibleLanguages": [
+    "JAVASCRIPT",
+    "TYPESCRIPT"
+  ]
+}

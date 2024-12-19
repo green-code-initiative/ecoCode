@@ -1,0 +1,24 @@
+{
+  "title": "Internet connections should not be opened continuously ",
+  "type": "CODE_SMELL",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "3h"
+  },
+  "tags": [
+    "bottleneck",
+    "creedengo",
+    "android",
+    "sustainability",
+    "performance"
+  ],
+  "ecoScore": "0.2",
+  "defaultSeverity": "Critical",
+  "code": {
+    "impacts": {
+      "RELIABILITY": "HIGH"
+    },
+    "attribute": "EFFICIENT"
+  }
+}
