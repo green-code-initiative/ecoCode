@@ -137,6 +137,16 @@
     </properties>
 
     <build>
+        <pluginManagement>
+            <plugins>
+                <!-- TO KEEP : to fix sonar plugin version for CICD and execute sonar:sonar on github CI -->
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>5.0.0.4389</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -367,7 +377,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>s
         </plugins>
     </build>
 
@@ -425,6 +435,7 @@
                         -->
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
+                        <version>3.2.7</version>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
