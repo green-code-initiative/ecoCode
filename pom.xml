@@ -9,7 +9,7 @@
     <name>creedengo Rules Specifications repository</name>
     <description>Repository that contains the specifications of every static-analysis rules available in creedengo plugins.</description>
     <url>https://github.com/green-code-initiative/creedengo-rules-specifications</url>
-    <!-- test ddc -->
+    <!-- test ddc BIS -->
     <inceptionYear>2024</inceptionYear>
     <organization>
         <name>green-code-initiative</name>
