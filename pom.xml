@@ -134,9 +134,6 @@
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
 
-        <sonar.organization>green-code-initiative</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-
     </properties>
 
     <build>
@@ -359,7 +356,28 @@
                     <appendAssemblyId>true</appendAssemblyId>
                 </configuration>
             </plugin>
-
+            <plugin>
+                <!--
+                Plugin to configure reading sonar-project.properties (via Maven Properties Plugin)
+                because SonarQube Scanner for Maven does not support reading sonar-project.properties
+                -->
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.2.1</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>sonar-project.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>s
         </plugins>
     </build>
 
