@@ -377,7 +377,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>s
+            </plugin>
         </plugins>
     </build>
 
